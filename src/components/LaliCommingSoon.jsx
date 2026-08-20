@@ -29,9 +29,6 @@ const LaliComingSoon = () =>
                     playsInline
                     preload="auto"
                     className="absolute inset-0 h-full w-full object-cover"
-                    style={{
-                        filter: "saturate(0.75) contrast(0.95)",
-                    }}
                 >
                     <source
                         src="/videos/plantation.mp4"
