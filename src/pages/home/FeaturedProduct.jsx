@@ -27,44 +27,169 @@ const FeaturedProduct = () =>
 
                     <div className="absolute -left-8 -top-8 h-32 w-32 rounded-full bg-[#D9828A]/20 blur-2xl" />
 
-                    <div className="relative mx-auto aspect-[4/5] max-w-[520px] overflow-hidden bg-[#EBD8D2]">
+                    <div className="relative mx-auto aspect-[4/5] max-w-[520px] overflow-hidden bg-[#2B1C1A]">
 
-                        {/* Replace this image */}
-                        <img
-                            src={drip}
-                            alt="Laali Hills specialty coffee"
-                            className="h-full w-full object-cover transition-transform duration-[1.5s] hover:scale-[1.03]"
-                        />
+                        {/* =====================================================
+        AMBIENT BACKGROUND
+    ====================================================== */}
 
-                        {/* Origin badge */}
+                        <div className="absolute inset-0">
 
-                        <div className="absolute left-5 top-5 sm:left-7 sm:top-7">
-                            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/40 bg-[#241817]/50 text-center backdrop-blur-md">
-                                <span className="text-[7px] font-medium uppercase leading-3 tracking-[0.2em] text-white">
-                                    Nepal
-                                    <br />
-                                    Origin
-                                </span>
-                            </div>
+                            {/* Soft pink glow */}
+                            <div className="absolute -left-20 -top-20 h-72 w-72 rounded-full bg-[#D9828A]/15 blur-[90px]" />
+
+                            {/* Red glow */}
+                            <div className="absolute -bottom-24 -right-20 h-80 w-80 rounded-full bg-[#B73E46]/20 blur-[100px]" />
+
+                            {/* Subtle center glow */}
+                            <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#E8A2A7]/5 blur-[80px]" />
                         </div>
 
-                        {/* Image caption */}
 
-                        <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between sm:bottom-7 sm:left-7 sm:right-7">
-                            <div>
-                                <p className="text-[8px] uppercase tracking-[0.3em] text-white/70">
-                                    From the hills
-                                </p>
+                        {/* =====================================================
+        DECORATIVE HILLS
+    ====================================================== */}
 
-                                <p className="mt-1 font-subtitle text-lg italic text-white">
-                                    Nepal
-                                </p>
+                        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[48%] overflow-hidden">
+
+                            <motion.div
+                                initial={{ y: 30, opacity: 0 }}
+                                whileInView={{ y: 0, opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 1.2 }}
+                                className="absolute -bottom-24 left-[-25%] h-72 w-[150%] rounded-[50%] bg-[#5B3430]"
+                            />
+
+                            <motion.div
+                                initial={{ y: 50, opacity: 0 }}
+                                whileInView={{ y: 0, opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    duration: 1.4,
+                                    delay: 0.1,
+                                }}
+                                className="absolute -bottom-32 left-[-30%] h-64 w-[160%] rounded-[50%] bg-[#3D2422]"
+                            />
+
+                            <motion.div
+                                initial={{ y: 70, opacity: 0 }}
+                                whileInView={{ y: 0, opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    duration: 1.6,
+                                    delay: 0.2,
+                                }}
+                                className="absolute -bottom-40 left-[-35%] h-60 w-[170%] rounded-[50%] bg-[#241817]"
+                            />
+
+                        </div>
+
+
+                        {/* =====================================================
+        TOP LABEL
+    ====================================================== */}
+
+                        <div className="absolute left-6 right-6 top-6 flex items-center justify-between sm:left-8 sm:right-8 sm:top-8">
+
+                            <div className="flex items-center gap-3">
+
+                                <span className="h-px w-7 bg-[#D9828A]" />
+
+                                <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-[#D8B7B0]">
+                                    Coming Soon
+                                </span>
+
                             </div>
 
-                            <span className="text-[8px] uppercase tracking-[0.25em] text-white/70">
+                            <span className="text-[8px] uppercase tracking-[0.25em] text-[#9D7771]">
                                 01 / 01
                             </span>
+
                         </div>
+
+
+                        {/* =====================================================
+        CENTER MESSAGE
+    ====================================================== */}
+
+                        <div className="absolute inset-0 flex items-center justify-center px-8">
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    duration: 0.9,
+                                    delay: 0.2,
+                                }}
+                                className="relative z-10 text-center"
+                            >
+
+                                <p className="mb-5 text-[8px] font-medium uppercase tracking-[0.45em] text-[#D9828A]">
+                                    From the hills of Nepal
+                                </p>
+
+                                <h3 className="font-title text-5xl leading-[0.85] tracking-[-0.045em] text-[#F8EDE8] sm:text-6xl">
+                                    Something
+                                    <br />
+                                    <span className="italic text-[#D9828A]">
+                                        is coming.
+                                    </span>
+                                </h3>
+
+                                <div className="mx-auto mt-7 h-px w-10 bg-[#B73E46]" />
+
+                                <p className="mx-auto mt-5 max-w-[230px] font-subtitle text-base italic leading-relaxed text-[#BFA29B]">
+                                    Exceptional coffee, tea and stories shaped by the hills.
+                                </p>
+
+                            </motion.div>
+
+                        </div>
+
+
+                        {/* =====================================================
+        BOTTOM INFORMATION
+    ====================================================== */}
+
+                        <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between sm:bottom-8 sm:left-8 sm:right-8">
+
+                            <div>
+
+                                <p className="text-[7px] uppercase tracking-[0.35em] text-[#80635E]">
+                                    Laali Hills
+                                </p>
+
+                                <p className="mt-1 font-subtitle text-sm italic text-[#BFA29B]">
+                                    Nepal • Origin • Craft
+                                </p>
+
+                            </div>
+
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D9828A]/25">
+
+                                <span className="font-title text-sm italic text-[#D9828A]">
+                                    L
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        {/* =====================================================
+        GRAIN
+    ====================================================== */}
+
+                        <div
+                            className="pointer-events-none absolute inset-0 opacity-[0.035]"
+                            style={{
+                                backgroundImage: `
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.7'/%3E%3C/svg%3E")
+            `,
+                            }}
+                        />
+
                     </div>
                 </motion.div>
 
@@ -106,7 +231,7 @@ const FeaturedProduct = () =>
 
                     {/* Short description */}
 
-                    <p className="mt-8 max-w-lg font-subtitle text-xl leading-relaxed text-[#674C48] sm:text-2xl">
+                    <p className="mt-8 max-w-lg font-subtitle md:text-xl leading-relaxed text-[#674C48] text-2xl">
                         A coffee shaped by the hills of Nepal — grown with
                         patience, crafted with care, and brought to your cup
                         with its origin intact.
