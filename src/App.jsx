@@ -1,23 +1,186 @@
-import { useState } from 'react'
+import
+{
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
-import './index.css'
-import Landing from './pages/home/HeroLanding'
-import Navbar from './constant/Navbar'
-import Banner from './constant/Banner'
 
+import Landing from "./pages/home/HeroLanding";
+import MainLayout from "./layouts/MainLayout";
 
 function App()
 {
-
   return (
-    <>
-      <section>
-        <Banner />
-        <Navbar />
-        <Landing />
-      </section>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+
+        {/* =================================
+            MAIN WEBSITE
+        ================================= */}
+
+        <Route element={<MainLayout />}>
+
+          {/* Home */}
+          <Route
+            path="/"
+            element={<Landing />}
+          />
+
+          {/* Shop */}
+          <Route
+            path="/shop"
+            element={
+              <div className="p-10">
+                Shop
+              </div>
+            }
+          />
+
+          <Route
+            path="/shop/coffee"
+            element={
+              <div className="p-10">
+                Coffee
+              </div>
+            }
+          />
+
+          <Route
+            path="/shop/tea"
+            element={
+              <div className="p-10">
+                Tea
+              </div>
+            }
+          />
+
+          {/* Explore */}
+          <Route
+            path="/explore"
+            element={
+              <div className="p-10">
+                Explore
+              </div>
+            }
+          />
+
+          <Route
+            path="/explore/origins"
+            element={
+              <div className="p-10">
+                Origins
+              </div>
+            }
+          />
+
+          <Route
+            path="/explore/farmers"
+            element={
+              <div className="p-10">
+                Farmers
+              </div>
+            }
+          />
+
+          <Route
+            path="/explore/processes"
+            element={
+              <div className="p-10">
+                Our Processes
+              </div>
+            }
+          />
+
+          <Route
+            path="/explore/why-laali-hills"
+            element={
+              <div className="p-10">
+                Why Laali Hills
+              </div>
+            }
+          />
+
+          <Route
+            path="/explore/nepal-coffee"
+            element={
+              <div className="p-10">
+                Nepal Coffee
+              </div>
+            }
+          />
+
+          {/* Stories */}
+          <Route
+            path="/stories"
+            element={
+              <div className="p-10">
+                Stories
+              </div>
+            }
+          />
+
+          <Route
+            path="/stories/farm"
+            element={
+              <div className="p-10">
+                Farm Stories
+              </div>
+            }
+          />
+
+          <Route
+            path="/stories/coffee"
+            element={
+              <div className="p-10">
+                Coffee Blog
+              </div>
+            }
+          />
+
+          <Route
+            path="/stories/tea"
+            element={
+              <div className="p-10">
+                Tea Blog
+              </div>
+            }
+          />
+
+          <Route
+            path="/stories/culture"
+            element={
+              <div className="p-10">
+                Culture
+              </div>
+            }
+          />
+
+          {/* About */}
+          <Route
+            path="/about"
+            element={
+              <div className="p-10">
+                About Laali Hills
+              </div>
+            }
+          />
+
+          {/* Support */}
+          <Route
+            path="/support"
+            element={
+              <div className="p-10">
+                Support
+              </div>
+            }
+          />
+
+        </Route>
+
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

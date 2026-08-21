@@ -1,76 +1,152 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import
 {
     ArrowUpRight,
     ChevronRight,
-    X,
 } from "lucide-react";
 
 const menuItems = [
     {
         title: "Trending",
+        path: "/trending",
         description: "What's happening around Laali Hills.",
         preview: "Discover what is new, loved and happening.",
-        subItems: ["Top", "Newest", "Hot"],
+        subItems: [
+            {
+                title: "Top",
+                path: "/trending/top",
+            },
+            {
+                title: "Newest",
+                path: "/trending/newest",
+            },
+            {
+                title: "Hot",
+                path: "/trending/hot",
+            },
+        ],
     },
 
     {
         title: "Shop",
+        path: "/shop",
         description: "Explore coffee, tea and collections.",
-        preview: "Exceptional products, sourced from the hills of Nepal.",
+        preview:
+            "Exceptional products, sourced from the hills of Nepal.",
         subItems: [
             {
                 title: "Coffee",
-                items: ["All Coffee"],
+                items: [
+                    {
+                        title: "All Coffee",
+                        path: "/shop/coffee",
+                    },
+                ],
             },
+
             {
                 title: "Tea",
-                items: ["All Tea"],
+                items: [
+                    {
+                        title: "All Tea",
+                        path: "/shop/tea",
+                    },
+                ],
             },
+
             {
                 title: "Collection",
-                items: ["Packaging", "Gifts", "Accessories"],
+                items: [
+                    {
+                        title: "Packaging",
+                        path: "/shop/collection/packaging",
+                    },
+                    {
+                        title: "Gifts",
+                        path: "/shop/collection/gifts",
+                    },
+                    {
+                        title: "Accessories",
+                        path: "/shop/collection/accessories",
+                    },
+                ],
             },
         ],
     },
 
     {
         title: "Explore",
+        path: "/explore",
         description: "Go beyond the cup.",
-        preview: "Discover the places, people and processes behind Laali Hills.",
+        preview:
+            "Discover the places, people and processes behind Laali Hills.",
         subItems: [
-            "Origins",
-            "Farmers",
-            "Our Processes",
-            "Why Laali Hills",
-            "Nepal Coffee",
+            {
+                title: "Origins",
+                path: "/explore/origins",
+            },
+            {
+                title: "Farmers",
+                path: "/explore/farmers",
+            },
+            {
+                title: "Our Processes",
+                path: "/explore/processes",
+            },
+            {
+                title: "Why Laali Hills",
+                path: "/explore/why-laali-hills",
+            },
+            {
+                title: "Nepal Coffee",
+                path: "/explore/nepal-coffee",
+            },
         ],
     },
 
     {
         title: "Stories",
+        path: "/stories",
         description: "Stories from the hills.",
-        preview: "People, places and moments behind every cup.",
+        preview:
+            "People, places and moments behind every cup.",
         subItems: [
-            "Farm Stories",
-            "Coffee Blog",
-            "Tea Blog",
-            "Culture",
+            {
+                title: "Farm Stories",
+                path: "/stories/farm",
+            },
+            {
+                title: "Coffee Blog",
+                path: "/stories/coffee",
+            },
+            {
+                title: "Tea Blog",
+                path: "/stories/tea",
+            },
+            {
+                title: "Culture",
+                path: "/stories/culture",
+            },
         ],
     },
 
     {
         title: "About",
+        path: "/about",
         description: "The story of Laali Hills.",
-        preview: "Where the hills become an experience.",
+        preview:
+            "Where the hills become an experience.",
         subItems: [],
     },
 
     {
         title: "Support",
+        path: "/support",
         description: "We're here to help.",
-        preview: "Questions, orders, shipping and everything in between.",
+        preview:
+            "Questions, orders, shipping and everything in between.",
         subItems: [],
     },
 ];
@@ -111,8 +187,8 @@ const Navbar = () =>
                 <div className="flex h-24 items-center justify-between px-6 sm:px-8 lg:px-12 xl:px-16 text-[#F8EDE8]">
 
                     {/* LOGO */}
-                    <a
-                        href="/"
+                    <Link
+                        to="/"
                         className="group relative z-[110] flex items-center"
                         aria-label="Laali Hills"
                     >
@@ -120,7 +196,8 @@ const Navbar = () =>
                         <span className="header italic text-2xl  tracking-[-0.03em] sm:text-3xl">
                             Laali Hills
                         </span>
-                    </a>
+                    </Link>
+
 
                     {/* BURGER */}
                     <button
@@ -240,9 +317,8 @@ const Navbar = () =>
                                             const isActive = activeItem === item.title;
 
                                             return (
-                                                <motion.button
+                                                <motion.div
                                                     key={item.title}
-                                                    type="button"
                                                     onMouseEnter={() =>
                                                         setActiveItem(item.title)
                                                     }
@@ -266,7 +342,11 @@ const Navbar = () =>
                                                     }}
                                                     className="group flex w-full items-center justify-between border-b border-[#E9C9C1]/10 py-4 text-left"
                                                 >
-                                                    <div className="flex items-center gap-4">
+                                                    <Link
+                                                        to={item.path}
+                                                        onClick={() => setMenuOpen(false)}
+                                                        className="flex flex-1 items-center gap-4"
+                                                    >
 
                                                         {/* Active indicator */}
 
@@ -289,7 +369,7 @@ const Navbar = () =>
                                                         >
                                                             {item.title}
                                                         </span>
-                                                    </div>
+                                                    </Link>
 
                                                     <ChevronRight
                                                         size={18}
@@ -299,7 +379,7 @@ const Navbar = () =>
                                                             : "-translate-x-2 text-[#8E706A] opacity-0"
                                                             }`}
                                                     />
-                                                </motion.button>
+                                                </motion.div>
                                             );
                                         })}
                                     </nav>
@@ -403,7 +483,7 @@ const Navbar = () =>
                                                         <div className="grid max-w-2xl grid-cols-2 gap-x-12 gap-y-8">
 
                                                             {activeMenu.subItems.map(
-                                                                (subItem, index) =>
+                                                                (subItem) =>
                                                                 {
 
                                                                     /*
@@ -421,17 +501,32 @@ const Navbar = () =>
 
                                                                     if (
                                                                         typeof subItem ===
-                                                                        "string"
+                                                                        "string" ||
+                                                                        subItem.path
                                                                     )
                                                                     {
                                                                         return (
-                                                                            <a
-                                                                                href="#"
-                                                                                key={subItem}
+                                                                            <Link
+                                                                                to={
+                                                                                    typeof subItem ===
+                                                                                        "string"
+                                                                                        ? subItem
+                                                                                        : subItem.path
+                                                                                }
+                                                                                onClick={() => setMenuOpen(false)}
+                                                                                key={
+                                                                                    typeof subItem ===
+                                                                                        "string"
+                                                                                        ? subItem
+                                                                                        : subItem.path
+                                                                                }
                                                                                 className="group flex items-center justify-between border-b border-[#E9C9C1]/10 pb-4"
                                                                             >
                                                                                 <span className="text-sm text-[#D9C1BB] transition-colors duration-300 group-hover:text-white">
-                                                                                    {subItem}
+                                                                                    {typeof subItem ===
+                                                                                        "string"
+                                                                                        ? subItem
+                                                                                        : subItem.title}
                                                                                 </span>
 
                                                                                 <ArrowUpRight
@@ -439,7 +534,7 @@ const Navbar = () =>
                                                                                     strokeWidth={1}
                                                                                     className="text-[#8E706A] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#D9828A]"
                                                                                 />
-                                                                            </a>
+                                                                            </Link>
                                                                         );
                                                                     }
 
@@ -452,19 +547,20 @@ const Navbar = () =>
                                                                                 {subItem.title}
                                                                             </p>
 
-                                                                            {subItem.items.map(
+                                                                            {subItem.items?.map(
                                                                                 (child) => (
-                                                                                    <a
-                                                                                        href="#"
-                                                                                        key={child}
+                                                                                    <Link
+                                                                                        to={child.path}
+                                                                                        onClick={() => setMenuOpen(false)}
+                                                                                        key={child.path}
                                                                                         className="group flex items-center gap-3 text-sm text-[#D9C2BC]"
                                                                                     >
                                                                                         <span className="h-px w-0 bg-[#D9828A] transition-all duration-300 group-hover:w-5" />
 
                                                                                         <span className="transition-colors duration-300 group-hover:text-white">
-                                                                                            {child}
+                                                                                            {child.title}
                                                                                         </span>
-                                                                                    </a>
+                                                                                    </Link>
                                                                                 )
                                                                             )}
                                                                         </div>
@@ -478,8 +574,9 @@ const Navbar = () =>
 
                                                     {(!activeMenu.subItems ||
                                                         activeMenu.subItems.length === 0) && (
-                                                            <a
-                                                                href="#"
+                                                            <Link
+                                                                to={activeMenu.path}
+                                                                onClick={() => setMenuOpen(false)}
                                                                 className="group inline-flex items-center gap-4 border-b border-[#D9828A]/40 pb-3 text-[10px] font-medium uppercase tracking-[0.3em] text-[#E7CCC6]"
                                                             >
                                                                 Discover {activeMenu.title}
@@ -489,7 +586,7 @@ const Navbar = () =>
                                                                     strokeWidth={1}
                                                                     className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
                                                                 />
-                                                            </a>
+                                                            </Link>
                                                         )}
                                                 </motion.div>
                                             </AnimatePresence>
@@ -587,40 +684,44 @@ const Navbar = () =>
                                                 }}
                                                 className="border-b border-[#E9C9C1]/10"
                                             >
-                                                <button
-                                                    type="button"
-                                                    onClick={() =>
-                                                        setActiveItem(
-                                                            isActive
-                                                                ? ""
-                                                                : item.title
-                                                        )
-                                                    }
-                                                    className="flex w-full items-center justify-between py-5 text-left"
-                                                >
-                                                    <span
+                                                <div className="flex w-full items-center justify-between py-5 text-left">
+                                                    <Link
+                                                        to={item.path}
+                                                        onClick={() => setMenuOpen(false)}
                                                         className={`font-title text-3xl ${isActive
                                                             ? "text-[#F5E8E3]"
                                                             : "text-[#C3A49E]"
                                                             }`}
                                                     >
                                                         {item.title}
-                                                    </span>
+                                                    </Link>
 
-                                                    <motion.span
-                                                        animate={{
-                                                            rotate: isActive
-                                                                ? 90
-                                                                : 0,
-                                                        }}
+                                                    <button
+                                                        type="button"
+                                                        onClick={() =>
+                                                            setActiveItem(
+                                                                isActive
+                                                                    ? ""
+                                                                    : item.title
+                                                            )
+                                                        }
+                                                        aria-label={`${isActive ? "Collapse" : "Expand"} ${item.title} submenu`}
                                                     >
-                                                        <ChevronRight
-                                                            size={18}
-                                                            strokeWidth={1}
-                                                            className="text-[#D9828A]"
-                                                        />
-                                                    </motion.span>
-                                                </button>
+                                                        <motion.span
+                                                            animate={{
+                                                                rotate: isActive
+                                                                    ? 90
+                                                                    : 0,
+                                                            }}
+                                                        >
+                                                            <ChevronRight
+                                                                size={18}
+                                                                strokeWidth={1}
+                                                                className="text-[#D9828A]"
+                                                            />
+                                                        </motion.span>
+                                                    </button>
+                                                </div>
 
                                                 {/* Mobile subnav */}
 
@@ -650,17 +751,32 @@ const Navbar = () =>
                                                                         {
                                                                             if (
                                                                                 typeof subItem ===
-                                                                                "string"
+                                                                                "string" ||
+                                                                                subItem.path
                                                                             )
                                                                             {
                                                                                 return (
-                                                                                    <a
-                                                                                        href="#"
-                                                                                        key={subItem}
+                                                                                    <Link
+                                                                                        to={
+                                                                                            typeof subItem ===
+                                                                                                "string"
+                                                                                                ? subItem
+                                                                                                : subItem.path
+                                                                                        }
+                                                                                        onClick={() => setMenuOpen(false)}
+                                                                                        key={
+                                                                                            typeof subItem ===
+                                                                                                "string"
+                                                                                                ? subItem
+                                                                                                : subItem.path
+                                                                                        }
                                                                                         className="text-sm text-[#BFA29B]"
                                                                                     >
-                                                                                        {subItem}
-                                                                                    </a>
+                                                                                        {typeof subItem ===
+                                                                                            "string"
+                                                                                            ? subItem
+                                                                                            : subItem.title}
+                                                                                    </Link>
                                                                                 );
                                                                             }
 
@@ -677,15 +793,16 @@ const Navbar = () =>
                                                                                         }
                                                                                     </p>
 
-                                                                                    {subItem.items.map(
+                                                                                    {subItem.items?.map(
                                                                                         (child) => (
-                                                                                            <a
-                                                                                                href="#"
-                                                                                                key={child}
+                                                                                            <Link
+                                                                                                to={child.path}
+                                                                                                onClick={() => setMenuOpen(false)}
+                                                                                                key={child.path}
                                                                                                 className="block text-sm text-[#BFA29B]"
                                                                                             >
-                                                                                                {child}
-                                                                                            </a>
+                                                                                                {child.title}
+                                                                                            </Link>
                                                                                         )
                                                                                     )}
                                                                                 </div>
