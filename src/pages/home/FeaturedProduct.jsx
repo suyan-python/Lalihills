@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import drip from "../../assets/products/dripnew.jpeg"
+import hills from "../../assets/hills/1.jpg"
 
 const FeaturedProduct = () =>
 {
@@ -8,10 +9,6 @@ const FeaturedProduct = () =>
         <section className="relative overflow-hidden bg-[#F8EDE8] px-6 py-20 text-[#241817] sm:px-10 sm:py-28 lg:px-16 lg:py-36">
 
             <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2 lg:gap-20">
-
-                {/* =====================================================
-            PRODUCT IMAGE
-        ====================================================== */}
 
                 <motion.div
                     initial={{ opacity: 0, x: -40 }}
@@ -26,12 +23,20 @@ const FeaturedProduct = () =>
                     {/* Decorative background shape */}
 
                     <div className="absolute -left-8 -top-8 h-32 w-32 rounded-full bg-[#D9828A]/20 blur-2xl" />
+                    <div className="relative mx-auto aspect-[4/5] max-w-[520px] overflow-hidden">
 
-                    <div className="relative mx-auto aspect-[4/5] max-w-[520px] overflow-hidden bg-[#2B1C1A]">
+                        <img
+                            src={hills}
+                            alt="Laali Hills"
+                            className="absolute inset-0 h-full w-full scale-105 object-cover blur-[4px]"
+                        />
 
-                        {/* =====================================================
-        AMBIENT BACKGROUND
-    ====================================================== */}
+                        {/* Dim + brown tint */}
+                        <div className="absolute inset-0 bg-[#2B1C1A]/55" />
+
+                        {/* Optional subtle pink warmth */}
+                        <div className="absolute inset-0 bg-[#D9828A]/5" />
+
 
                         <div className="absolute inset-0">
 
@@ -45,12 +50,7 @@ const FeaturedProduct = () =>
                             <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#E8A2A7]/5 blur-[80px]" />
                         </div>
 
-
-                        {/* =====================================================
-        DECORATIVE HILLS
-    ====================================================== */}
-
-                        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[48%] overflow-hidden">
+                        {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[48%] overflow-hidden">
 
                             <motion.div
                                 initial={{ y: 30, opacity: 0 }}
@@ -82,12 +82,7 @@ const FeaturedProduct = () =>
                                 className="absolute -bottom-40 left-[-35%] h-60 w-[170%] rounded-[50%] bg-[#241817]"
                             />
 
-                        </div>
-
-
-                        {/* =====================================================
-        TOP LABEL
-    ====================================================== */}
+                        </div> */}
 
                         <div className="absolute left-6 right-6 top-6 flex items-center justify-between sm:left-8 sm:right-8 sm:top-8">
 
@@ -106,11 +101,6 @@ const FeaturedProduct = () =>
                             </span>
 
                         </div>
-
-
-                        {/* =====================================================
-        CENTER MESSAGE
-    ====================================================== */}
 
                         <div className="absolute inset-0 flex items-center justify-center px-8">
 
@@ -148,10 +138,6 @@ const FeaturedProduct = () =>
                         </div>
 
 
-                        {/* =====================================================
-        BOTTOM INFORMATION
-    ====================================================== */}
-
                         <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between sm:bottom-8 sm:left-8 sm:right-8">
 
                             <div>
@@ -168,18 +154,14 @@ const FeaturedProduct = () =>
 
                             <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D9828A]/25">
 
-                                <span className="font-title text-sm italic text-[#D9828A]">
-                                    L
+                                <span className="header text-sm italic text-[#D9828A]">
+                                    LH
                                 </span>
 
                             </div>
 
                         </div>
 
-
-                        {/* =====================================================
-        GRAIN
-    ====================================================== */}
 
                         <div
                             className="pointer-events-none absolute inset-0 opacity-[0.035]"
@@ -189,6 +171,7 @@ const FeaturedProduct = () =>
             `,
                             }}
                         />
+
 
                     </div>
                 </motion.div>
