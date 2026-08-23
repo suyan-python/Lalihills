@@ -8,6 +8,7 @@ import
 
 import Landing from "./pages/home/HeroLanding";
 import MainLayout from "./layouts/MainLayout";
+import Support from "./pages/contact/Support";
 
 function App()
 {
@@ -169,11 +170,7 @@ function App()
           {/* Support */}
           <Route
             path="/support"
-            element={
-              <div className="p-10">
-                Support
-              </div>
-            }
+            element={<Support />}
           />
 
         </Route>

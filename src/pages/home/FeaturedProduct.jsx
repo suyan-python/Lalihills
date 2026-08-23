@@ -286,16 +286,6 @@ const FeaturedProduct = () =>
 
                 </motion.div>
             </div>
-
-            {/* =====================================================
-          DECORATIVE NUMBER
-      ====================================================== */}
-
-            <div className="pointer-events-none absolute bottom-5 right-6 hidden select-none lg:block">
-                <span className="font-title text-[9rem] leading-none text-[#241817]/[0.035]">
-                    01
-                </span>
-            </div>
         </section>
     );
 };

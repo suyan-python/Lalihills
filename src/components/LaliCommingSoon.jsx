@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 const LaliComingSoon = () =>
 {
@@ -77,12 +77,12 @@ const LaliComingSoon = () =>
                         }}
                         className="header max-w-4xl  text-[clamp(3.7rem,9vw,8.5rem)] leading-[0.82] tracking-[-0.045em]"
                     >
-                        <span className="block text-[#F8EDE8]">
-                            Something
+                        <span className="block text-[#F8EDE8] ">
+                            Laali
                         </span>
 
-                        <span className="ml-[8vw] block italic text-[#D9828A]">
-                            is growing.
+                        <span className="ml-[8vw] block italic text-[#D9828A] ">
+                            Hills
                         </span>
                     </motion.h1>
 
@@ -98,7 +98,12 @@ const LaliComingSoon = () =>
                             Specialty coffee, exceptional tea, and the stories of
                             the people and land behind every cup.
                         </p>
+                        <div className="mt-10 flex items-center gap-3 text-[#F8EDE8] uppercase text-[10px] md:text-xs text-center md:text-start tracking-widest justify-center md:justify-start">
+                            explore offerings
+                            <ArrowRight className="h-4 w-4" />
+                        </div>
                     </motion.div>
+
 
                 </div>
 
@@ -122,19 +127,39 @@ const LaliComingSoon = () =>
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1.1 }}
-                    className="absolute bottom-8 left-6 right-6 flex items-end justify-between sm:left-10 sm:right-10 lg:left-14 lg:right-14"
+                    transition={{ duration: 1, delay: 1.4 }}
+                    className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2"
                 >
-                    <div>
-                        <p className="text-[9px] uppercase tracking-[0.35em] text-[#8F706C]">
-                            Coming Soon
-                        </p>
+                    <motion.div
+                        animate={{ y: [0, 5, 0] }}
+                        transition={{
+                            duration: 1.6,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                        }}
+                        className="flex flex-col items-center"
+                    >
+                        {/* Text */}
+                        <span className="text-[7px] font-medium uppercase tracking-[0.4em] text-[#F8EDE8]/70">
+                            Scroll
+                        </span>
 
-                        <p className="mt-2  text-sm italic text-[#C9A8A2]">
-                            When the hills are happy, they are Laali.
-                        </p>
-                    </div>
+                        {/* Animated line */}
+                        <motion.div
+                            animate={{
+                                height: [0, 20, 0],
+                                opacity: [0, 1, 0],
+                            }}
+                            transition={{
+                                duration: 1.6,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                            }}
+                            className="mt-2 w-px bg-[#F8EDE8]/70"
+                        />
+                    </motion.div>
                 </motion.div>
+
             </section>
 
             <div

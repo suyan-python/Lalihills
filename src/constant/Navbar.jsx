@@ -7,12 +7,21 @@ import
     ChevronRight,
 } from "lucide-react";
 
+import trending from "../assets/images/trending.jpg";
+import shop from "../assets/images/shop.jpg";
+import explore from "../assets/images/explore.webp";
+import stories from "../assets/images/stories.jpg";
+import about from "../assets/images/about.webp";
+import support from "../assets/images/support.png";
+
+
 const menuItems = [
     {
         title: "Trending",
         path: "/trending",
         description: "What's happening around Laali Hills.",
         preview: "Discover what is new, loved and happening.",
+        image: trending,
         subItems: [
             {
                 title: "Top",
@@ -35,6 +44,7 @@ const menuItems = [
         description: "Explore coffee, tea and collections.",
         preview:
             "Exceptional products, sourced from the hills of Nepal.",
+        image: shop,
         subItems: [
             {
                 title: "Coffee",
@@ -82,6 +92,7 @@ const menuItems = [
         description: "Go beyond the cup.",
         preview:
             "Discover the places, people and processes behind Laali Hills.",
+        image: explore,
         subItems: [
             {
                 title: "Origins",
@@ -112,6 +123,7 @@ const menuItems = [
         description: "Stories from the hills.",
         preview:
             "People, places and moments behind every cup.",
+        image: stories,
         subItems: [
             {
                 title: "Farm Stories",
@@ -138,6 +150,7 @@ const menuItems = [
         description: "The story of Laali Hills.",
         preview:
             "Where the hills become an experience.",
+        image: about,
         subItems: [],
     },
 
@@ -147,6 +160,7 @@ const menuItems = [
         description: "We're here to help.",
         preview:
             "Questions, orders, shipping and everything in between.",
+        image: support,
         subItems: [],
     },
 ];
@@ -297,7 +311,7 @@ const Navbar = () =>
                     LEFT NAVIGATION
                 =========================================== */}
 
-                                <div className="relative flex w-[42%] flex-col border-r border-[#E9C9C1]/10 px-10 pb-12 pt-32 xl:px-16">
+                                <div className="relative flex w-[25%] flex-col border-r border-[#E9C9C1]/10 px-10 pb-12 pt-32 xl:px-16">
 
                                     {/* Small label */}
 
@@ -311,7 +325,7 @@ const Navbar = () =>
 
                                     {/* Main menu */}
 
-                                    <nav className="flex flex-1 flex-col justify-start">
+                                    <nav className="flex flex-1 flex-col justify-start ">
                                         {menuItems.map((item, index) =>
                                         {
                                             const isActive = activeItem === item.title;
@@ -362,7 +376,7 @@ const Navbar = () =>
                                                         />
 
                                                         <span
-                                                            className={`font-title text-3xl tracking-[-0.025em] transition-colors duration-300 xl:text-4xl ${isActive
+                                                            className={`md:text-base tracking-[-0.025em] transition-colors duration-300 xl:text-2xl ${isActive
                                                                 ? "text-[#F5E8E3]"
                                                                 : "text-[#8E706A] group-hover:text-[#D6B8B1]"
                                                                 }`}
@@ -407,59 +421,24 @@ const Navbar = () =>
                     RIGHT PREVIEW
                 =========================================== */}
 
-                                <div className="relative flex w-[58%] flex-col overflow-hidden bg-[#32211F] px-12 pb-12 pt-32 xl:px-20">
+                                {/* ===========================================
+    RIGHT PREVIEW
+=========================================== */}
 
-                                    {/* Ambient decorative glow */}
+                                <div className="relative flex w-[75%] overflow-hidden bg-[#32211F]">
 
-                                    <div className="pointer-events-none absolute right-[-15%] top-[5%] h-[500px] w-[500px] rounded-full bg-[#B73E46]/10 blur-[120px]" />
+                                    {/* ===========================================
+        LEFT — EDITORIAL PREVIEW
+    =========================================== */}
 
-                                    <div className="relative flex h-full flex-col">
+                                    <div className="relative flex w-[70%] flex-col px-12 pb-12 pt-32 xl:px-16">
 
-                                        {/* Preview heading */}
+                                        <div className="relative flex h-full flex-col">
 
-                                        <AnimatePresence mode="wait">
-                                            <motion.div
-                                                key={activeMenu.title}
-                                                initial={{
-                                                    opacity: 0,
-                                                    y: 15,
-                                                }}
-                                                animate={{
-                                                    opacity: 1,
-                                                    y: 0,
-                                                }}
-                                                exit={{
-                                                    opacity: 0,
-                                                    y: -10,
-                                                }}
-                                                transition={{
-                                                    duration: 0.35,
-                                                }}
-                                                className="mb-12"
-                                            >
-                                                <p className="mb-5 text-[9px] uppercase tracking-[0.35em] text-[#D9828A]">
-                                                    {String(
-                                                        menuItems.indexOf(activeMenu) + 1
-                                                    ).padStart(2, "0")}
-                                                </p>
-
-                                                <h2 className="max-w-xl font-title text-5xl leading-[0.9] tracking-[-0.035em] text-[#F5E8E3] xl:text-7xl">
-                                                    {activeMenu.title}
-                                                </h2>
-
-                                                <p className="mt-6 max-w-md font-subtitle text-xl italic leading-relaxed text-[#C9AAA3]">
-                                                    {activeMenu.preview}
-                                                </p>
-                                            </motion.div>
-                                        </AnimatePresence>
-
-                                        {/* ======================================
-                        SUB NAVIGATION
-                    ======================================= */}
-
-                                        <div className="relative flex-1">
+                                            {/* Preview heading */}
 
                                             <AnimatePresence mode="wait">
+
                                                 <motion.div
                                                     key={activeMenu.title}
                                                     initial={{
@@ -476,151 +455,308 @@ const Navbar = () =>
                                                     }}
                                                     transition={{
                                                         duration: 0.35,
-                                                        delay: 0.05,
                                                     }}
+                                                    className="mb-12"
                                                 >
-                                                    {activeMenu.subItems?.length > 0 && (
-                                                        <div className="grid max-w-2xl grid-cols-2 gap-x-12 gap-y-8">
 
-                                                            {activeMenu.subItems.map(
-                                                                (subItem) =>
-                                                                {
+                                                    <p className="mb-5 text-[9px] uppercase tracking-[0.35em] text-[#D9828A]">
+                                                        {String(
+                                                            menuItems.indexOf(activeMenu) + 1
+                                                        ).padStart(2, "0")}
+                                                    </p>
 
-                                                                    /*
-                                                                      Supports both:
-                                  
-                                                                      "Top"
-                                  
-                                                                      and:
-                                  
-                                                                      {
-                                                                        title: "Coffee",
-                                                                        items: ["All Coffee"]
-                                                                      }
-                                                                    */
+                                                    <h2 className="max-w-xl font-title text-5xl leading-[0.9] tracking-[-0.035em] text-[#F5E8E3] xl:text-6xl">
+                                                        {activeMenu.title}
+                                                    </h2>
 
-                                                                    if (
-                                                                        typeof subItem ===
-                                                                        "string" ||
-                                                                        subItem.path
-                                                                    )
+                                                    <p className="mt-6 max-w-md font-subtitle text-xl italic leading-relaxed text-[#C9AAA3]">
+                                                        {activeMenu.preview}
+                                                    </p>
+
+                                                </motion.div>
+
+                                            </AnimatePresence>
+
+
+                                            {/* ======================================
+                SUB NAVIGATION
+            ======================================= */}
+
+                                            <div className="relative flex-1">
+
+                                                <AnimatePresence mode="wait">
+
+                                                    <motion.div
+                                                        key={activeMenu.title}
+                                                        initial={{
+                                                            opacity: 0,
+                                                            y: 15,
+                                                        }}
+                                                        animate={{
+                                                            opacity: 1,
+                                                            y: 0,
+                                                        }}
+                                                        exit={{
+                                                            opacity: 0,
+                                                            y: -10,
+                                                        }}
+                                                        transition={{
+                                                            duration: 0.35,
+                                                            delay: 0.05,
+                                                        }}
+                                                    >
+
+                                                        {activeMenu.subItems?.length > 0 && (
+
+                                                            <div className="grid max-w-2xl grid-cols-2 gap-x-8 gap-y-8">
+
+                                                                {activeMenu.subItems.map(
+                                                                    (subItem) =>
                                                                     {
-                                                                        return (
-                                                                            <Link
-                                                                                to={
-                                                                                    typeof subItem ===
-                                                                                        "string"
-                                                                                        ? subItem
-                                                                                        : subItem.path
-                                                                                }
-                                                                                onClick={() => setMenuOpen(false)}
-                                                                                key={
-                                                                                    typeof subItem ===
-                                                                                        "string"
-                                                                                        ? subItem
-                                                                                        : subItem.path
-                                                                                }
-                                                                                className="group flex items-center justify-between border-b border-[#E9C9C1]/10 pb-4"
-                                                                            >
-                                                                                <span className="text-sm text-[#D9C1BB] transition-colors duration-300 group-hover:text-white">
-                                                                                    {typeof subItem ===
-                                                                                        "string"
-                                                                                        ? subItem
-                                                                                        : subItem.title}
-                                                                                </span>
 
-                                                                                <ArrowUpRight
-                                                                                    size={14}
-                                                                                    strokeWidth={1}
-                                                                                    className="text-[#8E706A] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#D9828A]"
-                                                                                />
-                                                                            </Link>
+                                                                        /*
+                                                                            Supports:
+                                
+                                                                            "Top"
+                                
+                                                                            and:
+                                
+                                                                            {
+                                                                                title: "Coffee",
+                                                                                items: [...]
+                                                                            }
+                                                                        */
+
+                                                                        if (
+                                                                            typeof subItem === "string" ||
+                                                                            subItem.path
+                                                                        )
+                                                                        {
+                                                                            return (
+                                                                                <Link
+                                                                                    to={
+                                                                                        typeof subItem ===
+                                                                                            "string"
+                                                                                            ? subItem
+                                                                                            : subItem.path
+                                                                                    }
+                                                                                    onClick={() =>
+                                                                                        setMenuOpen(false)
+                                                                                    }
+                                                                                    key={
+                                                                                        typeof subItem ===
+                                                                                            "string"
+                                                                                            ? subItem
+                                                                                            : subItem.path
+                                                                                    }
+                                                                                    className="group flex items-center justify-between border-b border-[#E9C9C1]/10 pb-4"
+                                                                                >
+
+                                                                                    <span className="text-sm text-[#D9C1BB] transition-colors duration-300 group-hover:text-white">
+                                                                                        {
+                                                                                            typeof subItem ===
+                                                                                                "string"
+                                                                                                ? subItem
+                                                                                                : subItem.title
+                                                                                        }
+                                                                                    </span>
+
+                                                                                    <ArrowUpRight
+                                                                                        size={14}
+                                                                                        strokeWidth={1}
+                                                                                        className="text-[#8E706A] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#D9828A]"
+                                                                                    />
+
+                                                                                </Link>
+                                                                            );
+                                                                        }
+
+                                                                        return (
+                                                                            <div
+                                                                                key={subItem.title}
+                                                                                className="space-y-3"
+                                                                            >
+
+                                                                                <p className="text-[9px] font-semibold uppercase tracking-[0.25em] text-[#D9828A]">
+                                                                                    {subItem.title}
+                                                                                </p>
+
+                                                                                {subItem.items?.map(
+                                                                                    (child) => (
+                                                                                        <Link
+                                                                                            to={child.path}
+                                                                                            onClick={() =>
+                                                                                                setMenuOpen(false)
+                                                                                            }
+                                                                                            key={child.path}
+                                                                                            className="group flex items-center gap-3 text-sm text-[#D9C2BC]"
+                                                                                        >
+
+                                                                                            <span className="h-px w-0 bg-[#D9828A] transition-all duration-300 group-hover:w-5" />
+
+                                                                                            <span className="transition-colors duration-300 group-hover:text-white">
+                                                                                                {child.title}
+                                                                                            </span>
+
+                                                                                        </Link>
+                                                                                    )
+                                                                                )}
+
+                                                                            </div>
                                                                         );
                                                                     }
+                                                                )}
 
-                                                                    return (
-                                                                        <div
-                                                                            key={subItem.title}
-                                                                            className="space-y-3"
-                                                                        >
-                                                                            <p className="text-[9px] font-semibold uppercase tracking-[0.25em] text-[#D9828A]">
-                                                                                {subItem.title}
-                                                                            </p>
-
-                                                                            {subItem.items?.map(
-                                                                                (child) => (
-                                                                                    <Link
-                                                                                        to={child.path}
-                                                                                        onClick={() => setMenuOpen(false)}
-                                                                                        key={child.path}
-                                                                                        className="group flex items-center gap-3 text-sm text-[#D9C2BC]"
-                                                                                    >
-                                                                                        <span className="h-px w-0 bg-[#D9828A] transition-all duration-300 group-hover:w-5" />
-
-                                                                                        <span className="transition-colors duration-300 group-hover:text-white">
-                                                                                            {child.title}
-                                                                                        </span>
-                                                                                    </Link>
-                                                                                )
-                                                                            )}
-                                                                        </div>
-                                                                    );
-                                                                }
-                                                            )}
-                                                        </div>
-                                                    )}
-
-                                                    {/* No subnav */}
-
-                                                    {(!activeMenu.subItems ||
-                                                        activeMenu.subItems.length === 0) && (
-                                                            <Link
-                                                                to={activeMenu.path}
-                                                                onClick={() => setMenuOpen(false)}
-                                                                className="group inline-flex items-center gap-4 border-b border-[#D9828A]/40 pb-3 text-[10px] font-medium uppercase tracking-[0.3em] text-[#E7CCC6]"
-                                                            >
-                                                                Discover {activeMenu.title}
-
-                                                                <ArrowUpRight
-                                                                    size={14}
-                                                                    strokeWidth={1}
-                                                                    className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                                                                />
-                                                            </Link>
+                                                            </div>
                                                         )}
-                                                </motion.div>
-                                            </AnimatePresence>
-                                        </div>
 
-                                        {/* ======================================
-                        EDITORIAL FOOTER
-                    ======================================= */}
 
-                                        <div className="mt-auto flex items-end justify-between border-t border-[#E9C9C1]/10 pt-6">
+                                                        {/* No subnav */}
 
-                                            <div className="max-w-sm">
-                                                <p className="text-[8px] uppercase tracking-[0.3em] text-[#80635E]">
-                                                    Laali Hills Journal
-                                                </p>
+                                                        {(!activeMenu.subItems ||
+                                                            activeMenu.subItems.length === 0) && (
 
-                                                <p className="mt-2 font-subtitle text-base italic text-[#A98A83]">
-                                                    From the land, through the hands,
-                                                    into your cup.
-                                                </p>
+                                                                <Link
+                                                                    to={activeMenu.path}
+                                                                    onClick={() => setMenuOpen(false)}
+                                                                    className="group inline-flex items-center gap-4 border-b border-[#D9828A]/40 pb-3 text-[10px] font-medium uppercase tracking-[0.3em] text-[#E7CCC6]"
+                                                                >
+
+                                                                    Discover {activeMenu.title}
+
+                                                                    <ArrowUpRight
+                                                                        size={14}
+                                                                        strokeWidth={1}
+                                                                        className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                                                                    />
+
+                                                                </Link>
+
+                                                            )}
+
+                                                    </motion.div>
+
+                                                </AnimatePresence>
+
                                             </div>
 
-                                            <div className="hidden text-right xl:block">
-                                                <p className="text-[8px] uppercase tracking-[0.3em] text-[#80635E]">
-                                                    Nepal
-                                                </p>
 
-                                                <p className="mt-1 font-title text-lg text-[#BFA29B]">
-                                                    01 — 77
-                                                </p>
+                                            {/* ======================================
+                EDITORIAL FOOTER
+            ======================================= */}
+
+                                            <div className="mt-auto flex items-end justify-between border-t border-[#E9C9C1]/10 pt-6">
+
+                                                <div className="max-w-sm">
+
+                                                    <p className="text-[8px] uppercase tracking-[0.3em] text-[#80635E]">
+                                                        Laali Hills Journal
+                                                    </p>
+
+                                                    <p className="mt-2 font-subtitle text-base italic text-[#A98A83]">
+                                                        From the land, through the hands,
+                                                        into your cup.
+                                                    </p>
+
+                                                </div>
+
+                                                <div className="hidden text-right xl:block">
+
+                                                    <p className="text-[8px] uppercase tracking-[0.3em] text-[#80635E]">
+                                                        Nepal's
+                                                    </p>
+
+                                                    <p className="mt-1 font-title text-lg text-[#BFA29B]">
+                                                        Origin
+                                                    </p>
+
+                                                </div>
+
                                             </div>
+
                                         </div>
+
                                     </div>
+
+
+                                    {/* ===========================================
+        RIGHT — IMAGE PREVIEW
+    =========================================== */}
+
+                                    <div className="relative w-[30%] overflow-hidden border-l border-[#E9C9C1]/10">
+
+                                        <AnimatePresence mode="wait">
+
+                                            <motion.div
+                                                key={activeMenu.title}
+                                                initial={{
+                                                    opacity: 0,
+                                                    scale: 1.08,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    scale: 1,
+                                                }}
+                                                exit={{
+                                                    opacity: 0,
+                                                    scale: 1.03,
+                                                }}
+                                                transition={{
+                                                    duration: 0.7,
+                                                    ease: [0.22, 1, 0.36, 1],
+                                                }}
+                                                className="absolute inset-0 py-12"
+                                            >
+
+                                                <img
+                                                    src={activeMenu.image}
+                                                    alt={`${activeMenu.title} preview`}
+                                                    className="h-full w-full object-cover"
+                                                />
+
+                                                {/* Image overlay */}
+
+                                                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#241817]/10 to-[#241817]/40" />
+
+                                                {/* Bottom information */}
+
+                                                <div className="absolute inset-x-0 bottom-0 py-16 px-7">
+
+                                                    <motion.div
+                                                        initial={{
+                                                            opacity: 0,
+                                                            y: 15,
+                                                        }}
+                                                        animate={{
+                                                            opacity: 1,
+                                                            y: 0,
+                                                        }}
+                                                        transition={{
+                                                            duration: 0.5,
+                                                            delay: 0.2,
+                                                        }}
+                                                    >
+
+                                                        <span className="text-[7px] uppercase tracking-[0.35em] text-[#F8EDE8]/60">
+                                                            Discover
+                                                        </span>
+
+                                                        <p className="mt-2 font-title text-2xl leading-none text-[#F8EDE8]">
+                                                            {activeMenu.title}
+                                                        </p>
+
+                                                    </motion.div>
+
+                                                </div>
+
+                                            </motion.div>
+
+                                        </AnimatePresence>
+
+                                    </div>
+
                                 </div>
+
                             </div>
                         </motion.div>
 
@@ -688,7 +824,7 @@ const Navbar = () =>
                                                     <Link
                                                         to={item.path}
                                                         onClick={() => setMenuOpen(false)}
-                                                        className={`font-title text-3xl ${isActive
+                                                        className={`text-xl ${isActive
                                                             ? "text-[#F5E8E3]"
                                                             : "text-[#C3A49E]"
                                                             }`}
@@ -770,7 +906,7 @@ const Navbar = () =>
                                                                                                 ? subItem
                                                                                                 : subItem.path
                                                                                         }
-                                                                                        className="text-sm text-[#BFA29B]"
+                                                                                        className="text-xs text-[#BFA29B]"
                                                                                     >
                                                                                         {typeof subItem ===
                                                                                             "string"
@@ -799,7 +935,7 @@ const Navbar = () =>
                                                                                                 to={child.path}
                                                                                                 onClick={() => setMenuOpen(false)}
                                                                                                 key={child.path}
-                                                                                                className="block text-sm text-[#BFA29B]"
+                                                                                                className="block text-xs text-[#BFA29B]"
                                                                                             >
                                                                                                 {child.title}
                                                                                             </Link>
@@ -825,7 +961,7 @@ const Navbar = () =>
                                         Nepal • Origin • Craft
                                     </p>
 
-                                    <p className="mt-2 font-subtitle text-base italic text-[#A98A83]">
+                                    <p className="mt-2 text-xs italic text-[#A98A83]">
                                         The hills are our beginning.
                                     </p>
                                 </div>
