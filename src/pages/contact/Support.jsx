@@ -44,7 +44,7 @@ const supportOptions = [
 const Support = () =>
 {
     return (
-        <main className="min-h-screen bg-[#F8EDE8] text-[#241817]">
+        <main className="min-h-screen bg-lightCream text-brown">
 
             {/* =====================================================
                 HERO / PAGE HEADER
@@ -75,12 +75,12 @@ const Support = () =>
                             duration: 0.8,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="mx-auto mb-7 flex h-14 w-14 items-center justify-center rounded-full border border-[#B73E46]/20 bg-[#B73E46]/5"
+                        className="mx-auto mb-7 flex h-14 w-14 items-center justify-center rounded-full border border-red/20 bg-red/5"
                     >
                         <Headphones
                             size={20}
                             strokeWidth={1}
-                            className="text-[#B73E46]"
+                            className="text-red"
                         />
                     </motion.div>
 
@@ -123,7 +123,7 @@ const Support = () =>
                         className="font-title text-[clamp(4rem,10vw,8rem)] leading-[0.82] tracking-[-0.06em]"
                     >
                         Contact
-                        <span className="block italic text-[#B73E46]">
+                        <span className="block italic text-red">
                             Us.
                         </span>
                     </motion.h1>
@@ -177,7 +177,7 @@ const Support = () =>
                                 repeat: Infinity,
                                 ease: "easeInOut",
                             }}
-                            className="h-7 w-px bg-[#B73E46]/50"
+                            className="h-7 w-px bg-red/50"
                         />
                     </div>
                 </motion.div>
@@ -188,11 +188,11 @@ const Support = () =>
                 CONTACT OPTIONS
             ====================================================== */}
 
-            <section className="border-t border-[#241817]/10 bg-[#F8EDE8] px-6 py-20 sm:px-10 lg:px-16 lg:py-28">
+            <section className="border-t border-brown/10 bg-lightCream px-6 py-20 sm:px-10 lg:px-16 lg:py-28">
 
                 <div className="mx-auto max-w-7xl">
 
-                    <div className="grid grid-cols-1 border-y border-[#241817]/10 md:grid-cols-3">
+                    <div className="grid grid-cols-1 border-y border-brown/10 md:grid-cols-3">
 
                         {supportOptions.map((option, index) =>
                         {
@@ -222,7 +222,7 @@ const Support = () =>
                                     className={`
                                         group relative px-7 py-12 sm:px-10 lg:py-14
                                         ${index !== 2
-                                            ? "border-b md:border-b-0 md:border-r border-[#241817]/10"
+                                            ? "border-b md:border-b-0 md:border-r border-brown/10"
                                             : ""
                                         }
                                     `}
@@ -230,18 +230,18 @@ const Support = () =>
 
                                     {/* Number */}
 
-                                    <span className="absolute right-7 top-7 font-title text-3xl leading-none text-[#241817]/[0.06]">
+                                    <span className="absolute right-7 top-7 font-title text-3xl leading-none text-brown/[0.06]">
                                         {option.number}
                                     </span>
 
 
                                     {/* Icon */}
 
-                                    <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full border border-[#B73E46]/20 bg-[#B73E46]/5 transition-all duration-500 group-hover:border-[#B73E46]/40 group-hover:bg-[#B73E46]/10">
+                                    <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full border border-red/20 bg-red/5 transition-all duration-500 group-hover:border-red/40 group-hover:bg-red/10">
                                         <Icon
                                             size={19}
                                             strokeWidth={1}
-                                            className="text-[#B73E46]"
+                                            className="text-red"
                                         />
                                     </div>
 
@@ -255,7 +255,7 @@ const Support = () =>
 
                                     {/* Title */}
 
-                                    <h2 className="font-title text-3xl tracking-[-0.03em] text-[#241817]">
+                                    <h2 className="font-title text-3xl tracking-[-0.03em] text-brown">
                                         {option.title}
                                     </h2>
 
@@ -281,7 +281,7 @@ const Support = () =>
                                                 ? "noopener noreferrer"
                                                 : undefined
                                         }
-                                        className="group/link mt-8 inline-flex items-center gap-3 border-b border-[#241817]/20 pb-2 text-[8px] font-semibold uppercase tracking-[0.28em] text-[#241817] transition-colors duration-300 hover:border-[#B73E46] hover:text-[#B73E46]"
+                                        className="group/link mt-8 inline-flex items-center gap-3 border-b border-brown/20 pb-2 text-[8px] font-semibold uppercase tracking-[0.28em] text-brown transition-colors duration-300 hover:border-red hover:text-red"
                                     >
                                         {option.action}
 
@@ -306,10 +306,10 @@ const Support = () =>
                 SMALL BRAND STATEMENT
             ====================================================== */}
 
-            <section className="relative overflow-hidden bg-[#241817] px-6 py-24 text-center sm:py-32">
+            <section className="relative overflow-hidden bg-brown px-6 py-24 text-center sm:py-32">
 
                 <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
-                    <span className="whitespace-nowrap font-title text-[20vw] leading-none tracking-[-0.07em] text-[#F8EDE8]/[0.025]">
+                    <span className="whitespace-nowrap font-title text-[20vw] leading-none tracking-[-0.07em] text-lightCream/[0.025]">
                         LAALI HILLS
                     </span>
                 </div>
@@ -320,7 +320,7 @@ const Support = () =>
                         From Nepal, with care
                     </span>
 
-                    <p className="mt-7 font-title text-[clamp(2rem,4vw,3.5rem)] leading-[0.95] tracking-[-0.04em] text-[#F8EDE8]">
+                    <p className="mt-7 font-title text-[clamp(2rem,4vw,3.5rem)] leading-[0.95] tracking-[-0.04em] text-lightCream">
                         The hills are our beginning.
                     </p>
 

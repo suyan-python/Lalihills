@@ -18,6 +18,7 @@ export default defineConfig({
     "**/*.tiff",
   ],
   build: {
+    target: "es2019",
     assetsInlineLimit: 4096, // Inlines images under 4KB as base64; set to 0 to disable
   },
 });

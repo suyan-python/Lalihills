@@ -2,57 +2,109 @@ import { motion } from "framer-motion";
 
 const Banner = () =>
 {
-    const message =
-        "LAALI HILLS IS ARRIVING SOON  ·  SPECIALTY COFFEE & TEA FROM THE HILLS OF NEPAL";
+
+    const leftMessages = [
+        "SPECIALTY COFFEE FROM THE HILLS OF NEPAL",
+        "TRACEABLE ORIGINS",
+        "GROWN AT ALTITUDE",
+        "FROM NEPALESE HILLS TO YOUR CUP",
+    ];
+
+    const rightMessages = [
+        "ARTISAN TEA · DISTINCTIVE COFFEE",
+        "LAND · PEOPLE · CRAFT",
+        "DISCOVER THE HILLS",
+        "ROOTED IN ORIGIN",
+    ];
 
     return (
-        <div className="fixed left-0 right-0 top-0 z-[120] h-7 overflow-hidden border-b border-white/10 bg-[#8F3038]/30 backdrop-blur-md">
 
-            {/* Moving track */}
-            <div className="relative flex h-full items-center">
-
-                {/* LEFT → RIGHT */}
+        <div className="absolute inset-x-0 top-0 z-[120] hidden h-5 overflow-hidden border-b border-[#FBEDEA]/10 bg-deepRed/90 md:block">
+            <div className="absolute inset-y-0 left-0 w-1/2 overflow-hidden">
+                <div className="pointer-events-none absolute inset-y-0 right-0 z-30 w-32 bg-gradient-to-l from-deepRed to-transparent" />
                 <motion.div
-                    initial={{ x: "-100%", opacity: 0 }}
+                    className="flex h-full w-max items-center whitespace-nowrap"
                     animate={{
-                        x: ["-100%", "-5%", "0%", "5%", "100%"],
-                        opacity: [0, 1, 1, 0.8, 0],
+                        x: ["-20%", "80%"],
                     }}
                     transition={{
-                        duration: 10,
-                        times: [0, 0.35, 0.5, 0.65, 1],
-                        repeat: Infinity,
+                        duration: 18,
                         ease: "linear",
+                        repeat: Infinity,
                     }}
-                    className="absolute whitespace-nowrap"
                 >
-                    <p className="px-8 text-[7px] md:text-[8px] font-medium uppercase tracking-[0.35em] text-[#FBEDEA] sm:text-[9px]">
-                        {message}
-                    </p>
-                </motion.div>
+                    {leftMessages.map((message, index) => (
+                        <div
+                            key={index}
+                            className="flex items-center"
+                        >
+                            <span className="px-8 text-[7px] font-medium uppercase tracking-[0.3em] text-[#FBEDEA]/70 sm:text-[8px]">
+                                {message}
+                            </span>
 
-                {/* RIGHT → LEFT */}
-                <motion.div
-                    initial={{ x: "100%", opacity: 0 }}
-                    animate={{
-                        x: ["100%", "5%", "0%", "-5%", "-100%"],
-                        opacity: [0, 0.8, 1, 1, 0],
-                    }}
-                    transition={{
-                        duration: 10,
-                        delay: 5,
-                        times: [0, 0.35, 0.5, 0.65, 1],
-                        repeat: Infinity,
-                        ease: "linear",
-                    }}
-                    className="absolute whitespace-nowrap"
-                >
-                    <p className="px-8 text-[8px] font-medium uppercase tracking-[0.35em] text-[#FBEDEA] sm:text-[9px]">
-                        {message}
-                    </p>
+                            <span className="text-[6px] text-[#FBEDEA]/25">
+                                ◆
+                            </span>
+                        </div>
+                    ))}
                 </motion.div>
 
             </div>
+            <div className="absolute inset-y-0 right-0 w-1/2 overflow-hidden">
+                <div className="pointer-events-none absolute inset-y-0 left-0 z-30 w-32 bg-gradient-to-r from-deepRed to-transparent" />
+                <motion.div
+                    className="flex h-full w-max items-center whitespace-nowrap"
+                    animate={{
+                        x: ["20%", "-80%"],
+                    }}
+                    transition={{
+                        duration: 20,
+                        ease: "linear",
+                        repeat: Infinity,
+                    }}
+                >
+                    {rightMessages.map((message, index) => (
+                        <div
+                            key={index}
+                            className="flex items-center"
+                        >
+                            <span className="text-[6px] text-[#FBEDEA]/25">
+                                ◆
+                            </span>
+
+                            <span className="px-8 text-[7px] font-medium uppercase tracking-[0.3em] text-[#FBEDEA]/70 sm:text-[8px]">
+                                {message}
+                            </span>
+                        </div>
+                    ))}
+                </motion.div>
+
+            </div>
+            <div className="pointer-events-none absolute inset-0 z-50 flex items-center justify-center">
+                <div className="relative flex h-full items-center bg-deepRed/70 px-6">
+                    <div className="absolute inset-0 bg-deepRed/70 shadow-[0_0_24px_12px_var(--color-deepRed)]" />
+                    <div className="relative flex items-center gap-2">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#FBEDEA]/80" />
+
+                        <span className="whitespace-nowrap text-[7px] font-semibold uppercase tracking-[0.3em] text-[#FBEDEA] sm:text-[8px]">
+                            LAALI HILLS
+                        </span>
+
+                        <span className="text-[6px] text-[#FBEDEA]/40">
+                            ·
+                        </span>
+
+                        <span className="whitespace-nowrap text-[7px] font-medium uppercase tracking-[0.25em] text-[#FBEDEA]/60 sm:text-[8px]">
+                            ARRIVING SOON
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div className="pointer-events-none absolute inset-y-0 left-1/2 z-40 w-48 -translate-x-1/2 bg-gradient-to-r from-transparent via-deepRed/40 to-transparent" />
+
         </div>
     );
 };

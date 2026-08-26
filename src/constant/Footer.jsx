@@ -50,13 +50,13 @@ const footerCollections = [
 const Footer = () =>
 {
     return (
-        <footer className="relative overflow-hidden bg-[#241817] text-[#F8EDE8]">
+        <footer className="relative overflow-hidden bg-brown text-lightCream">
 
             {/* =====================================================
                 SHOPPING COLLECTIONS
             ====================================================== */}
 
-            <section className="bg-[#F8EDE8]">
+            <section className="bg-lightCream">
 
                 <div className="mx-auto w-full">
 
@@ -74,16 +74,16 @@ const Footer = () =>
                     >
                         <div>
                             <div className="mb-4 flex items-center gap-3">
-                                <span className="h-px w-8 bg-[#B73E46]" />
+                                <span className="h-px w-8 bg-red" />
 
-                                <span className="text-[8px] font-semibold uppercase tracking-[0.35em] text-[#8B625D] sm:text-[9px]">
+                                <span className="text-[8px] font-semibold uppercase tracking-[0.35em] text-mutedBrown sm:text-[9px]">
                                     Explore Laali Hills
                                 </span>
                             </div>
 
-                            <h2 className="subheader text-[clamp(2.5rem,5vw,5rem)] leading-[0.9] tracking-[-0.045em] text-[#241817]">
+                            <h2 className="subheader text-[clamp(2.5rem,5vw,5rem)] leading-[0.9] tracking-[-0.045em] text-brown">
                                 Find your
-                                <span className="ml-2 italic text-[#B73E46]">
+                                <span className="ml-2 italic text-red">
                                     way in.
                                 </span>
                             </h2>
@@ -137,7 +137,7 @@ const Footer = () =>
 
                                 {/* Dark overlay */}
 
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#241817]/85 via-[#241817]/20 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-brown/85 via-brown/20 to-transparent" />
 
                                 {/* Subtle brown tint */}
 
@@ -159,7 +159,7 @@ const Footer = () =>
                                     >
                                         Shop
 
-                                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 transition-colors duration-300 group-hover/cta:bg-[#B73E46]">
+                                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 transition-colors duration-300 group-hover/cta:bg-red">
                                             <ArrowUpRight
                                                 size={12}
                                                 strokeWidth={1.5}
@@ -195,7 +195,7 @@ const Footer = () =>
                             duration: 1.2,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="whitespace-nowrap text-center font-title text-[22vw] leading-none tracking-[-0.07em] text-[#F8EDE8]/[0.05] sm:text-[20vw] "
+                        className="whitespace-nowrap text-center font-title text-[22vw] leading-none tracking-[-0.07em] text-lightCream/[0.05] sm:text-[20vw] "
                     >
                         LAALI HILLS
                     </motion.div>
@@ -228,7 +228,7 @@ const Footer = () =>
                             </p>
 
                             <div className="mt-8 flex items-center gap-3">
-                                <span className="h-px w-7 bg-[#B73E46]" />
+                                <span className="h-px w-7 bg-red" />
 
                                 <span className="text-[8px] uppercase tracking-[0.3em] text-[#80635E]">
                                     Nepal • Origin • Craft
@@ -358,7 +358,7 @@ const Footer = () =>
                                     <input
                                         type="email"
                                         placeholder="Your email"
-                                        className="w-full bg-transparent py-3 text-xs text-[#F8EDE8] outline-none placeholder:text-[#765954]"
+                                        className="w-full bg-transparent py-3 text-xs text-lightCream outline-none placeholder:text-[#765954]"
                                     />
 
                                     <button
@@ -558,7 +558,7 @@ const FooterLink = ({ href, children }) =>
     return (
         <a
             href={href}
-            className="group mb-3 flex w-fit items-center gap-2 text-[10px] text-[#A98A83] transition-colors duration-300 hover:text-[#F8EDE8]"
+            className="group mb-3 flex w-fit items-center gap-2 text-[10px] text-[#A98A83] transition-colors duration-300 hover:text-lightCream"
         >
             <span className="h-px w-0 bg-[#D9828A] transition-all duration-300 group-hover:w-3" />
 

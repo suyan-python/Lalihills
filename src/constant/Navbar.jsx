@@ -193,12 +193,8 @@ const Navbar = () =>
 
     return (
         <>
-            {/* =====================================================
-          NAVBAR
-      ====================================================== */}
-
-            <header className="fixed inset-x-0 top-9 z-[100]">
-                <div className="flex h-24 items-center justify-between px-6 sm:px-8 lg:px-12 xl:px-16 text-[#F8EDE8]">
+            <header className="fixed inset-x-0 top-0 md:top-9 z-[100]">
+                <div className="flex h-24 items-center justify-between px-3 sm:px-8 lg:px-12 xl:px-16 text-lightCream">
 
                     {/* LOGO */}
                     <Link
@@ -221,7 +217,7 @@ const Navbar = () =>
                         aria-expanded={menuOpen}
                         className="group relative z-[110] flex h-12 w-12 items-center justify-center"
                     >
-                        <span className="relative flex h-6 w-7 flex-col justify-center">
+                        <span className="relative flex h-6 w-7 flex-col justify-center cursor-pointer">
                             <motion.span
                                 animate={
                                     menuOpen
@@ -425,7 +421,7 @@ const Navbar = () =>
     RIGHT PREVIEW
 =========================================== */}
 
-                                <div className="relative flex w-[75%] overflow-hidden bg-[#32211F]">
+                                <div className="relative flex w-[75%] overflow-hidden bg-darkBrown">
 
                                     {/* ===========================================
         LEFT — EDITORIAL PREVIEW
@@ -716,7 +712,7 @@ const Navbar = () =>
 
                                                 {/* Image overlay */}
 
-                                                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#241817]/10 to-[#241817]/40" />
+                                                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-brown/10 to-brown/40" />
 
                                                 {/* Bottom information */}
 
@@ -737,11 +733,11 @@ const Navbar = () =>
                                                         }}
                                                     >
 
-                                                        <span className="text-[7px] uppercase tracking-[0.35em] text-[#F8EDE8]/60">
+                                                        <span className="text-[7px] uppercase tracking-[0.35em] text-lightCream/60">
                                                             Discover
                                                         </span>
 
-                                                        <p className="mt-2 font-title text-2xl leading-none text-[#F8EDE8]">
+                                                        <p className="mt-2 font-title text-2xl leading-none text-lightCream">
                                                             {activeMenu.title}
                                                         </p>
 

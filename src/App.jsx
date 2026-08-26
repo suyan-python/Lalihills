@@ -9,6 +9,7 @@ import
 import Landing from "./pages/home/HeroLanding";
 import MainLayout from "./layouts/MainLayout";
 import Support from "./pages/contact/Support";
+import About from "./pages/about/About";
 
 function App()
 {
@@ -160,11 +161,7 @@ function App()
           {/* About */}
           <Route
             path="/about"
-            element={
-              <div className="p-10">
-                About Laali Hills
-              </div>
-            }
+            element={<About />}
           />
 
           {/* Support */}

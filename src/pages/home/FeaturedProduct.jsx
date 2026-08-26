@@ -6,8 +6,7 @@ import hills from "../../assets/hills/1.jpg"
 const FeaturedProduct = () =>
 {
     return (
-        <section className="relative overflow-hidden bg-[#F8EDE8] px-6 py-20 text-[#241817] sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-
+        <section className="relative overflow-hidden bg-lightCream px-6 py-20 text-brown sm:px-10 sm:py-28 lg:px-16 lg:py-36">
             <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2 lg:gap-20">
 
                 <motion.div
@@ -21,8 +20,10 @@ const FeaturedProduct = () =>
                     className="relative"
                 >
                     {/* Decorative background shape */}
+                    <div className="absolute -left-8 -top-8 h-32 w-32 rounded-full bg-[#D9828A] blur-2xl" />
+                    <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-[#D9828A]/70 blur-3xl" />
+                    <div className="absolute -rightt-8 -bottom-8 h-32 w-32 rounded-full bg-[#D9828A]/50 blur-3xl" />
 
-                    <div className="absolute -left-8 -top-8 h-32 w-32 rounded-full bg-[#D9828A]/20 blur-2xl" />
                     <div className="relative mx-auto aspect-[4/5] max-w-[520px] overflow-hidden">
 
                         <img
@@ -44,7 +45,7 @@ const FeaturedProduct = () =>
                             <div className="absolute -left-20 -top-20 h-72 w-72 rounded-full bg-[#D9828A]/15 blur-[90px]" />
 
                             {/* Red glow */}
-                            <div className="absolute -bottom-24 -right-20 h-80 w-80 rounded-full bg-[#B73E46]/20 blur-[100px]" />
+                            <div className="absolute -bottom-24 -right-20 h-80 w-80 rounded-full bg-red/20 blur-[100px]" />
 
                             {/* Subtle center glow */}
                             <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#E8A2A7]/5 blur-[80px]" />
@@ -79,7 +80,7 @@ const FeaturedProduct = () =>
                                     duration: 1.6,
                                     delay: 0.2,
                                 }}
-                                className="absolute -bottom-40 left-[-35%] h-60 w-[170%] rounded-[50%] bg-[#241817]"
+                                className="absolute -bottom-40 left-[-35%] h-60 w-[170%] rounded-[50%] bg-brown"
                             />
 
                         </div> */}
@@ -119,7 +120,7 @@ const FeaturedProduct = () =>
                                     From the hills of Nepal
                                 </p>
 
-                                <h3 className="font-title text-5xl leading-[0.85] tracking-[-0.045em] text-[#F8EDE8] sm:text-6xl">
+                                <h3 className="font-title text-5xl leading-[0.85] tracking-[-0.045em] text-lightCream sm:text-6xl">
                                     Something
                                     <br />
                                     <span className="italic text-[#D9828A]">
@@ -127,7 +128,7 @@ const FeaturedProduct = () =>
                                     </span>
                                 </h3>
 
-                                <div className="mx-auto mt-7 h-px w-10 bg-[#B73E46]" />
+                                <div className="mx-auto mt-7 h-px w-10 bg-red" />
 
                                 <p className="mx-auto mt-5 max-w-[230px] font-subtitle text-base italic leading-relaxed text-[#BFA29B]">
                                     Exceptional coffee, tea and stories shaped by the hills.
@@ -189,13 +190,13 @@ const FeaturedProduct = () =>
                         delay: 0.15,
                         ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="max-w-xl"
+                    className="max-w-xl "
                 >
 
                     {/* Eyebrow */}
 
                     <div className="mb-7 flex items-center gap-3">
-                        <span className="h-px w-8 bg-[#B73E46]" />
+                        <span className="h-px w-8 bg-red" />
 
                         <span className="text-[9px] font-semibold uppercase tracking-[0.35em] text-[#8C5752]">
                             Featured Origin
@@ -204,7 +205,7 @@ const FeaturedProduct = () =>
 
                     {/* Product title */}
 
-                    <h2 className="subheader text-[clamp(3rem,6vw,5.5rem)] leading-[0.86] tracking-[-0.045em] text-[#241817]">
+                    <h2 className=" text-[clamp(3rem,6vw,5.5rem)] leading-[0.86] tracking-[-0.045em] text-brown">
                         Lali Hills
                         <br />
                         <span className="italic text-[#A83C45]">
@@ -222,7 +223,7 @@ const FeaturedProduct = () =>
 
                     {/* Product information */}
 
-                    <div className="mt-9 grid max-w-md grid-cols-3 border-y border-[#241817]/10 py-5">
+                    <div className="mt-9 grid max-w-md grid-cols-3 border-y border-brown/10 py-5">
                         <div>
                             <p className="text-[8px] uppercase tracking-[0.25em] text-[#96736D]">
                                 Origin
@@ -233,7 +234,7 @@ const FeaturedProduct = () =>
                             </p>
                         </div>
 
-                        <div className="border-l border-[#241817]/10 pl-5">
+                        <div className="border-l border-brown/10 pl-5">
                             <p className="text-[8px] uppercase tracking-[0.25em] text-[#96736D]">
                                 Process
                             </p>
@@ -243,7 +244,7 @@ const FeaturedProduct = () =>
                             </p>
                         </div>
 
-                        <div className="border-l border-[#241817]/10 pl-5">
+                        <div className="border-l border-brown/10 pl-5">
                             <p className="text-[8px] uppercase tracking-[0.25em] text-[#96736D]">
                                 Roast
                             </p>
@@ -260,7 +261,7 @@ const FeaturedProduct = () =>
 
                         <a
                             href=""
-                            className="group inline-flex items-center gap-4 bg-[#B73E46] px-7 py-4 text-[9px] font-semibold uppercase tracking-[0.3em] text-white transition-all duration-300 hover:bg-[#8F3038] hover:shadow-xl hover:shadow-[#B73E46]/15"
+                            className="group inline-flex items-center gap-4 bg-red px-7 py-4 text-[9px] font-semibold uppercase tracking-[0.3em] text-white transition-all duration-300 hover:bg-deepRed hover:shadow-xl hover:shadow-red/15"
                         >
                             Buy Now
 
@@ -279,7 +280,7 @@ const FeaturedProduct = () =>
                         >
                             Explore Coffee
 
-                            <span className="h-px w-0 bg-[#B73E46] transition-all duration-300 group-hover:w-6" />
+                            <span className="h-px w-0 bg-red transition-all duration-300 group-hover:w-6" />
                         </a>
 
                     </div>

@@ -1,10 +1,39 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+
+const videos = [
+    "/videos/plantation.mp4",
+    "/videos/cherry.mp4",
+    "/videos/harvesting2.mp4",
+    "/videos/harvesting3.mp4",
+    "/videos/farm.mp4",
+    "/videos/coffee.mp4",
+];
+
 
 const LaliComingSoon = () =>
 {
+    const [currentVideo, setCurrentVideo] = useState(0);
+    const [visible, setVisible] = useState(true);
+
+    const handleVideoEnded = () =>
+    {
+        setVisible(false);
+
+        setTimeout(() =>
+        {
+            setCurrentVideo((prev) =>
+                (prev + 1) % videos.length
+            );
+
+            setVisible(true);
+        }, 300);
+    };
+
+
     return (
-        <main className="relative min-h-screen overflow-hidden bg-[#241817] text-[#F8EDE8]">
+        <main className="relative min-h-screen overflow-hidden bg-brown text-lightCream">
 
             {/* <div className="pointer-events-none absolute -left-32 top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-[#D88A92]/10 blur-[120px]" />
             <div className="pointer-events-none absolute -right-40 bottom-[-12rem] h-[38rem] w-[38rem] rounded-full bg-[#A9363C]/15 blur-[140px]" /> */}
@@ -17,36 +46,40 @@ const LaliComingSoon = () =>
 
                 {/* Video */}
                 <motion.video
-                    initial={{ opacity: 0, scale: 1.04 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    key={videos[currentVideo]}
+                    initial={{
+                        opacity: 0,
+                        scale: 1.04,
+                    }}
+                    animate={{
+                        opacity: visible ? 1 : 0,
+                        scale: 1,
+                    }}
                     transition={{
-                        duration: 2,
-                        ease: [0.22, 1, 0.36, 1],
+                        duration: 0.3,
+                        ease: "easeInOut",
                     }}
                     autoPlay
                     muted
-                    loop
                     playsInline
-                    preload="auto"
+                    preload="metadata"
+                    onEnded={handleVideoEnded}
                     className="absolute inset-0 h-full w-full object-cover"
                 >
                     <source
-                        src="/videos/plantation.mp4"
+                        src={videos[currentVideo]}
                         type="video/mp4"
                     />
                 </motion.video>
 
                 {/* Dark brown cinematic overlay */}
-                <div className="absolute inset-0 bg-[#241817]/45" />
-
-                {/* Warm red/brown tint */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[#241817]/30 via-transparent to-[#241817]/80" />
+                <div className="absolute inset-0 bg-brown/25" />
 
                 {/* Subtle Laali pink glow */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(216,138,146,0.12),transparent_55%)]" />
 
                 {/* Bottom fade */}
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#241817] to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-brown via-transparent to-transparent" />
 
             </div>
 
@@ -77,7 +110,7 @@ const LaliComingSoon = () =>
                         }}
                         className="header max-w-4xl  text-[clamp(3.7rem,9vw,8.5rem)] leading-[0.82] tracking-[-0.045em]"
                     >
-                        <span className="block text-[#F8EDE8] ">
+                        <span className="block text-lightCream ">
                             Laali
                         </span>
 
@@ -98,7 +131,7 @@ const LaliComingSoon = () =>
                             Specialty coffee, exceptional tea, and the stories of
                             the people and land behind every cup.
                         </p>
-                        <div className="mt-10 flex items-center gap-3 text-[#F8EDE8] uppercase text-[10px] md:text-xs text-center md:text-start tracking-widest justify-center md:justify-start">
+                        <div className="mt-10 flex items-center gap-3 text-lightCream uppercase text-[10px] md:text-xs text-center md:text-start tracking-widest justify-center md:justify-start">
                             explore offerings
                             <ArrowRight className="h-4 w-4" />
                         </div>
@@ -140,7 +173,7 @@ const LaliComingSoon = () =>
                         className="flex flex-col items-center"
                     >
                         {/* Text */}
-                        <span className="text-[7px] font-medium uppercase tracking-[0.4em] text-[#F8EDE8]/70">
+                        <span className="text-[7px] font-medium uppercase tracking-[0.4em] text-lightCream/70">
                             Scroll
                         </span>
 
@@ -155,7 +188,7 @@ const LaliComingSoon = () =>
                                 repeat: Infinity,
                                 ease: "easeInOut",
                             }}
-                            className="mt-2 w-px bg-[#F8EDE8]/70"
+                            className="mt-2 w-px bg-lightCream/70"
                         />
                     </motion.div>
                 </motion.div>
