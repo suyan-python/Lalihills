@@ -1,4 +1,6 @@
 export const colors = {
+  lightWhite: "#FCF8F6",
+
   cream: "#F3E5DF",
   lightCream: "#F8EDE8",
 

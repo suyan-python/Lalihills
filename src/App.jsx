@@ -10,6 +10,8 @@ import Landing from "./pages/home/HeroLanding";
 import MainLayout from "./layouts/MainLayout";
 import Support from "./pages/contact/Support";
 import About from "./pages/about/About";
+import Coffee from "./pages/shop/Coffee";
+import Tea from "./pages/shop/Tea";
 
 function App()
 {
@@ -42,18 +44,14 @@ function App()
           <Route
             path="/shop/coffee"
             element={
-              <div className="p-10">
-                Coffee
-              </div>
+              <Coffee />
             }
           />
 
           <Route
             path="/shop/tea"
             element={
-              <div className="p-10">
-                Tea
-              </div>
+              <Tea />
             }
           />
 

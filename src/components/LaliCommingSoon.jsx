@@ -28,15 +28,15 @@ const LaliComingSoon = () =>
             );
 
             setVisible(true);
-        }, 300);
+        }, 100);
     };
 
 
     return (
         <main className="relative min-h-screen overflow-hidden bg-brown text-lightCream">
 
-            {/* <div className="pointer-events-none absolute -left-32 top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-[#D88A92]/10 blur-[120px]" />
-            <div className="pointer-events-none absolute -right-40 bottom-[-12rem] h-[38rem] w-[38rem] rounded-full bg-[#A9363C]/15 blur-[140px]" /> */}
+            <div className="pointer-events-none absolute -left-32 top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-[#D88A92]/50 blur-[120px]" />
+            <div className="pointer-events-none absolute -right-40 bottom-[-12rem] h-[38rem] w-[38rem] rounded-full bg-[#A9363C]/55 blur-[140px]" />
 
             {/* =====================================================
     HERO VIDEO BACKGROUND
@@ -56,7 +56,7 @@ const LaliComingSoon = () =>
                         scale: 1,
                     }}
                     transition={{
-                        duration: 0.3,
+                        duration: 0.1,
                         ease: "easeInOut",
                     }}
                     autoPlay
