@@ -5,8 +5,18 @@ const Tea = () =>
 {
     return (
         <ShopCategory
-            title="Tea"
-            description="Discover carefully selected teas from Nepal's hills, where landscape, climate and tradition come together in every leaf."
+            displayName="Leaves"
+            displaySubtitle="Tea"
+
+            collectionLabel="Tea Collection"
+            originLabel="Nepal · Highlands"
+
+            description="Whole-leaf teas from Nepal’s hills."
+
+            seoTitle="Nepali Specialty Tea — Laali Hills"
+
+            seoDescription="Discover whole-leaf teas from the hills of Nepal. Explore carefully selected Nepali teas shaped by altitude, climate, tradition and the land they come from."
+
             products={teaProducts}
         />
     );

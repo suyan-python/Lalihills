@@ -206,7 +206,7 @@ const FeaturedProduct = () =>
                     {/* Product title */}
 
                     <h2 className=" text-[clamp(3rem,6vw,5.5rem)] leading-[0.86] tracking-[-0.045em] text-brown">
-                        Lali Hills
+                        Laali Hills
                         <br />
                         <span className="italic text-[#A83C45]">
                             Arabica
@@ -230,7 +230,7 @@ const FeaturedProduct = () =>
                             </p>
 
                             <p className="mt-2 text-xs font-medium text-[#3D2926]">
-                                Lali Hills, Nepal
+                                Laali Hills, Nepal
                             </p>
                         </div>
 

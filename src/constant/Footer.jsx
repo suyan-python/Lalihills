@@ -15,10 +15,11 @@ import
 } from "react-icons/fa";
 
 // Replace these with your actual images
-import coffee from "../assets/products/dripnew.jpeg";
-import tea from "../assets/products/dripnew.jpeg";
-import gifts from "../assets/products/dripnew.jpeg";
-import bulk from "../assets/products/dripnew.jpeg";
+
+import coffee from "../assets/footer/coffee.webp"
+import tea from "../assets/footer/tea.jpeg"
+import gift from "../assets/footer/gift.webp"
+import bulk from "../assets/footer/bulk.jpg"
 
 const footerCollections = [
     {
@@ -36,7 +37,7 @@ const footerCollections = [
     {
         title: "Gift Packaging",
         subtitle: "Give a taste of Nepal",
-        image: gifts,
+        image: gift,
         link: "/shop/gifts",
     },
     {

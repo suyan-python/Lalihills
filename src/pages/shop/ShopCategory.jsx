@@ -1,15 +1,50 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import ProductGrid from "./ProductGrid";
 
+
 const ShopCategory = ({
-    title,
+    displayName,
+    displaySubtitle,
+
     description,
+
+    seoTitle,
+    seoDescription,
+
+    collectionLabel,
+    originLabel,
+
     products = [],
+
     filterComponent,
 }) =>
 {
     return (
         <main className="min-h-screen bg-lightWhite">
+
+
+            {/* =================================================
+                SEO
+            ================================================= */}
+
+            <Helmet>
+
+                <title>
+                    {seoTitle}
+                </title>
+
+                <meta
+                    name="description"
+                    content={seoDescription}
+                />
+
+                <meta
+                    name="robots"
+                    content="index, follow"
+                />
+
+            </Helmet>
 
 
             {/* =================================================
@@ -22,7 +57,7 @@ const ShopCategory = ({
 
 
                     {/* =================================================
-                        TOP LABEL
+                        COLLECTION LABEL
                     ================================================= */}
 
                     <motion.div
@@ -44,7 +79,7 @@ const ShopCategory = ({
                         <span className="h-px w-9 bg-[#B73E46]" />
 
                         <span className="text-[8px] font-semibold uppercase tracking-[0.35em] text-[#8B625D]">
-                            Laali Hills Collection
+                            {collectionLabel}
                         </span>
 
                     </motion.div>
@@ -57,32 +92,36 @@ const ShopCategory = ({
                     <div className="flex items-end justify-between gap-8">
 
 
-                        {/* Title */}
+                        <div>
 
-                        <motion.h1
-                            initial={{
-                                opacity: 0,
-                                y: 45,
-                            }}
-                            animate={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            transition={{
-                                duration: 1,
-                                ease: [0.22, 1, 0.36, 1],
-                            }}
-                            className="
-                                header
-                                text-[clamp(3.5rem,8vw,7rem)]
-                                font-black
-                                leading-[0.8]
-                                tracking-[-0.065em]
-                                text-[#241817]
-                            "
-                        >
-                            {title}
-                        </motion.h1>
+                            {/* H1 */}
+
+                            <motion.h1
+                                initial={{
+                                    opacity: 0,
+                                    y: 45,
+                                }}
+                                animate={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                transition={{
+                                    duration: 1,
+                                    ease: [0.22, 1, 0.36, 1],
+                                }}
+                                className="
+                                    header
+                                    text-[clamp(2.5rem,8vw,4rem)]
+                                    font-black
+                                    leading-[0.8]
+                                    tracking-[-0.065em]
+                                    text-[#241817]
+                                "
+                            >
+                                {displayName}
+                            </motion.h1>
+
+                        </div>
 
 
                         {/* Filter */}
@@ -116,9 +155,9 @@ const ShopCategory = ({
                         DESCRIPTION
                     ================================================= */}
 
-                    {/* {description && (
+                    {description && (
 
-                        <motion.div
+                        <motion.p
                             initial={{
                                 opacity: 0,
                                 y: 20,
@@ -131,26 +170,27 @@ const ShopCategory = ({
                                 duration: 0.8,
                                 delay: 0.3,
                             }}
-                            className="mt-10 max-w-xl"
+                            className="
+                                mt-4
+                                max-w-xl
+                                text-base
+                                italic
+                                leading-relaxed
+                                text-[#8B625D]
+                                sm:text-lg
+                            "
                         >
+                            {description}
+                        </motion.p>
 
-                            <p className="font-subtitle text-base italic leading-relaxed text-[#8B625D] sm:text-lg">
-                                {description}
-                            </p>
-
-                        </motion.div>
-
-                    )} */}
+                    )}
 
 
                     {/* =================================================
-                        EDITORIAL UNDERLINE
+                        DIVIDER
                     ================================================= */}
 
                     <div className="relative mt-14 h-px w-full bg-[#241817]/10">
-
-
-                        {/* Animated red accent */}
 
                         <motion.div
                             initial={{
@@ -160,29 +200,12 @@ const ShopCategory = ({
                                 width: "18%",
                             }}
                             transition={{
-                                duration: 1.4,
+                                duration: 1.3,
                                 delay: 0.4,
                                 ease: [0.22, 1, 0.36, 1],
                             }}
                             className="absolute left-0 top-0 h-px bg-[#B73E46]"
                         />
-
-
-                        {/* Right metadata */}
-
-                        <div className="absolute right-0 top-4 hidden items-center gap-3 sm:flex">
-
-                            <span className="text-[7px] uppercase tracking-[0.25em] text-[#9A7B75]">
-                                {products.length} Pieces
-                            </span>
-
-                            <span className="h-1 w-1 rounded-full bg-[#B73E46]" />
-
-                            <span className="text-[7px] uppercase tracking-[0.25em] text-[#9A7B75]">
-                                Nepal · Origin
-                            </span>
-
-                        </div>
 
                     </div>
 
@@ -210,5 +233,6 @@ const ShopCategory = ({
         </main>
     );
 };
+
 
 export default ShopCategory;

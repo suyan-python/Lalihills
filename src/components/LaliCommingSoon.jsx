@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const videos = [
     "/videos/plantation.mp4",
@@ -35,21 +36,29 @@ const LaliComingSoon = () =>
     return (
         <main className="relative min-h-screen overflow-hidden bg-brown text-lightCream">
 
-            <div className="pointer-events-none absolute -left-32 top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-[#D88A92]/50 blur-[120px]" />
-            <div className="pointer-events-none absolute -right-40 bottom-[-12rem] h-[38rem] w-[38rem] rounded-full bg-[#A9363C]/55 blur-[140px]" />
+            {/* <div className="pointer-events-none absolute -left-32 top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-[#D88A92]/50 blur-[120px]" />
+            <div className="pointer-events-none absolute -right-40 bottom-[-12rem] h-[38rem] w-[38rem] rounded-full bg-[#A9363C]/55 blur-[140px]" /> */}
 
             {/* =====================================================
     HERO VIDEO BACKGROUND
 ===================================================== */}
+            <div className="pointer-events-none absolute inset-0 bg-[#241817]/90" />
 
-            <div className="pointer-events-none absolute inset-0 overflow-hidden">
+
+            <div className="pointer-events-none
+        absolute
+        inset-0
+        bg-gradient-to-r
+        from-[#241817]/65
+        via-[#241817]/35
+        to-transparent">
 
                 {/* Video */}
                 <motion.video
                     key={videos[currentVideo]}
                     initial={{
                         opacity: 0,
-                        scale: 1.04,
+                        scale: 1.02,
                     }}
                     animate={{
                         opacity: visible ? 1 : 0,
@@ -83,88 +92,258 @@ const LaliComingSoon = () =>
 
             </div>
 
-            <section className="relative z-10 min-h-screen overflow-hidden mx-auto flex  w-full max-w-7xl flex-col justify-center px-6 pb-28 pt-8 sm:px-10 lg:px-14">
-                <div className="relative max-w-5xl">
-                    {/* Eyebrow */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.9, delay: 0.2 }}
-                        className="mb-8 flex items-center gap-4"
-                    >
-                        <span className="h-px w-10 bg-[#C64A50]" />
+            <section className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col justify-center items-center overflow-hidden px-6 pb-28 pt-8 sm:px-10 lg:px-14">
 
-                        <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-[#DCA7A3]">
-                            From the hills of Nepal
-                        </span>
-                    </motion.div>
+                {/* =================================================
+        MAIN CONTENT
+    ================================================= */}
 
-                    {/* Heading */}
+                <div className="relative max-w-6xl text-center">
+
+                    {/* =================================================
+            BRAND TITLE
+        ================================================= */}
+
                     <motion.h1
-                        initial={{ opacity: 0, y: 35 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{
+                            opacity: 0,
+                            y: 45,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                        }}
                         transition={{
-                            duration: 1.1,
+                            duration: 1.2,
                             delay: 0.3,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="header max-w-4xl  text-[clamp(3.7rem,9vw,8.5rem)] leading-[0.82] tracking-[-0.045em]"
+                        className="
+                header
+                max-w-5xl
+                text-[clamp(3.7rem,9vw,8.5rem)]
+                leading-[0.82]
+                tracking-[-0.045em]
+            "
                     >
-                        <span className="block text-lightCream ">
+
+                        <span className="block text-lightCream">
                             Laali
                         </span>
 
-                        <span className="ml-[8vw] block italic text-[#D9828A] ">
+                        <span className="ml-[8vw] block italic text-[#D9828A]">
                             Hills
                         </span>
+
                     </motion.h1>
 
-                    {/* Description */}
                     <motion.div
-                        initial={{ opacity: 0, y: 25 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.9, delay: 0.65 }}
-                        className="mt-10 max-w-xl"
+                        initial={{
+                            opacity: 0,
+                            y: 30,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                        }}
+                        transition={{
+                            duration: 1,
+                            delay: 0.75,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mt-4  text-center"
                     >
-                        <p className="text-sm leading-7 text-[#D8BCB7] sm:text-base sm:leading-8">
-                            A new expression of Nepal's hills is taking shape.
-                            Specialty coffee, exceptional tea, and the stories of
-                            the people and land behind every cup.
+
+                        <p className="
+                font-subtitle
+                text-[clamp(0.75rem,2.2vw,1.2rem)]
+                italic
+                leading-[1.25]
+                tracking-[-0.02em]
+                text-[#F1DCD7] 
+            ">
+                            When the hills are happy,
+                            <span className="text-[#D9828A]">
+                                {" "}they are Laali.
+                            </span>
                         </p>
-                        <div className="mt-10 flex items-center gap-3 text-lightCream uppercase text-[10px] md:text-xs text-center md:text-start tracking-widest justify-center md:justify-start">
-                            explore offerings
-                            <ArrowRight className="h-4 w-4" />
-                        </div>
+
                     </motion.div>
 
 
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            y: 20,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                        }}
+                        transition={{
+                            duration: 0.9,
+                            delay: 1.35,
+                        }}
+                        className="mt-8"
+                    >
+
+                        <p className="
+                font-title
+                text-[clamp(0.75rem,2.2vw,1rem)]
+                uppercase
+                tracking-[0.2em]
+                text-lightCream
+            ">
+                            From the hills.
+                            <span className="mx-2 text-[#D9828A]">·</span>
+
+                            From the soil.
+                            <span className="mx-2 text-[#D9828A]">·</span>
+
+                            From the people.
+                            <span className="mx-2 text-[#D9828A]">·</span>
+
+                            <span className="italic text-[#D9828A]">
+                                To you.
+                            </span>
+                        </p>
+
+                    </motion.div>
+
+
+                    {/* =================================================
+            CTA
+        ================================================= */}
+
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            y: 15,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                        }}
+                        transition={{
+                            duration: 0.8,
+                            delay: 1.55,
+                        }}
+                        className="
+                mt-4
+                flex
+                items-center
+                justify-center
+                gap-3
+                text-[7px]
+                md:text-[9px]
+                uppercase
+                tracking-[0.35em]
+                text-lightCream cursor-pointer
+            "
+                    >
+
+                        <Link to={"/shop/coffee"} >
+
+                            Explore offerings
+                        </Link>
+
+
+                        <ArrowRight className="h-4 w-4" />
+
+                    </motion.div>
+
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1 }}
-                    className="absolute right-6 top-1/2 hidden -translate-y-1/2 lg:right-14 lg:block"
-                >
-                    <div className="flex flex-col items-center gap-5">
-                        <div className="h-20 w-px bg-gradient-to-b from-transparent via-[#D88A92]/50 to-transparent" />
 
-                        <div className="writing-vertical text-[9px] uppercase tracking-[0.4em] text-[#B9948F] [writing-mode:vertical-rl]">
+                {/* =================================================
+        RIGHT EDITORIAL MARKER
+    ================================================= */}
+
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                    }}
+                    animate={{
+                        opacity: 1,
+                    }}
+                    transition={{
+                        duration: 1,
+                        delay: 1.1,
+                    }}
+                    className="
+            absolute
+            right-6
+            top-1/2
+            hidden
+            -translate-y-1/2
+            lg:right-14
+            lg:block
+        "
+                >
+
+                    <div className="flex flex-col items-center gap-5">
+
+                        <div className="
+                h-20
+                w-px
+                bg-gradient-to-b
+                from-transparent
+                via-[#D88A92]/50
+                to-transparent
+            " />
+
+                        <div className="
+                [writing-mode:vertical-rl]
+                text-[9px]
+                uppercase
+                tracking-[0.4em]
+                text-[#B9948F]
+            ">
                             Origin • People • Land • Experience
                         </div>
 
-                        <div className="h-20 w-px bg-gradient-to-b from-transparent via-[#D88A92]/50 to-transparent" />
+                        <div className="
+                h-20
+                w-px
+                bg-gradient-to-b
+                from-transparent
+                via-[#D88A92]/50
+                to-transparent
+            " />
+
                     </div>
+
                 </motion.div>
 
+
+                {/* =================================================
+        SCROLL INDICATOR
+    ================================================= */}
+
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1.4 }}
-                    className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2"
+                    initial={{
+                        opacity: 0,
+                    }}
+                    animate={{
+                        opacity: 1,
+                    }}
+                    transition={{
+                        duration: 1,
+                        delay: 1.7,
+                    }}
+                    className="
+            absolute
+            bottom-4
+            left-1/2
+            z-20
+            -translate-x-1/2
+        "
                 >
+
                     <motion.div
-                        animate={{ y: [0, 5, 0] }}
+                        animate={{
+                            y: [0, 5, 0],
+                        }}
                         transition={{
                             duration: 1.6,
                             repeat: Infinity,
@@ -172,12 +351,17 @@ const LaliComingSoon = () =>
                         }}
                         className="flex flex-col items-center"
                     >
-                        {/* Text */}
-                        <span className="text-[7px] font-medium uppercase tracking-[0.4em] text-lightCream/70">
+
+                        <span className="
+                text-[7px]
+                font-medium
+                uppercase
+                tracking-[0.4em]
+                text-lightCream/70
+            ">
                             Scroll
                         </span>
 
-                        {/* Animated line */}
                         <motion.div
                             animate={{
                                 height: [0, 20, 0],
@@ -190,7 +374,9 @@ const LaliComingSoon = () =>
                             }}
                             className="mt-2 w-px bg-lightCream/70"
                         />
+
                     </motion.div>
+
                 </motion.div>
 
             </section>

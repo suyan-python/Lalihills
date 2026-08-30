@@ -12,11 +12,16 @@ import Support from "./pages/contact/Support";
 import About from "./pages/about/About";
 import Coffee from "./pages/shop/Coffee";
 import Tea from "./pages/shop/Tea";
+import Shop from "./pages/shop/Shop";
+import ScrollManager from "./components/ScrollManager";
 
 function App()
 {
   return (
     <BrowserRouter>
+      <ScrollManager />
+
+
       <Routes>
 
         {/* =================================
@@ -35,9 +40,7 @@ function App()
           <Route
             path="/shop"
             element={
-              <div className="p-10">
-                Shop
-              </div>
+              <Shop />
             }
           />
 

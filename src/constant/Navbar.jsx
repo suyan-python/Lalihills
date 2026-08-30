@@ -50,7 +50,7 @@ const menuItems = [
                 title: "Coffee",
                 items: [
                     {
-                        title: "All Coffee",
+                        title: "Beans (Coffee)",
                         path: "/shop/coffee",
                     },
                 ],
@@ -60,7 +60,7 @@ const menuItems = [
                 title: "Tea",
                 items: [
                     {
-                        title: "All Tea",
+                        title: "Leaves (Tea)",
                         path: "/shop/tea",
                     },
                 ],
@@ -70,15 +70,15 @@ const menuItems = [
                 title: "Collection",
                 items: [
                     {
-                        title: "Packaging",
-                        path: "/shop/collection/packaging",
-                    },
-                    {
                         title: "Gifts",
                         path: "/shop/collection/gifts",
                     },
                     {
                         title: "Accessories",
+                        path: "/shop/collection/accessories",
+                    },
+                    {
+                        title: "Bulk (Wholesale)",
                         path: "/shop/collection/accessories",
                     },
                 ],
@@ -215,7 +215,7 @@ const Navbar = () =>
                         onClick={() => setMenuOpen((prev) => !prev)}
                         aria-label={menuOpen ? "Close menu" : "Open menu"}
                         aria-expanded={menuOpen}
-                        className="group relative z-[110] flex h-12 w-12 items-center justify-center"
+                        className="group relative z-[110] flex h-12 w-12 items-center justify-center "
                     >
                         <span className="relative flex h-6 w-7 flex-col justify-center cursor-pointer">
                             <motion.span
@@ -234,7 +234,7 @@ const Navbar = () =>
                                     duration: 0.35,
                                     ease: [0.22, 1, 0.36, 1],
                                 }}
-                                className="absolute left-0 h-px w-7 bg-white"
+                                className="absolute left-0 h-px w-7 bg-mutedBrown"
                             />
 
                             <motion.span
@@ -253,7 +253,7 @@ const Navbar = () =>
                                     duration: 0.35,
                                     ease: [0.22, 1, 0.36, 1],
                                 }}
-                                className="absolute left-0 h-px w-7 bg-white"
+                                className="absolute left-0 h-px w-7 bg-mutedBrown"
                             />
                         </span>
                     </button>
@@ -427,7 +427,7 @@ const Navbar = () =>
         LEFT — EDITORIAL PREVIEW
     =========================================== */}
 
-                                    <div className="relative flex w-[70%] flex-col px-12 pb-12 pt-32 xl:px-16">
+                                    <div className="relative flex w-[70%] flex-col px-12 pb-4 pt-32 xl:px-16">
 
                                         <div className="relative flex h-full flex-col">
 
@@ -641,7 +641,7 @@ const Navbar = () =>
                 EDITORIAL FOOTER
             ======================================= */}
 
-                                            <div className="mt-auto flex items-end justify-between border-t border-[#E9C9C1]/10 pt-6">
+                                            <div className="mt-auto flex items-end justify-between border-t border-[#E9C9C1]/10 pt-4">
 
                                                 <div className="max-w-sm">
 

@@ -64,13 +64,23 @@ const Coffee = () =>
 
     return (
         <ShopCategory
-            title="Coffee"
-            description="Exceptional coffee from the hills of Nepal, shaped by altitude, soil, climate and the hands that nurture it."
+            displayName="Beans"
+            displaySubtitle="Coffee"
+
             collectionLabel="Coffee Collection"
             originLabel="Nepal · Highlands"
+
+            description="Whole bean & ground, roasted to order"
+
+            seoTitle="Nepali Specialty Coffee — Laali Hills"
+
+            seoDescription="Discover specialty coffee from the hills of Nepal. Explore carefully selected Nepali coffee, available as whole beans or freshly ground."
+
             products={filteredProducts}
+
             filters={filters}
             setFilters={setFilters}
+
             filterComponent={
                 <CoffeeFilters
                     filters={filters}
