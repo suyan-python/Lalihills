@@ -31,46 +31,15 @@ const offerings = [
 const SummerOfferings = () =>
 {
     return (
-        <section className="relative overflow-hidden bg-brown px-6 py-28 sm:px-10 sm:py-36 lg:px-16 lg:py-36 ">
+        <section className="relative overflow-hidden bg-brown px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24 ">
 
-            <div className="mx-auto max-w-[1500px]">
+            <div className="mx-auto max-w-[1700px]">
 
                 {/* =================================================
                     HEADER
                 ================================================= */}
 
                 <div className="mx-auto max-w-3xl text-center">
-
-                    <motion.div
-                        initial={{
-                            opacity: 0,
-                            y: 20,
-                        }}
-                        whileInView={{
-                            opacity: 1,
-                            y: 0,
-                        }}
-                        viewport={{
-                            once: true,
-                            amount: 0.5,
-                        }}
-                        transition={{
-                            duration: 0.8,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
-                        className="flex items-center justify-center gap-3"
-                    >
-
-                        <span className="h-px w-8 bg-red" />
-
-                        <span className="text-[8px] font-semibold uppercase tracking-[0.35em] text-mutedBrown">
-                            Seasonal Selection
-                        </span>
-
-                        <span className="h-px w-8 bg-red" />
-
-                    </motion.div>
-
 
                     <motion.h2
                         initial={{
@@ -90,9 +59,9 @@ const SummerOfferings = () =>
                             delay: 0.1,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="mt-6 font-title text-[clamp(3rem,6vw,6rem)] leading-[0.9] tracking-[-0.055em] text-lightCream"
+                        className="mt-6 header text-[clamp(4rem,6vw,7rem)] leading-[0.9] tracking-[-0.055em] text-lightCream"
                     >
-                        Summer
+                        Summer <br />
                         <span className="ml-3 italic text-red">
                             Offerings
                         </span>
@@ -116,7 +85,7 @@ const SummerOfferings = () =>
                             duration: 0.8,
                             delay: 0.25,
                         }}
-                        className="mx-auto mt-7 max-w-xl text-sm leading-7 text-[#705752] sm:text-base"
+                        className="mx-auto mt-8 max-w-xl text-sm leading-7 text-ivory sm:text-base font-light"
                     >
                         A seasonal collection inspired by warmer days,
                         cooler cups and the flavours of Nepal's hills.
@@ -216,7 +185,7 @@ const SummerOfferings = () =>
                                                 0{index + 1}
                                             </span>
 
-                                            <h3 className="mt-3 font-title text-3xl leading-none tracking-[-0.04em] text-lightCream sm:text-4xl">
+                                            <h3 className="mt-3 subheader text-3xl leading-none tracking-[-0.04em] text-lightCream sm:text-4xl">
                                                 {offering.title}
                                             </h3>
 

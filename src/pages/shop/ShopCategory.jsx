@@ -21,7 +21,7 @@ const ShopCategory = ({
 }) =>
 {
     return (
-        <main className="min-h-screen bg-lightWhite">
+        <main className="min-h-screen max-w-7xl mx-auto px-8 md:px-0">
 
 
             {/* =================================================
@@ -51,47 +51,9 @@ const ShopCategory = ({
                 CATEGORY HEADER
             ================================================= */}
 
-            <section className="relative overflow-hidden px-7 pb-16 pt-32 sm:px-12 sm:pb-20 sm:pt-40 lg:px-24 lg:pb-24 lg:pt-44 xl:px-32">
-
+            <section className="relative overflow-hidden pb-10 pt-24 sm:pt-28 md:pb-14 lg:pt-32  ">
                 <div className="mx-auto max-w-[1500px]">
-
-
-                    {/* =================================================
-                        COLLECTION LABEL
-                    ================================================= */}
-
-                    <motion.div
-                        initial={{
-                            opacity: 0,
-                            x: -20,
-                        }}
-                        animate={{
-                            opacity: 1,
-                            x: 0,
-                        }}
-                        transition={{
-                            duration: 0.8,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
-                        className="mb-10 flex items-center gap-4"
-                    >
-
-                        <span className="h-px w-9 bg-red" />
-
-                        <span className="text-[8px] font-semibold uppercase tracking-[0.35em] text-[#8B625D]">
-                            {collectionLabel}
-                        </span>
-
-                    </motion.div>
-
-
-                    {/* =================================================
-                        TITLE + FILTER
-                    ================================================= */}
-
                     <div className="flex items-end justify-between gap-8">
-
-
                         <div>
 
                             {/* H1 */}
@@ -111,7 +73,7 @@ const ShopCategory = ({
                                 }}
                                 className="
                                     header
-                                    text-[clamp(2.5rem,8vw,4rem)]
+                                    text-[clamp(1.5rem,8vw,2.5rem)]
                                     font-black
                                     leading-[0.8]
                                     tracking-[-0.065em]
@@ -150,11 +112,6 @@ const ShopCategory = ({
 
                     </div>
 
-
-                    {/* =================================================
-                        DESCRIPTION
-                    ================================================= */}
-
                     {description && (
 
                         <motion.p
@@ -173,11 +130,11 @@ const ShopCategory = ({
                             className="
                                 mt-4
                                 max-w-xl
-                                text-base
+                                text-[14px]
                                 italic
                                 leading-relaxed
                                 text-[#8B625D]
-                                sm:text-lg
+                                sm:text-base
                             "
                         >
                             {description}
@@ -186,11 +143,7 @@ const ShopCategory = ({
                     )}
 
 
-                    {/* =================================================
-                        DIVIDER
-                    ================================================= */}
-
-                    <div className="relative mt-14 h-px w-full bg-[#241817]/10">
+                    <div className="relative mt-5 h-px w-full bg-[#241817]/10">
 
                         <motion.div
                             initial={{
@@ -218,7 +171,7 @@ const ShopCategory = ({
                 PRODUCTS
             ================================================= */}
 
-            <section className="px-7 pb-32 sm:px-12 sm:pb-40 lg:px-24 lg:pb-48 xl:px-32">
+            <section className="pb-32 sm:2 sm:pb-40 lg:pb-48 ">
 
                 <div className="mx-auto max-w-[1500px]">
 

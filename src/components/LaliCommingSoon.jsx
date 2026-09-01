@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "/logo.png"
@@ -37,15 +38,6 @@ const LaliComingSoon = () =>
 
     return (
         <main className="relative min-h-screen overflow-hidden bg-brown text-lightCream">
-
-            {/* <div className="pointer-events-none absolute -left-32 top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-[#D88A92]/50 blur-[120px]" />
-            <div className="pointer-events-none absolute -right-40 bottom-[-12rem] h-[38rem] w-[38rem] rounded-full bg-[#A9363C]/55 blur-[140px]" /> */}
-
-            {/* =====================================================
-    HERO VIDEO BACKGROUND
-===================================================== */}
-            {/* <div className="pointer-events-none absolute inset-0 bg-[#241817]/50" /> */}
-
 
             <div className="pointer-events-none
         absolute
@@ -96,10 +88,6 @@ const LaliComingSoon = () =>
 
             <section className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col justify-center items-center overflow-hidden px-6 pb-28 pt-8 sm:px-10 lg:px-14">
 
-                {/* =================================================
-        MAIN CONTENT
-    ================================================= */}
-
                 <div
                     className="
         relative
@@ -119,10 +107,6 @@ const LaliComingSoon = () =>
     "
                 >
                     <div className="flex w-full max-w-5xl flex-col items-center">
-
-                        {/* =================================================
-            EYEBROW
-        ================================================= */}
 
                         <motion.div
                             initial={{
@@ -184,9 +168,6 @@ const LaliComingSoon = () =>
     "
                         >
 
-                            {/* =================================================
-        MAIN LOGO
-    ================================================= */}
 
                             <motion.div
                                 className="
@@ -237,11 +218,6 @@ const LaliComingSoon = () =>
 
                             </motion.div>
 
-
-                            {/* =================================================
-        SLOGAN — BELOW LOGO
-    ================================================= */}
-
                             <motion.div
                                 initial={{
                                     opacity: 0,
@@ -289,41 +265,6 @@ const LaliComingSoon = () =>
 
                         </motion.div>
 
-
-                        {/* =================================================
-            TAGLINE
-        ================================================= */}
-
-                        {/* <motion.p
-                            initial={{
-                                opacity: 0,
-                                y: 20,
-                            }}
-                            animate={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            transition={{
-                                duration: 0.9,
-                                delay: 1,
-                            }}
-                            className="
-                mt-7
-                max-w-md
-                font-subtitle
-                text-base
-                italic
-                leading-relaxed
-                text-[#E0C3BD]
-                sm:text-lg
-            "
-                        >
-                            When the hills are happy, they are{" "}
-                            <span className="text-[#D9828A]">
-                                Laali.
-                            </span>
-                        </motion.p> */}
-
                         <motion.div
                             initial={{
                                 opacity: 0,
@@ -370,10 +311,6 @@ const LaliComingSoon = () =>
 
                         </motion.div>
 
-
-                        {/* =================================================
-            CTA
-        ================================================= */}
 
                         <motion.div
                             initial={{
@@ -434,11 +371,6 @@ const LaliComingSoon = () =>
 
                     </div>
 
-
-                    {/* =================================================
-        SIDE EDITORIAL MARKER
-    ================================================= */}
-
                     <motion.div
                         initial={{
                             opacity: 0,
@@ -485,9 +417,6 @@ const LaliComingSoon = () =>
 
                 </div>
 
-                {/* =================================================
-        SCROLL INDICATOR
-    ================================================= */}
 
                 <motion.div
                     initial={{
@@ -511,39 +440,32 @@ const LaliComingSoon = () =>
 
                     <motion.div
                         animate={{
-                            y: [0, 5, 0],
+                            y: [0, 7, 0],
+                            opacity: [0.55, 1, 0.55],
                         }}
                         transition={{
-                            duration: 1.6,
+                            duration: 2,
                             repeat: Infinity,
                             ease: "easeInOut",
                         }}
                         className="flex flex-col items-center"
                     >
-
                         <span className="
-                text-[7px]
-                font-medium
-                uppercase
-                tracking-[0.4em]
-                text-lightCream/70
-            ">
+        mb-3
+        text-[7px]
+        font-medium
+        uppercase
+        tracking-[0.45em]
+        text-lightCream/70
+    ">
                             Scroll
                         </span>
 
-                        <motion.div
-                            animate={{
-                                height: [0, 20, 0],
-                                opacity: [0, 1, 0],
-                            }}
-                            transition={{
-                                duration: 1.6,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                            }}
-                            className="mt-2 w-px bg-lightCream/70"
+                        <ChevronDown
+                            size={20}
+                            strokeWidth={0.9}
+                            className="text-lightCream"
                         />
-
                     </motion.div>
 
                 </motion.div>

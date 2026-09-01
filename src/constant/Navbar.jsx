@@ -584,7 +584,7 @@ const Navbar = () =>
                                                                                 className="space-y-3"
                                                                             >
 
-                                                                                <p className="text-[9px] font-semibold uppercase tracking-[0.25em] text-[#D9828A]">
+                                                                                <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#D9828A]">
                                                                                     {subItem.title}
                                                                                 </p>
 
@@ -599,7 +599,7 @@ const Navbar = () =>
                                                                                             className="group flex items-center gap-3 text-sm text-[#D9C2BC]"
                                                                                         >
 
-                                                                                            <span className="h-px w-0 bg-[#D9828A] transition-all duration-300 group-hover:w-5" />
+                                                                                            <span className="h-px w-2 bg-[#D9828A] transition-all duration-300 group-hover:w-5" />
 
                                                                                             <span className="transition-colors duration-300 group-hover:text-white">
                                                                                                 {child.title}

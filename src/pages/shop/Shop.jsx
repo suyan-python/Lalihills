@@ -47,13 +47,7 @@ const collections = [
 const Shop = () =>
 {
     return (
-        <main className="relative min-h-screen overflow-hidden bg-[#F9F5F2]">
-
-
-            {/* =====================================================
-                BACKGROUND WORD
-            ===================================================== */}
-
+        <main className="relative min-h-screen overflow-hidden bg-lightWhite">
             <div className="pointer-events-none absolute right-[-4vw] top-[5vh] select-none">
 
                 <motion.p
@@ -79,62 +73,17 @@ const Shop = () =>
                         text-[#241817]/[0.025]
                     "
                 >
-                    HILLS
+                    Laali Hills
                 </motion.p>
 
             </div>
 
-
-            {/* =====================================================
-                INTRO
-            ===================================================== */}
-
-            <section className="relative px-7 pb-16 pt-36 sm:px-12 sm:pb-20 sm:pt-44 lg:px-20 lg:pb-24 lg:pt-36 xl:px-28">
-
+            <section className="relative px-7  pt-36 sm:px-12 sm:pt-44 lg:px-20 pb-5 lg:pt-36 xl:px-28">
                 <div className="mx-auto max-w-[1500px]">
-
-
-                    {/* Top metadata */}
-
-                    <div className="flex items-center justify-between">
-
-                        <motion.div
-                            initial={{
-                                opacity: 0,
-                                x: -20,
-                            }}
-                            animate={{
-                                opacity: 1,
-                                x: 0,
-                            }}
-                            transition={{
-                                duration: 0.8,
-                            }}
-                            className="flex items-center gap-4"
-                        >
-
-                            <span className="h-px w-10 bg-red" />
-
-                            <span className="
-                                text-[8px]
-                                font-semibold
-                                uppercase
-                                tracking-[0.4em]
-                                text-[#8B625D]
-                            ">
-                                Laali Hills · Collections
-                            </span>
-
-                        </motion.div>
-
-                    </div>
-
 
                     {/* Main heading */}
 
-                    <div className="mt-14 grid lg:grid-cols-12 lg:gap-10">
-
-
+                    <div className="mt-5 grid lg:grid-cols-12 lg:gap-10 ">
                         <div className="lg:col-span-8">
 
                             <motion.h1
@@ -154,7 +103,7 @@ const Shop = () =>
                                     header
                                     max-w-5xl
                                     text-[clamp(2.5rem,9vw,3.5rem)]
-                                    font-black
+                                    font-medium
                                     leading-[0.78]
                                     tracking-[-0.075em]
                                     text-[#241817]
@@ -203,29 +152,8 @@ const Shop = () =>
                                 each carrying something of where
                                 it came from.
                             </p>
-
-
-                            <div className="mt-7 flex items-center gap-3">
-
-                                <span className="h-px w-12 bg-red" />
-
-                                <span className="
-                                    text-[7px]
-                                    uppercase
-                                    tracking-[0.3em]
-                                    text-[#9A7B75]
-                                ">
-                                    Discover Nepal
-                                </span>
-
-                            </div>
-
                         </motion.div>
-
                     </div>
-
-
-                    {/* Divider */}
 
                     <motion.div
                         initial={{
@@ -243,10 +171,10 @@ const Shop = () =>
                             transformOrigin: "left",
                         }}
                         className="
-                        mt-10
-                            h-1
+                        mt-5
+                            h-px
                             w-full
-                            bg-[#241817]/10"
+                            bg-[#241817]/50"
 
                     />
 
@@ -254,27 +182,13 @@ const Shop = () =>
 
             </section>
 
-
-            {/* =====================================================
-                COLLECTION JOURNEY
-            ===================================================== */}
-
-            <section className="relative px-7 pb-32 sm:px-12 sm:pb-40 lg:px-20 lg:pb-48 xl:px-28">
+            <section className="relative px-7 pb-32 sm:px-12 sm:pb-40 lg:px-20 lg:pb-48 xl:px-28 mt-5">
 
                 <div className="mx-auto max-w-[1500px]">
-
-                    {/* =================================================
-                        COFFEE — FEATURED
-                    ================================================= */}
 
                     <CollectionFeature
                         collection={collections[0]}
                     />
-
-
-                    {/* =================================================
-                        TEA + GIFTS
-                    ================================================= */}
 
                     <div className="
                         mt-8
@@ -317,15 +231,13 @@ const Shop = () =>
    FEATURED COLLECTION
 ================================================================ */
 
-const CollectionFeature = ({
-    collection,
-}) =>
+const CollectionFeature = ({ collection }) =>
 {
     return (
         <motion.div
             initial={{
                 opacity: 0,
-                y: 60,
+                y: 40,
             }}
             whileInView={{
                 opacity: 1,
@@ -333,70 +245,97 @@ const CollectionFeature = ({
             }}
             viewport={{
                 once: true,
-                amount: 0.15,
+                amount: 0.2,
             }}
             transition={{
-                duration: 1,
+                duration: 1.1,
                 ease: [0.22, 1, 0.36, 1],
             }}
         >
-
             <Link
                 to={collection.path}
-                className="group block"
+                className="group relative block overflow-hidden"
             >
-
+                {/* IMAGE */}
                 <div className="
-                    grid
+                    relative
+                    aspect-[4/5]
                     overflow-hidden
-                    lg:grid-cols-[1.35fr_0.65fr]
+                    bg-[#211C16]
+                    sm:aspect-[16/9]
+                    lg:aspect-[21/10]
                 ">
 
-
-                    {/* IMAGE */}
-
-                    <div className="
-                        relative
-                        aspect-[4/5]
-                        overflow-hidden
-                        bg-[#E8D1CA]
-                        sm:aspect-[16/10]
-                        lg:aspect-auto
-                    ">
-
-                        <motion.img
-                            src={collection.image}
-                            alt={collection.description}
-                            loading="lazy"
-                            decoding="async"
-                            className="
-                                h-full
-                                w-full
-                                object-cover
-                                transition-transform
-                                duration-[1400ms]
-                                ease-[cubic-bezier(0.22,1,0.36,1)]
-                                group-hover:scale-[1.04]
-                            "
-                        />
-
-
-                        <div className="
+                    <motion.img
+                        src={collection.image}
+                        alt={collection.description}
+                        loading="lazy"
+                        decoding="async"
+                        className="
                             absolute
                             inset-0
-                            bg-[#241817]/0
-                            transition-colors
-                            duration-700
-                            group-hover:bg-[#241817]/20
-                        " />
+                            h-full
+                            w-full
+                            object-cover
+                            transition-transform
+                            duration-[1800ms]
+                            ease-[cubic-bezier(0.22,1,0.36,1)]
+                            group-hover:scale-[1.045]
+                        "
+                    />
 
 
-                        {/* Number */}
+                    {/* Overall image tint */}
+                    <div className="
+                        absolute
+                        inset-0
+                        bg-[#211C16]/10
+                        transition-colors
+                        duration-700
+                        group-hover:bg-[#211C16]/5
+                    " />
+
+
+                    {/* Bottom luxury gradient */}
+                    <div className="
+                        absolute
+                        inset-0
+                        bg-gradient-to-t
+                        from-[#211C16]/95
+                        via-[#211C16]/35
+                        to-transparent
+                    " />
+
+
+                    {/* Subtle red atmospheric gradient */}
+                    <div className="
+                        absolute
+                        inset-0
+                        bg-gradient-to-br
+                        from-[#8F3038]/15
+                        via-transparent
+                        to-transparent
+                    " />
+
+
+                    {/* TOP INFO */}
+                    <div className="
+                        absolute
+                        left-6
+                        right-6
+                        top-6
+                        flex
+                        items-center
+                        justify-between
+                        sm:left-10
+                        sm:right-10
+                        sm:top-10
+                        lg:left-14
+                        lg:right-14
+                        lg:top-12
+                    ">
 
                         <div className="
-                            absolute
-                            left-6
-                            top-6
                             flex
                             items-center
                             gap-3
@@ -404,14 +343,15 @@ const CollectionFeature = ({
 
                             <span className="
                                 h-px
-                                w-7
-                                bg-white/60"
-                            />
+                                w-8
+                                bg-[ivory]/60
+                            " />
 
                             <span className="
-                            text-[8px]
-                            tracking-[0.3em]
-                            text-white
+                                text-[8px]
+                                uppercase
+                                tracking-[0.35em]
+                                text-[ivory]/90
                             ">
                                 {collection.number}
                             </span>
@@ -419,133 +359,168 @@ const CollectionFeature = ({
                         </div>
 
 
-                        {/* Image CTA */}
-
-                        <div className="
-                            absolute
-                            bottom-6
-                            left-6
-                            right-6
-                            flex
-                            items-center
-                            justify-between
-                            border-t
-                            border-white/30
-                            pt-4
-                            text-white
+                        <span className="
+                            text-[8px]
+                            uppercase
+                            tracking-[0.3em]
+                            text-[ivory]/70
                         ">
-
-                            <span className="
-                                text-[8px]
-                                uppercase
-                                tracking-[0.3em]
-                            ">
-                                Explore collection
-                            </span>
-
-                            <ArrowUpRight
-                                size={17}
-                                strokeWidth={1.2}
-                                className="
-                                    transition-transform
-                                    duration-500
-                                    group-hover:-translate-y-1
-                                    group-hover:translate-x-1
-                                "
-                            />
-
-                        </div>
+                            Laali Hills
+                        </span>
 
                     </div>
 
 
                     {/* CONTENT */}
-
                     <div className="
-                        flex
-                        min-h-[360px]
-                        flex-col
-                        justify-between
-                        bg-darkBrown
-                        p-7
+                        absolute
+                        bottom-0
+                        left-0
+                        right-0
+                        p-6
                         sm:p-10
-                        lg:p-12
+                        lg:p-14
                         xl:p-16
                     ">
 
-                        <div>
+                        <div className="
+                            max-w-3xl
+                        ">
 
-                            <span className="
-                                text-[8px]
-                                uppercase
-                                tracking-[0.3em]
-                                text-white/70
-                            ">
-                                {collection.subtitle}
-                            </span>
-
-
-                            <h2 className="
-                                header
-                                mt-5
-                                text-[clamp(3rem,6vw,4rem)]
-                                font-black
-                                leading-[0.78]
-                                tracking-[-0.07em]
-                                text-white
-                            ">
-                                {collection.name}
-                            </h2>
-
-
-                            <p className="
-                                mt-6
-                                max-w-sm
-                                text-[12px]
-                                leading-6
-                                text-white/70
-                            ">
-                                {collection.description}
-                            </p>
-
-                        </div>
-
-
-                        <div className="mt-12">
-
+                            {/* Small category */}
                             <div className="
-                                h-px
-                                w-full
-                                bg-[#241817]/10
-                            " />
-
-                            <div className="
-                                mt-5
+                                mb-4
                                 flex
                                 items-center
-                                justify-between
+                                gap-3
                             ">
 
                                 <span className="
                                     text-[8px]
                                     uppercase
-                                    tracking-[0.3em]
-                                    text-[#8B625D]
+                                    tracking-[0.35em]
+                                    text-[ivory]/70
+                                ">
+                                    {collection.subtitle}
+                                </span>
+
+                            </div>
+
+
+                            {/* Main title */}
+                            <h2 className="
+                                header
+                                max-w-2xl
+                                text-[clamp(3.5rem,8vw,7rem)]
+                                font-black
+                                uppercase
+                                leading-[0.78]
+                                tracking-[-0.075em]
+                                text-transparent
+                                bg-clip-text
+                                bg-gradient-to-r
+                                from-[ivory]
+                                via-[ivory]
+                                to-[#A99B82]
+                                transition-all
+                                duration-700
+                                group-hover:from-white
+                                group-hover:to-[ivory]
+                            ">
+                                {collection.name}
+                            </h2>
+
+
+                            {/* Description */}
+                            <p className="
+                                mt-6
+                                max-w-md
+                                text-[11px]
+                                leading-5
+                                tracking-wide
+                                text-[ivory]/70
+                                sm:text-[12px]
+                                sm:leading-6
+                            ">
+                                {collection.description}
+                            </p>
+
+
+                            {/* Bottom action */}
+                            <div className="
+                                mt-8
+                                flex
+                                items-center
+                                justify-between
+                                border-t
+                                border-[ivory]/20
+                                pt-4
+                                sm:mt-10
+                                sm:pt-5
+                            ">
+
+                                <span className="
+                                    text-[8px]
+                                    uppercase
+                                    tracking-[0.35em]
+                                    text-[ivory]/80
                                 ">
                                     {collection.plainName}
                                 </span>
 
-                                <ArrowUpRight
-                                    size={18}
-                                    strokeWidth={1.2}
-                                    className="
-                                        text-red
-                                        transition-transform
+
+                                <div className="
+                                    flex
+                                    items-center
+                                    gap-3
+                                ">
+
+                                    <span className="
+                                        hidden
+                                        text-[8px]
+                                        uppercase
+                                        tracking-[0.3em]
+                                        text-[ivory]/70
+                                        transition-all
                                         duration-500
-                                        group-hover:-translate-y-1
-                                        group-hover:translate-x-1
-                                    "
-                                />
+                                        sm:block
+                                        group-hover:text-[ivory]
+                                    ">
+                                        Explore
+                                    </span>
+
+                                    <div className="
+                                        flex
+                                        h-10
+                                        w-10
+                                        items-center
+                                        justify-center
+                                        rounded-full
+                                        border
+                                        border-[ivory]/40
+                                        bg-[#211C16]/20
+                                        backdrop-blur-sm
+                                        transition-all
+                                        duration-500
+                                        group-hover:border-[#A62A34]
+                                        group-hover:bg-[#A62A34]
+                                    ">
+
+                                        <ArrowUpRight
+                                            size={16}
+                                            strokeWidth={1.2}
+                                            className="
+                                                text-[ivory]
+                                                transition-transform
+                                                duration-500
+                                                group-hover:-translate-y-0.5
+                                                group-hover:translate-x-0.5
+                                            "
+                                        />
+
+                                    </div>
+
+                                </div>
 
                             </div>
 
@@ -553,11 +528,23 @@ const CollectionFeature = ({
 
                     </div>
 
+
+                    {/* Border */}
+                    <div className="
+                        pointer-events-none
+                        absolute
+                        inset-0
+                        border
+                        border-[ivory]/10
+                        transition-all
+                        duration-700
+                        group-hover:border-[ivory]/25
+                    " />
+
                 </div>
 
             </Link>
-
-        </motion.div >
+        </motion.div>
     );
 };
 
