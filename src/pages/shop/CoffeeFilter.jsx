@@ -101,7 +101,7 @@ const CoffeeFilters = ({
             <button
                 type="button"
                 onClick={() => setOpen(true)}
-                className="group flex items-center gap-3 border border-[#241817]/15 px-5 py-3 transition-all duration-300 hover:border-[#B73E46] hover:bg-[#241817] hover:text-[#F8EDE8] cursor-pointer"
+                className="group flex items-center gap-3 border border-[#241817]/15 px-5 py-3 transition-all duration-300 hover:border-red hover:bg-[#241817] hover:text-[#F8EDE8] cursor-pointer"
             >
 
                 <SlidersHorizontal
@@ -235,7 +235,7 @@ const CoffeeFilters = ({
                                                     Number(e.target.value)
                                                 )
                                             }
-                                            className="w-full accent-[#B73E46]"
+                                            className="w-full accent-red"
                                         />
 
 
@@ -294,8 +294,8 @@ const CoffeeFilters = ({
                                                         border px-3 py-4 text-[9px] uppercase tracking-[0.15em]
                                                         transition-all duration-300
                                                         ${active
-                                                            ? "border-[#B73E46] bg-[#B73E46] text-[#F8EDE8]"
-                                                            : "border-[#241817]/10 text-[#66504B] hover:border-[#B73E46]"
+                                                            ? "border-red bg-red text-[#F8EDE8]"
+                                                            : "border-[#241817]/10 text-[#66504B] hover:border-red"
                                                         }
                                                     `}
                                                 >
@@ -338,7 +338,7 @@ const CoffeeFilters = ({
                                                     Number(e.target.value)
                                                 )
                                             }
-                                            className="w-full accent-[#B73E46]"
+                                            className="w-full accent-red"
                                         />
 
 
@@ -392,8 +392,8 @@ const CoffeeFilters = ({
                                                         border px-4 py-3 text-[8px] uppercase tracking-[0.15em]
                                                         transition-all duration-300
                                                         ${active
-                                                            ? "border-[#B73E46] bg-[#B73E46] text-[#F8EDE8]"
-                                                            : "border-[#241817]/10 text-[#66504B] hover:border-[#B73E46]"
+                                                            ? "border-red bg-red text-[#F8EDE8]"
+                                                            : "border-[#241817]/10 text-[#66504B] hover:border-red"
                                                         }
                                                     `}
                                                 >
@@ -436,7 +436,7 @@ const CoffeeFilters = ({
                                     <button
                                         type="button"
                                         onClick={() => setOpen(false)}
-                                        className="flex-1 bg-[#241817] px-5 py-4 text-[9px] uppercase tracking-[0.25em] text-[#F8EDE8] transition hover:bg-[#B73E46]"
+                                        className="flex-1 bg-[#241817] px-5 py-4 text-[9px] uppercase tracking-[0.25em] text-[#F8EDE8] transition hover:bg-red"
                                     >
                                         Apply Filters
                                     </button>

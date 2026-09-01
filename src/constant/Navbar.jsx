@@ -7,6 +7,9 @@ import
     ChevronRight,
 } from "lucide-react";
 
+// import logo from "/gold.png"
+import logo from "../assets/logo/gold.svg"
+
 import trending from "../assets/images/trending.jpg";
 import shop from "../assets/images/shop.jpg";
 import explore from "../assets/images/explore.webp";
@@ -202,10 +205,18 @@ const Navbar = () =>
                         className="group relative z-[110] flex items-center"
                         aria-label="Laali Hills"
                     >
-                        {/* Replace this with your actual logo */}
-                        <span className="header italic text-2xl  tracking-[-0.03em] sm:text-3xl">
-                            Laali Hills
-                        </span>
+                        <img
+                            src={logo}
+                            alt="Laali Hills"
+                            className="
+        block
+        h-8
+        w-auto
+        object-contain
+        sm:h-9
+        lg:h-14
+    "
+                        />
                     </Link>
 
 

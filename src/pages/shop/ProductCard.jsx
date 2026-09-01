@@ -140,7 +140,7 @@ const ProductCard = ({ product }) =>
                         disabled={!available}
                         className="
                     flex items-center justify-center gap-2
-                    bg-[#B73E46]/95
+                    bg-red
                     py-4
                     text-[8px]
                     font-medium
@@ -152,7 +152,7 @@ const ProductCard = ({ product }) =>
                     transition-colors
                     duration-300
 
-                    hover:bg-[#8F3038]
+                    hover:bg-deepRed
 
                     disabled:cursor-not-allowed
                     disabled:opacity-50
@@ -181,85 +181,98 @@ const ProductCard = ({ product }) =>
 
             <div className="pt-5">
 
-
-                {/* Name + Price */}
-
-                <div className="flex items-start justify-between gap-6">
-
-                    <Link
-                        to={`/shop/${product.category}/${slug}`}
-                        className="min-w-0"
-                    >
-
-                        <h3 className="text-[11px] font-medium uppercase leading-5 tracking-[0.12em] text-[#241817] transition-colors duration-300 group-hover:text-[#B73E46] sm:text-xs">
-                            {name}
-                        </h3>
-
-                    </Link>
-
-
-                    <span className="shrink-0 text-[11px] tracking-[0.05em] text-[#66504B] sm:text-xs">
-                        Rs. {price.toLocaleString()}
+                <div className="flex items-center justify-between border-b border-ink/10 pb-3">
+                    <span className="text-[7px] font-medium uppercase tracking-[0.25em] text-stone">
+                        ID · {product._id}
                     </span>
 
+                    <span className="text-[8px] uppercase tracking-[0.2em] text-soil">
+                        {product.category}
+                    </span>
                 </div>
 
+                <div className="mt-4 flex items-start justify-between gap-5">
+                    <Link to={`/shop/${product.category}/${slug}`} className="min-w-0">
+                        <h3 className="max-w-[100%] text-[12px] font-semibold uppercase leading-[1.35] tracking-[0.1em] text-ink transition-colors duration-300 group-hover:text-red sm:text-[13px]">
+                            {name}
+                        </h3>
+                    </Link>
 
-                {/* =================================================
-                    FLAVORS
-                ================================================= */}
-
-                {flavors.length > 0 && (
-
-                    <p className="mt-3 text-[10px] capitalize leading-5 text-[#8B625D]">
-                        {flavors.join(" · ")}
-                    </p>
-
-                )}
-
-
-                {/* =================================================
-                    ROAST
-                ================================================= */}
-
-                <div className="mt-5 flex items-center gap-3">
-
-                    <span className="shrink-0 text-[7px] font-semibold uppercase tracking-[0.25em] text-[#9A7B75]">
-                        Roast
+                    <span className="shrink-0 text-[11px] font-medium tracking-[0.04em] text-ink sm:text-xs">
+                        Rs. {price.toLocaleString()}
                     </span>
+                </div>
 
+                <div className="mt-5 space-y-3">
 
-                    <div className="relative h-px flex-1 bg-[#241817]/10">
+                    <div className="flex items-start gap-6">
+                        <span className="w-20 shrink-0 text-[7px] font-semibold uppercase tracking-[0.2em] text-stone">
+                            Origin
+                        </span>
 
-                        <motion.div
-                            initial={{
-                                scaleX: 0,
-                            }}
-                            whileInView={{
-                                scaleX: roastLevel
-                                    ? roastLevel / 5
-                                    : 0.5,
-                            }}
-                            viewport={{
-                                once: true,
-                            }}
-                            transition={{
-                                duration: 1,
-                                delay: 0.2,
-                                ease: [0.22, 1, 0.36, 1],
-                            }}
-                            style={{
-                                transformOrigin: "left",
-                            }}
-                            className="absolute inset-y-0 left-0 w-full bg-[#B73E46]"
-                        />
+                        <span className="text-[10px] uppercase leading-4 tracking-[0.08em] text-soil">
+                            {product.origin || product.region || "Nepal"}
+                        </span>
+                    </div>
+
+                    {flavors.length > 0 && (
+                        <div className="flex items-start gap-6">
+                            <span className="w-20 shrink-0 text-[7px] font-semibold uppercase tracking-[0.2em] text-stone">
+                                Tasting Notes
+                            </span>
+
+                            <p className="text-[10px] capitalize leading-5 text-soil">
+                                {flavors.join(" · ")}
+                            </p>
+                        </div>
+                    )}
+
+                    <div className="grid grid-cols-2 gap-4 border-t border-ink/10 pt-4">
+
+                        <div>
+                            <span className="block text-[7px] font-semibold uppercase tracking-[0.2em] text-stone">
+                                Altitude
+                            </span>
+
+                            <span className="mt-1 block text-[10px] uppercase tracking-[0.08em] text-ink">
+                                {product.altitude ? `${product.altitude} masl` : "—"}
+                            </span>
+                        </div>
+
+                        <div>
+                            <span className="block text-[7px] font-semibold uppercase tracking-[0.2em] text-stone">
+                                Process
+                            </span>
+
+                            <span className="mt-1 block text-[10px] capitalize tracking-[0.08em] text-ink">
+                                {product.process || "—"}
+                            </span>
+                        </div>
 
                     </div>
 
+                    <div className="flex items-center gap-3 border-t border-ink/10 pt-4">
 
-                    <span className="shrink-0 text-[7px] uppercase tracking-[0.18em] text-[#8B625D]">
-                        {roastName}
-                    </span>
+                        <span className="shrink-0 text-[7px] font-semibold uppercase tracking-[0.25em] text-stone">
+                            Roast
+                        </span>
+
+                        <div className="relative h-px flex-1 bg-ink/10">
+                            <motion.div
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: roastLevel ? roastLevel / 5 : 0.5 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                                style={{ transformOrigin: "left" }}
+                                className="absolute inset-y-0 left-0 w-full bg-red"
+                            />
+                        </div>
+
+                        <span className="shrink-0 text-[7px] font-medium uppercase tracking-[0.18em] text-soil">
+                            {roastName}
+                        </span>
+
+                    </div>
 
                 </div>
 

@@ -51,7 +51,7 @@ const footerCollections = [
 const Footer = () =>
 {
     return (
-        <footer className="relative overflow-hidden bg-brown text-lightCream">
+        <footer className="relative overflow-hidden bg-ink text-lightCream">
 
             {/* =====================================================
                 SHOPPING COLLECTIONS
@@ -213,22 +213,24 @@ const Footer = () =>
 
                         {/* BRAND */}
 
-                        <div className="lg:col-span-4">
+                        <div className="lg:col-span-4 space-y-8">
 
-                            {/* <h2 className="font-title text-[clamp(2.8rem,5vw,5rem)] leading-[0.85] tracking-[-0.05em]">
-                                Laali
-                                <br />
-                                <span className="italic text-[#D9828A]">
-                                    Hills.
-                                </span>
-                            </h2> */}
+                            <div className="flex items-center">
+                                <img
+                                    src="/gold.svg"
+                                    alt="Laali Hills"
+                                    className="w-[180px] object-contain sm:w-[220px] lg:w-[260px]"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </div>
 
                             <p className="max-w-sm font-subtitle text-xl italic leading-relaxed text-[#BFA29B]">
                                 From the hills of Nepal,
                                 into your everyday ritual.
                             </p>
 
-                            <div className="mt-8 flex items-center gap-3">
+                            <div className="flex items-center gap-3">
                                 <span className="h-px w-7 bg-red" />
 
                                 <span className="text-[8px] uppercase tracking-[0.3em] text-[#80635E]">

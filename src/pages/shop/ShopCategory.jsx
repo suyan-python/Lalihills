@@ -76,7 +76,7 @@ const ShopCategory = ({
                         className="mb-10 flex items-center gap-4"
                     >
 
-                        <span className="h-px w-9 bg-[#B73E46]" />
+                        <span className="h-px w-9 bg-red" />
 
                         <span className="text-[8px] font-semibold uppercase tracking-[0.35em] text-[#8B625D]">
                             {collectionLabel}
@@ -204,7 +204,7 @@ const ShopCategory = ({
                                 delay: 0.4,
                                 ease: [0.22, 1, 0.36, 1],
                             }}
-                            className="absolute left-0 top-0 h-px bg-[#B73E46]"
+                            className="absolute left-0 top-0 h-px bg-red"
                         />
 
                     </div>

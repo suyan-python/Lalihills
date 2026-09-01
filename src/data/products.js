@@ -13,6 +13,7 @@ export const coffeeProducts = [
     category: "coffee",
     type: "filter roast",
     process: "anaerobic",
+    altitude: "1,300-1,500",
     size: 250,
     price: 1650,
     grindOptions: ["beans", "ground"],
@@ -68,6 +69,7 @@ export const coffeeProducts = [
     profile: 4,
 
     process: "anaerobic",
+    altitude: "1,200-1,500",
     size: 250,
     price: 1650,
     grindOptions: ["beans", "ground"],
@@ -123,6 +125,7 @@ export const coffeeProducts = [
     profile: 4,
 
     process: "anaerobic",
+    altitude: "1,200-1,500",
     size: 250,
     price: 1650,
     grindOptions: ["beans", "ground"],

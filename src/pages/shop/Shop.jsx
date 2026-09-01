@@ -113,7 +113,7 @@ const Shop = () =>
                             className="flex items-center gap-4"
                         >
 
-                            <span className="h-px w-10 bg-[#B73E46]" />
+                            <span className="h-px w-10 bg-red" />
 
                             <span className="
                                 text-[8px]
@@ -161,7 +161,7 @@ const Shop = () =>
                                 "
                             >
                                 From the
-                                <span className="block italic text-[#B73E46]">
+                                <span className="block italic text-red">
                                     hills.
                                 </span>
                             </motion.h1>
@@ -207,7 +207,7 @@ const Shop = () =>
 
                             <div className="mt-7 flex items-center gap-3">
 
-                                <span className="h-px w-12 bg-[#B73E46]" />
+                                <span className="h-px w-12 bg-red" />
 
                                 <span className="
                                     text-[7px]
@@ -539,7 +539,7 @@ const CollectionFeature = ({
                                     size={18}
                                     strokeWidth={1.2}
                                     className="
-                                        text-[#B73E46]
+                                        text-red
                                         transition-transform
                                         duration-500
                                         group-hover:-translate-y-1
