@@ -6,6 +6,7 @@ import SummerOfferings from './SummerOfferings'
 import AuthenticSection from './AuthenticSection'
 import ContextSection from './ContextSection'
 import Collab from './Collab'
+import CertificationSection from './Certification'
 
 const Landing = () =>
 {
@@ -23,6 +24,8 @@ const Landing = () =>
             <Collab />
 
             <SummerOfferings />
+
+            <CertificationSection />
         </div>
     )
 }
