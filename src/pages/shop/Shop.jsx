@@ -109,9 +109,9 @@ const Shop = () =>
                                     text-[#241817]
                                 "
                             >
-                                From the
+                                Our
                                 <span className="block italic text-red">
-                                    hills.
+                                    Selects
                                 </span>
                             </motion.h1>
 
@@ -186,19 +186,19 @@ const Shop = () =>
 
                 <div className="mx-auto max-w-[1500px]">
 
-                    <CollectionFeature
-                        collection={collections[0]}
-                    />
-
                     <div className="
-                        mt-8
+                        my-8
                         grid
                         gap-8
-                        md:grid-cols-2
-                        lg:mt-20
+                        md:grid-cols-3
+                        lg:my-20
                         lg:gap-12
                     ">
 
+                        <CollectionSecondary
+                            collection={collections[0]}
+                            index={0}
+                        />
                         <CollectionSecondary
                             collection={collections[1]}
                             index={1}
@@ -211,6 +211,9 @@ const Shop = () =>
 
                     </div>
 
+                    <CollectionFeature
+                        collection={collections[0]}
+                    />
                 </div>
 
             </section>
@@ -265,7 +268,6 @@ const CollectionFeature = ({ collection }) =>
                     sm:aspect-[16/9]
                     lg:aspect-[21/10]
                 ">
-
                     <motion.img
                         src={collection.image}
                         alt={collection.description}
@@ -283,9 +285,6 @@ const CollectionFeature = ({ collection }) =>
                             group-hover:scale-[1.045]
                         "
                     />
-
-
-                    {/* Overall image tint */}
                     <div className="
                         absolute
                         inset-0
@@ -294,9 +293,6 @@ const CollectionFeature = ({ collection }) =>
                         duration-700
                         group-hover:bg-[#211C16]/5
                     " />
-
-
-                    {/* Bottom luxury gradient */}
                     <div className="
                         absolute
                         inset-0
@@ -305,9 +301,6 @@ const CollectionFeature = ({ collection }) =>
                         via-[#211C16]/35
                         to-transparent
                     " />
-
-
-                    {/* Subtle red atmospheric gradient */}
                     <div className="
                         absolute
                         inset-0
@@ -316,9 +309,6 @@ const CollectionFeature = ({ collection }) =>
                         via-transparent
                         to-transparent
                     " />
-
-
-                    {/* TOP INFO */}
                     <div className="
                         absolute
                         left-6
@@ -334,7 +324,6 @@ const CollectionFeature = ({ collection }) =>
                         lg:right-14
                         lg:top-12
                     ">
-
                         <div className="
                             flex
                             items-center
@@ -355,10 +344,7 @@ const CollectionFeature = ({ collection }) =>
                             ">
                                 {collection.number}
                             </span>
-
                         </div>
-
-
                         <span className="
                             text-[8px]
                             uppercase
@@ -367,11 +353,7 @@ const CollectionFeature = ({ collection }) =>
                         ">
                             Laali Hills
                         </span>
-
                     </div>
-
-
-                    {/* CONTENT */}
                     <div className="
                         absolute
                         bottom-0
@@ -382,12 +364,9 @@ const CollectionFeature = ({ collection }) =>
                         lg:p-14
                         xl:p-16
                     ">
-
                         <div className="
                             max-w-3xl
                         ">
-
-                            {/* Small category */}
                             <div className="
                                 mb-4
                                 flex
@@ -403,11 +382,7 @@ const CollectionFeature = ({ collection }) =>
                                 ">
                                     {collection.subtitle}
                                 </span>
-
                             </div>
-
-
-                            {/* Main title */}
                             <h2 className="
                                 header
                                 max-w-2xl
@@ -429,9 +404,6 @@ const CollectionFeature = ({ collection }) =>
                             ">
                                 {collection.name}
                             </h2>
-
-
-                            {/* Description */}
                             <p className="
                                 mt-6
                                 max-w-md
@@ -444,9 +416,6 @@ const CollectionFeature = ({ collection }) =>
                             ">
                                 {collection.description}
                             </p>
-
-
-                            {/* Bottom action */}
                             <div className="
                                 mt-8
                                 flex
@@ -458,7 +427,6 @@ const CollectionFeature = ({ collection }) =>
                                 sm:mt-10
                                 sm:pt-5
                             ">
-
                                 <span className="
                                     text-[8px]
                                     uppercase
@@ -467,14 +435,11 @@ const CollectionFeature = ({ collection }) =>
                                 ">
                                     {collection.plainName}
                                 </span>
-
-
                                 <div className="
                                     flex
                                     items-center
                                     gap-3
                                 ">
-
                                     <span className="
                                         hidden
                                         text-[8px]
@@ -517,19 +482,11 @@ const CollectionFeature = ({ collection }) =>
                                                 group-hover:translate-x-0.5
                                             "
                                         />
-
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
-
-
-                    {/* Border */}
                     <div className="
                         pointer-events-none
                         absolute
@@ -540,9 +497,7 @@ const CollectionFeature = ({ collection }) =>
                         duration-700
                         group-hover:border-[ivory]/25
                     " />
-
                 </div>
-
             </Link>
         </motion.div>
     );
@@ -578,7 +533,6 @@ const CollectionSecondary = ({
                 ease: [0.22, 1, 0.36, 1],
             }}
         >
-
             <Link
                 to={collection.path}
                 className="group block"
@@ -617,10 +571,6 @@ const CollectionSecondary = ({
                         via-[#241817]/10
                         to-transparent
                     " />
-
-
-                    {/* Number */}
-
                     <div className="
                         absolute
                         left-6
@@ -629,7 +579,6 @@ const CollectionSecondary = ({
                         items-center
                         gap-3
                     ">
-
                         <span className="
                             text-[8px]
                             tracking-[0.3em]
@@ -643,12 +592,7 @@ const CollectionSecondary = ({
                             w-7
                             bg-white/50
                         " />
-
                     </div>
-
-
-                    {/* Bottom content */}
-
                     <div className="
                         absolute
                         bottom-0
@@ -657,7 +601,6 @@ const CollectionSecondary = ({
                         p-7
                         sm:p-9
                     ">
-
                         <span className="
                             text-[8px]
                             uppercase
@@ -666,8 +609,6 @@ const CollectionSecondary = ({
                         ">
                             {collection.subtitle}
                         </span>
-
-
                         <div className="
                             mt-3
                             flex
@@ -675,9 +616,7 @@ const CollectionSecondary = ({
                             justify-between
                             gap-5
                         ">
-
                             <div>
-
                                 <h2 className="
                                     header
                                     text-[clamp(2.8rem,5vw,3rem)]
@@ -688,7 +627,6 @@ const CollectionSecondary = ({
                                 ">
                                     {collection.name}
                                 </h2>
-
                                 <p className="
                                     mt-4
                                     max-w-xs
@@ -698,10 +636,7 @@ const CollectionSecondary = ({
                                 ">
                                     {collection.description}
                                 </p>
-
                             </div>
-
-
                             <div className="
                                 flex
                                 h-11
@@ -718,12 +653,10 @@ const CollectionSecondary = ({
                                 group-hover:bg-white
                                 group-hover:text-[#241817]
                             ">
-
                                 <ArrowUpRight
                                     size={17}
                                     strokeWidth={1.2}
                                 />
-
                             </div>
 
                         </div>

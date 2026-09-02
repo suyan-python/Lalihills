@@ -14,6 +14,7 @@ import Coffee from "./pages/shop/Coffee";
 import Tea from "./pages/shop/Tea";
 import Shop from "./pages/shop/Shop";
 import ScrollManager from "./components/ScrollManager";
+import ProductDetails from "./pages/shop/ProductDetails";
 
 function App()
 {
@@ -43,6 +44,8 @@ function App()
               <Shop />
             }
           />
+
+          <Route path="/shop/coffee/:slug" element={<ProductDetails />} />
 
           <Route
             path="/shop/coffee"

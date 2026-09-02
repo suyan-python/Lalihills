@@ -1,24 +1,35 @@
 import product from "../assets/products/example.webp";
 
+const createRotationImages = (slug, count = 30) => {
+  return Array.from(
+    { length: count },
+    (_, index) =>
+      `/products/${slug}/${String(index + 1).padStart(2, "0")}.webp`,
+  );
+};
+
 export const coffeeProducts = [
   {
-    _id: "filter-anaerobic-250-DHANKUTA",
+    _id: "cold-brew-250-DHANKUTA",
     name: "cold brew",
-    shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
-    slug: "filter-roast-anaerobic-250g-DHANKUTA",
+    shortName: "Cold Brew – 250g [Beans / Ground]",
+    slug: "cold-brew-250g-DHANKUTA",
     image: product,
-    imageColor: "#E8D1CA",
-
     hoverImage: product,
+    rotationImages: createRotationImages("cold-brew-250g-DHANKUTA", 30),
+    imageColor: "#E8D1CA",
     category: "coffee",
-    type: "filter roast",
+    type: "cold brew",
+    roastLevel: 4,
+    caffeine: "full",
+    profile: 4,
     process: "anaerobic",
     altitude: "1,300-1,500",
     size: 250,
     price: 1650,
     grindOptions: ["beans", "ground"],
     description:
-      "Bold and complex Nepali filter roast, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
+      "Bold and complex Nepali coffee, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
     shortDescription:
       "Bold, fruity, and complex — a unique anaerobic expression.",
     aroma: ["molasses", "caramel", "chocolatey"],
@@ -52,22 +63,24 @@ export const coffeeProducts = [
       },
     ],
   },
+
   {
-    _id: "filter-anaerobic-250-DHANKUTA",
+    _id: "monarch-250-DHANKUTA",
     name: "Monarch",
     shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
-    slug: "filter-roast-anaerobic-250g-DHANKUTA",
+    slug: "filter-roast-anaerobic-monarch-250g-DHANKUTA",
     image: product,
-    imageColor: "#D8B9A9",
-
     hoverImage: product,
+    rotationImages: createRotationImages(
+      "filter-roast-anaerobic-monarch-250g-DHANKUTA",
+      30,
+    ),
+    imageColor: "#D8B9A9",
     category: "coffee",
     type: "filter roast",
-
     roastLevel: 4,
     caffeine: "full",
     profile: 4,
-
     process: "anaerobic",
     altitude: "1,200-1,500",
     size: 250,
@@ -108,22 +121,24 @@ export const coffeeProducts = [
       },
     ],
   },
+
   {
-    _id: "filter-anaerobic-250-DHANKUTA",
+    _id: "special-edition-250-DHANKUTA",
     name: "special edition",
     shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
-    slug: "filter-roast-anaerobic-250g-DHANKUTA",
+    slug: "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
     image: product,
-    imageColor: "#C69A82",
-
     hoverImage: product,
+    rotationImages: createRotationImages(
+      "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
+      30,
+    ),
+    imageColor: "#C69A82",
     category: "coffee",
     type: "filter roast",
-
     roastLevel: 4,
     caffeine: "full",
     profile: 4,
-
     process: "anaerobic",
     altitude: "1,200-1,500",
     size: 250,

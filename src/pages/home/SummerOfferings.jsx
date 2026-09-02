@@ -8,22 +8,22 @@ import summerGifting from "../../assets/offerings/img3.webp";
 
 const offerings = [
     {
-        title: "Summer Coffee",
-        subtitle: "Cool. Bright. Refreshing.",
+        title: "Coffee",
+        subtitle: "Highland grown. Carefully crafted.",
         image: summerCoffee,
-        link: "#",
+        link: "/shop/coffee",
     },
     {
-        title: "Summer Tea",
-        subtitle: "A cooler way to discover Nepal.",
+        title: "Tea",
+        subtitle: "Nepal's hills, steeped in character.",
         image: summerTea,
-        link: "#",
+        link: "/shop/tea",
     },
     {
-        title: "Summer Gifting",
-        subtitle: "Thoughtful moments from the hills.",
+        title: "Gifting",
+        subtitle: "Thoughtful expressions from the hills.",
         image: summerGifting,
-        link: "#",
+        link: "/shop/gifts",
     },
 ];
 
@@ -32,73 +32,35 @@ const SummerOfferings = () =>
 {
     return (
         <section className="relative overflow-hidden bg-brown px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24 ">
-
             <div className="mx-auto max-w-[1700px]">
-
-                {/* =================================================
-                    HEADER
-                ================================================= */}
-
                 <div className="mx-auto max-w-3xl text-center">
 
                     <motion.h2
-                        initial={{
-                            opacity: 0,
-                            y: 30,
-                        }}
-                        whileInView={{
-                            opacity: 1,
-                            y: 0,
-                        }}
-                        viewport={{
-                            once: true,
-                            amount: 0.5,
-                        }}
-                        transition={{
-                            duration: 0.9,
-                            delay: 0.1,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                         className="mt-6 header text-[clamp(4rem,6vw,7rem)] leading-[0.9] tracking-[-0.055em] text-lightCream"
                     >
-                        Summer <br />
+                        From the <br />
                         <span className="ml-3 italic text-red">
-                            Offerings
+                            Hills
                         </span>
                     </motion.h2>
 
 
                     <motion.p
-                        initial={{
-                            opacity: 0,
-                            y: 20,
-                        }}
-                        whileInView={{
-                            opacity: 1,
-                            y: 0,
-                        }}
-                        viewport={{
-                            once: true,
-                            amount: 0.5,
-                        }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.25,
-                        }}
-                        className="mx-auto mt-8 max-w-xl text-sm leading-7 text-ivory sm:text-base font-light"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.8, delay: 0.25 }}
+                        className="mx-auto mt-8 max-w-xl text-sm font-light leading-7 text-ivory sm:text-base"
                     >
-                        A seasonal collection inspired by warmer days,
-                        cooler cups and the flavours of Nepal's hills.
-                        Discover something made for summer.
+                        From the richness of Nepal's highlands to the hands that bring
+                        it to you. Explore what Laali Hills brings home from the hills.
                     </motion.p>
 
                 </div>
-
-
-                {/* =================================================
-                    OFFERING CARDS
-                ================================================= */}
-
                 <div className="mt-16 grid grid-cols-1 gap-5 sm:mt-20 md:grid-cols-3 lg:gap-7">
 
                     {offerings.map((offering, index) =>
@@ -138,10 +100,6 @@ const SummerOfferings = () =>
 `}
                             >
 
-                                {/* =================================================
-                                    IMAGE
-                                ================================================= */}
-
                                 <motion.img
                                     src={offering.image}
                                     alt={offering.title}
@@ -160,20 +118,8 @@ const SummerOfferings = () =>
                                     }}
                                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.06]"
                                 />
-
-
-                                {/* =================================================
-                                    IMAGE OVERLAY
-                                ================================================= */}
-
                                 <div className="absolute inset-0 bg-gradient-to-t from-brown/90 via-brown/20 to-transparent" />
-
                                 <div className="absolute inset-0 bg-deepRed/10 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0" />
-
-
-                                {/* =================================================
-                                    CARD CONTENT
-                                ================================================= */}
 
                                 <div className="absolute inset-x-0 bottom-0 p-7 sm:p-9">
 
@@ -184,34 +130,20 @@ const SummerOfferings = () =>
                                             <span className="text-[8px] uppercase tracking-[0.3em] text-lightCream/60">
                                                 0{index + 1}
                                             </span>
-
                                             <h3 className="mt-3 subheader text-3xl leading-none tracking-[-0.04em] text-lightCream sm:text-4xl">
                                                 {offering.title}
                                             </h3>
-
                                             <p className="mt-3 max-w-[220px] text-xs leading-5 text-lightCream/70">
                                                 {offering.subtitle}
                                             </p>
-
                                         </div>
-
-
-                                        {/* Arrow */}
-
                                         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-lightCream/30 text-lightCream transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-lightCream group-hover:text-brown">
-
                                             <ArrowUpRight
                                                 size={17}
                                                 strokeWidth={1.3}
                                             />
-
                                         </div>
-
                                     </div>
-
-
-                                    {/* Bottom line */}
-
                                     <motion.div
                                         initial={{
                                             width: 0,
@@ -223,12 +155,6 @@ const SummerOfferings = () =>
                                     />
 
                                 </div>
-
-
-                                {/* =================================================
-                                    HOVER NUMBER
-                                ================================================= */}
-
                                 <div className="pointer-events-none absolute left-7 top-8 overflow-hidden sm:left-9">
 
                                     <motion.span
@@ -242,20 +168,13 @@ const SummerOfferings = () =>
                                     >
                                         0{index + 1}
                                     </motion.span>
-
                                 </div>
-
                             </motion.a>
                         );
                     })}
-
                 </div>
-
             </div>
-
         </section>
     );
 };
-
-
 export default SummerOfferings;
