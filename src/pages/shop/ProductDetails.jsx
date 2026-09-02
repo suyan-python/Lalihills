@@ -84,10 +84,10 @@ const FaqItem = ({ number, question, answer }) => (
     </details>
 );
 
-const ProductDetails = ({ products }) =>
+const ProductDetails = ({ products = [] }) =>
 {
     const { slug } = useParams();
-    const product = products.find((item) => item.slug === slug);
+    const product = products?.find((item) => item.slug === slug);
 
     const sectionRef = useRef(null);
     const [quantity, setQuantity] = useState(1);
@@ -146,7 +146,7 @@ const ProductDetails = ({ products }) =>
 
             {/* PRODUCT INTRO */}
 
-            <section className="relative flex min-h-screen items-center px-6 pt-28 sm:px-10 lg:px-16">
+            <section className="relative flex min-h-screen items-start justify-start px-6 pt-28 sm:px-10 lg:px-16 ">
                 <div className="mx-auto grid w-full max-w-375 grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
 
                     <motion.div
