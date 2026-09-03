@@ -100,6 +100,17 @@ const ProductDetails = ({ products = [] }) =>
     const [purchaseType, setPurchaseType] = useState("one-time");
     const [frequency, setFrequency] = useState(product?.frequencies?.[0] || "Every 4 Weeks");
 
+    const DEFAULT_FREQUENCIES = [
+        "Weekly",
+        "Every 2 Weeks",
+        "Every 3 Weeks",
+        "Every 4 Weeks",
+    ];
+    const handleFrequencyChange = (value) =>
+    {
+        setFrequency(value);
+    };
+
     // Bag-size options with their own price. Falls back to a single size
     // built from the product's existing size/price fields when the product
     // doesn't define sizeOptions yet.
@@ -162,10 +173,22 @@ const ProductDetails = ({ products = [] }) =>
     const ringScale = useTransform(scrollYProgress, [0.03, 0.15], [0.75, 1]);
     const ringOpacity = useTransform(scrollYProgress, [0.03, 0.15], [0, 1]);
 
-    const originReveal = useTransform(scrollYProgress, [0.18, 0.34], [0, 1]);
-    const altitudeReveal = useTransform(scrollYProgress, [0.36, 0.52], [0, 1]);
-    const processReveal = useTransform(scrollYProgress, [0.54, 0.7], [0, 1]);
-    const roastReveal = useTransform(scrollYProgress, [0.72, 0.88], [0, 1]);
+    const originReveal = useTransform(scrollYProgress, [0.12, 0.22], [0, 1]);
+
+    const altitudeReveal = useTransform(scrollYProgress, [0.22, 0.32], [0, 1]);
+
+    const flavorReveal = useTransform(scrollYProgress, [0.32, 0.42], [0, 1]);
+
+    const aromaReveal = useTransform(scrollYProgress, [0.42, 0.52], [0, 1]);
+
+    const processReveal = useTransform(scrollYProgress, [0.52, 0.62], [0, 1]);
+
+    const roastReveal = useTransform(scrollYProgress, [0.62, 0.72], [0, 1]);
+
+    const caffeineReveal = useTransform(scrollYProgress, [0.72, 0.82], [0, 1]);
+
+    const typeReveal = useTransform(scrollYProgress, [0.82, 0.92], [0, 1]);
+
     const mobileDetailOpacity = useTransform(scrollYProgress, [0.16, 0.3], [0, 1]);
     const descriptionReveal = useTransform(scrollYProgress, [0.14, 0.28], [0, 1]);
     const descriptionY = useTransform(scrollYProgress, [0.14, 0.28], [24, 0]);
@@ -348,11 +371,10 @@ const ProductDetails = ({ products = [] }) =>
                     {/* DETAIL SPOKES — point out from the ring, staggered as you keep scrolling */}
 
                     <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 hidden h-[min(72vw,72vh)] w-[min(72vw,72vh)] max-h-168 max-w-2xl -translate-x-1/2 -translate-y-1/2 lg:block">
-
                         <CircularDetail
                             title="Origin"
                             value={product.origin}
-                            position="left-[-18%] top-[22%]"
+                            position="left-[-22%] top-[18%]"
                             linePosition="left-full top-1/2"
                             lineFrom="left"
                             reveal={originReveal}
@@ -361,7 +383,7 @@ const ProductDetails = ({ products = [] }) =>
                         <CircularDetail
                             title="Altitude"
                             value={`${product.altitude} m`}
-                            position="right-[-18%] top-[22%]"
+                            position="right-[-22%] top-[18%]"
                             linePosition="right-full top-1/2"
                             lineFrom="right"
                             reveal={altitudeReveal}
@@ -370,7 +392,7 @@ const ProductDetails = ({ products = [] }) =>
                         <CircularDetail
                             title="Process"
                             value={product.process}
-                            position="left-[-18%] bottom-[22%]"
+                            position="left-[-22%] bottom-[18%]"
                             linePosition="left-full top-1/2"
                             lineFrom="left"
                             reveal={processReveal}
@@ -379,12 +401,47 @@ const ProductDetails = ({ products = [] }) =>
                         <CircularDetail
                             title="Roast"
                             value={`${product.roastLevel}/5`}
-                            position="right-[-18%] bottom-[22%]"
+                            position="right-[-22%] bottom-[18%]"
                             linePosition="right-full top-1/2"
                             lineFrom="right"
                             reveal={roastReveal}
                         />
 
+                        <CircularDetail
+                            title="Flavour"
+                            value={product.flavors.join(" · ")}
+                            position="left-[-30%] top-1/2 -translate-y-1/2"
+                            linePosition="left-full top-1/2"
+                            lineFrom="left"
+                            reveal={flavorReveal}
+                        />
+
+                        <CircularDetail
+                            title="Aroma"
+                            value={product.aroma.join(" · ")}
+                            position="right-[-30%] top-1/2 -translate-y-1/2"
+                            linePosition="right-full top-1/2"
+                            lineFrom="right"
+                            reveal={aromaReveal}
+                        />
+
+                        <CircularDetail
+                            title="Caffeine"
+                            value={product.caffeine}
+                            position="left-[-15%] bottom-[-8%]"
+                            linePosition="right-full top-1/2"
+                            lineFrom="left"
+                            reveal={caffeineReveal}
+                        />
+
+                        <CircularDetail
+                            title="Type"
+                            value={product.type}
+                            position="right-[-15%] bottom-[-8%]"
+                            linePosition="left-full top-1/2"
+                            lineFrom="right"
+                            reveal={typeReveal}
+                        />
                     </div>
 
 
@@ -409,7 +466,6 @@ const ProductDetails = ({ products = [] }) =>
 
             <section className="bg-lightCream px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
                 <div className="mx-auto grid max-w-350 grid-cols-1 gap-16 lg:grid-cols-[1fr_0.7fr] lg:gap-28">
-
                     <div>
                         <span className="text-[8px] uppercase tracking-[0.4em] text-soil">
                             The story
@@ -426,18 +482,10 @@ const ProductDetails = ({ products = [] }) =>
                         <p className="mt-8 max-w-2xl text-sm font-light leading-8 text-ink/65 sm:text-base">
                             {product.description}
                         </p>
-
-
-                        {/* PRODUCT FACTS */}
-
                         <div className="mt-14">
                             <ProductInfoGrid product={product} />
                         </div>
                     </div>
-
-
-                    {/* BUY BOX */}
-
                     <div className="lg:pt-20">
 
                         <div className="border-t border-ink/15 pt-6">
@@ -688,7 +736,8 @@ const ProductDetails = ({ products = [] }) =>
                 purchaseType={purchaseType}
                 onChangePurchaseType={setPurchaseType}
                 frequency={frequency}
-                onChangeFrequency={setFrequency}
+                onChangeFrequency={handleFrequencyChange}
+                frequencies={DEFAULT_FREQUENCIES}
                 quantity={quantity}
                 onChangeQuantity={setQuantity}
                 onAddToCart={handleAddToCart}
