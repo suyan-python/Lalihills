@@ -16,7 +16,6 @@ export const coffeeProducts = [
     slug: "cold-brew-250g-DHANKUTA",
     image: product,
     hoverImage: product,
-    rotationImages: createRotationImages("cold-brew-250g-DHANKUTA", 30),
     imageColor: "#E8D1CA",
     category: "coffee",
     type: "cold brew",
@@ -73,7 +72,7 @@ export const coffeeProducts = [
     hoverImage: product,
     rotationImages: createRotationImages(
       "filter-roast-anaerobic-monarch-250g-DHANKUTA",
-      30,
+      3,
     ),
     imageColor: "#D8B9A9",
     category: "coffee",
@@ -131,7 +130,7 @@ export const coffeeProducts = [
     hoverImage: product,
     rotationImages: createRotationImages(
       "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
-      30,
+      27,
     ),
     imageColor: "#C69A82",
     category: "coffee",
