@@ -22,8 +22,6 @@ function App()
   return (
     <BrowserRouter>
       <ScrollManager />
-
-
       <Routes>
 
         {/* =================================
