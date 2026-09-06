@@ -4,6 +4,7 @@ import { ArrowLeft, Minus, Plus, ShoppingBag } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import ProductInfoGrid from "./ProductInfoGrid";
 import StickyPurchaseBar from "./StickyPurchaseBar";
+import { useCart } from "../../layouts/CartContext";
 
 // CircularDetail now takes a `reveal` motion value (0 -> 1) so each label
 // draws itself in on its own scroll band, instead of being static for the
@@ -13,6 +14,7 @@ const CircularDetail = ({ title, value, position, linePosition, reveal, lineFrom
     const opacity = reveal;
     const scale = useTransform(reveal, [0, 1], [0.85, 1]);
     const lineScale = useTransform(reveal, [0, 1], [0, 1]);
+    const { addToCart } = useCart();
 
     return (
         <div className={`absolute ${position}`}>
@@ -110,6 +112,16 @@ const ProductDetails = ({ products = [] }) =>
     {
         setFrequency(value);
     };
+
+    const handleAddToCart = () => {
+    addToCart(product, {
+        size: selectedSize,
+        grind: selectedGrind,
+        purchaseType,
+        frequency: purchaseType === "subscribe" ? frequency : null,
+        quantity,
+    });
+};
 
     // Bag-size options with their own price. Falls back to a single size
     // built from the product's existing size/price fields when the product
@@ -235,10 +247,10 @@ const ProductDetails = ({ products = [] }) =>
 
     // TODO: wire this up to your actual cart (context/store/API) — currently
     // just a placeholder so both purchase surfaces have somewhere to call.
-    const handleAddToCart = (payload) =>
-    {
-        console.log("Add to cart:", payload);
-    };
+    // const handleAddToCart = (payload) =>
+    // {
+    //     console.log("Add to cart:", payload);
+    // };
 
     return (
         <main className="overflow-x-clip bg-lightCream pb-20 text-ink sm:pb-24">

@@ -5,7 +5,6 @@ import
   Route,
 } from "react-router-dom";
 
-
 import Landing from "./pages/home/HeroLanding";
 import MainLayout from "./layouts/MainLayout";
 import Support from "./pages/contact/Support";
@@ -16,10 +15,14 @@ import Shop from "./pages/shop/Shop";
 import ScrollManager from "./components/ScrollManager";
 import ProductDetails from "./pages/shop/ProductDetails";
 import { coffeeProducts, teaProducts } from "./data/products";
+import CartDrawer from "./layouts/CartDrawer";
 
 function App()
 {
   return (
+    <>
+    
+    
     <BrowserRouter>
       <ScrollManager />
       <Routes>
@@ -179,6 +182,9 @@ function App()
 
       </Routes>
     </BrowserRouter>
+
+    <CartDrawer/>
+    </>
   );
 }
 

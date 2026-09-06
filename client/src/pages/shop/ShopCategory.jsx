@@ -23,11 +23,6 @@ const ShopCategory = ({
     return (
         <main className="min-h-screen max-w-7xl mx-auto px-8 md:px-0">
 
-
-            {/* =================================================
-                SEO
-            ================================================= */}
-
             <Helmet>
 
                 <title>
