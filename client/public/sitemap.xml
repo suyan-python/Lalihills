@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Main -->
+    <url>
+        <loc>https://laalihills.com/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Shop -->
+    <url>
+        <loc>https://laalihills.com/shop</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://laalihills.com/shop/coffee</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://laalihills.com/shop/tea</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Explore -->
+    <url>
+        <loc>https://laalihills.com/explore</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://laalihills.com/explore/origins</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://laalihills.com/explore/farmers</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://laalihills.com/explore/processes</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://laalihills.com/explore/why-laali-hills</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://laalihills.com/explore/nepal-coffee</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Stories -->
+    <url>
+        <loc>https://laalihills.com/stories</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://laalihills.com/stories/farm</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://laalihills.com/stories/coffee</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://laalihills.com/stories/tea</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://laalihills.com/stories/culture</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- About -->
+    <url>
+        <loc>https://laalihills.com/about</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Support -->
+    <url>
+        <loc>https://laalihills.com/support</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+
+    <url>
+    <loc>https://laalihills.com/shop/coffee/cold-brew-250g-DHANKUTA</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+<url>
+    <loc>https://laalihills.com/shop/coffee/filter-roast-anaerobic-monarch-250g-DHANKUTA</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+<url>
+    <loc>https://laalihills.com/shop/coffee/filter-roast-anaerobic-special-edition-250g-DHANKUTA</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+</urlset>

@@ -1,585 +1,404 @@
 import { motion } from "framer-motion";
-import
-{
-    ArrowUpRight,
-    Mail,
-    MapPin,
-    Phone,
-} from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 
-import
-{
-    FaFacebookF,
-    FaInstagram,
-    FaTiktok,
-} from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
 
 // Replace these with your actual images
 
-import coffee from "../assets/footer/coffee.webp"
-import tea from "../assets/footer/tea.jpeg"
-import gift from "../assets/footer/gift.webp"
-import bulk from "../assets/footer/bulk.jpg"
+import coffee from "../assets/footer/coffee.webp";
+import tea from "../assets/footer/tea.jpeg";
+import gift from "../assets/footer/gift.webp";
+import bulk from "../assets/footer/bulk.jpg";
 
 const footerCollections = [
-    {
-        title: "Coffee",
-        subtitle: "From the hills of Nepal",
-        image: coffee,
-        link: "/shop/coffee",
-    },
-    {
-        title: "Tea",
-        subtitle: "Leaves shaped by the hills",
-        image: tea,
-        link: "/shop/tea",
-    },
-    {
-        title: "Gift Packaging",
-        subtitle: "Give a taste of Nepal",
-        image: gift,
-        link: "/shop/gifts",
-    },
-    {
-        title: "Bulk Order",
-        subtitle: "For businesses & gatherings",
-        image: bulk,
-        link: "/bulk-order",
-    },
+  {
+    title: "Coffee",
+    subtitle: "From the hills of Nepal",
+    image: coffee,
+    link: "/shop/coffee",
+  },
+  {
+    title: "Tea",
+    subtitle: "Leaves shaped by the hills",
+    image: tea,
+    link: "/shop/tea",
+  },
+  {
+    title: "Gift Packaging",
+    subtitle: "Give a taste of Nepal",
+    image: gift,
+    link: "/shop/gifts",
+  },
+  {
+    title: "Bulk Order",
+    subtitle: "For businesses & gatherings",
+    image: bulk,
+    link: "/bulk-order",
+  },
 ];
 
-const Footer = () =>
-{
-    return (
-        <footer className="relative overflow-hidden bg-ink text-lightCream">
-
-            {/* =====================================================
+const Footer = () => {
+  return (
+    <footer className="relative overflow-hidden bg-ink text-lightCream">
+      {/* =====================================================
                 SHOPPING COLLECTIONS
             ====================================================== */}
 
-            <section className="bg-lightCream">
+      <section className="bg-lightCream">
+        <div className="mx-auto w-full">
+          <div className="grid grid-cols-2 md:grid-cols-4">
+            {footerCollections.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{
+                  opacity: 0,
+                  y: -60,
+                  scale: 0.98,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.15,
+                }}
+                transition={{
+                  duration: 0.9,
+                  delay: index * 0.12,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="group relative aspect-[3/5] overflow-hidden"
+              >
+                {/* Background image */}
 
-                <div className="mx-auto w-full">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+                />
 
-                    {/* Section heading */}
+                {/* Dark overlay */}
 
-                    {/* <motion.div
-                        initial={{ opacity: 0, y: 25 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{
-                            duration: 0.8,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
-                        className="mb-10 flex items-end justify-between gap-6 sm:mb-12"
-                    >
-                        <div>
-                            <div className="mb-4 flex items-center gap-3">
-                                <span className="h-px w-8 bg-red" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown/85 via-brown/20 to-transparent" />
 
-                                <span className="text-[8px] font-semibold uppercase tracking-[0.35em] text-mutedBrown sm:text-[9px]">
-                                    Explore Laali Hills
-                                </span>
-                            </div>
+                {/* Subtle brown tint */}
 
-                            <h2 className="subheader text-[clamp(2.5rem,5vw,5rem)] leading-[0.9] tracking-[-0.045em] text-brown">
-                                Find your
-                                <span className="ml-2 italic text-red">
-                                    way in.
-                                </span>
-                            </h2>
-                        </div>
+                <div className="absolute inset-0 bg-[#3B211E]/10 transition-opacity duration-500 group-hover:opacity-0" />
 
-                        <p className="hidden max-w-xs pb-1 text-right font-body text-[11px] leading-5 text-[#80635E] sm:block">
-                            Discover coffee, tea and experiences
-                            rooted in the hills of Nepal.
-                        </p>
-                    </motion.div> */}
+                {/* Content */}
 
+                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+                  <h3 className="text-[clamp(1.2rem,3vw,2rem)] leading-none tracking-[-0.03em] text-white">
+                    {item.title}
+                  </h3>
 
-                    {/* =================================================
-                        FOUR COLLECTION CARDS
-                    ================================================== */}
-
-                    <div className="grid grid-cols-2 md:grid-cols-4">
-
-                        {footerCollections.map((item, index) => (
-                            <motion.div
-                                key={item.title}
-                                initial={{
-                                    opacity: 0,
-                                    y: -60,
-                                    scale: 0.98,
-                                }}
-                                whileInView={{
-                                    opacity: 1,
-                                    y: 0,
-                                    scale: 1,
-                                }}
-                                viewport={{
-                                    once: true,
-                                    amount: 0.15,
-                                }}
-                                transition={{
-                                    duration: 0.9,
-                                    delay: index * 0.12,
-                                    ease: [0.22, 1, 0.36, 1],
-                                }}
-                                className="group relative aspect-[3/5] overflow-hidden"
-                            >
-
-                                {/* Background image */}
-
-                                <img
-                                    src={item.image}
-                                    alt={item.title}
-                                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
-                                />
-
-                                {/* Dark overlay */}
-
-                                <div className="absolute inset-0 bg-gradient-to-t from-brown/85 via-brown/20 to-transparent" />
-
-                                {/* Subtle brown tint */}
-
-                                <div className="absolute inset-0 bg-[#3B211E]/10 transition-opacity duration-500 group-hover:opacity-0" />
-
-
-                                {/* Content */}
-
-                                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
-
-                                    <h3 className="text-[clamp(1.2rem,3vw,2rem)] leading-none tracking-[-0.03em] text-white">
-                                        {item.title}
-                                    </h3>
-
-                                    {/* CTA */}
-                                    <a
-                                        href={item.link}
-                                        className="group/cta mt-6 inline-flex items-center gap-3 border-b border-white/40 pb-2 text-[8px] font-semibold uppercase tracking-[0.3em] text-white transition-colors duration-300 hover:border-[#D9828A]"
-                                    >
-                                        Shop
-
-                                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 transition-colors duration-300 group-hover/cta:bg-red">
-                                            <ArrowUpRight
-                                                size={12}
-                                                strokeWidth={1.5}
-                                                className="transition-transform duration-300 group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
-                                            />
-                                        </span>
-                                    </a>
-                                </div>
-                            </motion.div>
-                        ))}
-
-                    </div>
+                  {/* CTA */}
+                  <a
+                    href={item.link}
+                    className="group/cta mt-6 inline-flex items-center gap-3 border-b border-white/40 pb-2 text-[8px] font-semibold uppercase tracking-[0.3em] text-white transition-colors duration-300 hover:border-[#D9828A]"
+                  >
+                    Shop
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 transition-colors duration-300 group-hover/cta:bg-red">
+                      <ArrowUpRight
+                        size={12}
+                        strokeWidth={1.5}
+                        className="transition-transform duration-300 group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
+                      />
+                    </span>
+                  </a>
                 </div>
-            </section>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-
-            {/* =====================================================
+      {/* =====================================================
                 MAIN FOOTER
             ====================================================== */}
 
-            <section className="relative overflow-hidden border-t border-white/[0.08] ">
-
-                {/* =================================================
+      <section className="relative overflow-hidden border-t border-white/[0.08] ">
+        {/* =================================================
                     HUGE BACKGROUND LOGOTYPE
                 ================================================== */}
 
-                <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden select-none ">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            duration: 1.2,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
-                        className="whitespace-nowrap text-center font-title text-[22vw] leading-none tracking-[-0.07em] text-lightCream/[0.05] sm:text-[20vw] "
-                    >
-                        LAALI HILLS
-                    </motion.div>
-                </div>
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden select-none ">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 1.2,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="whitespace-nowrap text-center font-title text-[22vw] leading-none tracking-[-0.07em] text-lightCream/[0.05] sm:text-[20vw] "
+          >
+            LAALI HILLS
+          </motion.div>
+        </div>
 
-
-                <div className="relative z-10 mx-auto max-w-[1500px] px-6 pb-7 pt-16 sm:px-10 sm:pt-20 lg:px-14 lg:pt-24">
-
-                    {/* =================================================
+        <div className="relative z-10 mx-auto max-w-[1500px] px-6 pb-7 pt-16 sm:px-10 sm:pt-20 lg:px-14 lg:pt-24">
+          {/* =================================================
                         TOP FOOTER
                     ================================================== */}
 
-                    <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
+          <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
+            {/* BRAND */}
 
-                        {/* BRAND */}
+            <div className="lg:col-span-4 space-y-8">
+              <div className="flex items-center">
+                <img
+                  src="/gold.svg"
+                  alt="Laali Hills"
+                  className="w-[180px] object-contain sm:w-[220px] lg:w-[260px]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
 
-                        <div className="lg:col-span-4 space-y-8">
+              <p className="max-w-sm font-subtitle text-xl italic leading-relaxed text-[#BFA29B]">
+                From the hills of Nepal, into your everyday ritual.
+              </p>
 
-                            <div className="flex items-center">
-                                <img
-                                    src="/gold.svg"
-                                    alt="Laali Hills"
-                                    className="w-[180px] object-contain sm:w-[220px] lg:w-[260px]"
-                                    loading="lazy"
-                                    decoding="async"
-                                />
-                            </div>
+              <div className="flex items-center gap-3">
+                <span className="h-px w-7 bg-red" />
 
-                            <p className="max-w-sm font-subtitle text-xl italic leading-relaxed text-[#BFA29B]">
-                                From the hills of Nepal,
-                                into your everyday ritual.
-                            </p>
+                <span className="text-[8px] uppercase tracking-[0.3em] text-[#80635E]">
+                  Nepal • Origin • Craft
+                </span>
+              </div>
+            </div>
 
-                            <div className="flex items-center gap-3">
-                                <span className="h-px w-7 bg-red" />
+            {/* SHOP */}
 
-                                <span className="text-[8px] uppercase tracking-[0.3em] text-[#80635E]">
-                                    Nepal • Origin • Craft
-                                </span>
-                            </div>
+            <div className="lg:col-span-2">
+              <FooterHeading>Shop</FooterHeading>
 
-                        </div>
+              <FooterLink href="/shop/coffee">Coffee</FooterLink>
 
+              <FooterLink href="/shop/tea">Tea</FooterLink>
 
-                        {/* SHOP */}
+              <FooterLink href="/shop/gifts">Gifts</FooterLink>
 
-                        <div className="lg:col-span-2">
+              <FooterLink href="/shop/accessories">Accessories</FooterLink>
 
-                            <FooterHeading>
-                                Shop
-                            </FooterHeading>
+              <FooterLink href="/bulk-order">Bulk Order</FooterLink>
+            </div>
 
-                            <FooterLink href="/shop/coffee">
-                                Coffee
-                            </FooterLink>
+            {/* EXPLORE */}
 
-                            <FooterLink href="/shop/tea">
-                                Tea
-                            </FooterLink>
+            <div className="lg:col-span-2">
+              <FooterHeading>Explore</FooterHeading>
 
-                            <FooterLink href="/shop/gifts">
-                                Gifts
-                            </FooterLink>
+              <FooterLink href="/explore/origins">Origins</FooterLink>
 
-                            <FooterLink href="/shop/accessories">
-                                Accessories
-                            </FooterLink>
+              <FooterLink href="/explore/farmers">Farmers</FooterLink>
 
-                            <FooterLink href="/bulk-order">
-                                Bulk Order
-                            </FooterLink>
+              <FooterLink href="/explore/process">Our Process</FooterLink>
 
-                        </div>
+              <FooterLink href="/explore/nepal-coffee">Nepal Coffee</FooterLink>
 
+              <FooterLink href="/stories">Stories</FooterLink>
 
-                        {/* EXPLORE */}
+              <FooterLink href="/about">About Us</FooterLink>
+            </div>
 
-                        <div className="lg:col-span-2">
+            {/* SUPPORT */}
 
-                            <FooterHeading>
-                                Explore
-                            </FooterHeading>
+            <div className="lg:col-span-2">
+              <FooterHeading>Support</FooterHeading>
 
-                            <FooterLink href="/explore/origins">
-                                Origins
-                            </FooterLink>
+              <FooterLink href="/contact">Contact</FooterLink>
 
-                            <FooterLink href="/explore/farmers">
-                                Farmers
-                            </FooterLink>
+              <FooterLink href="/shipping">Shipping</FooterLink>
 
-                            <FooterLink href="/explore/process">
-                                Our Process
-                            </FooterLink>
+              <FooterLink href="/faq">FAQ</FooterLink>
 
-                            <FooterLink href="/explore/nepal-coffee">
-                                Nepal Coffee
-                            </FooterLink>
+              <FooterLink href="/returns">Returns</FooterLink>
 
-                            <FooterLink href="/stories">
-                                Stories
-                            </FooterLink>
+              <FooterLink href="/privacy">Privacy</FooterLink>
+            </div>
 
-                            <FooterLink href="/about">
-                                About Us
-                            </FooterLink>
+            {/* NEWSLETTER */}
 
-                        </div>
+            <div className="lg:col-span-2">
+              <FooterHeading>Stay in the hills</FooterHeading>
 
+              <p className="mb-5 max-w-xs text-[10px] leading-5 text-[#9A7B75]">
+                Join us for new origins, stories, seasonal releases and
+                occasional offerings from Laali Hills.
+              </p>
 
-                        {/* SUPPORT */}
+              <form
+                onSubmit={(e) => e.preventDefault()}
+                className="border-b border-[#E9C9C1]/20"
+              >
+                <div className="flex items-center">
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    className="w-full bg-transparent py-3 text-xs text-lightCream outline-none placeholder:text-[#765954]"
+                  />
 
-                        <div className="lg:col-span-2">
+                  <button
+                    type="submit"
+                    aria-label="Subscribe"
+                    className="text-[#D9828A] transition-transform duration-300 hover:translate-x-1"
+                  >
+                    <ArrowUpRight size={16} strokeWidth={1.5} />
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
 
-                            <FooterHeading>
-                                Support
-                            </FooterHeading>
-
-                            <FooterLink href="/contact">
-                                Contact
-                            </FooterLink>
-
-                            <FooterLink href="/shipping">
-                                Shipping
-                            </FooterLink>
-
-                            <FooterLink href="/faq">
-                                FAQ
-                            </FooterLink>
-
-                            <FooterLink href="/returns">
-                                Returns
-                            </FooterLink>
-
-                            <FooterLink href="/privacy">
-                                Privacy
-                            </FooterLink>
-
-                        </div>
-
-
-                        {/* NEWSLETTER */}
-
-                        <div className="lg:col-span-2">
-
-                            <FooterHeading>
-                                Stay in the hills
-                            </FooterHeading>
-
-                            <p className="mb-5 max-w-xs text-[10px] leading-5 text-[#9A7B75]">
-                                Join us for new origins, stories,
-                                seasonal releases and occasional
-                                offerings from Laali Hills.
-                            </p>
-
-                            <form
-                                onSubmit={(e) => e.preventDefault()}
-                                className="border-b border-[#E9C9C1]/20"
-                            >
-                                <div className="flex items-center">
-
-                                    <input
-                                        type="email"
-                                        placeholder="Your email"
-                                        className="w-full bg-transparent py-3 text-xs text-lightCream outline-none placeholder:text-[#765954]"
-                                    />
-
-                                    <button
-                                        type="submit"
-                                        aria-label="Subscribe"
-                                        className="text-[#D9828A] transition-transform duration-300 hover:translate-x-1"
-                                    >
-                                        <ArrowUpRight
-                                            size={16}
-                                            strokeWidth={1.5}
-                                        />
-                                    </button>
-
-                                </div>
-                            </form>
-
-                        </div>
-
-                    </div>
-
-
-                    {/* =================================================
+          {/* =================================================
                         CONTACT STRIP
                     ================================================== */}
 
-                    <div className="mt-16 grid gap-5 border-y border-[#E9C9C1]/10 py-6 sm:grid-cols-3 lg:mt-20">
+          <div className="mt-16 grid gap-5 border-y border-[#E9C9C1]/10 py-6 sm:grid-cols-3 lg:mt-20">
+            <div className="flex items-center gap-3">
+              <MapPin size={15} strokeWidth={1} className="text-[#D9828A]" />
 
-                        <div className="flex items-center gap-3">
-                            <MapPin
-                                size={15}
-                                strokeWidth={1}
-                                className="text-[#D9828A]"
-                            />
+              <div>
+                <p className="text-[7px] uppercase tracking-[0.25em] text-[#72534E]">
+                  Based in
+                </p>
 
-                            <div>
-                                <p className="text-[7px] uppercase tracking-[0.25em] text-[#72534E]">
-                                    Based in
-                                </p>
+                <p className="mt-1 text-[10px] text-[#BFA29B]">
+                  Kathmandu, Nepal
+                </p>
+              </div>
+            </div>
 
-                                <p className="mt-1 text-[10px] text-[#BFA29B]">
-                                    Kathmandu, Nepal
-                                </p>
-                            </div>
-                        </div>
+            <div className="flex items-center gap-3">
+              <Mail size={15} strokeWidth={1} className="text-[#D9828A]" />
 
+              <div>
+                <p className="text-[7px] uppercase tracking-[0.25em] text-[#72534E]">
+                  Email
+                </p>
 
-                        <div className="flex items-center gap-3">
-                            <Mail
-                                size={15}
-                                strokeWidth={1}
-                                className="text-[#D9828A]"
-                            />
+                <a
+                  href="mailto:hello@laalihills.com"
+                  className="mt-1 block text-[10px] text-[#BFA29B] transition-colors hover:text-white"
+                >
+                  hello@laalihills.com
+                </a>
+              </div>
+            </div>
 
-                            <div>
-                                <p className="text-[7px] uppercase tracking-[0.25em] text-[#72534E]">
-                                    Email
-                                </p>
+            <div className="flex items-center gap-3">
+              <Phone size={15} strokeWidth={1} className="text-[#D9828A]" />
 
-                                <a
-                                    href="mailto:hello@laalihills.com"
-                                    className="mt-1 block text-[10px] text-[#BFA29B] transition-colors hover:text-white"
-                                >
-                                    hello@laalihills.com
-                                </a>
-                            </div>
-                        </div>
+              <div>
+                <p className="text-[7px] uppercase tracking-[0.25em] text-[#72534E]">
+                  Talk to us
+                </p>
 
+                <a
+                  href="tel:+9770000000000"
+                  className="mt-1 block text-[10px] text-[#BFA29B] transition-colors hover:text-white"
+                >
+                  +977 00 000 0000
+                </a>
+              </div>
+            </div>
+          </div>
 
-                        <div className="flex items-center gap-3">
-                            <Phone
-                                size={15}
-                                strokeWidth={1}
-                                className="text-[#D9828A]"
-                            />
-
-                            <div>
-                                <p className="text-[7px] uppercase tracking-[0.25em] text-[#72534E]">
-                                    Talk to us
-                                </p>
-
-                                <a
-                                    href="tel:+9770000000000"
-                                    className="mt-1 block text-[10px] text-[#BFA29B] transition-colors hover:text-white"
-                                >
-                                    +977 00 000 0000
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                    {/* =================================================
+          {/* =================================================
                         BOTTOM BAR
                     ================================================== */}
 
-                    <div className="flex flex-col gap-7 pt-7 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-7 pt-7 sm:flex-row sm:items-center sm:justify-between">
+            {/* Copyright */}
 
-                        {/* Copyright */}
+            <p className="text-[8px] uppercase tracking-[0.2em] text-[#674A45]">
+              © {new Date().getFullYear()} Laali Hills. All rights reserved.
+            </p>
 
-                        <p className="text-[8px] uppercase tracking-[0.2em] text-[#674A45]">
-                            © {new Date().getFullYear()} Laali Hills.
-                            All rights reserved.
-                        </p>
+            {/* LEGAL */}
 
+            <div className="flex flex-wrap gap-x-5 gap-y-2">
+              <a
+                href="/terms"
+                className="text-[8px] uppercase tracking-[0.18em] text-[#80635E] transition-colors hover:text-[#D9828A]"
+              >
+                Terms & Conditions
+              </a>
 
-                        {/* LEGAL */}
+              <a
+                href="/privacy"
+                className="text-[8px] uppercase tracking-[0.18em] text-[#80635E] transition-colors hover:text-[#D9828A]"
+              >
+                Privacy Policy
+              </a>
 
-                        <div className="flex flex-wrap gap-x-5 gap-y-2">
+              <a
+                href="/returns"
+                className="text-[8px] uppercase tracking-[0.18em] text-[#80635E] transition-colors hover:text-[#D9828A]"
+              >
+                Return Policy
+              </a>
+            </div>
 
-                            <a
-                                href="/terms"
-                                className="text-[8px] uppercase tracking-[0.18em] text-[#80635E] transition-colors hover:text-[#D9828A]"
-                            >
-                                Terms & Conditions
-                            </a>
+            {/* SOCIAL */}
 
-                            <a
-                                href="/privacy"
-                                className="text-[8px] uppercase tracking-[0.18em] text-[#80635E] transition-colors hover:text-[#D9828A]"
-                            >
-                                Privacy Policy
-                            </a>
+            <div className="flex items-center gap-2">
+              <SocialIcon href="#" label="Facebook">
+                <FaFacebookF size={14} strokeWidth={1.5} />
+              </SocialIcon>
 
-                            <a
-                                href="/returns"
-                                className="text-[8px] uppercase tracking-[0.18em] text-[#80635E] transition-colors hover:text-[#D9828A]"
-                            >
-                                Return Policy
-                            </a>
+              <SocialIcon href="#" label="Instagram">
+                <FaInstagram size={14} strokeWidth={1.5} />
+              </SocialIcon>
 
-                        </div>
-
-
-                        {/* SOCIAL */}
-
-                        <div className="flex items-center gap-2">
-
-                            <SocialIcon
-                                href="#"
-                                label="Facebook"
-                            >
-                                <FaFacebookF
-                                    size={14}
-                                    strokeWidth={1.5}
-                                />
-                            </SocialIcon>
-
-                            <SocialIcon
-                                href="#"
-                                label="Instagram"
-                            >
-                                <FaInstagram
-                                    size={14}
-                                    strokeWidth={1.5}
-                                />
-                            </SocialIcon>
-
-                            <SocialIcon
-                                href="#"
-                                label="TikTok"
-                            >
-                                <FaTiktok
-                                    size={14}
-                                    strokeWidth={1.5}
-                                />
-                            </SocialIcon>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </section>
-
-        </footer>
-    );
+              <SocialIcon href="#" label="TikTok">
+                <FaTiktok size={14} strokeWidth={1.5} />
+              </SocialIcon>
+            </div>
+          </div>
+        </div>
+      </section>
+    </footer>
+  );
 };
-
 
 /* =============================================================
    FOOTER COMPONENTS
 ============================================================= */
 
-const FooterHeading = ({ children }) =>
-{
-    return (
-        <h3 className="mb-5 text-[9px] font-semibold uppercase tracking-[0.3em] text-[#D9828A]">
-            {children}
-        </h3>
-    );
+const FooterHeading = ({ children }) => {
+  return (
+    <h3 className="mb-5 text-[9px] font-semibold uppercase tracking-[0.3em] text-[#D9828A]">
+      {children}
+    </h3>
+  );
 };
 
+const FooterLink = ({ href, children }) => {
+  return (
+    <a
+      href={href}
+      className="group mb-3 flex w-fit items-center gap-2 text-[10px] text-[#A98A83] transition-colors duration-300 hover:text-lightCream"
+    >
+      <span className="h-px w-0 bg-[#D9828A] transition-all duration-300 group-hover:w-3" />
 
-const FooterLink = ({ href, children }) =>
-{
-    return (
-        <a
-            href={href}
-            className="group mb-3 flex w-fit items-center gap-2 text-[10px] text-[#A98A83] transition-colors duration-300 hover:text-lightCream"
-        >
-            <span className="h-px w-0 bg-[#D9828A] transition-all duration-300 group-hover:w-3" />
-
-            {children}
-        </a>
-    );
+      {children}
+    </a>
+  );
 };
 
-
-const SocialIcon = ({ href, label, children }) =>
-{
-    return (
-        <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-            className="
+const SocialIcon = ({ href, label, children }) => {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="
                 flex h-8 w-8
                 items-center justify-center
                 rounded-full
@@ -590,13 +409,10 @@ const SocialIcon = ({ href, label, children }) =>
                 hover:bg-[#D9828A]/10
                 hover:text-[#D9828A]
             "
-        >
-            <span className="text-[13px]">
-                {children}
-            </span>
-        </a>
-    );
+    >
+      <span className="text-[13px]">{children}</span>
+    </a>
+  );
 };
-
 
 export default Footer;

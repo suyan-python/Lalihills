@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Minus, Plus, X } from "lucide-react";
 import { useCart } from "./CartContext";
 import { Link } from "react-router-dom";
+import empty from "../assets/icon/empty.svg";
 
 const CartDrawer = () => {
   const {
@@ -87,8 +88,7 @@ const CartDrawer = () => {
 const CartItem = ({ item, index, onRemove, onUpdateQuantity }) => {
   const { product, quantity, size, grind, purchaseType, frequency } = item;
 
-  const itemTotal =
-    Number(item.price ?? product.price) * quantity;
+  const itemTotal = Number(item.price ?? product.price) * quantity;
 
   return (
     <motion.div
@@ -236,40 +236,61 @@ const CartItem = ({ item, index, onRemove, onUpdateQuantity }) => {
 
 const CartSummary = ({ total }) => {
   const { setIsCartOpen } = useCart();
-  return (
-    <div className="shrink-0 border-t border-ink/10 bg-lightCream px-6 pb-6 pt-5 sm:px-8">
-      <div className="flex items-center justify-between">
-        <span className="text-[7px] uppercase tracking-[0.3em] text-ink/45">
-          Subtotal
-        </span>
 
-        <span className="text-sm font-medium tracking-[0.03em] text-ink">
-          NPR{" "}
-          {Number(total).toLocaleString(undefined, {
-            maximumFractionDigits: 0,
-          })}
-        </span>
+  return (
+    <div className="shrink-0 border-t border-ink/10 bg-lightCream px-6 pb-6 pt-6 sm:px-8 sm:pt-7">
+      <div className="flex items-end justify-between">
+        <div>
+          <p className="text-[7px] font-medium uppercase tracking-[0.3em] text-red">
+            Your order
+          </p>
+          <p className="mt-1.5 text-[9px] uppercase tracking-[0.16em] text-ink/45">
+            Order summary
+          </p>
+        </div>
+
+        <div className="text-right">
+          <p className="text-[7px] uppercase tracking-[0.25em] text-ink/35">
+            Subtotal
+          </p>
+          <p className="mt-1 text-base font-medium tracking-[0.02em] text-ink">
+            NPR{" "}
+            {Number(total).toLocaleString(undefined, {
+              maximumFractionDigits: 0,
+            })}
+          </p>
+        </div>
       </div>
 
-      <p className="mt-2 text-[7px] uppercase tracking-[0.18em] text-ink/35">
-        Shipping calculated at checkout
-      </p>
+      <div className="my-5 h-px bg-ink/10" />
+
+      <div className="flex items-center justify-between">
+        <p className="text-[7px] uppercase tracking-[0.2em] text-ink/35">
+          Shipping
+        </p>
+
+        <p className="text-[8px] uppercase tracking-[0.12em] text-ink/50">
+          Calculated at checkout
+        </p>
+      </div>
 
       <Link
         to="/checkout"
         onClick={() => setIsCartOpen(false)}
-        className="group mt-5 flex h-12 w-full items-center justify-between bg-ink px-5 text-lightCream transition-colors duration-500 hover:bg-red"
+        className="group relative mt-5 flex h-13 w-full items-center justify-between overflow-hidden bg-ink px-5 text-lightCream transition-colors duration-500 hover:bg-red sm:px-6"
       >
-        <span className="text-[8px] font-medium uppercase tracking-[0.3em]">
+        <span className="relative z-10 text-[8px] font-medium uppercase tracking-[0.3em]">
           Proceed to checkout
         </span>
 
-        <ArrowRight
-          size={15}
-          strokeWidth={1.1}
-          className="transition-transform duration-500 group-hover:translate-x-1"
-        />
+        <span className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full border border-lightCream/25 transition-all duration-500 group-hover:border-lightCream/50 group-hover:translate-x-1">
+          <ArrowRight size={13} strokeWidth={1.1} />
+        </span>
       </Link>
+
+      <p className="mt-4 text-center text-[6px] uppercase tracking-[0.2em] text-ink/30">
+        Secure checkout · Freshly packed · Delivered with care
+      </p>
     </div>
   );
 };
@@ -277,9 +298,9 @@ const CartSummary = ({ total }) => {
 const EmptyCart = ({ onClose }) => {
   return (
     <div className="flex h-full flex-col items-center justify-center text-center">
-      <div className="h-px w-8 bg-ink/20" />
+      <img src={empty} alt="" className="h-36 w-36 object-contain opacity-70" />
 
-      <p className="mt-5 text-[7px] uppercase tracking-[0.35em] text-ink/40">
+      <p className="mt-5 text-[7px] uppercase tracking-[0.35em] text-deepRed">
         Nothing selected yet
       </p>
 
@@ -294,7 +315,7 @@ const EmptyCart = ({ onClose }) => {
       <button
         type="button"
         onClick={onClose}
-        className="mt-7 border-b border-ink pb-1 text-[7px] uppercase tracking-[0.3em] text-ink"
+        className="mt-7 border-b border-ink pb-1 text-[7px] uppercase tracking-[0.3em] text-deepRed font-semibold cursor-pointer"
       >
         Continue exploring
       </button>

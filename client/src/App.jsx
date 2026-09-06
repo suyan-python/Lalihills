@@ -1,9 +1,5 @@
-import
-{
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Landing from "./pages/home/HeroLanding";
 import MainLayout from "./layouts/MainLayout";
@@ -18,76 +14,116 @@ import { coffeeProducts, teaProducts } from "./data/products";
 import CartDrawer from "./layouts/CartDrawer";
 import FloatingCartButton from "./layouts/FloatingCartButton";
 import Checkout from "./pages/checkout/Checkout";
+import NotFound from "./components/NotFound";
 
-function App()
-{
+function App() {
   return (
     <>
-    
-    <BrowserRouter>
-      <ScrollManager />
-      <Routes>
+      <BrowserRouter>
+        <ScrollManager />
+        <Suspense
+          fallback={
+            <div className="flex min-h-screen items-center justify-center bg-lightCream text-[9px] uppercase tracking-[0.3em] text-ink/50">
+              Loading...
+            </div>
+          }
+        >
+          <Routes>
+            <Route element={<MainLayout />}>
+              {/* Home */}
+              <Route path="/" element={<Landing />} />
 
-        {/* =================================
-            MAIN WEBSITE
-        ================================= */}
+              {/* Shop */}
+              <Route path="/shop" element={<Shop />} />
 
-        <Route element={<MainLayout />}>
+              <Route
+                path="/shop/coffee/:slug"
+                element={<ProductDetails products={coffeeProducts} />}
+              />
 
-          {/* Home */}
-          <Route path="/" element={<Landing />} />
+              <Route
+                path="/shop/tea/:slug"
+                element={<ProductDetails products={teaProducts} />}
+              />
 
-          {/* Shop */}
-          <Route path="/shop" element={<Shop />} />
+              <Route path="/shop/coffee" element={<Coffee />} />
 
-          <Route path="/shop/coffee/:slug" element={<ProductDetails products={coffeeProducts} />} />
+              <Route path="/shop/tea" element={<Tea />} />
 
-          <Route path="/shop/tea/:slug" element={<ProductDetails products={teaProducts} />} />
+              {/* Explore */}
+              <Route
+                path="/explore"
+                element={<div className="p-10">Explore</div>}
+              />
 
-          <Route path="/shop/coffee" element={<Coffee />} />
+              <Route
+                path="/explore/origins"
+                element={<div className="p-10">Origins</div>}
+              />
 
-          <Route path="/shop/tea" element={<Tea />} />
+              <Route
+                path="/explore/farmers"
+                element={<div className="p-10">Farmers</div>}
+              />
 
-          {/* Explore */}
-          <Route path="/explore" element={<div className="p-10">Explore</div>} />
+              <Route
+                path="/explore/processes"
+                element={<div className="p-10">Our Processes</div>}
+              />
 
-          <Route path="/explore/origins" element={<div className="p-10">Origins</div>} />
+              <Route
+                path="/explore/why-laali-hills"
+                element={<div className="p-10">Why Laali Hills</div>}
+              />
 
-          <Route path="/explore/farmers" element={<div className="p-10">Farmers</div>} />
+              <Route
+                path="/explore/nepal-coffee"
+                element={<div className="p-10">Nepal Coffee</div>}
+              />
 
-          <Route path="/explore/processes" element={<div className="p-10">Our Processes</div>} />
+              {/* Stories */}
+              <Route
+                path="/stories"
+                element={<div className="p-10">Stories</div>}
+              />
 
-          <Route path="/explore/why-laali-hills" element={<div className="p-10">Why Laali Hills</div>} />
+              <Route
+                path="/stories/farm"
+                element={<div className="p-10">Farm Stories</div>}
+              />
 
-          <Route path="/explore/nepal-coffee" element={<div className="p-10">Nepal Coffee</div>} />
+              <Route
+                path="/stories/coffee"
+                element={<div className="p-10">Coffee Blog</div>}
+              />
 
-          {/* Stories */}
-          <Route path="/stories" element={<div className="p-10">Stories</div>} />
+              <Route
+                path="/stories/tea"
+                element={<div className="p-10">Tea Blog</div>}
+              />
 
-          <Route path="/stories/farm" element={<div className="p-10">Farm Stories</div>} />
+              <Route
+                path="/stories/culture"
+                element={<div className="p-10">Culture</div>}
+              />
 
-          <Route path="/stories/coffee" element={<div className="p-10">Coffee Blog</div>} />
+              {/* About */}
+              <Route path="/about" element={<About />} />
+              <Route path="/aboutLaaliHills" element={<About />} />
 
-          <Route path="/stories/tea" element={<div className="p-10">Tea Blog</div>} />
+              {/* Support */}
+              <Route path="/support" element={<Support />} />
 
-          <Route path="/stories/culture" element={<div className="p-10">Culture</div>} />
+              <Route path="/checkout" element={<Checkout />} />
 
-          {/* About */}
-          <Route path="/about" element={<About />} />
-          <Route path="/aboutLaaliHills" element={<About />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </Suspense>
 
-          {/* Support */}
-          <Route path="/support" element={<Support />} />
-
-          <Route path="/checkout" element={<Checkout />} />
-
-        </Route>
-
-      </Routes>
-
-      <FloatingCartButton />
-      <CartDrawer />
-    </BrowserRouter>
+        <FloatingCartButton />
+        <CartDrawer />
+      </BrowserRouter>
     </>
   );
 }
