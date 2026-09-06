@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import drip from "../../assets/products/dripnew.jpeg"
 import hills from "../../assets/hills/1.jpg"
+import { Link } from "react-router-dom";
 
 const FeaturedProduct = () =>
 {
@@ -225,8 +226,8 @@ const FeaturedProduct = () =>
 
                     <div className="mt-9 flex flex-wrap items-center gap-7">
 
-                        <a
-                            href=""
+                        <Link
+                            to="/shop/coffee"
                             className="group inline-flex items-center gap-4 bg-red px-7 py-4 text-[8px] font-semibold uppercase tracking-[0.3em] text-ivory transition-all duration-500 hover:bg-deepRed hover:shadow-[0_12px_40px_rgba(166,42,52,0.2)]"
                         >
                             Buy Now
@@ -238,10 +239,10 @@ const FeaturedProduct = () =>
                                     className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                                 />
                             </span>
-                        </a>
+                        </Link>
 
-                        <a
-                            href=""
+                        <Link
+                            to="/shop/coffee"
                             className="group inline-flex items-center gap-3 text-[8px] font-semibold uppercase tracking-[0.3em] text-soil"
                         >
                             Explore Coffee
@@ -251,7 +252,7 @@ const FeaturedProduct = () =>
                                 strokeWidth={1.3}
                                 className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                             />
-                        </a>
+                        </Link>
 
                     </div>
 

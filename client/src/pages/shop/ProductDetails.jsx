@@ -14,7 +14,6 @@ const CircularDetail = ({ title, value, position, linePosition, reveal, lineFrom
     const opacity = reveal;
     const scale = useTransform(reveal, [0, 1], [0.85, 1]);
     const lineScale = useTransform(reveal, [0, 1], [0, 1]);
-    const { addToCart } = useCart();
 
     return (
         <div className={`absolute ${position}`}>
@@ -93,6 +92,7 @@ const FaqItem = ({ number, question, answer }) => (
 const ProductDetails = ({ products = [] }) =>
 {
     const { slug } = useParams();
+    const { addToCart } = useCart();
     const product = products?.find((item) => item.slug === slug);
 
     const sectionRef = useRef(null);
@@ -114,14 +114,15 @@ const ProductDetails = ({ products = [] }) =>
     };
 
     const handleAddToCart = () => {
-    addToCart(product, {
-        size: selectedSize,
-        grind: selectedGrind,
-        purchaseType,
-        frequency: purchaseType === "subscribe" ? frequency : null,
-        quantity,
-    });
-};
+        addToCart(product, {
+            size: selectedSize.label,
+            grind: selectedGrind,
+            purchaseType,
+            frequency: purchaseType === "subscribe" ? frequency : null,
+            price: unitPrice,
+            quantity,
+        });
+    };
 
     // Bag-size options with their own price. Falls back to a single size
     // built from the product's existing size/price fields when the product
@@ -244,13 +245,6 @@ const ProductDetails = ({ products = [] }) =>
         ? selectedSize.price * (1 - subscriptionDiscount)
         : selectedSize.price;
     const total = unitPrice * quantity;
-
-    // TODO: wire this up to your actual cart (context/store/API) — currently
-    // just a placeholder so both purchase surfaces have somewhere to call.
-    // const handleAddToCart = (payload) =>
-    // {
-    //     console.log("Add to cart:", payload);
-    // };
 
     return (
         <main className="overflow-x-clip bg-lightCream pb-20 text-ink sm:pb-24">
@@ -637,7 +631,7 @@ const ProductDetails = ({ products = [] }) =>
                             {/* CTA */}
 
                             <button
-                                onClick={() => handleAddToCart({ product, size: selectedSize, purchaseType, frequency, quantity, unitPrice, total })}
+                                onClick={handleAddToCart}
                                 className="group mt-8 flex w-full items-center justify-between bg-red px-6 py-4 text-lightCream transition-colors duration-300 hover:bg-deepRed"
                             >
                                 <span className="text-[9px] uppercase tracking-[0.3em]">

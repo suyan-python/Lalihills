@@ -192,33 +192,25 @@ const StickyPurchaseBar = ({
                                     </span>
 
                                     <span className="whitespace-nowrap text-sm font-medium tracking-[-0.02em] text-ink sm:text-base">
-                                        NPR {total.toLocaleString()}
+                                        NPR {total.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                                     </span>
                                 </div>
 
-                                <button
-                                    type="button"
-                                    onClick={() => onAddToCart({
-                                        product,
-                                        size: selectedSize,
-                                        purchaseType,
-                                        frequency,
-                                        quantity,
-                                        unitPrice,
-                                        total,
-                                    })}
-                                    className="group flex h-11 shrink-0 items-center justify-center gap-4 rounded-full bg-red px-6 text-lightCream transition-all duration-500 hover:bg-deepRed sm:px-8"
-                                >
-                                    <span className="whitespace-nowrap text-[8px] font-medium uppercase tracking-[0.28em]">
-                                        Add to cart
-                                    </span>
+                             <button
+    type="button"
+    onClick={onAddToCart}
+    className="group flex h-11 shrink-0 items-center justify-center gap-4 rounded-full bg-red px-6 text-lightCream transition-all duration-500 hover:bg-deepRed sm:px-8"
+>
+    <span className="whitespace-nowrap text-[8px] font-medium uppercase tracking-[0.28em]">
+        Add to cart
+    </span>
 
-                                    <ShoppingBag
-                                        size={15}
-                                        strokeWidth={1.1}
-                                        className="transition-transform duration-500 group-hover:translate-x-0.5"
-                                    />
-                                </button>
+    <ShoppingBag
+        size={15}
+        strokeWidth={1.1}
+        className="transition-transform duration-500 group-hover:translate-x-0.5"
+    />
+</button>
 
                             </div>
 

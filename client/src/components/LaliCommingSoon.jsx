@@ -470,7 +470,7 @@ const LaliComingSoon = () =>
                                         {/* CTA */}
 
                                         <Link
-                                            to="/aboutLaali"
+                                            to="/aboutLaaliHills"
                                             className="
                     mt-8 group inline-flex items-center gap-4 bg-red px-6 py-3 text-[8px] font-medium uppercase tracking-[0.3em] text-[#F8EDE8] transition-all duration-500 hover:border-[#D9828A]/60 hover:bg-hill
                 "

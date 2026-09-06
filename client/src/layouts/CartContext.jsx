@@ -13,7 +13,10 @@ export const CartProvider = ({ children }) => {
             purchaseType = "one-time",
             frequency = null,
             quantity = 1,
+            price = product.price,
         } = options;
+
+        const itemPrice = Number(price) || 0;
 
         const cartKey = [
             product._id,
@@ -35,6 +38,7 @@ export const CartProvider = ({ children }) => {
                     item.cartKey === cartKey
                         ? {
                               ...item,
+                            price: itemPrice,
                               quantity: item.quantity + quantity,
                           }
                         : item
@@ -42,7 +46,6 @@ export const CartProvider = ({ children }) => {
             }
 
             return [
-                ...currentItems,
                 {
                     cartKey,
                     product,
@@ -50,8 +53,10 @@ export const CartProvider = ({ children }) => {
                     grind,
                     purchaseType,
                     frequency,
+                    price: itemPrice,
                     quantity,
                 },
+                ...currentItems,
             ];
         });
 
@@ -95,7 +100,7 @@ export const CartProvider = ({ children }) => {
     const cartTotal = useMemo(
         () =>
             cartItems.reduce((total, item) => {
-                const price = Number(item.product.price) || 0;
+                const price = Number(item.price ?? item.product.price) || 0;
                 return total + price * item.quantity;
             }, 0),
         [cartItems]

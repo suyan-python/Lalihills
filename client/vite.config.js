@@ -5,6 +5,10 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+      server: {
+        host: true,
+        port: 5173,
+    },
   assetsInclude: [
     "**/*.png",
     "**/*.jpg",
@@ -19,6 +23,6 @@ export default defineConfig({
   ],
   build: {
     target: "es2019",
-    assetsInlineLimit: 4096, // Inlines images under 4KB as base64; set to 0 to disable
+    assetsInlineLimit: 4096,
   },
 });
