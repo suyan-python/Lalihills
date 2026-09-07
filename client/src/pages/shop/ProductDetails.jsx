@@ -6,6 +6,7 @@ import ProductInfoGrid from "./ProductInfoGrid";
 import StickyPurchaseBar from "./StickyPurchaseBar";
 import { useCart } from "../../layouts/CartContext";
 import { AnimatePresence } from "framer-motion";
+import { trackEvent } from "../../utils/analytics";
 
 const CircularDetail = ({
   title,
@@ -154,7 +155,41 @@ const ProductDetails = ({ products = [] }) => {
       price: unitPrice,
       quantity,
     });
+    trackEvent("add_to_cart", {
+      currency: "NPR",
+      value: Number(product.price) * quantity,
+      items: [
+        {
+          item_id: product._id,
+          item_name: product.name,
+          item_brand: "Laali Hills",
+          item_category: "Coffee",
+          item_variant: `${selectedSize} / ${selectedGrind}`,
+          price: Number(product.price),
+          quantity,
+        },
+      ],
+    });
   };
+
+  useEffect(() => {
+    if (!product) return;
+
+    trackEvent("view_item", {
+      currency: "NPR",
+      value: Number(product.price) || 0,
+      items: [
+        {
+          item_id: product._id,
+          item_name: product.name,
+          item_brand: "Laali Hills",
+          item_category: "Coffee",
+          price: Number(product.price) || 0,
+          quantity: 1,
+        },
+      ],
+    });
+  }, [product]);
 
   const sizeOptions = useMemo(() => {
     if (!product) return [];
@@ -200,12 +235,6 @@ const ProductDetails = ({ products = [] }) => {
     [0, 0.35, 0.35, 0.15],
   );
 
-  // --- Phased reveal timeline, all driven by the single pinned section ---
-  // 0.00–0.05  "Scroll for details" hint, visible only before scrolling starts
-  // 0.02–0.10  back link + eyebrow chrome fades in
-  // 0.00→1.00  product name and image drift slightly upward while staying visible
-  // 0.03–0.15  the ring around the product scales/fades in
-  // 0.18→0.88  the four details emit from the ring, staggered
   const hintOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
   const chromeReveal = useTransform(scrollYProgress, [0.02, 0.1], [0, 1]);
   const titleY = useTransform(scrollYProgress, [0, 1], [0, -28]);
@@ -280,11 +309,6 @@ const ProductDetails = ({ products = [] }) => {
 
   return (
     <main className="overflow-x-clip bg-lightWhite  text-ink ">
-      {/* PRODUCT REVEAL — one continuous pinned section. Opens with just
-                the product and a scroll hint; everything else (back link,
-                eyebrow, name, description, ring, detail spokes) reveals here
-                as the visitor scrolls, rather than in a separate section. */}
-
       <section ref={sectionRef} className="relative h-[400vh] bg-ink">
         <div className="sticky top-0 isolate flex h-screen items-center justify-center overflow-hidden px-6 sm:px-10">
           {/* ATMOSPHERE */}

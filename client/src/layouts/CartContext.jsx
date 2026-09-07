@@ -1,136 +1,156 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 const CartContext = createContext();
+const CART_STORAGE_KEY = "laali-hills-cart";
+
+const getStoredCart = () => {
+  if (typeof window === "undefined") return [];
+
+  try {
+    const storedCart = JSON.parse(
+      window.localStorage.getItem(CART_STORAGE_KEY) || "[]",
+    );
+
+    return Array.isArray(storedCart)
+      ? storedCart.filter(
+          (item) =>
+            item &&
+            typeof item.cartKey === "string" &&
+            item.product &&
+            Number.isFinite(Number(item.quantity)) &&
+            Number(item.quantity) > 0,
+        )
+      : [];
+  } catch {
+    return [];
+  }
+};
 
 export const CartProvider = ({ children }) => {
-    const [cartItems, setCartItems] = useState([]);
-    const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState(getStoredCart);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
-    const addToCart = (product, options = {}) => {
-        const {
-            size = null,
-            grind = null,
-            purchaseType = "one-time",
-            frequency = null,
-            quantity = 1,
-            price = product.price,
-        } = options;
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
+    } catch {
+      // Storage can be unavailable in private browsing or restricted contexts.
+    }
+  }, [cartItems]);
 
-        const itemPrice = Number(price) || 0;
+  const addToCart = (product, options = {}) => {
+    const {
+      size = null,
+      grind = null,
+      purchaseType = "one-time",
+      frequency = null,
+      quantity = 1,
+      price = product.price,
+    } = options;
 
-        const cartKey = [
-            product._id,
-            size,
-            grind,
-            purchaseType,
-            frequency,
-        ]
-            .filter(Boolean)
-            .join("-");
+    const itemPrice = Number(price) || 0;
 
-        setCartItems((currentItems) => {
-            const existingItem = currentItems.find(
-                (item) => item.cartKey === cartKey
-            );
+    const cartKey = [product._id, size, grind, purchaseType, frequency]
+      .filter(Boolean)
+      .join("-");
 
-            if (existingItem) {
-                return currentItems.map((item) =>
-                    item.cartKey === cartKey
-                        ? {
-                              ...item,
-                            price: itemPrice,
-                              quantity: item.quantity + quantity,
-                          }
-                        : item
-                );
-            }
+    setCartItems((currentItems) => {
+      const existingItem = currentItems.find(
+        (item) => item.cartKey === cartKey,
+      );
 
-            return [
-                {
-                    cartKey,
-                    product,
-                    size,
-                    grind,
-                    purchaseType,
-                    frequency,
-                    price: itemPrice,
-                    quantity,
-                },
-                ...currentItems,
-            ];
-        });
-
-        setIsCartOpen(true);
-    };
-
-    const removeFromCart = (cartKey) => {
-        setCartItems((currentItems) =>
-            currentItems.filter((item) => item.cartKey !== cartKey)
+      if (existingItem) {
+        return currentItems.map((item) =>
+          item.cartKey === cartKey
+            ? {
+                ...item,
+                price: itemPrice,
+                quantity: item.quantity + quantity,
+              }
+            : item,
         );
-    };
+      }
 
-    const updateQuantity = (cartKey, quantity) => {
-        if (quantity < 1) {
-            removeFromCart(cartKey);
-            return;
-        }
+      return [
+        {
+          cartKey,
+          product,
+          size,
+          grind,
+          purchaseType,
+          frequency,
+          price: itemPrice,
+          quantity,
+        },
+        ...currentItems,
+      ];
+    });
 
-        setCartItems((currentItems) =>
-            currentItems.map((item) =>
-                item.cartKey === cartKey
-                    ? { ...item, quantity }
-                    : item
-            )
-        );
-    };
+    setIsCartOpen(true);
+  };
 
-    const clearCart = () => {
-        setCartItems([]);
-    };
-
-    const cartCount = useMemo(
-        () =>
-            cartItems.reduce(
-                (total, item) => total + item.quantity,
-                0
-            ),
-        [cartItems]
+  const removeFromCart = (cartKey) => {
+    setCartItems((currentItems) =>
+      currentItems.filter((item) => item.cartKey !== cartKey),
     );
+  };
 
-    const cartTotal = useMemo(
-        () =>
-            cartItems.reduce((total, item) => {
-                const price = Number(item.price ?? item.product.price) || 0;
-                return total + price * item.quantity;
-            }, 0),
-        [cartItems]
-    );
+  const updateQuantity = (cartKey, quantity) => {
+    if (quantity < 1) {
+      removeFromCart(cartKey);
+      return;
+    }
 
-    return (
-        <CartContext.Provider
-            value={{
-                cartItems,
-                cartCount,
-                cartTotal,
-                isCartOpen,
-                setIsCartOpen,
-                addToCart,
-                removeFromCart,
-                updateQuantity,
-                clearCart,
-            }}
-        >
-            {children}
-        </CartContext.Provider>
+    setCartItems((currentItems) =>
+      currentItems.map((item) =>
+        item.cartKey === cartKey ? { ...item, quantity } : item,
+      ),
     );
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
+  const cartCount = useMemo(
+    () => cartItems.reduce((total, item) => total + item.quantity, 0),
+    [cartItems],
+  );
+
+  const cartTotal = useMemo(
+    () =>
+      cartItems.reduce((total, item) => {
+        const price = Number(item.price ?? item.product.price) || 0;
+        return total + price * item.quantity;
+      }, 0),
+    [cartItems],
+  );
+
+  return (
+    <CartContext.Provider
+      value={{
+        cartItems,
+        cartCount,
+        cartTotal,
+        isCartOpen,
+        setIsCartOpen,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 };
 
 export const useCart = () => {
-    const context = useContext(CartContext);
+  const context = useContext(CartContext);
 
-    if (!context) {
-        throw new Error("useCart must be used inside CartProvider");
-    }
+  if (!context) {
+    throw new Error("useCart must be used inside CartProvider");
+  }
 
-    return context;
+  return context;
 };

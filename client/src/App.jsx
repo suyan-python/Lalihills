@@ -16,12 +16,15 @@ import FloatingCartButton from "./layouts/FloatingCartButton";
 import Checkout from "./pages/checkout/Checkout";
 import NotFound from "./components/NotFound";
 import CanonicalUrl from "./components/CanonicalUrl";
+import HelpMeChoose from "./components/HelpMeChoose";
+import PageViewTracker from "./components/PageViewTracker";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <CanonicalUrl />
+        <PageViewTracker />
         <ScrollManager />
         <Suspense
           fallback={
@@ -47,6 +50,8 @@ function App() {
                 path="/shop/tea/:slug"
                 element={<ProductDetails products={teaProducts} />}
               />
+
+              <Route path="/shop/help-me-choose" element={<HelpMeChoose />} />
 
               <Route path="/shop/coffee" element={<Coffee />} />
 

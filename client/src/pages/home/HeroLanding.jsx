@@ -8,6 +8,7 @@ import ContextSection from "./ContextSection";
 import Collab from "./Collab";
 import CertificationSection from "./Certification";
 import FeatureStandard from "./FeatureStandard";
+import ShopBanner from "../shop/ShopBanner";
 
 const Landing = () => {
   return (
@@ -24,6 +25,9 @@ const Landing = () => {
       <Collab />
 
       {/* <SummerOfferings /> */}
+
+      <ShopBanner />
+
       <FeatureStandard />
 
       <CertificationSection />
