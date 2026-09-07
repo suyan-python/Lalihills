@@ -15,11 +15,13 @@ import CartDrawer from "./layouts/CartDrawer";
 import FloatingCartButton from "./layouts/FloatingCartButton";
 import Checkout from "./pages/checkout/Checkout";
 import NotFound from "./components/NotFound";
+import CanonicalUrl from "./components/CanonicalUrl";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <CanonicalUrl />
         <ScrollManager />
         <Suspense
           fallback={
