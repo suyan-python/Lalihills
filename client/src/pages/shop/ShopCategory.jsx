@@ -30,8 +30,8 @@ const ShopCategory = ({
       </Helmet>
 
       <section className="relative overflow-hidden pb-10 pt-24 sm:pt-28 md:pb-14 lg:pt-32  ">
-        <div className="mx-auto max-w-[1500px]">
-          <div className="flex items-end justify-between gap-8">
+        <div className="mx-auto max-w-[1500px] ">
+          <div className="flex items-end justify-between gap-8 ">
             <div>
               {/* H1 */}
 

@@ -12,11 +12,6 @@ const ShopStatement = () => {
                 lg:py-40
             "
     >
-      {/* =================================================
-                BACKGROUND — NEPAL
-                RIGHT → LEFT
-            ================================================= */}
-
       <div className="pointer-events-none absolute inset-0 flex items-center overflow-hidden">
         <motion.div
           animate={{
@@ -189,13 +184,9 @@ const ShopStatement = () => {
 
       <div className="relative mx-auto mt-12 flex max-w-[1500px] items-center justify-center px-7 sm:px-12 lg:px-20">
         <div className="flex items-center gap-4">
-          <span className="h-px w-8 bg-[#D9828A]/60" />
-
           <span className="text-[8px] uppercase tracking-[0.35em] text-[#C9AAA3]">
             From Nepal's hills
           </span>
-
-          <span className="h-px w-8 bg-[#D9828A]/60" />
         </div>
       </div>
     </section>

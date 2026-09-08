@@ -3,6 +3,8 @@ import { ArrowRight } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import bestBrew from "../assets/logo/bestbrew.png";
+import whenTheHillsAreLaali from "../assets/logo/whenthehillare.png";
 import logo from "/logo.png";
 
 const videos = [
@@ -38,7 +40,7 @@ const LaliComingSoon = () => {
   }, [activeSlide]);
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-brown text-lightCream">
+    <main className="relative min-h-screen overflow-hidden bg-black text-lightCream">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#241817]/65 via-[#241817]/35 to-transparent">
         {/* Video */}
         <motion.video
@@ -66,13 +68,14 @@ const LaliComingSoon = () => {
         </motion.video>
 
         {/* Dark brown cinematic overlay */}
-        <div className="absolute inset-0 bg-brown/25" />
+        <div className="absolute inset-0 bg-black/25" />
+        {/* <div className="absolute inset-0 bg-black/25" /> */}
 
         {/* Subtle Laali pink glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(216,138,146,0.12),transparent_55%)]" />
+        {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(216,138,146,0.12),transparent_55%)]" /> */}
 
         {/* Bottom fade */}
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-brown via-transparent to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black via-transparent to-transparent" />
       </div>
 
       <section className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col justify-center items-center overflow-hidden px-6 pb-28 pt-8 sm:px-10 lg:px-14">
@@ -189,10 +192,11 @@ const LaliComingSoon = () => {
                       }}
                       className="relative z-0 mt-6 flex items-center justify-center gap-3"
                     >
-                      <p className="subheader text-[8px] uppercase tracking-[0.4em] text-lightCream/75 sm:text-[9px] md:text-[10px] font-semibold">
-                        Best Brews from the{" "}
-                        <span className="text-cream">Higher Belt</span>
-                      </p>
+                      <motion.img
+                        src={bestBrew}
+                        alt="Best brews from the higher belt"
+                        className="block w-[180px] object-contain sm:w-[240px] md:w-[300px]"
+                      />
                     </motion.div>
                   </motion.div>
 
@@ -212,7 +216,7 @@ const LaliComingSoon = () => {
                     }}
                     className="mt-8 flex items-center gap-4"
                   >
-                    <p className="subheader text-[9px] uppercase tracking-[0.22em] text-[#F5E8E3] sm:text-[10px] md:text-[11px]">
+                    {/* <p className="subheader text-[9px] uppercase tracking-[0.22em] text-[#F5E8E3] sm:text-[10px] md:text-[11px]">
                       From the hills.
                       <span className="mx-2 text-[#D9828A]">·</span>
                       From the soil.
@@ -220,7 +224,7 @@ const LaliComingSoon = () => {
                       From the people.
                       <span className="mx-2 text-[#D9828A]">·</span>
                       <span className="italic text-[#D9828A]">To you.</span>
-                    </p>
+                    </p> */}
                   </motion.div>
                 </div>
               </motion.div>
@@ -287,7 +291,7 @@ const LaliComingSoon = () => {
                     gap-3
                 "
                     >
-                      <span
+                      {/* <span
                         className="
                     text-[8px]
                     uppercase
@@ -296,10 +300,12 @@ const LaliComingSoon = () => {
                 "
                       >
                         The essence of Laali Hills
-                      </span>
+                      </span> */}
                     </motion.div>
 
-                    <motion.h2
+                    <motion.img
+                      src={whenTheHillsAreLaali}
+                      alt="When the hills are Laali"
                       initial={{
                         opacity: 0,
                         y: 30,
@@ -314,22 +320,14 @@ const LaliComingSoon = () => {
                         ease: [0.22, 1, 0.36, 1],
                       }}
                       className="
-                    header
                     mt-7
+                    block
+                    w-full
                     max-w-2xl
-                    text-[clamp(3.5rem,8vw,7rem)]
-                    font-black
-                    uppercase
-                    leading-[0.78]
-                    tracking-[-0.075em]
-                    text-lightCream text-left
+                    object-contain
+                    object-left
                 "
-                    >
-                      When the hills
-                      <br />
-                      are
-                      <span className="text-cream">Laali.</span>
-                    </motion.h2>
+                    />
                   </div>
 
                   {/* RIGHT */}
@@ -347,19 +345,15 @@ const LaliComingSoon = () => {
                       delay: 0.6,
                       duration: 1,
                     }}
-                    className="
-                max-w-md
-                lg:pt-16
-            "
+                    className="max-w-md lg:pt-16  flex flex-col items-start justify-start "
                   >
                     <p
                       className="
-                text-[12px]
+                text-[18px]
                 leading-6
                 tracking-wide
                 text-lightCream/75
-                sm:text-[13px]
-                sm:leading-7 font-bold
+                sm:leading-7 font-bold text-left
             "
                     >
                       Laali comes from <i>Laali Guras</i>, the rhododendron that
@@ -387,7 +381,7 @@ const LaliComingSoon = () => {
                 uppercase
                 leading-6
                 tracking-[0.15em]
-                text-cream
+                text-cream text-left
             "
                     >
                       The feeling of hills
@@ -400,7 +394,7 @@ const LaliComingSoon = () => {
                     <Link
                       to="/aboutLaaliHills"
                       className="
-                    mt-8 group inline-flex items-center gap-4 bg-red px-6 py-3 text-[8px] font-medium uppercase tracking-[0.3em] text-[#F8EDE8] transition-all duration-500 hover:border-[#D9828A]/60 hover:bg-hill
+                    mt-8 group inline-flex items-center gap-4 bg-hill px-6 py-3 text-[8px] font-medium uppercase tracking-[0.3em] text-[#F8EDE8] transition-all duration-500 hover:border-[#D9828A]/60 hover:bg-hill
                 "
                     >
                       <span>Know Laali</span>
@@ -490,7 +484,7 @@ const LaliComingSoon = () => {
 
         <Link
           to="/shop"
-          className="group absolute bottom-32 left-1/2 z-40 inline-flex -translate-x-1/2 items-center gap-4 bg-red px-6 py-3 text-[8px] font-medium uppercase tracking-[0.3em] text-[#F8EDE8] shadow-xl transition-all duration-500 hover:bg-hill"
+          className="group absolute bottom-44 left-1/2 z-40 inline-flex -translate-x-1/2 items-start gap-4 bg-hill px-6 py-3 text-[8px] md:text-[10px] font-medium uppercase tracking-[0.3em] text-[#F8EDE8] shadow-xl transition-all duration-500 hover:bg-hill/80"
           aria-label="Explore offerings"
         >
           <span>Explore offerings</span>

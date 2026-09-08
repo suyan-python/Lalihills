@@ -9,6 +9,8 @@ import Collab from "./Collab";
 import CertificationSection from "./Certification";
 import FeatureStandard from "./FeatureStandard";
 import ShopBanner from "../shop/ShopBanner";
+import Halfhalf from "./Halfhalf";
+import Halfhalf2 from "./Halfhalf2";
 
 const Landing = () => {
   return (
@@ -18,8 +20,10 @@ const Landing = () => {
 
       <FeaturedProduct />
 
+      <Halfhalf />
       <ContextSection />
 
+      <Halfhalf2 />
       <AuthenticSection />
 
       <Collab />
