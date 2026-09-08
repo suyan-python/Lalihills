@@ -27,7 +27,6 @@ const ShopBanner = () => {
         {/* TOP INFORMATION */}
         <div className="absolute left-6 right-6 top-6 flex items-center justify-between sm:left-10 sm:right-10 sm:top-10 lg:left-14 lg:right-14">
           <div className="flex items-center gap-3">
-            <span className="h-px w-8 bg-lightCream/60" />
             <span className="text-[7px] font-medium uppercase tracking-[0.35em] text-lightCream/80 sm:text-[8px]">
               From Nepal
             </span>

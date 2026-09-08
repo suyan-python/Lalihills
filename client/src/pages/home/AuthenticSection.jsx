@@ -31,8 +31,6 @@ const AuthenticSection = () => {
           <div className="w-full max-w-2xl">
             {/* TOP LABEL */}
             <div className="mb-6 flex items-center gap-3">
-              <span className="h-px w-8 bg-lightCream/50" />
-
               <span className="text-[7px] uppercase tracking-[0.4em] text-lightCream/65 sm:text-[8px]">
                 The origin behind every cup
               </span>

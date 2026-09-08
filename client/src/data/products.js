@@ -1,4 +1,5 @@
-import product from "../assets/products/example.webp";
+// import product from "../assets/products/example.webp";
+import product from "../assets/products/pro1.jpg";
 
 const createRotationImages = (slug, count = 30) => {
   return Array.from(

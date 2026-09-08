@@ -44,7 +44,7 @@ const Footer = () => {
                 SHOPPING COLLECTIONS
             ====================================================== */}
 
-      <section className="bg-lightCream">
+      <section className="">
         <div className="mx-auto w-full">
           <div className="grid grid-cols-2 md:grid-cols-4">
             {footerCollections.map((item, index) => (
@@ -65,7 +65,7 @@ const Footer = () => {
                   amount: 0.15,
                 }}
                 transition={{
-                  duration: 0.9,
+                  duration: 1.8,
                   delay: index * 0.12,
                   ease: [0.22, 1, 0.36, 1],
                 }}
