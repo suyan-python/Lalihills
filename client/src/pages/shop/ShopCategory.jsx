@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import ProductGrid from "./ProductGrid";
 import { Link } from "react-router-dom";
+import SecureBanner from "./SecureBanner";
 
 const ShopCategory = ({
   displayName,
@@ -129,15 +130,12 @@ const ShopCategory = ({
         </div>
       </section>
 
-      {/* =================================================
-                PRODUCTS
-            ================================================= */}
-
       <section className="pb-32 sm:2 sm:pb-40 lg:pb-48 ">
         <div className="mx-auto max-w-[1500px]">
           <ProductGrid products={products} />
         </div>
       </section>
+      <SecureBanner />
     </main>
   );
 };

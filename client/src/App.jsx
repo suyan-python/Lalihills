@@ -18,6 +18,7 @@ import NotFound from "./components/NotFound";
 import CanonicalUrl from "./components/CanonicalUrl";
 import HelpMeChoose from "./components/HelpMeChoose";
 import PageViewTracker from "./components/PageViewTracker";
+import SmoothScroll from "./components/SmoothScroll";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <CanonicalUrl />
         <PageViewTracker />
         <ScrollManager />
+        <SmoothScroll />
         <Suspense
           fallback={
             <div className="flex min-h-screen items-center justify-center bg-lightCream text-[9px] uppercase tracking-[0.3em] text-ink/50">

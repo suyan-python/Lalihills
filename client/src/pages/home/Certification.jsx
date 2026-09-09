@@ -1,15 +1,15 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { ArrowUpRight } from 'lucide-react'
+import React from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 
-import roundedLogo from "../../assets/logo/round.svg"
-import coffeeBeans from "../../assets/images/coffee-beans.jpg"
+import roundedLogo from "../../assets/logo/round.svg";
+import coffeeBeans from "../../assets/images/coffee-beans.jpg";
 
-const CertificationSection = () =>
-{
-    return (
-        <section className="
+const CertificationSection = () => {
+  return (
+    <section
+      className="
             relative
             flex
             min-h-[75vh]
@@ -17,65 +17,66 @@ const CertificationSection = () =>
             justify-center
             overflow-hidden
             bg-ink
-        ">
+        "
+    >
+      {/* Background Image */}
 
-            {/* Background Image */}
-
-            <img
-                src={coffeeBeans}
-                alt="Laali Hills certification"
-                loading="lazy"
-                className="
+      <img
+        src={coffeeBeans}
+        alt="Laali Hills certification"
+        loading="lazy"
+        className="
                     absolute
                     inset-0
                     h-full
                     w-full
                     object-cover
                 "
-            />
+      />
 
+      {/* Dark image treatment */}
 
-            {/* Dark image treatment */}
-
-            <div className="
+      <div
+        className="
                 absolute
                 inset-0
                 bg-ink/60
-            " />
+            "
+      />
 
+      {/* Subtle red atmosphere */}
 
-            {/* Subtle red atmosphere */}
-
-            <div className="
+      <div
+        className="
                 absolute
                 inset-0
                 bg-gradient-to-br
                 from-deepRed/15
                 via-transparent
                 to-ink/40
-            " />
+            "
+      />
 
+      {/* Content */}
 
-            {/* Content */}
-
-            <motion.div
-                initial={{
-                    opacity: 0,
-                    y: 35,
-                }}
-                whileInView={{
-                    opacity: 1,
-                    y: 0,
-                }}
-                viewport={{
-                    once: true,
-                    amount: 0.25,
-                }}
-                transition={{
-                    duration: 1.1,
-                    ease: [0.22, 1, 0.36, 1],
-                }}
-                className="
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 35,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.25,
+        }}
+        transition={{
+          duration: 1.1,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="
                     relative
                     z-10
                     mx-auto
@@ -89,32 +90,33 @@ const CertificationSection = () =>
                     sm:px-10
                     lg:py-32
                 "
-            >
+      >
+        {/* Eyebrow */}
 
-                {/* Eyebrow */}
-
-                <div className="
+        <div
+          className="
                     mb-7
                     flex
                     items-center
                     gap-4
-                ">
-
-                    <span className="
+                "
+        >
+          <span
+            className="
                         text-[8px]
                         uppercase
                         tracking-[0.45em]
                         text-lightCream/75 font-bold
-                    ">
-                        Our standards
-                    </span>
+                    "
+          >
+            Our standards
+          </span>
+        </div>
 
-                </div>
+        {/* Certification Logo */}
 
-
-                {/* Certification Logo */}
-
-                <div className="
+        <div
+          className="
     mb-8
     flex
     h-28
@@ -129,23 +131,24 @@ const CertificationSection = () =>
     backdrop-blur-sm
     sm:h-32
     sm:w-32
-">
-                    <img
-                        src={roundedLogo}
-                        alt="Laali Hills"
-                        className="
+"
+        >
+          <img
+            src={roundedLogo}
+            alt="Laali Hills"
+            className="
             h-full
             w-full
             rounded-full
             object-contain
         "
-                    />
-                </div>
+          />
+        </div>
 
+        {/* Title */}
 
-                {/* Title */}
-
-                <h2 className="
+        <h2
+          className="
                     header
                     max-w-3xl
                     text-[clamp(3.5rem,8vw,7rem)]
@@ -154,21 +157,23 @@ const CertificationSection = () =>
                     leading-[0.78]
                     tracking-[-0.075em]
                     text-lightWhite
-                ">
-                    We are a
-                    <br />
-
-                    <span className="
+                "
+        >
+          We are a
+          <br />
+          <span
+            className="
                         text-cream
-                    ">
-                        Certified.
-                    </span>
-                </h2>
+                    "
+          >
+            Certified.
+          </span>
+        </h2>
 
+        {/* Certification list */}
 
-                {/* Certification list */}
-
-                <div className="
+        <div
+          className="
                     mt-10
                     flex
                     flex-wrap
@@ -176,60 +181,66 @@ const CertificationSection = () =>
                     justify-center
                     gap-x-8
                     gap-y-4
-                    border-t
-                    border-lightCream/15
                     pt-5
-                ">
-
-                    <span className="
+                "
+        >
+          <span
+            className="
                         text-[7px]
                         uppercase
                         tracking-[0.3em]
                         text-lightCream/55
-                    ">
-                        Quality assured
-                    </span>
+                    "
+          >
+            Quality assured
+          </span>
 
-                    <span className="
+          <span
+            className="
                         h-1
                         w-1
                         rounded-full
                         bg-red
-                    " />
+                    "
+          />
 
-                    <span className="
+          <span
+            className="
                         text-[7px]
                         uppercase
                         tracking-[0.3em]
                         text-lightCream/55
-                    ">
-                        Traceable origin
-                    </span>
+                    "
+          >
+            Traceable origin
+          </span>
 
-                    <span className="
+          <span
+            className="
                         h-1
                         w-1
                         rounded-full
                         bg-red
-                    " />
+                    "
+          />
 
-                    <span className="
+          <span
+            className="
                         text-[7px]
                         uppercase
                         tracking-[0.3em]
                         text-lightCream/55
-                    ">
-                        Responsible sourcing
-                    </span>
+                    "
+          >
+            Responsible sourcing
+          </span>
+        </div>
 
-                </div>
+        {/* CTA */}
 
-
-                {/* CTA */}
-
-                <Link
-                    to="/certifications"
-                    className="
+        <Link
+          to="/certifications"
+          className="
                         group
                         mt-10
                         inline-flex
@@ -246,36 +257,35 @@ const CertificationSection = () =>
                         hover:border-lightCream
                         hover:bg-lightCream
                     "
-                >
-
-                    <span className="
+        >
+          <span
+            className="
                         text-[12px]
                         font-semibold
                         uppercase
                         tracking-[0.35em]
-                    ">
-                        View certifications
-                    </span>
+                    "
+          >
+            View certifications
+          </span>
 
-                    <ArrowUpRight
-                        size={16}
-                        strokeWidth={1.2}
-                        className="
+          <ArrowUpRight
+            size={16}
+            strokeWidth={1.2}
+            className="
                             transition-transform
                             duration-500
                             group-hover:-translate-y-1
                             group-hover:translate-x-1
                         "
-                    />
+          />
+        </Link>
+      </motion.div>
 
-                </Link>
+      {/* Corner information */}
 
-            </motion.div>
-
-
-            {/* Corner information */}
-
-            <div className="
+      <div
+        className="
                 absolute
                 bottom-6
                 left-6
@@ -287,30 +297,32 @@ const CertificationSection = () =>
                 sm:bottom-8
                 sm:left-10
                 sm:right-10
-            ">
-
-                <span className="
+            "
+      >
+        <span
+          className="
                     text-[7px]
                     uppercase
                     tracking-[0.35em]
                     text-lightCream/40
-                ">
-                    Laali Hills
-                </span>
+                "
+        >
+          Laali Hills
+        </span>
 
-                <span className="
+        <span
+          className="
                     text-[7px]
                     uppercase
                     tracking-[0.35em]
                     text-lightCream/40
-                ">
-                    Nepal
-                </span>
-
-            </div>
-
-        </section>
-    );
+                "
+        >
+          Nepal
+        </span>
+      </div>
+    </section>
+  );
 };
 
 export default CertificationSection;

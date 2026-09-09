@@ -27,16 +27,16 @@ const AboutHero = ({ video }) => {
       </motion.div>
 
       {/* DEEP RED ATMOSPHERE */}
-      <div className="absolute inset-0 bg-deepRed/35" />
+      <div className="absolute inset-0 bg-ink/35" />
 
       {/* DARK RED FROM BOTTOM */}
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-deepRed/35 to-deepRed/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-ink/20" />
 
       {/* STRONGER RED ON LEFT */}
-      <div className="absolute inset-0 bg-gradient-to-r from-deepRed/65 via-deepRed/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/65 via-ink/20 to-transparent" />
 
       {/* SUBTLE RED FILM */}
-      <div className="absolute inset-0 bg-deepRed/10 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-ink/10 mix-blend-multiply" />
 
       {/* CONTENT */}
       <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-14 sm:px-10 sm:pb-16 lg:px-16 lg:pb-20">

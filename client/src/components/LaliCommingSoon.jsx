@@ -68,11 +68,7 @@ const LaliComingSoon = () => {
         </motion.video>
 
         {/* Dark brown cinematic overlay */}
-        <div className="absolute inset-0 bg-black/25" />
-        {/* <div className="absolute inset-0 bg-black/25" /> */}
-
-        {/* Subtle Laali pink glow */}
-        {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(216,138,146,0.12),transparent_55%)]" /> */}
+        <div className="absolute inset-0 bg-black/15" />
 
         {/* Bottom fade */}
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black via-transparent to-transparent" />
@@ -250,25 +246,12 @@ const LaliComingSoon = () => {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className="
-        absolute
-        inset-0
-        flex
-        items-center
-        justify-center
-        px-6
-        sm:px-10
+        absolute inset-0 flex items-center justify-center px-6 sm:px-10
     "
               >
                 <div
                   className="
-        grid
-        w-full
-        max-w-6xl
-        grid-cols-1
-        gap-12
-        lg:grid-cols-[1.15fr_0.85fr]
-        lg:items-center
-        lg:gap-20
+        grid w-full max-w-6xl grid-cols-1 gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-20
     "
                 >
                   <div>
@@ -290,18 +273,7 @@ const LaliComingSoon = () => {
                     items-center
                     gap-3
                 "
-                    >
-                      {/* <span
-                        className="
-                    text-[8px]
-                    uppercase
-                    tracking-[0.45em]
-                    text-lightCream/70
-                "
-                      >
-                        The essence of Laali Hills
-                      </span> */}
-                    </motion.div>
+                    ></motion.div>
 
                     <motion.img
                       src={whenTheHillsAreLaali}
@@ -330,8 +302,6 @@ const LaliComingSoon = () => {
                     />
                   </div>
 
-                  {/* RIGHT */}
-
                   <motion.div
                     initial={{
                       opacity: 0,
@@ -345,39 +315,13 @@ const LaliComingSoon = () => {
                       delay: 0.6,
                       duration: 1,
                     }}
-                    className="max-w-md lg:pt-16  flex flex-col items-start justify-start "
+                    className="max-w-md flex flex-col items-start justify-start "
                   >
                     <p
                       className="
-                text-[18px]
-                leading-6
-                tracking-wide
-                text-lightCream/75
-                sm:leading-7 font-bold text-left
-            "
-                    >
-                      Laali comes from <i>Laali Guras</i>, the rhododendron that
-                      blooms across Nepal's hills. Hills speaks to the
-                      landscape, soil and life that surround it.
-                    </p>
-
-                    {/* Divider */}
-
-                    <div
-                      className="
-                my-7
-                h-px
-                w-full
-                bg-lightCream/15
-            "
-                    />
-
-                    {/* Statement */}
-
-                    <p
-                      className="
                 font-title
-                text-[11px]
+                text-[10px]
+                md:text-[14px]
                 uppercase
                 leading-6
                 tracking-[0.15em]
@@ -389,12 +333,10 @@ const LaliComingSoon = () => {
                       when they are flourishing.
                     </p>
 
-                    {/* CTA */}
-
                     <Link
                       to="/aboutLaaliHills"
                       className="
-                    mt-8 group inline-flex items-center gap-4 bg-hill px-6 py-3 text-[8px] font-medium uppercase tracking-[0.3em] text-[#F8EDE8] transition-all duration-500 hover:border-[#D9828A]/60 hover:bg-hill
+                    mt-8 group inline-flex items-center gap-4 bg-hill px-5 py-3 text-[8px] font-medium uppercase tracking-[0.3em] text-[#F8EDE8] transition-all duration-500 hover:border-[#D9828A]/60 hover:bg-hill
                 "
                     >
                       <span>Know Laali</span>
@@ -414,35 +356,6 @@ const LaliComingSoon = () => {
               </motion.div>
             )}
           </AnimatePresence>
-
-          {/* <motion.div
-                        initial={{
-                            opacity: 0,
-                        }}
-                        animate={{
-                            opacity: 1,
-                        }}
-                        transition={{
-                            duration: 1,
-                            delay: 1.4,
-                        }}
-                        className="absolute right-5 top-1/2 hidden -translate-y-1/2 lg:right-2 lg:block"
-                    >
-
-                        <div className="flex flex-col items-center gap-5">
-
-                            <span className="h-16 w-px bg-gradient-to-b from-transparent via-[#D9828A]/50 to-transparent" />
-
-                            <span className="[writing-mode:vertical-rl] text-[7px] uppercase tracking-[0.4em] text-[#C8A49E]"
-                            >
-                                Origin · People · Land · Experience
-                            </span>
-
-                            <span className="h-16 w-px bg-gradient-to-b from-transparent via-[#D9828A]/50 to-transparent" />
-
-                        </div>
-
-                    </motion.div> */}
         </div>
 
         <motion.div

@@ -21,9 +21,11 @@ const Landing = () => {
       <FeaturedProduct />
 
       <Halfhalf />
+
       <ContextSection />
 
       <Halfhalf2 />
+
       <AuthenticSection />
 
       <Collab />
@@ -32,7 +34,7 @@ const Landing = () => {
 
       <ShopBanner />
 
-      <FeatureStandard />
+      {/* <FeatureStandard /> */}
 
       <CertificationSection />
     </div>

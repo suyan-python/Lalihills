@@ -1,10 +1,19 @@
 import laliStampLogo from "../../assets/logo/round.svg";
 import farm from "../../assets/hills/farm.jpg";
+import { motion } from "framer-motion";
 
 const AuthenticSection = () => {
   return (
     <section className="relative overflow-hidden bg-hill">
-      <div className="relative min-h-[720px] w-full overflow-hidden">
+      <div
+        className="relative
+            
+            max-h-[75vh]
+            items-center
+            justify-center
+            overflow-hidden
+            bg-ink "
+      >
         {/* VIDEO */}
         <video
           autoPlay
@@ -27,91 +36,81 @@ const AuthenticSection = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-ink/65 via-transparent to-transparent" />
 
         {/* CONTENT */}
-        <div className="relative z-10 flex min-h-[720px] items-end px-7 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20 xl:px-20">
-          <div className="w-full max-w-2xl">
-            {/* TOP LABEL */}
-            <div className="mb-6 flex items-center gap-3">
-              <span className="text-[7px] uppercase tracking-[0.4em] text-lightCream/65 sm:text-[8px]">
-                The origin behind every cup
-              </span>
-            </div>
+        <div className="relative z-10 flex h-full items-center px-4 py-5 sm:px-8 sm:py-10 lg:px-16 lg:py-16 xl:px-20 ">
+          <div className="w-full max-w-2xl ">
+            {/* LABEL */}
+            <motion.span
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="block text-[8px] font-medium uppercase tracking-[0.35em] text-lightCream/60 sm:text-[9px]"
+            >
+              The origin behind every cup
+            </motion.span>
 
             {/* HEADING */}
-            <h2 className="subheader text-[clamp(3.5rem,7vw,7rem)] uppercase leading-[0.8] tracking-[-0.06em] text-lightCream">
+            <motion.h2
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 1.3,
+                delay: 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="subheader mt-3 max-w-2xl text-[clamp(2.2rem,8vw,8rem)] uppercase leading-[0.82] tracking-[-0.065em] text-lightCream sm:mt-6 lg:mt-7"
+            >
               Know
               <br />
               Your
               <br />
               <span className="text-red">Origin.</span>
-            </h2>
-
-            {/* DESCRIPTION */}
-            <p className="mt-8 max-w-lg text-[11px] leading-5 tracking-wide text-lightCream/65 sm:text-[12px] sm:leading-6">
-              Every Laali Hills collection begins where the mountains meet the
-              morning mist. We preserve the character of each origin, bringing
-              its story from the hills to you.
-            </p>
+            </motion.h2>
 
             {/* ORIGIN DETAILS */}
-            <div className="mt-10 grid max-w-lg grid-cols-2 border-t border-lightCream/15">
-              <div className="border-r border-lightCream/15 py-5 pr-6">
-                <span className="block text-[7px] uppercase tracking-[0.3em] text-stone">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 1,
+                delay: 0.5,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="mt-4 grid max-w-md grid-cols-2 border-t border-lightCream/15 sm:mt-7 lg:mt-10"
+            >
+              <div className="py-2 pr-3 sm:py-4 sm:pr-5 lg:py-5 lg:pr-6">
+                <span className="block text-[7px] uppercase tracking-[0.3em] text-lightCream/45">
                   Origin
                 </span>
 
-                <span className="mt-2 block text-sm tracking-wide text-lightCream">
+                <span className="mt-2 block text-[13px] tracking-wide text-lightCream sm:text-sm">
                   Nepal
                 </span>
               </div>
 
-              <div className="py-5 pl-6">
-                <span className="block text-[7px] uppercase tracking-[0.3em] text-stone">
+              <div className="border-l border-lightCream/15 py-2 pl-3 sm:py-4 sm:pl-5 lg:py-5 lg:pl-6">
+                <span className="block text-[7px] uppercase tracking-[0.3em] text-lightCream/45">
                   Landscape
                 </span>
 
-                <span className="mt-2 block text-sm tracking-wide text-lightCream">
+                <span className="mt-2 block text-[13px] tracking-wide text-lightCream sm:text-sm">
                   Himalayan Hills
                 </span>
               </div>
-            </div>
-
-            {/* BOTTOM PROMISE */}
-            <div className="mt-10 flex items-end justify-between border-t border-lightCream/15 pt-5 sm:mt-12">
-              <div>
-                <span className="block text-[7px] uppercase tracking-[0.35em] text-stone">
-                  Our promise
-                </span>
-
-                <span className="mt-2 block text-[9px] uppercase tracking-[0.2em] text-lightCream/70 sm:text-[10px]">
-                  Origin matters.
-                </span>
-              </div>
-
-              <div className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-lightCream/40 bg-hill/80 p-3 backdrop-blur-sm sm:h-24 sm:w-24">
-                <div className="absolute inset-2 rounded-full border border-dashed border-lightCream/20" />
-
-                <img
-                  src={laliStampLogo}
-                  alt="Laali Hills"
-                  className="relative z-10 h-full w-full object-contain"
-                />
-              </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+          {/* LOCATION LABEL */}
+          <div className="absolute bottom-8 right-8 z-10 hidden text-right sm:block lg:bottom-12 lg:right-12">
+            <span className="block text-[7px] uppercase tracking-[0.4em] text-lightCream/50">
+              Grown above the ordinary
+            </span>
 
-        {/* VIDEO FRAME */}
-        <div className="pointer-events-none absolute inset-5 border border-lightCream/15 sm:inset-8 lg:inset-10" />
-
-        {/* LOCATION LABEL */}
-        <div className="absolute bottom-8 right-8 z-10 hidden text-right sm:block lg:bottom-12 lg:right-12">
-          <span className="block text-[7px] uppercase tracking-[0.4em] text-lightCream/50">
-            Grown above the ordinary
-          </span>
-
-          <span className="mt-2 block text-[9px] uppercase tracking-[0.2em] text-lightCream/80">
-            Nepal · Himalayan Origin
-          </span>
+            <span className="mt-2 block text-[9px] uppercase tracking-[0.2em] text-lightCream/80">
+              Nepal · Himalayan Origin
+            </span>
+          </div>
         </div>
       </div>
     </section>

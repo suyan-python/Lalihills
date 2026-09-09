@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { ArrowLeft, Minus, Plus, ShoppingBag } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import ProductInfoGrid from "./ProductInfoGrid";
@@ -23,10 +23,10 @@ const CircularDetail = ({
   return (
     <div className={`absolute ${position}`}>
       <motion.div style={{ opacity, scale }} className="relative text-center">
-        <span className="block text-[7px] uppercase tracking-[0.4em] text-lightCream/40">
+        <span className="block text-[8px] uppercase tracking-[0.4em] text-ink/80">
           {title}
         </span>
-        <span className="mt-2 block text-xs uppercase tracking-[0.2em] text-lightCream">
+        <span className="mt-2 block text-xs uppercase tracking-[0.2em] text-ink font-bold">
           {value}
         </span>
         <motion.span
@@ -34,7 +34,7 @@ const CircularDetail = ({
             scaleX: lineScale,
             transformOrigin: lineFrom === "right" ? "right" : "left",
           }}
-          className={`absolute ${linePosition} top-1/2 hidden h-px w-20 bg-lightCream/15 xl:block`}
+          className={`absolute ${linePosition} top-1/2 hidden h-px w-20 bg-ink/20 xl:block`}
         />
       </motion.div>
     </div>
@@ -42,11 +42,11 @@ const CircularDetail = ({
 };
 
 const MobileDetail = ({ title, value }) => (
-  <div className="border-t border-lightCream/15 pt-3">
-    <span className="block text-[7px] uppercase tracking-[0.35em] text-lightCream/40">
+  <div className="border-t border-ink/15 pt-3">
+    <span className="block text-[7px] uppercase tracking-[0.35em] text-ink/50">
       {title}
     </span>
-    <span className="mt-2 block text-[10px] uppercase tracking-[0.15em] text-lightCream">
+    <span className="mt-2 block text-[10px] uppercase tracking-[0.15em] text-ink">
       {value}
     </span>
   </div>
@@ -217,11 +217,16 @@ const ProductDetails = ({ products = [] }) => {
     target: sectionRef,
     offset: ["start start", "end end"],
   });
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 28,
+    mass: 0.35,
+  });
 
   // --- Turntable motion (used only when no real angle shots are available) ---
-  const productRotateY = useTransform(scrollYProgress, [0, 1], [0, 360]);
-  const productRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [4, 0, -4]);
-  const productScale = useTransform(scrollYProgress, [0, 1], [1, 1]);
+  const productRotateY = useTransform(smoothProgress, [0, 1], [0, 360]);
+  const productRotateX = useTransform(smoothProgress, [0, 0.5, 1], [4, 0, -4]);
+  const productScale = useTransform(smoothProgress, [0, 1], [1, 1]);
 
   // Contact shadow breathes with the rotation angle so the product feels
   // grounded instead of floating while it turns.
@@ -230,46 +235,42 @@ const ProductDetails = ({ products = [] }) => {
     return 0.55 + Math.abs(Math.cos(rad)) * 0.45;
   });
   const shadowOpacity = useTransform(
-    scrollYProgress,
+    smoothProgress,
     [0, 0.1, 0.9, 1],
     [0, 0.35, 0.35, 0.15],
   );
 
-  const hintOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
-  const chromeReveal = useTransform(scrollYProgress, [0.02, 0.1], [0, 1]);
-  const titleY = useTransform(scrollYProgress, [0, 1], [0, -28]);
-  const productY = useTransform(scrollYProgress, [0, 1], [0, -34]);
-  const ringScale = useTransform(scrollYProgress, [0.03, 0.15], [0.75, 1]);
-  const ringOpacity = useTransform(scrollYProgress, [0.03, 0.15], [0, 1]);
+  const hintOpacity = useTransform(smoothProgress, [0, 0.05], [1, 0]);
+  const chromeReveal = useTransform(smoothProgress, [0.02, 0.1], [0, 1]);
+  const titleY = useTransform(smoothProgress, [0, 1], [0, -28]);
+  const productY = useTransform(smoothProgress, [0, 1], [0, -34]);
+  const ringScale = useTransform(smoothProgress, [0.03, 0.15], [0.75, 1]);
+  const ringOpacity = useTransform(smoothProgress, [0.03, 0.15], [0, 1]);
 
-  const originReveal = useTransform(scrollYProgress, [0.12, 0.22], [0, 1]);
+  const originReveal = useTransform(smoothProgress, [0.12, 0.22], [0, 1]);
 
-  const altitudeReveal = useTransform(scrollYProgress, [0.22, 0.32], [0, 1]);
+  const altitudeReveal = useTransform(smoothProgress, [0.22, 0.32], [0, 1]);
 
-  const flavorReveal = useTransform(scrollYProgress, [0.32, 0.42], [0, 1]);
+  const flavorReveal = useTransform(smoothProgress, [0.32, 0.42], [0, 1]);
 
-  const aromaReveal = useTransform(scrollYProgress, [0.42, 0.52], [0, 1]);
+  const aromaReveal = useTransform(smoothProgress, [0.42, 0.52], [0, 1]);
 
-  const processReveal = useTransform(scrollYProgress, [0.52, 0.62], [0, 1]);
+  const processReveal = useTransform(smoothProgress, [0.52, 0.62], [0, 1]);
 
-  const roastReveal = useTransform(scrollYProgress, [0.62, 0.72], [0, 1]);
+  const roastReveal = useTransform(smoothProgress, [0.62, 0.72], [0, 1]);
 
-  const caffeineReveal = useTransform(scrollYProgress, [0.72, 0.82], [0, 1]);
+  const caffeineReveal = useTransform(smoothProgress, [0.72, 0.82], [0, 1]);
 
-  const typeReveal = useTransform(scrollYProgress, [0.82, 0.92], [0, 1]);
+  const typeReveal = useTransform(smoothProgress, [0.82, 0.92], [0, 1]);
 
-  const mobileDetailOpacity = useTransform(
-    scrollYProgress,
-    [0.16, 0.3],
-    [0, 1],
-  );
-  const descriptionReveal = useTransform(scrollYProgress, [0.14, 0.28], [0, 1]);
-  const descriptionY = useTransform(scrollYProgress, [0.14, 0.28], [24, 0]);
+  const mobileDetailOpacity = useTransform(smoothProgress, [0.16, 0.3], [0, 1]);
+  const descriptionReveal = useTransform(smoothProgress, [0.14, 0.28], [0, 1]);
+  const descriptionY = useTransform(smoothProgress, [0.14, 0.28], [24, 0]);
 
   useEffect(() => {
     if (!hasRealRotation) return; // nothing to swap when we're faking rotation with CSS
 
-    const unsubscribe = scrollYProgress.on("change", (value) => {
+    const unsubscribe = smoothProgress.on("change", (value) => {
       const nextFrame = Math.min(
         rotationImages.length - 1,
         Math.floor(value * rotationImages.length),
@@ -279,7 +280,7 @@ const ProductDetails = ({ products = [] }) => {
     });
 
     return () => unsubscribe();
-  }, [scrollYProgress, rotationImages.length, hasRealRotation]);
+  }, [smoothProgress, rotationImages.length, hasRealRotation]);
 
   if (!product) {
     return (
@@ -309,24 +310,15 @@ const ProductDetails = ({ products = [] }) => {
 
   return (
     <main className="overflow-x-clip bg-lightWhite  text-ink ">
-      <section ref={sectionRef} className="relative h-[400vh] bg-ink">
+      <section ref={sectionRef} className="relative h-[400vh] bg-lightWhite">
         <div className="sticky top-0 isolate flex h-screen items-center justify-center overflow-hidden px-6 sm:px-10">
-          {/* ATMOSPHERE */}
-
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute left-1/2 top-1/2 h-[55vw] w-[55vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-soil/20 blur-[120px]" />
-            <div className="absolute inset-0 bg-linear-to-b from-ink via-ink/90 to-ink" />
-          </div>
-
-          {/* CHROME — back link + eyebrow, fades in once scrolling starts */}
-
           <motion.div
             style={{ opacity: chromeReveal }}
             className="absolute left-6 top-8 z-20 sm:left-10 sm:top-10"
           >
             <Link
               to="/shop/coffee"
-              className="inline-flex items-center gap-3 text-[8px] uppercase tracking-[0.35em] text-lightCream/50 transition-colors hover:text-red"
+              className="inline-flex items-center gap-3 text-[8px] uppercase tracking-[0.35em] text-ink/55 transition-colors hover:text-red"
             >
               <ArrowLeft size={13} strokeWidth={1.2} />
               Coffee collection
@@ -337,16 +329,13 @@ const ProductDetails = ({ products = [] }) => {
             style={{ opacity: chromeReveal }}
             className="absolute right-6 top-8 z-20 text-right sm:right-10 sm:top-10"
           >
-            <span className="block text-[8px] uppercase tracking-[0.4em] text-lightCream/50">
+            <span className="block text-[8px] uppercase tracking-[0.4em] text-ink/50">
               The product
             </span>
-            <p className="mt-2 text-xs uppercase tracking-[0.2em] text-lightCream">
+            <p className="mt-2 text-xs uppercase tracking-[0.2em] text-ink">
               {product.origin} · {product.type}
             </p>
           </motion.div>
-
-          {/* CENTER PRODUCT — bottom-up reveal on section entry, then a
-                        3D perspective turntable driven by scroll */}
 
           <motion.div
             initial={{ y: 140, opacity: 0 }}
@@ -356,19 +345,14 @@ const ProductDetails = ({ products = [] }) => {
             style={{ scale: productScale, y: productY, perspective: 1400 }}
             className="relative z-10 flex h-[55vh] w-[55vh] max-h-125 max-w-125 items-center justify-center"
           >
-            {/* THE RING — appears around the product as you scroll;
-                            detail spokes below connect back to its edge */}
-
             <motion.div
               style={{ scale: ringScale, opacity: ringOpacity }}
-              className="absolute inset-[6%] rounded-full border border-lightCream/25"
+              className="absolute inset-[6%] rounded-full border border-ink/20"
             />
             <motion.div
               style={{ scale: ringScale, opacity: ringOpacity }}
-              className="absolute inset-[15%] rounded-full border border-lightCream/10"
+              className="absolute inset-[15%] rounded-full border border-ink/10"
             />
-
-            <div className="absolute inset-[28%] rounded-full bg-red/10 blur-[80px]" />
 
             <motion.div
               style={{
@@ -386,31 +370,28 @@ const ProductDetails = ({ products = [] }) => {
 
               <motion.div
                 style={{ opacity: descriptionReveal }}
-                className="absolute inset-0 flex items-center justify-center bg-ink/55 px-[12%] text-center"
+                className="absolute inset-0 flex items-center justify-center bg-lightWhite/85 px-[12%] text-center"
               >
                 <motion.p
                   style={{ y: descriptionY }}
-                  className="max-w-sm text-xs font-light leading-6 text-lightCream sm:text-sm sm:leading-7"
+                  className="max-w-sm text-xs font-light leading-6 text-ink sm:text-sm sm:leading-7"
                 >
                   {product.description}
                 </motion.p>
               </motion.div>
             </motion.div>
 
-            {/* contact shadow that breathes with the turn */}
             <motion.div
               style={{ scaleX: shadowScaleX, opacity: shadowOpacity }}
-              className="absolute bottom-[4%] h-6 w-[55%] rounded-full bg-black blur-xl"
+              className="absolute bottom-[4%] h-6 w-[55%] rounded-full bg-ink/20 blur-xl"
             />
           </motion.div>
-
-          {/* SCROLL HINT — only visible before scrolling begins */}
 
           <motion.div
             style={{ opacity: hintOpacity }}
             className="absolute bottom-36 left-1/2 z-20 -translate-x-1/2 text-center"
           >
-            <span className="text-[8px] uppercase tracking-[0.4em] text-lightCream">
+            <span className="text-[8px] uppercase tracking-[0.4em] text-ink ">
               Scroll for details
             </span>
             <motion.span
@@ -420,21 +401,18 @@ const ProductDetails = ({ products = [] }) => {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="mx-auto mt-3 block h-8 w-px bg-lightCream/30"
+              className="mx-auto mt-3 block h-8 w-px bg-ink/30"
             />
           </motion.div>
-
-          {/* NAME + SHORT DESCRIPTION — stays visible at the top as the
-                        pinned product stage moves upward slightly */}
 
           <motion.div
             style={{ y: titleY }}
             className="absolute left-1/2 top-20 z-20 max-w-md -translate-x-1/2 px-6 text-center sm:top-24"
           >
-            <h1 className="header text-3xl uppercase leading-[0.9] tracking-[-0.03em] text-lightCream sm:text-4xl">
+            <h1 className="header text-3xl uppercase leading-[0.9] tracking-[-0.03em] text-ink sm:text-4xl">
               {product.name}
             </h1>
-            <p className="mt-3 text-xs font-light leading-6 text-lightCream/50 sm:text-sm">
+            <p className="mt-3 text-xs font-light leading-6 text-ink/85 sm:text-sm">
               {product.shortDescription}
             </p>
           </motion.div>
@@ -532,17 +510,17 @@ const ProductDetails = ({ products = [] }) => {
 
       {/* PRODUCT DETAILS */}
 
-      <section className="bg-lightWhite px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
+      <section className="bg-lightWhite px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
         <div className="mx-auto grid max-w-350 grid-cols-1 gap-20 lg:grid-cols-[1fr_0.72fr] lg:gap-28">
           {/* STORY */}
           <div>
-            <h2 className="header mt-7 max-w-3xl text-[clamp(3.5rem,6vw,6rem)] uppercase leading-[0.82] tracking-[-0.065em] text-ink">
-              From the
+            <h2 className="header mt-7 max-w-3xl text-[clamp(3.5rem,6vw,6rem)] uppercase leading-[0.82] tracking-[-0.065em] text-ink ">
+              Product
               <br />
-              <span className="italic text-red">hills.</span>
+              <span className="italic text-red">Details.</span>
             </h2>
 
-            <p className="mt-10 max-w-2xl text-sm font-light leading-8 text-ink/65 sm:text-base">
+            <p className="mt-10 max-w-2xl text-sm font-light leading-8 text-ink sm:text-base">
               {product.description}
             </p>
 
@@ -553,25 +531,27 @@ const ProductDetails = ({ products = [] }) => {
 
           {/* PURCHASE PANEL */}
           <div className="lg:pt-16">
-            <div className="border-t border-ink/15">
+            <div className="relative overflow-hidden border border-ink/15 bg-ivory/35 px-5 sm:px-7">
+              <div className="absolute left-0 top-0 h-1 w-24 bg-red" />
+
               {/* PRODUCT HEADER */}
-              <div className="flex items-start justify-between gap-8 py-7">
+              <div className="flex items-start justify-between gap-6 border-b border-ink/15 py-8">
                 <div>
                   <p className="text-[8px] font-medium uppercase tracking-[0.35em] text-red">
-                    Your selection
+                    01 / Build your ritual
                   </p>
 
-                  <h3 className="mt-3 text-lg font-medium uppercase tracking-[-0.01em] text-ink sm:text-xl">
+                  <h3 className="mt-4 max-w-xs text-xl font-medium uppercase leading-none tracking-[-0.02em] text-ink sm:text-2xl">
                     {product.name}
                   </h3>
 
-                  <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-ink/40">
+                  <p className="mt-3 text-[8px] uppercase tracking-[0.2em] text-ink/45">
                     {selectedSize.label}
                   </p>
                 </div>
 
                 <div className="text-right">
-                  <p className="whitespace-nowrap text-xl font-medium tracking-[-0.02em] text-ink">
+                  <p className="whitespace-nowrap text-2xl font-medium tracking-[-0.03em] text-ink">
                     NPR{" "}
                     {unitPrice.toLocaleString(undefined, {
                       maximumFractionDigits: 0,
@@ -579,7 +559,7 @@ const ProductDetails = ({ products = [] }) => {
                   </p>
 
                   {product.available && (
-                    <div className="mt-2 flex items-center justify-end gap-2">
+                    <div className="mt-3 flex items-center justify-end gap-2">
                       <span className="h-1.5 w-1.5 rounded-full bg-hill" />
                       <span className="text-[7px] uppercase tracking-[0.25em] text-hill">
                         In stock
@@ -591,10 +571,10 @@ const ProductDetails = ({ products = [] }) => {
 
               {/* SIZE */}
               {sizeOptions.length > 1 && (
-                <div className="border-t border-ink/10 py-7">
+                <div className="border-b border-ink/10 py-7">
                   <div className="flex items-center justify-between">
-                    <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-stone">
-                      Size
+                    <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-ink">
+                      <span className="mr-3 text-red">02</span>Size
                     </span>
 
                     <span className="text-[7px] uppercase tracking-[0.2em] text-ink/30">
@@ -602,7 +582,7 @@ const ProductDetails = ({ products = [] }) => {
                     </span>
                   </div>
 
-                  <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                  <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3">
                     {sizeOptions.map((option) => {
                       const active = selectedSize.label === option.label;
 
@@ -611,7 +591,7 @@ const ProductDetails = ({ products = [] }) => {
                           key={option.label}
                           type="button"
                           onClick={() => setSelectedSize(option)}
-                          className={`flex h-11 items-center justify-center border text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${active ? "border-ink bg-ink text-lightCream" : "border-ink/15 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
+                          className={`flex h-12 items-center justify-center border text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${active ? "border-ink bg-ink text-lightCream" : "border-ink/15 bg-lightWhite/50 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
                         >
                           {option.label}
                         </button>
@@ -622,10 +602,10 @@ const ProductDetails = ({ products = [] }) => {
               )}
 
               {/* PURCHASE */}
-              <div className="border-t border-ink/10 py-7">
+              <div className="border-b border-ink/10 py-7">
                 <div className="flex items-center justify-between">
-                  <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-stone">
-                    Purchase
+                  <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-ink">
+                    <span className="mr-3 text-red">03</span>Purchase
                   </span>
 
                   {purchaseType === "subscribe" && (
@@ -635,21 +615,27 @@ const ProductDetails = ({ products = [] }) => {
                   )}
                 </div>
 
-                <div className="mt-4 grid grid-cols-2 gap-2">
+                <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
                   <button
                     type="button"
                     onClick={() => setPurchaseType("one-time")}
-                    className={`h-11 border text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${purchaseType === "one-time" ? "border-ink bg-ink text-lightCream" : "border-ink/15 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
+                    className={`flex h-12 items-center justify-between border px-4 text-left text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${purchaseType === "one-time" ? "border-ink bg-ink text-lightCream" : "border-ink/15 bg-lightWhite/50 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
                   >
-                    One-Time
+                    <span>One-Time</span>
+                    <span className="text-[7px] opacity-50">
+                      Single delivery
+                    </span>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => setPurchaseType("subscribe")}
-                    className={`h-11 border text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${purchaseType === "subscribe" ? "border-ink bg-ink text-lightCream" : "border-ink/15 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
+                    className={`flex h-12 items-center justify-between border px-4 text-left text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${purchaseType === "subscribe" ? "border-ink bg-ink text-lightCream" : "border-ink/15 bg-lightWhite/50 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
                   >
-                    Subscribe & Save
+                    <span>Subscribe & Save</span>
+                    <span className="text-[7px] text-red">
+                      -{Math.round(subscriptionDiscount * 100)}%
+                    </span>
                   </button>
                 </div>
 
@@ -658,7 +644,7 @@ const ProductDetails = ({ products = [] }) => {
                     <select
                       value={frequency}
                       onChange={(event) => setFrequency(event.target.value)}
-                      className="h-11 w-full appearance-none border border-ink/15 bg-lightCream px-4 pr-10 text-[8px] uppercase tracking-[0.2em] text-ink outline-none transition-colors duration-300 focus:border-ink/50"
+                      className="h-12 w-full appearance-none border border-ink/15 bg-lightWhite/70 px-4 pr-10 text-[8px] uppercase tracking-[0.2em] text-ink outline-none transition-colors duration-300 focus:border-ink/50"
                     >
                       {(
                         product.frequencies || [
@@ -683,10 +669,10 @@ const ProductDetails = ({ products = [] }) => {
 
               {/* GRIND */}
               {product.grindOptions?.length > 0 && (
-                <div className="border-t border-ink/10 py-7">
+                <div className="border-b border-ink/10 py-7">
                   <div className="flex items-center justify-between">
-                    <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-stone">
-                      Grind
+                    <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-ink">
+                      <span className="mr-3 text-red">04</span>Grind
                     </span>
 
                     <span className="text-[7px] uppercase tracking-[0.2em] text-ink/30">
@@ -694,7 +680,7 @@ const ProductDetails = ({ products = [] }) => {
                     </span>
                   </div>
 
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-5 flex flex-wrap gap-2">
                     {product.grindOptions.map((grind) => {
                       const active = selectedGrind === grind;
 
@@ -703,7 +689,7 @@ const ProductDetails = ({ products = [] }) => {
                           key={grind}
                           type="button"
                           onClick={() => setSelectedGrind(grind)}
-                          className={`h-11 flex-1 border px-5 text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 sm:flex-none ${active ? "border-ink bg-ink text-lightCream" : "border-ink/15 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
+                          className={`h-12 flex-1 border px-5 text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 sm:flex-none ${active ? "border-ink bg-ink text-lightCream" : "border-ink/15 bg-lightWhite/50 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
                         >
                           {grind}
                         </button>
@@ -714,20 +700,21 @@ const ProductDetails = ({ products = [] }) => {
               )}
 
               {/* QUANTITY + CTA */}
-              <div className="border-t border-ink/10 pt-7">
+              <div className="py-7">
                 <div className="flex items-end justify-between">
                   <div>
-                    <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-stone">
-                      Quantity
+                    <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-ink">
+                      <span className="mr-3 text-red">05</span>Quantity
                     </span>
 
-                    <div className="mt-4 flex h-11 items-center rounded-full border border-ink/15 bg-lightCream">
+                    <div className="mt-4 flex h-12 items-center border border-ink/15 bg-lightWhite/70">
                       <button
                         type="button"
                         onClick={() =>
                           setQuantity((value) => Math.max(1, value - 1))
                         }
-                        className="flex h-9 w-9 items-center justify-center rounded-full text-ink/45 transition-all duration-300 hover:bg-ink hover:text-lightCream"
+                        aria-label="Decrease quantity"
+                        className="flex h-10 w-10 items-center justify-center text-ink/45 transition-all duration-300 hover:bg-ink hover:text-lightCream"
                       >
                         <Minus size={11} strokeWidth={1.2} />
                       </button>
@@ -739,7 +726,8 @@ const ProductDetails = ({ products = [] }) => {
                       <button
                         type="button"
                         onClick={() => setQuantity((value) => value + 1)}
-                        className="flex h-9 w-9 items-center justify-center rounded-full text-ink/45 transition-all duration-300 hover:bg-ink hover:text-lightCream"
+                        aria-label="Increase quantity"
+                        className="flex h-10 w-10 items-center justify-center text-ink/45 transition-all duration-300 hover:bg-ink hover:text-lightCream"
                       >
                         <Plus size={11} strokeWidth={1.2} />
                       </button>
@@ -747,11 +735,11 @@ const ProductDetails = ({ products = [] }) => {
                   </div>
 
                   <div className="text-right">
-                    <span className="text-[7px] uppercase tracking-[0.2em] text-ink/35">
-                      Total
+                    <span className="text-[7px] uppercase tracking-[0.2em] text-ink/40">
+                      Your total
                     </span>
 
-                    <p className="mt-1 text-base font-medium tracking-[-0.01em] text-ink">
+                    <p className="mt-1 text-xl font-medium tracking-[-0.02em] text-ink">
                       NPR{" "}
                       {total.toLocaleString(undefined, {
                         maximumFractionDigits: 0,
@@ -763,7 +751,7 @@ const ProductDetails = ({ products = [] }) => {
                 <button
                   type="button"
                   onClick={handleAddToCart}
-                  className="group mt-5 flex h-13 w-full items-center justify-between bg-red px-6 text-lightCream transition-all duration-500 hover:bg-deepRed sm:px-7"
+                  className="group mt-6 flex h-14 w-full items-center justify-between bg-red px-6 text-lightCream transition-all duration-500 hover:bg-deepRed sm:px-7"
                 >
                   <span className="text-[8px] font-medium uppercase tracking-[0.3em]">
                     Add to cart
@@ -774,7 +762,7 @@ const ProductDetails = ({ products = [] }) => {
                   </span>
                 </button>
 
-                <p className="mt-4 text-center text-[6px] uppercase tracking-[0.2em] text-ink/30">
+                <p className="mt-4 text-center text-[7px] uppercase tracking-[0.2em] text-ink/35">
                   Freshly packed · Nepal origin · Delivered with care
                 </p>
               </div>
@@ -785,220 +773,135 @@ const ProductDetails = ({ products = [] }) => {
 
       {/* TASTING NOTES */}
 
-      <section className="relative overflow-hidden bg-hill px-6 py-24 text-lightCream sm:px-10 sm:py-32 lg:px-16 lg:py-40">
-        <div className="mx-auto max-w-350">
+      <section className="relative overflow-hidden bg-hill px-6 py-5 text-lightCream sm:px-10 sm:py-8 lg:px-16 lg:py-10">
+        <div className="mx-auto max-w-[1400px]">
           {/* HEADER */}
-          <div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-end">
-            <div className="max-w-4xl">
-              <div className="mb-7 flex items-center gap-3">
-                <span className="h-px w-8 bg-cream" />
-                <span className="text-[8px] font-medium uppercase tracking-[0.4em] text-lightCream/55">
-                  The tasting notes
-                </span>
-              </div>
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-3xl"
+          >
+            <span className="text-[8px] font-medium uppercase tracking-[0.4em] text-lightCream/50 sm:text-[9px]">
+              The tasting notes
+            </span>
 
-              <h2 className="header text-[clamp(3.5rem,6vw,6rem)] uppercase leading-[0.82] tracking-[-0.065em]">
-                The story you'll
-                <br />
-                remember
-                <br />
-                <span className="italic text-cream">inside the cup.</span>
-              </h2>
-            </div>
-
-            <p className="max-w-xs text-[9px] font-light uppercase leading-6 tracking-[0.15em] text-lightCream/45 lg:mb-2">
-              A sensory journey shaped by altitude,
-              <br className="hidden lg:block" />
-              origin and the hands behind every harvest.
-            </p>
-          </div>
+            <h2 className="header mt-6 text-[clamp(3.5rem,6vw,6rem)] uppercase leading-[0.84] tracking-[-0.065em]">
+              Inside
+              <br />
+              the <span className="italic text-cream">cup.</span>
+            </h2>
+          </motion.div>
 
           {/* TASTING NOTES */}
-          <div className="mt-20 border-t border-lightCream/15 lg:mt-28">
-            <div className="grid grid-cols-1 lg:grid-cols-3">
-              {/* AROMA */}
-              <div className="group border-b border-lightCream/15 py-10 lg:border-b-0 lg:border-r lg:py-12 lg:pr-12">
-                <div className="flex items-start justify-between">
-                  <span className="font-title text-4xl font-light tracking-[-0.05em] text-lightCream/15">
-                    01
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 1.3,
+              delay: 0.2,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="mt-8 grid border-t border-lightCream/15 lg:mt-10 lg:grid-cols-3"
+          >
+            {/* AROMA */}
+            <div className="border-b border-lightCream/15 py-8 lg:border-b-0 lg:border-r lg:py-5 lg:pr-12">
+              <span className="text-[8px] font-medium uppercase tracking-[0.35em] text-cream">
+                Aroma
+              </span>
+
+              <div className="mt-6 flex flex-wrap gap-x-3 gap-y-2">
+                {(product.aroma || []).map((item, index) => (
+                  <span
+                    key={`${item}-${index}`}
+                    className="text-[12px] tracking-wide text-lightCream/70 sm:text-[13px]"
+                  >
+                    {item}
+                    {index < product.aroma.length - 1 && (
+                      <span className="ml-3 text-lightCream/25">·</span>
+                    )}
                   </span>
-
-                  <span className="text-[7px] uppercase tracking-[0.3em] text-lightCream/35">
-                    Sensory
-                  </span>
-                </div>
-
-                <div className="mt-16">
-                  <p className="text-[8px] font-medium uppercase tracking-[0.35em] text-cream">
-                    Aroma
-                  </p>
-
-                  <h3 className="mt-4 text-2xl font-light tracking-[-0.03em] text-lightCream">
-                    First impression.
-                  </h3>
-
-                  <div className="mt-8 space-y-3">
-                    {(product.aroma || []).map((item, index) => (
-                      <div
-                        key={`${item}-${index}`}
-                        className="flex items-center gap-3 border-b border-lightCream/10 pb-3"
-                      >
-                        <span className="h-1 w-1 rounded-full bg-cream/70" />
-                        <span className="text-[9px] uppercase tracking-[0.18em] text-lightCream/65">
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* FLAVOURS */}
-              <div className="group border-b border-lightCream/15 py-10 lg:border-b-0 lg:border-r lg:px-12 lg:py-12">
-                <div className="flex items-start justify-between">
-                  <span className="font-title text-4xl font-light tracking-[-0.05em] text-lightCream/15">
-                    02
-                  </span>
-
-                  <span className="text-[7px] uppercase tracking-[0.3em] text-lightCream/35">
-                    Profile
-                  </span>
-                </div>
-
-                <div className="mt-16">
-                  <p className="text-[8px] font-medium uppercase tracking-[0.35em] text-cream">
-                    Flavours
-                  </p>
-
-                  <h3 className="mt-4 text-2xl font-light tracking-[-0.03em] text-lightCream">
-                    What stays with you.
-                  </h3>
-
-                  <div className="mt-8 space-y-3">
-                    {(product.flavors || []).map((item, index) => (
-                      <div
-                        key={`${item}-${index}`}
-                        className="flex items-center gap-3 border-b border-lightCream/10 pb-3"
-                      >
-                        <span className="h-1 w-1 rounded-full bg-cream/70" />
-                        <span className="text-[9px] uppercase tracking-[0.18em] text-lightCream/65">
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* CHARACTER */}
-              <div className="group py-10 lg:py-12 lg:pl-12">
-                <div className="flex items-start justify-between">
-                  <span className="font-title text-4xl font-light tracking-[-0.05em] text-lightCream/15">
-                    03
-                  </span>
-
-                  <span className="text-[7px] uppercase tracking-[0.3em] text-lightCream/35">
-                    Identity
-                  </span>
-                </div>
-
-                <div className="mt-16">
-                  <p className="text-[8px] font-medium uppercase tracking-[0.35em] text-cream">
-                    Character
-                  </p>
-
-                  <h3 className="mt-4 text-2xl font-light tracking-[-0.03em] text-lightCream">
-                    The soul of the cup.
-                  </h3>
-
-                  <p className="mt-8 max-w-sm text-sm font-light leading-8 text-lightCream/60">
-                    {product.shortDescription}
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
-          </div>
 
-          {/* FOOTER DETAIL */}
-          <div className="mt-14 flex items-center justify-between border-t border-lightCream/10 pt-5">
-            <span className="text-[7px] uppercase tracking-[0.3em] text-lightCream/30">
-              Laali Hills
-            </span>
+            {/* FLAVOURS */}
+            <div className="border-b border-lightCream/15 py-8 lg:border-b-0 lg:border-r lg:px-12 lg:py-5">
+              <span className="text-[8px] font-medium uppercase tracking-[0.35em] text-cream">
+                Flavours
+              </span>
 
-            <span className="text-[7px] uppercase tracking-[0.25em] text-lightCream/30">
-              From the higher belt
-            </span>
-          </div>
+              <div className="mt-6 flex flex-wrap gap-x-3 gap-y-2">
+                {(product.flavors || []).map((item, index) => (
+                  <span
+                    key={`${item}-${index}`}
+                    className="text-[12px] tracking-wide text-lightCream/70 sm:text-[13px]"
+                  >
+                    {item}
+                    {index < product.flavors.length - 1 && (
+                      <span className="ml-3 text-lightCream/25">·</span>
+                    )}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* CHARACTER */}
+            <div className="py-8 lg:py-5 lg:pl-12">
+              <span className="text-[8px] font-medium uppercase tracking-[0.35em] text-cream">
+                Character
+              </span>
+
+              <p className="mt-6 max-w-sm text-[12px] leading-6 text-lightCream/70 sm:text-[13px] sm:leading-7">
+                {product.shortDescription}
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* FAQ */}
 
-      <section className="bg-lightWhite px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
+      <section className="bg-lightWhite px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-28">
         <div className="mx-auto max-w-275">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center"
+            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="flex items-center justify-center gap-3">
-              <span className="h-px w-6 bg-red/50" />
-              <span className="text-[8px] font-medium uppercase tracking-[0.4em] text-soil">
-                Good to know
-              </span>
-              <span className="h-px w-6 bg-red/50" />
-            </div>
+            <span className="text-[8px] font-medium uppercase tracking-[0.4em] text-soil/60 sm:text-[9px]">
+              Good to know
+            </span>
 
-            <h2 className="header mt-7 text-[clamp(3.5rem,6vw,6rem)] uppercase leading-[0.8] tracking-[-0.065em] text-ink">
+            <h2 className="header mt-5 max-w-xl text-[clamp(3rem,5vw,5rem)] uppercase leading-[0.84] tracking-[-0.06em] text-ink">
               Questions,
               <br />
               <span className="italic text-red">answered.</span>
             </h2>
-
-            <p className="mx-auto mt-8 max-w-md text-[10px] leading-6 text-ink/45 sm:text-xs">
-              Everything you might want to know before bringing a little piece
-              of the hills home.
-            </p>
           </motion.div>
 
-          <div className="mt-20 border-t border-ink/10">
-            {product.faqs?.map((faq, index) => (
-              <motion.div
-                key={faq.question}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{
-                  duration: 0.7,
-                  delay: index * 0.07,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-              >
-                <FaqItem
-                  number={String(index + 1).padStart(2, "0")}
-                  question={faq.question}
-                  answer={faq.answer}
-                />
-              </motion.div>
-            ))}
-          </div>
-
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="mt-8 flex items-center justify-between border-t border-ink/10 pt-5"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 1.2,
+              delay: 0.15,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="mt-14 border-t border-ink/10 sm:mt-16"
           >
-            <span className="text-[7px] uppercase tracking-[0.3em] text-ink/30">
-              Laali Hills
-            </span>
-
-            <span className="text-[7px] uppercase tracking-[0.3em] text-ink/30">
-              From the higher belt
-            </span>
+            {product.faqs?.map((faq, index) => (
+              <FaqItem
+                key={faq.question}
+                number={String(index + 1).padStart(2, "0")}
+                question={faq.question}
+                answer={faq.answer}
+              />
+            ))}
           </motion.div>
         </div>
       </section>

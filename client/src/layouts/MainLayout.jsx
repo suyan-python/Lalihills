@@ -3,20 +3,18 @@ import Banner from "../constant/Banner";
 import Navbar from "../constant/Navbar";
 import Footer from "../constant/Footer";
 
+const MainLayout = () => {
+  return (
+    <div className="min-h-screen">
+      <Banner />
+      <Navbar />
 
-const MainLayout = () =>
-{
-    return (
-        <div className="min-h-screen">
-            <Banner />
-            <Navbar />
-
-            <main>
-                <Outlet />
-            </main>
-            <Footer />
-        </div>
-    );
+      <main className="relative z-10">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
 };
 
 export default MainLayout;

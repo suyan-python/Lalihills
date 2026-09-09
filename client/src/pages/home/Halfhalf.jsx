@@ -50,9 +50,7 @@ const Halfhalf = () => {
                   },
                 }}
                 className="text-[8px] font-medium uppercase tracking-[0.4em] text-lightCream/60"
-              >
-                From the hills
-              </motion.span>
+              ></motion.span>
 
               <motion.h2
                 variants={{
@@ -66,7 +64,7 @@ const Halfhalf = () => {
                     },
                   },
                 }}
-                className="subheader mt-6 text-[clamp(3.5rem,7vw,7rem)] uppercase leading-[0.8] tracking-[-0.065em] text-lightCream"
+                className="subheader mt-7 max-w-2xl text-[clamp(4rem,8vw,8rem)] uppercase leading-[0.82] tracking-[-0.065em] text-lightCream"
               >
                 Where
                 <br />
@@ -74,26 +72,6 @@ const Halfhalf = () => {
                 <br />
                 begins.
               </motion.h2>
-
-              <motion.p
-                variants={{
-                  hidden: { opacity: 0, y: 25 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      duration: 1.2,
-                      ease: [0.22, 1, 0.36, 1],
-                    },
-                  },
-                }}
-                className="mx-auto mt-8 max-w-md text-[11px] leading-6 tracking-wide text-lightCream/70 lg:mx-0 sm:text-[12px] sm:leading-7"
-              >
-                lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </motion.p>
 
               <motion.div
                 variants={{
@@ -109,19 +87,19 @@ const Halfhalf = () => {
                 }}
                 className="mx-auto mt-10 flex max-w-md items-center justify-center gap-5 border-t border-lightCream/15 pt-5 lg:mx-0 lg:justify-start"
               >
-                <span className="text-[7px] uppercase tracking-[0.3em] text-lightCream/50">
+                <span className="text-[13px] font-medium tracking-wide text-lightCream">
                   Nepal
                 </span>
 
                 <span className="h-3 w-px bg-lightCream/20" />
 
-                <span className="text-[7px] uppercase tracking-[0.3em] text-lightCream/50">
+                <span className="text-[13px] font-medium tracking-wide text-lightCream">
                   Higher Belt
                 </span>
 
                 <span className="h-3 w-px bg-lightCream/20" />
 
-                <span className="text-[7px] uppercase tracking-[0.3em] text-lightCream/50">
+                <span className="text-[13px] font-medium tracking-wide text-lightCream">
                   Laali Hills
                 </span>
               </motion.div>

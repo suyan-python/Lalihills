@@ -103,8 +103,7 @@ const Shop = () => {
                                     text-[#241817]
                                 "
               >
-                Our
-                <span className="block italic text-red">Selects</span>
+                Our <span className=" italic text-red">Selects</span>
               </motion.h1>
             </div>
 
@@ -132,11 +131,11 @@ const Shop = () => {
               <p
                 className="
                                 font-subtitle
-                                text-lg
+                                md:text-base
+                                text-xs
                                 italic
                                 leading-relaxed
                                 text-[#795D57]
-                                sm:text-xl
                             "
               >
                 Coffee, tea and thoughtful gifts — each carrying something of

@@ -1,6 +1,25 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
 
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   /* font-family: "Montserrat", sans-serif; */
   font-family: "Hanken Grotesk", sans-serif;

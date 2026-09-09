@@ -39,12 +39,8 @@ const footerCollections = [
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-ink text-lightCream">
-      {/* =====================================================
-                SHOPPING COLLECTIONS
-            ====================================================== */}
-
-      <section className="">
+    <footer className="sticky bottom-0 z-0 overflow-hidden bg-ink text-lightCream">
+      <section>
         <div className="mx-auto w-full">
           <div className="grid grid-cols-2 md:grid-cols-4">
             {footerCollections.map((item, index) => (
@@ -52,20 +48,16 @@ const Footer = () => {
                 key={item.title}
                 initial={{
                   opacity: 0,
-                  y: -60,
-                  scale: 0.98,
                 }}
                 whileInView={{
                   opacity: 1,
-                  y: 0,
-                  scale: 1,
                 }}
                 viewport={{
                   once: true,
                   amount: 0.15,
                 }}
                 transition={{
-                  duration: 1.8,
+                  duration: 1.2,
                   delay: index * 0.12,
                   ease: [0.22, 1, 0.36, 1],
                 }}
@@ -114,10 +106,6 @@ const Footer = () => {
           </div>
         </div>
       </section>
-
-      {/* =====================================================
-                MAIN FOOTER
-            ====================================================== */}
 
       <section className="relative overflow-hidden border-t border-white/[0.08] ">
         {/* =================================================
@@ -365,10 +353,6 @@ const Footer = () => {
     </footer>
   );
 };
-
-/* =============================================================
-   FOOTER COMPONENTS
-============================================================= */
 
 const FooterHeading = ({ children }) => {
   return (
