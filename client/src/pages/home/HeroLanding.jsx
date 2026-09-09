@@ -11,6 +11,7 @@ import FeatureStandard from "./FeatureStandard";
 import ShopBanner from "../shop/ShopBanner";
 import Halfhalf from "./Halfhalf";
 import Halfhalf2 from "./Halfhalf2";
+import End from "./End";
 
 const Landing = () => {
   return (
@@ -37,6 +38,8 @@ const Landing = () => {
       {/* <FeatureStandard /> */}
 
       <CertificationSection />
+
+      <End />
     </div>
   );
 };

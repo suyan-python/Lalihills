@@ -78,27 +78,11 @@ const AuthenticSection = () => {
                 delay: 0.5,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mt-4 grid max-w-md grid-cols-2 border-t border-lightCream/15 sm:mt-7 lg:mt-10"
+              className="mt-4 sm:mt-7 lg:mt-10"
             >
-              <div className="py-2 pr-3 sm:py-4 sm:pr-5 lg:py-5 lg:pr-6">
-                <span className="block text-[7px] uppercase tracking-[0.3em] text-lightCream/45">
-                  Origin
-                </span>
-
-                <span className="mt-2 block text-[13px] tracking-wide text-lightCream sm:text-sm">
-                  Nepal
-                </span>
-              </div>
-
-              <div className="border-l border-lightCream/15 py-2 pl-3 sm:py-4 sm:pl-5 lg:py-5 lg:pl-6">
-                <span className="block text-[7px] uppercase tracking-[0.3em] text-lightCream/45">
-                  Landscape
-                </span>
-
-                <span className="mt-2 block text-[13px] tracking-wide text-lightCream sm:text-sm">
-                  Himalayan Hills
-                </span>
-              </div>
+              <button className=" text-lightWhite px-4 py-1 uppercase tracking-widest">
+                Explore
+              </button>
             </motion.div>
           </div>
           {/* LOCATION LABEL */}

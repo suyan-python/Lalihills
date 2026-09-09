@@ -78,7 +78,7 @@ const ShopBanner = () => {
                   delay: 0.3,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="mt-4 flex flex-col gap-3 border-t border-lightCream/20 pt-3 sm:mt-7 sm:gap-5 sm:pt-4 lg:mt-10 lg:flex-row lg:items-center lg:justify-between lg:pt-5"
+                className="mt-4 flex flex-col gap-3  pt-3 sm:mt-7 sm:gap-5 sm:pt-4 lg:mt-10 lg:flex-row lg:items-center lg:justify-between lg:pt-5"
               >
                 <div className="flex items-center gap-3 sm:gap-5">
                   <span className="text-[7px] uppercase tracking-[0.3em] text-lightCream/55 sm:text-[8px]">
