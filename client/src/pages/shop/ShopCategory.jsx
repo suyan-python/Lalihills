@@ -21,7 +21,7 @@ const ShopCategory = ({
   filterComponent,
 }) => {
   return (
-    <main className="min-h-screen max-w-7xl mx-auto px-8 md:px-0">
+    <main className="min-h-screen  mx-auto px-8 md:px-0 bg-lightWhite">
       <Helmet>
         <title>{seoTitle}</title>
 
