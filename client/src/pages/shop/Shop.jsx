@@ -74,11 +74,11 @@ const Shop = () => {
         </motion.p>
       </div>
 
-      <section className="relative px-7  pt-36 sm:px-12 sm:pt-44 lg:px-20 pb-5 lg:pt-36 xl:px-28">
+      <section className="relative px-7  pt-36 sm:px-12 sm:pt-44 lg:px-20 lg:pt-36 xl:px-28">
         <div className="mx-auto max-w-[1500px]">
           {/* Main heading */}
 
-          <div className="mt-5 grid lg:grid-cols-12 lg:gap-10 ">
+          <div className=" grid lg:grid-cols-12 lg:gap-10 ">
             <div className="lg:col-span-8">
               <motion.h1
                 initial={{
@@ -143,39 +143,17 @@ const Shop = () => {
               </p>
             </motion.div>
           </div>
-
-          <motion.div
-            initial={{
-              scaleX: 0,
-            }}
-            animate={{
-              scaleX: 1,
-            }}
-            transition={{
-              duration: 1.3,
-              delay: 0.5,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            style={{
-              transformOrigin: "left",
-            }}
-            className="
-                        mt-5
-                            h-px
-                            w-full
-                            bg-[#241817]/50"
-          />
         </div>
       </section>
 
-      <section className="relative px-7 pb-14 sm:px-12 sm:pb-16 lg:px-20 lg:pb-20 xl:px-28 mt-5">
-        <div className="mx-auto max-w-[1500px]">
+      <section className="relative  mt-5">
+        <div className=" w-full">
           <div
             className="
                         grid
-                        gap-8
+                        grid-cols-2
                         md:grid-cols-3
-                        lg:gap-12
+                      
                     "
           >
             <CollectionSecondary collection={collections[0]} index={0} />
@@ -201,160 +179,62 @@ const Shop = () => {
 const CollectionSecondary = ({ collection, index }) => {
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-        y: 50,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.15,
-      }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{
-        duration: 0.9,
-        delay: index * 0.1,
+        duration: 1,
+        delay: index * 0.08,
         ease: [0.22, 1, 0.36, 1],
       }}
+      className="h-full"
     >
-      <Link to={collection.path} className="group block overflow-hidden">
-        <div className="overflow-hidden bg-lightCream">
-          {/* IMAGE SECTION */}
-
-          <div className="relative aspect-[4/3] overflow-hidden">
+      <Link to={collection.path} className="group block h-full overflow-hidden">
+        <div className="grid h-full aspect-[3/5] grid-rows-[3fr_1fr] overflow-hidden bg-lightCream">
+          {/* IMAGE */}
+          <div className="relative min-h-0 overflow-hidden">
             <motion.img
               src={collection.image}
               alt={collection.description}
               loading="lazy"
               decoding="async"
-              className="
-                    h-full
-                    w-full
-                    object-cover
-                    transition-transform
-                    duration-[1800ms]
-                    ease-[cubic-bezier(0.22,1,0.36,1)]
-                    group-hover:scale-[1.05]
-                "
+              className="h-full w-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045]"
             />
 
             {/* NUMBER */}
-
-            <div className="absolute left-5 top-5">
-              <span
-                className="
-                    text-[8px]
-                    uppercase
-                    tracking-[0.35em]
-                    text-white/80
-                "
-              >
-                {collection.number}
-              </span>
-            </div>
-
-            {/* IMAGE OVERLAY */}
-
-            <div
-              className="
-                absolute
-                inset-0
-                bg-gradient-to-t
-                from-black/20
-                via-transparent
-                to-transparent
-            "
-            />
-          </div>
-
-          {/* TEXT SECTION */}
-          <div
-            className="
-               flex aspect-[12/4] flex-col items-center justify-center px-6 text-center py-2"
-            style={{
-              backgroundColor: collection.accent,
-            }}
-          >
-            <span
-              className="
-              mt-3
-                text-[8px]
-                uppercase
-                tracking-[0.35em]
-                text-lightCream/70 
-            "
-            >
-              {collection.subtitle}
+            <span className="absolute left-5 top-5 z-10 text-[8px] font-medium uppercase tracking-[0.35em] text-lightCream/75">
+              {collection.number}
             </span>
 
-            <h2
-              className="
-                subheader
-                mt-2
-                text-[clamp(2.5rem,4vw,3.5rem)]
-                leading-[0.85]
-                tracking-[-0.06em]
-                text-lightCream
-            "
-            >
-              {collection.name}
-            </h2>
+            {/* SUBTLE OVERLAY */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/15 via-transparent to-transparent" />
+          </div>
 
-            <p
-              className="
-                mt-2
-                text-[11px]
-                leading-6
-                text-lightCream/75
-            "
-            >
-              {collection.description}
-            </p>
-
-            {/* CTA */}
-
-            <div
-              className="
-                my-2
-                flex
-                items-center
-                gap-3
-                transition-all
-                duration-500
-                group-hover:gap-5 
-            "
-            >
-              <span
-                className="
-                    text-[8px]
-                    uppercase
-                    tracking-[0.3em]
-                    text-lightCream
-                "
-              >
-                Explore
+          {/* CONTENT */}
+          <div
+            className="flex min-h-0 items-center justify-center px-5 text-center sm:px-6"
+            style={{ backgroundColor: collection.accent }}
+          >
+            <div className="w-full">
+              {/* SUBTITLE */}
+              <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-lightCream/65 sm:text-[8px]">
+                {collection.subtitle}
               </span>
 
-              <div
-                className="
-                    flex
-                    h-10
-                    w-10
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-lightCream/30
-                    transition-all
-                    duration-500
-                    group-hover:bg-lightCream
-                    group-hover:text-ink
-                    text-lightCream
-                "
-              >
-                <ArrowUpRight size={15} strokeWidth={1.2} className=" " />
+              {/* TITLE */}
+              <h2 className="subheader mt-2 text-[clamp(2rem,3.2vw,3.2rem)] leading-[0.82] tracking-[-0.06em] text-lightCream">
+                {collection.name}
+              </h2>
+
+              {/* CTA */}
+              <div className="mt-4 flex items-center justify-center gap-3 text-lightCream transition-all duration-500 group-hover:gap-4">
+                <span className="text-[8px] font-medium uppercase tracking-[0.3em]">
+                  Explore
+                </span>
+
+                <span className="flex h-7 w-7 items-center justify-center rounded-full border border-lightCream/30 transition-all duration-500 group-hover:bg-lightCream group-hover:text-ink">
+                  <ArrowUpRight size={13} strokeWidth={1.2} />
+                </span>
               </div>
             </div>
           </div>

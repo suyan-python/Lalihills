@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import SmartVideo from "../../components/SmartVideo";
 
 import context from "/videos/collab.mp4";
@@ -135,7 +135,7 @@ const Collab = () => {
           to="/explore"
           className="
                         group
-                        mt-24
+                        mt-14
                         inline-flex
                         items-center
                         gap-5
@@ -163,7 +163,7 @@ const Collab = () => {
             Explore the Collab
           </span>
 
-          <ArrowUpRight
+          <ArrowRight
             size={16}
             strokeWidth={1.2}
             className="

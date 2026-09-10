@@ -397,7 +397,7 @@ const LaliComingSoon = () => {
 
         <Link
           to="/shop"
-          className="group absolute bottom-44 left-1/2 z-40 inline-flex -translate-x-1/2 items-start gap-4 bg-hill px-6 py-3 text-[8px] md:text-[10px] font-medium uppercase tracking-[0.3em] text-[#F8EDE8] shadow-xl transition-all duration-500 hover:bg-hill/80"
+          className="group absolute bottom-44 left-1/2 z-40 inline-flex -translate-x-1/2 items-start gap-4 bg-ivory px-6 py-3 text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-hill shadow-xl transition-all duration-500 hover:bg-hill/80 hover:text-lightWhite"
           aria-label="Explore offerings"
         >
           <span>Explore offerings</span>

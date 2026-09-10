@@ -6,10 +6,10 @@ const ShopStatement = () => {
       className="
                 relative
                 overflow-hidden
-                bg-[#32211F]
-                py-24
-                sm:py-32
-                lg:py-40
+                bg-ink
+                py-14
+                sm:py-18
+                lg:py-20
             "
     >
       <div className="pointer-events-none absolute inset-0 flex items-center overflow-hidden">
@@ -103,7 +103,7 @@ const ShopStatement = () => {
                         w-max
                         shrink-0
                         items-center
-                        whitespace-nowrap
+                        whitespace-nowrap header
                     "
         >
           {/* FIRST */}

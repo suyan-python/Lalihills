@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 import coffee from "../../assets/footer/coffee.webp";
@@ -42,19 +41,12 @@ const End = () => {
             {footerCollections.map((item, index) => (
               <motion.div
                 key={item.title}
-                initial={{
-                  opacity: 0,
-                }}
-                whileInView={{
-                  opacity: 1,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.15,
-                }}
+                initial={{ opacity: 0, y: -42 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{
-                  duration: 1.2,
-                  delay: index * 0.12,
+                  duration: 0.55,
+                  delay: index * 0.08,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className="group relative aspect-[3/5] overflow-hidden"

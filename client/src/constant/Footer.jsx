@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="sticky bottom-0 z-0 overflow-hidden bg-ink text-lightCream">
       <section className="relative overflow-hidden border-t border-white/[0.08] ">
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden select-none ">
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -18,7 +18,7 @@ const Footer = () => {
             className="whitespace-nowrap text-center font-title text-[22vw] leading-none tracking-[-0.07em] text-lightCream/[0.05] sm:text-[20vw] "
           >
             LAALI HILLS
-          </motion.div>
+          </motion.div> */}
         </div>
 
         <div className="relative z-10 mx-auto max-w-[1500px] px-6 pb-7 pt-16 sm:px-10 sm:pt-20 lg:px-14 lg:pt-24">

@@ -93,21 +93,6 @@ const ShopBanner = () => {
                     Small Batch
                   </span>
                 </div>
-
-                <Link
-                  to="/shop/coffee"
-                  className="group flex w-fit items-center gap-3 text-[7px] font-medium uppercase tracking-[0.25em] text-lightCream transition-colors duration-500 hover:text-cream sm:gap-4 sm:text-[8px] sm:tracking-[0.3em]"
-                >
-                  <span>Explore coffee</span>
-
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full border border-lightCream/35 transition-all duration-500 group-hover:border-lightCream/70 group-hover:bg-lightCream group-hover:text-ink sm:h-9 sm:w-9">
-                    <ArrowUpRight
-                      size={14}
-                      strokeWidth={1.1}
-                      className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    />
-                  </span>
-                </Link>
               </motion.div>
             </div>
           </div>

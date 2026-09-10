@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import SmartVideo from "../../components/SmartVideo";
 
 import context from "/videos/context.mp4";
@@ -104,7 +104,7 @@ const ContextSection = () => {
             Explore
           </span>
 
-          <ArrowUpRight
+          <ArrowRight
             size={15}
             strokeWidth={1.2}
             className="transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1"
