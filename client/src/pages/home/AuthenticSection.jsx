@@ -1,6 +1,7 @@
 import laliStampLogo from "../../assets/logo/round.svg";
 import farm from "../../assets/hills/farm.jpg";
 import { motion } from "framer-motion";
+import SmartVideo from "../../components/SmartVideo";
 
 const AuthenticSection = () => {
   return (
@@ -15,16 +16,11 @@ const AuthenticSection = () => {
             bg-ink "
       >
         {/* VIDEO */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
+        <SmartVideo
+          src="/videos/know-origin.mp4"
+          priority
           className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="/videos/know-origin.mp4" type="video/mp4" />
-        </video>
+        />
 
         {/* OVERALL VIDEO TREATMENT */}
         <div className="absolute inset-0 bg-ink/15" />

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import SmartVideo from "../../components/SmartVideo";
 
 const AboutHero = ({ video }) => {
   return (
@@ -14,16 +15,11 @@ const AboutHero = ({ video }) => {
         }}
         className="absolute inset-0"
       >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
+        <SmartVideo
+          src={video}
+          priority
           className="h-full w-full object-cover"
-        >
-          <source src={video} type="video/mp4" />
-        </video>
+        />
       </motion.div>
 
       {/* DEEP RED ATMOSPHERE */}

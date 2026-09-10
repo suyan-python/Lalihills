@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import SmartVideo from "../../components/SmartVideo";
 
 const FeaturedProduct = () => {
   return (
@@ -23,16 +24,10 @@ const FeaturedProduct = () => {
               whileHover={{ scale: 1.02 }}
               className="relative aspect-[4/5]"
             >
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
+              <SmartVideo
+                src="/videos/picked.mp4"
                 className="h-full w-full object-cover"
-              >
-                <source src="/videos/picked.mp4" type="video/mp4" />
-              </video>
+              />
 
               <div className="absolute inset-0 bg-ink/10" />
 

@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import SmartVideo from "../../components/SmartVideo";
 
 import context from "/videos/context.mp4";
 
@@ -18,12 +19,8 @@ const ContextSection = () => {
             bg-ink 
         "
     >
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
+      <SmartVideo
+        src={context}
         className="
                     absolute
                     inset-0
@@ -31,9 +28,7 @@ const ContextSection = () => {
                     w-full
                     object-cover
                 "
-      >
-        <source src={context} type="video/mp4" />
-      </video>
+      />
 
       <div
         className="

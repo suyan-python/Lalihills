@@ -1,22 +1,18 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import SmartVideo from "../../components/SmartVideo";
 
 const ShopBanner = () => {
   return (
     <section className="relative w-full overflow-hidden bg-ink">
       <div className="relative aspect-video w-full">
         {/* VIDEO */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
+        <SmartVideo
+          src="/videos/shop-banner.mp4"
+          priority
           className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="/videos/shop-banner.mp4" type="video/mp4" />
-        </video>
+        />
 
         {/* NATURAL DARKENING */}
         <div className="absolute inset-0 bg-ink/45" />

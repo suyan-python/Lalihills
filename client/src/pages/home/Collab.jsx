@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import SmartVideo from "../../components/SmartVideo";
 
 import context from "/videos/collab.mp4";
 
@@ -20,12 +21,8 @@ const Collab = () => {
     >
       {/* Background Video */}
 
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
+      <SmartVideo
+        src={context}
         className="
                     absolute
                     inset-0
@@ -33,9 +30,7 @@ const Collab = () => {
                     w-full
                     object-cover
                 "
-      >
-        <source src={context} type="video/mp4" />
-      </video>
+      />
 
       {/* Dark cinematic overlay */}
 

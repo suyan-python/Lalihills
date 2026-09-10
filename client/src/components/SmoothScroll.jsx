@@ -9,10 +9,11 @@ const SmoothScroll = () => {
 
     const lenis = new Lenis({
       autoRaf: false,
-      lerp: 0.08,
+      lerp: 0.075,
       smoothWheel: true,
       syncTouch: true,
       wheelMultiplier: 0.9,
+      anchors: true,
     });
 
     let frameId;
@@ -21,10 +22,27 @@ const SmoothScroll = () => {
       frameId = requestAnimationFrame(animate);
     };
 
-    frameId = requestAnimationFrame(animate);
+    const start = () => {
+      cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(animate);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(frameId);
+        lenis.stop();
+      } else {
+        lenis.start();
+        start();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    start();
 
     return () => {
       cancelAnimationFrame(frameId);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       lenis.destroy();
     };
   }, []);
