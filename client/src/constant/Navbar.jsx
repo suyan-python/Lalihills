@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronRight, Leaf, Sprout } from "lucide-react";
 
 // import logo from "/gold.png"
 import logo from "../assets/logo/gold.svg";
@@ -227,7 +227,7 @@ const Navbar = () => {
                   duration: 0.35,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className={`absolute left-0 h-px w-7 ${menuOpen ? "bg-lightWhite" : "bg-ink"}`}
+                className={`absolute left-0 h-px w-7 ${menuOpen ? "bg-ink" : "bg-soil"}`}
               />
 
               <motion.span
@@ -246,7 +246,7 @@ const Navbar = () => {
                   duration: 0.35,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className={`absolute left-0 h-px w-7 ${menuOpen ? "bg-lightWhite" : "bg-ink"}`}
+                className={`absolute left-0 h-px w-7 ${menuOpen ? "bg-ink" : "bg-soil"}`}
               />
             </span>
           </button>
@@ -264,7 +264,7 @@ const Navbar = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
               onClick={() => setMenuOpen(false)}
-              className="fixed inset-0 z-[80] bg-ink/45 backdrop-blur-[3px]"
+              className="fixed inset-0 z-[80] bg-black/80 backdrop-blur-[3px]"
             />
             {/* =================================================
                 DESKTOP MENU
@@ -296,11 +296,9 @@ const Navbar = () => {
                 <div className="relative flex w-[25%] flex-col border-r border-lightWhite/10 px-10 pb-12 pt-32 xl:px-16">
                   {/* Small label */}
 
-                  <div className="mb-10 flex items-center gap-3">
-                    <span className="h-px w-8 bg-lightWhite" />
-
-                    <span className="text-[9px] uppercase tracking-[0.35em] text-lightWhite/60">
-                      Explore Laali Hills
+                  <div className="my-10 flex items-center gap-3">
+                    <span className="text-[9px] uppercase tracking-[0.35em] text-ivory">
+                      Navigations Laali Hills
                     </span>
                   </div>
 
@@ -372,35 +370,47 @@ const Navbar = () => {
                       );
                     })}
                   </nav>
-
-                  {/* Bottom */}
-
-                  <div className="flex items-end justify-between border-t border-lightWhite/10 pt-6">
-                    <div>
-                      <p className="text-[8px] uppercase tracking-[0.3em] text-lightWhite/35">
-                        Nepal • Origin • Craft
-                      </p>
-
-                      <p className="mt-2 font-subtitle text-sm italic text-lightWhite/60">
-                        The hills are our beginning.
-                      </p>
-                    </div>
-
-                    <p className="text-[9px] text-lightWhite/35">
-                      © {new Date().getFullYear()}
-                    </p>
-                  </div>
                 </div>
+
                 {/* ===========================================
     RIGHT PREVIEW
 =========================================== */}
 
-                <div className="relative flex w-[75%] overflow-hidden bg-ink">
+                <div className="relative flex w-[75%] overflow-hidden bg-lightWhite">
+                  <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                    {/* Large leaf */}
+                    <Leaf
+                      size={230}
+                      strokeWidth={0.7}
+                      className="absolute -left-16 -top-16 rotate-[25deg] text-hill/[0.055]"
+                    />
+
+                    {/* Small leaf */}
+                    <Leaf
+                      size={110}
+                      strokeWidth={0.8}
+                      className="absolute left-[24%] top-[18%] -rotate-[35deg] text-red/[0.045]"
+                    />
+
+                    {/* Sprout */}
+                    <Sprout
+                      size={180}
+                      strokeWidth={0.7}
+                      className="absolute bottom-[-35px] left-[12%] rotate-[18deg] text-hill/[0.045]"
+                    />
+
+                    {/* Small botanical detail */}
+                    <Leaf
+                      size={75}
+                      strokeWidth={0.8}
+                      className="absolute bottom-[20%] left-[8%] rotate-[70deg] text-soil/[0.04]"
+                    />
+                  </div>
                   {/* ===========================================
         LEFT — EDITORIAL PREVIEW
     =========================================== */}
 
-                  <div className="relative flex w-[70%] flex-col px-12 pb-4 pt-32 xl:px-16">
+                  <div className="relative flex w-[40%] flex-col px-12 pb-4 pt-32 xl:px-16">
                     <div className="relative flex h-full flex-col">
                       {/* Preview heading */}
 
@@ -424,18 +434,18 @@ const Navbar = () => {
                           }}
                           className="mb-12"
                         >
-                          <p className="mb-5 text-[9px] uppercase tracking-[0.35em] text-lightWhite/60">
+                          <p className="mb-5 text-[9px] uppercase tracking-[0.35em] text-ink/90">
                             {String(menuItems.indexOf(activeMenu) + 1).padStart(
                               2,
                               "0",
                             )}
                           </p>
 
-                          <h2 className="max-w-xl font-title text-5xl leading-[0.9] tracking-[-0.035em] text-lightWhite xl:text-6xl">
+                          <h2 className="max-w-xl subheader text-5xl leading-[0.9] tracking-[-0.035em] text-ink xl:text-6xl">
                             {activeMenu.title}
                           </h2>
 
-                          <p className="mt-6 max-w-md font-subtitle text-xl italic leading-relaxed text-lightWhite/70">
+                          <p className="mt-4 max-w-md  text-base italic leading-relaxed text-ink/70">
                             {activeMenu.preview}
                           </p>
                         </motion.div>
@@ -469,19 +479,6 @@ const Navbar = () => {
                             {activeMenu.subItems?.length > 0 && (
                               <div className="grid max-w-2xl grid-cols-2 gap-x-8 gap-y-8">
                                 {activeMenu.subItems.map((subItem) => {
-                                  /*
-                                                                            Supports:
-                                
-                                                                            "Top"
-                                
-                                                                            and:
-                                
-                                                                            {
-                                                                                title: "Coffee",
-                                                                                items: [...]
-                                                                            }
-                                                                        */
-
                                   if (
                                     typeof subItem === "string" ||
                                     subItem.path
@@ -499,9 +496,9 @@ const Navbar = () => {
                                             ? subItem
                                             : subItem.path
                                         }
-                                        className="group flex items-center justify-between border-b border-lightWhite/10 pb-4"
+                                        className="group flex items-center justify-between border-b border-ink/10 pb-4"
                                       >
-                                        <span className="text-sm text-lightWhite/75 transition-colors duration-300 group-hover:text-lightWhite">
+                                        <span className="text-sm text-ink/75 transition-colors duration-300 group-hover:text-ink">
                                           {typeof subItem === "string"
                                             ? subItem
                                             : subItem.title}
@@ -510,7 +507,7 @@ const Navbar = () => {
                                         <ArrowUpRight
                                           size={14}
                                           strokeWidth={1}
-                                          className="text-lightWhite/45 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-lightWhite"
+                                          className="text-ink/45 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
                                         />
                                       </Link>
                                     );
@@ -521,7 +518,7 @@ const Navbar = () => {
                                       key={subItem.title}
                                       className="space-y-3"
                                     >
-                                      <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-lightWhite/60">
+                                      <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-ink/70">
                                         {subItem.title}
                                       </p>
 
@@ -530,11 +527,11 @@ const Navbar = () => {
                                           to={child.path}
                                           onClick={() => setMenuOpen(false)}
                                           key={child.path}
-                                          className="group flex items-center gap-3 text-sm text-lightWhite/75"
+                                          className="group flex items-center gap-3 text-sm text-ink/75"
                                         >
-                                          <span className="h-px w-2 bg-lightWhite transition-all duration-300 group-hover:w-5" />
+                                          <span className="h-px w-2 bg-ink transition-all duration-300 group-hover:w-5" />
 
-                                          <span className="transition-colors duration-300 group-hover:text-lightWhite">
+                                          <span className="transition-colors duration-300 group-hover:text-ink">
                                             {child.title}
                                           </span>
                                         </Link>
@@ -552,7 +549,7 @@ const Navbar = () => {
                               <Link
                                 to={activeMenu.path}
                                 onClick={() => setMenuOpen(false)}
-                                className="group inline-flex items-center gap-4 border-b border-lightWhite/40 pb-3 text-[10px] font-medium uppercase tracking-[0.3em] text-lightWhite"
+                                className="group inline-flex items-center gap-4 border-b border-ink/50 pb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-ink"
                               >
                                 Discover {activeMenu.title}
                                 <ArrowUpRight
@@ -565,40 +562,10 @@ const Navbar = () => {
                           </motion.div>
                         </AnimatePresence>
                       </div>
-
-                      {/* ======================================
-                EDITORIAL FOOTER
-            ======================================= */}
-
-                      <div className="mt-auto flex items-end justify-between border-t border-lightWhite/10 pt-4">
-                        <div className="max-w-sm">
-                          <p className="text-[8px] uppercase tracking-[0.3em] text-lightWhite/35">
-                            Laali Hills Journal
-                          </p>
-
-                          <p className="mt-2 font-subtitle text-base italic text-lightWhite/55">
-                            From the land, through the hands, into your cup.
-                          </p>
-                        </div>
-
-                        <div className="hidden text-right xl:block">
-                          <p className="text-[8px] uppercase tracking-[0.3em] text-lightWhite/35">
-                            Nepal's
-                          </p>
-
-                          <p className="mt-1 font-title text-lg text-lightWhite/60">
-                            Origin
-                          </p>
-                        </div>
-                      </div>
                     </div>
                   </div>
 
-                  {/* ===========================================
-        RIGHT — IMAGE PREVIEW
-    =========================================== */}
-
-                  <div className="relative w-[30%] overflow-hidden border-l border-lightWhite/10">
+                  <div className="relative w-[50%] overflow-hidden ">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={activeMenu.title}
@@ -618,21 +585,17 @@ const Navbar = () => {
                           duration: 0.7,
                           ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="absolute inset-0 py-12"
+                        className="absolute inset-0 py-12  px-5"
                       >
                         <img
                           src={activeMenu.image}
                           alt={`${activeMenu.title} preview`}
-                          className="h-full w-full object-cover"
+                          className="h-full w-full object-cover rounded-4xl"
                         />
-
-                        {/* Image overlay */}
-
-                        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-ink/10 to-ink/40" />
 
                         {/* Bottom information */}
 
-                        <div className="absolute inset-x-0 bottom-0 py-16 px-7">
+                        <div className="absolute inset-x-0 bottom-0 py-16 px-10">
                           <motion.div
                             initial={{
                               opacity: 0,
@@ -647,7 +610,7 @@ const Navbar = () => {
                               delay: 0.2,
                             }}
                           >
-                            <span className="text-[7px] uppercase tracking-[0.35em] text-lightWhite/60">
+                            <span className="text-[7px] uppercase tracking-[0.35em] text-lightWhite/80">
                               Discover
                             </span>
 
@@ -690,8 +653,6 @@ const Navbar = () => {
                 {/* Mobile label */}
 
                 <div className="mb-8 flex items-center gap-3">
-                  <span className="h-px w-7 bg-lightWhite" />
-
                   <span className="text-[8px] uppercase tracking-[0.35em] text-lightWhite/60">
                     Explore Laali Hills
                   </span>

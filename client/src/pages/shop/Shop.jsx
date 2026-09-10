@@ -207,7 +207,7 @@ const CollectionSecondary = ({ collection, index }) => {
             </span>
 
             {/* SUBTLE OVERLAY */}
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/15 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/25 via-transparent to-transparent" />
           </div>
 
           {/* CONTENT */}

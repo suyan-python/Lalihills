@@ -68,17 +68,17 @@ const Footer = () => {
             <div className="lg:col-span-2">
               <FooterHeading>Explore</FooterHeading>
 
+              <FooterLink href="/about">About Us</FooterLink>
+
+              <FooterLink href="/explore/process">Our Process</FooterLink>
+
               <FooterLink href="/explore/origins">Origins</FooterLink>
 
               <FooterLink href="/explore/farmers">Farmers</FooterLink>
 
-              <FooterLink href="/explore/process">Our Process</FooterLink>
-
               <FooterLink href="/explore/nepal-coffee">Nepal Coffee</FooterLink>
 
               <FooterLink href="/stories">Stories</FooterLink>
-
-              <FooterLink href="/about">About Us</FooterLink>
             </div>
 
             {/* SUPPORT */}

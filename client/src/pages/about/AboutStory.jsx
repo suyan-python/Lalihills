@@ -9,6 +9,7 @@ import { useRef, useState } from "react";
 import hillsImage from "../../assets/about/hills.jpg";
 import farmerImage from "../../assets/about/farmer.jpg";
 import coffeeImage from "../../assets/about/coffee.jpg";
+import { Bean, Leaf } from "lucide-react";
 
 const AboutStory = () => {
   const sectionRef = useRef(null);
@@ -18,15 +19,7 @@ const AboutStory = () => {
     offset: ["start end", "end start"],
   });
 
-  // Overall subtle movement based on page scroll
-  const titleY = useTransform(scrollYProgress, [0, 0.45, 1], [70, 0, -40]);
-
-  const sideY = useTransform(scrollYProgress, [0, 0.5, 1], [40, 0, -30]);
-
   const quoteY = useTransform(scrollYProgress, [0.35, 0.7, 1], [60, 0, -30]);
-
-  const lineScale = useTransform(scrollYProgress, [0.15, 0.8], [0, 1]);
-
   const currentChapter = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75, 1],
@@ -42,7 +35,7 @@ const AboutStory = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-lightCream px-6 py-28 sm:px-10 sm:py-36 lg:px-16 "
+      className="relative overflow-hidden bg-cream  py-18 sm:py-20"
     >
       <motion.div
         style={{
@@ -56,184 +49,99 @@ const AboutStory = () => {
         }}
         className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-red/[0.04] blur-[100px]"
       />
-      <div className="relative z-10 mx-auto max-w-[1500px]">
-        <div className=" ">
-          <div className="lg:col-span-8 lg:col-start-5">
-            <motion.div
-              style={{
-                y: titleY,
-              }}
-            >
-              <motion.p
-                initial={{
-                  opacity: 0,
-                  y: 50,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.3,
-                }}
-                transition={{
-                  duration: 1,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="max-w-5xl header text-[clamp(2.8rem,5vw,5.5rem)] leading-[0.93] tracking-[-0.05em] text-brown"
-              >
-                <span className="italic text-red">Laali Hills</span> began with
-                a simple belief:
-              </motion.p>
 
-              <div className="relative mt-3 overflow-hidden">
-                <motion.p
-                  initial={{
-                    opacity: 0,
-                    y: "100%",
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                    amount: 0.4,
-                  }}
-                  transition={{
-                    duration: 1.1,
-                    delay: 0.1,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="font-title text-[clamp(2.8rem,5vw,5.5rem)] italic leading-[0.93] tracking-[-0.05em] text-red"
-                >
-                  Where something comes from matters.
-                </motion.p>
-              </div>
-            </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.35 }}
+        transition={{
+          duration: 1.4,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="relative mt-20 flex flex-col items-center px-5 py-20 text-center sm:mt-28 sm:py-28"
+      >
+        <span className="text-[8px] font-medium uppercase tracking-[0.4em] text-red/60 sm:text-[9px]">
+          The story continues
+        </span>
 
-            <div className="mt-24 space-y-32 sm:mt-32 sm:space-y-44">
-              <StoryVisual
-                number="01"
-                title="The Land"
-                image={hillsImage}
-                imagePosition="left"
-              >
-                Nepal's hills hold a remarkable diversity of landscapes,
-                climates and communities. Here, coffee and tea are shaped by
-                altitude, soil, rainfall and seasons.
-                <br />
-                <br />
-                The land is not simply where our products come from. It is part
-                of what makes them what they are.
-              </StoryVisual>
+        <p className="mt-7 max-w-4xl font-subtitle text-[clamp(1.8rem,3.5vw,3.5rem)] italic leading-[1.08] tracking-[-0.025em] text-brown">
+          “We don't simply bring the hills to your cup.
+          <span className="text-red"> We bring the story with them.</span>”
+        </p>
+      </motion.div>
 
-              <StoryVisual
-                number="02"
-                title="The People"
-                image={farmerImage}
-                imagePosition="right"
-              >
-                Behind every harvest are people who understand the land through
-                generations of experience.
-                <br />
-                <br />
-                We believe their knowledge, patience and work deserve to be part
-                of the story that reaches your cup.
-              </StoryVisual>
+      <div className="relative mt-24 sm:mt-32 lg:mt-40">
+        {/* BACKGROUND WATERMARKS */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <motion.div
+            style={{
+              y: useTransform(scrollYProgress, [0, 1], [0, -120]),
+              rotate: useTransform(scrollYProgress, [0, 1], [-10, 12]),
+            }}
+            className="absolute -right-16 top-[8%] text-hill/[0.045]"
+          >
+            <Leaf size={260} strokeWidth={0.7} />
+          </motion.div>
 
-              <StoryVisual
-                number="03"
-                title="The Craft"
-                image={coffeeImage}
-                imagePosition="left"
-              >
-                From cultivation to processing, every step shapes the character
-                of what eventually reaches you.
-                <br />
-                <br />
-                We care about how something is grown, how it is handled, and how
-                its origin can still be experienced in the final cup.
-              </StoryVisual>
+          <motion.div
+            style={{
+              y: useTransform(scrollYProgress, [0, 1], [80, -80]),
+              rotate: useTransform(scrollYProgress, [0, 1], [18, -15]),
+            }}
+            className="absolute -left-12 top-[32%] text-red/[0.035]"
+          >
+            <Bean size={180} strokeWidth={0.7} />
+          </motion.div>
 
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 60,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.3,
-                }}
-                transition={{
-                  duration: 1,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="relative py-10 sm:py-20"
-              >
-                <div className="border-l border-red/30 pl-7 sm:pl-10">
-                  <span className="text-[8px] uppercase tracking-[0.3em] text-red">
-                    04 — The Experience
-                  </span>
+          <motion.div
+            style={{
+              y: useTransform(scrollYProgress, [0, 1], [100, -160]),
+              rotate: useTransform(scrollYProgress, [0, 1], [-20, 10]),
+            }}
+            className="absolute -right-10 top-[58%] text-soil/[0.04]"
+          >
+            <Bean size={130} strokeWidth={0.7} />
+          </motion.div>
 
-                  <p className="mt-7 max-w-3xl font-subtitle text-2xl italic leading-relaxed text-[#705752] sm:text-3xl lg:text-4xl">
-                    Because discovering a product should also mean discovering
-                    the place, people and story behind it.
-                  </p>
-                </div>
-              </motion.div>
-            </div>
+          <motion.div
+            style={{
+              y: useTransform(scrollYProgress, [0, 1], [0, -100]),
+              rotate: useTransform(scrollYProgress, [0, 1], [25, -5]),
+            }}
+            className="absolute -left-20 bottom-[8%] text-hill/[0.04]"
+          >
+            <Leaf size={220} strokeWidth={0.7} />
+          </motion.div>
+        </div>
 
-            <motion.div
-              style={{
-                y: quoteY,
-              }}
-              initial={{
-                opacity: 0,
-                scale: 0.96,
-              }}
-              whileInView={{
-                opacity: 1,
-                scale: 1,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.4,
-              }}
-              transition={{
-                duration: 1.2,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="relative mt-32 overflow-hidden border-t border-red/20 pt-10 sm:mt-44"
-            >
-              <p className="max-w-3xl font-subtitle text-2xl italic leading-relaxed text-mutedBrown sm:text-3xl lg:text-4xl">
-                "We don't simply bring the hills to your cup. We bring the story
-                with them."
-              </p>
+        {/* STORY CHAPTERS */}
+        <div className="relative">
+          <StoryChapter
+            number="01"
+            title="The Land"
+            image={hillsImage}
+            statement="Nepal's hills shape everything."
+            detail="Altitude. Soil. Rain. Season."
+            index={0}
+          />
 
-              <motion.div
-                initial={{
-                  width: 0,
-                }}
-                whileInView={{
-                  width: 70,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.8,
-                  delay: 0.3,
-                }}
-                className="mt-8 h-px bg-red"
-              />
-            </motion.div>
-          </div>
+          <StoryChapter
+            number="02"
+            title="The People"
+            image={farmerImage}
+            statement="Every harvest has a story."
+            detail="Knowledge passed down through generations."
+            index={1}
+          />
+
+          <StoryChapter
+            number="03"
+            title="The Craft"
+            image={coffeeImage}
+            statement="From the hill to the cup."
+            detail="Grown with care. Handled with intention."
+            index={2}
+          />
         </div>
       </div>
     </section>
@@ -244,63 +152,138 @@ const AboutStory = () => {
    STORY PARAGRAPH
 ============================================================= */
 
-const StoryVisual = ({
-  number,
-  title,
-  image,
-  imagePosition = "left",
-  children,
-}) => {
-  const imageLeft = imagePosition === "left";
-
+const StoryVisual = ({ number, title, image, children }) => {
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      whileInView={{
-        opacity: 1,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.15,
-      }}
+    <motion.article
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{
-        duration: 1,
+        duration: 1.2,
+        ease: [0.22, 1, 0.36, 1],
       }}
-      className={`grid items-center gap-10 lg:grid-cols-12 lg:gap-14 ${
-        imageLeft ? "" : "lg:[&>*:first-child]:order-2"
-      }`}
+      className="relative"
     >
+      {/* CHAPTER HEADER */}
+      <div className="mb-8 text-center sm:mb-10">
+        <motion.span
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.9,
+            delay: 0.1,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="block text-[8px] font-medium uppercase tracking-[0.4em] text-red/70 sm:text-[9px]"
+        >
+          {number}
+        </motion.span>
+
+        <motion.h3
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 1,
+            delay: 0.18,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="subheader mt-4 text-[clamp(2.8rem,5vw,5rem)] uppercase leading-[0.84] tracking-[-0.06em] text-brown"
+        >
+          {title}
+        </motion.h3>
+      </div>
+
+      {/* FULL WIDTH IMAGE */}
       <motion.div
-        initial={{
-          opacity: 0,
-          y: 70,
-          scale: 0.96,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-          scale: 1,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.25,
-        }}
+        initial={{ opacity: 0, scale: 1.04 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{
-          duration: 1.2,
+          duration: 1.6,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="lg:col-span-7"
+        className="group relative overflow-hidden"
       >
-        <div className="group relative overflow-hidden">
-          {/* Image */}
+        <motion.img
+          src={image}
+          alt={title}
+          loading="lazy"
+          decoding="async"
+          initial={{ scale: 1.08 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 2,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="aspect-[16/9] w-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.025] sm:aspect-[2/1] lg:aspect-[2.15/1]"
+        />
 
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/15 via-transparent to-transparent" />
+      </motion.div>
+
+      {/* STORY TEXT */}
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{
+          duration: 1,
+          delay: 0.2,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="mx-auto max-w-xl px-4 pt-8 text-center sm:pt-10"
+      >
+        <div className="text-[12px] leading-6 text-brown/65 sm:text-[13px] sm:leading-7">
+          {children}
+        </div>
+      </motion.div>
+    </motion.article>
+  );
+};
+
+const StoryChapter = ({ number, title, image, statement, detail, index }) => {
+  const colors = ["bg-deepRed", "bg-hill", "bg-soil"];
+
+  const textColors = ["text-lightCream", "text-lightCream", "text-lightCream"];
+
+  return (
+    <div
+      className="relative h-[135vh]"
+      style={{
+        zIndex: index + 1,
+      }}
+    >
+      <div className="sticky top-0 flex h-screen items-center py-8 sm:py-10">
+        <motion.article
+          initial={{
+            opacity: 0,
+            y: 70,
+            scale: 0.94,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            scale: 1,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.15,
+          }}
+          transition={{
+            duration: 1.3,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="relative h-[88vh] w-full overflow-hidden rounded-sm"
+        >
+          {/* IMAGE */}
           <motion.img
             src={image}
             alt={title}
             initial={{
-              scale: 1.15,
+              scale: 1.12,
             }}
             whileInView={{
               scale: 1,
@@ -309,81 +292,78 @@ const StoryVisual = ({
               once: true,
             }}
             transition={{
-              duration: 1.6,
+              duration: 2,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="aspect-[4/5] w-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-[1.04]"
+            className="absolute inset-0 h-full w-full object-cover"
           />
 
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brown/20 via-transparent to-transparent opacity-70" />
-          <div className="absolute bottom-5 left-5">
-            <span className="font-title text-5xl leading-none text-lightCream/80">
+          {/* SUBTLE IMAGE DEPTH */}
+          <div className="absolute inset-0 bg-ink/10" />
+
+          {/* TOP CHAPTER INFO */}
+          <div className="absolute left-6 right-6 top-6 flex items-start justify-between sm:left-10 sm:right-10 sm:top-10 lg:left-14 lg:right-14 lg:top-14">
+            <span className="text-[9px] font-medium uppercase tracking-[0.4em] text-lightCream/75 sm:text-[10px]">
               {number}
             </span>
+
+            <span className="text-[8px] font-medium uppercase tracking-[0.35em] text-lightCream/60">
+              Laali Hills
+            </span>
           </div>
-        </div>
-      </motion.div>
 
-      {/* =================================================
-                TEXT
-            ================================================= */}
+          {/* CENTER TITLE */}
+          <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 30,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.35,
+              }}
+              transition={{
+                duration: 1.1,
+                delay: 0.15,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <span className="block text-[8px] font-medium uppercase tracking-[0.45em] text-lightCream/70 sm:text-[9px]">
+                Chapter {number}
+              </span>
 
-      <motion.div
-        initial={{
-          opacity: 0,
-          x: imageLeft ? 35 : -35,
-        }}
-        whileInView={{
-          opacity: 1,
-          x: 0,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.3,
-        }}
-        transition={{
-          duration: 1,
-          delay: 0.15,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        className="lg:col-span-5"
-      >
-        <div className="flex items-center gap-3">
-          <span className="h-px w-6 bg-red" />
+              <h3
+                className={`subheader mt-5 text-[clamp(4rem,10vw,9rem)] uppercase leading-[0.78] tracking-[-0.07em] ${textColors[index]}`}
+              >
+                {title}
+              </h3>
+            </motion.div>
+          </div>
 
-          <span className="text-[8px] uppercase tracking-[0.3em] text-[#9A7B75]">
-            {number}
-          </span>
-        </div>
+          {/* BOTTOM STORY */}
+          <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-8 sm:bottom-10 sm:left-10 sm:right-10 lg:bottom-14 lg:left-14 lg:right-14">
+            <div>
+              <p className="max-w-lg font-subtitle text-[clamp(1.4rem,2.5vw,2.4rem)] italic leading-[1.05] text-lightCream">
+                {statement}
+              </p>
 
-        <h3 className="mt-5 font-title text-4xl leading-none tracking-[-0.04em] text-brown sm:text-5xl">
-          {title}
-        </h3>
+              <p className="mt-3 text-[8px] font-medium uppercase tracking-[0.3em] text-lightCream/60 sm:text-[9px]">
+                {detail}
+              </p>
+            </div>
 
-        <div className="mt-7 text-[13px] leading-7 text-[#66504B] sm:text-sm sm:leading-8">
-          {children}
-        </div>
-
-        {/* Decorative line */}
-
-        <motion.div
-          initial={{
-            width: 0,
-          }}
-          whileInView={{
-            width: 40,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 0.4,
-          }}
-          className="mt-8 h-px bg-red"
-        />
-      </motion.div>
-    </motion.div>
+            <span className="hidden text-[8px] uppercase tracking-[0.3em] text-lightCream/50 sm:block">
+              Scroll to continue
+            </span>
+          </div>
+        </motion.article>
+      </div>
+    </div>
   );
 };
 

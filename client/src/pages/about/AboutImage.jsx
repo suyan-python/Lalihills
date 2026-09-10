@@ -1,352 +1,196 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-const AboutImage = ({ images }) =>
-{
-    return (
-        <section className="bg-lightCream px-4 pb-24 sm:px-8 sm:pb-32 lg:px-12 lg:pb-40">
-
-            <div className="mx-auto max-w-[1600px]">
-
-                {/* =================================================
-                    GALLERY HEADER
-                ================================================== */}
-
-                <div className="mb-12 flex items-end justify-between px-2 sm:mb-16">
-
-                    <div>
-
-                        <div className="mb-5 flex items-center gap-3">
-
-                            <span className="h-px w-8 bg-red" />
-
-                            <span className="text-[8px] font-semibold uppercase tracking-[0.35em] text-mutedBrown">
-                                From the hills
-                            </span>
-
-                        </div>
-
-                        <h2 className="font-title text-[clamp(3rem,6vw,6rem)] leading-[0.85] tracking-[-0.06em] text-brown">
-                            In
-                            <span className="ml-2 italic text-red">
-                                pictures.
-                            </span>
-                        </h2>
-
-                    </div>
-
-                    <p className="hidden max-w-xs text-right text-[10px] leading-5 text-[#80635E] sm:block">
-                        Landscapes, people, hands and moments
-                        from the places that shape Laali Hills.
-                    </p>
-
-                </div>
-
-
-                {/* =================================================
-                    EDITORIAL GALLERY
-                ================================================== */}
-
-                <div className="grid grid-cols-12 gap-3 sm:gap-5">
-
-
-                    {/* =============================================
-                        LARGE LEFT IMAGE
-                    ============================================== */}
-
-                    <motion.div
-                        initial={{
-                            opacity: 0,
-                            y: 40,
-                        }}
-                        whileInView={{
-                            opacity: 1,
-                            y: 0,
-                        }}
-                        viewport={{
-                            once: true,
-                            amount: 0.15,
-                        }}
-                        transition={{
-                            duration: 1,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
-                        className="group relative col-span-12 aspect-[4/5] overflow-hidden sm:col-span-7 sm:aspect-[4/5] lg:col-span-7"
-                    >
-
-                        <img
-                            src={images[0]}
-                            alt="Nepal hills"
-                            className="h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
-                        />
-
-                        <div className="absolute inset-0 bg-gradient-to-t from-brown/50 via-transparent to-transparent opacity-60" />
-
-                        <GalleryCaption
-                            number="01"
-                            text="The land"
-                        />
-
-                    </motion.div>
-
-
-                    {/* =============================================
-                        RIGHT STACK
-                    ============================================== */}
-
-                    <div className="col-span-12 grid grid-cols-2 gap-3 sm:col-span-5 sm:grid-cols-1 sm:gap-5">
-
-                        {/* Small landscape */}
-
-                        <GalleryImage
-                            src={images[1]}
-                            number="02"
-                            text="High altitude"
-                            aspect="aspect-square sm:aspect-[4/3]"
-                            delay={0.1}
-                        />
-
-                        {/* Small portrait */}
-
-                        <GalleryImage
-                            src={images[2]}
-                            number="03"
-                            text="The hands behind it"
-                            aspect="aspect-square sm:aspect-[4/3]"
-                            delay={0.2}
-                        />
-
-                    </div>
-
-
-                    {/* =============================================
-                        WIDE IMAGE
-                    ============================================== */}
-
-                    <motion.div
-                        initial={{
-                            opacity: 0,
-                            y: 40,
-                        }}
-                        whileInView={{
-                            opacity: 1,
-                            y: 0,
-                        }}
-                        viewport={{
-                            once: true,
-                            amount: 0.15,
-                        }}
-                        transition={{
-                            duration: 1,
-                            delay: 0.1,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
-                        className="group relative col-span-12 mt-1 aspect-[16/7] overflow-hidden sm:mt-3"
-                    >
-
-                        <img
-                            src={images[3]}
-                            alt="Coffee farming in Nepal"
-                            className="h-full w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-105"
-                        />
-
-                        <div className="absolute inset-0 bg-brown/15 transition-opacity duration-500 group-hover:bg-brown/5" />
-
-                        <GalleryCaption
-                            number="04"
-                            text="Where coffee begins"
-                        />
-
-                    </motion.div>
-
-
-                    {/* =============================================
-                        BOTTOM ASYMMETRIC ROW
-                    ============================================== */}
-
-                    <motion.div
-                        initial={{
-                            opacity: 0,
-                            y: 40,
-                        }}
-                        whileInView={{
-                            opacity: 1,
-                            y: 0,
-                        }}
-                        viewport={{
-                            once: true,
-                            amount: 0.15,
-                        }}
-                        transition={{
-                            duration: 1,
-                            delay: 0.15,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
-                        className="relative col-span-7 mt-1 aspect-[5/6] overflow-hidden sm:col-span-5 sm:mt-3"
-                    >
-
-                        <img
-                            src={images[4]}
-                            alt="Nepalese tea"
-                            className="h-full w-full object-cover"
-                        />
-
-                        <div className="absolute inset-0 bg-gradient-to-t from-brown/40 to-transparent" />
-
-                        <GalleryCaption
-                            number="05"
-                            text="Tea gardens"
-                        />
-
-                    </motion.div>
-
-
-                    {/* Text block */}
-
-                    <motion.div
-                        initial={{
-                            opacity: 0,
-                            x: 30,
-                        }}
-                        whileInView={{
-                            opacity: 1,
-                            x: 0,
-                        }}
-                        viewport={{
-                            once: true,
-                            amount: 0.2,
-                        }}
-                        transition={{
-                            duration: 1,
-                            delay: 0.2,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
-                        className="col-span-5 flex flex-col justify-end px-5 pb-3 sm:col-span-7 sm:px-10 sm:pb-8"
-                    >
-
-                        <span className="mb-6 text-[8px] font-semibold uppercase tracking-[0.35em] text-red">
-                            The Laali Hills philosophy
-                        </span>
-
-                        <p className="font-title text-[clamp(1.8rem,3vw,3.5rem)] leading-[0.95] tracking-[-0.04em] text-brown">
-                            Every origin has
-                            <span className="italic text-red">
-                                {" "}a story.
-                            </span>
-                        </p>
-
-                        <p className="mt-6 max-w-md text-[11px] leading-6 text-[#725853]">
-                            We believe the best way to understand what is
-                            in your cup is to understand where it began.
-                        </p>
-
-                        <a
-                            href="/explore"
-                            className="group mt-8 inline-flex w-fit items-center gap-3 border-b border-brown/20 pb-2 text-[8px] font-semibold uppercase tracking-[0.3em] text-brown"
-                        >
-                            Explore our origins
-
-                            <ArrowUpRight
-                                size={13}
-                                strokeWidth={1.5}
-                                className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                            />
-                        </a>
-
-                    </motion.div>
-
-                </div>
-
-            </div>
-
-        </section>
-    );
-};
-
-
-/* =============================================================
-   SMALL GALLERY IMAGE
-============================================================= */
-
-const GalleryImage = ({
-    src,
-    number,
-    text,
-    aspect,
-    delay = 0,
-}) =>
-{
-    return (
+const AboutImage = ({ images }) => {
+  return (
+    <section className="relative overflow-hidden bg-lightCream px-5 pb-24 sm:px-8 sm:pb-32 lg:px-12 lg:pb-40">
+      <div className="mx-auto max-w-[1600px]">
+        {/* HEADER */}
         <motion.div
-            initial={{
-                opacity: 0,
-                y: 35,
-            }}
-            whileInView={{
-                opacity: 1,
-                y: 0,
-            }}
-            viewport={{
-                once: true,
-                amount: 0.2,
-            }}
-            transition={{
-                duration: 0.9,
-                delay,
-                ease: [0.22, 1, 0.36, 1],
-            }}
-            className={`group relative overflow-hidden ${aspect}`}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="my-14 flex items-end justify-between sm:mb-20 lg:mb-24"
         >
+          <div>
+            <span className="block text-[8px] font-medium uppercase tracking-[0.4em] text-red/70 sm:text-[9px]">
+              From the hills
+            </span>
 
-            <img
-                src={src}
-                alt={text}
-                className="h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
-            />
+            <h2 className="header mt-5 text-[clamp(3.5rem,7vw,7rem)] leading-[0.82] tracking-[-0.065em] text-brown">
+              In
+              <span className="ml-2 italic text-red">pictures.</span>
+            </h2>
+          </div>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-brown/50 to-transparent" />
-
-            <GalleryCaption
-                number={number}
-                text={text}
-            />
-
+          <p className="hidden max-w-xs text-right text-[10px] leading-5 text-brown/45 sm:block">
+            Landscapes, people and moments from the places that shape Laali
+            Hills.
+          </p>
         </motion.div>
-    );
-};
 
+        {/* GALLERY */}
+        <div className="space-y-4 sm:space-y-6 lg:space-y-8">
+          {/* 01 — LARGE IMAGE */}
+          <GalleryImage
+            src={images[0]}
+            number="01"
+            text="The land"
+            aspect="aspect-[16/9] sm:aspect-[2.15/1]"
+            delay={0}
+          />
 
-/* =============================================================
-   GALLERY CAPTION
-============================================================= */
-
-const GalleryCaption = ({
-    number,
-    text,
-}) =>
-{
-    return (
-        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 sm:p-6">
-
-            <div>
-                <span className="text-[7px] uppercase tracking-[0.3em] text-white/60">
-                    {number}
-                </span>
-
-                <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.15em] text-white">
-                    {text}
-                </p>
+          {/* 02 + 03 */}
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-12 lg:gap-8">
+            <div className="lg:col-span-5">
+              <GalleryImage
+                src={images[1]}
+                number="02"
+                text="High altitude"
+                aspect="aspect-[4/5] sm:aspect-[4/5]"
+                delay={0.1}
+              />
             </div>
 
-            <ArrowUpRight
-                size={14}
-                strokeWidth={1}
-                className="text-white/70 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
-            />
+            <div className="lg:col-span-7 lg:pt-24">
+              <GalleryImage
+                src={images[2]}
+                number="03"
+                text="The hands behind it"
+                aspect="aspect-[4/5] sm:aspect-[5/4]"
+                delay={0.2}
+              />
+            </div>
+          </div>
 
+          {/* 04 — CINEMATIC */}
+          <GalleryImage
+            src={images[3]}
+            number="04"
+            text="Where coffee begins"
+            aspect="aspect-[16/8] sm:aspect-[2.4/1]"
+            delay={0.1}
+          />
+
+          {/* 05 + PHILOSOPHY */}
+          <div className="grid items-end gap-10 pt-4 sm:gap-16 sm:pt-8 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-5">
+              <GalleryImage
+                src={images[4]}
+                number="05"
+                text="Tea gardens"
+                aspect="aspect-[4/5]"
+                delay={0.15}
+              />
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{
+                duration: 1.2,
+                delay: 0.15,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="lg:col-span-6 lg:col-start-7 lg:pb-6"
+            >
+              <span className="block text-[8px] font-bold uppercase tracking-[0.4em] text-red/70 sm:text-[9px]">
+                The Laali Hills philosophy
+              </span>
+
+              <h3 className="header mt-6 max-w-xl text-[clamp(2.2rem,4vw,4.5rem)] leading-[0.9] tracking-[-0.05em] text-brown">
+                Every origin has
+                <span className="italic text-red"> a story.</span>
+              </h3>
+
+              <p className="mt-7 max-w-md text-[12px] leading-6 text-brown/55 sm:text-[13px] sm:leading-7">
+                We believe the best way to understand what is in your cup is to
+                understand where it began.
+              </p>
+
+              <a
+                href="/explore"
+                className="group mt-8 inline-flex items-center gap-4 border-b border-brown/20 pb-2 text-[8px] font-medium uppercase tracking-[0.3em] text-brown transition-colors duration-500 hover:border-red hover:text-red"
+              >
+                <span>Explore our origins</span>
+
+                <ArrowUpRight
+                  size={13}
+                  strokeWidth={1.2}
+                  className="transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1"
+                />
+              </a>
+            </motion.div>
+          </div>
         </div>
-    );
+      </div>
+    </section>
+  );
 };
 
+const GalleryImage = ({ src, number, text, aspect, delay = 0 }) => {
+  return (
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 45,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.18,
+      }}
+      transition={{
+        duration: 1.2,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className={`group relative overflow-hidden ${aspect}`}
+    >
+      <motion.img
+        src={src}
+        alt={text}
+        loading="lazy"
+        decoding="async"
+        initial={{
+          scale: 1.06,
+        }}
+        whileInView={{
+          scale: 1,
+        }}
+        viewport={{
+          once: true,
+        }}
+        transition={{
+          duration: 1.8,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="h-full w-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.025]"
+      />
+
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/25 via-transparent to-transparent opacity-70" />
+
+      <div className="absolute bottom-5 left-5 flex items-center gap-3 sm:bottom-7 sm:left-7">
+        <span className="text-[7px] font-medium uppercase tracking-[0.3em] text-lightCream/55">
+          {number}
+        </span>
+
+        <span className="h-px w-5 bg-lightCream/40" />
+
+        <span className="text-[8px] font-medium uppercase tracking-[0.25em] text-lightCream/80">
+          {text}
+        </span>
+      </div>
+    </motion.div>
+  );
+};
 
 export default AboutImage;

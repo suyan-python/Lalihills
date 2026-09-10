@@ -28,7 +28,7 @@ const LaliComingSoon = () => {
       setCurrentVideo((prev) => (prev + 1) % videos.length);
 
       setVisible(true);
-    }, 100);
+    });
   };
 
   useEffect(() => {
@@ -115,7 +115,7 @@ const LaliComingSoon = () => {
                     }}
                     className="flex items-center justify-center gap-4"
                   >
-                    <span className="text-[8px] font-medium uppercase tracking-[0.4em] text-[#E1C4BE] sm:text-[9px]">
+                    <span className="text-[8px] font-medium uppercase tracking-[0.4em] text-lightCream sm:text-[9px]">
                       From the hills of Nepal
                     </span>
                   </motion.div>
