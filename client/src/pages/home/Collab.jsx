@@ -203,17 +203,6 @@ const Collab = () => {
         >
           Nepal
         </span>
-
-        <span
-          className="
-                    text-[7px]
-                    uppercase
-                    tracking-[0.35em]
-                    text-lightCream/40
-                "
-        >
-          Laali Hills
-        </span>
       </div>
     </section>
   );
