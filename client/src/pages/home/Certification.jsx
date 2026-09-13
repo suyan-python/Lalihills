@@ -281,46 +281,6 @@ const CertificationSection = () => {
           />
         </Link>
       </motion.div>
-
-      {/* Corner information */}
-
-      <div
-        className="
-                absolute
-                bottom-6
-                left-6
-                right-6
-                z-10
-                flex
-                items-center
-                justify-between
-                sm:bottom-8
-                sm:left-10
-                sm:right-10
-            "
-      >
-        <span
-          className="
-                    text-[7px]
-                    uppercase
-                    tracking-[0.35em]
-                    text-lightCream/40
-                "
-        >
-          Laali Hills
-        </span>
-
-        <span
-          className="
-                    text-[7px]
-                    uppercase
-                    tracking-[0.35em]
-                    text-lightCream/40
-                "
-        >
-          Nepal
-        </span>
-      </div>
     </section>
   );
 };

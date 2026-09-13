@@ -20,19 +20,6 @@ const ShopBanner = () => {
         {/* SUBTLE EDGE DARKENING */}
         <div className="absolute inset-0 bg-ink/15" />
 
-        {/* TOP INFORMATION */}
-        <div className="absolute left-4 right-4 top-4 flex items-center justify-between sm:left-8 sm:right-8 sm:top-7 lg:left-14 lg:right-14 lg:top-10">
-          <div className="flex items-center gap-3">
-            <span className="text-[7px] font-medium uppercase tracking-[0.35em] text-lightCream/80 sm:text-[8px]">
-              From Nepal
-            </span>
-          </div>
-
-          <span className="text-[7px] uppercase tracking-[0.3em] text-lightCream/60 sm:text-[8px]">
-            Laali Hills
-          </span>
-        </div>
-
         {/* MAIN CONTENT */}
         <div className="absolute inset-x-0 bottom-4 sm:bottom-8 lg:bottom-12">
           <div className="px-4 sm:px-8 lg:px-14 xl:px-16">

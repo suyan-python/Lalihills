@@ -49,7 +49,7 @@ const End = () => {
                   delay: index * 0.08,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="group relative aspect-[3/5] overflow-hidden"
+                className="group relative aspect-[3/5] overflow-hidden rounded-b-full "
               >
                 {/* Background image */}
 
@@ -69,7 +69,7 @@ const End = () => {
 
                 {/* Content */}
 
-                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7 text-center">
                   <h3 className="text-[clamp(1.2rem,3vw,2rem)] leading-none tracking-[-0.03em] text-white">
                     {item.title}
                   </h3>

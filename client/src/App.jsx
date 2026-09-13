@@ -19,6 +19,10 @@ import CanonicalUrl from "./components/CanonicalUrl";
 import HelpMeChoose from "./components/HelpMeChoose";
 import PageViewTracker from "./components/PageViewTracker";
 import SmoothScroll from "./components/SmoothScroll";
+import Trending from "./pages/trending/Trending";
+import TopTrending from "./pages/trending/TopTrending";
+import NewestTrending from "./pages/trending/NewestTrending";
+import HotTrending from "./pages/trending/HotTrending";
 
 function App() {
   return (
@@ -42,49 +46,46 @@ function App() {
 
               {/* Shop */}
               <Route path="/shop" element={<Shop />} />
-
               <Route
                 path="/shop/coffee/:slug"
                 element={<ProductDetails products={coffeeProducts} />}
               />
-
               <Route
                 path="/shop/tea/:slug"
                 element={<ProductDetails products={teaProducts} />}
               />
-
               <Route path="/shop/help-me-choose" element={<HelpMeChoose />} />
-
               <Route path="/shop/coffee" element={<Coffee />} />
-
               <Route path="/shop/tea" element={<Tea />} />
+
+              {/* Trending  */}
+
+              <Route path="/trending" element={<Trending />} />
+              <Route path="/trending/top" element={<TopTrending />} />
+              <Route path="/trending/newest" element={<NewestTrending />} />
+              <Route path="/trending/hot" element={<HotTrending />} />
 
               {/* Explore */}
               <Route
                 path="/explore"
                 element={<div className="p-10">Explore</div>}
               />
-
               <Route
                 path="/explore/origins"
                 element={<div className="p-10">Origins</div>}
               />
-
               <Route
                 path="/explore/farmers"
                 element={<div className="p-10">Farmers</div>}
               />
-
               <Route
                 path="/explore/processes"
                 element={<div className="p-10">Our Processes</div>}
               />
-
               <Route
                 path="/explore/why-laali-hills"
                 element={<div className="p-10">Why Laali Hills</div>}
               />
-
               <Route
                 path="/explore/nepal-coffee"
                 element={<div className="p-10">Nepal Coffee</div>}
@@ -95,22 +96,18 @@ function App() {
                 path="/stories"
                 element={<div className="p-10">Stories</div>}
               />
-
               <Route
                 path="/stories/farm"
                 element={<div className="p-10">Farm Stories</div>}
               />
-
               <Route
                 path="/stories/coffee"
                 element={<div className="p-10">Coffee Blog</div>}
               />
-
               <Route
                 path="/stories/tea"
                 element={<div className="p-10">Tea Blog</div>}
               />
-
               <Route
                 path="/stories/culture"
                 element={<div className="p-10">Culture</div>}
@@ -122,9 +119,7 @@ function App() {
 
               {/* Support */}
               <Route path="/support" element={<Support />} />
-
               <Route path="/checkout" element={<Checkout />} />
-
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
