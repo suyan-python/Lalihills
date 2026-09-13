@@ -293,7 +293,7 @@ const Navbar = () => {
                     LEFT NAVIGATION
                 =========================================== */}
 
-                <div className="relative flex w-[25%] flex-col border-r border-lightWhite/10 px-10 pb-12 pt-32 xl:px-16">
+                <div className="relative flex w-[20%] flex-col border-r border-lightWhite/10 px-10 pb-12 pt-32 xl:px-16">
                   {/* Small label */}
 
                   <div className="my-10 flex items-center gap-3">
@@ -376,7 +376,7 @@ const Navbar = () => {
     RIGHT PREVIEW
 =========================================== */}
 
-                <div className="relative flex w-[75%] overflow-hidden bg-lightWhite">
+                <div className="relative flex w-[80%] overflow-hidden bg-lightWhite">
                   <div className="pointer-events-none absolute inset-0 overflow-hidden">
                     {/* Large leaf */}
                     <Leaf

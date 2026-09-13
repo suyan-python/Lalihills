@@ -8,10 +8,6 @@ const JournalCTA = () => {
       <div className="mx-auto max-w-[1600px]">
         <div className="mb-12 flex items-end justify-between border-b border-brown/15 pb-5 sm:mb-16">
           <div>
-            <span className="text-[8px] font-medium uppercase tracking-[0.4em] text-red/70">
-              The journal
-            </span>
-
             <h2 className="header mt-4 text-[clamp(3rem,5vw,5rem)] leading-[0.82] tracking-[-0.06em] text-brown">
               More to read.
             </h2>
