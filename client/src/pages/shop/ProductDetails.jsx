@@ -783,10 +783,6 @@ const ProductDetails = ({ products = [] }) => {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-3xl"
           >
-            <span className="text-[8px] font-medium uppercase tracking-[0.4em] text-lightCream/50 sm:text-[9px]">
-              The tasting notes
-            </span>
-
             <h2 className="header mt-6 text-[clamp(3.5rem,6vw,6rem)] uppercase leading-[0.84] tracking-[-0.065em]">
               Inside
               <br />
@@ -804,7 +800,7 @@ const ProductDetails = ({ products = [] }) => {
               delay: 0.2,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="mt-8 grid border-t border-lightCream/15 lg:mt-10 lg:grid-cols-3"
+            className="mt-8 grid lg:mt-10 lg:grid-cols-3"
           >
             {/* AROMA */}
             <div className="border-b border-lightCream/15 py-8 lg:border-b-0 lg:border-r lg:py-5 lg:pr-12">
