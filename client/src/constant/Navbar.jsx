@@ -264,7 +264,7 @@ const Navbar = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
               onClick={() => setMenuOpen(false)}
-              className="fixed inset-0 z-[80] bg-black/80 backdrop-blur-[3px]"
+              className="fixed inset-0 z-[90] bg-black/80 backdrop-blur-[3px]"
             />
             {/* =================================================
                 DESKTOP MENU

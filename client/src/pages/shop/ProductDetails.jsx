@@ -8,6 +8,9 @@ import { useCart } from "../../layouts/CartContext";
 import { AnimatePresence } from "framer-motion";
 import { trackEvent } from "../../utils/analytics";
 
+import { GiCoffeeBeans, GiCoffeePot, GiPouringPot } from "react-icons/gi";
+import { FaMugHot } from "react-icons/fa";
+
 const CircularDetail = ({
   title,
   value,
@@ -193,9 +196,21 @@ const ProductDetails = ({ products = [] }) => {
 
   const sizeOptions = useMemo(() => {
     if (!product) return [];
-    if (product.sizeOptions?.length) return product.sizeOptions;
+
+    if (product.sizeOptions?.length) {
+      return product.sizeOptions.map(({ grams, price }) => ({
+        label: `${grams}g`,
+        grams,
+        price,
+      }));
+    }
+
     return [
-      { label: `${product.size}g`, grams: product.size, price: product.price },
+      {
+        label: `${product.size}g`,
+        grams: product.size,
+        price: product.price,
+      },
     ];
   }, [product]);
 
@@ -307,6 +322,29 @@ const ProductDetails = ({ products = [] }) => {
       ? selectedSize.price * (1 - subscriptionDiscount)
       : selectedSize.price;
   const total = unitPrice * quantity;
+
+  const GRIND_CONFIG = {
+    beans: {
+      label: "Whole Beans",
+      subtitle: "Grind fresh",
+      icon: GiCoffeeBeans,
+    },
+    fine: {
+      label: "Fine",
+      subtitle: "Moka Pot",
+      icon: GiCoffeePot,
+    },
+    medium: {
+      label: "Medium",
+      subtitle: "V60",
+      icon: GiPouringPot,
+    },
+    coarse: {
+      label: "Coarse",
+      subtitle: "Advanced V60",
+      icon: GiPouringPot,
+    },
+  };
 
   return (
     <main className="overflow-x-clip bg-lightWhite  text-ink ">
@@ -515,37 +553,32 @@ const ProductDetails = ({ products = [] }) => {
           {/* STORY */}
           <div>
             <h2 className="header mt-7 max-w-3xl text-[clamp(3.5rem,6vw,6rem)] uppercase leading-[0.82] tracking-[-0.065em] text-ink ">
-              Product
+              Product:
               <br />
-              <span className="italic text-red">Details.</span>
+              <span className="italic text-red">{product.name}.</span>
             </h2>
 
             <p className="mt-10 max-w-2xl text-sm font-light leading-8 text-ink sm:text-base">
               {product.description}
             </p>
 
-            <div className="mt-16">
+            <div className="mt-10">
               <ProductInfoGrid product={product} />
             </div>
           </div>
 
           {/* PURCHASE PANEL */}
-          <div className="lg:pt-16">
+          <div className="">
             <div className="relative overflow-hidden border border-ink/15 bg-ivory/35 px-5 sm:px-7">
               <div className="absolute left-0 top-0 h-1 w-24 bg-red" />
 
-              {/* PRODUCT HEADER */}
-              <div className="flex items-start justify-between gap-6 border-b border-ink/15 py-8">
+              <div className="flex items-baseline justify-between gap-6 border-b border-ink/15 py-5">
                 <div>
-                  <p className="text-[8px] font-medium uppercase tracking-[0.35em] text-red">
-                    01 / Build your ritual
-                  </p>
-
                   <h3 className="mt-4 max-w-xs text-xl font-medium uppercase leading-none tracking-[-0.02em] text-ink sm:text-2xl">
                     {product.name}
                   </h3>
 
-                  <p className="mt-3 text-[8px] uppercase tracking-[0.2em] text-ink/45">
+                  <p className="mt-3 text-[8px] uppercase tracking-[0.2em] text-ink/75">
                     {selectedSize.label}
                   </p>
                 </div>
@@ -569,202 +602,294 @@ const ProductDetails = ({ products = [] }) => {
                 </div>
               </div>
 
-              {/* SIZE */}
-              {sizeOptions.length > 1 && (
-                <div className="border-b border-ink/10 py-7">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-ink">
-                      <span className="mr-3 text-red">02</span>Size
+              <div className="mt-8 space-y-8">
+                {sizeOptions.length > 1 && (
+                  <div className="">
+                    <span className="text-[10px] uppercase tracking-[0.4em] text-ink font-bold">
+                      Weight
                     </span>
 
-                    <span className="text-[7px] uppercase tracking-[0.2em] text-ink/30">
-                      Select weight
-                    </span>
-                  </div>
+                    <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                      {sizeOptions.map((option) => {
+                        const active = selectedSize.label === option.label;
 
-                  <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3">
-                    {sizeOptions.map((option) => {
-                      const active = selectedSize.label === option.label;
-
-                      return (
-                        <button
-                          key={option.label}
-                          type="button"
-                          onClick={() => setSelectedSize(option)}
-                          className={`flex h-12 items-center justify-center border text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${active ? "border-ink bg-ink text-lightCream" : "border-ink/15 bg-lightWhite/50 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
-                        >
-                          {option.label}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-
-              {/* PURCHASE */}
-              <div className="border-b border-ink/10 py-7">
-                <div className="flex items-center justify-between">
-                  <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-ink">
-                    <span className="mr-3 text-red">03</span>Purchase
-                  </span>
-
-                  {purchaseType === "subscribe" && (
-                    <span className="text-[7px] uppercase tracking-[0.2em] text-red">
-                      Save {Math.round(subscriptionDiscount * 100)}%
-                    </span>
-                  )}
-                </div>
-
-                <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                  <button
-                    type="button"
-                    onClick={() => setPurchaseType("one-time")}
-                    className={`flex h-12 items-center justify-between border px-4 text-left text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${purchaseType === "one-time" ? "border-ink bg-ink text-lightCream" : "border-ink/15 bg-lightWhite/50 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
-                  >
-                    <span>One-Time</span>
-                    <span className="text-[7px] opacity-50">
-                      Single delivery
-                    </span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setPurchaseType("subscribe")}
-                    className={`flex h-12 items-center justify-between border px-4 text-left text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${purchaseType === "subscribe" ? "border-ink bg-ink text-lightCream" : "border-ink/15 bg-lightWhite/50 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
-                  >
-                    <span>Subscribe & Save</span>
-                    <span className="text-[7px] text-red">
-                      -{Math.round(subscriptionDiscount * 100)}%
-                    </span>
-                  </button>
-                </div>
-
-                {purchaseType === "subscribe" && (
-                  <div className="relative mt-3">
-                    <select
-                      value={frequency}
-                      onChange={(event) => setFrequency(event.target.value)}
-                      className="h-12 w-full appearance-none border border-ink/15 bg-lightWhite/70 px-4 pr-10 text-[8px] uppercase tracking-[0.2em] text-ink outline-none transition-colors duration-300 focus:border-ink/50"
-                    >
-                      {(
-                        product.frequencies || [
-                          "Weekly",
-                          "Every 2 Weeks",
-                          "Every 3 Weeks",
-                          "Every 4 Weeks",
-                        ]
-                      ).map((option) => (
-                        <option key={option} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
-
-                    <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[8px] text-ink/40">
-                      ↓
-                    </span>
+                        return (
+                          <button
+                            key={option.label}
+                            type="button"
+                            onClick={() => setSelectedSize(option)}
+                            className={`flex h-12 items-center justify-center border text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${active ? "border-ink bg-ink text-lightCream" : "border-ink/15 bg-lightWhite/50 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
+                          >
+                            {option.label}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
                 )}
-              </div>
 
-              {/* GRIND */}
-              {product.grindOptions?.length > 0 && (
-                <div className="border-b border-ink/10 py-7">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-ink">
-                      <span className="mr-3 text-red">04</span>Grind
-                    </span>
-
-                    <span className="text-[7px] uppercase tracking-[0.2em] text-ink/30">
-                      How it's prepared
-                    </span>
-                  </div>
-
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {product.grindOptions.map((grind) => {
-                      const active = selectedGrind === grind;
-
-                      return (
-                        <button
-                          key={grind}
-                          type="button"
-                          onClick={() => setSelectedGrind(grind)}
-                          className={`h-12 flex-1 border px-5 text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 sm:flex-none ${active ? "border-ink bg-ink text-lightCream" : "border-ink/15 bg-lightWhite/50 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
-                        >
-                          {grind}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-
-              {/* QUANTITY + CTA */}
-              <div className="py-7">
-                <div className="flex items-end justify-between">
+                {/* GRIND */}
+                {product.grindOptions?.length > 0 && (
                   <div>
-                    <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-ink">
-                      <span className="mr-3 text-red">05</span>Quantity
-                    </span>
+                    <div className="flex items-end justify-between">
+                      <div>
+                        <span className="block text-[10px] font-bold uppercase tracking-[0.4em] text-ink">
+                          Choose your grind
+                        </span>
+                      </div>
+                    </div>
 
-                    <div className="mt-4 flex h-12 items-center border border-ink/15 bg-lightWhite/70">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setQuantity((value) => Math.max(1, value - 1))
-                        }
-                        aria-label="Decrease quantity"
-                        className="flex h-10 w-10 items-center justify-center text-ink/45 transition-all duration-300 hover:bg-ink hover:text-lightCream"
+                    <div className="mt-2 grid grid-cols-2 gap-2">
+                      {product.grindOptions.map((grind, index) => {
+                        const active = selectedGrind === grind;
+
+                        const config = GRIND_CONFIG[grind];
+
+                        const Icon = config?.icon || FaMugHot;
+                        const label = config?.label || grind;
+                        const subtitle = config?.subtitle || "Custom grind";
+
+                        return (
+                          <button
+                            key={grind}
+                            type="button"
+                            onClick={() => setSelectedGrind(grind)}
+                            aria-pressed={active}
+                            className={`group relative flex min-h-[150px] flex-col items-center justify-center overflow-hidden border px-4 py-5 text-center transition-all duration-500 ${
+                              active
+                                ? "border-ink bg-ink text-lightCream"
+                                : "border-ink/10 bg-lightWhite/40 text-ink hover:border-ink/25 hover:bg-ivory cursor-pointer"
+                            }`}
+                          >
+                            {/* Active indicator */}
+                            <span
+                              className={`absolute right-3 top-3 h-1.5 w-1.5 rounded-full transition-all duration-500 ${
+                                active
+                                  ? "bg-red"
+                                  : "bg-ink/10 group-hover:bg-red/40"
+                              }`}
+                            />
+
+                            {/* Icon */}
+                            <span
+                              className={`flex h-20 w-20 items-center justify-center transition-all duration-500 ${
+                                active
+                                  ? "text-lightCream"
+                                  : "text-ink/45 group-hover:text-red"
+                              }`}
+                            >
+                              <Icon
+                                size={55}
+                                strokeWidth={1}
+                                className="transition-transform duration-500 group-hover:scale-105"
+                              />
+                            </span>
+
+                            {/* Grind */}
+                            <span
+                              className={`mt-3 block text-[9px] font-bold uppercase tracking-[0.18em] transition-colors duration-500 ${
+                                active ? "text-lightCream" : "text-ink"
+                              }`}
+                            >
+                              {label}
+                            </span>
+
+                            {/* Active bottom line */}
+                            <span
+                              className={`absolute bottom-0 left-0 h-[2px] bg-red transition-all duration-500 ${
+                                active ? "w-full" : "w-0 group-hover:w-1/3"
+                              }`}
+                            />
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* PURCHASE */}
+                <div className="border-t border-ink/25">
+                  {/* Subscription toggle */}
+                  <div
+                    className={`mt-8 flex items-center justify-between border p-4 transition-all duration-500 ${
+                      purchaseType === "subscribe"
+                        ? "border-emerald-700/25 bg-emerald-700/[0.04]"
+                        : "border-red/20 bg-red/[0.025]"
+                    }`}
+                  >
+                    <div>
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={purchaseType}
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -5 }}
+                          transition={{ duration: 0.25 }}
+                        >
+                          <span
+                            className={`block text-[12px] font-bold uppercase tracking-[0.2em] transition-colors duration-500 ${
+                              purchaseType === "subscribe"
+                                ? "text-emerald-700"
+                                : "text-red"
+                            }`}
+                          >
+                            {purchaseType === "subscribe"
+                              ? `Subscription saves ${Math.round(subscriptionDiscount * 100)}%`
+                              : `Subscribe & save ${Math.round(subscriptionDiscount * 100)}%`}
+                          </span>
+
+                          <span className="mt-2 block text-[9px] uppercase tracking-[0.18em] text-ink/85">
+                            Delivered on your schedule · cancel anytime
+                          </span>
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
+
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked={purchaseType === "subscribe"}
+                      aria-label="Toggle subscription"
+                      onClick={() =>
+                        setPurchaseType((current) =>
+                          current === "subscribe" ? "one-time" : "subscribe",
+                        )
+                      }
+                      className={`relative h-7 w-12 shrink-0 rounded-full border transition-all duration-500 ${
+                        purchaseType === "subscribe"
+                          ? "border-emerald-700 bg-emerald-700"
+                          : "border-red bg-red"
+                      }`}
+                    >
+                      <motion.span
+                        animate={{
+                          x: purchaseType === "subscribe" ? 20 : 0,
+                        }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 500,
+                          damping: 30,
+                        }}
+                        className="absolute left-[3px] top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-lightCream shadow-sm"
+                      />
+                    </button>
+                  </div>
+
+                  {/* Subscription frequency */}
+                  <AnimatePresence initial={false}>
+                    {purchaseType === "subscribe" && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0, y: -8 }}
+                        animate={{ opacity: 1, height: "auto", y: 0 }}
+                        exit={{ opacity: 0, height: 0, y: -8 }}
+                        transition={{
+                          duration: 0.45,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="overflow-hidden"
                       >
-                        <Minus size={11} strokeWidth={1.2} />
-                      </button>
+                        <div className="pt-4">
+                          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                            {(
+                              product.frequencies || [
+                                "Weekly",
+                                "Every 2 Weeks",
+                                "Every 3 Weeks",
+                                "Every 4 Weeks",
+                              ]
+                            ).map((option) => {
+                              const active = frequency === option;
 
-                      <span className="w-8 text-center text-[9px] font-medium text-ink">
-                        {quantity}
-                      </span>
+                              return (
+                                <button
+                                  key={option}
+                                  type="button"
+                                  onClick={() => setFrequency(option)}
+                                  aria-pressed={active}
+                                  className={`relative flex min-h-[38px] items-center justify-center border px-3 text-center transition-all duration-300  ${
+                                    active
+                                      ? "border-emerald-700 bg-emerald-700 text-lightCream"
+                                      : "border-ink/10 bg-lightWhite/40 text-ink/50 hover:border-emerald-700/30 hover:bg-emerald-700/[0.03] hover:text-emerald-700"
+                                  }`}
+                                >
+                                  <span className="text-[10px] font-bold uppercase leading-[1.3] tracking-[0.16em]">
+                                    {option}
+                                  </span>
 
-                      <button
-                        type="button"
-                        onClick={() => setQuantity((value) => value + 1)}
-                        aria-label="Increase quantity"
-                        className="flex h-10 w-10 items-center justify-center text-ink/45 transition-all duration-300 hover:bg-ink hover:text-lightCream"
-                      >
-                        <Plus size={11} strokeWidth={1.2} />
-                      </button>
+                                  <span
+                                    className={`absolute bottom-0 left-0 h-[2px] bg-emerald-700 transition-all duration-300 ${
+                                      active ? "w-full" : "w-0"
+                                    }`}
+                                  />
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* QUANTITY + CTA */}
+                <div className="pb-5 ">
+                  <div className="flex items-baseline justify-end gap-5">
+                    <div className="w-[112px] shrink-0">
+                      <div className="flex h-12 w-full items-center justify-between border border-ink/15 bg-lightWhite/70">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setQuantity((value) => Math.max(1, value - 1))
+                          }
+                          aria-label="Decrease quantity"
+                          className="flex h-10 w-10 shrink-0 items-center justify-center text-ink/55 cursor-pointer transition-colors duration-300 hover:text-ink"
+                        >
+                          <Minus size={11} strokeWidth={1.2} />
+                        </button>
+
+                        <span className="flex w-8 shrink-0 items-center justify-center text-[12px] font-medium tabular-nums text-ink">
+                          {quantity}
+                        </span>
+
+                        <button
+                          type="button"
+                          onClick={() => setQuantity((value) => value + 1)}
+                          aria-label="Increase quantity"
+                          className="flex h-10 w-10 shrink-0 items-center justify-center text-ink/55 cursor-pointer transition-colors duration-300 hover:text-ink"
+                        >
+                          <Plus size={11} strokeWidth={1.2} />
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="text-right">
+                      <p className="header mt-1 text-3xl font-bold tracking-[-0.02em] text-ink">
+                        NPR{" "}
+                        {total.toLocaleString(undefined, {
+                          maximumFractionDigits: 0,
+                        })}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="text-right">
-                    <span className="text-[7px] uppercase tracking-[0.2em] text-ink/40">
-                      Your total
-                    </span>
+                  <div className="flex justify-end">
+                    <div className="relative mt-5">
+                      {/* Ink block behind */}
+                      <span className="absolute inset-0 translate-x-1 translate-y-1 bg-ink" />
 
-                    <p className="mt-1 text-xl font-medium tracking-[-0.02em] text-ink">
-                      NPR{" "}
-                      {total.toLocaleString(undefined, {
-                        maximumFractionDigits: 0,
-                      })}
-                    </p>
+                      {/* Red button in front */}
+                      <button
+                        type="button"
+                        onClick={handleAddToCart}
+                        className="relative z-10 flex h-14 max-w-3xl cursor-pointer items-center bg-red px-6 text-lightCream transition-all duration-300 hover:bg-deepRed active:translate-x-1 active:translate-y-1 sm:px-7"
+                      >
+                        <span className="text-[14px] font-bold uppercase tracking-[0.2em]">
+                          Add to cart
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
-
-                <button
-                  type="button"
-                  onClick={handleAddToCart}
-                  className="group mt-6 flex h-14 w-full items-center justify-between bg-red px-6 text-lightCream transition-all duration-500 hover:bg-deepRed sm:px-7"
-                >
-                  <span className="text-[8px] font-medium uppercase tracking-[0.3em]">
-                    Add to cart
-                  </span>
-
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-lightCream/30 transition-all duration-500 group-hover:translate-x-1 group-hover:border-lightCream/60">
-                    <ShoppingBag size={14} strokeWidth={1.1} />
-                  </span>
-                </button>
-
-                <p className="mt-4 text-center text-[7px] uppercase tracking-[0.2em] text-ink/35">
-                  Freshly packed · Nepal origin · Delivered with care
-                </p>
               </div>
             </div>
           </div>
@@ -773,7 +898,7 @@ const ProductDetails = ({ products = [] }) => {
 
       {/* TASTING NOTES */}
 
-      <section className="relative overflow-hidden bg-hill px-6 py-5 text-lightCream sm:px-10 sm:py-8 lg:px-16 lg:py-10">
+      <section className="relative overflow-hidden bg-hill px-6 py-5 text-lightCream sm:px-10 sm:py-8 lg:px-16 lg:py-8">
         <div className="mx-auto max-w-[1400px]">
           {/* HEADER */}
           <motion.div
@@ -784,9 +909,9 @@ const ProductDetails = ({ products = [] }) => {
             className="max-w-3xl"
           >
             <h2 className="header mt-6 text-[clamp(3.5rem,6vw,6rem)] uppercase leading-[0.84] tracking-[-0.065em]">
-              Inside
+              What You'll
               <br />
-              the <span className="italic text-cream">cup.</span>
+              <span className="italic text-cream">Get.</span>
             </h2>
           </motion.div>
 

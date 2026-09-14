@@ -44,3 +44,39 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
 }
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body::-webkit-scrollbar {
+  width: 4px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgba(33, 28, 22, 0.18);
+  border-radius: 999px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(33, 28, 22, 0.35);
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(33, 28, 22, 0.18) transparent;
+}
+
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

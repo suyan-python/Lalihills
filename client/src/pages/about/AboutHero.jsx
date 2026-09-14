@@ -54,8 +54,6 @@ const AboutHero = ({ video }) => {
             }}
             className="mb-7 flex items-center gap-3"
           >
-            <span className="h-px w-10 bg-red/80" />
-
             <span className="text-[8px] font-medium uppercase tracking-[0.4em] text-lightCream/80">
               The Laali Hills Story
             </span>
@@ -97,7 +95,7 @@ const AboutHero = ({ video }) => {
               delay: 0.8,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="mt-10 flex flex-col gap-6 border-t border-lightCream/20 pt-5 sm:flex-row sm:items-end sm:justify-between"
+            className="mt-10 flex flex-col gap-6  pt-5 sm:flex-row sm:items-end sm:justify-between"
           >
             <p className="max-w-md text-[10px] leading-5 text-lightCream/75 sm:text-xs">
               A story shaped by highland soil, careful hands, and the belief
@@ -126,9 +124,6 @@ const AboutHero = ({ video }) => {
           </motion.div>
         </div>
       </div>
-
-      {/* FRAME */}
-      <div className="pointer-events-none absolute inset-5 border border-lightCream/10 sm:inset-8 lg:inset-10" />
     </section>
   );
 };

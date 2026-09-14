@@ -14,23 +14,18 @@ const AboutImage = ({ images }) => {
             duration: 1.2,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="my-14 flex items-end justify-between sm:mb-20 lg:mb-24"
+          className="my-14 flex items-end justify-between "
         >
           <div>
             <span className="block text-[8px] font-medium uppercase tracking-[0.4em] text-red/70 sm:text-[9px]">
               From the hills
             </span>
 
-            <h2 className="header mt-5 text-[clamp(3.5rem,7vw,7rem)] leading-[0.82] tracking-[-0.065em] text-brown">
+            <h2 className="header mt-5 text-[clamp(3.5rem,7vw,7rem)] leading-[0.82] tracking-[-0.055em] text-brown">
               In
               <span className="ml-2 italic text-red">pictures.</span>
             </h2>
           </div>
-
-          <p className="hidden max-w-xs text-right text-[10px] leading-5 text-brown/45 sm:block">
-            Landscapes, people and moments from the places that shape Laali
-            Hills.
-          </p>
         </motion.div>
 
         {/* GALLERY */}
