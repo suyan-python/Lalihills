@@ -1,8 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Minus, Plus, X } from "lucide-react";
 import { useCart } from "./CartContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import empty from "../assets/icon/empty.svg";
+import Button from "../components/Button";
 
 const CartDrawer = () => {
   const {
@@ -36,23 +37,15 @@ const CartDrawer = () => {
             className="fixed right-0 top-0 z-[100] flex h-dvh w-full flex-col bg-lightWhite sm:w-[70vw] lg:w-1/3"
           >
             <div className="flex h-20 shrink-0 items-center justify-between border-b border-ink/10 px-6 sm:px-8">
-              <div>
-                <p className="text-[7px] uppercase tracking-[0.35em] text-ink/45">
-                  Your selection
-                </p>
-
-                <h2 className="mt-1 font-title text-xl uppercase tracking-[0.04em] text-ink">
-                  Cart
-                  <span className="ml-2 text-xs text-ink/35">
-                    ({cartCount})
-                  </span>
-                </h2>
-              </div>
+              <h2 className="header mt-1 text-xl uppercase tracking-[0.04em] text-ink ">
+                My Cart
+                <span className="ml-2 text-xs text-red/75">({cartCount})</span>
+              </h2>
 
               <button
                 type="button"
                 onClick={() => setIsCartOpen(false)}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink transition-all duration-300 hover:bg-ink hover:text-lightCream"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink transition-all duration-300 hover:bg-ink hover:text-lightCream cursor-pointer"
                 aria-label="Close cart"
               >
                 <X size={16} strokeWidth={1.2} />
@@ -103,11 +96,11 @@ const CartItem = ({ item, index, onRemove, onUpdateQuantity }) => {
     >
       <div className="flex gap-5">
         {/* Product Image */}
-        <div className="relative h-28 w-24 shrink-0 overflow-hidden bg-cream">
+        <div className="relative h-32 w-24 shrink-0 overflow-hidden">
           <motion.img
             src={product.image}
             alt={product.name}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover rounded-2xl"
             whileHover={{ scale: 1.04 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           />
@@ -122,21 +115,21 @@ const CartItem = ({ item, index, onRemove, onUpdateQuantity }) => {
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <p className="text-[8px] font-medium uppercase tracking-[0.25em] text-red">
+                <p className="text-[10px] font-bold uppercase tracking-[0.10em] text-red">
                   {product.category}
                 </p>
 
                 {purchaseType === "subscribe" && (
                   <>
-                    <span className="h-1 w-1 rounded-full bg-ink/25" />
-                    <p className="text-[7px] uppercase tracking-[0.2em] text-ink/45">
+                    <span className="h-1 w-1 rounded-full bg-emerald-700" />
+                    <p className="text-[7px] uppercase tracking-[0.2em] text-emerald-700">
                       Subscription
                     </p>
                   </>
                 )}
               </div>
 
-              <h3 className="mt-1.5 text-[12px] font-medium uppercase leading-tight tracking-[0.06em] text-ink sm:text-[13px]">
+              <h3 className="header mt-1.5 text-[12px] font-medium uppercase leading-tight tracking-[0.02em] text-ink md:text-[22px]">
                 {product.name}
               </h3>
             </div>
@@ -144,7 +137,7 @@ const CartItem = ({ item, index, onRemove, onUpdateQuantity }) => {
             <button
               type="button"
               onClick={() => onRemove(item.cartKey)}
-              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-ink/10 text-ink/35 transition-all duration-300 hover:border-red/30 hover:bg-red/5 hover:text-red"
+              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-ink/10 text-ink/35 transition-all duration-300 hover:border-red/30 hover:bg-red/5 hover:text-red cursor-pointer"
               aria-label={`Remove ${product.name}`}
             >
               <X size={13} strokeWidth={1.2} />
@@ -154,33 +147,33 @@ const CartItem = ({ item, index, onRemove, onUpdateQuantity }) => {
           {/* Product Meta */}
           <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
             {size && (
-              <div className="flex items-center gap-1.5">
-                <span className="text-[7px] uppercase tracking-[0.18em] text-ink/35">
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-[8px] uppercase tracking-[0.18em] text-ink/75">
                   Size
                 </span>
-                <span className="text-[8px] font-medium uppercase tracking-[0.08em] text-ink">
+                <span className="text-[10px] font-bold uppercase tracking-[0.08em] text-ink">
                   {size}
                 </span>
               </div>
             )}
 
             {grind && (
-              <div className="flex items-center gap-1.5">
-                <span className="text-[7px] uppercase tracking-[0.18em] text-ink/35">
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-[8px] uppercase tracking-[0.18em] text-ink/75">
                   Grind
                 </span>
-                <span className="text-[8px] font-medium uppercase tracking-[0.08em] text-ink">
+                <span className="text-[10px] font-bold uppercase tracking-[0.08em] text-ink">
                   {grind}
                 </span>
               </div>
             )}
 
             {purchaseType === "subscribe" && frequency && (
-              <div className="flex items-center gap-1.5">
-                <span className="text-[7px] uppercase tracking-[0.18em] text-ink/35">
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-[8px] uppercase tracking-[0.18em] text-ink/75">
                   Every
                 </span>
-                <span className="text-[8px] font-medium uppercase tracking-[0.08em] text-ink">
+                <span className="text-[10px] font-bold uppercase tracking-[0.08em] text-ink">
                   {frequency}
                 </span>
               </div>
@@ -216,11 +209,7 @@ const CartItem = ({ item, index, onRemove, onUpdateQuantity }) => {
 
             {/* Price */}
             <div className="text-right">
-              <p className="mb-1 text-[7px] uppercase tracking-[0.2em] text-ink/35">
-                Total
-              </p>
-
-              <p className="whitespace-nowrap text-[13px] font-medium tracking-[0.02em] text-ink sm:text-[14px]">
+              <p className="header whitespace-nowrap text-[13px] font-medium tracking-[0.02em] text-ink md:text-[16px]">
                 NPR{" "}
                 {itemTotal.toLocaleString(undefined, {
                   maximumFractionDigits: 0,
@@ -236,24 +225,30 @@ const CartItem = ({ item, index, onRemove, onUpdateQuantity }) => {
 
 const CartSummary = ({ total }) => {
   const { setIsCartOpen } = useCart();
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    setIsCartOpen(false);
+    navigate("/checkout");
+  };
 
   return (
-    <div className="shrink-0 border-t border-ink/10 bg-lightCream px-6 pb-6 pt-6 sm:px-8 sm:pt-7">
-      <div className="flex items-end justify-between">
+    <div className="shrink-0 border-t border-ink/10 bg-hill px-6 pb-6 pt-5 sm:px-8 sm:pb-8 rounded-t-4xl">
+      <div className="flex items-end justify-between gap-6">
         <div>
-          <p className="text-[7px] font-medium uppercase tracking-[0.3em] text-red">
-            Your order
-          </p>
-          <p className="mt-1.5 text-[9px] uppercase tracking-[0.16em] text-ink/45">
+          <p className="text-[9px] font-medium uppercase tracking-[0.22em] text-lightWhite">
             Order summary
+          </p>
+          <p className="mt-2 text-sm text-lightWhite">
+            Shipping calculated at checkout
           </p>
         </div>
 
-        <div className="text-right">
-          <p className="text-[7px] uppercase tracking-[0.25em] text-ink/35">
-            Subtotal
+        <div className="shrink-0 text-right">
+          <p className="text-[8px] font-medium uppercase tracking-[0.2em] text-lightWhite">
+            Total
           </p>
-          <p className="mt-1 text-base font-medium tracking-[0.02em] text-ink">
+          <p className="header mt-1 text-lg font-medium tracking-[-0.02em] text-lightWhite">
             NPR{" "}
             {Number(total).toLocaleString(undefined, {
               maximumFractionDigits: 0,
@@ -262,35 +257,18 @@ const CartSummary = ({ total }) => {
         </div>
       </div>
 
-      <div className="my-5 h-px bg-ink/10" />
-
-      <div className="flex items-center justify-between">
-        <p className="text-[7px] uppercase tracking-[0.2em] text-ink/35">
-          Shipping
-        </p>
-
-        <p className="text-[8px] uppercase tracking-[0.12em] text-ink/50">
-          Calculated at checkout
-        </p>
-      </div>
-
-      <Link
-        to="/checkout"
-        onClick={() => setIsCartOpen(false)}
-        className="group relative mt-5 flex h-13 w-full items-center justify-between overflow-hidden bg-ink px-5 text-lightCream transition-colors duration-500 hover:bg-red sm:px-6"
-      >
-        <span className="relative z-10 text-[8px] font-medium uppercase tracking-[0.3em]">
+      <div className="mt-6">
+        <Button
+          to="/checkout"
+          onClick={handleCheckout}
+          variant="light"
+          size="md"
+          icon
+          className="h-12 w-full justify-between px-6"
+        >
           Proceed to checkout
-        </span>
-
-        <span className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full border border-lightCream/25 transition-all duration-500 group-hover:border-lightCream/50 group-hover:translate-x-1">
-          <ArrowRight size={13} strokeWidth={1.1} />
-        </span>
-      </Link>
-
-      <p className="mt-4 text-center text-[6px] uppercase tracking-[0.2em] text-ink/30">
-        Secure checkout · Freshly packed · Delivered with care
-      </p>
+        </Button>
+      </div>
     </div>
   );
 };

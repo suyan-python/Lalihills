@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../../layouts/CartContext";
+import Button from "../../components/Button";
 
 const Checkout = () => {
   const { cartItems, cartTotal } = useCart();
@@ -56,13 +57,9 @@ const Checkout = () => {
             worth bringing home.
           </p>
 
-          <Link
-            to="/shop"
-            className="mt-8 inline-flex items-center gap-4 bg-ink px-7 py-4 text-[8px] font-medium uppercase tracking-[0.28em] text-lightCream transition-colors duration-500 hover:bg-red"
-          >
-            Continue shopping
-            <ArrowRight size={14} strokeWidth={1.1} />
-          </Link>
+          <Button to={"/shop"} variant="dark" className="mt-5">
+            Continue Shopping
+          </Button>
         </div>
       </main>
     );
