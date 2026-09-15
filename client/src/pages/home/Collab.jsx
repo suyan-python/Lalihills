@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import SmartVideo from "../../components/SmartVideo";
 
 import context from "/videos/collab.mp4";
+import Button from "../../components/Button";
 
 const Collab = () => {
   return (
@@ -130,50 +131,9 @@ const Collab = () => {
         </h2>
 
         {/* CTA */}
-
-        <Link
-          to="/explore"
-          className="
-                        group
-                        mt-14
-                        inline-flex
-                        items-center
-                        gap-5
-                        border
-                        border-lightCream/40
-                        bg-lightWhite
-                        px-4
-                        py-2
-                        text-ink
-                        transition-all
-                        duration-500
-                        hover:border-ivory/40
-                        hover:bg-ivory
-                        sm:px-8 font-semibold
-                    "
-        >
-          <span
-            className="
-                        text-[12px]
-                        font-medium
-                        uppercase
-                        tracking-[0.35em]
-                    "
-          >
-            Explore the Collab
-          </span>
-
-          <ArrowRight
-            size={16}
-            strokeWidth={1.2}
-            className="
-                            transition-transform
-                            duration-500
-                            group-hover:-translate-y-1
-                            group-hover:translate-x-1
-                        "
-          />
-        </Link>
+        <Button variant="light" className="mt-10">
+          Explore the Collab
+        </Button>
       </motion.div>
 
       {/* Bottom location detail */}

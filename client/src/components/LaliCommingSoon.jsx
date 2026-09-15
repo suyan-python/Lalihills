@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import bestBrew from "../assets/logo/bestbrew.png";
 import whenTheHillsAreLaali from "../assets/logo/whenthehillare.png";
 import logo from "/logo.png";
+import Button from "./Button";
 
 const videos = [
   "/videos/plantation.mp4",
@@ -333,24 +334,13 @@ const LaliComingSoon = () => {
                       when they are flourishing.
                     </p>
 
-                    <Link
+                    <Button
                       to="/aboutLaaliHills"
-                      className="
-                    mt-8 group inline-flex items-center gap-4 bg-hill px-5 py-3 text-[8px] font-medium uppercase tracking-[0.3em] text-[#F8EDE8] transition-all duration-500 hover:border-[#D9828A]/60 hover:bg-hill
-                "
+                      variant="green"
+                      className="mt-3"
                     >
-                      <span>Know Laali</span>
-
-                      <ArrowRight
-                        className="
-                        h-3.5
-                        w-3.5
-                        transition-transform
-                        duration-500
-                        group-hover:translate-x-1.5
-                    "
-                      />
-                    </Link>
+                      Know Laali
+                    </Button>
                   </motion.div>
                 </div>
               </motion.div>
@@ -397,11 +387,11 @@ const LaliComingSoon = () => {
 
         <Link
           to="/shop"
-          className="group absolute bottom-44 left-1/2 z-40 inline-flex -translate-x-1/2 items-start gap-4 bg-ivory px-6 py-3 text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-hill shadow-xl transition-all duration-500 hover:bg-hill/80 hover:text-lightWhite"
+          className="group absolute bottom-44 left-1/2 z-40 inline-flex h-12 -translate-x-1/2 items-center gap-3 rounded-full bg-ivory px-6 text-[9px] font-semibold uppercase tracking-[0.2em] text-hill transition-all duration-300 hover:bg-lightWhite hover:shadow-lg md:h-12 md:px-7 md:text-[10px]"
           aria-label="Explore offerings"
         >
           <span>Explore offerings</span>
-          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-500 group-hover:translate-x-1.5" />
+          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
       </section>
 

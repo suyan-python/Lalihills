@@ -552,10 +552,8 @@ const ProductDetails = ({ products = [] }) => {
         <div className="mx-auto grid max-w-350 grid-cols-1 gap-20 lg:grid-cols-[1fr_0.72fr] lg:gap-28">
           {/* STORY */}
           <div>
-            <h2 className="header mt-7 max-w-3xl text-[clamp(3.5rem,6vw,6rem)] uppercase leading-[0.82] tracking-[-0.065em] text-ink ">
-              Product:
-              <br />
-              <span className="italic text-red">{product.name}.</span>
+            <h2 className="header font-bold mt-7 max-w-3xl text-[clamp(3.5rem,6vw,4rem)] uppercase leading-[0.82] tracking-[-0.045em] text-ink ">
+              {product.name}.
             </h2>
 
             <p className="mt-10 max-w-2xl text-sm font-light leading-8 text-ink sm:text-base">
@@ -571,36 +569,6 @@ const ProductDetails = ({ products = [] }) => {
           <div className="">
             <div className="relative overflow-hidden border border-ink/15 bg-ivory/35 px-5 sm:px-7">
               <div className="absolute left-0 top-0 h-1 w-24 bg-red" />
-
-              <div className="flex items-baseline justify-between gap-6 border-b border-ink/15 py-5">
-                <div>
-                  <h3 className="mt-4 max-w-xs text-xl font-medium uppercase leading-none tracking-[-0.02em] text-ink sm:text-2xl">
-                    {product.name}
-                  </h3>
-
-                  <p className="mt-3 text-[8px] uppercase tracking-[0.2em] text-ink/75">
-                    {selectedSize.label}
-                  </p>
-                </div>
-
-                <div className="text-right">
-                  <p className="whitespace-nowrap text-2xl font-medium tracking-[-0.03em] text-ink">
-                    NPR{" "}
-                    {unitPrice.toLocaleString(undefined, {
-                      maximumFractionDigits: 0,
-                    })}
-                  </p>
-
-                  {product.available && (
-                    <div className="mt-3 flex items-center justify-end gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-hill" />
-                      <span className="text-[7px] uppercase tracking-[0.25em] text-hill">
-                        In stock
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </div>
 
               <div className="mt-8 space-y-8">
                 {sizeOptions.length > 1 && (
@@ -618,7 +586,7 @@ const ProductDetails = ({ products = [] }) => {
                             key={option.label}
                             type="button"
                             onClick={() => setSelectedSize(option)}
-                            className={`flex h-12 items-center justify-center border text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${active ? "border-ink bg-ink text-lightCream" : "border-ink/15 bg-lightWhite/50 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
+                            className={`flex h-12 items-center justify-center border text-[12px] font-bold uppercase tracking-[0.2em] transition-all duration-300 ${active ? "border-ink bg-ink text-lightCream" : "border-ink/15 bg-lightWhite/50 text-ink/60 hover:border-ink/40 hover:text-ink"}`}
                           >
                             {option.label}
                           </button>
@@ -711,7 +679,7 @@ const ProductDetails = ({ products = [] }) => {
                 <div className="border-t border-ink/25">
                   {/* Subscription toggle */}
                   <div
-                    className={`mt-8 flex items-center justify-between border p-4 transition-all duration-500 ${
+                    className={`mt-8 flex items-center justify-between border px-8 py-4 transition-all duration-500 rounded-full ${
                       purchaseType === "subscribe"
                         ? "border-emerald-700/25 bg-emerald-700/[0.04]"
                         : "border-red/20 bg-red/[0.025]"
@@ -755,7 +723,7 @@ const ProductDetails = ({ products = [] }) => {
                           current === "subscribe" ? "one-time" : "subscribe",
                         )
                       }
-                      className={`relative h-7 w-12 shrink-0 rounded-full border transition-all duration-500 ${
+                      className={`relative h-7 w-12 shrink-0 rounded-full border transition-all duration-500 cursor-pointer ${
                         purchaseType === "subscribe"
                           ? "border-emerald-700 bg-emerald-700"
                           : "border-red bg-red"
@@ -789,7 +757,7 @@ const ProductDetails = ({ products = [] }) => {
                         className="overflow-hidden"
                       >
                         <div className="pt-4">
-                          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 px-4">
                             {(
                               product.frequencies || [
                                 "Weekly",
@@ -806,7 +774,7 @@ const ProductDetails = ({ products = [] }) => {
                                   type="button"
                                   onClick={() => setFrequency(option)}
                                   aria-pressed={active}
-                                  className={`relative flex min-h-[38px] items-center justify-center border px-3 text-center transition-all duration-300  ${
+                                  className={`relative flex min-h-[38px] items-center justify-center border px-3 text-center transition-all duration-300 rounded-full   ${
                                     active
                                       ? "border-emerald-700 bg-emerald-700 text-lightCream"
                                       : "border-ink/10 bg-lightWhite/40 text-ink/50 hover:border-emerald-700/30 hover:bg-emerald-700/[0.03] hover:text-emerald-700"
@@ -815,12 +783,6 @@ const ProductDetails = ({ products = [] }) => {
                                   <span className="text-[10px] font-bold uppercase leading-[1.3] tracking-[0.16em]">
                                     {option}
                                   </span>
-
-                                  <span
-                                    className={`absolute bottom-0 left-0 h-[2px] bg-emerald-700 transition-all duration-300 ${
-                                      active ? "w-full" : "w-0"
-                                    }`}
-                                  />
                                 </button>
                               );
                             })}
@@ -835,7 +797,7 @@ const ProductDetails = ({ products = [] }) => {
                 <div className="pb-5 ">
                   <div className="flex items-baseline justify-end gap-5">
                     <div className="w-[112px] shrink-0">
-                      <div className="flex h-12 w-full items-center justify-between border border-ink/15 bg-lightWhite/70">
+                      <div className="flex h-12 w-full items-center justify-between border border-ink/15 bg-lightWhite/70 rounded-full">
                         <button
                           type="button"
                           onClick={() =>
@@ -875,13 +837,13 @@ const ProductDetails = ({ products = [] }) => {
                   <div className="flex justify-end">
                     <div className="relative mt-5">
                       {/* Ink block behind */}
-                      <span className="absolute inset-0 translate-x-1 translate-y-1 bg-ink" />
+                      <span className="absolute inset-0 translate-x-1 translate-y-1 bg-ink rounded-full" />
 
                       {/* Red button in front */}
                       <button
                         type="button"
                         onClick={handleAddToCart}
-                        className="relative z-10 flex h-14 max-w-3xl cursor-pointer items-center bg-red px-6 text-lightCream transition-all duration-300 hover:bg-deepRed active:translate-x-1 active:translate-y-1 sm:px-7"
+                        className="relative z-10 flex h-14 max-w-3xl cursor-pointer items-center bg-red px-6 text-lightCream transition-all duration-300 hover:bg-deepRed active:translate-x-1 active:translate-y-1 sm:px-7 rounded-full"
                       >
                         <span className="text-[14px] font-bold uppercase tracking-[0.2em]">
                           Add to cart

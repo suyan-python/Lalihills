@@ -31,7 +31,7 @@ export const coffeeProducts = [
   altitude: "1,300-1,500",
   origin: "DHANKUTA",
 
- 
+ price:850,
 sizeOptions: [
   { grams: 100, price: 850 },
   { grams: 250, price: 1650 },

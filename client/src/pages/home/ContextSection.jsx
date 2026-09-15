@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import SmartVideo from "../../components/SmartVideo";
 
 import context from "/videos/context.mp4";
+import Button from "../../components/Button";
 
 const ContextSection = () => {
   return (
@@ -96,20 +97,9 @@ const ContextSection = () => {
           <span className="text-ivory"> context.</span>
         </h2>
 
-        <Link
-          to="/explore"
-          className="group mt-10 inline-flex items-center gap-4 border border-lightCream/30 px-5 py-3.5 text-lightWhite transition-all duration-500 hover:border-lightCream/60 hover:bg-lightCream hover:text-ink sm:px-6 sm:py-4"
-        >
-          <span className="text-[9px] font-medium uppercase tracking-[0.3em]">
-            Explore
-          </span>
-
-          <ArrowRight
-            size={15}
-            strokeWidth={1.2}
-            className="transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1"
-          />
-        </Link>
+        <Button to={"/explore"} variant="light" className="mt-5">
+          Explore
+        </Button>
       </motion.div>
     </section>
   );

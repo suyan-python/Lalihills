@@ -5,6 +5,7 @@ import {
   Coffee,
   Droplets,
   Mountain,
+  MountainSnow,
   Sprout,
   Sun,
   Wheat,
@@ -19,9 +20,8 @@ const FIELD_CONFIG = [
   { key: "harvest", label: "Harvest" },
   { key: "roast", label: "Roast" },
 ];
-
 const FIELD_ICONS = {
-  origin: Mountain,
+  origin: MountainSnow,
   altitude: Mountain,
   process: Droplets,
   variety: Sprout,
@@ -50,26 +50,22 @@ function resolveField(product, key) {
   }
 }
 
-const InfoTile = ({ number, label, value, hasBlurb, onClick }) => {
-  const content = (
-    <div className="relative flex h-full min-h-[155px] flex-col overflow-hidden">
-      {/* top row */}
-      <div className="flex items-baseline justify-between">
-        <span className="text-[8px] font-medium tracking-[0.18em] text-ink/55">
-          {number}
-        </span>
+const InfoTile = ({ fieldKey, label, value, hasBlurb, onClick }) => {
+  const Icon = FIELD_ICONS[fieldKey];
 
-        <span className="flex h-8 w-8 items-center justify-center border border-ink/10  text-ink/35 transition-all duration-500 group-hover:border-red/30 group-hover:bg-red group-hover:text-lightCream">
-          <ArrowUpRight
-            size={13}
-            strokeWidth={1.1}
-            className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-          />
-        </span>
-      </div>
+  const content = (
+    <div className="relative flex h-full min-h-[155px] flex-col overflow-hidden ">
+      {/* background icon */}
+      {Icon && (
+        <Icon
+          size={105}
+          strokeWidth={0.7}
+          className="pointer-events-none absolute -bottom-5 -right-4 text-ink/8.5 transition-all duration-700 group-hover:scale-110 group-hover:text-red/15"
+        />
+      )}
 
       {/* content */}
-      <div className="mt-auto">
+      <div className="relative z-10">
         <span className="block text-[7px] font-medium uppercase tracking-[0.35em] text-stone">
           {label}
         </span>
@@ -86,7 +82,7 @@ const InfoTile = ({ number, label, value, hasBlurb, onClick }) => {
 
   if (!hasBlurb) {
     return (
-      <div className="relative min-h-[125px] border-b border-ink/10 px-4 py-5 sm:px-5 lg:px-6">
+      <div className="group relative min-h-[125px] border-b border-ink/10 px-4 py-5 sm:px-5 lg:px-6">
         {content}
       </div>
     );
@@ -152,15 +148,15 @@ const ProductInfoGrid = ({ product }) => {
                 {product.flavors.map((flavor) => (
                   <div key={flavor} className="group/flavor relative">
                     {/* Solid offset shadow */}
-                    <div className="absolute inset-0 translate-x-1 translate-y-1 bg-ink transition-transform duration-300 group-hover/flavor:translate-x-1.5 group-hover/flavor:translate-y-1.5" />
+                    <div className="absolute inset-0 translate-x-1 translate-y-1 bg-ink transition-transform duration-300 group-hover/flavor:translate-x-1.5 group-hover/flavor:translate-y-1.5 rounded-full" />
 
                     {/* Actual box */}
-                    <div className="relative flex items-center gap-3 border border-ink/15 bg-lightCream px-4 py-3 transition-transform duration-300 group-hover/flavor:-translate-x-0.5 group-hover/flavor:-translate-y-0.5">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center border border-ink/10 bg-ivory text-red">
+                    <div className="relative flex items-center gap-3 border border-ink/15 bg-amber-400 px-4 py-3 transition-transform duration-300 group-hover/flavor:-translate-x-0.5 group-hover/flavor:-translate-y-0.5 rounded-full">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center  text-ink">
                         <Coffee size={11} strokeWidth={1.2} />
                       </span>
 
-                      <span className="text-[12px] font-bold uppercase tracking-[0.18em] text-ink/85">
+                      <span className="text-[14px] font-bold uppercase tracking-[0.10em] text-ink">
                         {flavor}
                       </span>
                     </div>
@@ -170,10 +166,11 @@ const ProductInfoGrid = ({ product }) => {
             </div>
           )}
 
-          <div className="mt-16 grid grid-cols-2 border-t border-ink/10 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-16 grid grid-cols-2 border-t border-ink/10 md:grid-cols-3">
             {fields.map(({ key, label, data }, index) => (
               <InfoTile
                 key={key}
+                fieldKey={key}
                 number={String(index + 1).padStart(2, "0")}
                 label={label}
                 value={data.value}

@@ -71,7 +71,7 @@ const ShopCategory = ({
               >
                 <Link
                   to="/shop/help-me-choose"
-                  className="group flex shrink-0 items-center gap-2 text-[7px] font-bold uppercase tracking-[0.22em] text-ink transition-colors duration-500 hover:text-red sm:text-[8px]"
+                  className="group flex shrink-0 items-center gap-2 text-[7px] font-bold uppercase tracking-[0.22em] text-ink transition-colors duration-500 hover:text-red sm:text-[10px]"
                 >
                   <span>Help me choose</span>
                   <span className="h-px w-4 bg-ink/30 transition-all duration-500 group-hover:w-6 group-hover:bg-red" />

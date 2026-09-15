@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import roundedLogo from "../../assets/logo/round.svg";
 import coffeeBeans from "../../assets/images/coffee-beans.jpg";
+import Button from "../../components/Button";
 
 const CertificationSection = () => {
   return (
@@ -237,49 +238,9 @@ const CertificationSection = () => {
         </div>
 
         {/* CTA */}
-
-        <Link
-          to="/certifications"
-          className="
-                        group
-                        mt-10
-                        inline-flex
-                        items-center
-                        gap-5
-                        border
-                        border-lightCream/40
-                        px-5
-                        py-2
-                        bg-lightWhite
-                        text-ink
-                        transition-all
-                        duration-500
-                        hover:border-lightCream
-                        hover:bg-lightCream
-                    "
-        >
-          <span
-            className="
-                        text-[12px]
-                        font-semibold
-                        uppercase
-                        tracking-[0.35em]
-                    "
-          >
-            View certifications
-          </span>
-
-          <ArrowUpRight
-            size={16}
-            strokeWidth={1.2}
-            className="
-                            transition-transform
-                            duration-500
-                            group-hover:-translate-y-1
-                            group-hover:translate-x-1
-                        "
-          />
-        </Link>
+        <Button variant="light" className="mt-10">
+          View Certifications
+        </Button>
       </motion.div>
     </section>
   );

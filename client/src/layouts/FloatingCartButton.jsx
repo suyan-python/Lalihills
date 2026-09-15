@@ -18,21 +18,34 @@ const FloatingCartButton = () => {
         duration: 0.45,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="fixed bottom-6 right-6 z-[80] flex h-12 items-center gap-3 bg-ink px-4 text-lightCream shadow-2xl transition-colors duration-500 hover:bg-red sm:bottom-8 sm:right-8"
+      className="group fixed bottom-6 right-6 z-[80] flex h-12 items-center gap-2 rounded-full bg-ink px-2 text-lightCream shadow-lg transition-all duration-300 hover:bg-red hover:shadow-xl active:scale-[0.97] sm:bottom-8 sm:right-8"
+      aria-label={`Shopping cart${cartCount > 0 ? `, ${cartCount} items` : ""}`}
     >
-      <span className="relative flex h-7 w-7 items-center justify-center">
-        <ShoppingBag size={16} strokeWidth={1.1} />
-
-        {cartCount > 0 && (
-          <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-red px-1 text-[6px] font-medium text-lightCream">
-            {cartCount}
-          </span>
-        )}
+      <span className="flex h-7 w-7 items-center justify-center">
+        <ShoppingBag
+          size={16}
+          strokeWidth={1.2}
+          className="transition-transform duration-300 group-hover:scale-105"
+        />
       </span>
 
-      <span className="text-[7px] font-medium uppercase tracking-[0.3em]">
+      <span className="text-[8px] font-semibold uppercase tracking-[0.2em]">
         Cart
       </span>
+
+      <motion.span
+        key={cartCount}
+        initial={{ scale: 0.7, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 500,
+          damping: 25,
+        }}
+        className="flex h-5 min-w-5 items-center justify-center rounded-full bg-red px-1.5 text-[7px] font-semibold tabular-nums text-lightCream transition-colors duration-300 group-hover:bg-lightCream group-hover:text-red"
+      >
+        {cartCount}
+      </motion.span>
     </motion.button>
   );
 };
