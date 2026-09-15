@@ -233,7 +233,16 @@ const CartSummary = ({ total }) => {
   };
 
   return (
-    <div className="shrink-0 border-t border-ink/10 bg-hill px-6 pb-6 pt-5 sm:px-8 sm:pb-8 rounded-t-4xl">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        delay: 0.15,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="shrink-0 border-t border-ink/10 bg-hill mx-10 px-6 pb-6 pt-5 sm:px-8 sm:pb-8 rounded-t-4xl"
+    >
       <div className="flex items-end justify-between gap-6">
         <div>
           <p className="text-[9px] font-medium uppercase tracking-[0.22em] text-lightWhite">
@@ -258,18 +267,23 @@ const CartSummary = ({ total }) => {
       </div>
 
       <div className="mt-6">
-        <Button
-          to="/checkout"
+        <button
+          type="button"
           onClick={handleCheckout}
-          variant="light"
-          size="md"
-          icon
-          className="h-12 w-full justify-between px-6"
+          className="group mt-6 flex h-12 w-full items-center justify-between rounded-full bg-lightWhite px-6 text-ink transition-all duration-300 hover:bg-cream cursor-pointer active:scale-[0.98]"
         >
-          Proceed to checkout
-        </Button>
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
+            Proceed to checkout
+          </span>
+
+          <ArrowRight
+            size={16}
+            strokeWidth={2}
+            className="transition-transform duration-300 group-hover:translate-x-1"
+          />
+        </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -278,25 +292,17 @@ const EmptyCart = ({ onClose }) => {
     <div className="flex h-full flex-col items-center justify-center text-center">
       <img src={empty} alt="" className="h-36 w-36 object-contain opacity-70" />
 
-      <p className="mt-5 text-[7px] uppercase tracking-[0.35em] text-deepRed">
+      <p className="mt-5 text-[9px] uppercase tracking-[0.35em] text-deepRed">
         Nothing selected yet
       </p>
 
-      <h3 className="mt-3 font-title text-2xl uppercase tracking-[0.04em] text-ink">
+      <h3 className="mt-2 header text-[18px] uppercase tracking-[0.04em] text-ink">
         Your cart is quiet.
       </h3>
 
-      <p className="mt-3 max-w-[240px] text-[9px] leading-relaxed text-ink/50">
-        Explore the hills and discover something worth bringing home.
-      </p>
-
-      <button
-        type="button"
-        onClick={onClose}
-        className="mt-7 border-b border-ink pb-1 text-[7px] uppercase tracking-[0.3em] text-deepRed font-semibold cursor-pointer"
-      >
-        Continue exploring
-      </button>
+      <Button onClick={onClose} className="cursor-pointer mt-5">
+        Continue Exploring
+      </Button>
     </div>
   );
 };
