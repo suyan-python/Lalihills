@@ -47,7 +47,7 @@ const StickyPurchaseBar = ({
           className="fixed inset-x-0 bottom-0 z-40 px-4 pb-4 sm:px-8 sm:pb-6 "
         >
           <div className="mx-auto max-w-375">
-            <div className="relative flex flex-col gap-3  border border-ink/15 bg-lightCream/55 p-3 shadow-[0_-12px_40px_rgba(33,28,22,0.12)] backdrop-blur-xl sm:p-4 lg:grid lg:grid-cols-[220px_1fr_300px] lg:items-center lg:gap-8 lg:p-4 rounded-4xl">
+            <div className="relative flex flex-col gap-3 rounded-3xl border border-ink/15  p-3 shadow-[0_-12px_40px_rgba(33,28,22,0.12)] backdrop-blur-sm sm:gap-4 sm:rounded-4xl sm:p-4 lg:grid lg:grid-cols-[200px_1fr_260px] lg:items-center lg:gap-6 lg:p-4 xl:grid-cols-[220px_1fr_300px] xl:gap-8">
               {/* PRODUCT */}
               <div className="hidden min-w-0 items-center gap-3 lg:flex">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-ink/20 bg-lightCream/70 p-2 ">
@@ -70,22 +70,22 @@ const StickyPurchaseBar = ({
               </div>
 
               <div className="flex min-w-0 flex-wrap items-center justify-between gap-2 sm:justify-center sm:gap-3">
-                {/* SELECT SIZE  */}
-                <div className="relative w-full max-w-[220px]">
+                {/* SELECT SIZE */}
+                <div className="relative w-full sm:w-auto sm:min-w-[180px] sm:max-w-[220px]">
                   <button
                     type="button"
                     onClick={() => setSizeOpen((open) => !open)}
                     className="flex h-11 w-full items-center justify-between rounded-full border border-ink/15 bg-lightWhite px-4 text-ink transition-all duration-300 hover:border-ink/30"
                     aria-expanded={sizeOpen}
                   >
-                    <span className="text-[10px] font-medium uppercase tracking-[0.2em]">
+                    <span className="truncate text-[10px] font-medium uppercase tracking-[0.2em]">
                       Size · {selectedSize.label}
                     </span>
 
                     <ChevronDown
                       size={14}
                       strokeWidth={1.2}
-                      className={`transition-transform duration-300 ${
+                      className={`shrink-0 transition-transform duration-300 ${
                         sizeOpen ? "rotate-180" : ""
                       }`}
                     />
@@ -140,28 +140,129 @@ const StickyPurchaseBar = ({
 
                 {/* PURCHASE TYPE */}
 
-                <div className="hidden shrink-0 items-center gap-1 border border-ink/15 bg-lightWhite p-1 md:flex rounded-4xl">
+                {/* PURCHASE TYPE */}
+
+                <div className="flex w-full items-center gap-1 rounded-4xl border border-ink/15 bg-lightWhite p-1 sm:w-auto">
+                  {/* ONE-TIME */}
                   <button
                     type="button"
-                    onClick={() => onChangePurchaseType("one-time")}
-                    className={`px-4 py-2.5 text-[10px] font-medium uppercase tracking-[0.2em] transition-all duration-300 rounded-4xl ${purchaseType === "one-time" ? "bg-ink text-lightCream" : "text-ink/85 hover:text-ink"}`}
+                    onClick={() => {
+                      onChangePurchaseType("one-time");
+                      setFrequencyOpen(false);
+                    }}
+                    className={`flex-1 whitespace-nowrap rounded-4xl px-3 py-2.5 text-[9px] font-medium uppercase tracking-[0.16em] transition-all duration-300 sm:flex-none sm:px-4 sm:text-[10px] sm:tracking-[0.2em] ${
+                      purchaseType === "one-time"
+                        ? "bg-ink text-lightCream"
+                        : "text-ink/85 hover:text-ink"
+                    }`}
                   >
                     One-time
                   </button>
 
-                  <button
-                    type="button"
-                    onClick={() => onChangePurchaseType("subscribe")}
-                    className={`flex min-w-31.25 items-center justify-center gap-2 px-4 py-2.5 text-[10px] font-medium uppercase tracking-[0.2em] transition-all duration-300 rounded-4xl ${purchaseType === "subscribe" ? "bg-ink text-lightCream" : "text-ink/85 hover:text-ink"}`}
+                  {/* SUBSCRIBE */}
+                  <div
+                    className={`relative flex-1 rounded-4xl transition-all duration-300 sm:flex-none ${
+                      purchaseType === "subscribe"
+                        ? "bg-ink text-lightCream"
+                        : ""
+                    }`}
                   >
-                    Subscribe
-                    <span className="text-green-500">
-                      −{Math.round(subscriptionDiscount * 100)}%
-                    </span>
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() => onChangePurchaseType("subscribe")}
+                      className={`flex w-full items-center justify-center gap-1.5 whitespace-nowrap rounded-4xl px-3 py-2.5 text-[9px] font-medium uppercase tracking-[0.16em] transition-all duration-300 sm:min-w-31.25 sm:px-4 sm:text-[10px] sm:tracking-[0.2em] ${
+                        purchaseType === "subscribe"
+                          ? "text-lightCream"
+                          : "text-ink/85 hover:text-ink"
+                      }`}
+                    >
+                      Subscribe
+                      <span className="text-green-500">
+                        −{Math.round(subscriptionDiscount * 100)}%
+                      </span>
+                    </button>
+
+                    {/* MOBILE FREQUENCY */}
+                    {purchaseType === "subscribe" && (
+                      <button
+                        type="button"
+                        onClick={() => setFrequencyOpen((open) => !open)}
+                        className="flex w-full items-center justify-center gap-1 pb-2 text-[7px] uppercase tracking-[0.12em] text-lightCream/70 sm:hidden"
+                        aria-expanded={frequencyOpen}
+                      >
+                        <span className="truncate">{frequency}</span>
+
+                        <ChevronDown
+                          size={11}
+                          strokeWidth={1.2}
+                          className={`shrink-0 transition-transform duration-300 ${
+                            frequencyOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    )}
+
+                    {/* MOBILE FREQUENCY OPTIONS */}
+                    <AnimatePresence>
+                      {purchaseType === "subscribe" && frequencyOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 6, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                          transition={{
+                            duration: 0.2,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
+                          className="absolute bottom-full left-0 z-50 mb-2 w-full min-w-[190px] overflow-hidden rounded-2xl border border-ink/10 bg-lightWhite p-1.5 shadow-xl sm:hidden"
+                        >
+                          <div className="space-y-0.5">
+                            {frequencies.map((option, index) => {
+                              const active = frequency === option;
+
+                              return (
+                                <button
+                                  key={option}
+                                  type="button"
+                                  onClick={() => {
+                                    onChangeFrequency(option);
+                                    setFrequencyOpen(false);
+                                  }}
+                                  className={`flex w-full items-center justify-between rounded-xl px-3 py-3 text-left transition-all duration-200 ${
+                                    active
+                                      ? "bg-ink text-lightCream"
+                                      : "text-ink hover:bg-ink/5"
+                                  }`}
+                                >
+                                  <div className="flex items-center gap-3">
+                                    <span
+                                      className={`text-[7px] tabular-nums ${
+                                        active
+                                          ? "text-lightCream/75"
+                                          : "text-ink/75"
+                                      }`}
+                                    >
+                                      {String(index + 1).padStart(2, "0")}
+                                    </span>
+
+                                    <span className="text-[8px] font-medium uppercase tracking-[0.14em]">
+                                      {option}
+                                    </span>
+                                  </div>
+
+                                  {active && (
+                                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                                  )}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </div>
 
-                {/* FREQUENCY */}
+                {/* DESKTOP FREQUENCY */}
 
                 <AnimatePresence initial={false}>
                   {purchaseType === "subscribe" && (
@@ -173,7 +274,7 @@ const StickyPurchaseBar = ({
                         duration: 0.35,
                         ease: [0.22, 1, 0.36, 1],
                       }}
-                      className="relative hidden shrink-0 md:block"
+                      className="relative hidden shrink-0 sm:block"
                     >
                       <button
                         type="button"
@@ -226,7 +327,11 @@ const StickyPurchaseBar = ({
                                   >
                                     <div className="flex items-center gap-3">
                                       <span
-                                        className={`text-[7px] tabular-nums ${active ? "text-lightCream/75" : "text-ink/75"}`}
+                                        className={`text-[7px] tabular-nums ${
+                                          active
+                                            ? "text-lightCream/75"
+                                            : "text-ink/75"
+                                        }`}
                                       >
                                         {String(index + 1).padStart(2, "0")}
                                       </span>
@@ -249,20 +354,28 @@ const StickyPurchaseBar = ({
                     </motion.div>
                   )}
                 </AnimatePresence>
+              </div>
 
+              {/* PRICE + CTA */}
+
+              <div className="flex min-w-0 items-center justify-between gap-2 border-t border-ink/10 pt-3 sm:justify-end sm:border-0 sm:pt-0">
                 {/* QUANTITY */}
 
-                <div className="flex h-10 shrink-0 items-center border border-ink/15 bg-lightWhite p-1 rounded-4xl">
+                <div className="ml-auto flex h-9 w-[104px] shrink-0 items-center justify-between rounded-4xl border border-ink/15 bg-lightWhite p-1 sm:ml-0 sm:h-10 sm:w-auto">
                   <button
                     type="button"
                     onClick={() => onChangeQuantity(Math.max(1, quantity - 1))}
                     aria-label="Decrease quantity"
-                    className="flex h-8 w-8 items-center justify-center text-ink/45 transition-all duration-300 hover:bg-ink hover:text-lightCream rounded-full"
+                    className="flex h-7 w-7 items-center justify-center rounded-full text-ink/45 transition-all duration-300 hover:bg-ink hover:text-lightCream sm:h-8 sm:w-8"
                   >
-                    <Minus size={11} strokeWidth={1.2} />
+                    <Minus
+                      size={10}
+                      strokeWidth={1.2}
+                      className="sm:h-[11px] sm:w-[11px]"
+                    />
                   </button>
 
-                  <span className="w-7 text-center text-[10px] font-medium tracking-[0.15em] text-ink">
+                  <span className="w-6 text-center text-[9px] font-medium tracking-[0.15em] text-ink sm:w-7 sm:text-[10px]">
                     {String(quantity).padStart(2, "0")}
                   </span>
 
@@ -270,19 +383,18 @@ const StickyPurchaseBar = ({
                     type="button"
                     onClick={() => onChangeQuantity(quantity + 1)}
                     aria-label="Increase quantity"
-                    className="flex h-8 w-8 items-center justify-center text-ink/45 transition-all duration-300 hover:bg-ink hover:text-lightCream rounded-full"
+                    className="flex h-7 w-7 items-center justify-center rounded-full text-ink/45 transition-all duration-300 hover:bg-ink hover:text-lightCream sm:h-8 sm:w-8"
                   >
-                    <Plus size={11} strokeWidth={1.2} />
+                    <Plus
+                      size={10}
+                      strokeWidth={1.2}
+                      className="sm:h-[11px] sm:w-[11px]"
+                    />
                   </button>
                 </div>
-              </div>
-
-              {/* PRICE + CTA */}
-
-              <div className="flex min-w-0 items-center gap-2 justify-between  border-t border-ink/10 pt-3 sm:justify-end sm:border-0 sm:pt-0">
-                <div className="flex h-11 shrink-0 items-center justify-between border border-ink/15 bg-lightWhite px-4 sm:px-5 rounded-4xl">
+                <div className="flex h-10 shrink-0 items-center justify-between rounded-4xl border border-ink/15 bg-lightWhite px-3.5 sm:h-11 sm:px-5">
                   <span className="header whitespace-nowrap text-sm font-bold tracking-[-0.02em] text-ink sm:text-base">
-                    NPR{" "}
+                    NPR.{" "}
                     {total.toLocaleString(undefined, {
                       maximumFractionDigits: 0,
                     })}
@@ -292,9 +404,9 @@ const StickyPurchaseBar = ({
                 <button
                   type="button"
                   onClick={onAddToCart}
-                  className="group flex h-11 min-w-0 flex-1 items-center justify-center gap-3 bg-red px-4 text-lightCream transition-all duration-500 hover:bg-deepRed sm:flex-none sm:px-8 rounded-4xl cursor-pointer"
+                  className="group flex h-10 min-w-0 flex-1 items-center justify-center gap-3 rounded-4xl bg-red px-4 text-lightCream transition-all duration-500 hover:bg-deepRed sm:h-11 sm:flex-none sm:px-8 cursor-pointer"
                 >
-                  <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.18em]">
+                  <span className="whitespace-nowrap text-[9px] font-medium uppercase tracking-[0.18em] sm:text-[10px]">
                     Add to cart
                   </span>
                 </button>

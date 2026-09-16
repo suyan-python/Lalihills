@@ -131,7 +131,7 @@ const ProductCard = ({ product }) => {
           </p>
         )}
 
-        <div className="mt-5 px-5">
+        <div className="mt-5 ">
           <div className="mb-2 flex items-center justify-between">
             <span className="text-[7px] font-semibold uppercase tracking-[0.25em] text-stone">
               Roast Level

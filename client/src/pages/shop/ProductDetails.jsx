@@ -19,22 +19,50 @@ const CircularDetail = ({
   reveal,
   lineFrom,
 }) => {
-  const opacity = reveal;
-  const scale = useTransform(reveal, [0, 1], [0.85, 1]);
+  const opacity = useTransform(reveal, [0, 1], [0, 1]);
+  const scale = useTransform(reveal, [0, 1], [0.82, 1]);
+  const y = useTransform(reveal, [0, 1], [18, 0]);
   const lineScale = useTransform(reveal, [0, 1], [0, 1]);
+
+  const smoothScale = useSpring(scale, {
+    stiffness: 220,
+    damping: 16,
+    mass: 0.7,
+  });
+
+  const smoothY = useSpring(y, {
+    stiffness: 220,
+    damping: 16,
+    mass: 0.7,
+  });
+
+  const smoothLine = useSpring(lineScale, {
+    stiffness: 260,
+    damping: 20,
+    mass: 0.6,
+  });
 
   return (
     <div className={`absolute ${position}`}>
-      <motion.div style={{ opacity, scale }} className="relative text-center">
+      <motion.div
+        style={{
+          opacity,
+          scale: smoothScale,
+          y: smoothY,
+        }}
+        className="relative text-center"
+      >
         <span className="block text-[8px] uppercase tracking-[0.4em] text-ink/80">
           {title}
         </span>
-        <span className="mt-2 block text-xs uppercase tracking-[0.2em] text-ink font-bold">
+
+        <span className="mt-2 block text-xs font-bold uppercase tracking-[0.2em] text-ink">
           {value}
         </span>
+
         <motion.span
           style={{
-            scaleX: lineScale,
+            scaleX: smoothLine,
             transformOrigin: lineFrom === "right" ? "right" : "left",
           }}
           className={`absolute ${linePosition} top-1/2 hidden h-px w-20 bg-ink/20 xl:block`}
@@ -530,9 +558,6 @@ const ProductDetails = ({ products = [] }) => {
               reveal={typeReveal}
             />
           </div>
-
-          {/* MOBILE DETAIL — the ring's spokes don't fit on small screens,
-                        so the same data lands as a simple fading grid instead */}
 
           <motion.div
             style={{ opacity: mobileDetailOpacity }}
