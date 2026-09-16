@@ -47,7 +47,7 @@ const StickyPurchaseBar = ({
           className="fixed inset-x-0 bottom-0 z-40 px-4 pb-4 sm:px-8 sm:pb-6 "
         >
           <div className="mx-auto max-w-375">
-            <div className="relative flex flex-col gap-3 rounded-3xl border border-ink/15  p-3 shadow-[0_-12px_40px_rgba(33,28,22,0.12)] backdrop-blur-sm sm:gap-4 sm:rounded-4xl sm:p-4 lg:grid lg:grid-cols-[200px_1fr_260px] lg:items-center lg:gap-6 lg:p-4 xl:grid-cols-[220px_1fr_300px] xl:gap-8">
+            <div className="relative flex flex-col gap-3 rounded-3xl border border-ink/15 bg-lightCream/40  p-3 shadow-[0_-12px_40px_rgba(33,28,22,0.12)] backdrop-blur-sm sm:gap-4 sm:rounded-4xl sm:p-4 lg:grid lg:grid-cols-[200px_1fr_260px] lg:items-center lg:gap-6 lg:p-4 xl:grid-cols-[220px_1fr_300px] xl:gap-8">
               {/* PRODUCT */}
               <div className="hidden min-w-0 items-center gap-3 lg:flex">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-ink/20 bg-lightCream/70 p-2 ">
@@ -140,8 +140,6 @@ const StickyPurchaseBar = ({
 
                 {/* PURCHASE TYPE */}
 
-                {/* PURCHASE TYPE */}
-
                 <div className="flex w-full items-center gap-1 rounded-4xl border border-ink/15 bg-lightWhite p-1 sm:w-auto">
                   {/* ONE-TIME */}
                   <button
@@ -213,7 +211,7 @@ const StickyPurchaseBar = ({
                             duration: 0.2,
                             ease: [0.22, 1, 0.36, 1],
                           }}
-                          className="absolute bottom-full left-0 z-50 mb-2 w-full min-w-[190px] overflow-hidden rounded-2xl border border-ink/10 bg-lightWhite p-1.5 shadow-xl sm:hidden"
+                          className="absolute bottom-full left-0 z-50 mb-2 w-fit min-w-[90px] overflow-hidden rounded-2xl border border-ink/10 bg-lightWhite p-1.5 shadow-xl sm:hidden"
                         >
                           <div className="space-y-0.5">
                             {frequencies.map((option, index) => {
@@ -227,15 +225,15 @@ const StickyPurchaseBar = ({
                                     onChangeFrequency(option);
                                     setFrequencyOpen(false);
                                   }}
-                                  className={`flex w-full items-center justify-between rounded-xl px-3 py-3 text-left transition-all duration-200 ${
+                                  className={`flex w-full items-baseline justify-between rounded-xl px-3 py-3 text-left transition-all duration-200 gap-2 ${
                                     active
                                       ? "bg-ink text-lightCream"
                                       : "text-ink hover:bg-ink/5"
                                   }`}
                                 >
-                                  <div className="flex items-center gap-3">
+                                  <div className="flex items-center gap-2">
                                     <span
-                                      className={`text-[7px] tabular-nums ${
+                                      className={`hidden md:block text-[7px] tabular-nums ${
                                         active
                                           ? "text-lightCream/75"
                                           : "text-ink/75"

@@ -1,11 +1,14 @@
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../../layouts/CartContext";
 import Button from "../../components/Button";
+import logo from "../../assets/logo/logo1.png";
+import { motion } from "framer-motion";
 
 const Checkout = () => {
   const { cartItems, cartTotal } = useCart();
+  const { cartCount, setIsCartOpen, isCartOpen } = useCart();
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -66,63 +69,64 @@ const Checkout = () => {
   }
 
   return (
-    <main className="min-h-screen bg-lightWhite px-4 pb-20 pt-28 text-ink sm:px-8 sm:pt-36 lg:px-16">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-12 border-b border-ink/15 pb-8 sm:mb-16 sm:pb-10">
-          <Link
-            to="/shop"
-            className="inline-flex items-center gap-3 text-[7px] uppercase tracking-[0.3em] text-ink/45 transition-colors duration-300 hover:text-red"
-          >
-            <ArrowLeft size={13} strokeWidth={1.1} />
-            Continue shopping
-          </Link>
+    <main className="flex flex-row bg-lightWhite   text-ink  ">
+      <div className="flex flex-col items-end justify-end min-h-screen mx-auto w-[60%] px-12 py-20 md:py-26 border-r-2 border-ink">
+        <div className="">
+          {/* Header Section */}
+          <div className="mb-2 flex items-center justify-between">
+            <img
+              src={logo}
+              alt="Laali Hills"
+              className="h-8 w-auto object-contain"
+            />
 
-          <h1 className="mt-5 header text-[clamp(3.5rem,7vw,6rem)] uppercase leading-[0.82] tracking-tighter">
-            Checkout
-          </h1>
-          <p className="mt-4 max-w-md text-[16px] leading-6 text-ink/50">
-            A few details, then your order begins its journey from the hills.
-          </p>
-        </div>
+            <motion.button
+              type="button"
+              onClick={() => setIsCartOpen(true)}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{
+                opacity: isCartOpen ? 0 : 1,
+                y: isCartOpen ? 20 : 0,
+              }}
+              transition={{
+                duration: 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className=" z-[80] flex h-12 items-center rounded-full bg-ink px-2 text-lightCream shadow-lg transition-all duration-300 hover:bg-red hover:shadow-xl active:scale-[0.97] sm:bottom-8 sm:right-8"
+              aria-label={`Shopping cart${cartCount > 0 ? `, ${cartCount} items` : ""}`}
+            >
+              <span className="relative flex h-8 w-8 items-center justify-center">
+                <ShoppingBag
+                  size={25}
+                  strokeWidth={1.2}
+                  className="transition-transform duration-300 group-hover:scale-105"
+                />
 
-        <div className="grid gap-12 lg:grid-cols-[1fr_420px] lg:gap-20">
-          <section className="border border-ink/15 bg-lightWhite px-5 py-7 sm:px-8 sm:py-9">
-            <div className="flex items-end justify-between border-b border-ink/15 pb-5">
-              <div>
-                <p className="text-[7px] uppercase tracking-[0.3em] text-ink/45">
-                  01
-                </p>
-
-                <h2 className="mt-2 text-xs font-medium uppercase tracking-[0.15em]">
-                  Your information
-                </h2>
-              </div>
-
-              <span className="text-[7px] uppercase tracking-[0.25em] text-ink/35">
-                Required fields marked *
+                <motion.span
+                  key={cartCount}
+                  initial={{ scale: 0.7, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 500,
+                    damping: 25,
+                  }}
+                  className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red px-1.5 text-[7px] font-semibold tabular-nums text-lightCream transition-colors duration-300 group-hover:bg-lightCream group-hover:text-red"
+                >
+                  {cartCount}
+                </motion.span>
               </span>
-            </div>
+            </motion.button>
+          </div>
 
-            <form onSubmit={handleSubmit} className="mt-8">
-              <div className="grid gap-6 sm:grid-cols-2">
-                <InputField
-                  label="First Name"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  required
-                />
-
-                <InputField
-                  label="Last Name"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  required
-                />
+          {/* Form Section */}
+          <div className="gap-10 lg:gap-20">
+            <section className="py-8">
+              <div className="">
+                <h2 className="text-lg  font-bold  text-ink">Contact</h2>
               </div>
 
-              <div className="mt-6">
+              <form onSubmit={handleSubmit} className="mt-2 space-y-3">
                 <InputField
                   label="Email Address"
                   name="email"
@@ -131,106 +135,106 @@ const Checkout = () => {
                   onChange={handleChange}
                   required
                 />
-              </div>
 
-              <div className="mt-6">
-                <InputField
-                  label="Phone Number"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="mt-12 border-b border-ink/15 pb-5">
-                <p className="text-[7px] uppercase tracking-[0.3em] text-ink/45">
-                  02
-                </p>
-
-                <h2 className="mt-2 text-xs font-medium uppercase tracking-[0.15em]">
-                  Delivery details
-                </h2>
-              </div>
-
-              <div className="mt-8">
-                <InputField
-                  label="Address"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="mt-6 grid gap-6 sm:grid-cols-2">
-                <InputField
-                  label="City"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  required
-                />
-
-                <InputField
-                  label="Province"
-                  name="province"
-                  value={formData.province}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="mt-6">
-                <InputField
-                  label="Postal Code"
-                  name="postalCode"
-                  value={formData.postalCode}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="mt-6">
-                <label className="block">
-                  <span className="text-[7px] uppercase tracking-[0.25em] text-ink/45">
-                    Order Notes
-                  </span>
-
-                  <textarea
-                    name="notes"
-                    value={formData.notes}
+                <div className="grid gap-7 sm:grid-cols-2">
+                  <InputField
+                    label="First Name"
+                    name="firstName"
+                    value={formData.firstName}
                     onChange={handleChange}
-                    rows={4}
-                    placeholder="Anything we should know?"
-                    className="mt-3 w-full resize-none border-b border-ink/20 bg-transparent px-0 py-3 text-[10px] tracking-wider text-ink outline-none transition-colors duration-300 placeholder:text-ink/25 focus:border-red"
+                    required
                   />
-                </label>
-              </div>
 
-              <button
-                type="submit"
-                className="group mt-10 flex h-14 w-full items-center justify-between bg-red px-6 text-lightCream transition-colors duration-500 hover:bg-deepRed sm:px-8"
-              >
-                <span className="text-[8px] font-medium uppercase tracking-[0.3em]">
-                  Place order
-                </span>
+                  <InputField
+                    label="Last Name"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-                <ArrowRight
-                  size={16}
-                  strokeWidth={1.1}
-                  className="transition-transform duration-500 group-hover:translate-x-1"
-                />
-              </button>
+                <div>
+                  <InputField
+                    label="Phone Number"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-              <p className="mt-4 text-center text-[7px] uppercase tracking-[0.15em] text-ink/75">
-                Prototype checkout — payment will be added later.
-              </p>
-            </form>
-          </section>
+                <div className="mt-14">
+                  <h2 className="text-lg  font-bold  text-ink">
+                    Delivery Details
+                  </h2>
+                </div>
 
-          <OrderSummary cartItems={cartItems} cartTotal={cartTotal} />
+                <div>
+                  <InputField
+                    label="Address"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                <div className="grid gap-7 sm:grid-cols-2">
+                  <InputField
+                    label="City"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    required
+                  />
+
+                  <InputField
+                    label="Province"
+                    name="province"
+                    value={formData.province}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <InputField
+                    label="Postal Code"
+                    name="postalCode"
+                    value={formData.postalCode}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="mt-12 rounded-4xl bg-cream p-5 sm:p-6">
+                  <label className="block">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-ink">
+                        Order notes
+                      </span>
+
+                      <span className="text-[8px] text-ink/85">Optional</span>
+                    </div>
+
+                    <textarea
+                      name="notes"
+                      value={formData.notes}
+                      onChange={handleChange}
+                      rows={3}
+                      placeholder="Anything we should know?"
+                      className="mt-4 min-h-24 w-full resize-none rounded-2xl border border-ink/10 bg-lightWhite/50 px-4 py-3 text-sm leading-6 tracking-wide text-ink outline-none transition-all duration-300 placeholder:text-ink/30 focus:border-ink/25 focus:bg-lightWhite"
+                    />
+                  </label>
+                </div>
+              </form>
+            </section>
+          </div>
         </div>
+      </div>
+
+      <div className="min-h-screen w-[40%] bg-ink ">
+        <OrderSummary cartItems={cartItems} cartTotal={cartTotal} />
       </div>
     </main>
   );
@@ -246,7 +250,7 @@ const InputField = ({
 }) => {
   return (
     <label className="block">
-      <span className="text-[7px] uppercase tracking-[0.25em] text-ink/45">
+      <span className="text-[9px] font-medium uppercase tracking-[0.18em] text-ink/70">
         {label}
         {required && <span className="ml-1 text-red">*</span>}
       </span>
@@ -257,7 +261,7 @@ const InputField = ({
         value={value}
         onChange={onChange}
         required={required}
-        className="mt-3 h-11 w-full border-b border-ink/20 bg-transparent px-0 text-[10px] tracking-wider text-ink outline-none transition-colors duration-300 placeholder:text-ink/25 focus:border-red"
+        className="mt-1 h-10 px-3 w-full border border-ink/25 rounded-4xl  text-sm tracking-wide text-ink outline-none transition-colors duration-300 placeholder:text-ink/25 focus:border-ink"
       />
     </label>
   );
@@ -266,26 +270,9 @@ const InputField = ({
 const OrderSummary = ({ cartItems, cartTotal }) => {
   return (
     <aside className="lg:sticky lg:top-32 lg:self-start">
-      <div className="relative overflow-hidden bg-ink px-5 py-7 text-lightCream sm:px-7 sm:py-8">
-        <div className="absolute left-0 top-0 h-1 w-24 bg-red" />
-
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-[7px] uppercase tracking-[0.3em] text-lightCream/45">
-              03
-            </p>
-
-            <h2 className="mt-2 text-xs font-medium uppercase tracking-[0.15em] text-lightCream">
-              Your order
-            </h2>
-          </div>
-
-          <span className="text-[7px] uppercase tracking-[0.2em] text-lightCream/45">
-            {cartItems.length} {cartItems.length === 1 ? "Item" : "Items"}
-          </span>
-        </div>
-
-        <div className="mt-8">
+      <div className=" text-lightCream max-w-md mr-auto  px-7 pb-10 ">
+        {/* ITEMS */}
+        <div className="mt-7">
           {cartItems.map((item) => {
             const { product, quantity, size, grind, purchaseType, frequency } =
               item;
@@ -293,59 +280,48 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
             const itemPrice = Number(item.unitPrice ?? product.price) || 0;
 
             return (
-              <div
-                key={item.cartKey}
-                className="border-b border-lightCream/15 py-5 first:pt-0"
-              >
-                <div className="flex gap-4">
-                  <div className="h-24 w-20 shrink-0 overflow-hidden bg-lightCream/10">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="h-full w-full object-cover"
-                    />
+              <div key={item.cartKey} className="flex gap-4 py-2 first:pt-0">
+                <div className="h-20 w-16 shrink-0 overflow-hidden rounded-xl bg-lightCream/10">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-baseline justify-between gap-4 ">
+                    <h3 className="max-w-[70%] text-[14px] font-bold uppercase leading-4 tracking-[0.10em]">
+                      {product.name}
+                    </h3>
+
+                    <span className="shrink-0 text-[14px]  text-lightWhite">
+                      Rs. {(itemPrice * quantity).toLocaleString()}
+                    </span>
                   </div>
 
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-start justify-between gap-4">
-                      <h3 className="text-[9px] font-medium uppercase leading-5 tracking-[0.08em] text-lightCream">
-                        {product.name}
-                      </h3>
-
-                      <span className="shrink-0 text-[9px] font-medium text-lightCream">
-                        Rs. {(itemPrice * quantity).toLocaleString()}
+                  <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
+                    {size && (
+                      <span className="text-[10px] uppercase tracking-[0.12em] text-cream">
+                        {size}
                       </span>
-                    </div>
+                    )}
 
-                    <div className="mt-2 space-y-1">
-                      {size && (
-                        <p className="text-[7px] uppercase tracking-[0.15em] text-lightCream/45">
-                          Size:{" "}
-                          <span className="text-lightCream/80">{size}</span>
-                        </p>
-                      )}
+                    {grind && (
+                      <span className="text-[10px] uppercase tracking-[0.12em] text-cream">
+                        {grind}
+                      </span>
+                    )}
 
-                      {grind && (
-                        <p className="text-[7px] uppercase tracking-[0.15em] text-lightCream/45">
-                          Grind:{" "}
-                          <span className="text-lightCream/80">{grind}</span>
-                        </p>
-                      )}
+                    <span className="text-[10px] uppercase tracking-[0.12em] text-cream">
+                      × {quantity}
+                    </span>
 
-                      <p className="text-[7px] uppercase tracking-[0.15em] text-lightCream/45">
-                        Quantity:{" "}
-                        <span className="text-lightCream/80">{quantity}</span>
-                      </p>
-
-                      {purchaseType === "subscribe" && frequency && (
-                        <p className="text-[7px] uppercase tracking-[0.15em] text-lightCream/45">
-                          Delivery:{" "}
-                          <span className="text-lightCream/80">
-                            {frequency}
-                          </span>
-                        </p>
-                      )}
-                    </div>
+                    {purchaseType === "subscribe" && frequency && (
+                      <span className="text-[10px] uppercase tracking-[0.12em] text-cream">
+                        {frequency}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
@@ -353,13 +329,14 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
           })}
         </div>
 
-        <div className="mt-6 space-y-3 border-b border-lightCream/15 pb-6">
+        {/* TOTALS */}
+        <div className="mt-6 space-y-3 border-b border-lightCream/10 pb-6">
           <div className="flex items-center justify-between">
-            <span className="text-[8px] uppercase tracking-[0.2em] text-lightCream/45">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-lightCream">
               Subtotal
             </span>
 
-            <span className="text-[9px] text-lightCream">
+            <span className="text-[14px]">
               Rs.{" "}
               {Number(cartTotal).toLocaleString(undefined, {
                 maximumFractionDigits: 0,
@@ -368,28 +345,43 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
           </div>
 
           <div className="flex items-center justify-between">
-            <span className="text-[8px] uppercase tracking-[0.2em] text-lightCream/45">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-lightCream">
               Shipping
             </span>
 
-            <span className="text-[8px] uppercase tracking-[0.15em] text-lightCream/40">
-              Calculated later
+            <span className="text-[10px] uppercase tracking-[0.15em] text-green-500/85">
+              Free
             </span>
           </div>
         </div>
 
-        <div className="flex items-end justify-between pt-5">
-          <span className="text-[8px] font-medium uppercase tracking-[0.25em] text-lightCream">
+        {/* TOTAL */}
+        <div className="flex items-end justify-between pt-6">
+          <span className="text-[10px] font-medium uppercase tracking-[0.22em]">
             Total
           </span>
 
-          <span className="text-xl font-medium tracking-[0.03em] text-lightCream">
-            Rs.{" "}
+          <span className="header text-xl font-medium tracking-[-0.02em]">
+            NRs.{" "}
             {Number(cartTotal).toLocaleString(undefined, {
               maximumFractionDigits: 0,
             })}
           </span>
         </div>
+
+        <button
+          type="submit"
+          className="group mt-10 flex h-14 w-full items-center justify-center rounded-full bg-lightWhite px-6 text-ink transition-all duration-300 cursor-pointer hover:bg-lightCream active:scale-[0.99] sm:px-8 gap-2"
+        >
+          <span className="text-[12px] font-bold  tracking-[0.15em]">
+            Place order
+          </span>
+          <ArrowRight
+            size={16}
+            strokeWidth={2}
+            className="transition-transform duration-300 group-hover:translate-x-1"
+          />
+        </button>
       </div>
     </aside>
   );
