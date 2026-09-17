@@ -36,83 +36,32 @@ const ProductCard = ({ product }) => {
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className="group "
     >
-      <div className="group relative aspect-2/2 overflow-hidden  transition-transform duration-[1600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045] group-hover:translate-y-[-1%]">
-        {/* PRODUCT IMAGE */}
+      <Link to={`/shop/${product.category}/${slug}`}>
+        <div className="group relative aspect-2/2 overflow-hidden  transition-transform duration-[1600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045] group-hover:translate-y-[-1%]">
+          {/* PRODUCT IMAGE */}
 
-        <motion.img
-          src={image}
-          alt={name}
-          loading="lazy"
-          decoding="async"
-          className="h-full w-full object-cover rounded-4xl"
-        />
+          <motion.img
+            src={image}
+            alt={name}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover rounded-4xl"
+          />
+          {/* TOP CORNER */}
 
-        {/* ATMOSPHERIC OVERLAY */}
+          <div className="absolute left-5 top-5 z-10 flex items-center gap-2 opacity-0 transition-all duration-500 group-hover:opacity-100">
+            <span className="h-px w-5 bg-ivory/60" />
 
-        {/* <div className="absolute inset-0 bg-gradient-to-t from-ink/5 via-ink/5 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-
-        <div className="absolute inset-0 bg-ink/5 opacity-0 transition-opacity duration-700 group-hover:opacity-100" /> */}
-
-        {/* TOP CORNER */}
-
-        <div className="absolute left-5 top-5 z-10 flex items-center gap-2 opacity-0 transition-all duration-500 group-hover:opacity-100">
-          <span className="h-px w-5 bg-ivory/60" />
-
-          <span className="text-[7px] uppercase tracking-[0.35em] text-ivory/80">
-            {product.category}
-          </span>
-        </div>
-
-        {/* PRODUCT DETAILS */}
-
-        {/* <div className="absolute inset-x-5 bottom-20 z-10 translate-y-3 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:opacity-100">
-          <div className="grid grid-cols-2 gap-x-8 gap-y-4 border-t border-ivory/25 pt-4">
-            <div>
-              <span className="block text-[6px] uppercase tracking-[0.3em] text-ivory/50">
-                Origin
-              </span>
-
-              <span className="mt-1 block text-[9px] uppercase tracking-[0.12em] text-ivory">
-                {product.origin || product.region || "Nepal"}
-              </span>
-            </div>
-
-            <div>
-              <span className="block text-[6px] uppercase tracking-[0.3em] text-ivory/50">
-                Altitude
-              </span>
-
-              <span className="mt-1 block text-[9px] tracking-[0.08em] text-ivory">
-                {product.altitude ? `${product.altitude} MASL` : "—"}
-              </span>
-            </div>
-
-            <div>
-              <span className="block text-[6px] uppercase tracking-[0.3em] text-ivory/50">
-                Process
-              </span>
-
-              <span className="mt-1 block text-[9px] capitalize tracking-[0.08em] text-ivory">
-                {product.process || "—"}
-              </span>
-            </div>
-
-            <div>
-              <span className="block text-[6px] uppercase tracking-[0.3em] text-ivory/50">
-                Profile
-              </span>
-
-              <span className="mt-1 block text-[9px] capitalize tracking-[0.08em] text-ivory">
-                {product.profile || "—"}
-              </span>
-            </div>
+            <span className="text-[7px] uppercase tracking-[0.35em] text-ivory/80">
+              {product.category}
+            </span>
           </div>
-        </div> */}
 
-        {/* BOTTOM ACTION */}
-      </div>
+          {/* BOTTOM ACTION */}
+        </div>
+      </Link>
 
-      <div className="p-10">
+      <div className="py-10">
         <div className="flex items-start justify-between gap-5">
           <Link to={`/shop/${product.category}/${slug}`} className="min-w-0">
             <h3 className="text-[11px] font-semibold uppercase leading-[1.4] tracking-[0.1em] text-ink transition-colors duration-300 group-hover:text-red sm:text-xs">

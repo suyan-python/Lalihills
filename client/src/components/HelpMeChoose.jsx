@@ -334,11 +334,6 @@ const HelpMeChoose = () => {
                 className="mx-auto w-full max-w-7xl bg-"
               >
                 <div className="mb-2 flex items-center gap-4">
-                  {/* <span className="text-[8px] font-medium uppercase tracking-[0.4em] text-soil">
-                    {questionsLeft}{" "}
-                    {questionsLeft === 1 ? "question" : "questions"} left
-                  </span> */}
-
                   <div className="h-0.5 w-full overflow-hidden bg-ink/10 sm:w-40">
                     <motion.div
                       className="h-full bg-deepRed w-full"

@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 
 const ProductGrid = ({ products = [] }) => {
   return (
-    <div className="grid grid-cols-1 gap-x-6 gap-y-16 md:grid-cols-3">
+    <div className="grid grid-cols-1 gap-x-12 gap-y-16 md:grid-cols-3">
       {products.map((product, index) => (
         <motion.div
           key={product.id}

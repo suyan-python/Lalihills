@@ -6,6 +6,7 @@ import beans from "../../assets/shop/beans.webp";
 import leaves from "../../assets/shop/leaves.webp";
 import gift from "../../assets/shop/gift.jpg";
 import ShopStatement from "./ShopStatement";
+import Button from "../../components/Button";
 
 const collections = [
   {
@@ -73,78 +74,6 @@ const Shop = () => {
           Laali Hills
         </motion.p>
       </div>
-
-      <section className="relative px-7  pt-36 sm:px-12 sm:pt-44 lg:px-20 lg:pt-36 xl:px-28">
-        <div className="mx-auto max-w-[1500px]">
-          {/* Main heading */}
-
-          <div className=" grid lg:grid-cols-12 lg:gap-10 ">
-            <div className="lg:col-span-8">
-              <motion.h1
-                initial={{
-                  opacity: 0,
-                  y: 60,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 1.1,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="
-                                    header
-                                    max-w-5xl
-                                    text-[clamp(2.5rem,9vw,3.5rem)]
-                                    font-medium
-                                    leading-[0.78]
-                                    tracking-[-0.075em]
-                                    text-[#241817]
-                                "
-              >
-                Our <span className=" italic text-red">Selects</span>
-              </motion.h1>
-            </div>
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 30,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.9,
-                delay: 0.25,
-              }}
-              className="
-                                mt-10
-                                max-w-sm
-                                lg:col-span-4
-                                lg:mt-auto
-                                lg:pb-2
-                            "
-            >
-              <p
-                className="
-                                font-subtitle
-                                md:text-base
-                                text-xs
-                                italic
-                                leading-relaxed
-                                text-[#795D57]
-                            "
-              >
-                Coffee, tea and thoughtful gifts — each carrying something of
-                where it came from.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       <section className="relative  mt-5">
         <div className=" w-full">
@@ -217,7 +146,7 @@ const CollectionSecondary = ({ collection, index }) => {
           >
             <div className="w-full">
               {/* SUBTITLE */}
-              <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-lightCream/65 sm:text-[8px]">
+              <span className="block text-[7px] font-medium uppercase tracking-[0.2em] text-lightCream/75 md:text-[10px]">
                 {collection.subtitle}
               </span>
 
@@ -227,15 +156,10 @@ const CollectionSecondary = ({ collection, index }) => {
               </h2>
 
               {/* CTA */}
-              <div className="mt-4 flex items-center justify-center gap-3 text-lightCream transition-all duration-500 group-hover:gap-4">
-                <span className="text-[8px] font-medium uppercase tracking-[0.3em]">
-                  Explore
-                </span>
 
-                <span className="flex h-7 w-7 items-center justify-center rounded-full border border-lightCream/30 transition-all duration-500 group-hover:bg-lightCream group-hover:text-ink">
-                  <ArrowUpRight size={13} strokeWidth={1.2} />
-                </span>
-              </div>
+              <Button className="mt-8 cursor-pointer" variant="light">
+                Explore
+              </Button>
             </div>
           </div>
         </div>

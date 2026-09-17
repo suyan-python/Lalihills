@@ -6,24 +6,11 @@ const Footer = () => {
   return (
     <footer className="sticky bottom-0 z-0 overflow-hidden bg-ink text-lightCream">
       <section className="relative overflow-hidden border-t border-white/[0.08] ">
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden select-none ">
-          {/* <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 1.2,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="whitespace-nowrap text-center font-title text-[22vw] leading-none tracking-[-0.07em] text-lightCream/[0.05] sm:text-[20vw] "
-          >
-            LAALI HILLS
-          </motion.div> */}
-        </div>
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden select-none "></div>
 
         <div className="relative z-10 mx-auto max-w-[1500px] px-6 pb-7 pt-16 sm:px-10 sm:pt-20 lg:px-14 lg:pt-24">
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
-            <div className="lg:col-span-4 space-y-8">
+            <div className="lg:col-span-4 space-y-5">
               <div className="flex items-center">
                 <img
                   src="/gold.svg"
@@ -39,9 +26,7 @@ const Footer = () => {
               </p>
 
               <div className="flex items-center gap-3">
-                <span className="h-px w-7 bg-red" />
-
-                <span className="text-[8px] uppercase tracking-[0.3em] text-[#80635E]">
+                <span className="text-[12px] uppercase tracking-[0.3em] text-[#80635E]">
                   Nepal • Origin • Craft
                 </span>
               </div>
@@ -49,7 +34,7 @@ const Footer = () => {
 
             {/* SHOP */}
 
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 ">
               <FooterHeading>Shop</FooterHeading>
 
               <FooterLink href="/shop/coffee">Coffee</FooterLink>
@@ -102,7 +87,7 @@ const Footer = () => {
             <div className="lg:col-span-2">
               <FooterHeading>Stay in the hills</FooterHeading>
 
-              <p className="mb-5 max-w-xs text-[10px] leading-5 text-[#9A7B75]">
+              <p className="mb-5 max-w-xs text-[14px] leading-5 text-[#9A7B75]">
                 Join us for new origins, stories, seasonal releases and
                 occasional offerings from Laali Hills.
               </p>
@@ -115,7 +100,7 @@ const Footer = () => {
                   <input
                     type="email"
                     placeholder="Your email"
-                    className="w-full bg-transparent py-3 text-xs text-lightCream outline-none placeholder:text-[#765954]"
+                    className="w-full bg-transparent py-3 text-base text-lightCream outline-none placeholder:text-[#765954]"
                   />
 
                   <button
@@ -139,11 +124,11 @@ const Footer = () => {
               <MapPin size={15} strokeWidth={1} className="text-[#D9828A]" />
 
               <div>
-                <p className="text-[7px] uppercase tracking-[0.25em] text-[#72534E]">
+                <p className="text-[10px] uppercase tracking-[0.25em] text-[#72534E]">
                   Based in
                 </p>
 
-                <p className="mt-1 text-[10px] text-[#BFA29B]">
+                <p className="mt-1 text-[14px] text-[#BFA29B]">
                   Kathmandu, Nepal
                 </p>
               </div>
@@ -153,13 +138,13 @@ const Footer = () => {
               <Mail size={15} strokeWidth={1} className="text-[#D9828A]" />
 
               <div>
-                <p className="text-[7px] uppercase tracking-[0.25em] text-[#72534E]">
+                <p className="text-[10px] uppercase tracking-[0.25em] text-[#72534E]">
                   Email
                 </p>
 
                 <a
                   href="mailto:hello@laalihills.com"
-                  className="mt-1 block text-[10px] text-[#BFA29B] transition-colors hover:text-white"
+                  className="mt-1 block text-[14px] text-[#BFA29B] transition-colors hover:text-white"
                 >
                   hello@laalihills.com
                 </a>
@@ -170,13 +155,13 @@ const Footer = () => {
               <Phone size={15} strokeWidth={1} className="text-[#D9828A]" />
 
               <div>
-                <p className="text-[7px] uppercase tracking-[0.25em] text-[#72534E]">
+                <p className="text-[10px] uppercase tracking-[0.25em] text-[#72534E]">
                   Talk to us
                 </p>
 
                 <a
                   href="tel:+9770000000000"
-                  className="mt-1 block text-[10px] text-[#BFA29B] transition-colors hover:text-white"
+                  className="mt-1 block text-[14px] text-[#BFA29B] transition-colors hover:text-white"
                 >
                   +977 00 000 0000
                 </a>
@@ -244,7 +229,7 @@ const Footer = () => {
 
 const FooterHeading = ({ children }) => {
   return (
-    <h3 className="mb-5 text-[9px] font-semibold uppercase tracking-[0.3em] text-[#D9828A]">
+    <h3 className="mb-5 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#D9828A]">
       {children}
     </h3>
   );
@@ -254,7 +239,7 @@ const FooterLink = ({ href, children }) => {
   return (
     <a
       href={href}
-      className="group mb-3 flex w-fit items-center gap-2 text-[10px] text-[#A98A83] transition-colors duration-300 hover:text-lightCream"
+      className="group mb-3 flex w-fit items-center gap-2 text-[18px] text-[#A98A83] transition-colors duration-300 hover:text-lightCream"
     >
       <span className="h-px w-0 bg-[#D9828A] transition-all duration-300 group-hover:w-3" />
 

@@ -4,7 +4,10 @@ import { useState } from "react";
 import { useCart } from "../../layouts/CartContext";
 import Button from "../../components/Button";
 import logo from "../../assets/logo/logo1.png";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import PaymentMethod from "./PaymentMethod";
+import QRPayment from "./QRPayment";
+import PaymentConfirmation from "./PaymentConfirmation";
 
 const Checkout = () => {
   const { cartItems, cartTotal } = useCart();
@@ -70,7 +73,7 @@ const Checkout = () => {
 
   return (
     <main className="flex flex-row bg-lightWhite   text-ink  ">
-      <div className="flex flex-col items-end justify-end min-h-screen mx-auto w-[60%] px-12 py-20 md:py-26 border-r-2 border-ink">
+      <div className="flex flex-col items-end justify-end min-h-screen mx-auto w-[60%] px-12 py-20 md:py-26 border-r border-ink/25">
         <div className="">
           {/* Header Section */}
           <div className="mb-2 flex items-center justify-between">
@@ -92,7 +95,7 @@ const Checkout = () => {
                 duration: 0.45,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className=" z-[80] flex h-12 items-center rounded-full bg-ink px-2 text-lightCream shadow-lg transition-all duration-300 hover:bg-red hover:shadow-xl active:scale-[0.97] sm:bottom-8 sm:right-8"
+              className="z-[80] flex h-12 items-center rounded-full bg-ink px-2 text-lightCream shadow-lg transition-all duration-300 hover:bg-red hover:shadow-xl active:scale-[0.97] sm:bottom-8 sm:right-8 cursor-pointer"
               aria-label={`Shopping cart${cartCount > 0 ? `, ${cartCount} items` : ""}`}
             >
               <span className="relative flex h-8 w-8 items-center justify-center">
@@ -233,7 +236,7 @@ const Checkout = () => {
         </div>
       </div>
 
-      <div className="min-h-screen w-[40%] bg-ink ">
+      <div className="min-h-screen w-[40%] bg-ivory ">
         <OrderSummary cartItems={cartItems} cartTotal={cartTotal} />
       </div>
     </main>
@@ -268,6 +271,26 @@ const InputField = ({
 };
 
 const OrderSummary = ({ cartItems, cartTotal }) => {
+  const [promoCode, setPromoCode] = useState("");
+  const [promoApplied, setPromoApplied] = useState(false);
+
+  const PROMO_CODE = "LAALI2026";
+  const PROMO_DISCOUNT = 0.05;
+
+  const subtotal = Number(cartTotal) || 0;
+  const promoDiscount = promoApplied ? subtotal * PROMO_DISCOUNT : 0;
+  const finalTotal = subtotal - promoDiscount;
+
+  const [paymentStep, setPaymentStep] = useState("checkout");
+  const [paymentMethod, setPaymentMethod] = useState(null);
+  const [transactionId, setTransactionId] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setPaymentStep("payment-method");
+  };
+
   return (
     <aside className="lg:sticky lg:top-32 lg:self-start">
       <div className=" text-lightCream max-w-md mr-auto  px-7 pb-10 ">
@@ -281,7 +304,7 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
 
             return (
               <div key={item.cartKey} className="flex gap-4 py-2 first:pt-0">
-                <div className="h-20 w-16 shrink-0 overflow-hidden rounded-xl bg-lightCream/10">
+                <div className="h-20 w-16 shrink-0 overflow-hidden rounded-xl bg-ink">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -291,34 +314,34 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
 
                 <div className="min-w-0 flex-1">
                   <div className="flex items-baseline justify-between gap-4 ">
-                    <h3 className="max-w-[70%] text-[14px] font-bold uppercase leading-4 tracking-[0.10em]">
+                    <h3 className="max-w-[70%] text-[14px] font-bold uppercase leading-4 tracking-[0.10em] text-ink">
                       {product.name}
                     </h3>
 
-                    <span className="shrink-0 text-[14px]  text-lightWhite">
+                    <span className="header shrink-0 text-[14px]  text-ink">
                       Rs. {(itemPrice * quantity).toLocaleString()}
                     </span>
                   </div>
 
                   <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
                     {size && (
-                      <span className="text-[10px] uppercase tracking-[0.12em] text-cream">
+                      <span className="text-[10px] uppercase tracking-[0.12em] text-soil">
                         {size}
                       </span>
                     )}
 
                     {grind && (
-                      <span className="text-[10px] uppercase tracking-[0.12em] text-cream">
+                      <span className="text-[10px] uppercase tracking-[0.12em] text-soil">
                         {grind}
                       </span>
                     )}
 
-                    <span className="text-[10px] uppercase tracking-[0.12em] text-cream">
+                    <span className="text-[10px] uppercase tracking-[0.12em] text-soil">
                       × {quantity}
                     </span>
 
                     {purchaseType === "subscribe" && frequency && (
-                      <span className="text-[10px] uppercase tracking-[0.12em] text-cream">
+                      <span className="text-[10px] uppercase tracking-[0.12em] text-soil">
                         {frequency}
                       </span>
                     )}
@@ -328,42 +351,99 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
             );
           })}
         </div>
+        <div className="mt-5">
+          <div className="flex items-center gap-3">
+            <input
+              type="text"
+              value={promoCode}
+              onChange={(e) => {
+                setPromoCode(e.target.value);
+                setPromoApplied(false);
+              }}
+              placeholder="Promo code"
+              disabled={promoApplied}
+              className="h-10 min-w-0 flex-1 border px-4 border-ink/50 rounded-4xl bg-transparent  text-[10px] uppercase tracking-[0.12em] text-ink outline-none transition-colors duration-300 placeholder:text-ink/50 focus:border-ink/50 disabled:opacity-60"
+            />
 
+            <button
+              type="button"
+              onClick={() => {
+                if (promoCode.trim().toUpperCase() === PROMO_CODE) {
+                  setPromoApplied(true);
+                }
+              }}
+              disabled={promoApplied || !promoCode.trim()}
+              className="shrink-0 text-[9px] font-medium uppercase tracking-[0.18em] text-lightWhite transition-opacity duration-300 hover:opacity-60 disabled:cursor-not-allowed disabled:opacity-30 bg-ink rounded-full p-2 cursor-pointer"
+            >
+              {promoApplied ? "Applied" : "Apply"}
+            </button>
+          </div>
+
+          {promoApplied && (
+            <div className="mt-3 flex items-center justify-between">
+              <span className="text-[8px] uppercase tracking-[0.15em] text-ink">
+                Promo · LAALI2026
+              </span>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setPromoCode("");
+                  setPromoApplied(false);
+                }}
+                className="text-[8px] uppercase tracking-[0.15em] text-ink/40 transition-colors hover:text-ink"
+              >
+                Remove
+              </button>
+            </div>
+          )}
+        </div>
         {/* TOTALS */}
-        <div className="mt-6 space-y-3 border-b border-lightCream/10 pb-6">
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-lightCream">
-              Subtotal
+        <div className="flex items-center justify-between mt-10">
+          <span className="text-[12px] tracking-[0.1em] text-ink">
+            Subtotal
+          </span>
+
+          <span className="header text-[12px] text-ink">
+            Rs.{" "}
+            {subtotal.toLocaleString(undefined, {
+              maximumFractionDigits: 0,
+            })}
+          </span>
+        </div>
+
+        {promoApplied && (
+          <div className="flex items-center justify-between mt-1">
+            <span className="text-[12px] tracking-[0.1em] text-ink">
+              Discount
             </span>
 
-            <span className="text-[14px]">
-              Rs.{" "}
-              {Number(cartTotal).toLocaleString(undefined, {
+            <span className="header text-[12px] text-ink">
+              − Rs.{" "}
+              {promoDiscount.toLocaleString(undefined, {
                 maximumFractionDigits: 0,
               })}
             </span>
           </div>
+        )}
 
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-lightCream">
-              Shipping
-            </span>
+        <div className="flex items-center justify-between mt-1">
+          <span className="text-[12px]  tracking-[0.1em] text-ink">
+            Shipping
+          </span>
 
-            <span className="text-[10px] uppercase tracking-[0.15em] text-green-500/85">
-              Free
-            </span>
-          </div>
+          <span className="text-[12px]  tracking-[0.01em] text-ink/75">
+            Enter Shipping Address
+          </span>
         </div>
 
         {/* TOTAL */}
-        <div className="flex items-end justify-between pt-6">
-          <span className="text-[10px] font-medium uppercase tracking-[0.22em]">
-            Total
-          </span>
+        <div className="flex items-end justify-between pt-6 border-b border-ink/45 pb-3">
+          <span className="text-[20px] font-medium   text-ink">Total</span>
 
-          <span className="header text-xl font-medium tracking-[-0.02em]">
-            NRs.{" "}
-            {Number(cartTotal).toLocaleString(undefined, {
+          <span className="header text-[20px] font-medium tracking-[0.02em] text-ink">
+            Rs.{" "}
+            {finalTotal.toLocaleString(undefined, {
               maximumFractionDigits: 0,
             })}
           </span>
@@ -371,17 +451,69 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
 
         <button
           type="submit"
-          className="group mt-10 flex h-14 w-full items-center justify-center rounded-full bg-lightWhite px-6 text-ink transition-all duration-300 cursor-pointer hover:bg-lightCream active:scale-[0.99] sm:px-8 gap-2"
+          className="group mt-8 flex h-10 w-full items-center justify-center gap-2 rounded-full bg-ink px-6 text-lightCream transition-all duration-300 hover:bg-hill active:scale-[0.98] cursor-pointer sm:px-8"
         >
-          <span className="text-[12px] font-bold  tracking-[0.15em]">
+          <span className="text-[12px] font-bold tracking-[0.15em]">
             Place order
           </span>
+
           <ArrowRight
             size={16}
             strokeWidth={2}
             className="transition-transform duration-300 group-hover:translate-x-1"
           />
         </button>
+
+        <button
+          type="button"
+          onClick={() => setPaymentStep("payment-method")}
+          className="group mt-3 flex h-10 w-full items-center justify-center gap-3 rounded-full border border-ink/15 bg-transparent px-6 text-ink transition-all duration-300 hover:border-ink/30 hover:bg-cream active:scale-[0.98] cursor-pointer"
+        >
+          <span className="text-[10px] font-medium uppercase tracking-[0.18em]">
+            Pay via QR
+          </span>
+
+          <ArrowRight
+            size={15}
+            strokeWidth={1.5}
+            className="transition-transform duration-300 group-hover:translate-x-1"
+          />
+        </button>
+
+        {paymentStep === "payment-method" && (
+          <PaymentMethod
+            total={finalTotal}
+            onSelect={(method) => {
+              setPaymentMethod(method);
+              setPaymentStep("qr");
+            }}
+            onBack={() => setPaymentStep("checkout")}
+          />
+        )}
+
+        {paymentStep === "qr" && paymentMethod && (
+          <QRPayment
+            method={paymentMethod}
+            total={finalTotal}
+            transactionId={transactionId}
+            setTransactionId={setTransactionId}
+            onBack={() => {
+              setTransactionId("");
+              setPaymentStep("payment-method");
+            }}
+            onComplete={() => {
+              setPaymentStep("confirmation");
+            }}
+          />
+        )}
+
+        {paymentStep === "confirmation" && (
+          <PaymentConfirmation
+            orderNumber="LH-1024"
+            method={paymentMethod?.name}
+            total={finalTotal}
+          />
+        )}
       </div>
     </aside>
   );
