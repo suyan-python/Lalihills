@@ -3,6 +3,7 @@ import SmartVideo from "../../components/SmartVideo";
 import { ArrowUpRight, Leaf } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Button from "../../components/Button";
 
 const FeaturedProduct = () => {
   const sectionRef = useRef(null);
@@ -138,7 +139,7 @@ const FeaturedProduct = () => {
                 duration: 1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="block text-[9px] font-medium uppercase tracking-[0.38em] text-soil/65 sm:text-[10px]"
+              className="block text-[9px] font-medium uppercase tracking-[0.38em] text-soil/65 sm:text-[10px] text-center md:text-left"
             >
               Featured Coffee
             </motion.span>
@@ -153,7 +154,7 @@ const FeaturedProduct = () => {
                 delay: 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="subheader mt-5 max-w-2xl text-[clamp(3.6rem,6.8vw,6.8rem)] uppercase leading-[0.82] tracking-[-0.065em] text-ink sm:mt-6"
+              className="subheader mt-5 max-w-2xl text-[clamp(3.6rem,6.8vw,6.8rem)] uppercase leading-[0.82] tracking-[-0.065em] text-ink sm:mt-6 text-center md:text-left font-medium"
             >
               Laali Hills
               <br />
@@ -170,9 +171,9 @@ const FeaturedProduct = () => {
                 delay: 0.5,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mt-10 max-w-xl border-t border-ink/10 pt-6 sm:mt-12 sm:pt-7"
+              className="mt-2 max-w-xl  pt-6 md:mt-10 "
             >
-              <div className="grid grid-cols-3">
+              <div className="grid grid-cols-3 text-center md:text-left">
                 <div>
                   <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-stone sm:text-[8px]">
                     Origin
@@ -182,7 +183,7 @@ const FeaturedProduct = () => {
                   </span>
                 </div>
 
-                <div className="border-l border-ink/10 pl-5 sm:pl-6">
+                <div className=" pl-5 sm:pl-6">
                   <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-stone sm:text-[8px]">
                     Process
                   </span>
@@ -191,7 +192,7 @@ const FeaturedProduct = () => {
                   </span>
                 </div>
 
-                <div className="border-l border-ink/10 pl-5 sm:pl-6">
+                <div className=" pl-5 sm:pl-6">
                   <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-stone sm:text-[8px]">
                     Roast
                   </span>
@@ -212,24 +213,9 @@ const FeaturedProduct = () => {
                 delay: 0.65,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mt-9 sm:mt-10"
+              className="mt-14 text-center md:text-left"
             >
-              <Link
-                to="/shop/coffee"
-                className="group inline-flex items-center gap-4 text-[9px] font-medium uppercase tracking-[0.3em] text-ink sm:text-[10px]"
-              >
-                <span className="border-b border-ink/30 pb-1 transition-colors duration-500 group-hover:border-red">
-                  Explore Coffee
-                </span>
-
-                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-ink/15 transition-all duration-500 group-hover:border-red group-hover:bg-red group-hover:text-ivory">
-                  <ArrowUpRight
-                    size={14}
-                    strokeWidth={1.2}
-                    className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  />
-                </span>
-              </Link>
+              <Button to={"/shop/coffee"}>Explore Coffee</Button>
             </motion.div>
           </div>
         </div>

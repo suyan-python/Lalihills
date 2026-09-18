@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import SmartVideo from "../../components/SmartVideo";
+import { Bubbles } from "lucide-react";
+import Button from "../../components/Button";
 
 const AuthenticSection = () => {
   const sectionRef = useRef(null);
@@ -111,7 +113,7 @@ const AuthenticSection = () => {
           {/* LAYER 05 — IVORY */}
           <motion.div
             style={{ y: layerFiveY }}
-            className="absolute -bottom-[15%] -left-[15%] h-[58%] w-[130%] rounded-[46%_54%_55%_45%/55%_45%_55%_45%] bg-ivory"
+            className="absolute -bottom-[15%] -left-[15%] h-[58%] w-[130%] rounded-[46%_54%_55%_45%/55%_45%_55%_45%] bg-ink"
           />
         </div>
 
@@ -131,7 +133,7 @@ const AuthenticSection = () => {
                 delay: 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="subheader mt-5 max-w-2xl text-[clamp(3rem,8vw,7.5rem)] font-medium uppercase leading-[0.82] tracking-[-0.065em] text-lightCream sm:mt-6 lg:mt-7"
+              className="subheader mt-5 max-w-2xl text-[clamp(3.6rem,6.8vw,6.8rem)] font-medium uppercase leading-[0.82] tracking-[-0.065em] text-lightCream sm:mt-6 lg:mt-7"
             >
               Know
               <br />
@@ -152,9 +154,7 @@ const AuthenticSection = () => {
               }}
               className="ml-5 mt-8 sm:mt-10"
             >
-              <button className="group inline-flex items-center gap-4 border border-lightCream/30 px-5 py-3 text-[9px] font-medium uppercase tracking-[0.28em] text-lightCream transition-all duration-500 hover:border-lightCream/60 hover:bg-lightCream hover:text-ink">
-                <span>Explore</span>
-              </button>
+              <Button> Explore</Button>
             </motion.div>
           </div>
 

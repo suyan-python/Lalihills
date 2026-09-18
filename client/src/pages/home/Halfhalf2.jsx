@@ -43,7 +43,7 @@ const Halfhalf2 = () => {
                   },
                 },
               }}
-              className="subheader mt-7 max-w-2xl text-[clamp(4rem,8vw,8rem)] uppercase leading-[0.82] tracking-[-0.065em] text-lightCream"
+              className="subheader mt-7 max-w-2xl text-[clamp(3.6rem,6.8vw,6.8rem)] uppercase leading-[0.82] tracking-[-0.065em] text-lightCream font-medium"
             >
               Where
               <br />
@@ -64,7 +64,7 @@ const Halfhalf2 = () => {
                   },
                 },
               }}
-              className="mx-auto mt-10 flex max-w-md items-center justify-center gap-5 border-t border-lightCream/15 pt-5 lg:mx-0 lg:justify-start"
+              className="mx-auto mt-10 flex max-w-md items-center justify-center gap-5 lg:mx-0 lg:justify-start"
             >
               <span className="text-[13px] font-medium tracking-wide text-lightCream">
                 Nepal

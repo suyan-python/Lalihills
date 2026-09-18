@@ -90,7 +90,7 @@ const ContextSection = () => {
           </span>
         </div>
 
-        <h2 className="header max-w-7xl text-[clamp(4rem,8vw,8rem)] font-black uppercase leading-[0.82] tracking-[-0.065em] text-lightWhite">
+        <h2 className="header max-w-7xl text-[clamp(3.6rem,6.8vw,6.8rem)] font-medium uppercase leading-[0.82] tracking-[-0.065em] text-lightWhite">
           Discover
           <br />
           the

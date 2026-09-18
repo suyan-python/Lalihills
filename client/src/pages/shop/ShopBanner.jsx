@@ -6,7 +6,7 @@ import SmartVideo from "../../components/SmartVideo";
 const ShopBanner = () => {
   return (
     <section className="relative w-full overflow-hidden bg-ink">
-      <div className="relative aspect-video w-full">
+      <div className="relative flex justify-center items-center min-h-screen w-full">
         {/* VIDEO */}
         <SmartVideo
           src="/videos/shop-banner.mp4"
@@ -21,7 +21,7 @@ const ShopBanner = () => {
         <div className="absolute inset-0 bg-ink/15" />
 
         {/* MAIN CONTENT */}
-        <div className="absolute inset-x-0 bottom-4 sm:bottom-8 lg:bottom-12">
+        <div className="absolute ">
           <div className="px-4 sm:px-8 lg:px-14 xl:px-16">
             <div className="max-w-5xl">
               <motion.div
@@ -29,9 +29,9 @@ const ShopBanner = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                className="mb-2 flex items-center gap-3 sm:mb-4 lg:mb-5"
+                className="mb-2 flex items-center justify-center gap-3 sm:mb-4 lg:mb-5 "
               >
-                <span className="text-[7px] uppercase tracking-[0.35em] text-lightCream/65 sm:text-[8px]">
+                <span className="text-[7px] uppercase tracking-[0.35em] text-lightCream/65 sm:text-[8px] ">
                   Coffee · Tea · Gifting
                 </span>
               </motion.div>
@@ -45,11 +45,11 @@ const ShopBanner = () => {
                   delay: 0.08,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="header max-w-4xl text-[clamp(2rem,8vw,8rem)] font-black uppercase leading-[0.78] tracking-[-0.075em] text-lightCream"
+                className="header max-w-4xl text-[clamp(3.6rem,6.8vw,6.8rem)] font-medium uppercase leading-[0.78] tracking-[-0.075em] text-lightCream text-center"
               >
-                From the hills.
+                From the hills
                 <br />
-                <span className="italic text-cream">To your ritual.</span>
+                <span className="italic text-cream">To your ritual</span>
               </motion.h2>
 
               <motion.div
@@ -61,7 +61,7 @@ const ShopBanner = () => {
                   delay: 0.3,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="mt-4 flex flex-col gap-3  pt-3 sm:mt-7 sm:gap-5 sm:pt-4 lg:mt-10 lg:flex-row lg:items-center lg:justify-between lg:pt-5"
+                className="mt-4 flex flex-col gap-3  pt-3 sm:mt-7 sm:gap-5 sm:pt-4 lg:mt-10 lg:flex-row items-center justify-center lg:pt-5 "
               >
                 <div className="flex items-center gap-3 sm:gap-5">
                   <span className="text-[7px] uppercase tracking-[0.3em] text-lightCream/55 sm:text-[8px]">

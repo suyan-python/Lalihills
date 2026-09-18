@@ -49,7 +49,7 @@ const End = () => {
                   delay: index * 0.08,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="group relative aspect-[3/5] overflow-hidden rounded-b-full "
+                className="group relative aspect-[3/5] overflow-hidden rounded-b-4xl "
               >
                 {/* Background image */}
 

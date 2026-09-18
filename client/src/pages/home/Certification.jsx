@@ -153,7 +153,7 @@ const CertificationSection = () => {
                     header
                     max-w-3xl
                     text-[clamp(3.5rem,8vw,7rem)]
-                    font-black
+                    font-medium
                     uppercase
                     leading-[0.78]
                     tracking-[-0.075em]

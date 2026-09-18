@@ -70,7 +70,7 @@ const InfoTile = ({ fieldKey, label, value, hasBlurb, onClick }) => {
           {label}
         </span>
 
-        <span className="mt-2 block max-w-[90%] text-[15px] uppercase leading-[1.05] tracking-[-0.01em] text-ink sm:text-base">
+        <span className="mt-2 block max-w-[90%] text-[12px] uppercase leading-[1.05] tracking-[-0.01em] text-ink md:text-base">
           {value}
         </span>
       </div>
@@ -151,7 +151,7 @@ const ProductInfoGrid = ({ product }) => {
                     <div className="absolute inset-0 translate-x-1 translate-y-1 bg-ink transition-transform duration-300 group-hover/flavor:translate-x-1.5 group-hover/flavor:translate-y-1.5 rounded-full" />
 
                     {/* Actual box */}
-                    <div className="relative flex items-center gap-3 border border-ink/15 bg-amber-400 px-4 py-3 transition-transform duration-300 group-hover/flavor:-translate-x-0.5 group-hover/flavor:-translate-y-0.5 rounded-full">
+                    <div className="relative flex items-center gap-1 md:gap-3 border border-ink/15 bg-amber-400 md:px-4 px-2 md:py-3 py-1 transition-transform duration-300 group-hover/flavor:-translate-x-0.5 group-hover/flavor:-translate-y-0.5 rounded-full">
                       <span className="flex h-6 w-6 shrink-0 items-center justify-center  text-ink">
                         <Coffee size={11} strokeWidth={1.2} />
                       </span>
@@ -166,7 +166,7 @@ const ProductInfoGrid = ({ product }) => {
             </div>
           )}
 
-          <div className="mt-16 grid grid-cols-2 border-t border-ink/10 md:grid-cols-3">
+          <div className="mt-10 md:mt-16 grid grid-cols-2 border-t border-ink/10 md:grid-cols-3">
             {fields.map(({ key, label, data }, index) => (
               <InfoTile
                 key={key}
@@ -189,7 +189,7 @@ const ProductInfoGrid = ({ product }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="fixed inset-0 z-[200] bg-ink/45 backdrop-blur-[3px]"
+            className="fixed inset-0 z-100 bg-ink/45 backdrop-blur-[3px]"
             onClick={() => setActiveKey(null)}
           >
             <motion.aside
@@ -201,10 +201,10 @@ const ProductInfoGrid = ({ product }) => {
                 ease: [0.22, 1, 0.36, 1],
               }}
               onClick={(event) => event.stopPropagation()}
-              className="absolute right-0 top-0 flex h-full w-full max-w-xl flex-col overflow-hidden bg-lightCream text-ink shadow-2xl"
+              className="absolute right-0 top-0 flex h-full w-full max-w-xl flex-col overflow-hidden bg-lightCream text-ink shadow-2xl z-200"
             >
               {/* HEADER */}
-              <div className="relative flex items-center justify-between  px-6 py-5 sm:px-8">
+              <div className="hidden md:flex relative  items-center justify-between  px-6 py-5 sm:px-8">
                 <div className="flex items-center gap-3">
                   <span className="h-1.5 w-1.5 rounded-full bg-red" />
 
@@ -241,7 +241,7 @@ const ProductInfoGrid = ({ product }) => {
                 >
                   {/* ICON + VALUE */}
                   <div className=" flex items-start gap-5">
-                    <div className="flex h-16 w-16 shrink-0 items-center justify-center border border-ink/10 bg-ivory text-red">
+                    <div className="flex h-16 w-16 shrink-0 items-center justify-center border border-ink/10 bg-ivory text-red rounded-2xl">
                       {(() => {
                         const Icon = FIELD_ICONS[active.key] || Coffee;
 
@@ -263,15 +263,15 @@ const ProductInfoGrid = ({ product }) => {
                   {/* DESCRIPTION */}
                   {active.data.blurb && (
                     <div className="mt-12 border-t border-ink/10 pt-8">
-                      <p className="mt-2 max-w-lg text-[15px] font-light leading-8 text-ink/85">
+                      <p className="max-w-lg text-[12px] md:text-[15px] font-light leading-8 text-ink/85">
                         {active.data.blurb}
                       </p>
                     </div>
                   )}
 
                   {/* VISUAL DETAIL BLOCK */}
-                  <div className="mt-12 grid grid-cols-2 gap-px border border-ink/10 bg-ink/10">
-                    <div className="bg-ivory p-5 sm:p-6">
+                  <div className="mt-8 md:mt-12 grid grid-cols-2 border border-ink/10 rounded-2xl">
+                    <div className=" p-5 sm:p-6 ">
                       <span className="block text-[7px] uppercase tracking-[0.3em] text-stone">
                         Detail
                       </span>
@@ -281,7 +281,7 @@ const ProductInfoGrid = ({ product }) => {
                       </span>
                     </div>
 
-                    <div className="bg-soil p-5 sm:p-6">
+                    <div className="bg-soil p-5 sm:p-6   rounded-r-2xl">
                       <span className="block text-[7px] uppercase tracking-[0.3em] text-lightWhite">
                         Origin
                       </span>
@@ -293,8 +293,8 @@ const ProductInfoGrid = ({ product }) => {
                   </div>
 
                   {/* QUOTE / BRAND MOMENT */}
-                  <div className="mt-16 border-l border-red pl-5 bg-lightWhite py-3">
-                    <p className="max-w-sm text-sm font-light italic leading-7 text-ink/55">
+                  <div className="mt-8 md:mt-16 border-l border-red pl-5 bg-lightWhite py-3 rounded-r-2xl">
+                    <p className="max-w-sm text-sm font-light italic leading-7 text-ink/75">
                       “Every detail has a role in shaping what eventually
                       reaches your cup.”
                     </p>
@@ -310,22 +310,14 @@ const ProductInfoGrid = ({ product }) => {
                   className="group flex w-full cursor-pointer items-center justify-between text-left"
                 >
                   <div>
-                    <span className="block text-[10px] font-medium uppercase tracking-[0.35em] text-ink/85 transition-colors duration-300 group-hover:text-red">
+                    <span className="block text-[10px] font-bold uppercase tracking-[0.15em] text-ink/85 transition-colors duration-300 group-hover:text-red">
                       Back to details
                     </span>
 
-                    <span className="mt-1 block text-[7px] uppercase tracking-[0.25em] text-ink/50">
+                    <span className="mt-1 block text-[7px] uppercase tracking-[0.25em] text-ink/60">
                       Close this view
                     </span>
                   </div>
-
-                  <span className="flex h-10 w-10 items-center justify-center border border-ink/10 transition-all duration-500 group-hover:border-red group-hover:bg-red group-hover:text-lightCream">
-                    <ArrowUpRight
-                      size={15}
-                      strokeWidth={1.1}
-                      className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    />
-                  </span>
                 </button>
               </div>
             </motion.aside>

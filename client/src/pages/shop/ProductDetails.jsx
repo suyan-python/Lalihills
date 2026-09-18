@@ -50,13 +50,13 @@ const CircularDetail = ({
           scale: smoothScale,
           y: smoothY,
         }}
-        className="relative text-center"
+        className="relative min-w-[70px] text-center sm:min-w-[80px]"
       >
-        <span className="block text-[8px] uppercase tracking-[0.4em] text-ink/80">
+        <span className="block text-[6px] uppercase tracking-[0.28em] text-ink/55 sm:text-[8px] sm:tracking-[0.4em]">
           {title}
         </span>
 
-        <span className="mt-2 block text-xs font-bold uppercase tracking-[0.2em] text-ink">
+        <span className="mt-1.5 block text-[9px] font-bold uppercase tracking-[0.1em] text-ink sm:mt-2 sm:text-xs sm:tracking-[0.2em]">
           {value}
         </span>
 
@@ -71,36 +71,6 @@ const CircularDetail = ({
     </div>
   );
 };
-
-const MobileDetail = ({ title, value }) => (
-  <div className="border-t border-ink/15 pt-3">
-    <span className="block text-[7px] uppercase tracking-[0.35em] text-ink/50">
-      {title}
-    </span>
-    <span className="mt-2 block text-[10px] uppercase tracking-[0.15em] text-ink">
-      {value}
-    </span>
-  </div>
-);
-
-const TastingColumn = ({ number, title, items }) => (
-  <div>
-    <span className="text-[8px] tracking-[0.3em] text-lightCream/30">
-      {number}
-    </span>
-    <h3 className="mt-5 text-xl uppercase tracking-[-0.02em]">{title}</h3>
-    <div className="mt-5 space-y-2">
-      {items?.map((item) => (
-        <p
-          key={item}
-          className="text-sm font-light capitalize leading-6 text-lightCream/60"
-        >
-          {item}
-        </p>
-      ))}
-    </div>
-  </div>
-);
 
 const FaqItem = ({ number, question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -376,50 +346,66 @@ const ProductDetails = ({ products = [] }) => {
 
   return (
     <main className="overflow-x-clip bg-lightWhite  text-ink ">
-      <section ref={sectionRef} className="relative h-[400vh] bg-lightWhite">
+      <section ref={sectionRef} className="relative h-[400vh] bg-lightWhite ">
         <div className="sticky top-0 isolate flex h-screen items-center justify-center overflow-hidden px-6 sm:px-10">
           <motion.div
             style={{ opacity: chromeReveal }}
-            className="absolute left-6 top-8 z-20 sm:left-10 sm:top-10"
+            className="absolute left-4 top-5 z-20 sm:left-7 sm:top-7 md:left-10 md:top-10"
           >
             <Link
               to="/shop/coffee"
-              className="inline-flex items-center gap-3 text-[8px] uppercase tracking-[0.35em] text-ink/55 transition-colors hover:text-red"
+              className="inline-flex items-center gap-2 text-[6px] uppercase tracking-[0.28em] text-ink/55 transition-colors hover:text-red sm:gap-3 sm:text-[8px] sm:tracking-[0.35em]"
             >
-              <ArrowLeft size={13} strokeWidth={1.2} />
-              Coffee collection
+              <ArrowLeft
+                size={12}
+                strokeWidth={1.2}
+                className="sm:h-[13px] sm:w-[13px]"
+              />
+              <span>Coffee collection</span>
             </Link>
           </motion.div>
 
           <motion.div
             style={{ opacity: chromeReveal }}
-            className="absolute right-6 top-8 z-20 text-right sm:right-10 sm:top-10"
+            className="absolute right-4 top-5 z-20 max-w-[42%] text-right sm:right-7 sm:top-7 md:right-10 md:top-10"
           >
-            <span className="block text-[8px] uppercase tracking-[0.4em] text-ink/50">
+            <span className="block text-[6px] uppercase tracking-[0.3em] text-ink/50 sm:text-[8px] sm:tracking-[0.4em]">
               The product
             </span>
-            <p className="mt-2 text-xs uppercase tracking-[0.2em] text-ink">
+
+            <p className="mt-1.5 text-[7px] uppercase tracking-[0.14em] text-ink sm:mt-2 sm:text-xs sm:tracking-[0.2em]">
               {product.origin} · {product.type}
             </p>
           </motion.div>
 
+          {/* Product */}
           <motion.div
             initial={{ y: 140, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            style={{ scale: productScale, y: productY, perspective: 1400 }}
-            className="relative z-10 flex h-[55vh] w-[55vh] max-h-125 max-w-125 items-center justify-center"
+            transition={{
+              duration: 1.1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            style={{
+              scale: productScale,
+              y: productY,
+              perspective: 1400,
+            }}
+            className="relative z-10 flex h-[min(52vw,48vh)] w-[min(52vw,48vh)] min-h-60 min-w-60 max-h-125 max-w-125 items-center justify-center sm:h-[min(55vw,55vh)] sm:w-[min(55vw,55vh)]"
           >
+            {/* Outer rings */}
             <motion.div
               style={{ scale: ringScale, opacity: ringOpacity }}
-              className="absolute inset-[6%] rounded-full border border-ink/20"
-            />
-            <motion.div
-              style={{ scale: ringScale, opacity: ringOpacity }}
-              className="absolute inset-[15%] rounded-full border border-ink/10"
+              className="absolute inset-[5%] rounded-full border border-ink/20"
             />
 
+            <motion.div
+              style={{ scale: ringScale, opacity: ringOpacity }}
+              className="absolute inset-[14%] rounded-full border border-ink/10"
+            />
+
+            {/* Product image */}
             <motion.div
               style={{
                 rotateY: hasRealRotation ? 0 : productRotateY,
@@ -434,32 +420,39 @@ const ProductDetails = ({ products = [] }) => {
                 className="h-full w-full object-contain drop-shadow-2xl"
               />
 
+              {/* Description reveal */}
               <motion.div
                 style={{ opacity: descriptionReveal }}
-                className="absolute inset-0 flex items-center justify-center bg-lightWhite/85 px-[12%] text-center"
+                className="absolute inset-0 flex items-center justify-center bg-lightWhite/85 px-[10%] text-center sm:px-[12%]"
               >
                 <motion.p
                   style={{ y: descriptionY }}
-                  className="max-w-sm text-xs font-light leading-6 text-ink sm:text-sm sm:leading-7"
+                  className="max-w-[18rem] text-[10px] font-light leading-5 text-ink sm:max-w-sm sm:text-sm sm:leading-7"
                 >
                   {product.description}
                 </motion.p>
               </motion.div>
             </motion.div>
 
+            {/* Ground shadow */}
             <motion.div
-              style={{ scaleX: shadowScaleX, opacity: shadowOpacity }}
-              className="absolute bottom-[4%] h-6 w-[55%] rounded-full bg-ink/20 blur-xl"
+              style={{
+                scaleX: shadowScaleX,
+                opacity: shadowOpacity,
+              }}
+              className="absolute bottom-[3%] h-4 w-[52%] rounded-full bg-ink/20 blur-xl sm:h-6 sm:w-[55%]"
             />
           </motion.div>
 
+          {/* Scroll hint */}
           <motion.div
             style={{ opacity: hintOpacity }}
-            className="absolute bottom-36 left-1/2 z-20 -translate-x-1/2 text-center"
+            className="absolute bottom-[12vh] left-1/2 z-20 -translate-x-1/2 text-center sm:bottom-[13vh]"
           >
-            <span className="text-[8px] uppercase tracking-[0.4em] text-ink ">
+            <span className="whitespace-nowrap text-[6px] uppercase tracking-[0.32em] text-ink sm:text-[8px] sm:tracking-[0.4em]">
               Scroll for details
             </span>
+
             <motion.span
               animate={{ y: [0, 6, 0] }}
               transition={{
@@ -467,24 +460,25 @@ const ProductDetails = ({ products = [] }) => {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="mx-auto mt-3 block h-8 w-px bg-ink/30"
+              className="mx-auto mt-2 block h-6 w-px bg-ink/30 sm:mt-3 sm:h-8"
             />
           </motion.div>
 
+          {/* Product title */}
           <motion.div
             style={{ y: titleY }}
-            className="absolute left-1/2 top-20 z-20 max-w-md -translate-x-1/2 px-6 text-center sm:top-24"
+            className="absolute left-1/2 top-[16vh] z-20 w-[82%] -translate-x-1/2 text-center md:top-[12vh] sm:w-[75%] md:w-auto"
           >
-            <h1 className="header text-3xl uppercase leading-[0.9] tracking-[-0.03em] text-ink sm:text-4xl">
+            <h1 className="header text-[clamp(1.7rem,7vw,2.75rem)] uppercase leading-[0.88] tracking-[-0.04em] text-ink sm:text-4xl font-medium">
               {product.name}
             </h1>
-            <p className="mt-3 text-xs font-light leading-6 text-ink/85 sm:text-sm">
+
+            <p className="mx-auto mt-4 max-w-[15rem] text-[10px] font-medium uppercase leading-4 tracking-[0.04em] text-ink  sm:max-w-md  sm:leading-6 md:text-sm">
               {product.shortDescription}
             </p>
           </motion.div>
 
-          {/* DETAIL SPOKES — point out from the ring, staggered as you keep scrolling */}
-
+          {/* desktop details  */}
           <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 hidden h-[min(72vw,72vh)] w-[min(72vw,72vh)] max-h-168 max-w-2xl -translate-x-1/2 -translate-y-1/2 lg:block">
             <CircularDetail
               title="Origin"
@@ -559,29 +553,99 @@ const ProductDetails = ({ products = [] }) => {
             />
           </div>
 
-          <motion.div
-            style={{ opacity: mobileDetailOpacity }}
-            className="absolute bottom-10 left-6 right-6 z-20 grid grid-cols-2 gap-x-8 gap-y-5 lg:hidden"
-          >
-            <MobileDetail title="Origin" value={product.origin} />
-            <MobileDetail title="Altitude" value={`${product.altitude} m`} />
-            <MobileDetail title="Process" value={product.process} />
-            <MobileDetail title="Roast" value={`${product.roastLevel}/5`} />
-          </motion.div>
+          {/* mobile details  */}
+
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 h-[min(88vw,62vh)] w-[min(88vw,62vh)] -translate-x-1/2 -translate-y-1/2 lg:hidden ">
+            {/* Top */}
+            <CircularDetail
+              title="Origin"
+              value={product.origin}
+              position="left-[-2%] top-[5%]"
+              linePosition="left-full top-1/2"
+              lineFrom="left"
+              reveal={originReveal}
+            />
+
+            <CircularDetail
+              title="Altitude"
+              value={`${product.altitude} m`}
+              position="right-[-2%] top-[5%]"
+              linePosition="right-full top-1/2"
+              lineFrom="right"
+              reveal={altitudeReveal}
+            />
+
+            {/* Middle */}
+            <CircularDetail
+              title="Flavour"
+              value={product.flavors.join(" · ")}
+              position="left-[-8%] top-1/2 -translate-y-1/2"
+              linePosition="left-full top-1/2"
+              lineFrom="left"
+              reveal={flavorReveal}
+            />
+
+            <CircularDetail
+              title="Aroma"
+              value={product.aroma.join(" · ")}
+              position="right-[-8%] top-1/2 -translate-y-1/2"
+              linePosition="right-full top-1/2"
+              lineFrom="right"
+              reveal={aromaReveal}
+            />
+
+            {/* Lower */}
+            <CircularDetail
+              title="Process"
+              value={product.process}
+              position="left-[-2%] bottom-[20%]"
+              linePosition="left-full top-1/2"
+              lineFrom="left"
+              reveal={processReveal}
+            />
+
+            <CircularDetail
+              title="Roast"
+              value={`${product.roastLevel}/5`}
+              position="right-[-2%] bottom-[20%]"
+              linePosition="right-full top-1/2"
+              lineFrom="right"
+              reveal={roastReveal}
+            />
+
+            {/* Bottom */}
+            <CircularDetail
+              title="Caffeine"
+              value={product.caffeine}
+              position="left-[5%] bottom-[-2%]"
+              linePosition="left-full top-1/2"
+              lineFrom="left"
+              reveal={caffeineReveal}
+            />
+
+            <CircularDetail
+              title="Type"
+              value={product.type}
+              position="right-[5%] bottom-[-2%]"
+              linePosition="right-full top-1/2"
+              lineFrom="right"
+              reveal={typeReveal}
+            />
+          </div>
         </div>
       </section>
 
       {/* PRODUCT DETAILS */}
 
-      <section className="bg-lightWhite px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+      <section className="bg-lightWhite px-6  sm:px-10  lg:px-16 lg:py-24">
         <div className="mx-auto grid max-w-350 grid-cols-1 gap-20 lg:grid-cols-[1fr_0.72fr] lg:gap-28">
           {/* STORY */}
           <div>
-            <h2 className="header font-bold mt-7 max-w-3xl text-[clamp(3.5rem,6vw,4rem)] uppercase leading-[0.82] tracking-[-0.045em] text-ink ">
+            <h2 className="header font-bold mt-7 max-w-3xl text-[clamp(2.5rem,6vw,4rem)] uppercase leading-[0.82] tracking-[-0.045em] text-ink ">
               {product.name}.
             </h2>
 
-            <p className="mt-10 max-w-2xl text-sm font-light leading-8 text-ink sm:text-base">
+            <p className="mt-5 md:mt-10 max-w-2xl text-xs md:text-sm font-light leading-8 text-ink ">
               {product.description}
             </p>
 
@@ -720,7 +784,7 @@ const ProductDetails = ({ products = [] }) => {
                           transition={{ duration: 0.25 }}
                         >
                           <span
-                            className={`block text-[12px] font-bold uppercase tracking-[0.2em] transition-colors duration-500 ${
+                            className={`block text-[10px] md:text-[12px] font-bold uppercase tracking-[0.2em] transition-colors duration-500 ${
                               purchaseType === "subscribe"
                                 ? "text-emerald-700"
                                 : "text-red"
@@ -731,7 +795,7 @@ const ProductDetails = ({ products = [] }) => {
                               : `Subscribe & save ${Math.round(subscriptionDiscount * 100)}%`}
                           </span>
 
-                          <span className="mt-2 block text-[9px] uppercase tracking-[0.18em] text-ink/85">
+                          <span className="mt-2 block text-[8px] md:text-[9px] uppercase tracking-[0.18em] text-ink/85">
                             Delivered on your schedule · cancel anytime
                           </span>
                         </motion.div>
@@ -870,7 +934,7 @@ const ProductDetails = ({ products = [] }) => {
                         onClick={handleAddToCart}
                         className="relative z-10 flex h-14 max-w-3xl cursor-pointer items-center bg-red px-6 text-lightCream transition-all duration-300 hover:bg-deepRed active:translate-x-1 active:translate-y-1 sm:px-7 rounded-full"
                       >
-                        <span className="text-[14px] font-bold uppercase tracking-[0.2em]">
+                        <span className="text-[12px] md:text-[14px] font-bold uppercase tracking-[0.2em]">
                           Add to cart
                         </span>
                       </button>

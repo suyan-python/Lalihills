@@ -75,18 +75,18 @@ const ProductCard = ({ product }) => {
         </div>
 
         {flavors.length > 0 && (
-          <p className="mt-1 text-[9px] leading-5 tracking-[0.3em] text-soil sm:text-[10px] uppercase">
+          <p className="mt-1 text-[7px] leading-5 tracking-widest md:tracking-[0.3em] text-soil md:text-[10px] uppercase text-center md:text-left">
             {flavors.join(" | ")}
           </p>
         )}
 
-        <div className="mt-5 ">
+        <div className="mt-2 md:mt-5 ">
           <div className="mb-2 flex items-center justify-between">
-            <span className="text-[7px] font-semibold uppercase tracking-[0.25em] text-stone">
+            <span className="text-[7px] font-semibold uppercase md:tracking-[0.25em] text-stone">
               Roast Level
             </span>
 
-            <span className="text-[7px] font-medium uppercase tracking-[0.18em] text-soil">
+            <span className="text-[7px] font-medium uppercase md:tracking-[0.18em] text-soil">
               {roastName}
             </span>
           </div>
@@ -107,7 +107,7 @@ const ProductCard = ({ product }) => {
           </div>
 
           <div className="mt-2 flex justify-between">
-            <span className="text-[6px] uppercase tracking-[0.2em] text-stone">
+            <span className="text-[6px] uppercase tracking-[0.2em] text-soil">
               Dark
             </span>
 
@@ -119,11 +119,12 @@ const ProductCard = ({ product }) => {
 
         {/* button  */}
 
-        <div className="flex items-center gap-5 mt-8  justify-center">
+        <div className="mt-6 flex w-full flex-col items-stretch justify-center gap-2.5 sm:mt-8 sm:w-auto sm:flex-row sm:items-center sm:gap-5">
           <Button
             to={`/shop/${product.category}/${slug}`}
             variant="primary"
-            size="md"
+            size="sm"
+            className="w-full sm:w-auto"
           >
             Details
           </Button>
@@ -137,7 +138,7 @@ const ProductCard = ({ product }) => {
                 purchaseType: "one-time",
               })
             }
-            className="group/buy flex shrink-0 items-center gap-2 bg-transparent px-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-red transition-all duration-300 hover:text-ink disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
+            className="group/buy flex h-10 w-full shrink-0 items-center justify-center gap-2 bg-transparent px-2 text-[8px] font-semibold uppercase tracking-[0.16em] text-red transition-all duration-300 hover:text-ink disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer sm:h-auto sm:w-auto sm:justify-start sm:px-1 sm:text-[9px] sm:tracking-[0.18em]"
             aria-label={`Quick buy ${name}`}
           >
             <span>Quick Buy</span>
@@ -145,7 +146,7 @@ const ProductCard = ({ product }) => {
             <ShoppingBag
               size={14}
               strokeWidth={1.2}
-              className="transition-transform duration-300 group-hover/buy:translate-x-0.5"
+              className="shrink-0 transition-transform duration-300 group-hover/buy:translate-x-0.5"
             />
           </button>
         </div>

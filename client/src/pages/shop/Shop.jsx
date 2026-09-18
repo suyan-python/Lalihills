@@ -46,56 +46,32 @@ const collections = [
 
 const Shop = () => {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-lightWhite">
-      <div className="pointer-events-none absolute right-[-4vw] top-[5vh] select-none">
+    <main className="relative min-h-screen overflow-x-hidden bg-lightWhite">
+      {/* BACKGROUND WORD */}
+      <div className="pointer-events-none absolute right-[-6vw] top-[8vh] z-0 select-none">
         <motion.p
-          initial={{
-            opacity: 0,
-            x: 100,
-          }}
-          animate={{
-            opacity: 1,
-            x: 0,
-          }}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{
             duration: 1.5,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="
-                        header
-                        whitespace-nowrap
-                        text-[25vw]
-                        font-black
-                        leading-none
-                        tracking-[-0.09em]
-                        text-[#241817]/[0.025]
-                    "
+          className="header whitespace-nowrap text-[24vw] font-black leading-none tracking-[-0.09em] text-ink/[0.025] sm:text-[22vw] md:text-[20vw]"
         >
           Laali Hills
         </motion.p>
       </div>
 
-      <section className="relative  mt-5">
-        <div className=" w-full">
-          <div
-            className="
-                        grid
-                        grid-cols-2
-                        md:grid-cols-3
-                      
-                    "
-          >
+      <section className="relative z-10">
+        <div className="w-full">
+          <div className="grid grid-cols-2 md:grid-cols-3">
             <CollectionSecondary collection={collections[0]} index={0} />
             <CollectionSecondary collection={collections[1]} index={1} />
-
             <CollectionSecondary collection={collections[2]} index={2} />
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-                CLOSING STATEMENT
-            ===================================================== */}
       <ShopStatement />
     </main>
   );
@@ -116,10 +92,10 @@ const CollectionSecondary = ({ collection, index }) => {
         delay: index * 0.08,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="h-full"
+      className="w-full"
     >
-      <Link to={collection.path} className="group block h-full overflow-hidden">
-        <div className="grid h-full aspect-[3/5] grid-rows-[3fr_1fr] overflow-hidden bg-lightCream">
+      <Link to={collection.path} className="group block w-full overflow-hidden">
+        <div className="grid aspect-[3/5] w-full grid-rows-[3fr_1fr] overflow-hidden bg-lightCream">
           {/* IMAGE */}
           <div className="relative min-h-0 overflow-hidden">
             <motion.img
@@ -131,35 +107,39 @@ const CollectionSecondary = ({ collection, index }) => {
             />
 
             {/* NUMBER */}
-            <span className="absolute left-5 top-5 z-10 text-[8px] font-medium uppercase tracking-[0.35em] text-lightCream/75">
+            <span className="absolute left-4 top-4 z-10 text-[6px] font-medium uppercase tracking-[0.3em] text-lightCream/75 sm:left-5 sm:top-5 sm:text-[7px] md:text-[8px]">
               {collection.number}
             </span>
 
-            {/* SUBTLE OVERLAY */}
             <div className="absolute inset-0 bg-gradient-to-t from-ink/25 via-transparent to-transparent" />
           </div>
 
           {/* CONTENT */}
           <div
-            className="flex min-h-0 items-center justify-center px-5 text-center sm:px-6"
+            className="flex  items-center justify-center px-3 py-3 text-center sm:px-5 sm:py-4 md:px-6"
             style={{ backgroundColor: collection.accent }}
           >
             <div className="w-full">
               {/* SUBTITLE */}
-              <span className="block text-[7px] font-medium uppercase tracking-[0.2em] text-lightCream/75 md:text-[10px]">
+              <span className="block text-[7px] font-medium uppercase tracking-[0.16em] text-lightCream/70 md:text-[9px] md:tracking-[0.2em]">
                 {collection.subtitle}
               </span>
 
               {/* TITLE */}
-              <h2 className="subheader mt-2 text-[clamp(2rem,3.2vw,3.2rem)] leading-[0.82] tracking-[-0.06em] text-lightCream">
+              <h2 className="subheader mt-1.5 text-[clamp(1.5rem,3vw,3rem)] leading-[0.82] tracking-[-0.055em] text-lightCream sm:mt-2">
                 {collection.name}
               </h2>
 
               {/* CTA */}
-
-              <Button className="mt-8 cursor-pointer" variant="light">
-                Explore
-              </Button>
+              <div className="mt-3 sm:mt-4 md:mt-6">
+                <Button
+                  size="sm"
+                  variant="light"
+                  className="px-3 text-[6px] gap-1.5 h-9 sm:px-4 sm:text-[7px] md:h-10 md:px-5 md:text-[8px]"
+                >
+                  Explore
+                </Button>
+              </div>
             </div>
           </div>
         </div>

@@ -212,17 +212,7 @@ const LaliComingSoon = () => {
                       ease: [0.22, 1, 0.36, 1],
                     }}
                     className="mt-8 flex items-center gap-4"
-                  >
-                    {/* <p className="subheader text-[9px] uppercase tracking-[0.22em] text-[#F5E8E3] sm:text-[10px] md:text-[11px]">
-                      From the hills.
-                      <span className="mx-2 text-[#D9828A]">·</span>
-                      From the soil.
-                      <span className="mx-2 text-[#D9828A]">·</span>
-                      From the people.
-                      <span className="mx-2 text-[#D9828A]">·</span>
-                      <span className="italic text-[#D9828A]">To you.</span>
-                    </p> */}
-                  </motion.div>
+                  ></motion.div>
                 </div>
               </motion.div>
             )}
@@ -293,7 +283,7 @@ const LaliComingSoon = () => {
                         ease: [0.22, 1, 0.36, 1],
                       }}
                       className="
-                    mt-7
+                    md:mt-7
                     block
                     w-full
                     max-w-2xl
@@ -316,17 +306,17 @@ const LaliComingSoon = () => {
                       delay: 0.6,
                       duration: 1,
                     }}
-                    className="max-w-md flex flex-col items-start justify-start "
+                    className="max-w-md flex flex-col md:items-start md:justify-start items-center justify-center"
                   >
                     <p
                       className="
                 font-title
-                text-[10px]
+                text-[9px]
                 md:text-[14px]
                 uppercase
                 leading-6
                 tracking-[0.15em]
-                text-cream text-left
+                text-cream md:text-left text-center
             "
                     >
                       The feeling of hills
@@ -338,6 +328,7 @@ const LaliComingSoon = () => {
                       to="/aboutLaaliHills"
                       variant="green"
                       className="mt-3"
+                      size="sm"
                     >
                       Know Laali
                     </Button>
@@ -350,7 +341,7 @@ const LaliComingSoon = () => {
 
         <Link
           to="/shop"
-          className="group absolute bottom-56 left-1/2 z-40 inline-flex h-12 -translate-x-1/2 items-center gap-3 rounded-full bg-ivory px-6 text-[9px] font-semibold uppercase tracking-[0.2em] text-hill transition-all duration-300 hover:bg-lightWhite hover:shadow-lg md:h-12 md:px-7 md:text-[10px]"
+          className="group absolute bottom-32 md:bottom-56 left-1/2 z-40 inline-flex h-10 -translate-x-1/2 items-center gap-3 rounded-full bg-ivory px-6 text-[8px] font-semibold uppercase tracking-[0.2em] text-hill transition-all duration-300 hover:bg-lightWhite hover:shadow-lg md:h-12 md:px-7 md:text-[10px]"
           aria-label="Explore offerings"
         >
           <span>Explore offerings</span>

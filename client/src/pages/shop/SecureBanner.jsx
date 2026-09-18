@@ -3,8 +3,8 @@ import { Headset, LockKeyhole, RotateCcw, Truck } from "lucide-react";
 const SecureBanner = () => {
   return (
     <div>
-      <section className="pb-12  sm:pb-14  lg:pb-16">
-        <div className="grid  grid-cols-2 divide-x divide-ink/10 lg:grid-cols-4">
+      <section className="pb-12  sm:pb-14  lg:pb-16 ">
+        <div className="grid  grid-cols-2 divide-x divide-ink/10 lg:grid-cols-4 gap-5">
           {/* Fast Delivery */}
           <div className="flex flex-col items-center px-5 text-center sm:px-8">
             <Truck
@@ -13,7 +13,7 @@ const SecureBanner = () => {
               className="h-5 w-5 text-ink/70"
             />
 
-            <span className="mt-4 text-[14px] font-medium uppercase tracking-[0.25em] text-ink sm:text-[10px]">
+            <span className="mt-4 text-[8px] font-medium uppercase tracking-[0.25em] text-ink md:text-[10px]">
               Fast Delivery
             </span>
           </div>
@@ -26,7 +26,7 @@ const SecureBanner = () => {
               className="h-5 w-5 text-ink/70"
             />
 
-            <span className="mt-4 text-[14px] font-medium uppercase tracking-[0.25em] text-ink sm:text-[10px]">
+            <span className="mt-4 text-[8px] font-medium uppercase tracking-[0.25em] text-ink md:text-[10px]">
               Customer Support
             </span>
           </div>
@@ -39,7 +39,7 @@ const SecureBanner = () => {
               className="h-5 w-5 text-ink/70"
             />
 
-            <span className="mt-4 text-[14px] font-medium uppercase tracking-[0.25em] text-ink sm:text-[10px]">
+            <span className="mt-4 text-[8px] font-medium uppercase tracking-[0.25em] text-ink md:text-[10px]">
               Secure Payment
             </span>
           </div>
@@ -52,7 +52,7 @@ const SecureBanner = () => {
               className="h-5 w-5 text-ink/70"
             />
 
-            <span className="mt-4 text-[14px] font-medium uppercase tracking-[0.25em] text-ink sm:text-[10px]">
+            <span className="mt-4 text-[8px] font-medium uppercase tracking-[0.25em] text-ink md:text-[10px]">
               Refund & Free Returns
             </span>
           </div>

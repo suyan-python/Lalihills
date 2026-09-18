@@ -118,8 +118,8 @@ const Collab = () => {
           className="
                     header
                     max-w-3xl
-                    text-[clamp(3.5rem,8vw,7rem)]
-                font-black
+                    text-[clamp(3.6rem,6.8vw,6.8rem)]
+                font-medium
                 uppercase
                 leading-[0.78]
                 tracking-[-0.075em]
