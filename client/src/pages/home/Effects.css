@@ -1,0 +1,209 @@
+/* ============================================================
+   LAALI HILLS — Global Effects
+   Import once — e.g. in main.jsx: import "./effects.css";
+   (Home.jsx also imports it directly so it works out of the box;
+   safe to leave both, CSS imports are deduped by the bundler.)
+
+   Color tokens used below match the ink/lightCream/red/soil/EFB9B8
+   palette already used across the site.
+   ============================================================ */
+
+/* ---------------- Smooth scroll + selection + scrollbar ---------------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background: #A9312A;
+    color: #F7ECDD;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #24140F;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #5A2A22;
+    border: 2px solid #24140F;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #A9312A;
+}
+
+* {
+    scrollbar-color: #5A2A22 #24140F;
+    scrollbar-width: thin;
+}
+
+:focus-visible {
+    outline: 1px solid #EFB9B8;
+    outline-offset: 3px;
+}
+
+
+/* -------------------------- Film grain overlay -------------------------- */
+/* Fixed, full-viewport, non-interactive noise texture. Mount once near
+   the root: <div className="grain-overlay" /> */
+
+.grain-overlay {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain-shift 0.4s steps(2) infinite;
+}
+
+@keyframes grain-shift {
+    0%   { transform: translate(0, 0); }
+    50%  { transform: translate(-2%, 1%); }
+    100% { transform: translate(1%, -2%); }
+}
+
+
+/* ------------------------------ Custom cursor ---------------------------- */
+/* Pure CSS can't track pointer position — pair with Cursor.jsx, which
+   sets --cursor-x / --cursor-y on <body> on every mousemove. Auto-hidden
+   on touch devices via the (hover: none) query below. */
+
+.cursor-dot,
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 998;
+    border-radius: 999px;
+    will-change: transform;
+}
+
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: #A9312A;
+    transform: translate(calc(var(--cursor-x, -100px) - 50%), calc(var(--cursor-y, -100px) - 50%));
+    transition: transform 0.05s linear;
+}
+
+.cursor-ring {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(239, 185, 184, 0.5);
+    transform: translate(calc(var(--cursor-x, -100px) - 50%), calc(var(--cursor-y, -100px) - 50%));
+    transition: transform 0.15s ease-out, width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+}
+
+/* Ring grows over anything clickable — toggled by Cursor.jsx via
+   document.body's data-cursor attribute */
+body[data-cursor="hover"] .cursor-ring {
+    width: 54px;
+    height: 54px;
+    border-color: #A9312A;
+}
+
+@media (hover: none) {
+    .cursor-dot,
+    .cursor-ring {
+        display: none;
+    }
+}
+
+
+/* -------------------------------- Magnetic -------------------------------- */
+/* Base easing for elements whose x/y transform is nudged by JS on
+   mousemove (see useMagnetic.js). This class only handles the
+   snap-back transition — the pull itself is set inline by the hook. */
+
+.magnetic {
+    display: inline-flex;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+
+/* ------------------------------ Link underline ----------------------------- */
+/* Sweeping underline that grows from the left on hover */
+
+.link-sweep {
+    position: relative;
+    display: inline-block;
+}
+
+.link-sweep::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link-sweep:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* ---------------------------------- Marquee --------------------------------- */
+/* Infinite horizontal ticker. Duplicate the content array once in JSX —
+   this animates the doubled track as one continuous loop with no seam. */
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 28s linear infinite;
+}
+
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+
+/* -------------------------------- Text shimmer ------------------------------- */
+/* Subtle animated gradient sheen for hero/chapter accent words */
+
+.text-shimmer {
+    background: linear-gradient(100deg, #EFB9B8 20%, #F7ECDD 40%, #A9312A 60%, #EFB9B8 80%);
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer-sweep 6s ease-in-out infinite;
+}
+
+@keyframes shimmer-sweep {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+/* ----------------------------- Image reveal wipe ------------------------------ */
+/* Pair with a JS-toggled "is-visible" class (see useInView.js) to wipe an
+   element in from bottom to top as it scrolls into the viewport. */
+
+.reveal-wipe {
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-wipe.is-visible {
+    clip-path: inset(0 0 0 0);
+}

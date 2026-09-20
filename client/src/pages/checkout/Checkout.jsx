@@ -76,7 +76,7 @@ const Checkout = () => {
       <div className="flex flex-col items-end justify-end min-h-screen mx-auto w-[60%] px-12 py-20 md:py-26 border-r border-ink/25">
         <div className="">
           {/* Header Section */}
-          <div className="mb-2 flex items-center justify-between">
+          <div className="flex items-center justify-between ">
             <img
               src={logo}
               alt="Laali Hills"
@@ -210,14 +210,16 @@ const Checkout = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <div className="mt-12 rounded-4xl bg-cream p-5 sm:p-6">
+                <div className="mt-12 rounded-4xl bg-lightCream p-5 sm:p-6">
                   <label className="block">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-ink">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink">
                         Order notes
                       </span>
 
-                      <span className="text-[8px] text-ink/85">Optional</span>
+                      <span className="text-[8px] text-ink/85 font-light italic">
+                        Optional
+                      </span>
                     </div>
 
                     <textarea
@@ -323,27 +325,15 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
                     </span>
                   </div>
 
-                  <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
-                    {size && (
-                      <span className="text-[10px] uppercase tracking-[0.12em] text-soil">
-                        {size}
-                      </span>
-                    )}
+                  <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[10px] uppercase tracking-[0.12em] text-soil ">
+                    {size && <span className="">{size}</span>}
 
-                    {grind && (
-                      <span className="text-[10px] uppercase tracking-[0.12em] text-soil">
-                        {grind}
-                      </span>
-                    )}
+                    {grind && <span className="">{grind}</span>}
 
-                    <span className="text-[10px] uppercase tracking-[0.12em] text-soil">
-                      × {quantity}
-                    </span>
+                    <span className="">× {quantity}</span>
 
                     {purchaseType === "subscribe" && frequency && (
-                      <span className="text-[10px] uppercase tracking-[0.12em] text-soil">
-                        {frequency}
-                      </span>
+                      <span className="">{frequency}</span>
                     )}
                   </div>
                 </div>

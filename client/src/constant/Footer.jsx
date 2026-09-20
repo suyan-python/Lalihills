@@ -115,10 +115,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* =================================================
-                        CONTACT STRIP
-                    ================================================== */}
-
           <div className="mt-16 grid gap-5 border-y border-[#E9C9C1]/10 py-6 sm:grid-cols-3 lg:mt-20">
             <div className="flex items-center gap-3">
               <MapPin size={15} strokeWidth={1} className="text-[#D9828A]" />
@@ -168,10 +164,6 @@ const Footer = () => {
               </div>
             </div>
           </div>
-
-          {/* =================================================
-                        BOTTOM BAR
-                    ================================================== */}
 
           <div className="flex flex-col gap-7 pt-7 sm:flex-row sm:items-center sm:justify-between">
             {/* Copyright */}
