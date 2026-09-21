@@ -10,11 +10,11 @@ const articles = article;
 const ExploreArticles = () => {
   return (
     <section className="bg-lightWhite">
-      <div className="mx-auto max-w-[1600px] px-6 py-24 sm:px-8 sm:py-32 md:px-12 md:py-40 lg:px-16">
+      <div className="mx-auto max-w-[1600px] px-6  sm:px-8 py-8 md:px-12 md:py-10 lg:px-16">
         {/* Header */}
         <div className="mb-16 gap-6 sm:mb-20 ">
           <div>
-            <h2 className="header text-center mt-4 text-[clamp(3rem,6vw,6rem)] uppercase leading-[0.82] tracking-[-0.06em] text-ink">
+            <h2 className="header text-center text-[clamp(3rem,6vw,6rem)] uppercase leading-[0.82] tracking-[-0.06em] text-ink">
               Learn the
               <br />
               <span className="text-ink/30">context.</span>
@@ -42,7 +42,7 @@ const ExploreArticles = () => {
                 className="relative block overflow-hidden"
                 aria-label={`Read ${article.title}`}
               >
-                <div className="aspect-[4/3] overflow-hidden bg-cream rounded-4xl">
+                <div className="aspect-square md:aspect-[4/3] overflow-hidden bg-cream rounded-4xl">
                   <img
                     src={article.image}
                     alt={article.title}
@@ -63,7 +63,7 @@ const ExploreArticles = () => {
                   {article.title}
                 </h3>
 
-                <p className="mt-4 max-w-sm text-[9px] font-light leading-5 text-ink/55 sm:text-[10px] sm:leading-6">
+                <p className="mt-4 max-w-sm text-[9px] font-light leading-5 text-ink/55 sm:text-[10px] sm:leading-6 ">
                   {article.description}
                 </p>
 

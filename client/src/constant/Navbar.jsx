@@ -626,10 +626,6 @@ const Navbar = () => {
               </div>
             </motion.div>
 
-            {/* =================================================
-                MOBILE MENU
-            ================================================== */}
-
             <motion.div
               initial={{
                 opacity: 0,
@@ -650,20 +646,10 @@ const Navbar = () => {
               className="fixed inset-0 z-[90] overflow-y-auto bg-ink lg:hidden"
             >
               <div className="min-h-full px-6 pb-10 pt-32 sm:px-10">
-                {/* Mobile label */}
-
-                <div className="mb-8 flex items-center gap-3">
-                  <span className="text-[8px] uppercase tracking-[0.35em] text-lightWhite/60">
-                    Explore Laali Hills
-                  </span>
-                </div>
-
                 {/* Mobile menu */}
-
                 <nav>
                   {menuItems.map((item, index) => {
                     const isActive = activeItem === item.title;
-
                     return (
                       <motion.div
                         key={item.title}
@@ -723,24 +709,24 @@ const Navbar = () => {
 
                         {/* Mobile subnav */}
 
-                        <AnimatePresence>
+                        <AnimatePresence initial={false}>
                           {isActive && item.subItems?.length > 0 && (
                             <motion.div
-                              initial={{
-                                height: 0,
-                                opacity: 0,
-                              }}
-                              animate={{
-                                height: "auto",
-                                opacity: 1,
-                              }}
-                              exit={{
-                                height: 0,
-                                opacity: 0,
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{
+                                height: {
+                                  duration: 0.35,
+                                  ease: [0.22, 1, 0.36, 1],
+                                },
+                                opacity: {
+                                  duration: 0.25,
+                                },
                               }}
                               className="overflow-hidden"
                             >
-                              <div className="grid grid-cols-1 gap-4 pb-6 pl-2">
+                              <div className="grid grid-cols-1 gap-3 pb-5 pl-2 pr-1 xs:gap-3.5 sm:gap-4 sm:pb-6 sm:pl-3">
                                 {item.subItems.map((subItem) => {
                                   if (
                                     typeof subItem === "string" ||
@@ -759,7 +745,7 @@ const Navbar = () => {
                                             ? subItem
                                             : subItem.path
                                         }
-                                        className="text-xs text-lightWhite/60"
+                                        className="block w-full py-1 text-[11px] leading-5 text-lightWhite/60 transition-colors duration-300 hover:text-lightWhite sm:text-xs sm:leading-6"
                                       >
                                         {typeof subItem === "string"
                                           ? subItem
@@ -771,22 +757,24 @@ const Navbar = () => {
                                   return (
                                     <div
                                       key={subItem.title}
-                                      className="space-y-2"
+                                      className="space-y-2.5 sm:space-y-3"
                                     >
-                                      <p className="text-[8px] uppercase tracking-[0.25em] text-lightWhite/60">
+                                      <p className="text-[7px] uppercase tracking-[0.25em] text-lightWhite/40 sm:text-[8px]">
                                         {subItem.title}
                                       </p>
 
-                                      {subItem.items?.map((child) => (
-                                        <Link
-                                          to={child.path}
-                                          onClick={() => setMenuOpen(false)}
-                                          key={child.path}
-                                          className="block text-xs text-lightWhite/60"
-                                        >
-                                          {child.title}
-                                        </Link>
-                                      ))}
+                                      <div className="grid grid-cols-1 gap-1.5 sm:gap-2">
+                                        {subItem.items?.map((child) => (
+                                          <Link
+                                            to={child.path}
+                                            onClick={() => setMenuOpen(false)}
+                                            key={child.path}
+                                            className="block w-full py-1 text-[11px] leading-5 text-lightWhite/60 transition-colors duration-300 hover:text-lightWhite sm:text-xs sm:leading-6"
+                                          >
+                                            {child.title}
+                                          </Link>
+                                        ))}
+                                      </div>
                                     </div>
                                   );
                                 })}

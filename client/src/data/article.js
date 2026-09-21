@@ -14,7 +14,7 @@ export const article = [
     title: "Where Nepal Grows Coffee",
     description:
       "Explore the hills, elevations and growing regions that shape Nepal's coffee landscape.",
-    image: "/images/explore/articles/coffee-origins.jpg",
+    image: "https://coffeenepal.org.np/wp-content/uploads/2023/08/view-lots-coffee-beans-1.webp",
     slug: "https://coffeenepal.org.np/about-ncpa/",
   },
   {
@@ -23,7 +23,7 @@ export const article = [
     title: "Washed, Natural or Anaerobic?",
     description:
       "The way coffee is processed can transform what eventually ends up in your cup.",
-    image: "/images/explore/articles/coffee-processing.jpg",
-    slug: "/explore/coffee-processing",
+    image: "https://img1.wsimg.com/isteam/ip/266aa121-105b-4140-8963-64b6cde874fc/DSC00028.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1280",
+    slug: "https://blackpoint.coffee/blog/f/difference-between-washed-natural-and-anaerobic-coffees",
   },
 ];

@@ -6,6 +6,8 @@ import ExploreCoffeePlant from "./ExploreCoffeePlant";
 import ExploreArticles from "./ExploreArticles";
 import ExploreMagazine from "./ExploreMagazine";
 
+import "./explore.css";
+
 const Explore = () => {
   return (
     <div>

@@ -8,7 +8,7 @@ import origin from "../../assets/explore/magazine/origin.mp4";
 import processing from "../../assets/explore/magazine/processing.mp4";
 import speciality from "../../assets/explore/magazine/speciality.mp4";
 import brewing from "../../assets/explore/magazine/brewing.jpg";
-import roasting from "../../assets/explore/magazine/roasting.jpg";
+import roasting from "../../assets/explore/magazine/roasting.mp4";
 import plant from "../../assets/explore/magazine/plant.jpg";
 
 const stories = [
@@ -66,7 +66,7 @@ const stories = [
     id: 6,
     number: "06",
     category: "Roasting",
-    type: "image",
+    type: "video",
     title: "The Art of Roasting",
     description:
       "How heat transforms green coffee into something entirely new.",
@@ -104,7 +104,7 @@ const ExploreMagazine = () => {
 
   return (
     <section className="overflow-hidden bg-lightCream">
-      <div className="mx-auto max-w-[1600px] px-6 sm:px-8 md:px-12 pt-10 lg:px-16 ">
+      <div className="mx-auto max-w-[1600px] px-6 sm:px-8 md:px-12 pt-10 lg:px-16 pb-10">
         {/* Header */}
         <div className="mb-5 md:mb-10">
           <div>
@@ -178,67 +178,71 @@ const ExploreMagazine = () => {
         </div>
 
         {/* Magazine Index */}
+
         <div className="mt-5 overflow-hidden">
-          <motion.div className="grid grid-cols-5 gap-2 sm:gap-3" layout>
-            {[-2, -1, 0, 1, 2].map((offset) => {
+          <motion.div
+            className="grid grid-cols-3 gap-2 sm:gap-3 md:grid-cols-5"
+            initial={false}
+          >
+            {[-2, -1, 0, 1, 2].map((offset, index) => {
               const story = getStory(offset);
               const isCenter = offset === 0;
 
               return (
-                <motion.button
+                <button
                   key={story.id}
-                  layout
                   onClick={() =>
                     setActive(stories.findIndex((item) => item.id === story.id))
                   }
-                  animate={{
-                    scale: isCenter ? 1 : 0.96,
-                    opacity: isCenter ? 1 : 0.45,
-                  }}
-                  transition={{
-                    duration: 0.6,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className={`group relative overflow-hidden text-left ${
-                    isCenter ? "bg-ink" : "bg-cream"
-                  }`}
+                  initial={false}
+                  className={`magazine-card group relative overflow-hidden text-left ${
+                    index === 0 || index === 4 ? "hidden md:block" : ""
+                  } ${isCenter ? "is-active" : ""}`}
                 >
-                  <div className="aspect-[1.4/1] overflow-hidden">
-                    {activeStory.type === "video" ? (
-                      <video
-                        src={activeStory.image}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
-                        className="h-full w-full object-cover"
-                      />
-                    ) : (
-                      <img
-                        src={activeStory.image}
-                        alt={activeStory.title}
-                        loading="lazy"
-                        decoding="async"
-                        className="h-full w-full object-cover"
-                      />
-                    )}
-                  </div>
-
                   <div
-                    className={`p-2.5 sm:p-4 ${
-                      isCenter ? "text-lightCream" : "text-ink"
+                    className={`overflow-hidden transition-colors duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      isCenter ? "bg-ink" : "bg-cream"
                     }`}
                   >
-                    <span className="text-[6px] tracking-[0.2em] opacity-50 sm:text-[7px]">
-                      {story.number}
-                    </span>
+                    <div className="aspect-[1.4/1] overflow-hidden">
+                      {story.type === "video" ? (
+                        <video
+                          src={story.image}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          className="h-full w-full object-cover magazine-card-media transform-gpu transition-transform duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025]"
+                        />
+                      ) : (
+                        <img
+                          src={story.image}
+                          alt={story.title}
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover magazine-card-media transform-gpu transition-transform duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025]"
+                        />
+                      )}
+                    </div>
 
-                    <h4 className="header mt-1 line-clamp-2 text-[10px] uppercase leading-[0.9] tracking-[-0.03em] sm:text-sm">
-                      {story.title}
-                    </h4>
+                    <div
+                      className={`magazine-card-content p-2.5 transition-colors duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] sm:p-4 ${
+                        isCenter
+                          ? "bg-ink text-lightCream"
+                          : "bg-cream text-ink"
+                      }`}
+                    >
+                      <span className="text-[6px] tracking-[0.2em] opacity-50 sm:text-[7px]">
+                        {story.number}
+                      </span>
+
+                      <h4 className="header mt-1 line-clamp-2 text-[10px] uppercase leading-[0.9] tracking-[-0.03em] sm:text-sm">
+                        {story.title}
+                      </h4>
+                    </div>
                   </div>
-                </motion.button>
+                </button>
               );
             })}
           </motion.div>

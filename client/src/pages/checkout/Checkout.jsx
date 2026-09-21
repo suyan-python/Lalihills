@@ -129,7 +129,7 @@ const Checkout = () => {
                 <h2 className="text-lg  font-bold  text-ink">Contact</h2>
               </div>
 
-              <form onSubmit={handleSubmit} className="mt-2 space-y-3">
+              <form onSubmit={handleSubmit} className="mt-2 space-y-1">
                 <InputField
                   label="Email Address"
                   name="email"
@@ -168,7 +168,7 @@ const Checkout = () => {
                   />
                 </div>
 
-                <div className="mt-14">
+                <div className="mt-8">
                   <h2 className="text-lg  font-bold  text-ink">
                     Delivery Details
                   </h2>
@@ -210,7 +210,8 @@ const Checkout = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <div className="mt-12 rounded-4xl bg-lightCream p-5 sm:p-6">
+
+                <div className="mt-8 rounded-4xl bg-lightCream p-5 sm:p-6">
                   <label className="block">
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink">

@@ -138,7 +138,7 @@ const ExploreOrigins = () => {
                   duration: 0.9,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="flex min-h-screen flex-col justify-center px-8 py-24 lg:px-20"
+                className="flex min-h-screen flex-col justify-start px-8 py-24 lg:px-20"
               >
                 {/* Mobile image */}
                 <div className="mb-10 overflow-hidden rounded-3xl md:hidden">

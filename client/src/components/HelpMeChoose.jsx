@@ -379,7 +379,7 @@ const HelpMeChoose = () => {
                       </span>
                     </div>
 
-                    <h1 className="subheader mt-5 text-[clamp(3rem,6vw,6rem)] uppercase leading-[0.82] tracking-[-0.065em]">
+                    <h1 className="subheader mt-5 text-[clamp(3rem,6vw,6rem)] uppercase leading-[0.82] tracking-[-0.065em] font-bold">
                       {question.label}
                     </h1>
                   </div>
