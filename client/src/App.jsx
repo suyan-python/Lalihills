@@ -23,6 +23,7 @@ import Trending from "./pages/trending/Trending";
 import TopTrending from "./pages/trending/TopTrending";
 import NewestTrending from "./pages/trending/NewestTrending";
 import HotTrending from "./pages/trending/HotTrending";
+import Explore from "./pages/explore/Explore";
 
 function App() {
   return (
@@ -66,10 +67,7 @@ function App() {
               <Route path="/trending/hot" element={<HotTrending />} />
 
               {/* Explore */}
-              <Route
-                path="/explore"
-                element={<div className="p-10">Explore</div>}
-              />
+              <Route path="/explore" element={<Explore />} />
               <Route
                 path="/explore/origins"
                 element={<div className="p-10">Origins</div>}

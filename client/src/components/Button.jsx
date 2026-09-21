@@ -14,6 +14,7 @@ const Button = ({
   disabled = false,
   className = "",
   ariaLabel,
+  external = false,
 }) => {
   const variants = {
     primary: "bg-red text-lightCream hover:bg-deepRed",
@@ -53,6 +54,8 @@ const Button = ({
     return (
       <Link
         to={to}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
         className={classes}
         aria-label={ariaLabel}
         aria-disabled={disabled}

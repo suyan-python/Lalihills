@@ -72,8 +72,8 @@ const Checkout = () => {
   }
 
   return (
-    <main className="flex flex-row bg-lightWhite   text-ink  ">
-      <div className="flex flex-col items-end justify-end min-h-screen mx-auto w-[60%] px-12 py-20 md:py-26 border-r border-ink/25">
+    <main className="flex flex-col md:flex-row bg-lightWhite   text-ink  ">
+      <div className="flex flex-col items-end justify-end min-h-screen mx-auto md:w-[60%] px-10 py-20 md:py-26 border-r border-ink/25 ">
         <div className="">
           {/* Header Section */}
           <div className="flex items-center justify-between ">
@@ -95,10 +95,10 @@ const Checkout = () => {
                 duration: 0.45,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="z-[80] flex h-12 items-center rounded-full bg-ink px-2 text-lightCream shadow-lg transition-all duration-300 hover:bg-red hover:shadow-xl active:scale-[0.97] sm:bottom-8 sm:right-8 cursor-pointer"
+              className="z-[80] hidden md:flex h-12 items-center rounded-full bg-ink px-2 text-lightCream shadow-lg transition-all duration-300 hover:bg-red hover:shadow-xl active:scale-[0.97] sm:bottom-8 sm:right-8 cursor-pointer"
               aria-label={`Shopping cart${cartCount > 0 ? `, ${cartCount} items` : ""}`}
             >
-              <span className="relative flex h-8 w-8 items-center justify-center">
+              <span className="relative flex h-8 w-8 items-center justify-center ">
                 <ShoppingBag
                   size={25}
                   strokeWidth={1.2}
@@ -238,7 +238,7 @@ const Checkout = () => {
         </div>
       </div>
 
-      <div className="min-h-screen w-[40%] bg-ivory ">
+      <div className="min-h-screen md:w-[40%] bg-ivory ">
         <OrderSummary cartItems={cartItems} cartTotal={cartTotal} />
       </div>
     </main>
