@@ -46,7 +46,7 @@ const ExploreOrigins = () => {
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.08]);
 
   return (
-    <section ref={sectionRef} className="relative  bg-lightWhite">
+    <section ref={sectionRef} className="relative  bg-lightWhite" id="origins">
       <div className="px-6 py-24 sm:px-8 sm:py-32 md:px-12 md:py-40 lg:px-0 lg:py-48">
         {/* Header */}
         <div className="mb-16 sm:mb-20 md:gap-16 lg:mb-28 lg:gap-24 text-center">

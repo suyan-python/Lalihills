@@ -4,7 +4,7 @@ export const article = [
     category: "Nepali Coffee",
     title: "The Story of Coffee in Nepal",
     description:
-      "From hillside farms to specialty coffee, discover how Nepal's coffee journey has evolved.",
+      "Discover how Nepal's coffee journey has evolved.",
     image: "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=2800,h=1804,fit=crop/0eTelppfgRS6Nb7H/chatgpt-image-may-28-2026-03_38_02-pm-7fptK2uk8NDTCZXP.png",
     slug: "https://nepalheritagecoffee.com/about",
  },

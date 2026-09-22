@@ -4,22 +4,109 @@ import cherry from "../../assets/explore/cherry.jpg";
 const ExploreLand = () => {
   return (
     <section className="relative bg-lightWhite text-ink">
-      <div className="mx-auto max-w-[1600px] px-6 py-24 sm:px-8 sm:py-32 md:px-12 md:py-40 lg:px-16 lg:py-44">
+      <div className=" py-24 sm:py-32 md:py-40  lg:py-44">
         {/* Intro */}
         <div className="">
           <motion.div
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, amount: 0.4 }}
-            transition={{
-              duration: 1,
-              ease: [0.22, 1, 0.36, 1],
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.12,
+                },
+              },
             }}
           >
-            <h2 className="header text-[clamp(3.2rem,7vw,6.3rem)] uppercase leading-[0.8] tracking-[-0.065em] text-center">
-              Coffee grows
+            <h2 className="header text-center text-[clamp(3.2rem,7vw,6.3rem)] uppercase leading-[0.8] tracking-[-0.065em]">
+              <span className="inline-block overflow-hidden">
+                <motion.span
+                  variants={{
+                    hidden: { y: "100%" },
+                    visible: {
+                      y: 0,
+                      transition: {
+                        duration: 0.9,
+                        ease: [0.22, 1, 0.36, 1],
+                      },
+                    },
+                  }}
+                  className="inline-block"
+                >
+                  Coffee
+                </motion.span>
+              </span>{" "}
+              <span className="inline-block overflow-hidden">
+                <motion.span
+                  variants={{
+                    hidden: { y: "100%" },
+                    visible: {
+                      y: 0,
+                      transition: {
+                        duration: 0.9,
+                        ease: [0.22, 1, 0.36, 1],
+                      },
+                    },
+                  }}
+                  className="inline-block"
+                >
+                  grows
+                </motion.span>
+              </span>
               <br />
-              <span className="text-ink/25">with the landscape.</span>
+              <span className="inline-block overflow-hidden">
+                <motion.span
+                  variants={{
+                    hidden: { y: "100%" },
+                    visible: {
+                      y: 0,
+                      transition: {
+                        duration: 0.9,
+                        ease: [0.22, 1, 0.36, 1],
+                      },
+                    },
+                  }}
+                  className="inline-block text-ink/25"
+                >
+                  with
+                </motion.span>
+              </span>{" "}
+              <span className="inline-block overflow-hidden">
+                <motion.span
+                  variants={{
+                    hidden: { y: "100%" },
+                    visible: {
+                      y: 0,
+                      transition: {
+                        duration: 0.9,
+                        ease: [0.22, 1, 0.36, 1],
+                      },
+                    },
+                  }}
+                  className="inline-block text-ink/25"
+                >
+                  the
+                </motion.span>
+              </span>{" "}
+              <span className="inline-block overflow-hidden">
+                <motion.span
+                  variants={{
+                    hidden: { y: "100%" },
+                    visible: {
+                      y: 0,
+                      transition: {
+                        duration: 0.9,
+                        ease: [0.22, 1, 0.36, 1],
+                      },
+                    },
+                  }}
+                  className="inline-block text-ink/25"
+                >
+                  landscape.
+                </motion.span>
+              </span>
             </h2>
           </motion.div>
 
@@ -47,9 +134,9 @@ const ExploreLand = () => {
           }}
           className="mt-20 sm:mt-28 md:mt-36"
         >
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-[1.5fr_0.5fr] md:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-[1.5fr_0.5fr]">
             {/* Main image */}
-            <div className="group relative overflow-hidden rounded-[2rem]">
+            <div className="group relative overflow-hidden ">
               <div className="aspect-[4/5] overflow-hidden sm:aspect-[16/10]">
                 <img
                   src={cherry}
@@ -74,7 +161,7 @@ const ExploreLand = () => {
             </div>
 
             {/* Side information */}
-            <div className="flex flex-col justify-between rounded-[2rem] bg-hill p-7 text-lightCream sm:p-9 md:p-10">
+            <div className="flex flex-col justify-between  bg-hill p-7 text-lightCream sm:p-9 md:p-10">
               <div>
                 <span className="text-[7px] uppercase tracking-[0.4em] text-lightCream/40">
                   Growing environment

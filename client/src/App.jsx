@@ -24,6 +24,8 @@ import TopTrending from "./pages/trending/TopTrending";
 import NewestTrending from "./pages/trending/NewestTrending";
 import HotTrending from "./pages/trending/HotTrending";
 import Explore from "./pages/explore/Explore";
+import NewProductDetails from "./pages/shop/ProductDetailsLeft";
+import ProductDetailsLeft from "./pages/shop/ProductDetailsLeft";
 
 function App() {
   return (
@@ -47,6 +49,7 @@ function App() {
 
               {/* Shop */}
               <Route path="/shop" element={<Shop />} />
+              <Route path="/product" element={<ProductDetailsLeft />} />
               <Route
                 path="/shop/coffee/:slug"
                 element={<ProductDetails products={coffeeProducts} />}

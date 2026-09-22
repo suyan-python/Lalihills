@@ -92,7 +92,7 @@ const menuItems = [
     subItems: [
       {
         title: "Origins",
-        path: "/explore/origins",
+        path: "/explore#origins",
       },
       {
         title: "Farmers",

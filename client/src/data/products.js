@@ -21,7 +21,7 @@ export const coffeeProducts = [
   imageColor: "#E8D1CA",
 
   category: "coffee",
-  type: "cold brew",
+  type: "beans",
 
   roastLevel: 4,
   caffeine: "full",
@@ -147,7 +147,7 @@ sizeOptions: [
   imageColor: "#D8B9A9",
 
   category: "coffee",
-  type: "filter roast",
+  type: "beans",
 
   roastLevel: 4,
   caffeine: "full",
@@ -270,7 +270,7 @@ sizeOptions: [
   imageColor: "#C69A82",
 
   category: "coffee",
-  type: "filter roast",
+  type: "beans",
 
   roastLevel: 4,
   caffeine: "full",
@@ -390,7 +390,7 @@ export const teaProducts = [
     image: "images/products/coffee-03.webp",
     hoverImage: "images/products/coffee-03.webp",
     category: "tea",
-    type: "filter roast",
+    type: "leaves",
     process: "anaerobic",
     size: 250,
     price: 1650,
@@ -438,7 +438,7 @@ export const teaProducts = [
     image: "images/products/coffee-03.webp",
     hoverImage: "images/products/coffee-03.webp",
     category: "tea",
-    type: "filter roast",
+    type: "leaves",
     process: "anaerobic",
     size: 250,
     price: 1650,
