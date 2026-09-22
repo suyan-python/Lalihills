@@ -15,61 +15,66 @@ import ProductDetailsRight from "./ProductDetailsRight";
 
 const ProductDetails = ({ products = [] }) => {
   const { slug } = useParams();
+  const isCoffeeProduct = (item) =>
+    item?.type === "beans" || item?.type === "coffee";
 
-  const initialProduct = products.find((item) => item.slug === slug);
+  const isTeaProduct = (item) =>
+    item?.type === "leaves" || item?.type === "tea";
 
-  const [productType, setProductType] = useState(
-    initialProduct?.type || "beans",
+  const initialProduct = useMemo(
+    () => products.find((item) => item.slug === slug),
+    [products, slug],
   );
 
-  const [selectedOrigin, setSelectedOrigin] = useState(
-    initialProduct?.origin || "",
+  const [productType, setProductType] = useState("beans");
+
+  // Set initial type when URL product is available
+  useEffect(() => {
+    if (!initialProduct) return;
+
+    setProductType(isTeaProduct(initialProduct) ? "leaves" : "beans");
+  }, [initialProduct]);
+
+  const productOptions = useMemo(
+    () =>
+      productType === "beans"
+        ? ["Dhankuta", "Gulmi", "Sindhupalchok"]
+        : ["First Flush", "Green", "Silver Tips"],
+    [productType],
   );
 
-  const [selectedSize, setSelectedSize] = useState(
-    initialProduct?.sizeOptions?.[0] || null,
+  const [selectedOrigin, setSelectedOrigin] = useState("");
+
+  useEffect(() => {
+    setSelectedOrigin(productOptions[0] || "");
+  }, [productOptions]);
+
+  const matchingProducts = useMemo(
+    () =>
+      products.filter((item) =>
+        productType === "beans" ? isCoffeeProduct(item) : isTeaProduct(item),
+      ),
+    [products, productType],
   );
 
-  const [selectedGrind, setSelectedGrind] = useState(
-    initialProduct?.grindOptions?.[0] || "",
+  const product = useMemo(
+    () =>
+      matchingProducts.find((item) => item.origin === selectedOrigin) || null,
+    [matchingProducts, selectedOrigin],
   );
 
-  const [selectedForm, setSelectedForm] = useState(
-    initialProduct?.formOptions?.[0] || "",
-  );
+  const [selectedSize, setSelectedSize] = useState(null);
+
+  const [selectedGrind, setSelectedGrind] = useState("");
+
+  const [selectedForm, setSelectedForm] = useState("");
 
   const [quantity, setQuantity] = useState(1);
 
   const [purchaseType, setPurchaseType] = useState("one-time");
 
-  const [frequency, setFrequency] = useState(
-    initialProduct?.frequencies?.[0] || "Every 4 Weeks",
-  );
+  const [frequency, setFrequency] = useState("Every 4 Weeks");
 
-  // Origins available for selected type
-  const origins = [
-    ...new Set(
-      products
-        .filter((item) => item.type === productType)
-        .map((item) => item.origin)
-        .filter(Boolean),
-    ),
-  ];
-
-  // Make sure selected origin exists for current type
-  useEffect(() => {
-    if (!origins.includes(selectedOrigin)) {
-      setSelectedOrigin(origins[0] || "");
-    }
-  }, [productType, origins, selectedOrigin]);
-
-  // Find current product
-  const product =
-    products.find(
-      (item) => item.type === productType && item.origin === selectedOrigin,
-    ) || initialProduct;
-
-  // Reset purchase options when product changes
   useEffect(() => {
     if (!product) return;
 
@@ -77,7 +82,9 @@ const ProductDetails = ({ products = [] }) => {
     setSelectedGrind(product.grindOptions?.[0] || "");
     setSelectedForm(product.formOptions?.[0] || "");
     setQuantity(1);
-  }, [product?.slug]);
+    setPurchaseType("one-time");
+    setFrequency(product.frequencies?.[0] || "Every 4 Weeks");
+  }, [product]);
 
   if (!product) {
     return (
@@ -86,16 +93,21 @@ const ProductDetails = ({ products = [] }) => {
       </section>
     );
   }
-
+  if (!product) {
+    return (
+      <section className="flex h-dvh items-center justify-center bg-ivory">
+        <p className="text-sm text-ink/50">Product not found.</p>
+      </section>
+    );
+  }
   return (
     <section className="h-dvh min-h-[620px] w-full overflow-hidden">
       <div className="grid h-full grid-cols-1 lg:grid-cols-2">
         <ProductDetailsLeft
           product={product}
-          products={products}
           productType={productType}
           setProductType={setProductType}
-          origins={origins}
+          productOptions={productOptions}
           selectedOrigin={selectedOrigin}
           setSelectedOrigin={setSelectedOrigin}
         />

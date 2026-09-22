@@ -29,7 +29,7 @@ export const coffeeProducts = [
 
   process: "anaerobic",
   altitude: "1,300-1,500",
-  origin: "DHANKUTA",
+  origin: "Dhankuta",
 
  price:850,
 sizeOptions: [
@@ -155,7 +155,7 @@ sizeOptions: [
 
   process: "anaerobic",
   altitude: "1,200-1,500",
-  origin: "DHANKUTA",
+  origin: "Gulmi",
 
   price: 1650,
   sizeOptions: [
@@ -278,7 +278,7 @@ sizeOptions: [
 
   process: "anaerobic",
   altitude: "1,200-1,500",
-  origin: "DHANKUTA",
+  origin: "Sindhupalchok",
 
   price: 1650,
   sizeOptions: [

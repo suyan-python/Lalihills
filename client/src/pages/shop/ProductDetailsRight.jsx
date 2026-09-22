@@ -24,10 +24,11 @@ const ProductDetailsRight = ({
 
   const subscriptionDiscount = product?.subscriptionDiscount ?? 0.1;
 
-  const unitPrice =
-    purchaseType === "subscribe"
+  const unitPrice = selectedSize?.price
+    ? purchaseType === "subscribe"
       ? selectedSize.price * (1 - subscriptionDiscount)
-      : selectedSize.price;
+      : selectedSize.price
+    : 0;
 
   const total = unitPrice * quantity;
 
@@ -42,14 +43,14 @@ const ProductDetailsRight = ({
   };
 
   return (
-    <div className="relative flex h-full min-h-0 flex-col bg-lightWhite text-ink">
+    <div className="relative flex h-full min-h-0 flex-col bg-ivory text-ink">
       {/* TOP — INFORMATION */}
       <div className="min-h-0 flex-1 overflow-y-auto">
         <div className="flex h-full flex-col">
           {/* TOP NAV */}
           <div className="flex shrink-0 items-center justify-between border-b border-ink/10 px-6 py-5 sm:px-8 lg:px-10">
             {/* INFO NAV */}
-            <div className="flex items-center gap-5 sm:gap-7">
+            <div className="flex items-center gap-5 sm:gap-7 ">
               {["taste", "origin", "ritual"].map((item) => {
                 const active = activeInfo === item;
 
@@ -58,7 +59,7 @@ const ProductDetailsRight = ({
                     key={item}
                     type="button"
                     onClick={() => setActiveInfo(item)}
-                    className={`relative pb-1 text-[8px] uppercase tracking-[0.22em] transition-colors duration-300 sm:text-[9px] ${
+                    className={`relative pb-1 text-[8px] uppercase tracking-[0.22em] transition-colors duration-300 sm:text-[9px]  ${
                       active ? "text-ink" : "text-ink/30 hover:text-ink/60"
                     }`}
                   >
@@ -318,11 +319,11 @@ const ProductDetailsRight = ({
 
             <div className="mt-3 flex flex-wrap gap-2">
               {product.sizeOptions?.map((size) => {
-                const active = selectedSize?.size === size.size;
+                const active = selectedSize?.grams === size.grams;
 
                 return (
                   <button
-                    key={size.size}
+                    key={size.grams}
                     type="button"
                     onClick={() => setSelectedSize(size)}
                     className={`rounded-full border px-3 py-2 text-[7px] uppercase tracking-[0.12em] transition-all duration-300 ${
@@ -331,7 +332,7 @@ const ProductDetailsRight = ({
                         : "border-ink/10 text-ink/40 hover:border-ink/30"
                     }`}
                   >
-                    {size.size}
+                    {size.grams}g
                   </button>
                 );
               })}
