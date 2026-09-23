@@ -14,9 +14,9 @@ export const colors = {
 
 
 
-red: "#B54855",
+red: "#A62A34",
 ivory: "#F5F1E8",
-deepRed: "#762B35",
+deepRed: "#7F1F27",
 
 ink: "#181918",
 hill: "#293A34",
@@ -26,6 +26,9 @@ stone: "#8F8B82",
 lightWhite: "#FCFBF8",
 cream: "#E7E3D9",
 lightCream: "#F1EEE6",
+
+paper:"#F1EADB",
+raised:"#FBF7EE",
 
 
   brown: "#241817",

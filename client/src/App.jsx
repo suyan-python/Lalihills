@@ -28,6 +28,8 @@ import NewProductDetails from "./pages/shop/ProductDetailsLeft";
 import ProductDetailsLeft from "./pages/shop/ProductDetailsLeft";
 
 function App() {
+  const allProducts = [...coffeeProducts, ...teaProducts];
+
   return (
     <>
       <BrowserRouter>
@@ -52,11 +54,11 @@ function App() {
               <Route path="/product" element={<ProductDetailsLeft />} />
               <Route
                 path="/shop/coffee/:slug"
-                element={<ProductDetails products={coffeeProducts} />}
+                element={<ProductDetails products={allProducts} />}
               />
               <Route
                 path="/shop/tea/:slug"
-                element={<ProductDetails products={teaProducts} />}
+                element={<ProductDetails products={allProducts} />}
               />
               <Route path="/shop/help-me-choose" element={<HelpMeChoose />} />
               <Route path="/shop/coffee" element={<Coffee />} />

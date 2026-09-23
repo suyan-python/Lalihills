@@ -7,8 +7,7 @@ const ProductDetailsLeft = ({
   productType,
   setProductType,
   productOptions = [],
-  selectedOrigin,
-  setSelectedOrigin,
+  setCurrentProduct,
 }) => {
   const isBeans = productType === "beans";
 
@@ -34,11 +33,11 @@ const ProductDetailsLeft = ({
       </AnimatePresence>
 
       {/* IMAGE OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-ink/25" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-ink/25" />
 
       {/* BEANS / LEAVES */}
-      <div className="pointer-events-auto absolute right-5 top-5 z-50 sm:right-7 sm:top-7 lg:right-8 lg:top-8">
-        <div className="flex rounded-full border border-lightCream/20 bg-ink/25 p-1 backdrop-blur-md">
+      <div className="absolute right-5 top-5 z-[100] pointer-events-auto sm:right-7 sm:top-7 lg:right-8 lg:top-8">
+        <div className="flex rounded-full border border-lightCream/20 bg-ink/55 p-1 ">
           {[
             { id: "beans", label: "Beans" },
             { id: "leaves", label: "Leaves" },
@@ -49,12 +48,10 @@ const ProductDetailsLeft = ({
               <button
                 key={option.id}
                 type="button"
-                onClick={() => {
-                  setProductType(option.id);
-                }}
-                className={`relative z-50 cursor-pointer rounded-full px-4 py-2 text-[8px] font-medium uppercase tracking-[0.2em] transition-all duration-500 sm:px-5  ${
+                onClick={() => setProductType(option.id)}
+                className={`cursor-pointer rounded-full px-4 py-2 text-[10px] font-medium uppercase tracking-[0.2em] transition-all duration-500  ${
                   active
-                    ? "bg-lightCream text-ink"
+                    ? "bg-red text-lightWhite"
                     : "text-lightCream/60 hover:text-lightCream"
                 }`}
               >
@@ -66,39 +63,31 @@ const ProductDetailsLeft = ({
       </div>
 
       {/* PRODUCT INFORMATION */}
-      <div className="absolute inset-x-0 bottom-0  p-6 sm:p-8 md:p-10 lg:p-12">
+      <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8 md:p-10 lg:p-12">
         <div className="max-w-2xl">
           {/* PRODUCT OPTIONS */}
           <div className="mb-7">
-            <div className="flex flex-wrap gap-x-5 gap-y-2">
+            <div className="flex flex-wrap gap-x-2 gap-y-2">
               {productOptions.map((option) => {
-                const active = selectedOrigin === option;
+                const active = product?._id === option?._id;
 
                 return (
                   <button
-                    key={option}
+                    key={option._id}
                     type="button"
-                    onClick={() => setSelectedOrigin(option)}
-                    className={`relative pb-1 text-[8px] uppercase tracking-[0.18em] transition-colors duration-300 ${
+                    onClick={() => setCurrentProduct(option)}
+                    style={
                       active
-                        ? "text-lightCream"
-                        : "text-lightCream/40 hover:text-lightCream/75"
+                        ? { backgroundColor: option.imageColor }
+                        : undefined
+                    }
+                    className={`rounded-full border px-3 py-1 text-[10px] tracking-[0.02em] transition-all duration-300 ${
+                      active
+                        ? "border-transparent text-ink"
+                        : "cursor-pointer border-lightWhite/75 bg-ink/75 text-lightCream/85"
                     }`}
                   >
-                    {option}
-
-                    <motion.span
-                      initial={false}
-                      animate={{
-                        scaleX: active ? 1 : 0,
-                        opacity: active ? 1 : 0,
-                      }}
-                      transition={{
-                        duration: 0.35,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
-                      className="absolute bottom-0 left-0 h-px w-full origin-left bg-lightCream"
-                    />
+                    {option.name}
                   </button>
                 );
               })}

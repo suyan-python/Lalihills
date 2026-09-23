@@ -2,7 +2,7 @@ const OxidationLevel = ({ oxidation }) => {
   const levels = ["Green", "Oxidized", "Full"];
 
   const activeIndex = levels.findIndex(
-    (level) => level.toLowerCase() === oxidation?.toLowerCase(),
+    (level) => level.toLowerCase() === oxidation,
   );
 
   return (

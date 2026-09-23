@@ -15,53 +15,53 @@ import ProductDetailsRight from "./ProductDetailsRight";
 
 const ProductDetails = ({ products = [] }) => {
   const { slug } = useParams();
+
   const isCoffeeProduct = (item) =>
     item?.type === "beans" || item?.type === "coffee";
 
   const isTeaProduct = (item) =>
     item?.type === "leaves" || item?.type === "tea";
 
+  // Product from URL
   const initialProduct = useMemo(
     () => products.find((item) => item.slug === slug),
     [products, slug],
   );
 
+  const [currentProduct, setCurrentProduct] = useState(null);
   const [productType, setProductType] = useState("beans");
 
-  // Set initial type when URL product is available
   useEffect(() => {
     if (!initialProduct) return;
+
+    setCurrentProduct(initialProduct);
 
     setProductType(isTeaProduct(initialProduct) ? "leaves" : "beans");
   }, [initialProduct]);
 
-  const productOptions = useMemo(
-    () =>
-      productType === "beans"
-        ? ["Dhankuta", "Gulmi", "Sindhupalchok"]
-        : ["First Flush", "Green", "Silver Tips"],
-    [productType],
+  const coffeeProducts = useMemo(
+    () => products.filter((item) => item?.category === "coffee"),
+    [products],
   );
 
-  const [selectedOrigin, setSelectedOrigin] = useState("");
-
-  useEffect(() => {
-    setSelectedOrigin(productOptions[0] || "");
-  }, [productOptions]);
-
-  const matchingProducts = useMemo(
-    () =>
-      products.filter((item) =>
-        productType === "beans" ? isCoffeeProduct(item) : isTeaProduct(item),
-      ),
-    [products, productType],
+  const teaProducts = useMemo(
+    () => products.filter((item) => item?.category === "tea"),
+    [products],
   );
 
-  const product = useMemo(
-    () =>
-      matchingProducts.find((item) => item.origin === selectedOrigin) || null,
-    [matchingProducts, selectedOrigin],
-  );
+  const handleProductTypeChange = (type) => {
+    const nextProduct = type === "beans" ? coffeeProducts[0] : teaProducts[0];
+
+    console.log("Switching to:", type, nextProduct);
+
+    if (!nextProduct) {
+      console.log("NO PRODUCT FOUND");
+      return;
+    }
+
+    setProductType(type);
+    setCurrentProduct(nextProduct);
+  };
 
   const [selectedSize, setSelectedSize] = useState(null);
 
@@ -76,24 +76,17 @@ const ProductDetails = ({ products = [] }) => {
   const [frequency, setFrequency] = useState("Every 4 Weeks");
 
   useEffect(() => {
-    if (!product) return;
+    if (!currentProduct) return;
 
-    setSelectedSize(product.sizeOptions?.[0] || null);
-    setSelectedGrind(product.grindOptions?.[0] || "");
-    setSelectedForm(product.formOptions?.[0] || "");
+    setSelectedSize(currentProduct.sizeOptions?.[0] || null);
+    setSelectedGrind(currentProduct.grindOptions?.[0] || "");
+    setSelectedForm(currentProduct.formOptions?.[0] || "");
     setQuantity(1);
     setPurchaseType("one-time");
-    setFrequency(product.frequencies?.[0] || "Every 4 Weeks");
-  }, [product]);
+    setFrequency(currentProduct.frequencies?.[0] || "Every 4 Weeks");
+  }, [currentProduct]);
 
-  if (!product) {
-    return (
-      <section className="flex h-dvh items-center justify-center bg-ivory">
-        <p className="text-sm text-ink/50">Product not found.</p>
-      </section>
-    );
-  }
-  if (!product) {
+  if (!currentProduct) {
     return (
       <section className="flex h-dvh items-center justify-center bg-ivory">
         <p className="text-sm text-ink/50">Product not found.</p>
@@ -104,16 +97,17 @@ const ProductDetails = ({ products = [] }) => {
     <section className="h-dvh min-h-[620px] w-full overflow-hidden">
       <div className="grid h-full grid-cols-1 lg:grid-cols-2">
         <ProductDetailsLeft
-          product={product}
+          product={currentProduct}
           productType={productType}
-          setProductType={setProductType}
-          productOptions={productOptions}
-          selectedOrigin={selectedOrigin}
-          setSelectedOrigin={setSelectedOrigin}
+          setProductType={handleProductTypeChange}
+          productOptions={
+            productType === "beans" ? coffeeProducts : teaProducts
+          }
+          setCurrentProduct={setCurrentProduct}
         />
 
         <ProductDetailsRight
-          product={product}
+          product={currentProduct}
           selectedSize={selectedSize}
           setSelectedSize={setSelectedSize}
           selectedGrind={selectedGrind}
