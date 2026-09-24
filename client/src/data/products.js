@@ -134,7 +134,7 @@ sizeOptions: [
 
   ritual: {
   type: "pour-over",
-  method: "Pour-over",
+  method: "Pour-over ritual",
   dose: "18g",
   doseLabel: "Coffee",
   water: "290g",
@@ -142,6 +142,7 @@ sizeOptions: [
   temperature: "94°C",
   ratio: "1:16",
   totalTime: 180,
+
   steps: [
     {
       time: 0,
@@ -162,9 +163,11 @@ sizeOptions: [
       duration: 90,
     },
   ],
+
   description:
     "The dial fills as you brew; follow the step in the centre.",
 }
+
 },
 
  {
@@ -197,7 +200,7 @@ sizeOptions: [
     { grams: 250, price: 1650 },
   ],
 
-  grindOptions: ["beans", "ground"],
+  grindOptions: ["Whole bean", "Filter", "Espresso", "Moka pot","French Press","Cold Brew"],
 
   description:
     "Bold and complex Nepali filter roast, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
@@ -288,6 +291,42 @@ sizeOptions: [
         "Yes — anaerobic processing requires sealed tanks and longer controlled fermentation, which adds to production cost and complexity.",
     },
   ],
+
+    ritual: {
+  type: "pour-over",
+  method: "Pour-over ritual",
+  dose: "18g",
+  doseLabel: "Coffee",
+  water: "290g",
+  waterLabel: "Water",
+  temperature: "94°C",
+  ratio: "1:16",
+  totalTime: 180,
+
+  steps: [
+    {
+      time: 0,
+      label: "Bloom",
+      water: "50g",
+      duration: 45,
+    },
+    {
+      time: 45,
+      label: "Pour",
+      water: "120g",
+      duration: 45,
+    },
+    {
+      time: 90,
+      label: "Pour",
+      water: "120g",
+      duration: 90,
+    },
+  ],
+
+  description:
+    "The dial fills as you brew; follow the step in the centre.",
+},
 },
 
 {
@@ -321,7 +360,7 @@ sizeOptions: [
     { grams: 500, price: 2650 },
   ],
 
-  grindOptions: ["beans", "ground", "fine"],
+  grindOptions: ["Whole bean", "Filter", "Espresso", "Moka pot","French Press","Cold Brew"],
 
   description:
     "Bold and complex Nepali filter roast, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
@@ -412,6 +451,41 @@ sizeOptions: [
         "Yes — anaerobic processing requires sealed tanks and longer controlled fermentation, which adds to production cost and complexity.",
     },
   ],
+    ritual: {
+  type: "pour-over",
+  method: "Pour-over ritual",
+  dose: "18g",
+  doseLabel: "Coffee",
+  water: "290g",
+  waterLabel: "Water",
+  temperature: "94°C",
+  ratio: "1:16",
+  totalTime: 180,
+
+  steps: [
+    {
+      time: 0,
+      label: "Bloom",
+      water: "50g",
+      duration: 45,
+    },
+    {
+      time: 45,
+      label: "Pour",
+      water: "120g",
+      duration: 45,
+    },
+    {
+      time: 90,
+      label: "Pour",
+      water: "120g",
+      duration: 90,
+    },
+  ],
+
+  description:
+    "The dial fills as you brew; follow the step in the centre.",
+},
 },
 
 ];

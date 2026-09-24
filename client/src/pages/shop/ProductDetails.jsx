@@ -14,6 +14,7 @@ import ProductDetailsLeft from "./ProductDetailsLeft";
 import ProductDetailsRight from "./ProductDetailsRight";
 
 const ProductDetails = ({ products = [] }) => {
+  const { addToCart } = useCart();
   const { slug } = useParams();
 
   const isCoffeeProduct = (item) =>
@@ -93,9 +94,30 @@ const ProductDetails = ({ products = [] }) => {
       </section>
     );
   }
+
+  const subscriptionDiscount = 0.1;
+
+  const unitPrice =
+    purchaseType === "subscribe"
+      ? (selectedSize?.price || 0) * (1 - subscriptionDiscount)
+      : selectedSize?.price || 0;
+
+  const handleAddToCart = () => {
+    if (!currentProduct || !selectedSize) return;
+
+    addToCart(currentProduct, {
+      size: selectedSize.grams,
+      grind: currentProduct.category === "coffee" ? selectedGrind : null,
+      form: currentProduct.category === "tea" ? selectedForm : null,
+      purchaseType,
+      frequency: purchaseType === "subscribe" ? frequency : null,
+      quantity,
+      price: unitPrice,
+    });
+  };
   return (
-    <section className="h-dvh min-h-[620px] w-full overflow-hidden">
-      <div className="grid h-full grid-cols-1 lg:grid-cols-2">
+    <section className="w-full lg:h-dvh lg:min-h-[680px]">
+      <div className="grid min-h-screen grid-cols-1 lg:h-full lg:grid-cols-2">
         <ProductDetailsLeft
           product={currentProduct}
           productType={productType}
@@ -114,6 +136,7 @@ const ProductDetails = ({ products = [] }) => {
           setSelectedGrind={setSelectedGrind}
           selectedForm={selectedForm}
           setSelectedForm={setSelectedForm}
+          onAddToCart={handleAddToCart}
           quantity={quantity}
           setQuantity={setQuantity}
           purchaseType={purchaseType}

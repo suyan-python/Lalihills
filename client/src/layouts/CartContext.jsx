@@ -42,6 +42,7 @@ export const CartProvider = ({ children }) => {
     const {
       size = null,
       grind = null,
+      form = null,
       purchaseType = "one-time",
       frequency = null,
       quantity = 1,
@@ -50,7 +51,7 @@ export const CartProvider = ({ children }) => {
 
     const itemPrice = Number(price) || 0;
 
-    const cartKey = [product._id, size, grind, purchaseType, frequency]
+    const cartKey = [product._id, size, grind, form, purchaseType, frequency]
       .filter(Boolean)
       .join("-");
 
@@ -77,6 +78,7 @@ export const CartProvider = ({ children }) => {
           product,
           size,
           grind,
+          form,
           purchaseType,
           frequency,
           price: itemPrice,

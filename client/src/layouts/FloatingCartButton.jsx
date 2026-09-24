@@ -18,7 +18,7 @@ const FloatingCartButton = () => {
         duration: 0.45,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group fixed bottom-6 right-6 z-[80] flex h-12 items-center rounded-full bg-ink px-2 text-lightCream shadow-lg transition-all duration-300 hover:bg-red hover:shadow-xl active:scale-[0.97] sm:bottom-8 sm:right-8"
+      className="group fixed bottom-6 right-3 z-[80] flex h-12 items-center rounded-full bg-ink px-2 text-lightCream shadow-lg transition-all duration-300 hover:bg-red hover:shadow-xl active:scale-[0.97] sm:bottom-8 "
       aria-label={`Shopping cart${cartCount > 0 ? `, ${cartCount} items` : ""}`}
     >
       <span className="relative flex h-8 w-8 items-center justify-center">
