@@ -81,13 +81,13 @@ const ProductDetailsLeft = ({
                         ? { backgroundColor: option.imageColor }
                         : undefined
                     }
-                    className={`rounded-full border px-3 py-1 text-[10px] tracking-[0.02em] transition-all duration-300 ${
+                    className={`rounded-full border px-3 py-1 text-[11px] tracking-[0.02em] transition-all duration-300 font-semibold ${
                       active
                         ? "border-transparent text-ink"
                         : "cursor-pointer border-lightWhite/75 bg-ink/75 text-lightCream/85"
                     }`}
                   >
-                    {option.name}
+                    {option.origin}
                   </button>
                 );
               })}

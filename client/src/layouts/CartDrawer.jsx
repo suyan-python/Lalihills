@@ -248,6 +248,10 @@ const CartSummary = ({ total }) => {
   const { setIsCartOpen } = useCart();
   const navigate = useNavigate();
 
+  const formattedTotal = Number(total).toLocaleString(undefined, {
+    maximumFractionDigits: 0,
+  });
+
   const handleCheckout = () => {
     setIsCartOpen(false);
     navigate("/checkout");
@@ -255,52 +259,44 @@ const CartSummary = ({ total }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
-        duration: 0.6,
-        delay: 0.15,
+        duration: 0.5,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="shrink-0 rounded-t-[2rem] bg-hill px-5 pb-5 pt-5 sm:rounded-t-[2.5rem] sm:px-8 sm:pb-8 sm:pt-6"
+      className="shrink-0 border-t border-ink/10 bg-lightWhite px-5 pb-5 pt-5 sm:px-8 sm:pb-8 sm:pt-6"
     >
-      {/* Summary */}
+      {/* SUMMARY */}
       <div className="flex items-end justify-between gap-6">
-        <div className="min-w-0">
-          <p className="text-[7px] font-medium uppercase tracking-[0.25em] text-lightWhite/55 sm:text-[8px]">
-            Order summary
+        <div>
+          <p className="text-[8px] font-medium uppercase tracking-[0.22em] text-ink/45 sm:text-[9px]">
+            Order total
           </p>
 
-          <p className="mt-2 text-[9px] font-light italic leading-4 text-lightWhite/55 sm:text-[10px]">
+          <p className="mt-2 text-[9px] font-light leading-4 text-ink/45 sm:text-[10px]">
             Shipping calculated at checkout
           </p>
         </div>
 
-        <div className="shrink-0 text-right">
-          <p className="text-[7px] font-medium uppercase tracking-[0.25em] text-lightWhite/55 sm:text-[8px]">
-            Total
-          </p>
-
-          <p className="header mt-1 text-xl font-medium leading-none tracking-[-0.03em] text-lightWhite sm:text-2xl">
-            NPR{" "}
-            {Number(total).toLocaleString(undefined, {
-              maximumFractionDigits: 0,
-            })}
+        <div className="text-right">
+          <p className="header text-2xl font-medium leading-none tracking-[-0.04em] text-ink sm:text-3xl">
+            NPR {formattedTotal}
           </p>
         </div>
       </div>
 
-      {/* Checkout */}
+      {/* CHECKOUT */}
       <button
         type="button"
         onClick={handleCheckout}
-        className="group mt-5 flex h-12 w-full items-center justify-between rounded-full bg-lightWhite px-5 text-ink transition-all duration-300 hover:bg-cream active:scale-[0.98] cursor-pointer sm:mt-6 sm:h-13 sm:px-6"
+        className="group mt-5 flex h-12 w-full cursor-pointer items-center justify-between rounded-full bg-red px-5 text-lightCream transition-all duration-300 hover:bg-deepRed active:scale-[0.985] sm:mt-6 sm:h-13 sm:px-6"
       >
         <span className="text-[9px] font-bold uppercase tracking-[0.18em] sm:text-[10px] sm:tracking-[0.2em]">
           Proceed to checkout
         </span>
 
-        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-lightWhite transition-transform duration-300 group-hover:translate-x-0.5 sm:h-8 sm:w-8">
+        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-lightCream text-red transition-transform duration-300 group-hover:translate-x-0.5 sm:h-8 sm:w-8">
           <ArrowRight size={13} strokeWidth={1.8} className="sm:h-4 sm:w-4" />
         </span>
       </button>
