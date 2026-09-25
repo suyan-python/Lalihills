@@ -119,7 +119,7 @@ const ProductDetailsLeft = ({
               )}
 
               {/* ROAST / OXIDATION */}
-              <div className="mt-6 border-t border-lightCream/15 pt-5">
+              <div className="mt-2 border-t border-lightCream/35 pt-1">
                 {isBeans ? (
                   <RoastLevel roast={product.roastLevel} />
                 ) : (

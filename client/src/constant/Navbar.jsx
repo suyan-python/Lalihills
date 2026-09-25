@@ -180,8 +180,8 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 md:top-9 z-[100]">
-        <div className="flex h-24 items-center justify-between px-3 sm:px-8 lg:px-12 xl:px-16 text-lightWhite">
+      <header className="fixed inset-x-0 top-0 z-[100] md:top-3">
+        <div className="flex h-24 items-center justify-between px-3 sm:px-8 lg:px-12 xl:px-16 text-lightWhite ">
           {/* LOGO */}
           <Link
             to="/"
@@ -208,7 +208,7 @@ const Navbar = () => {
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
-            className="group relative z-[110] flex h-12 w-12 items-center justify-center "
+            className="group relative z-[110] flex h-12 w-12 items-center justify-center"
           >
             <span className="relative flex h-6 w-7 flex-col justify-center cursor-pointer">
               <motion.span
@@ -227,7 +227,9 @@ const Navbar = () => {
                   duration: 0.35,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className={`absolute left-0 h-px w-7 ${menuOpen ? "bg-ink" : "bg-soil"}`}
+                className={`absolute left-0 h-px w-7 ${
+                  menuOpen ? "bg-stone" : "bg-soil"
+                }`}
               />
 
               <motion.span
@@ -246,7 +248,9 @@ const Navbar = () => {
                   duration: 0.35,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className={`absolute left-0 h-px w-7 ${menuOpen ? "bg-ink" : "bg-soil"}`}
+                className={`absolute left-0 h-px w-7 ${
+                  menuOpen ? "bg-stone" : "bg-soil"
+                }`}
               />
             </span>
           </button>
@@ -286,7 +290,7 @@ const Navbar = () => {
                 duration: 0.65,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="fixed right-0 top-0 z-[90] hidden h-fit w-full overflow-hidden bg-ink lg:block"
+              className="fixed right-0 top-0 z-[95] hidden h-fit w-full overflow-hidden bg-ink lg:block"
             >
               <div className="flex h-full w-full">
                 {/* ==========================================
@@ -686,7 +690,9 @@ const Navbar = () => {
                               setActiveItem(isActive ? "" : item.title)
                             }
                             aria-expanded={isActive}
-                            aria-label={`${isActive ? "Collapse" : "Expand"} ${item.title} submenu`}
+                            aria-label={`${isActive ? "Collapse" : "Expand"} ${
+                              item.title
+                            } submenu`}
                           >
                             <motion.span
                               animate={{

@@ -14,8 +14,9 @@ const ProductDetailsRight = ({
   frequency,
   setFrequency,
   onAddToCart,
-  onThemeToggle,
   onCartOpen,
+  darkMode,
+  onThemeToggle,
 }) => {
   const [activeInfo, setActiveInfo] = useState("taste");
   const [added, setAdded] = useState(false);
@@ -54,9 +55,9 @@ const ProductDetailsRight = ({
   const infoOptions = ["taste", "origin", "ritual"];
 
   return (
-    <div className="relative flex h-full min-h-0 flex-col bg-paper text-ink">
+    <div className="relative flex h-full min-h-0 flex-col bg-paper dark:bg-ink text-ink transition-colors duration-300">
       {/* TOP — INFORMATION */}
-      <div className="min-h-0 flex-1 overflow-y-auto">
+      <div className=" z-10  min-h-0 flex-1 overflow-y-auto">
         <div className="flex h-full flex-col">
           {/* TOP NAV */}
           <div className="flex shrink-0 items-center justify-between border-b border-ink/10 px-6 py-5 sm:px-8 lg:px-10">
@@ -69,7 +70,9 @@ const ProductDetailsRight = ({
                     width: `calc((100% - 8px) / ${infoOptions.length})`,
                   }}
                   animate={{
-                    left: `calc(4px + ${infoOptions.indexOf(activeInfo)} * ((100% - 8px) / ${infoOptions.length}))`,
+                    left: `calc(4px + ${infoOptions.indexOf(
+                      activeInfo,
+                    )} * ((100% - 8px) / ${infoOptions.length}))`,
                   }}
                   transition={{
                     type: "spring",
@@ -90,7 +93,7 @@ const ProductDetailsRight = ({
                       className={`relative z-10 flex h-8 items-center justify-center rounded-full px-3 text-[8px] font-bold uppercase tracking-[0.08em] transition-colors duration-300 sm:h-9 sm:px-4 sm:text-[9px] ${
                         active
                           ? "text-ink"
-                          : "cursor-pointer text-ink/50 hover:text-ink/75"
+                          : "cursor-pointer text-ink/50 hover:text-ink/75  dark:text-lightWhite/50 dark:hover:text-lightWhite/75 "
                       }`}
                     >
                       {item}
@@ -101,23 +104,14 @@ const ProductDetailsRight = ({
             </div>
 
             {/* ACTIONS */}
-            <div className="flex shrink-0 items-center gap-2 sm:gap-4">
-              <button
-                type="button"
-                onClick={onThemeToggle}
-                className="flex h-8 items-center rounded-full border border-black/20 px-2.5 text-[7px] font-medium uppercase tracking-[0.16em] text-ink transition-colors hover:border-black/40 sm:h-9 sm:px-3 sm:text-[8px] sm:tracking-[0.2em]"
-              >
-                Theme
-              </button>
-
-              <button
-                type="button"
-                onClick={onCartOpen}
-                className="flex h-8 items-center px-1 text-[7px] font-medium uppercase tracking-[0.16em] text-ink/50 transition-colors hover:text-ink sm:h-9 sm:px-2 sm:text-[8px] sm:tracking-[0.2em]"
-              >
-                Cart
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={onThemeToggle}
+              aria-label="Toggle dark mode"
+              className="flex h-8 cursor-pointer items-center rounded-full border border-black/20 px-2.5 text-[7px] font-medium uppercase tracking-[0.16em] text-ink transition-colors hover:border-black/40 dark:border-lightCream/20 dark:text-lightCream dark:hover:border-lightCream/40 sm:h-9 sm:px-3 sm:text-[8px] sm:tracking-[0.2em]"
+            >
+              {darkMode ? "Light" : "Dark"}
+            </button>
           </div>
 
           {/* INFORMATION CONTENT */}
@@ -125,7 +119,7 @@ const ProductDetailsRight = ({
             <AnimatePresence mode="wait">
               {activeInfo === "taste" && (
                 <InfoPanel key="taste" title="Taste">
-                  <p className="max-w-lg text-sm leading-7 text-soil">
+                  <p className="max-w-lg text-sm leading-7 text-soil dark:text-lightWhite">
                     {product.description}
                   </p>
 
@@ -192,7 +186,7 @@ const ProductDetailsRight = ({
       </div>
 
       {/* BOTTOM — PURCHASE */}
-      <div className="shrink-0  px-6 py-2 sm:px-8 lg:px-10 lg:py-4 bg-lightWhite ">
+      <div className="shrink-0 bg-lightWhite px-6 py-2 text-ink transition-colors duration-300  dark:text-lightWhite sm:px-8 lg:px-10 lg:py-4">
         {/* PLAN */}
 
         <div className="flex justify-between text-center gap-8 relative  ">
@@ -413,14 +407,14 @@ const ProductDetailsRight = ({
       <AnimatePresence>
         {added && (
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: -8, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.96 }}
             transition={{
-              duration: 0.4,
+              duration: 0.35,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="absolute top-24 left-6 z-100 rounded-full bg-hill px-5 py-3 text-[8px] uppercase tracking-[0.16em] text-lightCream shadow-xl sm:right-8"
+            className="fixed left-1/2 top-24 z-[120] -translate-x-1/2 rounded-md bg-hill px-6 py-4 text-center text-[8px] uppercase tracking-[0.16em] text-lightCream shadow-2xl"
           >
             {product.roastLevel
               ? `${product.roastLevel} roast added`
@@ -682,8 +676,8 @@ const TeaTimer = ({ ritual }) => {
               {steep.number === 1
                 ? "1st"
                 : steep.number === 2
-                  ? "2nd"
-                  : `${steep.number}th`}
+                ? "2nd"
+                : `${steep.number}th`}
             </p>
 
             <p className="mt-2 text-sm text-ink">

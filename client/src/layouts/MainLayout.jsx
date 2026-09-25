@@ -12,8 +12,7 @@ const MainLayout = () => {
   return (
     <div className="min-h-screen">
       {!isProductPage && <Banner />}
-
-      {/* <Navbar /> */}
+      {!isProductPage && <Navbar />}
 
       <main className="relative z-10">
         <Outlet />

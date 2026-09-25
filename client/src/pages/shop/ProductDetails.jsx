@@ -76,6 +76,19 @@ const ProductDetails = ({ products = [] }) => {
 
   const [frequency, setFrequency] = useState("Every 4 Weeks");
 
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
+
+  const handleThemeToggle = () => {
+    setDarkMode((prev) => !prev);
+  };
+
   useEffect(() => {
     if (!currentProduct) return;
 
@@ -116,7 +129,7 @@ const ProductDetails = ({ products = [] }) => {
     });
   };
   return (
-    <section className="w-full lg:h-dvh lg:min-h-[680px]">
+    <section className="relative z-0 w-full lg:h-dvh lg:min-h-[680px]">
       <div className="grid min-h-screen grid-cols-1 lg:h-full lg:grid-cols-2">
         <ProductDetailsLeft
           product={currentProduct}
@@ -143,6 +156,8 @@ const ProductDetails = ({ products = [] }) => {
           setPurchaseType={setPurchaseType}
           frequency={frequency}
           setFrequency={setFrequency}
+          darkMode={darkMode}
+          onThemeToggle={handleThemeToggle}
         />
       </div>
     </section>

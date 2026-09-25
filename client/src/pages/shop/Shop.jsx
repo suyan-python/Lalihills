@@ -64,7 +64,7 @@ const Shop = () => {
 
       <section className="relative z-10">
         <div className="w-full">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-5 py-8 px-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 ">
             <CollectionSecondary collection={collections[0]} index={0} />
             <CollectionSecondary collection={collections[1]} index={1} />
             <CollectionSecondary collection={collections[2]} index={2} />
@@ -95,7 +95,7 @@ const CollectionSecondary = ({ collection, index }) => {
       className="w-full"
     >
       <Link to={collection.path} className="group block w-full overflow-hidden">
-        <div className="grid aspect-[3/5] w-full grid-rows-[3fr_1fr] overflow-hidden bg-lightCream rounded-4xl">
+        <div className="grid aspect-[3/5] w-full grid-rows-[3fr_1fr] overflow-hidden bg-lightCream ">
           {/* IMAGE */}
           <div className="relative min-h-0 overflow-hidden">
             <motion.img

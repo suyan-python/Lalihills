@@ -8,6 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import PaymentMethod from "./PaymentMethod";
 import QRPayment from "./QRPayment";
 import PaymentConfirmation from "./PaymentConfirmation";
+import esewa from "../../assets/logo/payment/esewa.webp";
+import khalti from "../../assets/logo/payment/khalti.png";
+import connectips from "../../assets/logo/payment/connectips.png";
+import nepalpay from "../../assets/logo/payment/nepalpay.png";
 
 const Checkout = () => {
   const { cartItems, cartTotal } = useCart();
@@ -74,64 +78,82 @@ const Checkout = () => {
   return (
     <main className="flex flex-col md:flex-row bg-lightWhite   text-ink  ">
       <div className="flex flex-col items-end justify-end min-h-screen mx-auto md:w-[60%] px-10 py-20 md:py-26 border-r border-ink/25 ">
-        <div className="">
-          {/* Header Section */}
-          <div className="flex items-center justify-between ">
-            <img
-              src={logo}
-              alt="Laali Hills"
-              className="h-8 w-auto object-contain"
-            />
+        {/* CHECKOUT CONTENT */}
+        <div className="mx-auto w-full max-w-2xl">
+          {/* Checkout Header */}
+          <div className="border-b border-ink/15 pb-3">
+            <div className="flex items-end justify-between gap-6">
+              <div>
+                <p className="header text-[9px] font-semibold uppercase tracking-[0.22em] text-red">
+                  Laali Hills
+                </p>
 
-            <motion.button
-              type="button"
-              onClick={() => setIsCartOpen(true)}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: isCartOpen ? 0 : 1,
-                y: isCartOpen ? 20 : 0,
-              }}
-              transition={{
-                duration: 0.45,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="z-[80] hidden md:flex h-12 items-center rounded-full bg-ink px-2 text-lightCream shadow-lg transition-all duration-300 hover:bg-red hover:shadow-xl active:scale-[0.97] sm:bottom-8 sm:right-8 cursor-pointer"
-              aria-label={`Shopping cart${cartCount > 0 ? `, ${cartCount} items` : ""}`}
-            >
-              <span className="relative flex h-8 w-8 items-center justify-center ">
-                <ShoppingBag
-                  size={25}
-                  strokeWidth={1.2}
-                  className="transition-transform duration-300 group-hover:scale-105"
-                />
+                <h1 className="header mt-2 text-4xl leading-none tracking-[-0.045em] text-ink sm:text-5xl">
+                  Checkout
+                </h1>
+              </div>
+            </div>
 
-                <motion.span
-                  key={cartCount}
-                  initial={{ scale: 0.7, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 500,
-                    damping: 25,
-                  }}
-                  className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red px-1.5 text-[7px] font-semibold tabular-nums text-lightCream transition-colors duration-300 group-hover:bg-lightCream group-hover:text-red"
-                >
-                  {cartCount}
-                </motion.span>
+            {/* Payment Trust */}
+            <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-ink/8 pt-3">
+              <span className="text-[9px] font-medium uppercase tracking-[0.16em] text-ink/45">
+                Secure payments
               </span>
-            </motion.button>
+
+              <div className="flex items-center gap-2">
+                <div className="flex h-7 items-center border border-ink/10 bg-white px-2.5">
+                  <img
+                    src={esewa}
+                    alt="eSewa"
+                    className="h-5 w-auto object-contain"
+                  />
+                </div>
+
+                <div className="flex h-7 items-center border border-ink/10 bg-white px-2.5">
+                  <img
+                    src={khalti}
+                    alt="Khalti"
+                    className="h-5 w-auto object-contain"
+                  />
+                </div>
+
+                <div className="flex h-7 items-center border border-ink/10 bg-white px-2.5">
+                  <img
+                    src={nepalpay}
+                    alt="NepalPay"
+                    className="h-5 w-auto object-contain"
+                  />
+                </div>
+
+                <div className="flex h-7 items-center border border-ink/10 bg-white px-2.5">
+                  <img
+                    src={connectips}
+                    alt="connectIPS"
+                    className="h-5 w-auto object-contain"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Form Section */}
-          <div className="gap-10 lg:gap-20">
-            <section className="py-8">
-              <div className="">
-                <h2 className="text-lg  font-bold  text-ink">Contact</h2>
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="mt-5">
+            {/* CONTACT */}
+            <section>
+              <div className="flex items-center justify-between ">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-[9px] font-semibold tracking-[0.15em] text-red">
+                    01
+                  </span>
+                  <h2 className="header text-xl tracking-[-0.025em] text-ink sm:text-2xl ">
+                    Contact information
+                  </h2>
+                </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="mt-2 space-y-1">
+              <div className="mt-5 space-y-1">
                 <InputField
-                  label="Email Address"
+                  label="Email address"
                   name="email"
                   type="email"
                   value={formData.email}
@@ -139,9 +161,9 @@ const Checkout = () => {
                   required
                 />
 
-                <div className="grid gap-7 sm:grid-cols-2">
+                <div className="grid gap-5 sm:grid-cols-2">
                   <InputField
-                    label="First Name"
+                    label="First name"
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
@@ -149,7 +171,7 @@ const Checkout = () => {
                   />
 
                   <InputField
-                    label="Last Name"
+                    label="Last name"
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
@@ -157,34 +179,41 @@ const Checkout = () => {
                   />
                 </div>
 
-                <div>
-                  <InputField
-                    label="Phone Number"
-                    name="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
+                <InputField
+                  label="Phone number"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </section>
 
-                <div className="mt-8">
-                  <h2 className="text-lg  font-bold  text-ink">
-                    Delivery Details
+            {/* DELIVERY */}
+            <section className="mt-10">
+              <div className="flex items-center justify-between ">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-[9px] font-semibold tracking-[0.15em] text-red">
+                    02
+                  </span>
+
+                  <h2 className="header text-xl tracking-[-0.025em] text-ink sm:text-2xl">
+                    Delivery address
                   </h2>
                 </div>
+              </div>
 
-                <div>
-                  <InputField
-                    label="Address"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
+              <div className="mt-5 space-y-1">
+                <InputField
+                  label="Street address"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleChange}
+                  required
+                />
 
-                <div className="grid gap-7 sm:grid-cols-2">
+                <div className="grid gap-5 sm:grid-cols-2">
                   <InputField
                     label="City"
                     name="city"
@@ -202,40 +231,112 @@ const Checkout = () => {
                   />
                 </div>
 
-                <div>
-                  <InputField
-                    label="Postal Code"
-                    name="postalCode"
-                    value={formData.postalCode}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <div className="mt-8 rounded-4xl bg-lightCream p-5 sm:p-6">
-                  <label className="block">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink">
-                        Order notes
-                      </span>
-
-                      <span className="text-[8px] text-ink/85 font-light italic">
-                        Optional
-                      </span>
-                    </div>
-
-                    <textarea
-                      name="notes"
-                      value={formData.notes}
-                      onChange={handleChange}
-                      rows={3}
-                      placeholder="Anything we should know?"
-                      className="mt-4 min-h-24 w-full resize-none rounded-2xl border border-ink/10 bg-lightWhite/50 px-4 py-3 text-sm leading-6 tracking-wide text-ink outline-none transition-all duration-300 placeholder:text-ink/30 focus:border-ink/25 focus:bg-lightWhite"
-                    />
-                  </label>
-                </div>
-              </form>
+                <InputField
+                  label="Postal code"
+                  name="postalCode"
+                  value={formData.postalCode}
+                  onChange={handleChange}
+                />
+              </div>
             </section>
-          </div>
+
+            {/* NOTES */}
+            <section className="mt-10">
+              <div className="flex items-center justify-between ">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-[9px] font-semibold tracking-[0.15em] text-red">
+                    03
+                  </span>
+
+                  <h2 className="header text-xl tracking-[-0.025em] text-ink sm:text-2xl">
+                    Order notes
+                  </h2>
+                </div>
+              </div>
+
+              <textarea
+                name="notes"
+                value={formData.notes}
+                onChange={handleChange}
+                rows={4}
+                placeholder="Anything we should know about your order?"
+                className="mt-5 min-h-28 w-full resize-none rounded-lg border border-ink/15 bg-white px-4 py-3.5 text-sm leading-6 tracking-wide text-ink outline-none transition-colors duration-200 placeholder:text-ink/30 hover:border-ink/25 focus:border-ink/50 focus:ring-1 focus:ring-ink/5"
+              />
+            </section>
+
+            {/* Checkout reassurance */}
+            <div className="mt-8 border-y border-ink/10 py-4">
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div className="flex items-start gap-2.5">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="mt-0.5 h-4 w-4 shrink-0 text-ink/60"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <path d="M12 3 5 6v5c0 4.5 3 7.5 7 10 4-2.5 7-5.5 7-10V6l-7-3Z" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+
+                  <div>
+                    <p className="text-[10px] font-medium text-ink">
+                      Secure checkout
+                    </p>
+                    <p className="mt-0.5 text-[9px] leading-4 text-ink/45">
+                      Your information is protected.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2.5">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="mt-0.5 h-4 w-4 shrink-0 text-ink/60"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <path d="M3 7h13v10H3z" />
+                    <path d="M16 10h3l2 3v4h-5z" />
+                    <circle cx="7" cy="18" r="1.5" />
+                    <circle cx="18" cy="18" r="1.5" />
+                  </svg>
+
+                  <div>
+                    <p className="text-[10px] font-medium text-ink">
+                      Reliable delivery
+                    </p>
+                    <p className="mt-0.5 text-[9px] leading-4 text-ink/45">
+                      Carefully packed from the hills.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2.5">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="mt-0.5 h-4 w-4 shrink-0 text-ink/60"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <path d="M20 11a8 8 0 1 1-2.34-5.66" />
+                    <path d="M20 4v7h-7" />
+                  </svg>
+
+                  <div>
+                    <p className="text-[10px] font-medium text-ink">
+                      Freshly prepared
+                    </p>
+                    <p className="mt-0.5 text-[9px] leading-4 text-ink/45">
+                      We prepare every order with care.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
 
@@ -281,8 +382,10 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
   const PROMO_DISCOUNT = 0.05;
 
   const subtotal = Number(cartTotal) || 0;
+
   const promoDiscount = promoApplied ? subtotal * PROMO_DISCOUNT : 0;
-  const finalTotal = subtotal - promoDiscount;
+
+  const finalTotal = Math.max(0, subtotal - promoDiscount);
 
   const [paymentStep, setPaymentStep] = useState("checkout");
   const [paymentMethod, setPaymentMethod] = useState(null);
@@ -299,51 +402,109 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
       <div className=" text-lightCream max-w-md mr-auto  px-7 pb-10 ">
         {/* ITEMS */}
         <div className="mt-7">
-          {cartItems.map((item) => {
-            const { product, quantity, size, grind, purchaseType, frequency } =
-              item;
+          <div className="divide-y divide-ink/8">
+            {cartItems.map((item) => {
+              const {
+                product,
+                quantity = 1,
+                size,
+                grind,
+                purchaseType,
+                frequency,
+              } = item;
 
-            const itemPrice = Number(item.unitPrice ?? product.price) || 0;
+              // Extract the numeric gram value from whatever format
+              // the cart stores, e.g. "250g", "250 g", or 250.
+              const selectedGrams = Number.parseInt(
+                String(size).replace(/\D/g, ""),
+                10,
+              );
 
-            return (
-              <div key={item.cartKey} className="flex gap-4 py-2 first:pt-0">
-                <div className="h-20 w-16 shrink-0 overflow-hidden rounded-xl bg-ink">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
+              // Find the matching size option
+              const selectedSize = product.sizeOptions?.find(
+                (option) => Number(option.grams) === selectedGrams,
+              );
 
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-baseline justify-between gap-4 ">
-                    <h3 className="max-w-[70%] text-[14px] font-bold uppercase leading-4 tracking-[0.10em] text-ink">
-                      {product.name}
-                    </h3>
+              // IMPORTANT:
+              // Size-specific price takes priority over the old/stored unitPrice.
+              const itemPrice = Number(
+                selectedSize?.price ?? item.unitPrice ?? product.price ?? 0,
+              );
 
-                    <span className="header shrink-0 text-[14px]  text-ink">
-                      Rs. {(itemPrice * quantity).toLocaleString()}
-                    </span>
+              const lineTotal = itemPrice * Number(quantity);
+
+              return (
+                <div
+                  key={item.cartKey}
+                  className="flex gap-4 py-4 first:pt-2 last:pb-2"
+                >
+                  {/* Product Image */}
+                  <div className="h-[76px] w-[62px] shrink-0 overflow-hidden rounded-md bg-ink/5">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="h-full w-full object-cover"
+                    />
                   </div>
 
-                  <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[10px] uppercase tracking-[0.12em] text-soil ">
-                    {size && <span className="">{size}</span>}
+                  {/* Product Details */}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="min-w-0">
+                        <h3 className="header text-[14px] font-semibold uppercase leading-[1.35] tracking-[0.09em] text-ink">
+                          {product.name}
+                        </h3>
 
-                    {grind && <span className="">{grind}</span>}
+                        <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[9px] uppercase tracking-[0.12em] text-stone">
+                          {size && <span>{size}</span>}
 
-                    <span className="">× {quantity}</span>
+                          {size && grind && (
+                            <span className="h-2.5 w-px bg-ink/15" />
+                          )}
 
-                    {purchaseType === "subscribe" && frequency && (
-                      <span className="">{frequency}</span>
-                    )}
+                          {grind && <span>{grind}</span>}
+
+                          <span className="h-2.5 w-px bg-ink/15" />
+
+                          <span>Qty {quantity}</span>
+                        </div>
+
+                        {purchaseType === "subscribe" && frequency && (
+                          <div className="mt-2 inline-flex items-center gap-1.5 text-[8px] font-medium uppercase tracking-[0.13em] text-red">
+                            <span className="h-1.5 w-1.5 rounded-full bg-red" />
+                            {frequency} delivery
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="shrink-0 text-right">
+                        <span className="header text-[16px] tracking-[-0.01em] text-ink">
+                          Rs. {lineTotal.toLocaleString()}
+                        </span>
+
+                        {quantity > 1 && (
+                          <p className="mt-1 text-[8px] tracking-[0.08em] text-ink/35">
+                            Rs. {itemPrice.toLocaleString()} / unit
+                          </p>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-        <div className="mt-5">
-          <div className="flex items-center gap-3">
+
+        {/* PROMO CODE */}
+        <div className="mt-7 border-y border-ink/10 py-4">
+          <div className="flex items-center justify-between">
+            <span className="text-[9px] font-medium uppercase tracking-[0.16em] text-ink/55">
+              Have a promo code?
+            </span>
+          </div>
+
+          <div className="mt-3 flex gap-2">
             <input
               type="text"
               value={promoCode}
@@ -351,9 +512,9 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
                 setPromoCode(e.target.value);
                 setPromoApplied(false);
               }}
-              placeholder="Promo code"
+              placeholder="Enter code"
               disabled={promoApplied}
-              className="h-10 min-w-0 flex-1 border px-4 border-ink/50 rounded-4xl bg-transparent  text-[10px] uppercase tracking-[0.12em] text-ink outline-none transition-colors duration-300 placeholder:text-ink/50 focus:border-ink/50 disabled:opacity-60"
+              className="h-10 min-w-0 flex-1 rounded-md border border-ink/15 bg-white px-3.5 text-[10px] uppercase tracking-[0.12em] text-ink outline-none transition-colors duration-200 placeholder:text-ink/30 hover:border-ink/25 focus:border-ink/45 disabled:bg-ink/5 disabled:text-ink/50"
             />
 
             <button
@@ -364,7 +525,7 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
                 }
               }}
               disabled={promoApplied || !promoCode.trim()}
-              className="shrink-0 text-[9px] font-medium uppercase tracking-[0.18em] text-lightWhite transition-opacity duration-300 hover:opacity-60 disabled:cursor-not-allowed disabled:opacity-30 bg-ink rounded-full p-2 cursor-pointer"
+              className="h-10 shrink-0 rounded-md border border-ink bg-ink px-5 text-[9px] font-medium uppercase tracking-[0.16em] text-lightWhite transition-opacity duration-200 hover:opacity-85 disabled:cursor-not-allowed disabled:border-ink/20 disabled:bg-ink/20"
             >
               {promoApplied ? "Applied" : "Apply"}
             </button>
@@ -372,9 +533,13 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
 
           {promoApplied && (
             <div className="mt-3 flex items-center justify-between">
-              <span className="text-[8px] uppercase tracking-[0.15em] text-ink">
-                Promo · LAALI2026
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-red" />
+
+                <span className="text-[8px] font-medium uppercase tracking-[0.14em] text-ink/70">
+                  {promoCode.toUpperCase()} applied
+                </span>
+              </div>
 
               <button
                 type="button"
@@ -382,94 +547,119 @@ const OrderSummary = ({ cartItems, cartTotal }) => {
                   setPromoCode("");
                   setPromoApplied(false);
                 }}
-                className="text-[8px] uppercase tracking-[0.15em] text-ink/40 transition-colors hover:text-ink"
+                className="text-[8px] uppercase tracking-[0.14em] text-ink/40 transition-colors hover:text-ink"
               >
                 Remove
               </button>
             </div>
           )}
         </div>
+
         {/* TOTALS */}
-        <div className="flex items-center justify-between mt-10">
-          <span className="text-[12px] tracking-[0.1em] text-ink">
-            Subtotal
-          </span>
-
-          <span className="header text-[12px] text-ink">
-            Rs.{" "}
-            {subtotal.toLocaleString(undefined, {
-              maximumFractionDigits: 0,
-            })}
-          </span>
-        </div>
-
-        {promoApplied && (
-          <div className="flex items-center justify-between mt-1">
-            <span className="text-[12px] tracking-[0.1em] text-ink">
-              Discount
+        <div className="mt-6">
+          <div className="flex items-center justify-between py-1">
+            <span className="text-[11px] tracking-[0.06em] text-ink/65">
+              Subtotal
             </span>
 
             <span className="header text-[12px] text-ink">
-              − Rs.{" "}
-              {promoDiscount.toLocaleString(undefined, {
+              Rs.{" "}
+              {subtotal.toLocaleString(undefined, {
                 maximumFractionDigits: 0,
               })}
             </span>
           </div>
-        )}
 
-        <div className="flex items-center justify-between mt-1">
-          <span className="text-[12px]  tracking-[0.1em] text-ink">
-            Shipping
-          </span>
+          {promoApplied && (
+            <div className="flex items-center justify-between py-1">
+              <span className="text-[11px] tracking-[0.06em] text-ink/65">
+                Discount
+              </span>
 
-          <span className="text-[12px]  tracking-[0.01em] text-ink/75">
-            Enter Shipping Address
-          </span>
+              <span className="header text-[12px] text-red">
+                − Rs.{" "}
+                {promoDiscount.toLocaleString(undefined, {
+                  maximumFractionDigits: 0,
+                })}
+              </span>
+            </div>
+          )}
+
+          <div className="flex items-center justify-between py-1">
+            <span className="text-[11px] tracking-[0.06em] text-ink/65">
+              Shipping
+            </span>
+
+            <span className="text-right text-[10px] tracking-[0.02em] text-ink/45">
+              Enter shipping address
+            </span>
+          </div>
+
+          {/* Total */}
+          <div className="mt-4 flex items-end justify-between border-t border-ink/15 pt-4">
+            <div>
+              <span className="header text-base tracking-[-0.02em] text-ink">
+                Total
+              </span>
+
+              <p className="mt-1 text-[8px] uppercase tracking-[0.13em] text-ink/35">
+                Including applicable charges
+              </p>
+            </div>
+
+            <span className="header text-xl tracking-[-0.02em] text-ink">
+              Rs.{" "}
+              {(subtotal - (promoApplied ? promoDiscount : 0)).toLocaleString(
+                undefined,
+                {
+                  maximumFractionDigits: 0,
+                },
+              )}
+            </span>
+          </div>
         </div>
 
-        {/* TOTAL */}
-        <div className="flex items-end justify-between pt-6 border-b border-ink/45 pb-3">
-          <span className="text-[20px] font-medium   text-ink">Total</span>
+        {/* PAYMENT ACTIONS */}
+        <div className="mt-5 border-t border-ink/10 pt-5">
+          <button
+            type="submit"
+            className="group flex h-12 w-full items-center justify-center gap-3 rounded-md bg-ink px-6 text-lightCream transition-colors duration-200 hover:bg-hill active:scale-[0.99] cursor-pointer sm:px-8"
+          >
+            <span className="text-[10px] font-semibold uppercase tracking-[0.18em]">
+              Place order
+            </span>
 
-          <span className="header text-[20px] font-medium tracking-[0.02em] text-ink">
-            Rs.{" "}
-            {finalTotal.toLocaleString(undefined, {
-              maximumFractionDigits: 0,
-            })}
-          </span>
+            <ArrowRight
+              size={15}
+              strokeWidth={1.7}
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            />
+          </button>
+
+          <div className="my-4 flex items-center gap-3">
+            <span className="h-px flex-1 bg-ink/8" />
+            <span className="text-[8px] uppercase tracking-[0.16em] text-ink/30">
+              or
+            </span>
+            <span className="h-px flex-1 bg-ink/8" />
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setPaymentStep("payment-method")}
+            className="group flex h-11 w-full items-center justify-center gap-3 rounded-md border border-ink/15 bg-white px-6 text-ink transition-colors duration-200 hover:border-ink/30 hover:bg-cream active:scale-[0.99] cursor-pointer sm:px-8"
+          >
+            <span className="text-[9px] font-medium uppercase tracking-[0.17em]">
+              Pay via QR
+            </span>
+
+            <ArrowRight
+              size={14}
+              strokeWidth={1.5}
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            />
+          </button>
         </div>
-
-        <button
-          type="submit"
-          className="group mt-8 flex h-10 w-full items-center justify-center gap-2 rounded-full bg-ink px-6 text-lightCream transition-all duration-300 hover:bg-hill active:scale-[0.98] cursor-pointer sm:px-8"
-        >
-          <span className="text-[12px] font-bold tracking-[0.15em]">
-            Place order
-          </span>
-
-          <ArrowRight
-            size={16}
-            strokeWidth={2}
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          />
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setPaymentStep("payment-method")}
-          className="group mt-3 flex h-10 w-full items-center justify-center gap-3 rounded-full border border-ink/15 bg-transparent px-6 text-ink transition-all duration-300 hover:border-ink/30 hover:bg-cream active:scale-[0.98] cursor-pointer"
-        >
-          <span className="text-[10px] font-medium uppercase tracking-[0.18em]">
-            Pay via QR
-          </span>
-
-          <ArrowRight
-            size={15}
-            strokeWidth={1.5}
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          />
-        </button>
 
         {paymentStep === "payment-method" && (
           <PaymentMethod

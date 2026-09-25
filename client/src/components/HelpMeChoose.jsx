@@ -86,8 +86,9 @@ const questions = [
 const QUIZ_DURATION = 30;
 
 const getProductProfile = (product) => {
-  const text =
-    `${product.name} ${product.shortDescription || ""} ${(product.flavors || []).join(" ")} ${(product.aroma || []).join(" ")}`.toLowerCase();
+  const text = `${product.name} ${product.shortDescription || ""} ${(
+    product.flavors || []
+  ).join(" ")} ${(product.aroma || []).join(" ")}`.toLowerCase();
 
   return {
     product,
@@ -95,19 +96,19 @@ const getProductProfile = (product) => {
       text.includes("chocolate") || text.includes("cocoa")
         ? "chocolatey"
         : text.includes("fruit") ||
-            text.includes("berry") ||
-            text.includes("citrus")
-          ? "fruity"
-          : text.includes("dark") ||
-              text.includes("bold") ||
-              text.includes("roast")
-            ? "bold"
-            : "balanced",
+          text.includes("berry") ||
+          text.includes("citrus")
+        ? "fruity"
+        : text.includes("dark") ||
+          text.includes("bold") ||
+          text.includes("roast")
+        ? "bold"
+        : "balanced",
     brew: text.includes("cold brew")
       ? ["cold-brew"]
       : text.includes("espresso")
-        ? ["espresso"]
-        : ["drip", "pour-over", "french-press", "mix"],
+      ? ["espresso"]
+      : ["drip", "pour-over", "french-press", "mix"],
   };
 };
 
@@ -338,7 +339,9 @@ const HelpMeChoose = () => {
                     <motion.div
                       className="h-full bg-deepRed w-full"
                       animate={{
-                        width: `${((currentStep + 1) / questions.length) * 100}%`,
+                        width: `${
+                          ((currentStep + 1) / questions.length) * 100
+                        }%`,
                       }}
                       transition={{
                         duration: 0.6,
@@ -354,31 +357,6 @@ const HelpMeChoose = () => {
                       {question.number}
                     </p>
 
-                    <div className="flex items-center gap-5 bg-">
-                      <div className="flex items-center gap-2.5">
-                        <motion.div
-                          className="relative flex h-9 w-9 items-center justify-center rounded-full"
-                          animate={{
-                            background: `conic-gradient(var(--color-deepRed) ${timerProgress}%, color-mix(in srgb, var(--color-ink) 10%, transparent) 0)`,
-                          }}
-                          transition={{ duration: 0.25, ease: "linear" }}
-                          aria-hidden="true"
-                        >
-                          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-lightWhite text-[8px] font-medium tabular-nums text-ink">
-                            {secondsLeft}
-                          </span>
-                        </motion.div>
-
-                        <span className="hidden text-[7px] uppercase tracking-[0.25em] text-ink/35 sm:inline">
-                          Seconds left
-                        </span>
-                      </div>
-
-                      <span className="text-[8px] uppercase tracking-[0.3em] text-ink/35">
-                        {String(currentStep + 1).padStart(2, "0")} / 07
-                      </span>
-                    </div>
-
                     <h1 className="subheader mt-5 text-[clamp(3rem,6vw,6rem)] uppercase leading-[0.82] tracking-[-0.065em] font-bold">
                       {question.label}
                     </h1>
@@ -390,21 +368,22 @@ const HelpMeChoose = () => {
                         const selected = answers[question.id] === option.value;
 
                         return (
-                          <motion.button
+                          <button
                             key={option.value}
                             type="button"
                             onClick={() => selectAnswer(option.value)}
-                            initial={{ opacity: 0, y: 12 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                              duration: 0.45,
-                              delay: index * 0.045,
-                              ease: [0.22, 1, 0.36, 1],
-                            }}
-                            className={`group flex w-full items-center justify-between py-5 text-left transition-all duration-500 sm:py-6 ${selected ? "text-red" : "text-ink hover:text-red"}`}
+                            className={`group flex w-full items-center justify-between border-b py-4 text-left transition-colors duration-150 sm:py-5 ${
+                              selected
+                                ? "border-red text-red"
+                                : "border-ink/10 text-ink hover:border-ink/30 hover:text-red"
+                            }`}
                           >
-                            <span className="flex items-center gap-5">
-                              <span className="text-[7px] tracking-[0.2em] text-ink/25">
+                            <span className="flex items-center gap-4">
+                              <span
+                                className={`text-[7px] tracking-[0.2em] transition-colors duration-150 ${
+                                  selected ? "text-red/60" : "text-ink/25"
+                                }`}
+                              >
                                 {String(index + 1).padStart(2, "0")}
                               </span>
 
@@ -413,16 +392,16 @@ const HelpMeChoose = () => {
                               </span>
                             </span>
 
-                            <motion.span
-                              animate={{
-                                x: selected ? 4 : 0,
-                                opacity: selected ? 1 : 0.35,
-                              }}
-                              className="flex h-7 w-7 items-center justify-center rounded-full border border-current"
+                            <span
+                              className={`flex h-6 w-6 items-center justify-center border transition-all duration-150 ${
+                                selected
+                                  ? "border-red bg-red text-lightCream"
+                                  : "border-ink/15 text-ink/30 group-hover:border-red group-hover:text-red"
+                              }`}
                             >
-                              <ArrowRight size={12} strokeWidth={1.1} />
-                            </motion.span>
-                          </motion.button>
+                              <ArrowRight size={11} strokeWidth={1.2} />
+                            </span>
+                          </button>
                         );
                       })}
                     </div>
@@ -440,29 +419,21 @@ const HelpMeChoose = () => {
                 }}
                 className="mx-auto w-full max-w-5xl"
               >
-                <div className="mb-14 text-center">
-                  <div className="flex items-center justify-center gap-3">
-                    <span className="h-px w-6 bg-red/50" />
-                    <span className="text-[8px] font-medium uppercase tracking-[0.4em] text-soil">
-                      Your match
-                    </span>
-                    <span className="h-px w-6 bg-red/50" />
-                  </div>
-
+                <div className="mb-5 text-center">
                   <h1 className="header mt-7 text-[clamp(3.5rem,7vw,7rem)] uppercase leading-[0.8] tracking-[-0.065em]">
                     We found
                     <br />
                     <span className="italic text-red">your coffee.</span>
                   </h1>
 
-                  <p className="mx-auto mt-7 max-w-md text-[10px] leading-6 text-ink/45 sm:text-xs">
+                  <p className="mx-auto mt-7 max-w-md text-[10px] leading-6 text-ink/75 sm:text-xs italic">
                     Based on your answers, we think this one belongs in your
                     daily ritual.
                   </p>
                 </div>
 
                 {recommendation && (
-                  <div className="grid overflow-hidden border border-ink/10 lg:grid-cols-2">
+                  <div className="grid overflow-hidden border border-ink/10 lg:grid-cols-2 rounded-4xl">
                     <div className="relative aspect-square overflow-hidden bg-cream lg:aspect-auto lg:min-h-125">
                       <motion.img
                         initial={{ scale: 1.06 }}
@@ -475,40 +446,34 @@ const HelpMeChoose = () => {
                         alt={recommendation.name}
                         className="h-full w-full object-cover"
                       />
-
-                      <span className="absolute left-5 top-5 text-[7px] font-medium uppercase tracking-[0.3em] text-ink/50">
-                        Laali Hills · Selected for you
-                      </span>
                     </div>
 
                     <div className="flex flex-col justify-between bg-lightCream p-8 sm:p-10 lg:p-14">
                       <div>
-                        <p className="text-[8px] font-medium uppercase tracking-[0.35em] text-red">
-                          Your match
-                        </p>
+                        <span className="text-[7px] font-medium uppercase tracking-[0.3em] text-ink/50">
+                          Laali Hills · Selected for you
+                        </span>
 
                         <h2 className="header mt-5 text-[clamp(2.5rem,4vw,4.5rem)] uppercase leading-[0.85] tracking-[-0.055em]">
                           {recommendation.name}
                         </h2>
-
                         {recommendation.flavors?.length > 0 && (
                           <div className="mt-8">
-                            <p className="text-[7px] uppercase tracking-[0.3em] text-ink/35">
+                            <p className="text-[7px] uppercase tracking-[0.3em] text-ink/55">
                               Flavour profile
                             </p>
 
-                            <p className="mt-2 text-xs leading-6 text-ink/65">
+                            <p className="mt-2 text-xs leading-6 text-ink/75">
                               {recommendation.flavors.join(" · ")}
                             </p>
                           </div>
                         )}
-
                         <div className="mt-8 border-t border-ink/10 pt-6">
-                          <p className="text-[7px] uppercase tracking-[0.3em] text-ink/35">
+                          <p className="text-[7px] uppercase tracking-[0.3em] text-ink/55">
                             Your coffee rhythm
                           </p>
 
-                          <p className="mt-2 text-xs leading-6 text-ink/65">
+                          <p className="mt-2 text-xs leading-6 text-ink/75">
                             {sizeRecommendation?.recommendation}
                           </p>
                         </div>
@@ -517,7 +482,7 @@ const HelpMeChoose = () => {
                       <div className="mt-12">
                         <Link
                           to={`/shop/coffee/${recommendation.slug}`}
-                          className="group flex h-13 w-full items-center justify-between bg-ink px-5 text-lightCream transition-colors duration-500 hover:bg-red sm:px-6"
+                          className="group flex h-13 w-full items-center justify-between bg-ink px-5 text-lightCream rounded-4xl transition-colors duration-500 hover:bg-red sm:px-6"
                         >
                           <span className="text-[8px] font-medium uppercase tracking-[0.3em]">
                             Get this coffee
@@ -531,7 +496,7 @@ const HelpMeChoose = () => {
                         <button
                           type="button"
                           onClick={restart}
-                          className="mx-auto mt-6 flex items-center gap-2 text-[7px] uppercase tracking-[0.3em] text-ink/40 transition-colors duration-500 hover:text-red"
+                          className="mx-auto mt-6 flex items-center gap-2 text-[7px] uppercase tracking-[0.3em] text-ink/40 transition-colors duration-500 hover:text-red cursor-pointer"
                         >
                           <RotateCcw size={11} strokeWidth={1} />
                           Start over

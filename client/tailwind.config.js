@@ -31,6 +31,20 @@ paper:"#F1EADB",
 raised:"#FBF7EE",
 
 
+  darkRed: "#C6535C",
+  darkIvory: "#242522",
+  darkDeepRed: "#A83B44",
+  darkInk: "#111311",
+  darkHill: "#1D2925",
+  darkSoil: "#443832",
+  darkStone: "#A8A49B",
+  darkWhite: "#F4F1E9",
+  darkCream: "#D9D5CC",
+  darkLightCream: "#E6E2D9",
+  darkPaper: "#292A26",
+  darkRaised: "#30312C",
+
+
   brown: "#241817",
   darkBrown: "#32211F",
   mutedBrown: "#8B625D",

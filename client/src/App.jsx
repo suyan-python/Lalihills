@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Landing from "./pages/home/HeroLanding";
@@ -30,6 +30,19 @@ import ProductDetailsLeft from "./pages/shop/ProductDetailsLeft";
 function App() {
   const allProducts = [...coffeeProducts, ...teaProducts];
 
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
+
+  const handleThemeToggle = () => {
+    setDarkMode((prev) => !prev);
+  };
+
   return (
     <>
       <BrowserRouter>
@@ -54,11 +67,23 @@ function App() {
               <Route path="/product" element={<ProductDetailsLeft />} />
               <Route
                 path="/shop/coffee/:slug"
-                element={<ProductDetails products={allProducts} />}
+                element={
+                  <ProductDetails
+                    products={allProducts}
+                    darkMode={darkMode}
+                    onThemeToggle={handleThemeToggle}
+                  />
+                }
               />
               <Route
                 path="/shop/tea/:slug"
-                element={<ProductDetails products={allProducts} />}
+                element={
+                  <ProductDetails
+                    products={allProducts}
+                    darkMode={darkMode}
+                    onThemeToggle={handleThemeToggle}
+                  />
+                }
               />
               <Route path="/shop/help-me-choose" element={<HelpMeChoose />} />
               <Route path="/shop/coffee" element={<Coffee />} />
