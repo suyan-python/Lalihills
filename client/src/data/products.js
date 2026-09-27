@@ -28,7 +28,7 @@ export const coffeeProducts = [
   caffeine: "full",
   profile: 4,
 
-  process: "anaerobic",
+  process: "Anaerobic",
   altitude: "1,300-1,500",
   origin: "Dhankuta",
 
@@ -55,9 +55,9 @@ sizeOptions: [
   ],
 
   flavors: [
-    "tropical fruit",
-    "wine",
-    "syrupy body",
+    "Tropical Fruit",
+    "Wine",
+    "Syrupy Body",
   ],
 
   /*
@@ -191,7 +191,7 @@ sizeOptions: [
   caffeine: "full",
   profile: 4,
 
-  process: "anaerobic",
+  process: "Washed",
   altitude: "1,200-1,500",
   origin: "Gulmi",
 
@@ -350,7 +350,7 @@ sizeOptions: [
   caffeine: "full",
   profile: 4,
 
-  process: "anaerobic",
+  process: "Anaerobic",
   altitude: "1,200-1,500",
   origin: "Sindhupalchok",
 
@@ -520,7 +520,7 @@ export const teaProducts = [
     { grams: 250, price: 2400 },
   ],
 
-  formOptions: ["loose leaf", "tea bag"],
+  formOptions: ["Loose Leaf", "Tea Bag"],
 
   description:
     "A delicate early-season Nepali tea with floral aromas, bright character, and a clean finish. Carefully harvested from the highlands, First Flush captures the freshness of the season in every cup.",
@@ -610,30 +610,35 @@ export const teaProducts = [
 
   ritual: {
   type: "steeping",
-  method: "Western Gongfu",
+    method: "Steeping ritual",
+
   dose: "3g",
   doseLabel: "Leaf",
   water: "250ml",
   waterLabel: "Water",
   temperature: "90°C",
-  ratio: "1:83",
-  steeps: [
-    {
-      number: 1,
-      duration: 180,
+
+  methods: {
+    western: {
+      label: "Western",
+      steeps: [
+        { number: 1, duration: 180 },
+        { number: 2, duration: 240 },
+        { number: 3, duration: 300 },
+      ],
     },
-    {
-      number: 2,
-      duration: 240,
+
+    gongfu: {
+      label: "Gongfu",
+      steeps: [
+        { number: 1, duration: 30 },
+        { number: 2, duration: 45 },
+        { number: 3, duration: 60 },
+      ],
     },
-    {
-      number: 3,
-      duration: 300,
-    },
-  ],
-  description:
-    "One steep at a time in a larger pot — the everyday way.",
+  },
 }
+ 
 },
 
 ];

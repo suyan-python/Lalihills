@@ -18,7 +18,7 @@ const ProductDetailsRight = ({
   darkMode,
   onThemeToggle,
 }) => {
-  const [activeInfo, setActiveInfo] = useState("taste");
+  const [activeInfo, setActiveInfo] = useState("Taste");
   const [added, setAdded] = useState(false);
   const [frequencyOpen, setFrequencyOpen] = useState(false);
 
@@ -52,7 +52,7 @@ const ProductDetailsRight = ({
     }, 3000);
   };
 
-  const infoOptions = ["taste", "origin", "ritual"];
+  const infoOptions = ["Taste", "Origin", "Ritual"];
 
   return (
     <div className="relative flex h-full min-h-0 flex-col bg-paper dark:bg-ink text-ink transition-colors duration-300">
@@ -62,7 +62,7 @@ const ProductDetailsRight = ({
           {/* TOP NAV */}
           <div className="flex shrink-0 items-center justify-between border-b border-ink/10 px-6 py-5 sm:px-8 lg:px-10">
             {/* INFO NAV */}
-            <div className="w-full">
+            <div className="w-fit">
               <div className="relative grid w-full max-w-xs grid-cols-3 rounded-full bg-stone/10 p-1 sm:max-w-sm">
                 <motion.div
                   className="absolute inset-y-1 rounded-full bg-lightWhite shadow-md shadow-black/10"
@@ -90,7 +90,7 @@ const ProductDetailsRight = ({
                       key={item}
                       type="button"
                       onClick={() => setActiveInfo(item)}
-                      className={`relative z-10 flex h-8 items-center justify-center rounded-full px-3 text-[8px] font-bold uppercase tracking-[0.08em] transition-colors duration-300 sm:h-9 sm:px-4 sm:text-[9px] ${
+                      className={`relative z-10 flex h-8 items-center justify-center rounded-full px-3 text-[8px] font-bold  tracking-[0.02em] transition-colors duration-300 sm:h-8 sm:px-4 md:text-[11px] ${
                         active
                           ? "text-ink"
                           : "cursor-pointer text-ink/50 hover:text-ink/75  dark:text-lightWhite/50 dark:hover:text-lightWhite/75 "
@@ -117,9 +117,13 @@ const ProductDetailsRight = ({
           {/* INFORMATION CONTENT */}
           <div className="min-h-0 flex-1 px-6 sm:px-8 py-4 md:py-8 lg:px-10 ">
             <AnimatePresence mode="wait">
-              {activeInfo === "taste" && (
-                <InfoPanel key="taste" title="Taste">
-                  <p className="max-w-lg text-sm leading-7 text-soil dark:text-lightWhite">
+              {activeInfo === "Taste" && (
+                <InfoPanel key="Taste" title="Taste">
+                  <h1 className="header max-w-lg text-3xl leading-7 text-ink dark:text-lightWhite">
+                    {product.origin}{" "}
+                    <span className="italic text-red">{product.process}</span>
+                  </h1>
+                  <p className="mt-4 max-w-lg text-sm leading-7 text-soil dark:text-lightWhite">
                     {product.description}
                   </p>
 
@@ -129,7 +133,7 @@ const ProductDetailsRight = ({
                         {product.flavors.map((flavor) => (
                           <span
                             key={flavor}
-                            className="rounded-full uppercase font-semibold border border-ink/20 px-3 py-2 text-[9px] tracking-[0.05em] text-ink/75"
+                            className="rounded-full font-semibold border border-ink/20 px-3 py-2 text-[10px] tracking-[0.02em] text-ink/65"
                           >
                             {flavor}
                           </span>
@@ -140,15 +144,15 @@ const ProductDetailsRight = ({
                 </InfoPanel>
               )}
 
-              {activeInfo === "origin" && (
-                <InfoPanel key="origin" title="Origin">
+              {activeInfo === "Origin" && (
+                <InfoPanel key="Origin" title="Origin">
                   <div className="max-w-lg">
-                    <h3 className="header text-4xl uppercase leading-none tracking-[-0.04em] sm:text-5xl">
-                      {product.origin}
+                    <h3 className="header text-3xl leading-none  md:text-3xl">
+                      Know your origin.
                     </h3>
 
                     {product.info?.origin?.blurb && (
-                      <p className="mt-5 text-sm font-light leading-7 text-ink/60">
+                      <p className="mt-5 text-sm leading-7 text-ink/80">
                         {product.info.origin.blurb}
                       </p>
                     )}
@@ -169,8 +173,8 @@ const ProductDetailsRight = ({
                 </InfoPanel>
               )}
 
-              {activeInfo === "ritual" && (
-                <InfoPanel key="ritual" title="Ritual">
+              {activeInfo === "Ritual" && (
+                <InfoPanel key="Ritual" title="Ritual">
                   {product.ritual ? (
                     <RitualPanel ritual={product.ritual} />
                   ) : (
@@ -441,12 +445,14 @@ const InfoPanel = ({ title, children }) => (
 );
 
 const InfoValue = ({ label, value }) => (
-  <div>
-    <span className="text-[7px] uppercase tracking-[0.3em] text-stone">
+  <div className="rounded-2xl border border-ink/5 bg-raised px-4 py-4 transition-colors duration-300 hover:border-ink/10 hover:bg-lightWhite sm:px-5 sm:py-5">
+    <span className="text-[7px] font-medium uppercase tracking-[0.28em] text-stone">
       {label}
     </span>
 
-    <p className="mt-2 text-xs font-light text-ink/70">{value || "—"}</p>
+    <p className="mt-2 text-sm font-medium leading-5 tracking-[-0.01em] text-ink">
+      {value || "—"}
+    </p>
   </div>
 );
 
@@ -477,7 +483,7 @@ const RitualPanel = ({ ritual }) => {
       </div>
 
       {/* BREW VARIABLES */}
-      <div className="mx-auto mt-5 grid max-w-75 grid-cols-2 gap-y-4 sm:grid-cols-4">
+      <div className="mx-auto mt-5 flex gap-10 justify-center max-w-sm gap-y-4 sm:grid-cols-4   ">
         <RitualStat value={ritual.dose} label={ritual.doseLabel} />
         <RitualStat value={ritual.water} label={ritual.waterLabel} />
         <RitualStat value={ritual.temperature} label="Temp" />
@@ -500,9 +506,8 @@ const RitualPanel = ({ ritual }) => {
 };
 
 const RitualStat = ({ value, label }) => (
-  <div>
+  <div className="flex flex-col items-center text-center ">
     <p className="text-lg tracking-[-0.03em] text-ink">{value}</p>
-
     <p className="text-[7px] uppercase tracking-[0.2em] text-ink/75">{label}</p>
   </div>
 );
@@ -656,6 +661,22 @@ const CoffeeTimer = ({ ritual }) => {
 };
 
 const TeaTimer = ({ ritual }) => {
+  const [method, setMethod] = useState("western");
+  const [steepIndex, setSteepIndex] = useState(0);
+  const [elapsed, setElapsed] = useState(0);
+  const [running, setRunning] = useState(false);
+
+  const steepTimes = [
+    { number: 1, duration: 180 },
+    { number: 2, duration: 240 },
+    { number: 3, duration: 300 },
+  ];
+
+  const currentSteep = steepTimes[steepIndex];
+  const totalTime = currentSteep.duration;
+
+  const progress = Math.min(elapsed / totalTime, 1);
+
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remaining = seconds % 60;
@@ -663,46 +684,200 @@ const TeaTimer = ({ ritual }) => {
     return `${minutes}:${String(remaining).padStart(2, "0")}`;
   };
 
-  return (
-    <div>
-      {/* STEEP OPTIONS */}
-      <div className="flex gap-2">
-        {ritual.steeps?.map((steep) => (
-          <div
-            key={steep.number}
-            className="flex-1 rounded-xl border border-ink/10 px-3 py-3 text-center"
-          >
-            <p className="text-[7px] uppercase tracking-[0.18em] text-stone">
-              {steep.number === 1
-                ? "1st"
-                : steep.number === 2
-                ? "2nd"
-                : `${steep.number}th`}
-            </p>
+  useEffect(() => {
+    if (!running) return;
 
-            <p className="mt-2 text-sm text-ink">
-              {formatTime(steep.duration)}
-            </p>
-          </div>
-        ))}
+    const interval = setInterval(() => {
+      setElapsed((current) => {
+        if (current >= totalTime) {
+          setRunning(false);
+          return totalTime;
+        }
+
+        return current + 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [running, totalTime]);
+
+  const handleMethodChange = (nextMethod) => {
+    setMethod(nextMethod);
+    setSteepIndex(0);
+    setElapsed(0);
+    setRunning(false);
+  };
+
+  const handleSteepChange = (index) => {
+    setSteepIndex(index);
+    setElapsed(0);
+    setRunning(false);
+  };
+
+  const handleStart = () => {
+    if (elapsed >= totalTime) {
+      setElapsed(0);
+    }
+
+    setRunning(true);
+  };
+
+  const handleReset = () => {
+    setRunning(false);
+    setElapsed(0);
+  };
+
+  const isComplete = elapsed >= totalTime;
+
+  return (
+    <div className="mx-auto w-full max-w-md">
+      {/* METHOD */}
+      <div className="flex flex-col items-center">
+        <div className="mt-3  justify-center items-center  rounded-full bg-ink/5 p-1 w-fit ">
+          {[
+            { id: "western", label: "Western" },
+            { id: "gongfu", label: "Gongfu" },
+          ].map((option) => {
+            const active = method === option.id;
+
+            return (
+              <button
+                key={option.id}
+                type="button"
+                onClick={() => handleMethodChange(option.id)}
+                className={`rounded-full  py-2.5 px-4 text-[12px] font-semibold  tracking-[0.02em] transition-all duration-300 ${
+                  active
+                    ? "bg-lightWhite text-ink shadow-sm"
+                    : "text-ink/40 hover:text-ink cursor-pointer"
+                }`}
+              >
+                {option.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* STEEP OPTIONS */}
+      <div className="mt-6">
+        <div className="mt-3 flex justify-center gap-5 ">
+          {steepTimes.map((steep, index) => {
+            const active = steepIndex === index;
+
+            return (
+              <button
+                key={steep.number}
+                type="button"
+                onClick={() => handleSteepChange(index)}
+                className={`rounded-4xl border py-1.5 px-3 w-fit text-center  transition-all duration-300 ${
+                  active
+                    ? " bg-red text-lightCream"
+                    : "border-ink/10 text-ink hover:border-ink/25 cursor-pointer"
+                }`}
+              >
+                <p
+                  className={`text-[7px] uppercase tracking-[0.18em] ${
+                    active ? "text-lightCream/50" : "text-stone"
+                  }`}
+                >
+                  {steep.number === 1
+                    ? "1st"
+                    : steep.number === 2
+                    ? "2nd"
+                    : "3rd"}
+                </p>
+
+                <p className=" text-sm">{formatTime(steep.duration)}</p>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* TIMER */}
-      <div className="mt-8 text-center">
-        <p className="text-4xl tracking-[-0.04em] text-ink">3:00</p>
+      <div className="mt-1 text-center">
+        <div className="relative mx-auto h-48 w-48">
+          <svg viewBox="0 0 200 200" className="h-full w-full -rotate-90">
+            <circle
+              cx="100"
+              cy="100"
+              r="82"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+              className="text-ink/10"
+            />
 
-        <p className="mt-2 text-[8px] uppercase tracking-[0.2em] text-stone">
-          Steeping
-        </p>
+            <circle
+              cx="100"
+              cy="100"
+              r="82"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              className="text-red transition-[stroke-dashoffset] duration-500"
+              strokeDasharray={2 * Math.PI * 82}
+              strokeDashoffset={2 * Math.PI * 82 * (1 - progress)}
+            />
+          </svg>
+
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <span className="text-[7px] uppercase tracking-[0.22em] text-stone">
+              {isComplete
+                ? "Steep complete"
+                : `${currentSteep.number}${
+                    currentSteep.number === 1
+                      ? "st"
+                      : currentSteep.number === 2
+                      ? "nd"
+                      : "rd"
+                  } steep`}
+            </span>
+
+            <span className="header mt-1 text-4xl leading-none tracking-[-0.04em] text-ink">
+              {formatTime(elapsed)}
+            </span>
+
+            {!isComplete && (
+              <span className="mt-2 text-[7px] uppercase tracking-[0.18em] text-ink/35">
+                {method === "western" ? "Western" : "Gongfu"}
+              </span>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* CONTROLS */}
-      <div className="mt-5 flex justify-center gap-3">
-        <button className="rounded-full bg-ink px-6 py-3 text-[8px] uppercase tracking-[0.18em] text-lightCream">
-          Start steep
+      <div className="mt-4 flex justify-center gap-2">
+        <button
+          type="button"
+          onClick={() => {
+            if (isComplete) {
+              setElapsed(0);
+              setRunning(true);
+            } else if (running) {
+              setRunning(false);
+            } else {
+              setRunning(true);
+            }
+          }}
+          className="min-w-[112px] rounded-full bg-red px-6 py-3 text-[8px] font-semibold uppercase tracking-[0.18em] text-lightCream transition-all duration-300 hover:bg-hill active:scale-[0.97]"
+        >
+          {isComplete
+            ? "Start Again"
+            : running
+            ? "Pause"
+            : elapsed > 0
+            ? "Resume"
+            : "Start Steep"}
         </button>
 
-        <button className="rounded-full border border-ink/10 px-5 py-3 text-[8px] uppercase tracking-[0.18em] text-ink/50">
+        <button
+          type="button"
+          onClick={handleReset}
+          className="rounded-full border border-ink/10 px-5 py-3 text-[8px] font-semibold uppercase tracking-[0.18em] text-ink/50 transition-all duration-300 hover:border-ink/25 hover:text-ink active:scale-[0.97]"
+        >
           Reset
         </button>
       </div>
