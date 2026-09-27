@@ -520,7 +520,7 @@ export const teaProducts = [
     { grams: 250, price: 2400 },
   ],
 
-  formOptions: ["Loose Leaf", "Tea Bag"],
+  formOptions: ["Whole-lead tin", "Tea Bag"],
 
   description:
     "A delicate early-season Nepali tea with floral aromas, bright character, and a clean finish. Carefully harvested from the highlands, First Flush captures the freshness of the season in every cup.",
@@ -535,9 +535,9 @@ export const teaProducts = [
   ],
 
   flavors: [
-    "white flowers",
-    "honey",
-    "citrus",
+    "White Flowers",
+    "Honey",
+    "Citrus",
   ],
 
   info: {

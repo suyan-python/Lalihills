@@ -133,7 +133,7 @@ const ProductDetailsRight = ({
                         {product.flavors.map((flavor) => (
                           <span
                             key={flavor}
-                            className="rounded-full font-semibold border border-ink/20 px-3 py-2 text-[10px] tracking-[0.02em] text-ink/65"
+                            className="rounded-full font-semibold border border-ink/20 dark:border-lightWhite/30 px-3 py-2 text-[10px] tracking-[0.02em] text-ink/65 dark:text-lightWhite/70"
                           >
                             {flavor}
                           </span>
@@ -147,18 +147,22 @@ const ProductDetailsRight = ({
               {activeInfo === "Origin" && (
                 <InfoPanel key="Origin" title="Origin">
                   <div className="max-w-lg">
-                    <h3 className="header text-3xl leading-none  md:text-3xl">
+                    <h3 className="header text-3xl leading-none  md:text-3xl dark:text-lightWhite">
                       Know your origin.
                     </h3>
 
                     {product.info?.origin?.blurb && (
-                      <p className="mt-5 text-sm leading-7 text-ink/80">
+                      <p className="mt-5 text-sm leading-7 text-ink/80 dark:text-lightWhite">
                         {product.info.origin.blurb}
                       </p>
                     )}
 
                     <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-6">
-                      <InfoValue label="Altitude" value={product.altitude} />
+                      <InfoValue
+                        label="Altitude"
+                        value={product.altitude}
+                        dark
+                      />
                       <InfoValue label="Process" value={product.process} />
                       <InfoValue
                         label="Variety"
@@ -178,7 +182,7 @@ const ProductDetailsRight = ({
                   {product.ritual ? (
                     <RitualPanel ritual={product.ritual} />
                   ) : (
-                    <p className="text-sm font-light leading-7 text-ink/60">
+                    <p className="text-sm font-light leading-7 text-ink/60 dark:text-lightWhite">
                       Ritual information coming soon.
                     </p>
                   )}
@@ -190,13 +194,13 @@ const ProductDetailsRight = ({
       </div>
 
       {/* BOTTOM — PURCHASE */}
-      <div className="shrink-0 bg-lightWhite px-6 py-2 text-ink transition-colors duration-300  dark:text-lightWhite sm:px-8 lg:px-10 lg:py-4">
+      <div className="shrink-0 bg-lightWhite dark:bg-darkSoil px-6 py-2 text-ink transition-colors duration-300  dark:text-lightWhite sm:px-8 lg:px-10 lg:py-4">
         {/* PLAN */}
 
         <div className="flex justify-between text-center gap-8 relative  ">
           <div className="w-full ">
             <div className=" text-start">
-              <span className="text-[10px] uppercase tracking-[0.15em] text-ink/75">
+              <span className="text-[10px] uppercase tracking-[0.15em] text-ink/75 dark:text-darkLightCream">
                 Plan
               </span>
             </div>
@@ -276,7 +280,7 @@ const ProductDetailsRight = ({
           {/* SIZE */}
           <div className="w-full flex flex-col items-start ">
             <div className="text-left ">
-              <span className=" text-[10px] uppercase tracking-[0.15em] text-ink/75 text-left ">
+              <span className=" text-[10px] uppercase tracking-[0.15em] text-ink/75 text-left dark:text-darkLightCream ">
                 Size
               </span>
               <div className="mt-3 flex flex-wrap gap-2">
@@ -290,8 +294,8 @@ const ProductDetailsRight = ({
                       onClick={() => setSelectedSize(size)}
                       className={`rounded-full border px-3 py-2 text-[10px] tracking-[0.05em] transition-all duration-300 font-medium ${
                         active
-                          ? " bg-red text-lightCream"
-                          : "border-ink/10 text-ink hover:border-ink/30 cursor-pointer"
+                          ? " bg-red dark:bg-deepRed text-lightCream dark:border-deepRed"
+                          : "border-ink/10 text-ink   cursor-pointer dark:text-darkLightCream dark:border-lightWhite/25"
                       }`}
                     >
                       {size.grams}g
@@ -307,7 +311,7 @@ const ProductDetailsRight = ({
         <div className="mt-3 grid grid-cols-2 gap-8">
           {/* GRIND */}
           <div className="w-full">
-            <span className="text-[10px] uppercase tracking-[0.15em] text-ink/75">
+            <span className="text-[10px] uppercase tracking-[0.15em] text-ink/75 dark:text-darkLightCream">
               {isCoffee ? "Grind" : "Form"}
             </span>
 
@@ -323,8 +327,8 @@ const ProductDetailsRight = ({
                       onClick={() => setSelectedGrind(option)}
                       className={`rounded-full border px-3 py-2 text-[10px] tracking-[0.05em] transition-all duration-300 font-medium ${
                         active
-                          ? " bg-red text-lightCream"
-                          : "border-ink/10 text-ink hover:border-ink/30 cursor-pointer"
+                          ? " bg-red text-lightCream dark:border-deepRed"
+                          : "border-ink/10 text-in dark:text-lightWhite dark:border-lightCream/25 cursor-pointer"
                       }`}
                     >
                       {option}
@@ -337,15 +341,15 @@ const ProductDetailsRight = ({
 
           {/* QUANTITY */}
           <div className="mt-3 flex flex-col  items-start gap-5  w-full">
-            <span className="text-[10px] uppercase tracking-[0.15em] text-ink/75">
+            <span className="text-[10px] uppercase tracking-[0.15em] text-ink/75 dark:text-darkLightCream">
               Quantity
             </span>
 
-            <div className="flex items-baseline  gap-2 border border-black/10 rounded-full">
+            <div className="flex items-baseline  gap-2 border border-black/10 dark:border-white/20 rounded-full text-ink dark:text-lightWhite">
               <button
                 type="button"
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                className="flex h-7 w-7 items-center justify-center text-sm cursor-pointer"
+                className="flex h-7 w-7 items-center justify-center text-sm cursor-pointer "
               >
                 −
               </button>
@@ -365,7 +369,7 @@ const ProductDetailsRight = ({
       </div>
 
       {/* FIXED PURCHASE BAR */}
-      <div className="shrink-0 border-t border-ink/20 bg-lightWhite  px-6 py-4 text-ink sm:px-8 lg:px-10">
+      <div className="shrink-0 border-t border-ink/20 bg-lightWhite dark:bg-darkSoil transition-colors duration-300  px-6 py-4 text-ink sm:px-8 lg:px-10">
         <div className="flex items-center justify-between gap-5">
           {/* PRODUCT SUMMARY */}
           <div className="min-w-0">
@@ -399,9 +403,9 @@ const ProductDetailsRight = ({
             <button
               type="button"
               onClick={handleAddToCart}
-              className="rounded-full bg-red px-3 py-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-lightWhite transition-all duration-300 hover:bg-hill active:bg-hill active:scale-[0.98] md:px-4"
+              className="rounded-full bg-red px-3 py-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-lightWhite transition-all duration-300 hover:bg-hill active:bg-hill active:scale-[0.98] md:px-4 cursor-pointer"
             >
-              Add to bag
+              Add to cart
             </button>
           </div>
         </div>
@@ -420,9 +424,7 @@ const ProductDetailsRight = ({
             }}
             className="fixed left-1/2 top-24 z-[120] -translate-x-1/2 rounded-md bg-hill px-6 py-4 text-center text-[8px] uppercase tracking-[0.16em] text-lightCream shadow-2xl"
           >
-            {product.roastLevel
-              ? `${product.roastLevel} roast added`
-              : "Added to bag"}
+            Added to Cart
           </motion.div>
         )}
       </AnimatePresence>
@@ -445,12 +447,12 @@ const InfoPanel = ({ title, children }) => (
 );
 
 const InfoValue = ({ label, value }) => (
-  <div className="rounded-2xl border border-ink/5 bg-raised px-4 py-4 transition-colors duration-300 hover:border-ink/10 hover:bg-lightWhite sm:px-5 sm:py-5">
-    <span className="text-[7px] font-medium uppercase tracking-[0.28em] text-stone">
+  <div className="rounded-2xl border border-ink/5 bg-raised px-4 py-4 transition-colors duration-300 hover:border-ink/10 hover:bg-lightWhite dark:border-lightCream/10 dark:bg-ink/20 dark:hover:border-lightCream/15 dark:hover:bg-ink/30 sm:px-5 sm:py-5">
+    <span className="text-[7px] font-medium uppercase tracking-[0.28em] text-stone dark:text-lightCream/45">
       {label}
     </span>
 
-    <p className="mt-2 text-sm font-medium leading-5 tracking-[-0.01em] text-ink">
+    <p className="mt-2 text-sm font-medium leading-5 tracking-[-0.01em] text-ink dark:text-lightCream/90">
       {value || "—"}
     </p>
   </div>
@@ -477,7 +479,7 @@ const RitualPanel = ({ ritual }) => {
     <div className="mx-auto w-full max-w-xl text-center ">
       {/* METHOD */}
       <div className="">
-        <h3 className="header text-3xl leading-none tracking-[0.01em] ">
+        <h3 className="header text-3xl leading-none tracking-[0.01em] dark:text-lightWhite ">
           {ritual.method}
         </h3>
       </div>
@@ -507,8 +509,12 @@ const RitualPanel = ({ ritual }) => {
 
 const RitualStat = ({ value, label }) => (
   <div className="flex flex-col items-center text-center ">
-    <p className="text-lg tracking-[-0.03em] text-ink">{value}</p>
-    <p className="text-[7px] uppercase tracking-[0.2em] text-ink/75">{label}</p>
+    <p className="text-lg tracking-[-0.03em] text-ink dark:text-lightWhite">
+      {value}
+    </p>
+    <p className="text-[7px] uppercase tracking-[0.2em] text-ink/75 dark:text-lightWhite/55">
+      {label}
+    </p>
   </div>
 );
 
@@ -584,7 +590,7 @@ const CoffeeTimer = ({ ritual }) => {
             fill="none"
             stroke="currentColor"
             strokeWidth="7"
-            className="text-soil/30"
+            className="text-soil/30 dark:text-ivory/55"
           />
 
           {/* PROGRESS */}
@@ -596,7 +602,7 @@ const CoffeeTimer = ({ ritual }) => {
             stroke="currentColor"
             strokeWidth="5"
             strokeLinecap="round"
-            className="text-red transition-[stroke-dashoffset] duration-500"
+            className="text-red dark:text-deepRed transition-[stroke-dashoffset] duration-500"
             strokeDasharray={circumference}
             strokeDashoffset={circumference * (1 - progress)}
           />
@@ -604,16 +610,16 @@ const CoffeeTimer = ({ ritual }) => {
 
         {/* CENTER CONTENT */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-[7px] font-medium uppercase tracking-[0.24em] text-ink/35">
+          <span className="text-[7px] font-medium uppercase tracking-[0.24em] text-ink/35 dark:text-lightCream/45">
             {isComplete ? "Brew complete" : currentStep?.label || "Bloom"}
           </span>
 
-          <span className="header mt-1 text-4xl leading-none tracking-[-0.05em] text-ink sm:text-5xl">
+          <span className="header mt-1 text-4xl leading-none tracking-[-0.05em] text-ink sm:text-5xl dark:text-lightCream">
             {formatTime(elapsed)}
           </span>
 
           {!isComplete && currentStep?.water && (
-            <span className="mt-2 text-[8px] uppercase tracking-[0.18em] text-ink/40">
+            <span className="mt-2 text-[8px] uppercase tracking-[0.18em] text-ink/40 dark:text-lightCream/40">
               {currentStep.water}
             </span>
           )}
@@ -626,7 +632,7 @@ const CoffeeTimer = ({ ritual }) => {
           <button
             type="button"
             onClick={handleStart}
-            className="min-w-[112px] rounded-full bg-red px-6 py-3 text-[8px] font-semibold uppercase tracking-[0.2em] text-lightCream transition-all duration-300 hover:bg-ink active:scale-[0.97] cursor-pointer"
+            className="min-w-[112px] rounded-full bg-red dark:bg-deepRed px-6 py-3 text-[8px] font-semibold uppercase tracking-[0.2em] text-lightCream transition-all duration-300 hover:bg-ink  active:scale-[0.97] cursor-pointer"
           >
             {isComplete ? "Brew Again" : elapsed > 0 ? "Resume" : "Start Brew"}
           </button>
@@ -634,7 +640,7 @@ const CoffeeTimer = ({ ritual }) => {
           <button
             type="button"
             onClick={handlePause}
-            className="min-w-[112px] rounded-full bg-red px-6 py-3 text-[8px] font-semibold uppercase tracking-[0.2em] text-lightCream transition-all duration-300 hover:bg-ink active:scale-[0.97] cursor-pointer"
+            className="min-w-[112px] rounded-full bg-red dark:bg-deepRed px-6 py-3 text-[8px] font-semibold uppercase tracking-[0.2em] text-lightCream transition-all duration-300 hover:bg-ink active:scale-[0.97] cursor-pointer"
           >
             Pause
           </button>
@@ -643,7 +649,7 @@ const CoffeeTimer = ({ ritual }) => {
         <button
           type="button"
           onClick={handleReset}
-          className="rounded-full border border-ink/10 px-5 py-3 text-[8px] font-semibold uppercase tracking-[0.2em] text-ink/85 transition-all duration-300 hover:border-ink/25 hover:text-ink active:scale-[0.97]"
+          className="rounded-full border border-ink/10 dark:border-lightCream/40 px-5 py-3 text-[8px] font-semibold uppercase tracking-[0.2em] text-ink/85 dark:text-lightCream/85 transition-all duration-300 hover:border-ink/25 dark:hover:border-lightCream/25 hover:text-ink dark:hover:text-lightCream cursor-pointer active:scale-[0.97]"
         >
           Reset
         </button>
@@ -733,7 +739,7 @@ const TeaTimer = ({ ritual }) => {
     <div className="mx-auto w-full max-w-md">
       {/* METHOD */}
       <div className="flex flex-col items-center">
-        <div className="mt-3  justify-center items-center  rounded-full bg-ink/5 p-1 w-fit ">
+        <div className="mt-3  justify-center items-center  rounded-full bg-ink/5 dark:bg-cream/15 p-1 w-fit ">
           {[
             { id: "western", label: "Western" },
             { id: "gongfu", label: "Gongfu" },
@@ -747,8 +753,8 @@ const TeaTimer = ({ ritual }) => {
                 onClick={() => handleMethodChange(option.id)}
                 className={`rounded-full  py-2.5 px-4 text-[12px] font-semibold  tracking-[0.02em] transition-all duration-300 ${
                   active
-                    ? "bg-lightWhite text-ink shadow-sm"
-                    : "text-ink/40 hover:text-ink cursor-pointer"
+                    ? "bg-lightWhite text-ink  shadow-sm"
+                    : "text-ink/40 dark:text-lightWhite hover:text-ink cursor-pointer"
                 }`}
               >
                 {option.label}
@@ -771,12 +777,12 @@ const TeaTimer = ({ ritual }) => {
                 onClick={() => handleSteepChange(index)}
                 className={`rounded-4xl border py-1.5 px-3 w-fit text-center  transition-all duration-300 ${
                   active
-                    ? " bg-red text-lightCream"
-                    : "border-ink/10 text-ink hover:border-ink/25 cursor-pointer"
+                    ? " bg-red dark:bg-deepRed dark:border-deepRed text-lightCream"
+                    : "border-ink/10 dark:border-lightCream/25 text-ink dark:text-lightWhite hover:border-ink/25 cursor-pointer"
                 }`}
               >
                 <p
-                  className={`text-[7px] uppercase tracking-[0.18em] ${
+                  className={`text-[7px] uppercase tracking-[0.18em] font-bold ${
                     active ? "text-lightCream/50" : "text-stone"
                   }`}
                 >
@@ -804,8 +810,8 @@ const TeaTimer = ({ ritual }) => {
               r="82"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1"
-              className="text-ink/10"
+              strokeWidth="7"
+              className="text-soil/30 dark:text-ivory/55"
             />
 
             <circle
@@ -814,16 +820,16 @@ const TeaTimer = ({ ritual }) => {
               r="82"
               fill="none"
               stroke="currentColor"
-              strokeWidth="2"
+              strokeWidth="5"
               strokeLinecap="round"
-              className="text-red transition-[stroke-dashoffset] duration-500"
+              className="text-red dark:text-deepRed transition-[stroke-dashoffset] duration-500"
               strokeDasharray={2 * Math.PI * 82}
               strokeDashoffset={2 * Math.PI * 82 * (1 - progress)}
             />
           </svg>
 
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-[7px] uppercase tracking-[0.22em] text-stone">
+            <span className="text-[7px] uppercase tracking-[0.22em] text-stone dark:text-lightWhite/55">
               {isComplete
                 ? "Steep complete"
                 : `${currentSteep.number}${
@@ -835,12 +841,12 @@ const TeaTimer = ({ ritual }) => {
                   } steep`}
             </span>
 
-            <span className="header mt-1 text-4xl leading-none tracking-[-0.04em] text-ink">
+            <span className="header mt-1 text-4xl leading-none tracking-[-0.04em] text-ink dark:text-lightWhite">
               {formatTime(elapsed)}
             </span>
 
             {!isComplete && (
-              <span className="mt-2 text-[7px] uppercase tracking-[0.18em] text-ink/35">
+              <span className="mt-2 text-[7px] uppercase tracking-[0.18em] text-ink/35 dark:text-lightWhite/55">
                 {method === "western" ? "Western" : "Gongfu"}
               </span>
             )}
@@ -862,7 +868,7 @@ const TeaTimer = ({ ritual }) => {
               setRunning(true);
             }
           }}
-          className="min-w-[112px] rounded-full bg-red px-6 py-3 text-[8px] font-semibold uppercase tracking-[0.18em] text-lightCream transition-all duration-300 hover:bg-hill active:scale-[0.97]"
+          className="min-w-[112px] rounded-full bg-red dark:bg-deepRed px-6 py-3 text-[8px] font-semibold uppercase tracking-[0.18em] text-lightCream transition-all duration-300 hover:bg-hill active:scale-[0.97]"
         >
           {isComplete
             ? "Start Again"
@@ -876,7 +882,7 @@ const TeaTimer = ({ ritual }) => {
         <button
           type="button"
           onClick={handleReset}
-          className="rounded-full border border-ink/10 px-5 py-3 text-[8px] font-semibold uppercase tracking-[0.18em] text-ink/50 transition-all duration-300 hover:border-ink/25 hover:text-ink active:scale-[0.97]"
+          className="rounded-full border border-ink/10 dark:border-lightCream/55 px-5 py-3 text-[8px] font-semibold uppercase tracking-[0.18em] text-ink/50 dark:text-lightCream/75 transition-all duration-300 hover:border-ink/25 hover:text-ink active:scale-[0.97]"
         >
           Reset
         </button>
