@@ -12,6 +12,7 @@ import ShopBanner from "../shop/ShopBanner";
 import Halfhalf from "./Halfhalf";
 import Halfhalf2 from "./Halfhalf2";
 import End from "./End";
+import TobeUsed from "./TobeUsed";
 
 const Landing = () => {
   return (
@@ -30,7 +31,9 @@ const Landing = () => {
 
       <AuthenticSection />
 
-      <Collab />
+      <TobeUsed />
+
+      {/* <Collab /> */}
 
       {/* <SummerOfferings /> */}
 
@@ -38,7 +41,7 @@ const Landing = () => {
 
       {/* <FeatureStandard /> */}
 
-      <CertificationSection />
+      {/* <CertificationSection /> */}
 
       <End />
     </div>
