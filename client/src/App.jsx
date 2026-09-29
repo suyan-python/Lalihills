@@ -58,6 +58,8 @@ function App() {
           }
         >
           <Routes>
+            <Route path="*" element={<NotFound />} />
+
             <Route element={<MainLayout />}>
               {/* Home */}
               <Route path="/" element={<Landing />} />
@@ -148,7 +150,6 @@ function App() {
               {/* Support */}
               <Route path="/support" element={<Support />} />
               <Route path="/checkout" element={<Checkout />} />
-              <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
         </Suspense>

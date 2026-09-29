@@ -49,7 +49,7 @@ const FeaturedProduct = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-lightWhite text-ink"
+      className="relative min-h-screen overflow-hidden bg-red text-ink"
     >
       <div className="grid min-h-screen lg:sticky lg:top-0 lg:h-screen lg:grid-cols-2">
         {/* VIDEO */}
@@ -79,7 +79,7 @@ const FeaturedProduct = () => {
           </div>
         </motion.div>
         {/* CONTENT */}
-        <div className="relative flex min-h-[50vh] items-center overflow-hidden bg-ivory px-7 py-20 sm:px-12 lg:min-h-screen lg:px-16 xl:px-20">
+        <div className="relative flex min-h-[50vh] items-center overflow-hidden bg-deepRed px-7 py-20 sm:px-12 lg:min-h-screen lg:px-16 xl:px-20">
           {" "}
           {/* LIQUID SCROLL LAYERS */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -130,20 +130,6 @@ const FeaturedProduct = () => {
             />
           </div>
           <div className="w-full max-w-xl">
-            {/* LABEL */}
-            <motion.span
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 1,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="block text-[9px] font-medium uppercase tracking-[0.38em] text-soil/65 sm:text-[10px] text-center md:text-left"
-            >
-              Featured Coffee
-            </motion.span>
-
             {/* TITLE */}
             <motion.h2
               initial={{ opacity: 0, y: 40 }}
@@ -154,11 +140,13 @@ const FeaturedProduct = () => {
                 delay: 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="subheader mt-5 max-w-2xl text-[clamp(3.6rem,6.8vw,6.8rem)] uppercase leading-[0.82] tracking-[-0.065em] text-ink sm:mt-6 text-center md:text-left font-medium"
+              className="subheader mt-5 text-center text-[clamp(3.4rem,6.5vw,6.5rem)] font-medium uppercase leading-[0.82] tracking-[-0.065em] text-lightCream sm:mt-6 md:text-left"
             >
-              Laali Hills
+              Coffee made by
               <br />
-              <span className="italic text-red">Arabica.</span>
+              <span className="italic text-lightCream/70">
+                people who know.
+              </span>
             </motion.h2>
 
             {/* DETAILS */}
@@ -171,33 +159,33 @@ const FeaturedProduct = () => {
                 delay: 0.5,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mt-2 max-w-xl  pt-6 md:mt-10 "
+              className="mt-10  "
             >
               <div className="grid grid-cols-3 text-center md:text-left">
                 <div>
-                  <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-stone sm:text-[8px]">
+                  <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-lightCream/45 sm:text-[8px]">
                     Origin
                   </span>
-                  <span className="mt-2 block text-[10px] font-medium uppercase tracking-[0.08em] text-ink sm:text-[11px]">
+                  <span className="mt-2 block text-[10px] font-medium uppercase tracking-[0.08em] text-lightCream sm:text-[11px]">
                     Nepal
                   </span>
                 </div>
 
-                <div className=" pl-5 sm:pl-6">
-                  <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-stone sm:text-[8px]">
-                    Process
+                <div className="border-l border-lightCream/15 pl-5 sm:pl-6">
+                  <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-lightCream/45 sm:text-[8px]">
+                    Producers
                   </span>
-                  <span className="mt-2 block text-[10px] font-medium uppercase tracking-[0.08em] text-ink sm:text-[11px]">
-                    Washed
+                  <span className="mt-2 block text-[10px] font-medium uppercase tracking-[0.08em] text-lightCream sm:text-[11px]">
+                    Local Farmers
                   </span>
                 </div>
 
-                <div className=" pl-5 sm:pl-6">
-                  <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-stone sm:text-[8px]">
-                    Roast
+                <div className="border-l border-lightCream/15 pl-5 sm:pl-6">
+                  <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-lightCream/45 sm:text-[8px]">
+                    Altitude
                   </span>
-                  <span className="mt-2 block text-[10px] font-medium uppercase tracking-[0.08em] text-ink sm:text-[11px]">
-                    Medium
+                  <span className="mt-2 block text-[10px] font-medium uppercase tracking-[0.08em] text-lightCream sm:text-[11px]">
+                    1,300–2,200 m
                   </span>
                 </div>
               </div>
@@ -213,9 +201,11 @@ const FeaturedProduct = () => {
                 delay: 0.65,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mt-14 text-center md:text-left"
+              className="mt-10 text-center md:text-left"
             >
-              <Button to={"/shop/coffee"}>Explore Coffee</Button>
+              <Button to="/shop/coffee" variant="light">
+                Explore Beans
+              </Button>
             </motion.div>
           </div>
         </div>

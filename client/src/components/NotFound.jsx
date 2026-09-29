@@ -1,50 +1,61 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import error from "../assets/icon/error.svg";
+import Button from "./Button";
 
 const NotFound = () => {
   return (
     <main className="relative flex min-h-dvh items-center justify-center overflow-hidden bg-ink px-6 text-lightCream sm:px-10 lg:px-16">
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <span className="header select-none text-[35vw] leading-none tracking-[-0.08em] text-lightCream/[0.025]">
-          404
-        </span>
+      {/* WATERMARK */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
+        <motion.img
+          src={error}
+          alt=""
+          aria-hidden="true"
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 0.4, scale: 1 }}
+          transition={{
+            duration: 1.4,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="h-[55vw] w-[55vw] max-h-[720px] max-w-[720px] object-contain opacity-[0.055] sm:h-[50vw] sm:w-[50vw] lg:h-[42vw] lg:w-[42vw]"
+        />
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 max-w-2xl text-center"
-      >
-        <div className="mb-8 flex items-center justify-center gap-3">
-          <span className="h-px w-8 bg-red" />
-          <span className="text-[8px] font-medium uppercase tracking-[0.35em] text-lightCream/55">
-            404 · Page Not Found
-          </span>
-          <span className="h-px w-8 bg-red" />
-        </div>
+      {/* SUBTLE OVERLAY */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink/10 via-transparent to-ink/30" />
 
-        <h1 className="header text-[clamp(3.5rem,8vw,8rem)] uppercase leading-[0.82] tracking-[-0.065em]">
+      {/* CONTENT */}
+      <motion.div
+        initial={{ opacity: 0, y: 28 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 1,
+          delay: 0.15,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="relative z-10 max-w-2xl text-center "
+      >
+        {/* TITLE */}
+        {/* <h1 className="header mt-6 text-[clamp(3.5rem,8vw,8rem)] font-medium uppercase leading-[0.82] tracking-[-0.065em]">
           This path
           <br />
           <span className="italic text-cream">leads nowhere.</span>
-        </h1>
+        </h1> */}
 
-        <p className="mx-auto mt-8 max-w-md text-sm leading-7 text-lightCream/55 sm:text-base">
-          Looks like this trail has taken you a little too far from the hills.
-          Let&apos;s get you back to where the good things are.
+        {/* DESCRIPTION */}
+        <p className="mx-auto  max-w-md text-sm  leading-7 text-lightCream sm:text-base">
+          This path{" "}
+          <span className="italic text-red font-bold bg-lightCream py-1 px-2 rounded-4xl">
+            leads nowhere.
+          </span>
         </p>
 
-        <Link
-          to="/"
-          className="group mx-auto mt-10 flex w-fit items-center gap-4 border-b border-lightCream/25 pb-3 text-[8px] font-medium uppercase tracking-[0.3em] text-lightCream transition-colors duration-500 hover:border-red hover:text-cream"
-        >
-          <span>Return to the hills</span>
-          <span className="flex h-7 w-7 items-center justify-center rounded-full border border-lightCream/20 transition-all duration-500 group-hover:translate-x-1 group-hover:border-red">
-            <ArrowUpRight size={13} strokeWidth={1.1} />
-          </span>
-        </Link>
+        {/* CTA */}
+        <Button to={"/"} variant="light" className="mt-5">
+          Return to the hill
+        </Button>
       </motion.div>
     </main>
   );

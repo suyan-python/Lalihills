@@ -5,39 +5,34 @@ import tea from "../../assets/footer/tea.jpeg";
 import gift from "../../assets/footer/gift.webp";
 import bulk from "../../assets/footer/bulk.jpg";
 import { ArrowUpRight } from "lucide-react";
+import Button from "../../components/Button";
 
 const End = () => {
   const footerCollections = [
     {
-      title: "Coffee",
+      title: "Get Your Beans",
       subtitle: "From the hills of Nepal",
       image: coffee,
       link: "/shop/coffee",
     },
     {
-      title: "Tea",
+      title: "Get Your Leaves",
       subtitle: "Leaves shaped by the hills",
       image: tea,
       link: "/shop/tea",
     },
     {
-      title: "Gift Packaging",
+      title: "Gift Someone You Love",
       subtitle: "Give a taste of Nepal",
       image: gift,
       link: "/shop/gifts",
-    },
-    {
-      title: "Bulk Order",
-      subtitle: "For businesses & gatherings",
-      image: bulk,
-      link: "/bulk-order",
     },
   ];
   return (
     <div>
       <section>
         <div className="mx-auto w-full">
-          <div className="grid grid-cols-2 md:grid-cols-4">
+          <div className="grid grid-cols-1 md:grid-cols-3">
             {footerCollections.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -49,7 +44,7 @@ const End = () => {
                   delay: index * 0.08,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="group relative aspect-[3/5] overflow-hidden rounded-b-4xl "
+                className="group relative aspect-[2/2] overflow-hidden  "
               >
                 {/* Background image */}
 
@@ -70,24 +65,18 @@ const End = () => {
                 {/* Content */}
 
                 <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7 text-center">
-                  <h3 className="text-[clamp(1.2rem,3vw,2rem)] leading-none tracking-[-0.03em] text-white">
+                  <h3 className="header text-[clamp(1.2rem,3vw,2rem)] uppercase leading-none tracking-[0.03em] text-white ">
                     {item.title}
                   </h3>
 
-                  {/* CTA */}
-                  <a
-                    href={item.link}
-                    className="group/cta mt-6 inline-flex items-center gap-3 border-b border-white/40 pb-2 text-[8px] font-semibold uppercase tracking-[0.3em] text-white transition-colors duration-300 hover:border-[#D9828A]"
+                  <Button
+                    className="mt-3"
+                    variant="light"
+                    size="sm"
+                    to={item.link}
                   >
                     Shop
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 transition-colors duration-300 group-hover/cta:bg-red">
-                      <ArrowUpRight
-                        size={12}
-                        strokeWidth={1.5}
-                        className="transition-transform duration-300 group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
-                      />
-                    </span>
-                  </a>
+                  </Button>
                 </div>
               </motion.div>
             ))}

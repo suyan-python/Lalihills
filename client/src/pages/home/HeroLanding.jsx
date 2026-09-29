@@ -27,7 +27,7 @@ const Landing = () => {
 
       <ContextSection />
 
-      <Halfhalf2 />
+      {/* <Halfhalf2 /> */}
 
       <AuthenticSection />
 

@@ -1,6 +1,7 @@
 import laliStampLogo from "../../assets/logo/round.svg";
 import { motion } from "framer-motion";
 import SmartVideo from "../../components/SmartVideo";
+import Button from "../../components/Button";
 
 const Halfhalf = () => {
   return (
@@ -8,7 +9,7 @@ const Halfhalf = () => {
       <section className="relative min-h-screen overflow-hidden">
         <div className="grid min-h-screen grid-cols-1 lg:grid-cols-2">
           {/* LEFT — CONTENT */}
-          <div className="flex min-h-[60vh] items-center justify-center bg-deepRed px-8 py-16 sm:px-12 lg:min-h-screen lg:px-16 xl:px-24">
+          <div className="flex min-h-[60vh] items-center justify-center bg-hill px-8 py-16 sm:px-12 lg:min-h-screen lg:px-16 xl:px-24">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -24,6 +25,7 @@ const Halfhalf = () => {
               }}
               className="max-w-xl text-center lg:text-left"
             >
+              {/* TITLE */}
               <motion.h2
                 variants={{
                   hidden: { opacity: 0, y: 45 },
@@ -36,15 +38,16 @@ const Halfhalf = () => {
                     },
                   },
                 }}
-                className="subheader mt-7 max-w-2xl text-[clamp(3.6rem,6.8vw,6.8rem)] uppercase leading-[0.82] tracking-[-0.065em] text-lightCream font-medium"
+                className="subheader mt-7 max-w-2xl text-[clamp(3.6rem,6.8vw,6.8rem)] font-medium uppercase leading-[0.82] tracking-[-0.065em] text-lightCream"
               >
-                Where
+                From the
                 <br />
-                <span className="italic text-cream">Laali</span>
+                <span className="italic text-cream">hills.</span>
                 <br />
-                begins.
+                To your cup.
               </motion.h2>
 
+              {/* DETAILS */}
               <motion.div
                 variants={{
                   hidden: { opacity: 0, y: 18 },
@@ -57,23 +60,43 @@ const Halfhalf = () => {
                     },
                   },
                 }}
-                className="mx-auto mt-10 flex max-w-md items-center justify-center gap-5 lg:mx-0 lg:justify-start"
+                className="mx-auto mt-9 flex max-w-md items-center justify-center gap-5 lg:mx-0 lg:justify-start "
               >
-                <span className="text-[13px]  tracking-wide text-lightCream">
+                <span className="text-[12px] tracking-wide text-lightCream/80">
                   Nepal
                 </span>
 
                 <span className="h-3 w-px bg-lightCream/20" />
 
-                <span className="text-[13px]  tracking-wide text-lightCream">
-                  Higher Belt
+                <span className="text-[12px] tracking-wide text-lightCream/80">
+                  High Altitude
                 </span>
 
                 <span className="h-3 w-px bg-lightCream/20" />
 
-                <span className="text-[13px]  tracking-wide text-lightCream">
-                  Laali Hills
+                <span className="text-[12px] tracking-wide text-lightCream/80">
+                  Whole Leaf
                 </span>
+              </motion.div>
+
+              {/* CTA */}
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 15 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: 1,
+                      ease: [0.22, 1, 0.36, 1],
+                    },
+                  },
+                }}
+                className="mt-10"
+              >
+                <Button to="/shop/tea" variant="light">
+                  Explore Leaves
+                </Button>
               </motion.div>
             </motion.div>
           </div>
@@ -81,14 +104,14 @@ const Halfhalf = () => {
           {/* RIGHT — VIDEO */}
           <div className="relative min-h-[60vh] overflow-hidden lg:min-h-screen">
             <SmartVideo
-              src="/videos/red.mp4"
+              src="/videos/leaves.mp4"
               className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
         </div>
 
         {/* CENTER STAMP */}
-        <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-lightCream/40 bg-lightCream/10 p-3 backdrop-blur-[2px] sm:h-32 sm:w-32 lg:h-36 lg:w-36">
+        <div className="pointer-events-none absolute left-1/2 top-0 z-20 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-lightCream/40 bg-lightCream/10 p-3 backdrop-blur-[2px] sm:h-32 sm:w-32 lg:h-36 lg:w-36">
           <div className="absolute inset-2 rounded-full border border-dashed border-lightCream/30" />
 
           <img
