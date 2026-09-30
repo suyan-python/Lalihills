@@ -1,6 +1,10 @@
 // import product from "../assets/products/example.webp";
-import product from "../assets/products/pro1.jpg";
-import tea from "../assets/products/tea.jpg";
+import product1 from "../assets/products/pro1.jpg";
+import product2 from "../assets/products/pro2.jpg";
+import product3 from "../assets/products/pro3.jpg";
+import tea1 from "../assets/products/tea1.jpg";
+import tea2 from "../assets/products/tea2.jpg";
+import tea3 from "../assets/products/tea3.jpg";
 
 const createRotationImages = (slug, count = 30) => {
   return Array.from(
@@ -17,8 +21,8 @@ export const coffeeProducts = [
   shortName: "Cold Brew – 250g [Beans / Ground]",
   slug: "cold-brew-250g-DHANKUTA",
 
-  image: product,
-  hoverImage: product,
+  image: product1,
+  hoverImage: product1,
   imageColor: "#D9A08F",
 
   category: "coffee",
@@ -176,8 +180,8 @@ sizeOptions: [
   shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
   slug: "filter-roast-anaerobic-monarch-250g-DHANKUTA",
 
-  image: product,
-  hoverImage: product,
+  image: product2,
+  hoverImage: product2,
   rotationImages: createRotationImages(
     "filter-roast-anaerobic-monarch-250g-DHANKUTA",
     3,
@@ -335,8 +339,8 @@ sizeOptions: [
   shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
   slug: "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
 
-  image: product,
-  hoverImage: product,
+  image: product3,
+  hoverImage: product3,
   rotationImages: createRotationImages(
     "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
     27,
@@ -494,12 +498,310 @@ export const teaProducts = [
 
 {
   _id: "first-flush-100-ILAM",
-  name: "First Flush",
+  name: "Illam First Flush",
   shortName: "First Flush – 100g [Loose Leaf]",
   slug: "first-flush-100g-ILAM",
 
-  image: tea,
-  hoverImage: tea,
+  image: tea1,
+  hoverImage: tea1,
+  imageColor: "#D8DCC8",
+
+  category: "tea",
+  type: "leaves",
+
+  teaType: "first-flush",
+  caffeine: "medium",
+  oxidation: 2,
+  profile: 4,
+
+  altitude: "1,800-2,200",
+  origin: "Ilam, Nepal",
+
+  price: 850,
+  sizeOptions: [
+    { grams: 50, price: 650 },
+    { grams: 100, price: 1100 },
+    { grams: 250, price: 2400 },
+  ],
+
+  formOptions: ["Whole-lead tin", "Tea Bag"],
+
+  description:
+    "A delicate early-season Nepali tea with floral aromas, bright character, and a clean finish. Carefully harvested from the highlands, First Flush captures the freshness of the season in every cup.",
+
+  shortDescription:
+    "Delicate, floral, and bright — a fresh expression of Nepal's highland tea.",
+
+  aroma: [
+    "floral",
+    "fresh grass",
+    "honey",
+  ],
+
+  flavors: [
+    "White Flowers",
+    "Honey",
+    "Citrus",
+  ],
+
+  info: {
+    origin: {
+      value: "Ilam, Nepal",
+      blurb:
+        "Grown in the highlands of eastern Nepal, where cool temperatures, mountain mist, and rich soil create ideal conditions for specialty tea.",
+    },
+
+    altitude: {
+      value: "1,800–2,200 m",
+      blurb:
+        "The tea is cultivated at higher elevations where cooler conditions encourage slower leaf development and contribute to a more delicate character.",
+    },
+
+    process: {
+      value: "Lightly processed",
+      blurb:
+        "The young leaves are carefully handled to preserve their fresh character, delicate aromas, and natural sweetness.",
+    },
+
+    variety: {
+      value: "Camellia sinensis",
+      blurb:
+        "Made from the leaves of Camellia sinensis, the tea plant responsible for traditional teas across the world.",
+    },
+
+    harvest: {
+      value: "First Flush",
+      blurb:
+        "Harvested during the first picking season, when young leaves and buds are at their freshest and most delicate.",
+    },
+
+    oxidation: {
+      value: "Low",
+      blurb:
+        "Light oxidation preserves the tea's fresh, floral character while developing a clean and bright cup.",
+    },
+  },
+
+  rating: 4.8,
+  reviews: 32,
+
+  available: true,
+  instock: true,
+  discount: false,
+
+  faqs: [
+    {
+      question: "What is First Flush tea?",
+      answer:
+        "First Flush refers to the first harvest of the tea season. These young leaves are known for their delicate character, freshness, and floral aromas.",
+    },
+    {
+      question: "How should I brew this tea?",
+      answer:
+        "Use around 2–3g of tea per cup and steep in hot water for approximately 2–3 minutes. Adjust the time according to your preferred strength.",
+    },
+    {
+      question: "Can I steep the leaves more than once?",
+      answer:
+        "Yes. High-quality loose-leaf tea can often be steeped multiple times, with each infusion revealing slightly different aromas and flavours.",
+    },
+    {
+      question: "How should I store the tea?",
+      answer:
+        "Store it in an airtight container away from sunlight, moisture, heat, and strong aromas to preserve its freshness.",
+    },
+  ],
+
+  ritual: {
+  type: "steeping",
+    method: "Steeping ritual",
+
+  dose: "3g",
+  doseLabel: "Leaf",
+  water: "250ml",
+  waterLabel: "Water",
+  temperature: "90°C",
+
+  methods: {
+    western: {
+      label: "Western",
+      steeps: [
+        { number: 1, duration: 180 },
+        { number: 2, duration: 240 },
+        { number: 3, duration: 300 },
+      ],
+    },
+
+    gongfu: {
+      label: "Gongfu",
+      steeps: [
+        { number: 1, duration: 30 },
+        { number: 2, duration: 45 },
+        { number: 3, duration: 60 },
+      ],
+    },
+  },
+}
+ 
+},
+
+{
+  _id: "first-flush-100-ILAM",
+  name: "Illam Green",
+  shortName: "First Flush – 100g [Loose Leaf]",
+  slug: "first-flush-100g-ILAM",
+
+  image: tea2,
+  hoverImage: tea2,
+  imageColor: "#D8DCC8",
+
+  category: "tea",
+  type: "leaves",
+
+  teaType: "first-flush",
+  caffeine: "medium",
+  oxidation: 2,
+  profile: 4,
+
+  altitude: "1,800-2,200",
+  origin: "Ilam, Nepal",
+
+  price: 850,
+  sizeOptions: [
+    { grams: 50, price: 650 },
+    { grams: 100, price: 1100 },
+    { grams: 250, price: 2400 },
+  ],
+
+  formOptions: ["Whole-lead tin", "Tea Bag"],
+
+  description:
+    "A delicate early-season Nepali tea with floral aromas, bright character, and a clean finish. Carefully harvested from the highlands, First Flush captures the freshness of the season in every cup.",
+
+  shortDescription:
+    "Delicate, floral, and bright — a fresh expression of Nepal's highland tea.",
+
+  aroma: [
+    "floral",
+    "fresh grass",
+    "honey",
+  ],
+
+  flavors: [
+    "White Flowers",
+    "Honey",
+    "Citrus",
+  ],
+
+  info: {
+    origin: {
+      value: "Ilam, Nepal",
+      blurb:
+        "Grown in the highlands of eastern Nepal, where cool temperatures, mountain mist, and rich soil create ideal conditions for specialty tea.",
+    },
+
+    altitude: {
+      value: "1,800–2,200 m",
+      blurb:
+        "The tea is cultivated at higher elevations where cooler conditions encourage slower leaf development and contribute to a more delicate character.",
+    },
+
+    process: {
+      value: "Lightly processed",
+      blurb:
+        "The young leaves are carefully handled to preserve their fresh character, delicate aromas, and natural sweetness.",
+    },
+
+    variety: {
+      value: "Camellia sinensis",
+      blurb:
+        "Made from the leaves of Camellia sinensis, the tea plant responsible for traditional teas across the world.",
+    },
+
+    harvest: {
+      value: "First Flush",
+      blurb:
+        "Harvested during the first picking season, when young leaves and buds are at their freshest and most delicate.",
+    },
+
+    oxidation: {
+      value: "Low",
+      blurb:
+        "Light oxidation preserves the tea's fresh, floral character while developing a clean and bright cup.",
+    },
+  },
+
+  rating: 4.8,
+  reviews: 32,
+
+  available: true,
+  instock: true,
+  discount: false,
+
+  faqs: [
+    {
+      question: "What is First Flush tea?",
+      answer:
+        "First Flush refers to the first harvest of the tea season. These young leaves are known for their delicate character, freshness, and floral aromas.",
+    },
+    {
+      question: "How should I brew this tea?",
+      answer:
+        "Use around 2–3g of tea per cup and steep in hot water for approximately 2–3 minutes. Adjust the time according to your preferred strength.",
+    },
+    {
+      question: "Can I steep the leaves more than once?",
+      answer:
+        "Yes. High-quality loose-leaf tea can often be steeped multiple times, with each infusion revealing slightly different aromas and flavours.",
+    },
+    {
+      question: "How should I store the tea?",
+      answer:
+        "Store it in an airtight container away from sunlight, moisture, heat, and strong aromas to preserve its freshness.",
+    },
+  ],
+
+  ritual: {
+  type: "steeping",
+    method: "Steeping ritual",
+
+  dose: "3g",
+  doseLabel: "Leaf",
+  water: "250ml",
+  waterLabel: "Water",
+  temperature: "90°C",
+
+  methods: {
+    western: {
+      label: "Western",
+      steeps: [
+        { number: 1, duration: 180 },
+        { number: 2, duration: 240 },
+        { number: 3, duration: 300 },
+      ],
+    },
+
+    gongfu: {
+      label: "Gongfu",
+      steeps: [
+        { number: 1, duration: 30 },
+        { number: 2, duration: 45 },
+        { number: 3, duration: 60 },
+      ],
+    },
+  },
+}
+ 
+},
+
+{
+  _id: "first-flush-100-ILAM",
+  name: "Himalayan Silver Tips",
+  shortName: "First Flush – 100g [Loose Leaf]",
+  slug: "first-flush-100g-ILAM",
+
+  image: tea3,
+  hoverImage: tea3,
   imageColor: "#D8DCC8",
 
   category: "tea",
