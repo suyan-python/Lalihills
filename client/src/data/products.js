@@ -17,7 +17,7 @@ const createRotationImages = (slug, count = 30) => {
 export const coffeeProducts = [
 {
   _id: "cold-brew-250-DHANKUTA",
-  name: "Dhankuta Washed",
+  name: "Dhankuta Anaerobic",
   shortName: "Cold Brew – 250g [Beans / Ground]",
   slug: "cold-brew-250g-DHANKUTA",
 
@@ -176,7 +176,7 @@ sizeOptions: [
 
  {
   _id: "monarch-250-DHANKUTA",
-  name: "Gulmi Natural",
+  name: "Gulmi Natural Washed",
   shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
   slug: "filter-roast-anaerobic-monarch-250g-DHANKUTA",
 

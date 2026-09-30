@@ -55,7 +55,7 @@ const ProductDetailsRight = ({
   const infoOptions = ["Taste", "Origin", "Ritual"];
 
   return (
-    <div className="relative flex h-full min-h-0 flex-col bg-paper dark:bg-ink text-ink transition-colors duration-300">
+    <div className="relative flex h-full min-h-0 flex-col bg-raised dark:bg-ink text-ink transition-colors duration-300">
       {/* TOP — INFORMATION */}
       <div className=" z-10  min-h-0 flex-1 overflow-y-auto">
         <div className="flex h-full flex-col">

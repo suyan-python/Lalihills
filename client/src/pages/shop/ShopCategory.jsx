@@ -21,7 +21,7 @@ const ShopCategory = ({
   filterComponent,
 }) => {
   return (
-    <main className="min-h-screen  mx-auto px-8 md:px-0 bg-lightWhite ">
+    <main className="min-h-screen mx-auto px-8 md:px-0 bg-lightWhite ">
       <Helmet>
         <title>{seoTitle}</title>
 
@@ -71,7 +71,7 @@ const ShopCategory = ({
               )}
             </div>
 
-            {description && (
+            {/* {description && (
               <motion.p
                 initial={{
                   opacity: 0,
@@ -100,7 +100,7 @@ const ShopCategory = ({
               >
                 {description}
               </motion.p>
-            )}
+            )} */}
 
             <div className="relative mt-2 h-px w-full bg-[#241817]/10">
               <motion.div
@@ -121,7 +121,7 @@ const ShopCategory = ({
           </div>
         </section>
 
-        <section className="pb-14 lg:pb-48 mt-2 ">
+        <section className="pb-14 lg:pb-24 mt-2 ">
           <div className="">
             <ProductGrid products={products} />
           </div>

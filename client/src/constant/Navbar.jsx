@@ -8,10 +8,10 @@ import logo from "../assets/logo/gold.svg";
 
 import trending from "../assets/images/trending.jpg";
 import shop from "../assets/images/shop.jpg";
-import explore from "../assets/images/explore.webp";
+import explore from "../assets/images/explore.jpg";
 import stories from "../assets/images/stories.jpg";
-import about from "../assets/images/about.webp";
-import support from "../assets/images/support.png";
+import about from "../assets/images/about.jpg";
+import support from "../assets/images/support.jpg";
 
 const menuItems = [
   {
@@ -380,34 +380,34 @@ const Navbar = () => {
     RIGHT PREVIEW
 =========================================== */}
 
-                <div className="relative flex w-[80%] overflow-hidden bg-lightWhite">
+                <div className="relative flex w-[80%] overflow-hidden bg-darkHill">
                   <div className="pointer-events-none absolute inset-0 overflow-hidden">
                     {/* Large leaf */}
                     <Leaf
                       size={230}
                       strokeWidth={0.7}
-                      className="absolute -left-16 -top-16 rotate-[25deg] text-hill/[0.055]"
+                      className="absolute -left-16 -top-16 rotate-[25deg] text-lightWhite/[0.095]"
                     />
 
                     {/* Small leaf */}
                     <Leaf
                       size={110}
                       strokeWidth={0.8}
-                      className="absolute left-[24%] top-[18%] -rotate-[35deg] text-red/[0.045]"
+                      className="absolute left-[24%] top-[18%] -rotate-[35deg] text-ivory/[0.055]"
                     />
 
                     {/* Sprout */}
                     <Sprout
                       size={180}
                       strokeWidth={0.7}
-                      className="absolute bottom-[-35px] left-[12%] rotate-[18deg] text-hill/[0.045]"
+                      className="absolute bottom-[-35px] left-[12%] rotate-[18deg] text-lightWhite/[0.045]"
                     />
 
                     {/* Small botanical detail */}
                     <Leaf
                       size={75}
                       strokeWidth={0.8}
-                      className="absolute bottom-[20%] left-[8%] rotate-[70deg] text-soil/[0.04]"
+                      className="absolute bottom-[20%] left-[8%] rotate-[70deg] text-ivory/[0.095]"
                     />
                   </div>
                   {/* ===========================================
@@ -438,18 +438,18 @@ const Navbar = () => {
                           }}
                           className="mb-12"
                         >
-                          <p className="mb-5 text-[9px] uppercase tracking-[0.35em] text-ink/90">
+                          <p className="mb-5 text-[9px] uppercase tracking-[0.35em] text-lightWhite/90">
                             {String(menuItems.indexOf(activeMenu) + 1).padStart(
                               2,
                               "0",
                             )}
                           </p>
 
-                          <h2 className="max-w-xl subheader text-5xl leading-[0.9] tracking-[-0.035em] text-ink xl:text-6xl">
+                          <h2 className="max-w-xl subheader text-5xl leading-[0.9] tracking-[-0.035em] text-lightWhite xl:text-6xl">
                             {activeMenu.title}
                           </h2>
 
-                          <p className="mt-4 max-w-md  text-base italic leading-relaxed text-ink/70">
+                          <p className="mt-4 max-w-md  text-sm italic leading-relaxed text-ivory/70 font-light">
                             {activeMenu.preview}
                           </p>
                         </motion.div>
@@ -500,9 +500,9 @@ const Navbar = () => {
                                             ? subItem
                                             : subItem.path
                                         }
-                                        className="group flex items-center justify-between border-b border-ink/10 pb-4"
+                                        className="group flex items-center justify-between border-b border-lightWhite/20 pb-2"
                                       >
-                                        <span className="text-sm text-ink/75 transition-colors duration-300 group-hover:text-ink">
+                                        <span className="text-sm text-lightWhite/85 transition-colors duration-300 group-hover:text-lightWhite">
                                           {typeof subItem === "string"
                                             ? subItem
                                             : subItem.title}
@@ -511,7 +511,7 @@ const Navbar = () => {
                                         <ArrowUpRight
                                           size={14}
                                           strokeWidth={1}
-                                          className="text-ink/45 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
+                                          className="text-lightWhite/55 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-lightWhite"
                                         />
                                       </Link>
                                     );
@@ -522,7 +522,7 @@ const Navbar = () => {
                                       key={subItem.title}
                                       className="space-y-3"
                                     >
-                                      <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-ink/70">
+                                      <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-lightWhite/55">
                                         {subItem.title}
                                       </p>
 
@@ -531,11 +531,11 @@ const Navbar = () => {
                                           to={child.path}
                                           onClick={() => setMenuOpen(false)}
                                           key={child.path}
-                                          className="group flex items-center gap-3 text-sm text-ink/75"
+                                          className="group flex items-center gap-3 text-sm text-lightWhite/85"
                                         >
-                                          <span className="h-px w-2 bg-ink transition-all duration-300 group-hover:w-5" />
+                                          <span className="h-px w-2 bg-lightWhite transition-all duration-300 group-hover:w-5" />
 
-                                          <span className="transition-colors duration-300 group-hover:text-ink">
+                                          <span className="transition-colors duration-300 group-hover:text-lightWhite">
                                             {child.title}
                                           </span>
                                         </Link>
@@ -553,7 +553,7 @@ const Navbar = () => {
                               <Link
                                 to={activeMenu.path}
                                 onClick={() => setMenuOpen(false)}
-                                className="group inline-flex items-center gap-4 border-b border-ink/50 pb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-ink"
+                                className="group inline-flex items-center gap-4 border-b border-lightWhite/50 pb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-lightWhite"
                               >
                                 Discover {activeMenu.title}
                                 <ArrowUpRight
@@ -569,7 +569,7 @@ const Navbar = () => {
                     </div>
                   </div>
 
-                  <div className="relative w-[50%] overflow-hidden ">
+                  <div className="relative w-full overflow-hidden ">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={activeMenu.title}
@@ -589,12 +589,12 @@ const Navbar = () => {
                           duration: 0.7,
                           ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="absolute inset-0 py-12  px-5"
+                        className="absolute inset-0 px-5"
                       >
                         <img
                           src={activeMenu.image}
                           alt={`${activeMenu.title} preview`}
-                          className="h-full w-full object-cover rounded-4xl"
+                          className="h-full w-full object-cover "
                         />
 
                         {/* Bottom information */}
