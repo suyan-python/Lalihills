@@ -509,7 +509,7 @@ export const teaProducts = [
   category: "tea",
   type: "leaves",
 
-  teaType: "first-flush",
+  teaType: "First Flush",
   caffeine: "medium",
   oxidation: 2,
   profile: 4,
@@ -658,13 +658,13 @@ export const teaProducts = [
   category: "tea",
   type: "leaves",
 
-  teaType: "first-flush",
+  teaType: "Illam Green",
   caffeine: "medium",
   oxidation: 2,
   profile: 4,
 
   altitude: "1,800-2,200",
-  origin: "Ilam, Nepal",
+  origin: "Ilam",
 
   price: 850,
   sizeOptions: [
@@ -807,7 +807,7 @@ export const teaProducts = [
   category: "tea",
   type: "leaves",
 
-  teaType: "first-flush",
+  teaType: "Silver Tip",
   caffeine: "medium",
   oxidation: 2,
   profile: 4,

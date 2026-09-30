@@ -57,7 +57,7 @@ const collections = [
 const Shop = () => {
   return (
     <main className="relative overflow-x-hidden bg-lightWhite ">
-      <div className="max-w-[350px] md:max-w-7xl mx-auto">
+      <div className="max-w-[350px] md:max-w-7xl mx-auto pb-24">
         {/* BACKGROUND WORD */}
         <div className="pointer-events-none absolute right-[-6vw] top-[8vh] z-0 select-none">
           <motion.p
@@ -73,13 +73,20 @@ const Shop = () => {
           </motion.p>
         </div>
 
-        <div className="header mt-20 md:mt-36 text-3xl md:text-5xl">
+        <div
+          className="header mt-20 md:mt-36 header
+        text-[clamp(1.5rem,8vw,3.5rem)]
+        font-medium
+        leading-[0.8]
+        tracking-[-0.065em]
+        text-ink"
+        >
           Beans, Leaves & <span className="text-red italic">Gifts</span>.
         </div>
 
         {/* COLLECTIONS */}
         <section className="relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 md:gap-12 py-3 md:py-5  ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-12 py-3 md:py-5  ">
             <CollectionColumn
               collection={collections[0]}
               products={coffeeProducts}

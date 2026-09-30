@@ -66,11 +66,16 @@ const ProductDetailsLeft = ({
       <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8 md:p-10 lg:p-12">
         <div className="max-w-2xl">
           {/* PRODUCT OPTIONS */}
+
           <div className="mb-7">
             <div className="flex flex-wrap gap-x-2 gap-y-2">
               {productOptions.map((option) => {
                 const active = product?._id === option?._id;
 
+                const label =
+                  option.category === "tea"
+                    ? option.teaType || option.origin
+                    : option.origin;
                 return (
                   <button
                     key={option._id}
@@ -81,13 +86,13 @@ const ProductDetailsLeft = ({
                         ? { backgroundColor: option.imageColor }
                         : undefined
                     }
-                    className={`rounded-full border px-3 py-1 text-[11px] tracking-[0.02em] transition-all duration-300 font-semibold ${
+                    className={`rounded-full border px-3 py-1 text-[11px] font-semibold tracking-[0.02em] transition-all duration-300 ${
                       active
                         ? "border-transparent text-ink"
                         : "cursor-pointer border-lightWhite/75 bg-ink/75 text-lightCream/85"
                     }`}
                   >
-                    {option.origin}
+                    {label}
                   </button>
                 );
               })}

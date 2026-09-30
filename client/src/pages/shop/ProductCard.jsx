@@ -45,23 +45,14 @@ const ProductCard = ({ product }) => {
             alt={name}
             loading="lazy"
             decoding="async"
-            className="h-full w-full object-cover rounded-4xl"
+            className="h-full w-full object-cover rounded-2xl md:rounded-4xl"
           />
-          {/* TOP CORNER */}
-
-          <div className="absolute left-5 top-5 z-10 flex items-center gap-2 opacity-0 transition-all duration-500 group-hover:opacity-100">
-            <span className="h-px w-5 bg-ivory/60" />
-
-            <span className="text-[7px] uppercase tracking-[0.35em] text-ivory/80">
-              {product.category}
-            </span>
-          </div>
 
           {/* BOTTOM ACTION */}
         </div>
       </Link>
 
-      <div className="py-10">
+      <div className="py-3 md:py-10">
         <div className="flex items-start justify-between gap-5">
           <Link to={`/shop/${product.category}/${slug}`} className="min-w-0">
             <h3 className="text-[11px] font-semibold uppercase leading-[1.4] tracking-[0.1em] text-ink transition-colors duration-300 group-hover:text-red sm:text-xs">
@@ -119,7 +110,7 @@ const ProductCard = ({ product }) => {
 
         {/* button  */}
 
-        <div className="mt-6 flex w-full flex-col items-stretch justify-center gap-2.5 sm:mt-8 sm:w-auto sm:flex-row sm:items-center sm:gap-5">
+        <div className="mt-4 flex w-full flex-col items-stretch justify-center gap-1 sm:mt-5 sm:w-auto sm:flex-row sm:items-center sm:gap-5">
           <Button
             to={`/shop/${product.category}/${slug}`}
             variant="primary"
