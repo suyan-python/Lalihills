@@ -369,13 +369,13 @@ const ProductDetailsRight = ({
       </div>
 
       {/* FIXED PURCHASE BAR */}
-      <div className="shrink-0 border-t border-ink/20 bg-lightWhite dark:bg-darkSoil transition-colors duration-300  px-6 py-4 text-ink sm:px-8 lg:px-10">
+      <div className="shrink-0 border-t border-ink/20 dark:border-lightWhite/30 bg-lightWhite dark:bg-darkSoil transition-colors duration-300  px-6 py-4 text-ink sm:px-8 lg:px-10 dark:text-lightWhite">
         <div className="flex items-center justify-between gap-5">
           {/* PRODUCT SUMMARY */}
           <div className="min-w-0">
             <p className="header truncate text-[16px] ">{product.name}</p>
 
-            <p className=" truncate text-[10px] tracking-[0.05em] text-ink/80">
+            <p className=" truncate text-[10px] tracking-[0.05em] text-ink/80 dark:text-lightWhite/80">
               {selectedGrind} · {selectedSize?.size} · Qty {quantity}
             </p>
           </div>
@@ -390,12 +390,12 @@ const ProductDetailsRight = ({
                   Rs. {(originalTotal * 0.9).toLocaleString()}
                 </span>
 
-                <span className="text-sm text-ink/35 line-through">
+                <span className="text-sm text-ink/35 line-through dark:text-lightWhite/35">
                   Rs. {originalTotal.toLocaleString()}
                 </span>
               </div>
             ) : (
-              <span className="header text-md text-ink">
+              <span className="header text-md text-ink dark:text-lightWhite">
                 Rs. {originalTotal.toLocaleString()}
               </span>
             )}
