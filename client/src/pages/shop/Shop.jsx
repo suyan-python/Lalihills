@@ -115,7 +115,7 @@ const Shop = () => {
 
 const CollectionColumn = ({ collection, products = [], type }) => {
   return (
-    <div className="w-full  ">
+    <div className="w-full   ">
       {/* COLLECTION HERO */}
       <CollectionHero collection={collection} products={products} type={type} />
     </div>
@@ -145,7 +145,7 @@ const CollectionHero = ({ collection, products = [], type }) => {
       }}
       className="w-full"
     >
-      <div className="group relative block aspect-[3/4] w-full overflow-hidden rounded-4xl">
+      <div className="group relative block aspect-[2/3] w-full overflow-hidden rounded-4xl">
         {/* BACKGROUND IMAGE */}
         <motion.img
           src={collection.image}
@@ -197,7 +197,7 @@ const FeaturedProducts = ({ products = [], type, collection }) => {
   const featuredProducts = products.slice(0, 2);
 
   return (
-    <div className="px-4 pb-4 sm:px-5 sm:pb-5 md:px-6 md:pb-6">
+    <div className="px-4 pb-4 sm:px-5 sm:pb-5 md:px-6 md:pb-6 ">
       {featuredProducts.length > 0 && (
         <div className="space-y-2">
           {featuredProducts.map((product) => (
@@ -257,7 +257,7 @@ const FeaturedProductCard = ({ product }) => {
   return (
     <motion.div
       layout
-      className="overflow-hidden rounded-3xl bg-ink/35 backdrop-blur-sm shadow-sm border border-lightWhite/25"
+      className="overflow-hidden rounded-3xl bg-ink/35 backdrop-blur-sm shadow-sm border border-lightWhite/25 cursor-pointer"
       transition={{
         layout: {
           duration: 0.35,

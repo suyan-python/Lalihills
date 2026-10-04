@@ -129,7 +129,7 @@ const ProductDetails = ({ products = [] }) => {
     });
   };
   return (
-    <section className="relative z-0 w-full lg:h-dvh lg:min-h-[680px]">
+    <section className="relative z-0 w-full lg:h-dvh lg:min-h-[680px] ">
       <div className="grid min-h-screen grid-cols-1 lg:h-full lg:grid-cols-2">
         <ProductDetailsLeft
           product={currentProduct}

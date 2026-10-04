@@ -204,7 +204,7 @@ const ProductDetailsRight = ({
                 Plan
               </span>
             </div>
-            <div className="mt-1 grid grid-cols-2 rounded-full bg-ivory p-1">
+            <div className="mt-1 grid grid-cols-2 rounded-full bg-ivory  p-1 transition-colors duration-300">
               <PurchaseOption
                 active={purchaseType === "one-time"}
                 onClick={() => setPurchaseType("one-time")}
@@ -386,7 +386,7 @@ const ProductDetailsRight = ({
 
             {purchaseType === "subscribe" ? (
               <div className="flex items-baseline gap-2">
-                <span className="header text-lg text-deepRed">
+                <span className="header text-lg text-deepRed dark:text-red">
                   Rs. {(originalTotal * 0.9).toLocaleString()}
                 </span>
 
