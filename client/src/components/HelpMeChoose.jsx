@@ -298,42 +298,6 @@ const HelpMeChoose = () => {
       </div>
 
       <div className="mx-auto flex min-h-dvh max-w-300 flex-col px-6 py-8 sm:px-10 sm:py-10 lg:px-16">
-        <header className="flex items-center justify-between">
-          <Link
-            to="/shop"
-            className="header text-[8px] font-medium uppercase tracking-[0.3em] text-ink/45 transition-colors duration-500 hover:text-red"
-          >
-            Laali Hills
-          </Link>
-
-          {!isResult && (
-            <div className="flex items-center gap-5">
-              <div className="flex items-center gap-2.5">
-                <motion.div
-                  className="relative flex h-9 w-9 items-center justify-center rounded-full"
-                  animate={{
-                    background: `conic-gradient(var(--color-deepRed) ${timerProgress}%, color-mix(in srgb, var(--color-ink) 10%, transparent) 0)`,
-                  }}
-                  transition={{ duration: 0.25, ease: "linear" }}
-                  aria-hidden="true"
-                >
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-lightWhite text-[8px] font-medium tabular-nums text-ink">
-                    {secondsLeft}
-                  </span>
-                </motion.div>
-
-                <span className="hidden text-[7px] uppercase tracking-[0.25em] text-ink/35 sm:inline">
-                  Seconds left
-                </span>
-              </div>
-
-              <span className="text-[8px] uppercase tracking-[0.3em] text-ink/35">
-                {String(currentStep + 1).padStart(2, "0")} / 07
-              </span>
-            </div>
-          )}
-        </header>
-
         <div className="flex flex-1 flex-col justify-center py-16 sm:py-20">
           <AnimatePresence mode="wait" custom={direction}>
             {!isResult ? (
@@ -347,7 +311,7 @@ const HelpMeChoose = () => {
                   duration: 0.5,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="mx-auto w-full max-w-3xl"
+                className="mx-auto w-full max-w-5xl"
               >
                 {/* QUESTION */}
                 <div className="mb-5 sm:mb-8">
@@ -356,7 +320,7 @@ const HelpMeChoose = () => {
                   </h1>
 
                   {question.description && (
-                    <p className="mt-5 text-center text-[11px] leading-5 font-medium  text-stone sm:text-[14px] italic">
+                    <p className="mt-5 text-center text-[11px] leading-5   text-soil sm:text-[14px] italic">
                       {question.description}
                     </p>
                   )}
@@ -372,39 +336,46 @@ const HelpMeChoose = () => {
                         key={option.value}
                         type="button"
                         onClick={() => selectAnswer(option.value)}
-                        className={`group flex w-full items-center justify-between border-b border-ink/10 py-5 text-left transition-all duration-300 last:border-b-0 sm:py-6 ${
+                        className={`group flex w-full items-center justify-between border-b border-ink/10 py-4.5 text-left transition-[padding,color,background-color] duration-150 last:border-b-0 sm:py-5 ${
                           selected
-                            ? "text-red"
-                            : "text-ink hover:px-2 hover:text-red hover:cursor-pointer"
+                            ? "bg-red/[0.04] px-2 text-red"
+                            : "text-ink hover:bg-ink/[0.025] hover:px-2 hover:text-red"
                         }`}
                       >
-                        <span className="flex min-w-0 items-center gap-5 sm:gap-6">
+                        <span className="flex min-w-0 items-center gap-4 sm:gap-5">
+                          {/* Number */}
                           <span
-                            className={`text-[7px] tracking-[0.2em] transition-colors ${
+                            className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[7px] tracking-[0.16em] transition-all duration-150 ${
                               selected
-                                ? "text-red/60"
-                                : "text-ink/25 group-hover:text-red/50 "
+                                ? "bg-red text-lightCream"
+                                : "border border-ink/10 text-ink/30 group-hover:border-red/30 group-hover:text-red"
                             }`}
                           >
                             {String(index + 1).padStart(2, "0")}
                           </span>
 
-                          <span className="text-sm font-medium tracking-[-0.01em] sm:text-base">
+                          {/* Label */}
+                          <span
+                            className={`text-sm tracking-[-0.01em] transition-colors duration-150 sm:text-base ${
+                              selected ? "font-medium" : "font-normal"
+                            }`}
+                          >
                             {option.label}
                           </span>
                         </span>
 
+                        {/* Arrow */}
                         <span
-                          className={`ml-4 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                          className={`ml-4 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all duration-150 ${
                             selected
                               ? "border-red bg-red text-lightCream"
-                              : "border-ink/15 text-ink/25 group-hover:border-red group-hover:text-red"
+                              : "border-ink/15 text-ink/25 group-hover:border-red/50 group-hover:text-red"
                           }`}
                         >
                           <ArrowRight
                             size={11}
-                            strokeWidth={1.2}
-                            className="transition-transform duration-300 group-hover:translate-x-0.5"
+                            strokeWidth={1.3}
+                            className="transition-transform duration-150 group-hover:translate-x-0.5"
                           />
                         </span>
                       </button>
@@ -488,11 +459,11 @@ const HelpMeChoose = () => {
 
                   {/* Recommendation image */}
                   <div className="relative">
-                    <div className="relative aspect-[4/5] overflow-hidden bg-paper">
+                    <div className="relative aspect-[4/5] overflow-hidden ">
                       <motion.img
                         src={recommendation.image}
                         alt={recommendation.name}
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cove rounded-4xl"
                         initial={{ scale: 1.04 }}
                         animate={{ scale: 1 }}
                         transition={{
@@ -500,8 +471,6 @@ const HelpMeChoose = () => {
                           ease: [0.22, 1, 0.36, 1],
                         }}
                       />
-
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent" />
 
                       <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
                         <p className="text-[8px] font-medium uppercase tracking-[0.25em] text-lightCream/70">
@@ -517,7 +486,7 @@ const HelpMeChoose = () => {
                             {recommendation.flavors.map((flavor) => (
                               <span
                                 key={flavor}
-                                className="border border-lightWhite/30 px-3 py-1.5 text-[7px] uppercase tracking-[0.18em] text-lightWhite/90"
+                                className="border border-lightWhite/30 px-3 py-1.5 text-[7px] uppercase tracking-[0.18em] text-lightWhite/90 rounded-4xl"
                               >
                                 {flavor}
                               </span>
@@ -539,7 +508,7 @@ const HelpMeChoose = () => {
                 </div>
 
                 {/* Coffee rhythm */}
-                <div className="mt-20 border-t border-ink/10 pt-8 sm:mt-24">
+                <div className="mt-12 sm:mt-14">
                   <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
                     <div>
                       <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-red">
@@ -550,16 +519,10 @@ const HelpMeChoose = () => {
                         Made to fit your routine.
                       </h3>
                     </div>
-
-                    <p className="max-w-sm text-[10px] leading-5 text-ink/50 sm:text-right">
-                      Whether it's your morning ritual or an afternoon reset,
-                      your coffee should fit naturally into the way you drink
-                      it.
-                    </p>
                   </div>
 
                   <div className="mt-8 grid grid-cols-2 border-y border-ink/10 sm:grid-cols-4">
-                    <div className="border-r border-ink/10 px-4 py-5 sm:px-6">
+                    <div className="border-r border-ink/10 px-4 py-5 sm:px-6 ">
                       <span className="text-[7px] uppercase tracking-[0.2em] text-ink/35">
                         Flavour
                       </span>
@@ -598,28 +561,6 @@ const HelpMeChoose = () => {
                 </div>
               </motion.div>
             )}
-
-            {/* PROGRESS */}
-            <div className="my-8 md:my-16 flex items-center gap-4 ">
-              <span className="shrink-0 text-[8px] font-medium tracking-[0.2em] text-ink/40">
-                {String(currentStep + 1).padStart(2, "0")}
-                <span className="mx-1.5">/</span>
-                {String(questions.length).padStart(2, "0")}
-              </span>
-
-              <div className="h-px flex-1 overflow-hidden bg-ink/10">
-                <motion.div
-                  className="h-full bg-red"
-                  animate={{
-                    width: `${((currentStep + 1) / questions.length) * 100}%`,
-                  }}
-                  transition={{
-                    duration: 0.6,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                />
-              </div>
-            </div>
           </AnimatePresence>
         </div>
 
