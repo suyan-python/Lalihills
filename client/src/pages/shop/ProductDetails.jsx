@@ -93,7 +93,9 @@ const ProductDetails = ({ products = [] }) => {
     if (!currentProduct) return;
 
     setSelectedSize(currentProduct.sizeOptions?.[0] || null);
-    setSelectedGrind(currentProduct.grindOptions?.[0] || "");
+    setSelectedGrind(
+      currentProduct.grindOptions?.[0] || currentProduct.formOptions?.[0] || "",
+    );
     setSelectedForm(currentProduct.formOptions?.[0] || "");
     setQuantity(1);
     setPurchaseType("one-time");

@@ -126,7 +126,7 @@ const ProductDetailsLeft = ({
                     duration: 0.4,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="header text-[clamp(3rem,5vw,5.5rem)] uppercase leading-[0.82] tracking-[-0.06em]"
+                  className="header text-[clamp(3rem,5vw,4rem)]  leading-[0.82] tracking-[0.01em]"
                 >
                   {product.name}
                 </motion.h1>
@@ -146,7 +146,7 @@ const ProductDetailsLeft = ({
                       duration: 0.35,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="text-[10px] font-light leading-5 text-lightCream/65 sm:text-xs sm:leading-6"
+                    className="text-[10px] font-medium leading-5 text-lightCream sm:text-lg sm:leading-6 italic"
                   >
                     {product.flavors.join(" · ")}
                   </motion.p>
@@ -155,10 +155,9 @@ const ProductDetailsLeft = ({
             </div>
 
             {/* ROAST / OXIDATION */}
-            {/* ROAST / OXIDATION */}
-            <div className="mt-2 border-t border-lightCream/35 pt-1">
+            <div className=" w-[75%]">
               {isBeans ? (
-                <RoastLevel roast={product.roastLevel} />
+                <RoastLevel roastLevel={product.roastLevel} />
               ) : (
                 <OxidationLevel oxidation={product.oxidation} />
               )}

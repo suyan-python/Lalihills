@@ -1,105 +1,57 @@
 import { motion } from "framer-motion";
 
-const RoastLevel = ({ roast }) => {
+const RoastLevel = ({ roastLevel }) => {
   const levels = ["Light", "Medium", "Dark"];
 
-  const normalizedRoast = String(roast || "")
-    .trim()
-    .toLowerCase();
+  const value = Math.min(5, Math.max(1, Number(roastLevel) || 1));
 
-  const activeIndex = levels.findIndex(
-    (level) => level.toLowerCase() === normalizedRoast,
-  );
+  const progress = ((value - 1) / 4) * 100;
 
-  const progress =
-    activeIndex >= 0 ? (activeIndex / (levels.length - 1)) * 100 : 0;
+  const activeIndex = value <= 2 ? 0 : value <= 3 ? 1 : 2;
 
   return (
     <div>
-      {/* Header 
-
-      {/* Labels */}
-      <div className="mt-4 flex justify-between">
-        {levels.map((level, index) => {
-          const isCurrent = index === activeIndex;
-
-          return (
-            <motion.span
-              key={level}
-              transition={{
-                duration: 0.4,
-              }}
-              className={`text-[9px] uppercase tracking-[0.16em] px-5 ${
-                isCurrent ? "font-medium text-lightWhite" : "font-normal"
-              }`}
-            >
-              {level}
-            </motion.span>
-          );
-        })}
-      </div>
-
       {/* Roast Scale */}
-      <div className="mt-2">
-        <div className="relative">
-          {/* Track */}
-          <div className="h-[2px] w-full rounded-full bg-lightWhite/10" />
+      <div className="">
+        {/* Labels */}
+        <div className="flex justify-between px-5">
+          {levels.map((level, index) => {
+            const isCurrent = index === activeIndex;
 
-          {/* Progress */}
-          <motion.div
-            className="absolute left-0 top-0 h-[2px] rounded-full bg-lightWhite/75"
-            animate={{
-              width: `${progress}%`,
-            }}
-            transition={{
-              duration: 0.6,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          />
+            return (
+              <motion.span
+                key={level}
+                transition={{ duration: 0.35 }}
+                className={`text-[9px] uppercase tracking-[0.16em] ${
+                  isCurrent ? "font-bold text-lightWhite" : "font-light"
+                }`}
+              >
+                {level}
+              </motion.span>
+            );
+          })}
+        </div>
+        <div className="relative mt-3">
+          {/* Roast gradient */}
+          <div className="h-[8px] w-full rounded-full bg-gradient-to-r from-[#D6B894] via-[#8A6042] to-[#30201A]" />
 
-          {/* Points */}
-          <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-between">
-            {levels.map((level, index) => {
-              const isActive = index <= activeIndex;
-              const isCurrent = index === activeIndex;
-
-              return (
-                <motion.div
-                  key={level}
-                  animate={{
-                    scale: isCurrent ? 1.15 : 1,
-                    opacity: isActive ? 1 : 0.45,
-                  }}
-                  transition={{
-                    duration: 0.45,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className={`flex h-3 w-3 items-center justify-center rounded-full border ${
-                    isCurrent
-                      ? "border-lightWhite bg-lightWhite"
-                      : isActive
-                      ? "border-lightWhite/70 bg-lightWhite/70"
-                      : "border-lightWhite/20 bg-ink"
-                  }`}
-                >
-                  {isCurrent && <div className="h-1 w-1 rounded-full bg-ink" />}
-                </motion.div>
-              );
-            })}
-          </div>
+          {/* Pointer */}
+          {roastLevel && (
+            <motion.div
+              className="absolute top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-lightWhite bg-lightWhite shadow-[0_0_0_3px_rgba(255,255,255,0.08)]"
+              animate={{
+                left: `${progress}%`,
+              }}
+              transition={{
+                duration: 0.7,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <div className="h-1.5 w-1.5 rounded-full bg-ink" />
+            </motion.div>
+          )}
         </div>
       </div>
-
-      {/* Current Roast */}
-      {activeIndex >= 0 && (
-        <div className="mt-4 flex items-center gap-2">
-          <span className="h-1 w-1 rounded-full bg-red" />
-
-          <span className="text-[8px] uppercase tracking-[0.15em] text-lightWhite/45">
-            {roast} roast
-          </span>
-        </div>
-      )}
     </div>
   );
 };

@@ -204,7 +204,7 @@ const ProductDetailsRight = ({
                 Plan
               </span>
             </div>
-            <div className="mt-1 grid grid-cols-2 rounded-full bg-ivory  p-1 transition-colors duration-300">
+            <div className="mt-1 grid grid-cols-2 rounded-full bg-ivory  p-1 transition-colors duration-300 ">
               <PurchaseOption
                 active={purchaseType === "one-time"}
                 onClick={() => setPurchaseType("one-time")}
@@ -269,9 +269,13 @@ const ProductDetailsRight = ({
             <div className="mt-1">
               {purchaseType === "subscribe" && (
                 <div className="flex items-center gap-2 text-[7px] md:text-[9px] uppercase tracking-[0.16em] font-bold  justify-center">
-                  <span className="text-deepRed">Subscription</span>
-                  <span className="text-ink/20">/</span>
-                  <span className="text-ink/45">{frequency}</span>
+                  <span className="text-deepRed dark:text-red">
+                    Subscription
+                  </span>
+                  <span className="text-ink/20 dark:text-lightWhite/55">/</span>
+                  <span className="text-ink/45 dark:text-lightWhite/75">
+                    {frequency}
+                  </span>
                 </div>
               )}
             </div>

@@ -218,10 +218,10 @@ sizeOptions: [
     "chocolatey",
   ],
 
-  flavors: [
-    "tropical fruit",
-    "wine",
-    "syrupy body",
+ flavors: [
+    "Tropical Fruit",
+    "Wine",
+    "Syrupy Body",
   ],
 
   /*
@@ -378,10 +378,10 @@ sizeOptions: [
     "chocolatey",
   ],
 
-  flavors: [
-    "tropical fruit",
-    "wine",
-    "syrupy body",
+ flavors: [
+    "Tropical Fruit",
+    "Wine",
+    "Syrupy Body",
   ],
 
   /*
@@ -657,7 +657,7 @@ export const teaProducts = [
 
     teaType: "Green Tea",
     caffeine: "medium",
-    oxidation: 1,
+    oxidation: 5,
     profile: 3,
 
     altitude: "1,600–2,000 m",
@@ -804,7 +804,7 @@ export const teaProducts = [
 
     teaType: "Silver Tip",
     caffeine: "medium",
-    oxidation: 1,
+    oxidation: 3,
     profile: 5,
 
     altitude: "2,000–2,400 m",
