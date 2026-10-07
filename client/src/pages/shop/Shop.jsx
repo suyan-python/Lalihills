@@ -56,7 +56,7 @@ const collections = [
 
 const Shop = () => {
   return (
-    <main className="relative overflow-x-hidden bg-lightWhite ">
+    <main className="relative overflow-x-hidden bg-lightWhite " id="shop">
       <div className="max-w-[350px] md:max-w-7xl mx-auto pb-24">
         {/* BACKGROUND WORD */}
         <div className="pointer-events-none absolute right-[-6vw] top-[8vh] z-0 select-none">

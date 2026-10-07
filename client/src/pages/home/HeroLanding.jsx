@@ -13,6 +13,7 @@ import Halfhalf from "./Halfhalf";
 import Halfhalf2 from "./Halfhalf2";
 import End from "./End";
 import TobeUsed from "./TobeUsed";
+import Shop from "../shop/Shop";
 
 const Landing = () => {
   return (
@@ -20,6 +21,8 @@ const Landing = () => {
       {/* <Hero /> */}
 
       <LaliComingSoon />
+
+      <Shop />
 
       <FeaturedProduct />
 

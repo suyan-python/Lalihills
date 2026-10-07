@@ -339,14 +339,14 @@ const LaliComingSoon = () => {
           </AnimatePresence>
         </div>
 
-        <Link
-          to="/shop"
-          className="group absolute bottom-32 md:bottom-56 left-1/2 z-40 inline-flex h-10 -translate-x-1/2 items-center gap-3 rounded-full bg-ivory px-6 text-[8px] font-semibold uppercase tracking-[0.2em] text-hill transition-all duration-300 hover:bg-lightWhite hover:shadow-lg md:h-12 md:px-7 md:text-[10px]"
+        <a
+          href="#shop"
+          className="group absolute bottom-32 left-1/2 z-40 inline-flex h-10 -translate-x-1/2 items-center gap-3 rounded-full bg-ivory px-6 text-[8px] font-semibold uppercase tracking-[0.2em] text-hill transition-all duration-300 hover:bg-lightWhite hover:shadow-lg md:bottom-56 md:h-12 md:px-7 md:text-[10px]"
           aria-label="Explore offerings"
         >
           <span>Explore offerings</span>
           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-        </Link>
+        </a>
 
         <motion.div
           initial={{
