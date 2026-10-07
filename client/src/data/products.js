@@ -191,7 +191,7 @@ sizeOptions: [
   category: "coffee",
   type: "beans",
 
-  roastLevel: 4,
+  roastLevel: 2,
   caffeine: "full",
   profile: 4,
 
@@ -350,7 +350,7 @@ sizeOptions: [
   category: "coffee",
   type: "beans",
 
-  roastLevel: 4,
+  roastLevel: 5,
   caffeine: "full",
   profile: 4,
 
@@ -495,452 +495,444 @@ sizeOptions: [
 ];
 
 export const teaProducts = [
+  {
+    _id: "first-flush-100-ILAM",
+    name: "Ilam First Flush",
+    shortName: "First Flush – 100g [Loose Leaf]",
+    slug: "ilam-first-flush-100g",
 
-{
-  _id: "first-flush-100-ILAM",
-  name: "Illam First Flush",
-  shortName: "First Flush – 100g [Loose Leaf]",
-  slug: "first-flush-100g-ILAM",
+    image: tea1,
+    hoverImage: tea1,
+    imageColor: "#D8DCC8",
 
-  image: tea1,
-  hoverImage: tea1,
-  imageColor: "#D8DCC8",
+    category: "tea",
+    type: "leaves",
 
-  category: "tea",
-  type: "leaves",
+    teaType: "First Flush",
+    caffeine: "medium",
+    oxidation: 2,
+    profile: 4,
 
-  teaType: "First Flush",
-  caffeine: "medium",
-  oxidation: 2,
-  profile: 4,
+    altitude: "1,800–2,200 m",
+    origin: "Ilam, Nepal",
 
-  altitude: "1,800-2,200",
-  origin: "Ilam, Nepal",
+    price: 1100,
+    sizeOptions: [
+      { grams: 50, price: 650 },
+      { grams: 100, price: 1100 },
+      { grams: 250, price: 2400 },
+    ],
 
-  price: 850,
-  sizeOptions: [
-    { grams: 50, price: 650 },
-    { grams: 100, price: 1100 },
-    { grams: 250, price: 2400 },
-  ],
+    formOptions: ["Whole-leaf tin", "Tea Bag"],
 
-  formOptions: ["Whole-lead tin", "Tea Bag"],
+    description:
+      "A delicate early-season tea from the highlands of Ilam, with soft floral aromas, gentle sweetness, and a bright, clean finish. First Flush captures the freshness of Nepal's first harvest in a refined cup.",
 
-  description:
-    "A delicate early-season Nepali tea with floral aromas, bright character, and a clean finish. Carefully harvested from the highlands, First Flush captures the freshness of the season in every cup.",
+    shortDescription:
+      "Floral, bright, and delicate — a fresh expression of Ilam's first harvest.",
 
-  shortDescription:
-    "Delicate, floral, and bright — a fresh expression of Nepal's highland tea.",
+    aroma: [
+      "white flowers",
+      "fresh grass",
+      "honey",
+    ],
 
-  aroma: [
-    "floral",
-    "fresh grass",
-    "honey",
-  ],
+    flavors: [
+      "White Flowers",
+      "Honey",
+      "Citrus",
+    ],
 
-  flavors: [
-    "White Flowers",
-    "Honey",
-    "Citrus",
-  ],
+    info: {
+      origin: {
+        value: "Ilam, Nepal",
+        blurb:
+          "Grown in the highlands of eastern Nepal, where cool temperatures, mountain mist, and rich soil create ideal conditions for specialty tea.",
+      },
 
-  info: {
-    origin: {
-      value: "Ilam, Nepal",
-      blurb:
-        "Grown in the highlands of eastern Nepal, where cool temperatures, mountain mist, and rich soil create ideal conditions for specialty tea.",
+      altitude: {
+        value: "1,800–2,200 m",
+        blurb:
+          "Higher elevations encourage slower leaf development, helping create the delicate aromas and bright character found in this tea.",
+      },
+
+      process: {
+        value: "Lightly oxidized",
+        blurb:
+          "The young leaves are carefully processed with light oxidation to preserve their freshness, floral character, and natural sweetness.",
+      },
+
+      variety: {
+        value: "Camellia sinensis",
+        blurb:
+          "Made from the leaves of Camellia sinensis, the tea plant behind traditional teas around the world.",
+      },
+
+      harvest: {
+        value: "First Flush",
+        blurb:
+          "Harvested during the first picking season, when young leaves and buds are at their freshest and most delicate.",
+      },
+
+      oxidation: {
+        value: "Low",
+        blurb:
+          "Light oxidation keeps the cup bright and fresh while allowing floral and citrus notes to shine.",
+      },
     },
 
-    altitude: {
-      value: "1,800–2,200 m",
-      blurb:
-        "The tea is cultivated at higher elevations where cooler conditions encourage slower leaf development and contribute to a more delicate character.",
-    },
+    rating: 4.8,
+    reviews: 32,
 
-    process: {
-      value: "Lightly processed",
-      blurb:
-        "The young leaves are carefully handled to preserve their fresh character, delicate aromas, and natural sweetness.",
-    },
+    available: true,
+    instock: true,
+    discount: false,
 
-    variety: {
-      value: "Camellia sinensis",
-      blurb:
-        "Made from the leaves of Camellia sinensis, the tea plant responsible for traditional teas across the world.",
-    },
+    faqs: [
+      {
+        question: "What is First Flush tea?",
+        answer:
+          "First Flush refers to the first harvest of the tea season. The young leaves are known for their delicate character, freshness, and floral aromas.",
+      },
+      {
+        question: "How should I brew this tea?",
+        answer:
+          "Use around 3g of tea per 250ml of water at approximately 90°C. Steep for 2–3 minutes and adjust to taste.",
+      },
+      {
+        question: "Can I steep the leaves more than once?",
+        answer:
+          "Yes. The leaves can be steeped multiple times, with later infusions revealing softer and more subtle flavours.",
+      },
+      {
+        question: "How should I store the tea?",
+        answer:
+          "Store it in an airtight container away from sunlight, moisture, heat, and strong aromas.",
+      },
+    ],
 
-    harvest: {
-      value: "First Flush",
-      blurb:
-        "Harvested during the first picking season, when young leaves and buds are at their freshest and most delicate.",
-    },
+    ritual: {
+      type: "steeping",
+      method: "Steeping ritual",
+      dose: "3g",
+      doseLabel: "Leaf",
+      water: "250ml",
+      waterLabel: "Water",
+      temperature: "90°C",
 
-    oxidation: {
-      value: "Low",
-      blurb:
-        "Light oxidation preserves the tea's fresh, floral character while developing a clean and bright cup.",
-    },
-  },
+      methods: {
+        western: {
+          label: "Western",
+          steeps: [
+            { number: 1, duration: 180 },
+            { number: 2, duration: 240 },
+            { number: 3, duration: 300 },
+          ],
+        },
 
-  rating: 4.8,
-  reviews: 32,
-
-  available: true,
-  instock: true,
-  discount: false,
-
-  faqs: [
-    {
-      question: "What is First Flush tea?",
-      answer:
-        "First Flush refers to the first harvest of the tea season. These young leaves are known for their delicate character, freshness, and floral aromas.",
-    },
-    {
-      question: "How should I brew this tea?",
-      answer:
-        "Use around 2–3g of tea per cup and steep in hot water for approximately 2–3 minutes. Adjust the time according to your preferred strength.",
-    },
-    {
-      question: "Can I steep the leaves more than once?",
-      answer:
-        "Yes. High-quality loose-leaf tea can often be steeped multiple times, with each infusion revealing slightly different aromas and flavours.",
-    },
-    {
-      question: "How should I store the tea?",
-      answer:
-        "Store it in an airtight container away from sunlight, moisture, heat, and strong aromas to preserve its freshness.",
-    },
-  ],
-
-  ritual: {
-  type: "steeping",
-    method: "Steeping ritual",
-
-  dose: "3g",
-  doseLabel: "Leaf",
-  water: "250ml",
-  waterLabel: "Water",
-  temperature: "90°C",
-
-  methods: {
-    western: {
-      label: "Western",
-      steeps: [
-        { number: 1, duration: 180 },
-        { number: 2, duration: 240 },
-        { number: 3, duration: 300 },
-      ],
-    },
-
-    gongfu: {
-      label: "Gongfu",
-      steeps: [
-        { number: 1, duration: 30 },
-        { number: 2, duration: 45 },
-        { number: 3, duration: 60 },
-      ],
-    },
-  },
-}
- 
-},
-
-{
-  _id: "first-flush-100-ILAM",
-  name: "Illam Green",
-  shortName: "First Flush – 100g [Loose Leaf]",
-  slug: "first-flush-100g-ILAM",
-
-  image: tea2,
-  hoverImage: tea2,
-  imageColor: "#D8DCC8",
-
-  category: "tea",
-  type: "leaves",
-
-  teaType: "Illam Green",
-  caffeine: "medium",
-  oxidation: 2,
-  profile: 4,
-
-  altitude: "1,800-2,200",
-  origin: "Ilam",
-
-  price: 850,
-  sizeOptions: [
-    { grams: 50, price: 650 },
-    { grams: 100, price: 1100 },
-    { grams: 250, price: 2400 },
-  ],
-
-  formOptions: ["Whole-lead tin", "Tea Bag"],
-
-  description:
-    "A delicate early-season Nepali tea with floral aromas, bright character, and a clean finish. Carefully harvested from the highlands, First Flush captures the freshness of the season in every cup.",
-
-  shortDescription:
-    "Delicate, floral, and bright — a fresh expression of Nepal's highland tea.",
-
-  aroma: [
-    "floral",
-    "fresh grass",
-    "honey",
-  ],
-
-  flavors: [
-    "White Flowers",
-    "Honey",
-    "Citrus",
-  ],
-
-  info: {
-    origin: {
-      value: "Ilam, Nepal",
-      blurb:
-        "Grown in the highlands of eastern Nepal, where cool temperatures, mountain mist, and rich soil create ideal conditions for specialty tea.",
-    },
-
-    altitude: {
-      value: "1,800–2,200 m",
-      blurb:
-        "The tea is cultivated at higher elevations where cooler conditions encourage slower leaf development and contribute to a more delicate character.",
-    },
-
-    process: {
-      value: "Lightly processed",
-      blurb:
-        "The young leaves are carefully handled to preserve their fresh character, delicate aromas, and natural sweetness.",
-    },
-
-    variety: {
-      value: "Camellia sinensis",
-      blurb:
-        "Made from the leaves of Camellia sinensis, the tea plant responsible for traditional teas across the world.",
-    },
-
-    harvest: {
-      value: "First Flush",
-      blurb:
-        "Harvested during the first picking season, when young leaves and buds are at their freshest and most delicate.",
-    },
-
-    oxidation: {
-      value: "Low",
-      blurb:
-        "Light oxidation preserves the tea's fresh, floral character while developing a clean and bright cup.",
+        gongfu: {
+          label: "Gongfu",
+          steeps: [
+            { number: 1, duration: 30 },
+            { number: 2, duration: 45 },
+            { number: 3, duration: 60 },
+          ],
+        },
+      },
     },
   },
 
-  rating: 4.8,
-  reviews: 32,
+  {
+    _id: "ilam-green-100-ILAM",
+    name: "Ilam Green",
+    shortName: "Ilam Green – 100g [Loose Leaf]",
+    slug: "ilam-green-100g",
 
-  available: true,
-  instock: true,
-  discount: false,
+    image: tea2,
+    hoverImage: tea2,
+    imageColor: "#C9D8C2",
 
-  faqs: [
-    {
-      question: "What is First Flush tea?",
-      answer:
-        "First Flush refers to the first harvest of the tea season. These young leaves are known for their delicate character, freshness, and floral aromas.",
-    },
-    {
-      question: "How should I brew this tea?",
-      answer:
-        "Use around 2–3g of tea per cup and steep in hot water for approximately 2–3 minutes. Adjust the time according to your preferred strength.",
-    },
-    {
-      question: "Can I steep the leaves more than once?",
-      answer:
-        "Yes. High-quality loose-leaf tea can often be steeped multiple times, with each infusion revealing slightly different aromas and flavours.",
-    },
-    {
-      question: "How should I store the tea?",
-      answer:
-        "Store it in an airtight container away from sunlight, moisture, heat, and strong aromas to preserve its freshness.",
-    },
-  ],
+    category: "tea",
+    type: "leaves",
 
-  ritual: {
-  type: "steeping",
-    method: "Steeping ritual",
+    teaType: "Green Tea",
+    caffeine: "medium",
+    oxidation: 1,
+    profile: 3,
 
-  dose: "3g",
-  doseLabel: "Leaf",
-  water: "250ml",
-  waterLabel: "Water",
-  temperature: "90°C",
+    altitude: "1,600–2,000 m",
+    origin: "Ilam, Nepal",
 
-  methods: {
-    western: {
-      label: "Western",
-      steeps: [
-        { number: 1, duration: 180 },
-        { number: 2, duration: 240 },
-        { number: 3, duration: 300 },
-      ],
-    },
+    price: 950,
+    sizeOptions: [
+      { grams: 50, price: 550 },
+      { grams: 100, price: 950 },
+      { grams: 250, price: 2100 },
+    ],
 
-    gongfu: {
-      label: "Gongfu",
-      steeps: [
-        { number: 1, duration: 30 },
-        { number: 2, duration: 45 },
-        { number: 3, duration: 60 },
-      ],
-    },
-  },
-}
- 
-},
+    formOptions: ["Whole-leaf tin", "Tea Bag"],
 
-{
-  _id: "first-flush-100-ILAM",
-  name: "Himalayan Silver Tips",
-  shortName: "First Flush – 100g [Loose Leaf]",
-  slug: "first-flush-100g-ILAM",
+    description:
+      "A clean and refreshing green tea from Ilam, crafted to preserve the natural character of the leaf. Fresh vegetal notes meet gentle sweetness and a crisp, refreshing finish.",
 
-  image: tea3,
-  hoverImage: tea3,
-  imageColor: "#D8DCC8",
+    shortDescription:
+      "Fresh, clean, and gently sweet — an everyday green tea from Ilam.",
 
-  category: "tea",
-  type: "leaves",
+    aroma: [
+      "fresh grass",
+      "young leaves",
+      "sweet herbs",
+    ],
 
-  teaType: "Silver Tip",
-  caffeine: "medium",
-  oxidation: 2,
-  profile: 4,
+    flavors: [
+      "Green Vegetal",
+      "Sweet Grass",
+      "Soft Citrus",
+    ],
 
-  altitude: "1,800-2,200",
-  origin: "Ilam, Nepal",
+    info: {
+      origin: {
+        value: "Ilam, Nepal",
+        blurb:
+          "Sourced from the tea-growing hills of Ilam, where cool mountain conditions help produce fresh and aromatic leaves.",
+      },
 
-  price: 850,
-  sizeOptions: [
-    { grams: 50, price: 650 },
-    { grams: 100, price: 1100 },
-    { grams: 250, price: 2400 },
-  ],
+      altitude: {
+        value: "1,600–2,000 m",
+        blurb:
+          "The moderate-to-high elevation contributes to slower growth and a clean, refreshing cup.",
+      },
 
-  formOptions: ["Whole-lead tin", "Tea Bag"],
+      process: {
+        value: "Minimally oxidized",
+        blurb:
+          "The leaves are quickly heated after harvest to preserve their fresh colour, vegetal character, and natural sweetness.",
+      },
 
-  description:
-    "A delicate early-season Nepali tea with floral aromas, bright character, and a clean finish. Carefully harvested from the highlands, First Flush captures the freshness of the season in every cup.",
+      variety: {
+        value: "Camellia sinensis",
+        blurb:
+          "Made from carefully selected leaves of the Camellia sinensis tea plant.",
+      },
 
-  shortDescription:
-    "Delicate, floral, and bright — a fresh expression of Nepal's highland tea.",
+      harvest: {
+        value: "Early season",
+        blurb:
+          "Harvested from young leaves during the early part of the tea-growing season for a fresher and more delicate cup.",
+      },
 
-  aroma: [
-    "floral",
-    "fresh grass",
-    "honey",
-  ],
-
-  flavors: [
-    "White Flowers",
-    "Honey",
-    "Citrus",
-  ],
-
-  info: {
-    origin: {
-      value: "Ilam, Nepal",
-      blurb:
-        "Grown in the highlands of eastern Nepal, where cool temperatures, mountain mist, and rich soil create ideal conditions for specialty tea.",
+      oxidation: {
+        value: "Very low",
+        blurb:
+          "Minimal oxidation keeps the tea crisp, fresh, and naturally vegetal.",
+      },
     },
 
-    altitude: {
-      value: "1,800–2,200 m",
-      blurb:
-        "The tea is cultivated at higher elevations where cooler conditions encourage slower leaf development and contribute to a more delicate character.",
-    },
+    rating: 4.7,
+    reviews: 24,
 
-    process: {
-      value: "Lightly processed",
-      blurb:
-        "The young leaves are carefully handled to preserve their fresh character, delicate aromas, and natural sweetness.",
-    },
+    available: true,
+    instock: true,
+    discount: false,
 
-    variety: {
-      value: "Camellia sinensis",
-      blurb:
-        "Made from the leaves of Camellia sinensis, the tea plant responsible for traditional teas across the world.",
-    },
+    faqs: [
+      {
+        question: "What does Ilam Green taste like?",
+        answer:
+          "It has a fresh, clean character with gentle vegetal notes, soft sweetness, and a light citrus finish.",
+      },
+      {
+        question: "How should I brew this tea?",
+        answer:
+          "Use around 3g of tea per 250ml of water at approximately 80–85°C. Steep for 2–3 minutes.",
+      },
+      {
+        question: "Can I steep the leaves more than once?",
+        answer:
+          "Yes. The leaves can be re-steeped, with subsequent infusions becoming softer and sweeter.",
+      },
+      {
+        question: "How should I store the tea?",
+        answer:
+          "Keep the tea sealed in an airtight container away from light, moisture, heat, and strong aromas.",
+      },
+    ],
 
-    harvest: {
-      value: "First Flush",
-      blurb:
-        "Harvested during the first picking season, when young leaves and buds are at their freshest and most delicate.",
-    },
+    ritual: {
+      type: "steeping",
+      method: "Steeping ritual",
+      dose: "3g",
+      doseLabel: "Leaf",
+      water: "250ml",
+      waterLabel: "Water",
+      temperature: "82°C",
 
-    oxidation: {
-      value: "Low",
-      blurb:
-        "Light oxidation preserves the tea's fresh, floral character while developing a clean and bright cup.",
+      methods: {
+        western: {
+          label: "Western",
+          steeps: [
+            { number: 1, duration: 150 },
+            { number: 2, duration: 180 },
+            { number: 3, duration: 240 },
+          ],
+        },
+
+        gongfu: {
+          label: "Gongfu",
+          steeps: [
+            { number: 1, duration: 20 },
+            { number: 2, duration: 30 },
+            { number: 3, duration: 45 },
+          ],
+        },
+      },
     },
   },
 
-  rating: 4.8,
-  reviews: 32,
+  {
+    _id: "himalayan-silver-tips-100-ILAM",
+    name: "Himalayan Tips",
+    shortName: "Silver Tips – 100g [Loose Leaf]",
+    slug: "himalayan-silver-tips-100g",
 
-  available: true,
-  instock: true,
-  discount: false,
+    image: tea3,
+    hoverImage: tea3,
+    imageColor: "#E0DED0",
 
-  faqs: [
-    {
-      question: "What is First Flush tea?",
-      answer:
-        "First Flush refers to the first harvest of the tea season. These young leaves are known for their delicate character, freshness, and floral aromas.",
+    category: "tea",
+    type: "leaves",
+
+    teaType: "Silver Tip",
+    caffeine: "medium",
+    oxidation: 1,
+    profile: 5,
+
+    altitude: "2,000–2,400 m",
+    origin: "Ilam, Nepal",
+
+    price: 1450,
+    sizeOptions: [
+      { grams: 50, price: 800 },
+      { grams: 100, price: 1450 },
+      { grams: 250, price: 3200 },
+    ],
+
+    formOptions: ["Whole-leaf tin", "Tea Bag"],
+
+    description:
+      "A refined high-altitude tea made from carefully selected young buds and tender leaves. Silver Tips offers a soft floral aroma, delicate sweetness, and a silky, lingering finish.",
+
+    shortDescription:
+      "Silky, floral, and refined — delicate high-altitude tea from Nepal.",
+
+    aroma: [
+      "white flowers",
+      "honey",
+      "fresh herbs",
+    ],
+
+    flavors: [
+      "Honey",
+      "White Flowers",
+      "Stone Fruit",
+    ],
+
+    info: {
+      origin: {
+        value: "Ilam, Nepal",
+        blurb:
+          "Grown in the higher reaches of Ilam, where cool mountain conditions encourage slow development of the finest young buds.",
+      },
+
+      altitude: {
+        value: "2,000–2,400 m",
+        blurb:
+          "The higher elevation and cooler climate contribute to slower leaf growth and a more delicate, aromatic cup.",
+      },
+
+      process: {
+        value: "Delicately processed",
+        blurb:
+          "Young buds and leaves are handled gently to preserve their natural sweetness, floral aromas, and silky texture.",
+      },
+
+      variety: {
+        value: "Camellia sinensis",
+        blurb:
+          "Produced from carefully selected young leaves and buds of the Camellia sinensis tea plant.",
+      },
+
+      harvest: {
+        value: "Young buds",
+        blurb:
+          "Collected from tender buds and young leaves prized for their delicate texture and concentrated character.",
+      },
+
+      oxidation: {
+        value: "Very low",
+        blurb:
+          "Minimal oxidation preserves the tea's delicate aroma, natural sweetness, and bright character.",
+      },
     },
-    {
-      question: "How should I brew this tea?",
-      answer:
-        "Use around 2–3g of tea per cup and steep in hot water for approximately 2–3 minutes. Adjust the time according to your preferred strength.",
-    },
-    {
-      question: "Can I steep the leaves more than once?",
-      answer:
-        "Yes. High-quality loose-leaf tea can often be steeped multiple times, with each infusion revealing slightly different aromas and flavours.",
-    },
-    {
-      question: "How should I store the tea?",
-      answer:
-        "Store it in an airtight container away from sunlight, moisture, heat, and strong aromas to preserve its freshness.",
-    },
-  ],
 
-  ritual: {
-  type: "steeping",
-    method: "Steeping ritual",
+    rating: 4.9,
+    reviews: 18,
 
-  dose: "3g",
-  doseLabel: "Leaf",
-  water: "250ml",
-  waterLabel: "Water",
-  temperature: "90°C",
+    available: true,
+    instock: true,
+    discount: false,
 
-  methods: {
-    western: {
-      label: "Western",
-      steeps: [
-        { number: 1, duration: 180 },
-        { number: 2, duration: 240 },
-        { number: 3, duration: 300 },
-      ],
-    },
+    faqs: [
+      {
+        question: "What makes Silver Tips different?",
+        answer:
+          "Silver Tips is made from young buds and tender leaves, giving it a softer body, delicate floral character, and naturally sweet finish.",
+      },
+      {
+        question: "How should I brew this tea?",
+        answer:
+          "Use around 3g of tea per 250ml of water at approximately 85°C. Steep for 2–3 minutes for the best balance.",
+      },
+      {
+        question: "Can I steep the leaves more than once?",
+        answer:
+          "Yes. Silver Tips is well suited to multiple infusions, with later steeps often becoming softer and more aromatic.",
+      },
+      {
+        question: "How should I store the tea?",
+        answer:
+          "Store it airtight and keep it away from direct sunlight, moisture, heat, and strong-smelling foods.",
+      },
+    ],
 
-    gongfu: {
-      label: "Gongfu",
-      steeps: [
-        { number: 1, duration: 30 },
-        { number: 2, duration: 45 },
-        { number: 3, duration: 60 },
-      ],
+    ritual: {
+      type: "steeping",
+      method: "Steeping ritual",
+      dose: "3g",
+      doseLabel: "Leaf",
+      water: "250ml",
+      waterLabel: "Water",
+      temperature: "85°C",
+
+      methods: {
+        western: {
+          label: "Western",
+          steeps: [
+            { number: 1, duration: 180 },
+            { number: 2, duration: 240 },
+            { number: 3, duration: 300 },
+          ],
+        },
+
+        gongfu: {
+          label: "Gongfu",
+          steeps: [
+            { number: 1, duration: 25 },
+            { number: 2, duration: 40 },
+            { number: 3, duration: 60 },
+          ],
+        },
+      },
     },
   },
-}
- 
-},
-
 ];

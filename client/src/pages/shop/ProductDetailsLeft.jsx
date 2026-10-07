@@ -11,6 +11,10 @@ const ProductDetailsLeft = ({
 }) => {
   const isBeans = productType === "beans";
 
+  const filteredOptions = productOptions.filter((option) =>
+    isBeans ? option.category === "coffee" : option.category === "tea",
+  );
+
   if (!product) return null;
 
   return (
@@ -68,14 +72,14 @@ const ProductDetailsLeft = ({
           {/* PRODUCT OPTIONS */}
 
           <div className="mb-7">
-            <div className="flex flex-wrap gap-x-2 gap-y-2">
-              {productOptions.map((option) => {
+            <div key={productType} className="flex flex-wrap gap-x-2 gap-y-2">
+              {filteredOptions.map((option) => {
                 const active = product?._id === option?._id;
 
-                const label =
-                  option.category === "tea"
-                    ? option.teaType || option.origin
-                    : option.origin;
+                const label = isBeans
+                  ? option.origin
+                  : option.teaType || option.origin;
+
                 return (
                   <button
                     key={option._id}
@@ -86,10 +90,12 @@ const ProductDetailsLeft = ({
                         ? { backgroundColor: option.imageColor }
                         : undefined
                     }
-                    className={`rounded-full border px-3 py-1 text-[11px] font-semibold tracking-[0.02em] transition-all duration-300 ${
+                    className={`w-fit rounded-full border px-3 py-1 text-center text-[11px] font-semibold tracking-[0.02em] transition-all duration-300 ${
                       active
                         ? "border-transparent text-ink"
-                        : "cursor-pointer border-lightWhite/75 bg-ink/75 text-lightCream/85"
+                        : isBeans
+                        ? "border-lightWhite/75 bg-ink/75 text-lightCream/85 hover:border-lightWhite hover:bg-ink cursor-pointer"
+                        : "border-lightWhite/75 bg-ink/75 text-lightCream/85 hover:border-lightWhite hover:bg-ink cursor-pointer"
                     }`}
                   >
                     {label}
@@ -100,39 +106,64 @@ const ProductDetailsLeft = ({
           </div>
 
           {/* PRODUCT DETAILS */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={product._id || product.slug}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{
-                duration: 0.6,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              {/* PRODUCT NAME */}
-              <h1 className="header max-w-3xl text-[clamp(3rem,5vw,5.5rem)] uppercase leading-[0.82] tracking-[-0.06em]">
-                {product.name}
-              </h1>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            {/* PRODUCT NAME */}
+            <div className="max-w-3xl">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.h1
+                  key={product._id || product.slug}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{
+                    duration: 0.4,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="header text-[clamp(3rem,5vw,5.5rem)] uppercase leading-[0.82] tracking-[-0.06em]"
+                >
+                  {product.name}
+                </motion.h1>
+              </AnimatePresence>
+            </div>
 
-              {/* FLAVOURS */}
-              {product.flavors?.length > 0 && (
-                <p className="mt-5 max-w-md text-[10px] font-light leading-5 text-lightCream/65 sm:text-xs sm:leading-6">
-                  {product.flavors.join(" · ")}
-                </p>
-              )}
-
-              {/* ROAST / OXIDATION */}
-              <div className="mt-2 border-t border-lightCream/35 pt-1">
-                {isBeans ? (
-                  <RoastLevel roast={product.roastLevel} />
-                ) : (
-                  <OxidationLevel oxidation={product.oxidation} />
+            {/* FLAVOURS */}
+            <div className="mt-5 min-h-[48px] max-w-md">
+              <AnimatePresence mode="wait" initial={false}>
+                {product.flavors?.length > 0 && (
+                  <motion.p
+                    key={product._id || product.slug}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{
+                      duration: 0.35,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="text-[10px] font-light leading-5 text-lightCream/65 sm:text-xs sm:leading-6"
+                  >
+                    {product.flavors.join(" · ")}
+                  </motion.p>
                 )}
-              </div>
-            </motion.div>
-          </AnimatePresence>
+              </AnimatePresence>
+            </div>
+
+            {/* ROAST / OXIDATION */}
+            {/* ROAST / OXIDATION */}
+            <div className="mt-2 border-t border-lightCream/35 pt-1">
+              {isBeans ? (
+                <RoastLevel roast={product.roastLevel} />
+              ) : (
+                <OxidationLevel oxidation={product.oxidation} />
+              )}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

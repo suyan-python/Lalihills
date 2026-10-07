@@ -74,10 +74,6 @@ const CoffeeFilters = ({ filters, setFilters }) => {
 
   return (
     <>
-      {/* =================================================
-                FILTER BUTTON
-            ================================================= */}
-
       <button
         type="button"
         onClick={() => setOpen(true)}
@@ -89,10 +85,6 @@ const CoffeeFilters = ({ filters, setFilters }) => {
           Filter
         </span>
       </button>
-
-      {/* =================================================
-                OVERLAY
-            ================================================= */}
 
       <AnimatePresence>
         {open && (
@@ -113,10 +105,6 @@ const CoffeeFilters = ({ filters, setFilters }) => {
               className="fixed inset-0 z-[200] bg-[#241817]/50 backdrop-blur-sm"
             />
 
-            {/* =================================================
-                            FILTER PANEL
-                        ================================================= */}
-
             <motion.aside
               initial={{
                 x: "100%",
@@ -131,17 +119,11 @@ const CoffeeFilters = ({ filters, setFilters }) => {
                 duration: 0.5,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="fixed right-0 top-0 z-[210] flex h-screen w-full max-w-[520px] flex-col bg-[#F8EDE8]"
+              className="fixed right-0 top-0 z-[210] flex h-screen w-full max-w-[520px] flex-col bg-lightWhite"
             >
-              {/* Header */}
-
-              <div className="flex items-center justify-between border-b border-[#241817]/10 px-7 py-6 sm:px-10">
+              <div className="flex items-center justify-between border-b border-[#241817]/10 px-7 pt-16 md:pt-24 pb-5  sm:px-10">
                 <div>
-                  <p className="text-[8px] uppercase tracking-[0.3em] text-[#8B625D]">
-                    Refine selection
-                  </p>
-
-                  <h2 className="mt-2 font-title text-3xl tracking-[-0.04em] text-[#241817]">
+                  <h2 className="header mt-2 font-title text-3xl tracking-[-0.04em] text-[#241817]">
                     Coffee Filters
                   </h2>
                 </div>
@@ -156,15 +138,11 @@ const CoffeeFilters = ({ filters, setFilters }) => {
 
               {/* Filter content */}
 
-              <div className="flex-1 overflow-y-auto px-7 py-10 sm:px-10">
-                {/* =================================================
-                                    ROAST LEVEL
-                                ================================================= */}
-
+              <div className="flex-1 overflow-y-auto px-7 py-8 sm:px-10">
                 <div>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between ">
                     <div>
-                      <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-[#8B625D]">
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-soil">
                         Roast Level
                       </p>
 
@@ -174,7 +152,7 @@ const CoffeeFilters = ({ filters, setFilters }) => {
                     </div>
                   </div>
 
-                  <div className="mt-8">
+                  <div className="mt-2 md:mt-4">
                     <input
                       type="range"
                       min="1"
@@ -187,7 +165,7 @@ const CoffeeFilters = ({ filters, setFilters }) => {
                       className="w-full accent-red"
                     />
 
-                    <div className="mt-4 flex justify-between text-[8px] uppercase tracking-[0.2em] text-[#9A7B75]">
+                    <div className="mt-2 px-3 flex justify-between text-[8px] uppercase tracking-[0.2em] text-[#9A7B75]">
                       <span>Dark</span>
 
                       <span>Medium</span>
@@ -197,12 +175,8 @@ const CoffeeFilters = ({ filters, setFilters }) => {
                   </div>
                 </div>
 
-                {/* =================================================
-                                    CAFFEINE
-                                ================================================= */}
-
-                <div className="mt-12 border-t border-[#241817]/10 pt-10">
-                  <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-[#8B625D]">
+                <div className="mt-8 border-t border-[#241817]/10 py-8">
+                  <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-soil">
                     Caffeine
                   </p>
 
@@ -222,11 +196,11 @@ const CoffeeFilters = ({ filters, setFilters }) => {
                           }
                           className={`
                                                         border px-3 py-4 text-[9px] uppercase tracking-[0.15em]
-                                                        transition-all duration-300
+                                                        transition-all duration-300 rounded-4xl
                                                         ${
                                                           active
                                                             ? "border-red bg-red text-[#F8EDE8]"
-                                                            : "border-[#241817]/10 text-[#66504B] hover:border-red"
+                                                            : "border-[#241817]/10 text-[#66504B] hover:border-red cursor-pointer"
                                                         }
                                                     `}
                         >
@@ -237,20 +211,16 @@ const CoffeeFilters = ({ filters, setFilters }) => {
                   </div>
                 </div>
 
-                {/* =================================================
-                                    PROFILE
-                                ================================================= */}
-
-                <div className="mt-12 border-t border-[#241817]/10 pt-10">
-                  <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-[#8B625D]">
+                <div className="mt-2 border-t border-[#241817]/10 py-8">
+                  <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-soil">
                     Profile
                   </p>
 
-                  <p className="mt-2 font-subtitle text-lg italic text-[#241817]">
+                  <p className="mt-2 font-subtitle text-lg italic text-ink">
                     Traditional to Modern
                   </p>
 
-                  <div className="mt-8">
+                  <div className="mt-2">
                     <input
                       type="range"
                       min="1"
@@ -263,7 +233,7 @@ const CoffeeFilters = ({ filters, setFilters }) => {
                       className="w-full accent-red"
                     />
 
-                    <div className="mt-4 flex justify-between text-[8px] uppercase tracking-[0.2em] text-[#9A7B75]">
+                    <div className="mt-2 flex justify-between text-[8px] uppercase tracking-[0.2em] text-soil">
                       <span>Traditional</span>
 
                       <span>Modern</span>
@@ -271,12 +241,8 @@ const CoffeeFilters = ({ filters, setFilters }) => {
                   </div>
                 </div>
 
-                {/* =================================================
-                                    PROCESS
-                                ================================================= */}
-
-                <div className="mt-12 border-t border-[#241817]/10 pt-10">
-                  <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-[#8B625D]">
+                <div className="mt-2 border-t border-[#241817]/10 pt-8">
+                  <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-soil">
                     Process
                   </p>
 
@@ -291,11 +257,11 @@ const CoffeeFilters = ({ filters, setFilters }) => {
                           onClick={() => toggleProcess(option.value)}
                           className={`
                                                         border px-4 py-3 text-[8px] uppercase tracking-[0.15em]
-                                                        transition-all duration-300
+                                                        transition-all duration-300 rounded-4xl
                                                         ${
                                                           active
                                                             ? "border-red bg-red text-[#F8EDE8]"
-                                                            : "border-[#241817]/10 text-[#66504B] hover:border-red"
+                                                            : "border-[#241817]/10 text-[#66504B] hover:border-red cursor-pointer"
                                                         }
                                                     `}
                         >
@@ -307,11 +273,7 @@ const CoffeeFilters = ({ filters, setFilters }) => {
                 </div>
               </div>
 
-              {/* =================================================
-                                FOOTER
-                            ================================================= */}
-
-              <div className="border-t border-[#241817]/10 bg-[#F3E5DF] px-7 py-5 sm:px-10">
+              <div className="border-t border-[#241817]/10 bg-raised px-7 py-5 sm:px-10">
                 <div className="flex items-center gap-3">
                   <button
                     type="button"

@@ -162,3 +162,5 @@ function App() {
 }
 
 export default App;
+
+// i want one section on website where i can display my socials. it should be there in very creative way possible. my instagram, facebook, linkedin and others too. this section should be apart with the website tone and vibe and should be fun and creative.

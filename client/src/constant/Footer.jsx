@@ -9,8 +9,9 @@ const Footer = () => {
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden select-none "></div>
 
         <div className="relative z-10 mx-auto max-w-[1500px] px-6 pb-7 pt-16 sm:px-10 sm:pt-20 lg:px-14 lg:pt-24">
-          <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
-            <div className="lg:col-span-4 space-y-5">
+          <div className="grid gap-14 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-16">
+            {/* BRAND */}
+            <div className="space-y-5 lg:col-span-4">
               <div className="flex items-center">
                 <img
                   src="/gold.svg"
@@ -32,86 +33,83 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* SHOP */}
+            {/* NAVIGATION */}
+            <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:col-span-8 lg:grid-cols-3 lg:gap-10">
+              {/* SHOP */}
+              <div>
+                <FooterHeading>Shop</FooterHeading>
 
-            <div className="lg:col-span-2 ">
-              <FooterHeading>Shop</FooterHeading>
+                <FooterLink href="/shop/coffee">Coffee</FooterLink>
+                <FooterLink href="/shop/tea">Tea</FooterLink>
+                <FooterLink href="/shop/gifts">Gifts</FooterLink>
+                <FooterLink href="/shop/accessories">Accessories</FooterLink>
+                <FooterLink href="/bulk-order">Bulk Order</FooterLink>
+              </div>
 
-              <FooterLink href="/shop/coffee">Coffee</FooterLink>
+              {/* EXPLORE */}
+              <div>
+                <FooterHeading>Explore</FooterHeading>
 
-              <FooterLink href="/shop/tea">Tea</FooterLink>
+                <FooterLink href="/about">About Us</FooterLink>
+                <FooterLink href="/explore/process">Our Process</FooterLink>
+                <FooterLink href="/explore/origins">Origins</FooterLink>
+                <FooterLink href="/explore/farmers">Farmers</FooterLink>
+                <FooterLink href="/explore/nepal-coffee">
+                  Nepal Coffee
+                </FooterLink>
+                <FooterLink href="/stories">Stories</FooterLink>
+              </div>
 
-              <FooterLink href="/shop/gifts">Gifts</FooterLink>
+              {/* SUPPORT */}
+              <div>
+                <FooterHeading>Support</FooterHeading>
 
-              <FooterLink href="/shop/accessories">Accessories</FooterLink>
-
-              <FooterLink href="/bulk-order">Bulk Order</FooterLink>
-            </div>
-
-            {/* EXPLORE */}
-
-            <div className="lg:col-span-2">
-              <FooterHeading>Explore</FooterHeading>
-
-              <FooterLink href="/about">About Us</FooterLink>
-
-              <FooterLink href="/explore/process">Our Process</FooterLink>
-
-              <FooterLink href="/explore/origins">Origins</FooterLink>
-
-              <FooterLink href="/explore/farmers">Farmers</FooterLink>
-
-              <FooterLink href="/explore/nepal-coffee">Nepal Coffee</FooterLink>
-
-              <FooterLink href="/stories">Stories</FooterLink>
-            </div>
-
-            {/* SUPPORT */}
-
-            <div className="lg:col-span-2">
-              <FooterHeading>Support</FooterHeading>
-
-              <FooterLink href="/contact">Contact</FooterLink>
-
-              <FooterLink href="/shipping">Shipping</FooterLink>
-
-              <FooterLink href="/faq">FAQ</FooterLink>
-
-              <FooterLink href="/returns">Returns</FooterLink>
-
-              <FooterLink href="/privacy">Privacy</FooterLink>
+                <FooterLink href="/contact">Contact</FooterLink>
+                <FooterLink href="/shipping">Shipping</FooterLink>
+                <FooterLink href="/faq">FAQ</FooterLink>
+                <FooterLink href="/returns">Returns</FooterLink>
+                <FooterLink href="/privacy">Privacy</FooterLink>
+              </div>
             </div>
 
             {/* NEWSLETTER */}
+            <div className="  lg:col-span-12  text-center flex items-center justify-center">
+              <div className="max-w-2xl">
+                {/* HEADING */}
+                <h3 className="header mt-3 text-3xl leading-[0.9] tracking-[-0.035em] text-[#D9828A] sm:text-4xl">
+                  Subscribe to Newsletters.
+                </h3>
 
-            <div className="lg:col-span-2">
-              <FooterHeading>Stay in the hills</FooterHeading>
+                {/* FORM */}
+                <form
+                  onSubmit={(e) => e.preventDefault()}
+                  className="mt-7 max-w-xl"
+                >
+                  <div className="flex items-center rounded-full border border-lightCream/15 bg-lightCream/[0.04] p-1 transition-colors duration-300 focus-within:border-lightCream/30">
+                    <input
+                      type="email"
+                      placeholder="Your email address"
+                      aria-label="Email address"
+                      required
+                      className="min-w-0 flex-1 bg-transparent px-4 py-3 text-[10px] font-light text-lightCream outline-none placeholder:text-lightCream/30 sm:px-5 sm:text-[11px]"
+                    />
 
-              <p className="mb-5 max-w-xs text-[14px] leading-5 text-[#9A7B75]">
-                Join us for new origins, stories, seasonal releases and
-                occasional offerings from Laali Hills.
-              </p>
+                    <button
+                      type="submit"
+                      aria-label="Subscribe to newsletter"
+                      className="group flex h-9 shrink-0 items-center gap-2 rounded-full bg-cream px-4 text-[7px] font-semibold uppercase tracking-[0.16em] text-ink transition-all duration-300  active:scale-[0.97] sm:h-10 sm:px-5 sm:text-[8px] cursor-pointer"
+                    >
+                      <span>Join</span>
 
-              <form
-                onSubmit={(e) => e.preventDefault()}
-                className="border-b border-[#E9C9C1]/20"
-              >
-                <div className="flex items-center">
-                  <input
-                    type="email"
-                    placeholder="Your email"
-                    className="w-full bg-transparent py-3 text-base text-lightCream outline-none placeholder:text-[#765954]"
-                  />
-
-                  <button
-                    type="submit"
-                    aria-label="Subscribe"
-                    className="text-[#D9828A] transition-transform duration-300 hover:translate-x-1"
-                  >
-                    <ArrowUpRight size={16} strokeWidth={1.5} />
-                  </button>
-                </div>
-              </form>
+                      <ArrowUpRight
+                        size={12}
+                        strokeWidth={1.5}
+                        className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
 

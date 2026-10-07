@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, RotateCcw } from "lucide-react";
 import { Link } from "react-router-dom";
 import { coffeeProducts } from "../data/products";
 
@@ -413,7 +413,6 @@ const HelpMeChoose = () => {
                 </div>
               </motion.div>
             ) : (
-              /* RESULT */
               <motion.div
                 key="result"
                 initial={{ opacity: 0, y: 35 }}
@@ -424,7 +423,179 @@ const HelpMeChoose = () => {
                 }}
                 className="mx-auto w-full max-w-5xl"
               >
-                {/* keep your existing result UI */}
+                <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+                  {/* Recommendation copy */}
+                  <div>
+                    <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-red">
+                      Your match
+                    </span>
+
+                    <h1 className="header mt-5 max-w-xl text-[clamp(3rem,7vw,6rem)] uppercase leading-[0.84] tracking-[-0.065em]">
+                      We found
+                      <br />
+                      your coffee.
+                    </h1>
+
+                    <p className="mt-6 max-w-md text-[11px] leading-5 text-ink/55 sm:text-xs sm:leading-6">
+                      Based on your choices, we think this one will fit
+                      naturally into your coffee ritual.
+                    </p>
+
+                    {/* Coffee profile */}
+                    <div className="mt-10 border-y border-ink/10">
+                      <div className="flex items-center justify-between border-b border-ink/10 py-4">
+                        <span className="text-[8px] font-medium uppercase tracking-[0.2em] text-ink/40">
+                          Origin
+                        </span>
+                        <span className="text-right text-[10px] text-ink">
+                          {recommendation.origin}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center justify-between py-4">
+                        <span className="text-[8px] font-medium uppercase tracking-[0.2em] text-ink/40">
+                          Profile
+                        </span>
+                        <span className="max-w-[60%] text-right text-[10px] text-ink">
+                          {recommendation.profile}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="mt-8 flex flex-wrap items-center gap-5">
+                      <Link
+                        to={`/shop/coffee/${recommendation.slug}`}
+                        className="group inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-[8px] font-semibold uppercase tracking-[0.2em] text-lightCream transition-transform duration-300 hover:-translate-y-0.5"
+                      >
+                        Explore this coffee
+                        <ArrowUpRight
+                          size={12}
+                          strokeWidth={1.3}
+                          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        />
+                      </Link>
+
+                      <button
+                        type="button"
+                        onClick={restart}
+                        className="text-[8px] font-semibold uppercase tracking-[0.2em] text-ink/45 transition-colors hover:text-red"
+                      >
+                        Start over
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Recommendation image */}
+                  <div className="relative">
+                    <div className="relative aspect-[4/5] overflow-hidden bg-paper">
+                      <motion.img
+                        src={recommendation.image}
+                        alt={recommendation.name}
+                        className="h-full w-full object-cover"
+                        initial={{ scale: 1.04 }}
+                        animate={{ scale: 1 }}
+                        transition={{
+                          duration: 1.1,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                      />
+
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent" />
+
+                      <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                        <p className="text-[8px] font-medium uppercase tracking-[0.25em] text-lightCream/70">
+                          Laali Hills
+                        </p>
+
+                        <h2 className="header mt-2 max-w-md text-3xl uppercase leading-[0.9] tracking-[-0.04em] text-lightWhite sm:text-4xl">
+                          {recommendation.name}
+                        </h2>
+
+                        {recommendation.flavors?.length > 0 && (
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {recommendation.flavors.map((flavor) => (
+                              <span
+                                key={flavor}
+                                className="border border-lightWhite/30 px-3 py-1.5 text-[7px] uppercase tracking-[0.18em] text-lightWhite/90"
+                              >
+                                {flavor}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Small match label */}
+                    <div className="absolute -bottom-4 -left-4 flex h-20 w-20 items-center justify-center rounded-full bg-red text-center sm:-bottom-5 sm:-left-5 sm:h-18 sm:w-18">
+                      <span className="max-w-[55px] text-[9px] font-semibold uppercase leading-3 tracking-[0.15em] text-lightCream">
+                        Picked
+                        <br />
+                        for you
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Coffee rhythm */}
+                <div className="mt-20 border-t border-ink/10 pt-8 sm:mt-24">
+                  <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-red">
+                        Your coffee rhythm
+                      </span>
+
+                      <h3 className="header mt-3 text-2xl uppercase leading-none tracking-[-0.04em] sm:text-3xl">
+                        Made to fit your routine.
+                      </h3>
+                    </div>
+
+                    <p className="max-w-sm text-[10px] leading-5 text-ink/50 sm:text-right">
+                      Whether it's your morning ritual or an afternoon reset,
+                      your coffee should fit naturally into the way you drink
+                      it.
+                    </p>
+                  </div>
+
+                  <div className="mt-8 grid grid-cols-2 border-y border-ink/10 sm:grid-cols-4">
+                    <div className="border-r border-ink/10 px-4 py-5 sm:px-6">
+                      <span className="text-[7px] uppercase tracking-[0.2em] text-ink/35">
+                        Flavour
+                      </span>
+                      <p className="mt-2 text-[10px] text-ink">
+                        {answers.flavor || "—"}
+                      </p>
+                    </div>
+
+                    <div className="border-b border-ink/10 px-4 py-5 sm:border-b-0 sm:border-r sm:px-6">
+                      <span className="text-[7px] uppercase tracking-[0.2em] text-ink/35">
+                        Brew
+                      </span>
+                      <p className="mt-2 text-[10px] text-ink">
+                        {answers.brew || "—"}
+                      </p>
+                    </div>
+
+                    <div className="border-r border-ink/10 px-4 py-5 sm:px-6">
+                      <span className="text-[7px] uppercase tracking-[0.2em] text-ink/35">
+                        Caffeine
+                      </span>
+                      <p className="mt-2 text-[10px] text-ink">
+                        {answers.caffeine || "—"}
+                      </p>
+                    </div>
+
+                    <div className="px-4 py-5 sm:px-6">
+                      <span className="text-[7px] uppercase tracking-[0.2em] text-ink/35">
+                        Frequency
+                      </span>
+                      <p className="mt-2 text-[10px] text-ink">
+                        {answers.frequency || "—"}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             )}
 
