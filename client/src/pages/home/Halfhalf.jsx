@@ -26,57 +26,51 @@ const Halfhalf = () => {
               className="max-w-xl text-center lg:text-left"
             >
               {/* TITLE */}
+
               <motion.h2
-                variants={{
-                  hidden: { opacity: 0, y: 45 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      duration: 1.5,
-                      ease: [0.22, 1, 0.36, 1],
-                    },
-                  },
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 1.4,
+                  delay: 0.1,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
-                className="subheader mt-7 max-w-2xl text-[clamp(3.6rem,6.8vw,6.8rem)] font-medium uppercase leading-[0.82] tracking-[-0.065em] text-lightCream"
+                className="mt-5 text-center text-[clamp(3.4rem,6.5vw,6.5rem)] font-medium  leading-[0.82] tracking-[-0.065em] text-lightCream sm:mt-6 md:text-left"
               >
-                From the
+                <span className="header uppercase">From the hills</span>
                 <br />
-                <span className="italic text-cream">hills.</span>
-                <br />
-                To your cup.
+                <span className="italic text-lightCream/80 font-light text-6xl tracking-[0em] ">
+                  to your cup.{" "}
+                </span>
               </motion.h2>
 
               {/* DETAILS */}
               <motion.div
                 variants={{
-                  hidden: { opacity: 0, y: 18 },
+                  hidden: { opacity: 0, y: 13 },
                   visible: {
                     opacity: 1,
                     y: 0,
                     transition: {
-                      duration: 1.1,
+                      duration: 0.8,
                       ease: [0.22, 1, 0.36, 1],
                     },
                   },
                 }}
-                className="mx-auto mt-9 flex max-w-md items-center justify-center gap-5 lg:mx-0 lg:justify-start "
+                className="mx-auto mt-[34px] flex max-w-md items-center justify-center gap-[21px] lg:mx-0 lg:justify-start"
               >
-                <span className="text-[12px] tracking-wide text-lightCream/80">
-                  Nepal
-                </span>
+                {["Nepal", "High Altitude", "Whole Leaf"].map((item, index) => (
+                  <div key={item} className="flex items-center gap-[21px]">
+                    <span className="whitespace-nowrap text-[11px] font-light uppercase tracking-[0.18em] text-lightCream/80">
+                      {item}
+                    </span>
 
-                <span className="h-3 w-px bg-lightCream/20" />
-
-                <span className="text-[12px] tracking-wide text-lightCream/80">
-                  High Altitude
-                </span>
-
-                <span className="h-3 w-px bg-lightCream/20" />
-
-                <span className="text-[12px] tracking-wide text-lightCream/80">
-                  Whole Leaf
-                </span>
+                    {index !== 2 && (
+                      <span className="h-[3px] w-[3px] shrink-0 rotate-45 bg-[#C5A675]/80" />
+                    )}
+                  </div>
+                ))}
               </motion.div>
 
               {/* CTA */}
@@ -92,7 +86,7 @@ const Halfhalf = () => {
                     },
                   },
                 }}
-                className="mt-10"
+                className="mt-32"
               >
                 <Button to="/shop/tea" variant="light">
                   Explore Leaves

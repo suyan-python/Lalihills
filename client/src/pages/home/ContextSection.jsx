@@ -97,9 +97,14 @@ const ContextSection = () => {
           <span className="text-ivory"> context.</span>
         </h2>
 
-        <Button to={"/explore"} variant="light" className="mt-5">
-          Explore
-        </Button>
+        <div className="mt-24 max-w-2xl text-[clamp(0.9rem,1.1vw,1.1rem)] font-medium leading-7 text-lightCream/80 sm:text-[clamp(0.9rem,1.2vw,1.2rem)] gap-8 flex flex-col sm:flex-row items-center justify-center">
+          <Button to={"/explore"} variant="light">
+            Explore
+          </Button>
+          <span className="text-lightCream hover:text-lightCream transition-colors duration-300">
+            Learn More
+          </span>
+        </div>
       </motion.div>
     </section>
   );

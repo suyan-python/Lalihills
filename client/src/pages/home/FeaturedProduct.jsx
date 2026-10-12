@@ -130,7 +130,7 @@ const FeaturedProduct = () => {
               className="absolute -bottom-20 -left-16 rotate-[-115deg] text-red/[0.025]"
             />
           </div>
-          <div className="w-full max-w-xl">
+          <div className="w-full max-w-3xl">
             {/* TITLE */}
             <motion.h2
               initial={{ opacity: 0, y: 40 }}
@@ -141,54 +141,50 @@ const FeaturedProduct = () => {
                 delay: 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="subheader mt-5 text-center text-[clamp(3.4rem,6.5vw,6.5rem)] font-medium uppercase leading-[0.82] tracking-[-0.065em] text-lightCream sm:mt-6 md:text-left"
+              className="mt-5 text-center text-[clamp(3.4rem,6.5vw,6.5rem)] font-medium  leading-[0.82] tracking-[-0.065em] text-lightCream sm:mt-6 md:text-right"
             >
-              Coffee made by
+              <span className="header uppercase">Coffee made by</span>
               <br />
-              <span className="italic text-lightCream/70">
+              <span className="italic text-lightCream/80 font-light text-6xl tracking-[0em]">
                 people who know.
               </span>
             </motion.h2>
 
             {/* DETAILS */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 13 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{
-                duration: 1,
-                delay: 0.5,
+                duration: 0.9,
+                delay: 0.3,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mt-10  "
+              className="mt-12"
             >
-              <div className="grid grid-cols-3 text-center md:text-left">
-                <div>
-                  <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-lightCream/45 sm:text-[8px]">
-                    Origin
-                  </span>
-                  <span className="mt-2 block text-[10px] font-medium uppercase tracking-[0.08em] text-lightCream sm:text-[11px]">
-                    Nepal
-                  </span>
-                </div>
+              <div className="grid grid-cols-3 gap-0">
+                {[
+                  { number: "01", label: "Origin", value: "Nepal" },
+                  { number: "02", label: "Producers", value: "Local Farmers" },
+                  { number: "03", label: "Altitude", value: "1,300–2,200 m" },
+                ].map((item, index) => (
+                  <div
+                    key={item.label}
+                    className={`min-w-0 ${
+                      index !== 0
+                        ? "border-l border-lightCream/15 pl-3 sm:pl-5 lg:pl-7"
+                        : "pr-2 sm:pr-4"
+                    } ${index !== 2 ? "mr-3 sm:mr-5 lg:mr-7" : ""}`}
+                  >
+                    <span className="block text-[8px] font-medium uppercase tracking-[0.2em] text-lightCream/45 sm:text-[9px]">
+                      {item.label}
+                    </span>
 
-                <div className="border-l border-lightCream/15 pl-5 sm:pl-6">
-                  <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-lightCream/45 sm:text-[8px]">
-                    Producers
-                  </span>
-                  <span className="mt-2 block text-[10px] font-medium uppercase tracking-[0.08em] text-lightCream sm:text-[11px]">
-                    Local Farmers
-                  </span>
-                </div>
-
-                <div className="border-l border-lightCream/15 pl-5 sm:pl-6">
-                  <span className="block text-[7px] font-medium uppercase tracking-[0.3em] text-lightCream/45 sm:text-[8px]">
-                    Altitude
-                  </span>
-                  <span className="mt-2 block text-[10px] font-medium uppercase tracking-[0.08em] text-lightCream sm:text-[11px]">
-                    1,300–2,200 m
-                  </span>
-                </div>
+                    <span className="mt-2 block text-[11px] font-normal leading-snug tracking-[-0.02em] text-lightCream sm:text-[13px]">
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
               </div>
             </motion.div>
 
@@ -202,7 +198,7 @@ const FeaturedProduct = () => {
                 delay: 0.65,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mt-10 text-center md:text-left"
+              className="mt-32 text-center md:text-left "
             >
               <Button to="/shop/coffee" variant="light">
                 Explore Beans
