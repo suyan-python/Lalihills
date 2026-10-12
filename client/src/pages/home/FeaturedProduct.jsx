@@ -4,6 +4,7 @@ import { ArrowUpRight, Leaf } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Button from "../../components/Button";
+import laliStampLogo from "../../assets/logo/round.svg";
 
 const FeaturedProduct = () => {
   const sectionRef = useRef(null);
@@ -49,7 +50,7 @@ const FeaturedProduct = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-red text-ink"
+      className="relative min-h-screen overflow-hidden bg-red text-ink z-0"
     >
       <div className="grid min-h-screen lg:sticky lg:top-0 lg:h-screen lg:grid-cols-2">
         {/* VIDEO */}
@@ -88,7 +89,7 @@ const FeaturedProduct = () => {
                 x: liquidOneX,
                 y: liquidOneY,
               }}
-              className="absolute -left-[25%] -top-[18%] h-[65%] w-[80%] rounded-[48%] bg-red/[0.05] blur-[4px]"
+              className="absolute -left-[25%] -top-[18%] h-[65%] w-[80%] rounded-[48%] bg-lightWhite/[0.05] blur-[4px]"
             />
 
             <motion.div
@@ -209,6 +210,16 @@ const FeaturedProduct = () => {
             </motion.div>
           </div>
         </div>
+      </div>
+      {/* CENTER STAMP */}
+      <div className="pointer-events-none absolute left-1/2 bottom-0 z-50 flex h-28 w-28 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full border border-lightCream/40 bg-lightCream/10 p-3 backdrop-blur-[2px] sm:h-32 sm:w-32 lg:h-36 lg:w-36">
+        <div className="absolute inset-2 rounded-full border border-dashed border-lightCream/30" />
+
+        <img
+          src={laliStampLogo}
+          alt="Laali Hills"
+          className="relative z-10 h-full w-full object-contain"
+        />
       </div>
     </section>
   );

@@ -74,19 +74,19 @@ const Shop = () => {
         </div>
 
         <div
-          className="header mt-20 md:mt-36 header
+          className="header mt-18 md:mt-24 header
         text-[clamp(1.5rem,8vw,3.5rem)]
         font-medium
         leading-[0.8]
-        tracking-[-0.065em]
-        text-ink"
+        tracking-[0.015em]
+        text-ink  text-center"
         >
-          Beans, Leaves & <span className="text-red italic">Gifts</span>.
+          Beans, Leaves & <span className="text-red italic">Gifts.</span>
         </div>
 
         {/* COLLECTIONS */}
         <section className="relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-12 py-3 md:py-5  ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-12 py-8 md:py-10  ">
             <CollectionColumn
               collection={collections[0]}
               products={coffeeProducts}

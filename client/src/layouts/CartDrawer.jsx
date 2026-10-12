@@ -208,7 +208,7 @@ const CartItem = ({ item, index, onRemove, onUpdateQuantity }) => {
               <button
                 type="button"
                 onClick={() => onUpdateQuantity(item.cartKey, quantity - 1)}
-                className="flex h-7 w-7 items-center justify-center rounded-full text-ink/40 transition-all duration-300 hover:bg-ink hover:text-lightCream sm:h-7 sm:w-7"
+                className="flex h-7 w-7 items-center justify-center rounded-full text-ink/40 transition-all duration-300 hover:bg-ink hover:text-lightCream cursor-pointer sm:h-7 sm:w-7"
                 aria-label="Decrease quantity"
               >
                 <Minus size={10} strokeWidth={1.3} />
@@ -221,7 +221,7 @@ const CartItem = ({ item, index, onRemove, onUpdateQuantity }) => {
               <button
                 type="button"
                 onClick={() => onUpdateQuantity(item.cartKey, quantity + 1)}
-                className="flex h-7 w-7 items-center justify-center rounded-full text-ink/40 transition-all duration-300 hover:bg-ink hover:text-lightCream sm:h-7 sm:w-7"
+                className="flex h-7 w-7 items-center justify-center rounded-full text-ink/40 transition-all duration-300 hover:bg-ink hover:text-lightCream cursor-pointer sm:h-7 sm:w-7"
                 aria-label="Increase quantity"
               >
                 <Plus size={10} strokeWidth={1.3} />
@@ -265,16 +265,16 @@ const CartSummary = ({ total }) => {
         duration: 0.5,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="shrink-0 border-t border-ink/10 bg-lightWhite px-5 pb-5 pt-5 sm:px-8 sm:pb-8 sm:pt-6"
+      className="shrink-0 border-t border-ink/75 bg-lightWhite px-5 pb-5 pt-5 sm:px-8 sm:pb-8 sm:pt-6"
     >
       {/* SUMMARY */}
-      <div className="flex items-end justify-between gap-6">
+      <div className="flex items-end justify-between gap-6 ">
         <div>
-          <p className="text-[8px] font-medium uppercase tracking-[0.22em] text-ink/45 sm:text-[9px]">
+          <p className="text-[8px] font-bold uppercase tracking-[0.22em] text-ink sm:text-[12px]">
             Order total
           </p>
 
-          <p className="mt-2 text-[9px] font-light leading-4 text-ink/45 sm:text-[10px]">
+          <p className="mt-2 text-[9px] font-light leading-4 text-ink/85 sm:text-[10px]">
             Shipping calculated at checkout
           </p>
         </div>
@@ -290,14 +290,10 @@ const CartSummary = ({ total }) => {
       <button
         type="button"
         onClick={handleCheckout}
-        className="group mt-5 flex h-12 w-full cursor-pointer items-center justify-between rounded-full bg-red px-5 text-lightCream transition-all duration-300 hover:bg-deepRed active:scale-[0.985] sm:mt-6 sm:h-13 sm:px-6"
+        className="group mt-2  h-12 w-full cursor-pointer rounded-md bg-red px-5 text-lightCream transition-all duration-300 hover:bg-deepRed active:scale-[0.985] sm:mt-4 sm:h-13 sm:px-6"
       >
-        <span className="text-[9px] font-bold uppercase tracking-[0.18em] sm:text-[10px] sm:tracking-[0.2em]">
+        <span className="text-[10px] font-bold uppercase tracking-[0.18em] sm:text-[14px] sm:tracking-[0.2em] ">
           Proceed to checkout
-        </span>
-
-        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-lightCream text-red transition-transform duration-300 group-hover:translate-x-0.5 sm:h-8 sm:w-8">
-          <ArrowRight size={13} strokeWidth={1.8} className="sm:h-4 sm:w-4" />
         </span>
       </button>
     </motion.div>

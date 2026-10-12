@@ -111,7 +111,7 @@ const Halfhalf = () => {
         </div>
 
         {/* CENTER STAMP */}
-        <div className="pointer-events-none absolute left-1/2 top-0 z-20 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-lightCream/40 bg-lightCream/10 p-3 backdrop-blur-[2px] sm:h-32 sm:w-32 lg:h-36 lg:w-36">
+        <div className="pointer-events-none absolute left-1/2 top-0 z-50 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-lightCream/40 bg-lightCream/10 p-3 backdrop-blur-[2px] sm:h-32 sm:w-32 lg:h-36 lg:w-36">
           <div className="absolute inset-2 rounded-full border border-dashed border-lightCream/30" />
 
           <img

@@ -177,18 +177,6 @@ const ShopStatement = () => {
           </div>
         </motion.div>
       </div>
-
-      {/* =================================================
-                BOTTOM LABEL
-            ================================================= */}
-
-      <div className="relative mx-auto mt-12 flex max-w-[1500px] items-center justify-center px-7 sm:px-12 lg:px-20">
-        <div className="flex items-center gap-4">
-          <span className="text-[8px] uppercase tracking-[0.35em] text-[#C9AAA3]">
-            From Nepal's hills
-          </span>
-        </div>
-      </div>
     </section>
   );
 };

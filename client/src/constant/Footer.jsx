@@ -76,14 +76,14 @@ const Footer = () => {
             <div className="  lg:col-span-12  text-center flex items-center justify-center">
               <div className="max-w-2xl">
                 {/* HEADING */}
-                <h3 className="header mt-3 text-3xl leading-[0.9] tracking-[-0.035em] text-[#D9828A] sm:text-4xl">
+                <h3 className="header  text-3xl leading-[0.9] tracking-[-0.035em] text-[#D9828A] sm:text-4xl">
                   Subscribe to Newsletters.
                 </h3>
 
                 {/* FORM */}
                 <form
                   onSubmit={(e) => e.preventDefault()}
-                  className="mt-7 max-w-xl"
+                  className="mt-5 max-w-xl"
                 >
                   <div className="flex items-center rounded-full border border-lightCream/15 bg-lightCream/[0.04] p-1 transition-colors duration-300 focus-within:border-lightCream/30">
                     <input
@@ -113,7 +113,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="mt-16 grid gap-5 border-y border-[#E9C9C1]/10 py-6 sm:grid-cols-3 lg:mt-20">
+          <div className="grid gap-5 border-b border-[#E9C9C1]/10 py-3 sm:grid-cols-3 pt-5">
             <div className="flex items-center gap-3">
               <MapPin size={15} strokeWidth={1} className="text-[#D9828A]" />
 
@@ -163,7 +163,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-7 pt-7 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-7 pt-2 sm:flex-row sm:items-center sm:justify-between">
             {/* Copyright */}
 
             <p className="text-[8px] uppercase tracking-[0.2em] text-[#674A45]">
