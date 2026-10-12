@@ -15,7 +15,7 @@ const Trending = () => {
   }, []);
 
   return (
-    <main className="bg-ivory text-brown">
+    <main className=" bg-ivory text-brown ">
       <TrendingHero />
       <FeatureStory />
       <TrendingIndex />

@@ -41,7 +41,7 @@ const LaliComingSoon = () => {
   }, [activeSlide]);
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black text-lightCream">
+    <main className="min-h-screen overflow-hidden bg-black text-lightCream">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#241817]/65 via-[#241817]/35 to-transparent">
         {/* Video */}
         <motion.video

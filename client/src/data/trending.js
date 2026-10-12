@@ -1,3 +1,12 @@
+import featured from "../assets/trending/featured.jpg";
+import coldCoffee from "../assets/trending/coldcoffee.jpg";
+import fermentation from "../assets/trending/fermentation.jpg";
+import altitude from "../assets/trending/altitude.jpg";
+import single from "../assets/trending/single.jpg";
+
+import product1 from "../assets/products/pro1.jpg";
+
+
 export const trendingMeta = {
   title: "Trending — Laali Hills Journal",
   description:
@@ -10,7 +19,7 @@ export const featuredStory = {
   title: "Why Nepal's Coffee Is Getting Harder to Ignore",
   excerpt:
     "High-altitude farms, small producers and a growing specialty coffee culture are giving Nepal a more distinctive place in the coffee conversation.",
-  image: "/images/trending/nepal-coffee-feature.webp",
+  image: featured,
   href: "/trending/nepal-coffee",
   sourceLabel: "Nepal coffee story",
 };
@@ -22,7 +31,7 @@ export const trendingStories = [
     title: "Why Is Cold Coffee Everywhere?",
     excerpt:
       "Cold coffee has moved beyond a seasonal drink. Specialty consumers are increasingly exploring cold formats without giving up origin or flavour.",
-    image: "/images/trending/cold-coffee.webp",
+    image: coldCoffee,
     href: "/trending/cold-coffee",
     readTime: "04 min",
   },
@@ -32,7 +41,7 @@ export const trendingStories = [
     title: "Fermentation Is Changing the Cup",
     excerpt:
       "Anaerobic fermentation and co-fermentation are expanding what producers and drinkers expect coffee to taste like.",
-    image: "/images/trending/coffee-fermentation.webp",
+    image: fermentation,
     href: "/trending/fermentation",
     readTime: "05 min",
   },
@@ -42,7 +51,7 @@ export const trendingStories = [
     title: "Why Does Altitude Matter?",
     excerpt:
       "Altitude is more than a number on a bag. It is one piece of the environment that can influence how coffee develops and tastes.",
-    image: "/images/trending/coffee-altitude.webp",
+    image: altitude,
     href: "/trending/altitude",
     readTime: "04 min",
   },
@@ -52,7 +61,7 @@ export const trendingStories = [
     title: "What Does Single Origin Actually Mean?",
     excerpt:
       "A simple look at origin, traceability and why knowing where coffee comes from changes the way we understand it.",
-    image: "/images/trending/single-origin.webp",
+    image: single,
     href: "/trending/single-origin",
     readTime: "03 min",
   },
@@ -61,10 +70,10 @@ export const trendingStories = [
 export const insideTheCup = {
   eyebrow: "Inside the cup",
   title: "What makes this coffee different?",
-  productName: "Dhankuta",
+  productName: "Dhankuta Anaerobic",
   process: "Anaerobic",
-  image: "/products/filter-roast-anaerobic-monarch-250g-DHANKUTA/01.webp",
-  href: "/shop/coffee/filter-roast-anaerobic-monarch-250g-DHANKUTA",
+  image: product1,
+  href: "/shop/coffee/cold-brew-250g-DHANKUTA",
   notes: ["Molasses", "Caramel", "Chocolate", "Tropical fruit", "Wine-like"],
   details: [
     { label: "Origin", value: "Dhankuta, Nepal" },

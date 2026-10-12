@@ -71,13 +71,13 @@ const ProductCard = ({ product }) => {
           </p>
         )}
 
-        <div className="mt-2 md:mt-5 ">
-          <div className="mb-2 flex items-center justify-between">
+        <div className="mt-2">
+          <div className="mb-5 flex items-center ">
             <span className="text-[7px] font-semibold uppercase md:tracking-[0.25em] text-stone">
-              Roast Level
+              Roast Level:
             </span>
 
-            <span className="text-[7px] font-medium uppercase md:tracking-[0.18em] text-soil">
+            <span className="text-[7px] font-bold uppercase   md:tracking-[0.18em] text-soil">
               {roastName}
             </span>
           </div>
@@ -99,11 +99,11 @@ const ProductCard = ({ product }) => {
 
           <div className="mt-2 flex justify-between">
             <span className="text-[6px] uppercase tracking-[0.2em] text-soil">
-              Dark
+              Light
             </span>
 
             <span className="text-[6px] uppercase tracking-[0.2em] text-stone">
-              Light
+              Dark
             </span>
           </div>
         </div>

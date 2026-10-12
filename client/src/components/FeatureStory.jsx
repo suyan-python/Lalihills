@@ -5,7 +5,7 @@ import { featuredStory } from "../data/trending";
 
 const FeatureStory = () => {
   return (
-    <section className="bg-lightWhite px-5 py-16 sm:px-8 sm:py-24 lg:px-12 lg:py-28">
+    <section className="relative z-20 bg-lightWhite px-5 py-16 sm:px-8 sm:py-24 lg:px-12 lg:py-28">
       <div className="mx-auto max-w-[1600px]">
         {/* Editorial label */}
         <div className="mb-7 flex items-center justify-between border-b border-brown/15 pb-4">
@@ -23,7 +23,7 @@ const FeatureStory = () => {
           className="group grid overflow-hidden lg:grid-cols-12"
         >
           {/* Image */}
-          <div className="relative aspect-[4/3] overflow-hidden lg:col-span-7 lg:aspect-auto lg:min-h-[680px]">
+          <div className="relative aspect-[2/3] overflow-hidden lg:col-span-7 ">
             <motion.img
               src={featuredStory.image}
               alt={featuredStory.title}
@@ -43,13 +43,13 @@ const FeatureStory = () => {
           {/* Story */}
           <div className="relative flex flex-col justify-between bg-deepRed px-7 py-10 sm:px-12 sm:py-14 lg:col-span-5 lg:px-14 lg:py-16 xl:px-20">
             <div>
-              <div className="flex items-center justify-between">
+              <div className="flex items-end justify-between ">
                 <span className="text-[8px] font-medium uppercase tracking-[0.38em] text-lightCream/55 sm:text-[9px]">
                   {featuredStory.category}
                 </span>
 
-                <span className="text-[8px] uppercase tracking-[0.3em] text-lightCream/35 sm:text-[9px]">
-                  {featuredStory.date}
+                <span className="text-[8px] uppercase tracking-[0.3em] text-lightCream/55 sm:text-[9px]">
+                  {featuredStory.readTime}
                 </span>
               </div>
 

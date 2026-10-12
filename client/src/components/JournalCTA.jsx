@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const JournalCTA = () => {
   return (
-    <section className="bg-ivory px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-32">
+    <section className="relative z-20 bg-ivory px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-32">
       <div className="mx-auto max-w-[1600px]">
         <div className="mb-12 flex items-end justify-between border-b border-brown/15 pb-5 sm:mb-16">
           <div>

@@ -1,158 +1,195 @@
-import React from "react";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { newestStories } from "../../data/trending";
 import PreviewShell from "./SharedShell";
 import PreviewTopHeader from "./PreviewTopHeader";
-import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 import PreviewFooter from "./SharedFooter";
 
 const NewestPreview = ({ onClose }) => {
   const stories = newestStories.slice(0, 4);
-  const lead = stories[0];
-  const remainingStories = stories.slice(1);
+  const [lead, ...remainingStories] = stories;
 
   return (
     <PreviewShell onClose={onClose}>
-      <div className="bg-lightCream">
+      <div className="overflow-hidden bg-lightCream">
         <PreviewTopHeader
           label="Latest dispatches"
           title="Just in."
           description="The newest stories from the Laali Hills Journal."
         />
 
-        {/* Lead story */}
-        <Link
-          to={lead.href}
-          onClick={onClose}
-          className="group relative block overflow-hidden border-b border-brown/15"
-        >
-          <div className="relative aspect-[16/8] overflow-hidden sm:aspect-[2.2/1]">
-            <img
-              src={lead.image}
-              alt={lead.title}
-              className="h-full w-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.025]"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
-
-            <div className="absolute left-6 right-6 bottom-6 sm:left-10 sm:right-10 sm:bottom-9 lg:left-12 lg:right-12">
-              <div className="flex items-center gap-3">
-                <span className="text-[8px] font-medium uppercase tracking-[0.35em] text-lightCream/65">
-                  {lead.category}
-                </span>
-
-                <span className="h-px w-6 bg-lightCream/30" />
-
-                <span className="text-[7px] uppercase tracking-[0.3em] text-lightCream/50">
-                  {lead.date}
-                </span>
-
-                {lead.isNew && (
-                  <span className="text-[7px] font-medium uppercase tracking-[0.3em] text-red">
-                    New
-                  </span>
-                )}
-              </div>
-
-              <div className="mt-4 flex items-end justify-between gap-8">
-                <h3 className="subheader max-w-4xl text-[clamp(2.2rem,4.5vw,4.8rem)] uppercase leading-[0.82] tracking-[-0.055em] text-lightCream">
-                  {lead.title}
-                </h3>
-
-                <span className="hidden h-11 w-11 shrink-0 items-center justify-center border border-lightCream/30 text-lightCream transition-all duration-500 group-hover:border-lightCream group-hover:bg-lightCream group-hover:text-brown sm:flex">
-                  <ArrowUpRight
-                    size={16}
-                    strokeWidth={1.2}
-                    className="transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1"
-                  />
-                </span>
-              </div>
-            </div>
-          </div>
-        </Link>
-
-        {/* Latest stream */}
-        <div className="px-6 sm:px-10 lg:px-12">
-          <div className="flex items-center justify-between border-b border-brown/15 py-4">
-            <span className="text-[7px] font-medium uppercase tracking-[0.4em] text-brown/35">
-              Earlier dispatches
-            </span>
-
-            <span className="text-[7px] uppercase tracking-[0.3em] text-brown/20">
-              03 stories
-            </span>
-          </div>
-
-          {remainingStories.map((story, index) => (
+        {lead && (
+          <>
+            {/* LEAD STORY */}
             <Link
-              key={story.href}
-              to={story.href}
+              to={lead.href}
               onClick={onClose}
-              className="group relative grid gap-5 border-b border-brown/15 py-7 sm:grid-cols-12 sm:items-center sm:gap-8"
+              className="group relative block border-b border-brown/10"
             >
-              {/* Number */}
-              <div className="sm:col-span-1">
-                <span className="text-[9px] font-medium tracking-[0.25em] text-red">
-                  {String(index + 2).padStart(2, "0")}
-                </span>
-              </div>
-
-              {/* Image */}
-              <div className="relative aspect-[16/8] overflow-hidden sm:col-span-3">
-                <img
-                  src={story.image}
-                  alt={story.title}
-                  className="h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+              <div className="relative aspect-[5/4] overflow-hidden bg-cream sm:aspect-[16/8] lg:aspect-[2.15/1]">
+                <motion.img
+                  src={lead.image}
+                  alt={lead.title}
+                  loading="eager"
+                  decoding="async"
+                  initial={{ scale: 1.04 }}
+                  animate={{ scale: 1 }}
+                  transition={{
+                    duration: 1.4,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.025]"
                 />
 
-                <div className="absolute inset-0 bg-ink/5 transition-colors duration-500 group-hover:bg-transparent" />
-              </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/15 to-ink/10" />
 
-              {/* Content */}
-              <div className="sm:col-span-7">
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="text-[7px] font-medium uppercase tracking-[0.35em] text-brown/40">
-                    {story.category}
-                  </span>
-
-                  <span className="h-px w-4 bg-brown/15" />
-
-                  <span className="text-[7px] uppercase tracking-[0.3em] text-brown/25">
-                    {story.date}
-                  </span>
-
-                  {story.isNew && (
-                    <span className="text-[7px] font-medium uppercase tracking-[0.3em] text-red">
-                      New
+                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-9 lg:p-12">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-lightCream/80">
+                      {lead.category}
                     </span>
+
+                    <span className="h-px w-5 bg-lightCream/40" />
+
+                    <span className="text-[8px] uppercase tracking-[0.2em] text-lightCream/55">
+                      {lead.date}
+                    </span>
+
+                    {lead.isNew && (
+                      <span className="border border-lightCream/35 px-2 py-1 text-[7px] font-medium uppercase tracking-[0.2em] text-lightCream">
+                        New
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="mt-5 flex items-end justify-between gap-5 sm:mt-6">
+                    <h3 className="subheader max-w-4xl break-words text-[clamp(2.2rem,5.3vw,5.5rem)] uppercase leading-[0.84] tracking-[-0.06em] text-lightCream">
+                      {lead.title}
+                    </h3>
+
+                    <span className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-lightCream/45 text-lightCream transition-all duration-300 group-hover:border-lightCream group-hover:bg-lightCream group-hover:text-brown sm:flex">
+                      <ArrowUpRight
+                        size={17}
+                        strokeWidth={1.2}
+                        className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      />
+                    </span>
+                  </div>
+
+                  {lead.excerpt && (
+                    <p className="mt-4 max-w-xl text-[11px] leading-5 text-lightCream/70 sm:text-[12px]">
+                      {lead.excerpt}
+                    </p>
                   )}
                 </div>
-
-                <h3 className="subheader mt-3 max-w-3xl text-[clamp(1.5rem,2.7vw,2.6rem)] uppercase leading-[0.88] tracking-[-0.045em] text-brown transition-colors duration-500 group-hover:text-red">
-                  {story.title}
-                </h3>
-
-                <p className="mt-3 max-w-2xl text-[10px] leading-5 text-brown/40 sm:text-[11px]">
-                  {story.excerpt}
-                </p>
               </div>
-
-              {/* Arrow */}
-              <div className="hidden justify-end sm:col-span-1 sm:flex">
-                <span className="flex h-9 w-9 items-center justify-center border border-brown/10 text-brown/25 transition-all duration-500 group-hover:border-red group-hover:bg-red group-hover:text-lightCream">
-                  <ArrowUpRight
-                    size={14}
-                    strokeWidth={1.2}
-                    className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  />
-                </span>
-              </div>
-
-              {/* Hover line */}
-              <span className="absolute bottom-0 left-0 h-px w-0 bg-red transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-full" />
             </Link>
-          ))}
-        </div>
+
+            {/* RECENT STORIES */}
+            {remainingStories.length > 0 && (
+              <div className="px-5 sm:px-8 lg:px-12">
+                <div className="flex items-center justify-between gap-4 border-b border-brown/15 py-5">
+                  <span className="text-[8px] font-medium uppercase tracking-[0.32em] text-brown/45">
+                    More recent stories
+                  </span>
+
+                  <span className="text-[8px] tabular-nums uppercase tracking-[0.2em] text-brown/35">
+                    {String(remainingStories.length).padStart(2, "0")}{" "}
+                    dispatches
+                  </span>
+                </div>
+
+                {remainingStories.map((story, index) => (
+                  <motion.div
+                    key={story.href}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{
+                      duration: 0.65,
+                      delay: index * 0.06,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                  >
+                    <Link
+                      to={story.href}
+                      onClick={onClose}
+                      className="group grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-4 border-b border-brown/10 py-5 sm:grid-cols-[36px_150px_minmax(0,1fr)_36px] sm:gap-x-6 sm:py-7 lg:grid-cols-[44px_190px_minmax(0,1fr)_40px] lg:gap-x-8 lg:py-8"
+                    >
+                      {/* INDEX */}
+                      <span className="hidden self-start pt-1 text-[9px] font-medium tabular-nums tracking-[0.15em] text-red sm:block">
+                        {String(index + 2).padStart(2, "0")}
+                      </span>
+
+                      {/* IMAGE */}
+                      <div className="relative col-start-2 row-span-2 row-start-1 aspect-[4/3] overflow-hidden bg-cream sm:col-start-auto sm:row-span-1">
+                        <img
+                          src={story.image}
+                          alt={story.title}
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                        />
+                      </div>
+
+                      {/* STORY CONTENT */}
+                      <div className="col-start-1 row-start-1 min-w-0 sm:col-start-auto sm:row-start-auto">
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                          <span className="text-[7px] font-medium uppercase tracking-[0.25em] text-red sm:text-[8px]">
+                            {story.category}
+                          </span>
+
+                          <span className="hidden h-px w-4 bg-brown/20 sm:block" />
+
+                          <span className="text-[7px] uppercase tracking-[0.2em] text-brown/40 sm:text-[8px]">
+                            {story.date}
+                          </span>
+
+                          {story.isNew && (
+                            <span className="text-[7px] font-medium uppercase tracking-[0.2em] text-red">
+                              New
+                            </span>
+                          )}
+                        </div>
+
+                        <h3 className="subheader mt-3 break-words text-[clamp(1.35rem,2.7vw,2.7rem)] uppercase leading-[0.9] tracking-[-0.045em] text-brown transition-colors duration-300 group-hover:text-red">
+                          {story.title}
+                        </h3>
+
+                        {story.excerpt && (
+                          <p className="mt-3 line-clamp-2 max-w-2xl text-[10px] leading-5 text-brown/50 sm:text-[11px]">
+                            {story.excerpt}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* MOBILE ARROW */}
+                      <span className="col-start-2 row-start-1 flex h-8 w-8 items-center justify-center border border-brown/15 text-brown/60 transition-all duration-300 group-hover:border-red group-hover:bg-red group-hover:text-lightCream sm:hidden">
+                        <ArrowUpRight size={14} strokeWidth={1.2} />
+                      </span>
+
+                      {/* DESKTOP ARROW */}
+                      <span className="hidden h-9 w-9 items-center justify-center rounded-full border border-brown/15 text-brown/45 transition-all duration-300 group-hover:border-red group-hover:bg-red group-hover:text-lightCream sm:flex">
+                        <ArrowUpRight
+                          size={15}
+                          strokeWidth={1.2}
+                          className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                        />
+                      </span>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+
+        {!lead && (
+          <div className="px-5 py-16 text-[11px] text-brown/50 sm:px-8">
+            New stories are on their way.
+          </div>
+        )}
 
         <PreviewFooter path="/trending/newest" onClose={onClose} />
       </div>

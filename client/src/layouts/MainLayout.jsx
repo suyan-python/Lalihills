@@ -14,7 +14,7 @@ const MainLayout = () => {
       {!isProductPage && <Banner />}
       {!isProductPage && <Navbar />}
 
-      <main className="relative z-10">
+      <main className="relative">
         <Outlet />
       </main>
 

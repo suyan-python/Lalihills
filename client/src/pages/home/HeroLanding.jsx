@@ -17,7 +17,7 @@ import Shop from "../shop/Shop";
 
 const Landing = () => {
   return (
-    <div>
+    <div className="relative z-10 overflow-hidden bg-lightCream text-ink">
       {/* <Hero /> */}
 
       <LaliComingSoon />

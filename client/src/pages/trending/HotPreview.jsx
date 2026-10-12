@@ -7,115 +7,209 @@ import PreviewFooter from "./SharedFooter";
 
 const HotPreview = ({ onClose }) => {
   const stories = hotStories.slice(0, 3);
-  const lead = stories[0];
+  const [lead, ...supportingStories] = stories;
 
   return (
     <PreviewShell onClose={onClose}>
-      <div className="bg-deepRed text-lightCream">
-        <div className="border-b border-lightCream/15 px-6 py-7 sm:px-10 sm:py-9 lg:px-12">
-          <div className="flex items-center justify-between">
-            <div>
+      <div className="overflow-hidden bg-deepRed text-lightCream">
+        {/* HEADER */}
+        <header className="relative border-b border-lightCream/10 px-5 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-12">
+          <div className="flex items-end justify-between gap-5">
+            <div className="min-w-0">
               <div className="flex items-center gap-3">
-                <Flame size={12} strokeWidth={1.2} className="text-red" />
+                <span className="flex h-7 w-7 items-center justify-center rounded-full border border-lightCream/15">
+                  <Flame size={13} strokeWidth={1.3} className="text-red" />
+                </span>
 
-                <span className="text-[8px] font-medium uppercase tracking-[0.4em] text-lightCream/50">
+                <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-lightCream/55 sm:text-[9px] sm:tracking-[0.4em]">
                   What's moving
                 </span>
+
+                <span className="h-1 w-1 rounded-full bg-red" />
               </div>
 
-              <h2 className="subheader mt-4 text-[clamp(3rem,6vw,6rem)] uppercase leading-[0.78] tracking-[-0.065em]">
+              <h2 className="subheader mt-5 text-[clamp(3.25rem,9vw,7rem)] uppercase leading-[0.78] tracking-[-0.07em]">
                 Hot
                 <br />
-                <span className="italic text-red">right now.</span>
+                <span className="mt-1 inline-block italic text-red">
+                  right now.
+                </span>
               </h2>
             </div>
 
-            <span className="hidden text-right text-[8px] uppercase leading-4 tracking-[0.25em] text-lightCream/25 sm:block">
-              The stories
-              <br />
-              getting attention
+            <div className="hidden shrink-0 pb-1 text-right sm:block">
+              <span className="block text-[8px] uppercase leading-5 tracking-[0.25em] text-lightCream/35">
+                The stories
+                <br />
+                getting attention
+              </span>
+
+              <span className="mt-4 block text-[9px] tabular-nums tracking-[0.2em] text-lightCream/55">
+                {String(stories.length).padStart(2, "0")} STORIES
+              </span>
+            </div>
+          </div>
+
+          <div className="mt-7 flex items-center justify-between border-t border-lightCream/10 pt-4 sm:hidden">
+            <span className="text-[8px] uppercase tracking-[0.25em] text-lightCream/40">
+              The stories getting attention
+            </span>
+
+            <span className="text-[9px] tabular-nums tracking-[0.15em] text-lightCream/60">
+              {String(stories.length).padStart(2, "0")} STORIES
             </span>
           </div>
-        </div>
+        </header>
 
-        <div className="grid lg:grid-cols-12">
-          <Link
-            to={lead.href}
-            onClick={onClose}
-            className="group relative overflow-hidden lg:col-span-7"
-          >
-            <div className="relative aspect-[4/3] lg:aspect-[1.1/1]">
-              <img
-                src={lead.image}
-                alt={lead.title}
-                className="h-full w-full object-cover transition-transform duration-[1800ms] group-hover:scale-[1.04]"
-              />
+        {/* STORIES */}
+        {lead ? (
+          <div className="grid lg:grid-cols-12">
+            {/* LEAD STORY */}
+            <Link
+              to={lead.href}
+              onClick={onClose}
+              className="group relative block min-w-0 overflow-hidden border-b border-lightCream/10 lg:col-span-7 lg:border-b-0 lg:border-r"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-ink sm:aspect-[16/10] lg:aspect-[0.94/1]">
+                <img
+                  src={lead.image}
+                  alt={lead.title}
+                  loading="eager"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.035]"
+                />
 
-              <div className="absolute inset-0 bg-ink/25" />
+                {/* Contrast for text */}
+                <div className="absolute inset-0 bg-gradient-to-b from-ink/35 via-transparent to-ink/85" />
 
-              <div className="absolute left-6 top-6 flex items-center gap-3 sm:left-10 sm:top-10">
-                <span className="text-[10px] font-medium tracking-[0.25em] text-red">
-                  01
-                </span>
+                <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5 sm:p-8 lg:p-10">
+                  <div className="flex items-center gap-3">
+                    <span className="text-[9px] font-medium tabular-nums tracking-[0.2em] text-lightCream">
+                      01
+                    </span>
 
-                <span className="h-px w-8 bg-lightCream/30" />
+                    <span className="h-px w-6 bg-lightCream/40" />
 
-                <span className="text-[7px] uppercase tracking-[0.3em] text-lightCream/60">
-                  Trending
-                </span>
-              </div>
+                    <span className="text-[8px] uppercase tracking-[0.3em] text-lightCream/75">
+                      Lead story
+                    </span>
+                  </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
-                <span className="text-[8px] uppercase tracking-[0.35em] text-lightCream/60">
-                  {lead.category}
-                </span>
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-lightCream/40 text-lightCream transition-all duration-300 group-hover:border-lightCream group-hover:bg-lightCream group-hover:text-deepRed sm:h-10 sm:w-10">
+                    <ArrowUpRight
+                      size={16}
+                      strokeWidth={1.2}
+                      className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
+                  </span>
+                </div>
 
-                <h3 className="subheader mt-4 max-w-3xl text-[clamp(2.4rem,4.5vw,4.8rem)] uppercase leading-[0.82] tracking-[-0.055em]">
-                  {lead.title}
-                </h3>
-              </div>
-            </div>
-          </Link>
-
-          <div className="lg:col-span-5">
-            {stories.slice(1).map((story, index) => (
-              <Link
-                key={story.href}
-                to={story.href}
-                onClick={onClose}
-                className="group block border-b border-lightCream/15 p-6 sm:p-8"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-medium tracking-[0.25em] text-red">
-                    0{index + 2}
+                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8 lg:p-10">
+                  <span className="inline-flex items-center gap-2 text-[8px] font-medium uppercase tracking-[0.3em] text-lightCream/65">
+                    <Flame size={11} strokeWidth={1.3} className="text-red" />
+                    {lead.category}
                   </span>
 
-                  <ArrowUpRight
-                    size={15}
-                    strokeWidth={1.2}
-                    className="text-lightCream/30 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-lightCream"
-                  />
-                </div>
+                  <h3 className="subheader mt-4 max-w-3xl break-words text-[clamp(2.3rem,6vw,5.5rem)] uppercase leading-[0.84] tracking-[-0.06em] transition-colors duration-300 group-hover:text-lightCream/80">
+                    {lead.title}
+                  </h3>
 
-                <div className="mt-5 aspect-[16/7] overflow-hidden">
-                  <img
-                    src={story.image}
-                    alt={story.title}
-                    className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
-                  />
-                </div>
+                  {lead.excerpt && (
+                    <p className="mt-4 line-clamp-2 max-w-xl text-[10px] leading-5 text-lightCream/65 sm:text-[11px] sm:leading-6">
+                      {lead.excerpt}
+                    </p>
+                  )}
 
-                <span className="mt-5 block text-[7px] uppercase tracking-[0.35em] text-lightCream/35">
-                  {story.category}
+                  <div className="mt-6 flex items-center gap-3">
+                    <span className="h-px w-8 bg-red" />
+
+                    <span className="text-[8px] uppercase tracking-[0.25em] text-lightCream/55">
+                      Read the story
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+
+            {/* SUPPORTING STORIES */}
+            <div className="min-w-0 lg:col-span-5">
+              <div className="flex items-center justify-between border-b border-lightCream/10 px-5 py-5 sm:px-8 lg:px-8">
+                <span className="text-[8px] font-medium uppercase tracking-[0.3em] text-lightCream/55">
+                  Also making waves
                 </span>
 
-                <h3 className="subheader mt-3 text-[clamp(1.5rem,2.5vw,2.5rem)] uppercase leading-[0.88] tracking-[-0.04em] transition-colors duration-300 group-hover:text-red">
-                  {story.title}
-                </h3>
-              </Link>
-            ))}
+                <span className="text-[8px] uppercase tracking-[0.2em] text-lightCream/30">
+                  02 — {String(stories.length).padStart(2, "0")}
+                </span>
+              </div>
+
+              {supportingStories.map((story, index) => (
+                <Link
+                  key={story.href}
+                  to={story.href}
+                  onClick={onClose}
+                  className="group grid min-w-0 grid-cols-[104px_minmax(0,1fr)] gap-4 border-b border-lightCream/10 p-5 transition-colors duration-300 hover:bg-ink/10 sm:grid-cols-[145px_minmax(0,1fr)] sm:gap-6 sm:p-8 lg:block lg:p-8"
+                >
+                  {/* Story image */}
+                  <div className="relative aspect-[4/5] overflow-hidden bg-ink lg:aspect-[16/7]">
+                    <img
+                      src={story.image}
+                      alt={story.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]"
+                    />
+
+                    <div className="absolute inset-0 bg-ink/5 transition-colors duration-300 group-hover:bg-transparent" />
+                  </div>
+
+                  {/* Story details */}
+                  <div className="flex min-w-0 flex-col justify-center lg:mt-5">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="text-[9px] font-medium tabular-nums tracking-[0.2em] text-red">
+                        0{index + 2}
+                      </span>
+
+                      <ArrowUpRight
+                        size={15}
+                        strokeWidth={1.2}
+                        className="shrink-0 text-lightCream/35 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-lightCream"
+                      />
+                    </div>
+
+                    <span className="mt-3 text-[7px] uppercase tracking-[0.25em] text-lightCream/40 sm:text-[8px] sm:tracking-[0.3em]">
+                      {story.category}
+                    </span>
+
+                    <h3 className="subheader mt-3 break-words text-[clamp(1.2rem,2.5vw,2.4rem)] uppercase leading-[0.9] tracking-[-0.045em] transition-colors duration-300 group-hover:text-red">
+                      {story.title}
+                    </h3>
+
+                    {story.excerpt && (
+                      <p className="mt-3 hidden line-clamp-2 text-[10px] leading-5 text-lightCream/45 sm:block lg:mt-4">
+                        {story.excerpt}
+                      </p>
+                    )}
+
+                    <span className="mt-4 hidden items-center gap-2 text-[7px] uppercase tracking-[0.25em] text-lightCream/35 transition-colors duration-300 group-hover:text-lightCream/75 lg:inline-flex">
+                      Explore story
+                      <ArrowUpRight size={11} strokeWidth={1.2} />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="px-5 py-16 sm:px-10 sm:py-24">
+            <p className="subheader text-4xl uppercase tracking-[-0.04em] text-lightCream/80 sm:text-6xl">
+              Nothing hot. Yet.
+            </p>
+            <p className="mt-4 text-[11px] leading-6 text-lightCream/45">
+              Check back soon for the latest stories from Laali Hills.
+            </p>
+          </div>
+        )}
 
         <PreviewFooter path="/trending/hot" onClose={onClose} dark />
       </div>

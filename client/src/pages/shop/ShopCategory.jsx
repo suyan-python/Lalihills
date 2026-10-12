@@ -21,7 +21,7 @@ const ShopCategory = ({
   filterComponent,
 }) => {
   return (
-    <main className="min-h-screen mx-auto px-8 md:px-0 bg-lightWhite ">
+    <main className="relative z-20 min-h-screen mx-auto px-8 md:px-0 bg-lightWhite ">
       <Helmet>
         <title>{seoTitle}</title>
 

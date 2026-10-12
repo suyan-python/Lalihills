@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import JournalPreview from "./JournalPreview";
+import trending from "../assets/trending/hero.jpg";
 
 const TrendingHero = () => {
   const [activePreview, setActivePreview] = useState(null);
@@ -11,38 +12,45 @@ const TrendingHero = () => {
   };
   return (
     <>
-      <section className="relative flex min-h-[88vh] items-end overflow-hidden bg-ivory px-5 pb-14 pt-32 sm:px-8 sm:pb-20 lg:min-h-screen lg:px-12 lg:pb-24">
-        <div className="mx-auto grid w-full max-w-[1600px] gap-14 lg:grid-cols-12 lg:items-end">
+      <section className="relative z-10 flex min-h-[88vh] items-end overflow-hidden bg-ivory px-5 pb-14 pt-32 sm:px-8 sm:pb-20 lg:min-h-screen lg:px-12 lg:pb-24">
+        {/* BACKGROUND IMAGE */}
+
+        <img
+          src={trending}
+          alt="Laali Hills coffee trending"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+
+        {/* IMAGE OVERLAY */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/40 to-ink/10" />
+
+        {/* BOTTOM FADE */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-ink/10" />
+
+        {/* CONTENT */}
+        <div className="relative z-10 mx-auto grid w-full max-w-[1600px] gap-14 lg:grid-cols-12 lg:items-end">
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-8"
           >
-            <span className="text-[8px] font-medium uppercase tracking-[0.42em] text-red sm:text-[9px]">
+            <span className="text-[8px] font-medium uppercase tracking-[0.42em] text-lightCream/80 sm:text-[9px]">
               Laali Hills Trending
             </span>
-            <h1 className="font-title mt-6 max-w-5xl text-[clamp(4.5rem,10vw,10rem)] leading-[0.78] tracking-[-0.075em] text-brown">
-              What's moving
+
+            <h1 className="mt-6 max-w-5xl text-[clamp(4.5rem,10vw,10rem)] leading-[0.78] tracking-[-0.075em] text-lightCream">
+              <span className="header">What's moving in</span>
               <br />
-              <span className="italic text-red">in coffee.</span>
+              <span className="tracking-normal text-[clamp(2.5rem,8vw,8rem)] text-[#D7B58A]">
+                Coffee World.
+              </span>
             </h1>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-4 lg:pb-2 lg:pl-10"
-          >
-            <p className="max-w-sm text-[13px] leading-6 text-brown/55 sm:text-[14px] sm:leading-7">
-              Stories, shifts and ideas shaping coffee — from the hills of Nepal
-              to cups around the world.
-            </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="sticky top-0 z-30 bg-ink px-5 sm:px-8 lg:px-12">
+      <section className="sticky top-0 z-200 bg-ink px-5 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-[1600px] border-b border-brown/15">
           <nav className="flex items-center gap-7 py-4 text-[10px] font-bold sm:gap-10">
             <button
