@@ -2,10 +2,18 @@
 import product1 from "../assets/products/pro1.jpg";
 import product2 from "../assets/products/pro2.jpg";
 import product3 from "../assets/products/pro3.jpg";
+
+import product4 from "../assets/products/pro4.svg";
+import product5 from "../assets/products/pro5.svg";
+import product6 from "../assets/products/pro6.svg";
+
 import tea1 from "../assets/products/tea1.jpg";
 import tea2 from "../assets/products/tea2.jpg";
 import tea3 from "../assets/products/tea3.jpg";
+
 import tea4 from "../assets/products/tea4.svg";
+import tea5 from "../assets/products/tea5.svg";
+import tea6 from "../assets/products/tea6.svg";
 
 const createRotationImages = (slug, count = 30) => {
   return Array.from(
@@ -22,6 +30,7 @@ export const coffeeProducts = [
   shortName: "Cold Brew – 250g [Beans / Ground]",
   slug: "cold-brew-250g-DHANKUTA",
 
+  frontImage: product4,
   image: product1,
   hoverImage: product1,
   imageColor: "#D9A08F",
@@ -181,6 +190,7 @@ sizeOptions: [
   shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
   slug: "filter-roast-anaerobic-monarch-250g-DHANKUTA",
 
+  frontImage: product5,
   image: product2,
   hoverImage: product2,
   rotationImages: createRotationImages(
@@ -340,6 +350,7 @@ sizeOptions: [
   shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
   slug: "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
 
+  frontImage: product6,
   image: product3,
   hoverImage: product3,
   rotationImages: createRotationImages(
@@ -502,6 +513,7 @@ export const teaProducts = [
     shortName: "First Flush – 100g [Loose Leaf]",
     slug: "ilam-first-flush-100g",
 
+    frontImage: tea4,
     image: tea1,
     hoverImage: tea1,
     imageColor: "#D8DCC8",
@@ -649,6 +661,7 @@ export const teaProducts = [
     shortName: "Ilam Green – 100g [Loose Leaf]",
     slug: "ilam-green-100g",
 
+    frontImage: tea5,
     image: tea2,
     hoverImage: tea2,
     imageColor: "#C9D8C2",
@@ -796,8 +809,9 @@ export const teaProducts = [
     shortName: "Silver Tips – 100g [Loose Leaf]",
     slug: "himalayan-silver-tips-100g",
 
-    image: tea4,
-    hoverImage: tea4,
+    frontImage: tea6,
+    image: tea3,
+    hoverImage: tea3,
     imageColor: "#E0DED0",
 
     category: "tea",

@@ -45,16 +45,16 @@ const Hero = () => {
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
         {/* Forest atmosphere */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_38%,rgba(65,88,69,0.5)_0%,rgba(41,58,52,0.28)_35%,transparent_90%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_38%,rgba(166,42,52,0.30)_0%,rgba(41,58,52,0.42)_35%,transparent_78%)]" />
 
         {/* Soft ambient glows */}
-        <div className="absolute -left-20 top-[25%] h-72 w-72 rounded-full bg-hill/25 blur-3xl" />
-        <div className="absolute -right-24 top-[35%] h-80 w-80 rounded-full bg-hill/20 blur-3xl" />
+        <div className="absolute -left-20 top-[25%] h-72 w-72 rounded-full bg-red/15 blur-3xl" />
+        <div className="absolute -right-24 top-[35%] h-80 w-80 rounded-full bg-red/10 blur-3xl" />
 
         <Leaf
           aria-hidden="true"
           strokeWidth={0.7}
-          className="absolute left-[7%] bottom-[19%] h-24 w-24 -rotate-45 opacity-[0.09] sm:h-36 sm:w-36 animate-botanical-drift text-amber-200"
+          className="absolute left-[7%] bottom-[19%] h-24 w-24 -rotate-45 opacity-[0.09] sm:h-36 sm:w-36 animate-botanical-drift text-amber-300"
         />
 
         {/* Floating botanical elements */}
@@ -86,7 +86,7 @@ const Hero = () => {
         <Coffee
           aria-hidden="true"
           strokeWidth={0.7}
-          className="absolute right-[8%] bottom-[24%] h-20 w-20 rotate-12 opacity-[0.07] sm:h-32 sm:w-32 text-amber-300"
+          className="absolute right-[8%] bottom-[24%] h-20 w-20 rotate-12 opacity-[0.07] sm:h-32 sm:w-32 text-amber-200 animate-botanical-drift-reverse"
         />
 
         {/* Bottom fade — keep this above the floating elements */}
@@ -96,10 +96,17 @@ const Hero = () => {
       {/* Hero content */}
       <div className="relative z-10 mx-auto flex w-full max-w-[1600px] flex-1 flex-col items-center px-5 pb-40 pt-24 text-center sm:px-10 sm:pb-44 sm:pt-28 md:pt-32">
         <Link to={productPath} className="group inline-block ">
-          <h2 className="header mt-2 text-3xl  tracking-[-0.04em] transition-colors duration-300 group-hover:text-lightCream/70 sm:text-5xl">
+          <h2 className="header mt-2 text-3xl  tracking-[-0.04em] transition-colors sm:text-5xl">
             {product.name}
           </h2>
         </Link>
+
+        <div className="relative z-20 mt-3 w-full shrink-0">
+          <p className="text-[14px] font-medium uppercase tracking-[0.3em] text-lightCream/75">
+            {product.productType} <span className="mx-2 text-red">/</span>
+            {product.origin || "Nepal"}
+          </p>
+        </div>
 
         {/* Product visual */}
         <div className="relative mt-0 flex w-full max-w-4xl flex-1 items-center justify-center ">
@@ -128,23 +135,18 @@ const Hero = () => {
                 className="flex min-h-0 flex-1 items-center justify-center"
               >
                 <img
-                  src={product.image}
+                  src={product.frontImage || product.image}
                   alt={product.name}
                   loading="eager"
                   decoding="async"
-                  className="max-h-[35svh] w-auto max-w-[82%] object-contain drop-shadow-2xl transition-transform duration-700 ease-out hover:scale-[1.025] sm:max-h-[43svh] md:max-h-[47svh]"
+                  className="max-h-[35svh] w-auto max-w-[95%] object-contain drop-shadow-2xl transition-transform duration-700 ease-out hover:scale-[1.025] sm:max-h-[43svh] md:max-h-[47svh]"
                 />
               </Link>
-              <div className="relative z-20 mt-3 w-full shrink-0">
-                <p className="text-[8px] font-medium uppercase tracking-[0.3em] text-lightCream/65">
-                  {product.productType} <span className="mx-2 text-red">/</span>
-                  {product.origin || "Nepal"}
-                </p>
-              </div>
+
               {product.shortDescription && (
                 <p
                   key={`${product.productType}-${product.slug}-description`}
-                  className="mt-5 max-w-2xl text-[11px] leading-6 text-lightCream/80 sm:text-base"
+                  className="pt-1 max-w-2xl text-[11px] leading-6 text-lightCream/80 sm:text-[20px]"
                 >
                   {product.flavors.join(" | ")}
                 </p>
@@ -167,7 +169,7 @@ const Hero = () => {
               <span
                 className={`h-1 rounded-full transition-all duration-500 ${
                   index === activeIndex
-                    ? "w-7 bg-ivory"
+                    ? "w-7 bg-red"
                     : "w-3 bg-lightCream/25 group-hover:bg-lightCream/55"
                 }`}
               />
@@ -191,14 +193,14 @@ const Hero = () => {
               });
             }
           }}
-          className="inline-flex h-10  items-center justify-center rounded-full bg-ivory px-6 text-[10px] font-semibold  text-hill transition-colors duration-300 hover:bg-lightWhite sm:h-12  sm:text-[14px]"
+          className="inline-flex h-10  items-center justify-center rounded-full bg-ivory px-6 text-[10px] font-semibold  text-hill transition-colors  hover:bg-lightWhite sm:h-12  sm:text-[14px]"
         >
           Explore
         </a>
 
         <Link
           to={productPath}
-          className="inline-flex h-10  items-center justify-center rounded-full border border-lightCream/60 bg-transparent px-6 text-[10px] font-semibold  text-lightCream transition-colors duration-300 hover:border-ivory hover:bg-ivory hover:text-hill sm:h-12  sm:text-[14px]"
+          className="inline-flex h-10  items-center justify-center rounded-full border border-lightCream/60 bg-transparent px-6 text-[10px] font-semibold  text-lightCream transition-colors  hover:border-ivory hover:bg-ivory hover:text-hill sm:h-12  sm:text-[14px]"
         >
           Buy
         </Link>

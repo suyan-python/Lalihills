@@ -20,9 +20,9 @@ const Landing = () => {
     <div className="relative z-10 overflow-hidden bg-lightCream text-ink">
       <Hero />
 
-      {/* <LaliComingSoon /> */}
-
       <Shop />
+
+      {/* <LaliComingSoon /> */}
 
       <FeaturedProduct />
 
