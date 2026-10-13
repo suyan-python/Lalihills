@@ -41,8 +41,8 @@ const LaliComingSoon = () => {
   }, [activeSlide]);
 
   return (
-    <main className="min-h-screen overflow-hidden bg-black text-lightCream">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#241817]/65 via-[#241817]/35 to-transparent">
+    <main className="relative min-h-screen overflow-hidden bg-black text-lightCream">
+      <div className=" pointer-events-none absolute inset-0 bg-gradient-to-r from-[#241817]/65 via-[#241817]/35 to-transparent">
         {/* Video */}
         <motion.video
           key={videos[currentVideo]}
@@ -339,14 +339,21 @@ const LaliComingSoon = () => {
           </AnimatePresence>
         </div>
 
-        <a
-          href="#shop"
-          className="group absolute bottom-32 left-1/2 z-40 inline-flex h-10 -translate-x-1/2 items-center gap-3 rounded-full bg-ivory px-6 text-[8px] font-semibold uppercase tracking-[0.2em] text-hill transition-all duration-300 hover:bg-lightWhite hover:shadow-lg md:bottom-56 md:h-12 md:px-7 md:text-[10px]"
-          aria-label="Explore offerings"
-        >
-          <span>Explore offerings</span>
-          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-        </a>
+        <div className="absolute bottom-32 left-1/2 z-40 flex -translate-x-1/2 items-center gap-3 md:bottom-56 md:gap-4">
+          <Link
+            to="/about"
+            className="inline-flex h-10 items-center justify-center rounded-full bg-ivory px-6 text-[9px] font-semibold  tracking-[0.15em] text-hill transition-all  hover:bg-lightWhite md:h-12 md:px-5 md:text-[12px]"
+          >
+            Explore
+          </Link>
+
+          <a
+            href="#shop"
+            className="inline-flex h-10 items-center justify-center rounded-full border border-ivory/70 bg-transparent px-6 text-[9px] font-semibold  tracking-[0.15em] text-ivory transition-all  hover:bg-ivory hover:text-hill md:h-12 md:px-5 md:text-[12px]"
+          >
+            Buy
+          </a>
+        </div>
 
         <motion.div
           initial={{

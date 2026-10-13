@@ -57,7 +57,7 @@ const collections = [
 const Shop = () => {
   return (
     <main className="relative z-20 overflow-x-hidden bg-lightWhite " id="shop">
-      <div className="max-w-[350px] md:max-w-7xl mx-auto pb-24">
+      <div className="max-w-[350px] md:max-w-7xl mx-auto pb-24 ">
         {/* BACKGROUND WORD */}
         <div className="pointer-events-none absolute right-[-6vw] top-[8vh] z-0 select-none">
           <motion.p
@@ -86,7 +86,7 @@ const Shop = () => {
 
         {/* COLLECTIONS */}
         <section className="relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-12 py-8 md:py-10  ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-12 py-8 md:py-10 sm:px-2 md:px-4 lg:px-6">
             <CollectionColumn
               collection={collections[0]}
               products={coffeeProducts}
@@ -208,8 +208,9 @@ const FeaturedProducts = ({ products = [], type, collection }) => {
       <div className="mt-4  text-center">
         <Button
           size="sm"
-          className="bg-white/20 border border-lightWhite/45 hover:bg-lightWhite/50"
+          className="bg-transparent border border-lightWhite/45 hover:bg-lightWhite/50"
           to={collection.path}
+          icon={false}
         >
           Explore all {collection.name}
         </Button>
@@ -291,21 +292,31 @@ const FeaturedProductCard = ({ product }) => {
           <h4 className="header mt-1 text-[1rem] leading-[0.95] tracking-[-0.025em] text-lightWhite sm:text-[1.05rem]">
             {product.name}
           </h4>
-        </div>
-
-        {/* PRICE + TOGGLE */}
-        <div className="flex shrink-0 items-center gap-2.5">
-          <p className="text-[11px] tracking-[0.01em] text-lightWhite sm:text-sm ">
+          {/* Price */}
+          <p className="whitespace-nowrap text-xs font-medium tracking-wide text-lightWhite sm:text-sm">
             NPR {price.toLocaleString()}
           </p>
+        </div>
 
-          <span className="flex h-7 w-7 items-center justify-center rounded-full  text-lightCream border border-lightWhite">
+        {/* PRICE + ACTIONS */}
+        <div className="flex shrink-0 flex-col items-center justify-between gap-3">
+          {/* Expand / collapse */}
+          <span className="flex h-5 w-5 items-center justify-center rounded-full  text-lightCream  cursor-pointer transition-colors duration-200 hover:bg-lightWhite/20 active:scale-[0.97]">
             {expanded ? (
               <Minus size={12} strokeWidth={2.5} />
             ) : (
               <Plus size={12} strokeWidth={2.5} />
             )}
           </span>
+
+          {/* Buy button */}
+          <button
+            type="button"
+            onClick={handleAddToCart}
+            className="flex h-7  items-center justify-center rounded-full bg-red px-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-lightCream transition-colors duration-200 hover:bg-deepRed active:scale-[0.97] cursor-pointer"
+          >
+            Buy
+          </button>
         </div>
       </button>
 
@@ -421,19 +432,11 @@ const FeaturedProductCard = ({ product }) => {
               )}
 
               {/* ACTIONS */}
-              <div className="mt-4 flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={handleAddToCart}
-                  className="flex h-8 flex-1 items-center justify-center rounded-full bg-red px-4 text-[8px] font-semibold uppercase tracking-[0.14em] text-lightCream transition-colors hover:bg-deepRed active:scale-[0.98] cursor-pointer"
-                >
-                  Add to Cart
-                </button>
-
+              <div className="mt-4 flex items-center justify-center gap-2">
                 <Link
                   to={`/shop/${product.category}/${product.slug}`}
                   onClick={(e) => e.stopPropagation()}
-                  className="group/details flex h-8 items-center gap-1 rounded-full px-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-lightWhite/75 underline"
+                  className="group/details flex h-8 items-center  gap-1 rounded-full px-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-lightWhite underline"
                 >
                   Details
                   <ArrowRight

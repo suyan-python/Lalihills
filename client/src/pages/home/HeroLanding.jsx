@@ -1,5 +1,5 @@
 import React from "react";
-// import Hero from "./Hero";
+import Hero from "./Hero";
 import LaliComingSoon from "../../components/LaliCommingSoon";
 import FeaturedProduct from "./FeaturedProduct";
 import SummerOfferings from "./SummerOfferings";
@@ -18,9 +18,9 @@ import Shop from "../shop/Shop";
 const Landing = () => {
   return (
     <div className="relative z-10 overflow-hidden bg-lightCream text-ink">
-      {/* <Hero /> */}
+      <Hero />
 
-      <LaliComingSoon />
+      {/* <LaliComingSoon /> */}
 
       <Shop />
 

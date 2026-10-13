@@ -52,7 +52,7 @@ const Checkout = () => {
 
   if (cartItems.length === 0) {
     return (
-      <main className="min-h-screen bg-lightWhite px-6 py-32 text-ink sm:px-10">
+      <main className="relative min-h-screen z-20 bg-lightWhite px-6 py-32 text-ink sm:px-10">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-[7px] uppercase tracking-[0.35em] text-ink/40">
             Checkout
@@ -76,7 +76,7 @@ const Checkout = () => {
   }
 
   return (
-    <main className="flex flex-col md:flex-row bg-lightWhite   text-ink  ">
+    <main className="relative z-20 flex flex-col md:flex-row bg-lightWhite   text-ink  ">
       <div className="flex flex-col items-end justify-end min-h-screen mx-auto md:w-[60%] px-10 py-20 md:py-26 border-r border-ink/25 ">
         {/* CHECKOUT CONTENT */}
         <div className="mx-auto w-full max-w-2xl">

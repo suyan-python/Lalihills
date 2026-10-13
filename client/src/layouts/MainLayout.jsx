@@ -12,7 +12,7 @@ const MainLayout = () => {
   return (
     <div className="min-h-screen">
       {!isProductPage && <Banner />}
-      {!isProductPage && <Navbar />}
+      {<Navbar />}
 
       <main className="relative">
         <Outlet />

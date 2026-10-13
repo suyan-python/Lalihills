@@ -5,6 +5,7 @@ import product3 from "../assets/products/pro3.jpg";
 import tea1 from "../assets/products/tea1.jpg";
 import tea2 from "../assets/products/tea2.jpg";
 import tea3 from "../assets/products/tea3.jpg";
+import tea4 from "../assets/products/tea4.svg";
 
 const createRotationImages = (slug, count = 30) => {
   return Array.from(
@@ -795,8 +796,8 @@ export const teaProducts = [
     shortName: "Silver Tips – 100g [Loose Leaf]",
     slug: "himalayan-silver-tips-100g",
 
-    image: tea3,
-    hoverImage: tea3,
+    image: tea4,
+    hoverImage: tea4,
     imageColor: "#E0DED0",
 
     category: "tea",

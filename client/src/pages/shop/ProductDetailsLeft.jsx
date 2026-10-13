@@ -40,7 +40,7 @@ const ProductDetailsLeft = ({
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-ink/25" />
 
       {/* BEANS / LEAVES */}
-      <div className="absolute right-5 top-5 z-[100] pointer-events-auto sm:right-7 sm:top-7 lg:right-8 lg:top-8">
+      <div className="absolute right-5 top-5 z-[150] pointer-events-auto sm:right-7 sm:top-7 lg:right-8 lg:top-8">
         <div className="flex rounded-full border border-lightCream/20 bg-ink/55 p-1 ">
           {[
             { id: "beans", label: "Beans" },
