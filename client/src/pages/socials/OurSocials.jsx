@@ -18,6 +18,10 @@ import instagram from "../../assets/icon/instagram.png";
 import facebook from "../../assets/icon/facebook.png";
 import linkedin from "../../assets/icon/linkedin.png";
 
+import origin from "../../assets/socials/origin.jpg";
+import closer from "../../assets/socials/closer.jpg";
+import tea from "../../assets/socials/tea.jpg";
+
 const socialLinks = [
   {
     name: "Instagram",
@@ -50,20 +54,20 @@ const posts = [
   {
     category: "Origins",
     title: "Where every cup begins",
-    image: "/images/explore/origin.jpg",
+    image: origin,
     type: "story",
     shape: "tall",
   },
   {
     category: "Coffee",
-    title: "A closer look at our beans",
-    image: "/images/explore/coffee.jpg",
+    title: "Closer look at our beans",
+    image: closer,
     type: "reel",
   },
   {
     category: "Tea",
     title: "Slow mornings, better tea",
-    image: "/images/explore/tea.jpg",
+    image: tea,
     type: "story",
   },
   {
@@ -106,17 +110,17 @@ const OurSocials = () => {
 
   return (
     <main
-      className={`py-36 ${
+      className={`py-20 md:py-32 ${
         isDark ? "dark" : ""
       } min-h-screen bg-lightWhite text-ink transition-colors duration-300 dark:bg-ink dark:text-lightCream`}
     >
       <div className="mb-8 bg-red text-center gap-3 px-5 sm:mb-10 sm:px-10  lg:px-16">
-        <span className="header text-[14px] font-medium uppercase tracking-[0.25em] text-lightWhite/85 dark:text-ink transition-colors duration-300">
+        <span className="header text-[14px] font-medium uppercase tracking-[0.25em] text-lightWhite dark:text-ink transition-colors duration-300">
           Our Socials
         </span>
       </div>
       {/* SOCIAL PROFILE */}
-      <section className="relative mx-auto max-w-[1200px] px-5 sm:px-10 lg:px-16">
+      <section className="relative mx-auto max-w-[1200px] ">
         {/* LIGHT / DARK MODE TOGGLE */}
         <button
           type="button"
@@ -147,7 +151,7 @@ const OurSocials = () => {
           </span>
         </button>
 
-        <div className="flex flex-col gap-6 border-b border-lightCream/10 py-8 sm:flex-row sm:items-center sm:justify-between sm:py-10">
+        <div className="flex flex-col gap-6 py-8 sm:flex-row sm:items-center sm:justify-between sm:py-10 px-5 lg:px-0">
           <div className="flex items-center gap-4 sm:gap-6">
             {/* Brand avatar */}
             <div className="flex h-[76px] w-[76px] shrink-0 items-center justify-center rounded-full border border-red/50 bg-hill p-1 sm:h-24 sm:w-24">
@@ -204,67 +208,56 @@ const OurSocials = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Follow Laali Hills on ${name}`}
-                className="group inline-flex items-center gap-3 rounded-full border border-ink/10 bg-paper/70 px-4 py-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-red/40 hover:bg-red/5 dark:border-lightCream/15 dark:bg-lightCream/[0.03] dark:hover:border-red/60 dark:hover:bg-red/10"
+                className="group inline-flex items-center gap-3 rounded-full border border-ink/10 bg-paper/30 px-4 py-2.5 transition-all duration-300  hover:border-red/20 hover:bg-red/5 dark:border-lightCream/15 dark:bg-lightCream/[0.03] dark:hover:border-red/60 dark:hover:bg-red/10"
               >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full  transition-colors duration-300 group-hover:bg-red/10 dark:bg-lightCream/[0.06] dark:group-hover:bg-red/15">
-                  <img
-                    src={icon}
-                    alt=""
-                    aria-hidden="true"
-                    className="h-8 w-8 object-contain dark:invert transition-colors duration-300"
-                  />
-                </span>
+                <img
+                  src={icon}
+                  alt=""
+                  aria-hidden="true"
+                  className="h-5 w-5 md:h-8 md:w-8 object-contain dark:invert transition-colors duration-300"
+                />
               </a>
             ))}
           </div>
         </div>
 
         {/* STORY HIGHLIGHTS */}
-        <div className="flex gap-5 overflow-x-auto py-7 sm:gap-8 sm:py-9">
+        <div className="flex gap-1 overflow-x-auto pb-7 sm:gap-2 sm:pb-9 px-5 lg:px-0">
           {highlights.map(({ label, icon: Icon, color }) => (
             <a
               key={label}
               href={`#${label.toLowerCase().replaceAll(" ", "-")}`}
               className="group flex min-w-[70px] flex-col items-center gap-3"
             >
-              <div className="rounded-full border border-lightCream/20 p-[3px] transition-colors group-hover:border-red">
+              <div className="rounded-full border-4 border-stone/35 dark:border-stone/20 p-[3px] transition-colors group-hover:border-red">
                 <div
-                  className={`flex h-[58px] w-[58px] items-center justify-center rounded-full ${color} sm:h-[68px] sm:w-[68px]`}
+                  className={`flex h-[48px] w-[48px] items-center justify-center rounded-full ${color} sm:h-[58px] sm:w-[58px]`}
                 >
-                  <Icon size={22} strokeWidth={1.2} />
+                  <Icon
+                    size={22}
+                    strokeWidth={1.2}
+                    className="text-lightWhite"
+                  />
                 </div>
               </div>
-              <span className="whitespace-nowrap text-[10px] text-lightCream/65 transition-colors group-hover:text-lightCream">
+              <span className="text-[10px] text-ink/75 dark:text-lightCream/65 transition-colors group-hover:text-ink dark:group-hover:text-lightCream">
                 {label}
               </span>
             </a>
           ))}
         </div>
 
-        {/* FEED HEADING */}
-        <div className="flex items-end justify-between gap-4 pb-5">
-          <div>
-            <h2 className="header text-3xl tracking-[-0.045em] sm:text-4xl">
-              The Laali Journal.
-            </h2>
-          </div>
-
-          <span className="hidden text-[10px] text-lightCream/40 sm:block">
-            Stories, people & everyday rituals
-          </span>
-        </div>
-
         {/* FEED FILTERS */}
-        <div className="flex gap-5 overflow-x-auto border-b border-lightCream/10 pb-4">
+        <div className="flex gap-5 overflow-x-auto 0 mt-4 px-4">
           {filters.map((filter) => (
             <button
               key={filter}
               type="button"
               onClick={() => setActiveFilter(filter)}
-              className={`shrink-0 border-b pb-3 text-[10px] transition-colors sm:text-xs ${
+              className={`shrink-0 border-b text-[10px] transition-colors sm:text-[14px] ${
                 activeFilter === filter
                   ? "border-red text-ink dark:text-lightWhite"
-                  : "border-transparent text-ink/85 dark:text-lightCream/45 hover:text-lightCream/80"
+                  : "border-transparent text-ink/85 dark:text-lightCream/45 dark:hover:text-ink/55 dark:hover:text-lightCream/80"
               }`}
             >
               {filter}
@@ -273,15 +266,15 @@ const OurSocials = () => {
         </div>
 
         {/* SOCIAL CONTENT GRID */}
-        <div className="grid grid-cols-2 gap-2 py-5 sm:grid-cols-3 sm:gap-4 sm:py-7">
+        <div className="grid grid-cols-2 py-4 pb-5 sm:grid-cols-3 gap-1 sm:pb-7 ">
           {filteredPosts.map((post, index) => (
-            <motion.article
+            <article
               key={post.title}
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.12 }}
               transition={{ duration: 0.45, delay: (index % 3) * 0.06 }}
-              className={`group relative isolate aspect-[4/5] overflow-hidden rounded-sm bg-hill ${
+              className={`group relative isolate aspect-[4/5] overflow-hidden  bg-hill ${
                 post.shape === "tall" ? "sm:row-span-1" : ""
               }`}
             >
@@ -294,27 +287,23 @@ const OurSocials = () => {
 
               <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-ink/15" />
 
-              <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-ink/45 px-2 py-1 text-[9px] backdrop-blur-sm">
+              <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-ink/45 px-2 py-1 text-[9px] backdrop-blur-sm text-lightWhite">
                 {post.type === "reel" ? (
                   <Play size={10} />
                 ) : (
                   <Grid2X2 size={10} />
                 )}
-                <span className="uppercase tracking-wider">{post.type}</span>
               </div>
 
               <div className="absolute inset-x-0 bottom-0 p-3 sm:p-5">
                 <p className="mb-2 text-[8px] uppercase tracking-[0.2em] text-lightCream/65 sm:text-[9px]">
                   {post.category}
                 </p>
-                <h3 className="max-w-[240px] text-sm leading-snug sm:text-lg">
+                <h3 className="max-w-[240px] text-sm text-lightCream leading-snug sm:text-lg">
                   {post.title}
                 </h3>
-                <div className="mt-3 flex items-center gap-1 text-[9px] text-lightCream/65 opacity-100 transition-opacity sm:opacity-0 sm:group-hover:opacity-100">
-                  Discover story <ArrowUpRight size={12} />
-                </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
 
