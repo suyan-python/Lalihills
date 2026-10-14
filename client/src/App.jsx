@@ -26,6 +26,7 @@ import HotTrending from "./pages/trending/HotTrending";
 import Explore from "./pages/explore/Explore";
 import NewProductDetails from "./pages/shop/ProductDetailsLeft";
 import ProductDetailsLeft from "./pages/shop/ProductDetailsLeft";
+import SocialsLanding from "./pages/socials/SocialsLanding";
 
 function App() {
   const allProducts = [...coffeeProducts, ...teaProducts];
@@ -120,6 +121,9 @@ function App() {
                 path="/explore/nepal-coffee"
                 element={<div className="p-10">Nepal Coffee</div>}
               />
+
+              {/* Socials  */}
+              <Route path="/socials" element={<SocialsLanding />} />
 
               {/* Stories */}
               <Route

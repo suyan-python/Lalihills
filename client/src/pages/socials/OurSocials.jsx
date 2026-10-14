@@ -14,24 +14,28 @@ import {
   Moon,
 } from "lucide-react";
 
+import instagram from "../../assets/icon/instagram.png";
+import facebook from "../../assets/icon/facebook.png";
+import linkedin from "../../assets/icon/linkedin.png";
+
 const socialLinks = [
   {
     name: "Instagram",
     handle: "@laalihills",
     href: "YOUR_INSTAGRAM_URL",
-    icon: Flame,
+    icon: instagram,
   },
   {
     name: "Facebook",
     handle: "Laali Hills",
     href: "YOUR_FACEBOOK_URL",
-    icon: Flame,
+    icon: facebook,
   },
   {
-    name: "YouTube",
+    name: "LinkedIn",
     handle: "Laali Hills",
-    href: "YOUR_YOUTUBE_URL",
-    icon: Flame,
+    href: "YOUR_LINKEDIN_URL",
+    icon: linkedin,
   },
 ];
 
@@ -91,7 +95,7 @@ const filters = [
   "People",
 ];
 
-const ExploreSocials = () => {
+const OurSocials = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [isDark, setIsDark] = useState(false);
 
@@ -102,65 +106,45 @@ const ExploreSocials = () => {
 
   return (
     <main
-      className={` ${
+      className={`py-36 ${
         isDark ? "dark" : ""
       } min-h-screen bg-lightWhite text-ink transition-colors duration-300 dark:bg-ink dark:text-lightCream`}
     >
-      {/* CINEMATIC COVER */}
-      <section className="relative h-[62svh] min-h-[440px] max-h-[760px] overflow-hidden sm:h-[70svh]">
-        <video
-          src="/videos/plantation.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-
-        <div className="absolute inset-0 bg-ink/35" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-ink/20" />
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-x-0 bottom-0 mx-auto flex max-w-[1400px] items-end justify-between gap-6 px-5 pb-8 sm:px-10 sm:pb-12 lg:px-16"
-        >
-          <div>
-            <p className="mb-3 text-[9px] uppercase tracking-[0.32em] text-lightCream/70 sm:text-[10px]">
-              From the hills of Nepal
-            </p>
-
-            <h1 className="header text-[clamp(3.5rem,10vw,8.5rem)] uppercase leading-[0.8] tracking-[-0.065em]">
-              Explore
-              <br />
-              <span className="text-lightCream/60">the context.</span>
-            </h1>
-          </div>
-
-          <motion.div
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="mb-1 hidden items-center gap-2 text-[9px] uppercase tracking-[0.2em] text-lightCream/65 sm:flex"
-          >
-            Scroll to discover
-            <ArrowDown size={14} strokeWidth={1.3} />
-          </motion.div>
-        </motion.div>
-      </section>
-
+      <div className="mb-8 bg-red text-center gap-3 px-5 sm:mb-10 sm:px-10  lg:px-16">
+        <span className="header text-[14px] font-medium uppercase tracking-[0.25em] text-lightWhite/85 dark:text-ink transition-colors duration-300">
+          Our Socials
+        </span>
+      </div>
       {/* SOCIAL PROFILE */}
       <section className="relative mx-auto max-w-[1200px] px-5 sm:px-10 lg:px-16">
         {/* LIGHT / DARK MODE TOGGLE */}
         <button
           type="button"
+          role="switch"
+          aria-checked={isDark}
+          aria-label="Toggle dark mode"
           onClick={() => setIsDark((prev) => !prev)}
-          aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-          aria-pressed={isDark}
-          className="absolute right-5 top-5 z-50 flex items-center gap-2 rounded-full border border-lightCream/25 bg-red/90 px-4 py-2.5 text-sm text-lightCream shadow-sm backdrop-blur-md transition-colors hover:bg-deepRed dark:border-lightCream/15 dark:bg-ink/90 dark:text-lightCream dark:hover:bg-hill"
+          className="absolute right-5 top-5 z-50 flex h-9 w-[68px] items-center rounded-full border border-lightCream/25 bg-ink/20 p-1 backdrop-blur-md transition-colors duration-300 hover:bg-ink/40 dark:border-lightCream/15 dark:bg-lightCream/15 cursor-pointer"
         >
-          {isDark ? <Sun size={16} /> : <Moon size={16} />}
-          <span>{isDark ? "Light mode" : "Dark mode"}</span>
+          <span className="absolute left-[9px] text-lightCream">
+            <Sun size={15} strokeWidth={1.7} />
+          </span>
+
+          <span className="absolute right-[9px] text-lightCream">
+            <Moon size={15} strokeWidth={1.7} />
+          </span>
+
+          <span
+            className={`relative z-10 flex h-7 w-7 items-center justify-center rounded-full bg-lightCream text-ink shadow-md transition-transform duration-300 ease-in-out ${
+              isDark ? "translate-x-[30px]" : "translate-x-0"
+            }`}
+          >
+            {isDark ? (
+              <Moon size={14} strokeWidth={1.8} />
+            ) : (
+              <Sun size={14} strokeWidth={1.8} />
+            )}
+          </span>
         </button>
 
         <div className="flex flex-col gap-6 border-b border-lightCream/10 py-8 sm:flex-row sm:items-center sm:justify-between sm:py-10">
@@ -175,39 +159,61 @@ const ExploreSocials = () => {
             </div>
 
             <div>
-              <div className="flex flex-wrap items-center gap-2">
-                <h2 className="text-xl font-medium tracking-tight sm:text-2xl">
+              <div className="flex flex-wrap items-center gap-1.5">
+                <h2 className="header text-xl font-medium tracking-tight sm:text-2xl">
                   Laali Hills
                 </h2>
-                <span className="rounded-full border border-lightCream/15 px-2 py-1 text-[8px] uppercase tracking-[0.15em] text-lightCream/60">
-                  Nepal
-                </span>
+
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-[20px] w-[20px] shrink-0"
+                  aria-label="Verified account"
+                  role="img"
+                >
+                  <path
+                    fill="#3897F0"
+                    d="M12 1.5l2.4 1.3 2.7-.2 1.3 2.4 2.4 1.3-.2 2.7 1.3 2.4-1.3 2.4.2 2.7-2.4 1.3-1.3 2.4-2.7-.2-2.4 1.3-2.4-1.3-2.7.2-1.3-2.4-2.4-1.3.2-2.7L2.1 12l1.3-2.4-.2-2.7 2.4-1.3 1.3-2.4 2.7.2z"
+                  />
+                  <path
+                    d="m7.8 12.2 2.7 2.7 5.7-5.8"
+                    fill="none"
+                    stroke="#fff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </div>
 
-              <p className="mt-1 text-xs text-lightCream/55 sm:text-sm">
+              <p className="mt-1 text-xs text-ink/85 dark:text-lightCream/55 sm:text-sm ">
                 Specialty coffee & tea, rooted in origin.
               </p>
 
-              <p className="mt-2 text-[10px] uppercase tracking-[0.16em] text-lightCream/40">
+              <p className="mt-2 text-[10px] uppercase tracking-[0.16em] text-ink/55 dark:text-lightCream/40">
                 Land · People · Craft
               </p>
             </div>
           </div>
 
           {/* Social platform links */}
-          <div className="flex flex-wrap items-center gap-2">
-            {socialLinks.map(({ name, href, icon: Icon }) => (
+          <div className="flex flex-wrap items-center gap-3">
+            {socialLinks.map(({ name, handle, href, icon }) => (
               <a
                 key={name}
                 href={href}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label={`Follow Laali Hills on ${name}`}
-                className="inline-flex h-10 items-center gap-2 rounded-full border border-lightCream/15 px-4 text-xs text-lightCream/75 transition-colors hover:border-red hover:bg-red hover:text-lightCream"
+                className="group inline-flex items-center gap-3 rounded-full border border-ink/10 bg-paper/70 px-4 py-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-red/40 hover:bg-red/5 dark:border-lightCream/15 dark:bg-lightCream/[0.03] dark:hover:border-red/60 dark:hover:bg-red/10"
               >
-                <Icon size={14} strokeWidth={1.6} />
-                <span>{name}</span>
-                <ArrowUpRight size={11} />
+                <span className="flex h-8 w-8 items-center justify-center rounded-full  transition-colors duration-300 group-hover:bg-red/10 dark:bg-lightCream/[0.06] dark:group-hover:bg-red/15">
+                  <img
+                    src={icon}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-8 w-8 object-contain dark:invert transition-colors duration-300"
+                  />
+                </span>
               </a>
             ))}
           </div>
@@ -238,11 +244,8 @@ const ExploreSocials = () => {
         {/* FEED HEADING */}
         <div className="flex items-end justify-between gap-4 pb-5">
           <div>
-            <p className="mb-2 text-[9px] uppercase tracking-[0.25em] text-red">
-              The Laali journal
-            </p>
             <h2 className="header text-3xl tracking-[-0.045em] sm:text-4xl">
-              Life around the hills.
+              The Laali Journal.
             </h2>
           </div>
 
@@ -260,8 +263,8 @@ const ExploreSocials = () => {
               onClick={() => setActiveFilter(filter)}
               className={`shrink-0 border-b pb-3 text-[10px] transition-colors sm:text-xs ${
                 activeFilter === filter
-                  ? "border-red text-lightCream"
-                  : "border-transparent text-lightCream/45 hover:text-lightCream/80"
+                  ? "border-red text-ink dark:text-lightWhite"
+                  : "border-transparent text-ink/85 dark:text-lightCream/45 hover:text-lightCream/80"
               }`}
             >
               {filter}
@@ -345,4 +348,4 @@ const ExploreSocials = () => {
   );
 };
 
-export default ExploreSocials;
+export default OurSocials;

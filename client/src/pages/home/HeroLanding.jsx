@@ -14,6 +14,7 @@ import Halfhalf2 from "./Halfhalf2";
 import End from "./End";
 import TobeUsed from "./TobeUsed";
 import Shop from "../shop/Shop";
+import SocialsSummary from "../socials/SocialsSummary";
 
 const Landing = () => {
   return (
@@ -35,6 +36,8 @@ const Landing = () => {
       <AuthenticSection />
 
       <TobeUsed />
+
+      <SocialsSummary />
 
       {/* <Collab /> */}
 
