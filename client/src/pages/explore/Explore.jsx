@@ -7,12 +7,14 @@ import ExploreArticles from "./ExploreArticles";
 import ExploreMagazine from "./ExploreMagazine";
 
 import "./explore.css";
+import ExploreSocials from "./ExploreSocials";
 
 const Explore = () => {
   return (
-    <div>
+    <div className="relative z-20">
       <ExploreHero />
-      <ExploreLand />
+      <ExploreSocials />
+      {/* <ExploreLand /> */}
       <ExploreCoffeePlant />
       <ExploreOrigins />
       <ExploreArticles />

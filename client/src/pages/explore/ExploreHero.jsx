@@ -30,10 +30,6 @@ const ExploreHero = () => {
           }}
           className="max-w-4xl"
         >
-          <span className="block text-[7px] font-medium uppercase tracking-[0.35em] text-lightCream/65 sm:text-[8px] sm:tracking-[0.45em]">
-            Laali Hills
-          </span>
-
           <h1 className="header mt-4 text-[clamp(3.2rem,9vw,8rem)] uppercase leading-[0.82] tracking-[-0.055em] text-lightCream">
             Explore
             <br />
@@ -48,10 +44,6 @@ const ExploreHero = () => {
           transition={{ delay: 1.4, duration: 1 }}
           className="absolute bottom-10 right-6 flex flex-col items-center gap-3 sm:bottom-12 sm:right-8 md:right-12 lg:right-16"
         >
-          <span className="text-[6px] uppercase tracking-[0.35em] text-lightCream/60 sm:text-[7px]">
-            Begin
-          </span>
-
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 const Button = ({
   children,
@@ -37,7 +37,7 @@ const Button = ({
       <span>{children}</span>
 
       {icon && (
-        <ArrowRight
+        <ArrowUpRight
           className={`h-4 w-4 shrink-0 transition-transform duration-300 ${
             iconDirection === "left"
               ? "order-first group-hover:-translate-x-1"
