@@ -21,6 +21,10 @@ import linkedin from "../../assets/icon/linkedin.png";
 import origin from "../../assets/socials/origin.jpg";
 import closer from "../../assets/socials/closer.jpg";
 import tea from "../../assets/socials/tea.jpg";
+import hands from "../../assets/socials/hands.jpg";
+import brew from "../../assets/socials/brew.jpg";
+import farmers from "../../assets/socials/farmers.jpg";
+import Button from "../../components/Button";
 
 const socialLinks = [
   {
@@ -73,19 +77,19 @@ const posts = [
   {
     category: "Behind the scenes",
     title: "The hands behind the harvest",
-    image: "/images/explore/harvest.jpg",
+    image: hands,
     type: "reel",
   },
   {
     category: "Coffee",
     title: "The ritual of a good brew",
-    image: "/images/explore/brewing.jpg",
+    image: brew,
     type: "story",
   },
   {
     category: "People",
     title: "Stories from the hills",
-    image: "/images/explore/people.jpg",
+    image: farmers,
     type: "story",
   },
 ];
@@ -151,12 +155,12 @@ const OurSocials = () => {
           </span>
         </button>
 
-        <div className="flex flex-col gap-6 py-8 sm:flex-row sm:items-center sm:justify-between sm:py-10 px-5 lg:px-0">
+        <div className="flex flex-col gap-6 py-10 sm:flex-row sm:items-center sm:justify-between sm:py-15 px-5 lg:px-0">
           <div className="flex items-center gap-4 sm:gap-6">
             {/* Brand avatar */}
             <div className="flex h-[76px] w-[76px] shrink-0 items-center justify-center rounded-full border border-red/50 bg-hill p-1 sm:h-24 sm:w-24">
               <div className="flex h-full w-full items-center justify-center rounded-full border border-lightCream/20">
-                <span className="header text-xl tracking-[-0.08em] sm:text-2xl">
+                <span className="header text-xl tracking-[-0.08em] sm:text-2xl text-lightWhite">
                   LH.
                 </span>
               </div>
@@ -175,7 +179,7 @@ const OurSocials = () => {
                   role="img"
                 >
                   <path
-                    fill="#3897F0"
+                    fill="#A62A34"
                     d="M12 1.5l2.4 1.3 2.7-.2 1.3 2.4 2.4 1.3-.2 2.7 1.3 2.4-1.3 2.4.2 2.7-2.4 1.3-1.3 2.4-2.7-.2-2.4 1.3-2.4-1.3-2.7.2-1.3-2.4-2.4-1.3.2-2.7L2.1 12l1.3-2.4-.2-2.7 2.4-1.3 1.3-2.4 2.7.2z"
                   />
                   <path
@@ -308,29 +312,18 @@ const OurSocials = () => {
         </div>
 
         {/* FOLLOW CTA */}
-        <div className="mb-12 mt-5 flex flex-col items-start justify-between gap-5 rounded-xl border border-lightCream/10 bg-lightCream/[0.03] p-6 sm:mb-20 sm:flex-row sm:items-center sm:p-9">
+        <div className="mb-12 mt-5 flex flex-col items-start justify-between gap-5 rounded-xl border border-lightCream/10 bg-ink/3 dark:bg-lightCream/[0.03] p-6 sm:mb-20 sm:flex-row sm:items-center sm:p-9">
           <div>
-            <p className="mb-2 text-[9px] uppercase tracking-[0.25em] text-red">
-              Stay close to the hills
-            </p>
             <h2 className="header text-2xl tracking-tight sm:text-3xl">
               There’s more to discover.
             </h2>
-            <p className="mt-2 max-w-md text-xs leading-relaxed text-lightCream/50 sm:text-sm">
+            <p className="mt-2 max-w-md text-xs leading-relaxed text-ink/55 dark:text-lightCream/55 sm:text-sm">
               Follow our journey through coffee, tea, the people who grow them,
               and the places that make them special.
             </p>
           </div>
 
-          <a
-            href="YOUR_INSTAGRAM_URL"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex h-11 shrink-0 items-center gap-3 rounded-full bg-red px-5 text-xs font-medium transition-colors hover:bg-deepRed"
-          >
-            Follow Laali Hills
-            <ArrowUpRight size={14} />
-          </a>
+          <Button>Follow Laali hills</Button>
         </div>
       </section>
     </main>

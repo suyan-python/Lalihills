@@ -10,6 +10,7 @@ import trending from "../assets/images/trending.jpg";
 import shop from "../assets/images/shop.jpg";
 import explore from "../assets/images/explore.jpg";
 import stories from "../assets/images/stories.jpg";
+import socials from "../assets/images/socials.jpg";
 import about from "../assets/images/about.jpg";
 import support from "../assets/images/support.jpg";
 
@@ -139,6 +140,14 @@ const menuItems = [
     ],
   },
 
+  {
+    title: "Socials",
+    path: "/socials",
+    description: "Connect with Laali Hills.",
+    preview: "Follow us on social media for the latest updates.",
+    image: socials,
+    subItems: [],
+  },
   {
     title: "About",
     path: "/about",
