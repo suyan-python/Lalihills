@@ -9,10 +9,10 @@ const SmoothScroll = () => {
 
     const lenis = new Lenis({
       autoRaf: false,
-      lerp: 0.075,
+      lerp: 0.15,
       smoothWheel: true,
       syncTouch: true,
-      wheelMultiplier: 0.9,
+      wheelMultiplier: 0.8,
       anchors: true,
     });
 

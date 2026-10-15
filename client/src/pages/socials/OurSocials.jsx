@@ -105,7 +105,7 @@ const filters = [
 
 const OurSocials = () => {
   const [activeFilter, setActiveFilter] = useState("All");
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   const filteredPosts =
     activeFilter === "All"

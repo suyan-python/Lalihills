@@ -45,14 +45,18 @@ const SocialsSummary = () => {
       {/* Subtle background detail */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-32 top-10 h-80 w-80 rounded-full bg-red/25 blur-3xl"
+        className="pointer-events-none absolute -right-32 top-10 h-80 w-80 rounded-full bg-red/15 blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-32 bottom-10 h-90 w-90 rounded-full bg-red/20 blur-3xl"
       />
 
       <div className="relative mx-auto max-w-7xl">
         {/* Section header */}
         <div className="mb-10 gap-5 sm:mb-14  text-center">
           <div className="gap-3 text-center ">
-            <h1 className="header text-5xl font-medium uppercase tracking-[0.25em] text-red dark:text-lightCream/60">
+            <h1 className="subheader text-5xl md:text-7xl font-medium uppercase tracking-[0.05em] text-red dark:text-lightCream/60">
               Our Socials
             </h1>
           </div>
@@ -67,11 +71,6 @@ const SocialsSummary = () => {
               <br />
               <span className="font-normal text-red">A whole world.</span>
             </h2>
-
-            <p className="mt-3 max-w-md text-sm leading-7 text-ink/65 dark:text-lightCream/65 sm:text-base">
-              Laali Hills sharing stories of coffee craft, inspiring places, and
-              daily morning rituals.
-            </p>
 
             {/* Social actions */}
             <div className="mt-8 flex flex-wrap items-center gap-4">
