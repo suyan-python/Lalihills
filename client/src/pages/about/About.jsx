@@ -15,7 +15,7 @@ const About = () => {
   const galleryImages = [gallery01, gallery02, gallery03, gallery04, gallery05];
 
   return (
-    <div>
+    <div className="relative z-20">
       <AboutHero video={aboutHero} />
       <AboutStory />
       <AboutImage images={galleryImages} />

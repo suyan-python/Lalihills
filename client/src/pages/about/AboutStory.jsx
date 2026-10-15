@@ -4,6 +4,10 @@ import { useRef, useState } from "react";
 import hillsImage from "../../assets/about/hills.jpg";
 import farmerImage from "../../assets/about/farmer.jpg";
 import coffeeImage from "../../assets/about/coffee.jpg";
+
+import handpick from "../../assets/about/handpick.jpg";
+import hands from "../../assets/about/hands.jpg";
+
 import { Bean, Leaf } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -34,7 +38,7 @@ const AboutStory = () => {
       title: "Land",
       statement: "Everything begins with where the coffee grows.",
       detail: "High hills. Living soil. A landscape that shapes every cup.",
-      image: hillsImage,
+      image: handpick,
       theme: "bg-hill",
     },
     {
@@ -42,7 +46,7 @@ const AboutStory = () => {
       title: "People",
       statement: "Behind every cup are hands, knowledge and generations.",
       detail: "The producers who care for the land and the coffee it gives.",
-      image: farmerImage,
+      image: hands,
       theme: "bg-stone",
     },
     {

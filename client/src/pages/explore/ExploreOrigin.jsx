@@ -49,7 +49,7 @@ const ExploreOrigins = () => {
     <section ref={sectionRef} className="relative  bg-lightWhite" id="origins">
       <div className="px-6 py-24 sm:px-8 sm:py-32 md:px-12 md:py-40 lg:px-0 lg:py-48">
         {/* Header */}
-        <div className="mb-16 sm:mb-20 md:gap-16 lg:mb-28 lg:gap-24 text-center">
+        <div className="mb-16 text-center sm:mb-20 lg:mb-28">
           <motion.h2
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -58,11 +58,15 @@ const ExploreOrigins = () => {
               duration: 0.9,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="header text-[clamp(3rem,7vw,7rem)] uppercase leading-[0.84] tracking-[-0.06em] text-ink "
+            className="tracking-[-0.06em] text-ink"
           >
-            Nepal is not
-            <br />
-            <span className="text-ink/30">one origin.</span>
+            <span className="header block text-[clamp(3rem,7vw,7rem)] uppercase leading-[0.95] ">
+              Nepal is not
+            </span>
+
+            <span className="block text-[clamp(2rem,5vw,5rem)] leading-none text-ink/30 ">
+              one origin.
+            </span>
           </motion.h2>
         </div>
 
