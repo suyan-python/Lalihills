@@ -38,7 +38,7 @@ const Hero = () => {
   const productPath = `/shop/${product.productType}/${product.slug}`;
 
   return (
-    <section className="relative isolate flex min-h-[90svh] flex-col overflow-hidden bg-ink text-lightCream sm:min-h-screen">
+    <section className="relative isolate flex min-h-[90svh] flex-col overflow-hidden bg-black text-lightCream sm:min-h-screen">
       {/* Background atmosphere */}
       <div
         aria-hidden="true"

@@ -189,7 +189,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-[100] md:top-3">
+      <header className="fixed inset-x-0 top-1 z-[100] md:top-5 ">
         <div className="flex h-24 items-center justify-between px-3 sm:px-8 lg:px-12 xl:px-16 text-lightWhite ">
           {/* LOGO */}
           <Link
