@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import { Music2, Heart, MessageCircle } from "lucide-react";
 
+import instagram from "../assets/icon/instagram.png";
+import facebook from "../assets/icon/facebook.png";
+import linkedin from "../assets/icon/linkedin.png";
+
 const Banner = () => {
   const leftMessages = [
     "SPECIALTY COFFEE FROM THE HILLS OF NEPAL",
@@ -16,46 +20,54 @@ const Banner = () => {
     "ROOTED IN ORIGIN",
   ];
 
+  const socialLinks = [
+    {
+      name: "Instagram",
+      handle: "@laalihills",
+      href: "YOUR_INSTAGRAM_URL",
+      icon: instagram,
+    },
+    {
+      name: "Facebook",
+      handle: "Laali Hills",
+      href: "YOUR_FACEBOOK_URL",
+      icon: facebook,
+    },
+    {
+      name: "LinkedIn",
+      handle: "Laali Hills",
+      href: "YOUR_LINKEDIN_URL",
+      icon: linkedin,
+    },
+  ];
+
   return (
     <div className="absolute inset-x-0 top-0 z-[120]  h-7 overflow-hidden border-b border-[#FBEDEA]/10 bg-ink md:block">
-      {/* Left: Social links */}
+      {/* Left: Social Links */}
       <div className="absolute inset-y-0 left-4 z-40 flex items-center gap-3 sm:left-6 sm:gap-4">
-        <a
-          href="YOUR_INSTAGRAM_URL"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Instagram"
-          className="text-lightCream/60 transition-colors hover:text-lightCream"
-        >
-          {/* <Instagram size={11} strokeWidth={1.7} /> */}
-          <Heart size={11} strokeWidth={1.7} />
-        </a>
-
-        <a
-          href="YOUR_FACEBOOK_URL"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Facebook"
-          className="text-lightCream/60 transition-colors hover:text-lightCream"
-        >
-          <MessageCircle size={11} strokeWidth={1.7} />
-        </a>
-
-        <a
-          href="YOUR_TIKTOK_URL"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="TikTok"
-          className="text-lightCream/60 transition-colors hover:text-lightCream"
-        >
-          <Music2 size={11} strokeWidth={1.7} />
-        </a>
+        {socialLinks.map((social) => (
+          <a
+            key={social.name}
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={social.name}
+            title={social.name}
+            className="group"
+          >
+            <img
+              src={social.icon}
+              alt=""
+              className="h-[16px] w-[16px] object-contain opacity-60 transition-opacity duration-300 group-hover:opacity-100 invert"
+            />
+          </a>
+        ))}
       </div>
 
       {/* Right: Origin label */}
       <div className="absolute inset-y-0 right-4 z-40 flex items-center sm:right-6">
         <span className="text-[7px] font-medium uppercase tracking-[0.25em] text-lightCream/60 sm:text-[8px]">
-          NEPAL
+          Laali Hills
         </span>
       </div>
       {/* <div className="absolute inset-y-0 left-0 w-1/2 overflow-hidden">

@@ -258,10 +258,10 @@ const OurSocials = () => {
               key={filter}
               type="button"
               onClick={() => setActiveFilter(filter)}
-              className={`shrink-0 border-b text-[10px] transition-colors sm:text-[14px] ${
+              className={`shrink-0 border-b text-[10px] transition-colors  sm:text-[14px] ${
                 activeFilter === filter
                   ? "border-red text-ink dark:text-lightWhite"
-                  : "border-transparent text-ink/85 dark:text-lightCream/45 dark:hover:text-ink/55 dark:hover:text-lightCream/80"
+                  : "border-transparent text-ink/85 dark:text-lightCream/45 dark:hover:text-ink/55 dark:hover:text-lightCream/80 cursor-pointer"
               }`}
             >
               {filter}
