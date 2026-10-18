@@ -298,7 +298,7 @@ const ProductDetailsRight = ({
                       onClick={() => setSelectedSize(size)}
                       className={`rounded-full border px-3 py-2 text-[10px] tracking-[0.05em] transition-all duration-300 font-medium ${
                         active
-                          ? " bg-red dark:bg-deepRed text-lightCream dark:border-deepRed"
+                          ? " bg-red  text-lightCream dark:border-red"
                           : "border-ink/10 text-ink   cursor-pointer dark:text-darkLightCream dark:border-lightWhite/25"
                       }`}
                     >
@@ -331,7 +331,7 @@ const ProductDetailsRight = ({
                       onClick={() => setSelectedGrind(option)}
                       className={`rounded-full border px-3 py-2 text-[10px] tracking-[0.05em] transition-all duration-300 font-medium ${
                         active
-                          ? " bg-red text-lightCream dark:border-deepRed"
+                          ? " bg-red text-lightCream dark:border-red"
                           : "border-ink/10 text-in dark:text-lightWhite dark:border-lightCream/25 cursor-pointer"
                       }`}
                     >
@@ -407,7 +407,7 @@ const ProductDetailsRight = ({
             <button
               type="button"
               onClick={handleAddToCart}
-              className="rounded-full bg-red px-3 py-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-lightWhite transition-all duration-300 hover:bg-hill active:bg-hill active:scale-[0.98] md:px-4 cursor-pointer"
+              className="rounded-full bg-red px-3 py-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-lightWhite hover:text-ink transition-all duration-300 hover:bg-lightWhite active:bg-lightWhite active:scale-[0.98] md:px-4 cursor-pointer"
             >
               Add to cart
             </button>

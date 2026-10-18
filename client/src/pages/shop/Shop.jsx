@@ -3,7 +3,14 @@ import { useCart } from "../../layouts/CartContext";
 import { useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Minus, Plus } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Minus,
+  Plus,
+  ShoppingBag,
+} from "lucide-react";
 
 import beans from "../../assets/shop/beans.webp";
 import leaves from "../../assets/shop/leaves.webp";
@@ -56,7 +63,7 @@ const collections = [
 
 const Shop = () => {
   return (
-    <main className="relative z-20 overflow-x-hidden bg-lightWhite " id="shop">
+    <main className="relative z-20 overflow-x-hidden bg-purple " id="shop">
       <div className="max-w-[350px] md:max-w-7xl mx-auto pb-24 ">
         {/* BACKGROUND WORD */}
         <div className="pointer-events-none absolute right-[-6vw] top-[8vh] z-0 select-none">
@@ -74,12 +81,12 @@ const Shop = () => {
         </div>
 
         <div
-          className="header mt-18 md:mt-24 header
+          className="header mt-18 md:mt-24
         text-[clamp(1.5rem,8vw,3.5rem)]
         font-medium
         leading-[0.8]
         tracking-[0.015em]
-        text-ink  text-center"
+        text-ink  "
         >
           Beans, Leaves & <span className="text-red italic">Gifts.</span>
         </div>
@@ -147,13 +154,13 @@ const CollectionHero = ({ collection, products = [], type }) => {
     >
       <div className="group relative block aspect-[2/3] w-full overflow-hidden rounded-4xl">
         {/* BACKGROUND IMAGE */}
-        <motion.img
+        {/* <motion.img
           src={collection.image}
           alt={collection.plainName}
           loading="lazy"
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
-        />
+        /> */}
 
         {/* ACCENT COLOR OVERLAY */}
         <div
@@ -165,7 +172,7 @@ const CollectionHero = ({ collection, products = [], type }) => {
         />
 
         {/* DARKENING */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/20 via-transparent to-ink/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-darkPurple/20 via-transparent to-darkPurple/30" />
 
         {/* COLLECTION HEADER */}
         <div className="relative z-10 flex h-full flex-col px-5 py-5 sm:px-6 sm:py-6 md:px-8 md:py-8">
@@ -197,18 +204,19 @@ const FeaturedProducts = ({ products = [], type, collection }) => {
   const featuredProducts = products.slice(0, 2);
 
   return (
-    <div className="px-4 pb-4 sm:px-5 sm:pb-5 md:px-6 md:pb-6 ">
+    <div className="px-3 pb-3 sm:px-4 sm:pb-4 md:px-5 md:pb-5">
       {featuredProducts.length > 0 && (
-        <div className="space-y-2">
+        <div className="grid grid-cols-2 gap-x-3 gap-y-3 sm:gap-x-4">
           {featuredProducts.map((product) => (
             <FeaturedProductCard key={product._id} product={product} />
           ))}
         </div>
       )}
-      <div className="mt-4  text-center">
+
+      <div className="mt-3 text-center">
         <Button
           size="sm"
-          className="bg-transparent border border-lightWhite/45 hover:bg-lightWhite/50"
+          className="border border-lightWhite/45 bg-transparent hover:bg-lightWhite/50"
           to={collection.path}
           icon={false}
         >
@@ -221,236 +229,127 @@ const FeaturedProducts = ({ products = [], type, collection }) => {
 
 const FeaturedProductCard = ({ product }) => {
   const { addToCart } = useCart();
+  const [added, setAdded] = useState(false);
 
-  const [expanded, setExpanded] = useState(false);
-
-  const defaultSize = product.sizeOptions?.[0];
+  const defaultSize = product.sizeOptions?.[0] || null;
   const defaultGrind = product.grindOptions?.[0] || null;
   const defaultForm = product.formOptions?.[0] || null;
 
-  const [selectedSize, setSelectedSize] = useState(defaultSize);
-  const [selectedGrind, setSelectedGrind] = useState(defaultGrind);
-  const [selectedForm, setSelectedForm] = useState(defaultForm);
-
-  const price = selectedSize?.price || product.price;
-
-  const isCoffee = product.category === "coffee";
-  const isTea = product.category === "tea";
+  const price = defaultSize?.price ?? product.price;
 
   const handleAddToCart = (e) => {
+    e.preventDefault();
     e.stopPropagation();
 
     addToCart(product, {
-      size: selectedSize?.grams || null,
-      grind: isCoffee ? selectedGrind : null,
-      form: isTea ? selectedForm : null,
+      size: defaultSize?.grams ?? null,
+      grind: product.category === "coffee" ? defaultGrind : null,
+      form: product.category === "tea" ? defaultForm : null,
       purchaseType: "one-time",
       frequency: null,
       quantity: 1,
       price,
     });
-  };
 
-  const toggleExpanded = () => {
-    setExpanded((prev) => !prev);
+    setAdded(true);
+    window.setTimeout(() => setAdded(false), 1400);
   };
 
   return (
-    <motion.div
+    <motion.article
       layout
-      className="overflow-hidden rounded-3xl bg-ink/35 backdrop-blur-sm shadow-sm border border-lightWhite/25 cursor-pointer"
+      className="group min-w-0 p-3 bg-black/65 rounded-2xl"
       transition={{
         layout: {
-          duration: 0.35,
+          duration: 0.3,
           ease: [0.22, 1, 0.36, 1],
         },
       }}
     >
-      {/* PRODUCT ROW */}
-      <button
-        type="button"
-        onClick={toggleExpanded}
-        className="flex w-full items-center gap-3 p-2.5 text-left sm:gap-3.5 sm:p-3"
+      {/* PRODUCT IMAGE */}
+      <Link
+        to={`/shop/${product.category}/${product.slug}`}
+        aria-label={`View ${product.name}`}
+        className="group/product relative block aspect-square overflow-hidden rounded-xl bg-paper dark:bg-hill sm:rounded-2xl "
       >
-        {/* IMAGE */}
-        <div className="h-16 w-16 shrink-0 overflow-hidden rounded-2xl sm:h-18 sm:w-18">
-          <img
-            src={product.image}
-            alt={product.name}
-            loading="lazy"
-            decoding="async"
-            className="h-full w-full object-cover"
-          />
+        <img
+          src={product.image}
+          alt={product.name}
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover/product:scale-[1.04]"
+        />
+
+        {/* Hover overlay — independent for each product */}
+        <div className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors duration-300 group-hover/product:bg-ink/40">
+          <span className="flex translate-y-2 items-center gap-1.5 rounded-full bg-lightWhite px-3 py-2 text-[9px] font-semibold uppercase tracking-wider text-ink opacity-0 shadow-lg transition-all duration-300 group-hover/product:translate-y-0 group-hover/product:opacity-100 sm:px-4 sm:py-2.5 sm:text-[10px]">
+            View Product
+            <ArrowUpRight size={13} strokeWidth={1.6} />
+          </span>
         </div>
 
-        {/* NAME */}
-        <div className="min-w-0 flex-1">
-          <p className="text-[7px] font-bold uppercase tracking-[0.22em] text-ivory">
-            {product.origin}
-          </p>
+        {/* Category label */}
+        <span className="absolute left-2 top-2 rounded-full border border-lightCream/20 bg-ink/35 px-2 py-1 text-[7px] font-medium uppercase tracking-wider text-lightCream backdrop-blur-md sm:left-3 sm:top-3 sm:text-[8px]">
+          {product.category}
+        </span>
+      </Link>
 
-          <h4 className="header mt-1 text-[1rem] leading-[0.95] tracking-[-0.025em] text-lightWhite sm:text-[1.05rem]">
-            {product.name}
-          </h4>
-          {/* Price */}
-          <p className="whitespace-nowrap text-xs font-medium tracking-wide text-lightWhite sm:text-sm">
+      {/* PRODUCT INFO */}
+      <div className="pt-3 sm:pt-4">
+        <div className="flex flex-col items-start justify-between ">
+          <div className="min-w-0">
+            {/* {product.origin && (
+              <p className="mb-1 text-[8px] font-medium uppercase tracking-[0.18em] text-stone sm:text-[9px]">
+                {product.origin}
+              </p>
+            )} */}
+
+            <Link
+              to={`/shop/${product.category}/${product.slug}`}
+              className="header line-clamp-2 text-sm leading-snug tracking-wide text-ink transition-colors  dark:text-lightCream dark:hover:text-red sm:text-base "
+            >
+              {product.name}
+            </Link>
+          </div>
+
+          <p className="shrink-0 pt-0.5 text-xs font-medium tabular-nums text-ink dark:text-lightCream sm:text-sm">
             NPR {price.toLocaleString()}
           </p>
         </div>
 
-        {/* PRICE + ACTIONS */}
-        <div className="flex shrink-0 flex-col items-center justify-between gap-3">
-          {/* Expand / collapse */}
-          <span className="flex h-5 w-5 items-center justify-center rounded-full  text-lightCream  cursor-pointer transition-colors duration-200 hover:bg-lightWhite/20 active:scale-[0.97]">
-            {expanded ? (
-              <Minus size={12} strokeWidth={2.5} />
+        {/* ADD TO CART */}
+        <button
+          type="button"
+          onClick={handleAddToCart}
+          className="mt-3 flex h-7 w-full items-center justify-center gap-2 rounded-full  text-[9px] font-semibold uppercase tracking-[0.02em] text-ink transition-all duration-300 bg-red hover:border-deepRed hover:bg-deepRed hover:text-lightCream active:scale-[0.98] dark:border-lightCream/20 dark:text-lightCream dark:hover:border-red dark:hover:bg-red sm:mt-4 sm:h-8 sm:text-[10px] cursor-pointer"
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            {added ? (
+              <motion.span
+                key="added"
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                className="flex items-center gap-2 "
+              >
+                <Check size={14} />
+                Added to Cart
+              </motion.span>
             ) : (
-              <Plus size={12} strokeWidth={2.5} />
+              <motion.span
+                key="add"
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                className="flex items-center gap-2"
+              >
+                Add to Cart
+              </motion.span>
             )}
-          </span>
-
-          {/* Buy button */}
-          <button
-            type="button"
-            onClick={handleAddToCart}
-            className="flex h-7  items-center justify-center rounded-full bg-red px-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-lightCream transition-colors duration-200 hover:bg-deepRed active:scale-[0.97] cursor-pointer"
-          >
-            Buy
-          </button>
-        </div>
-      </button>
-
-      {/* EXPANDED CONTENT */}
-      <AnimatePresence initial={false}>
-        {expanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{
-              height: {
-                duration: 0.35,
-                ease: [0.22, 1, 0.36, 1],
-              },
-              opacity: {
-                duration: 0.2,
-              },
-            }}
-          >
-            <div className="border-t border-ink/10 px-3 pb-3 sm:px-3.5 sm:pb-3.5">
-              {/* GRIND */}
-              {isCoffee && product.grindOptions?.length > 0 && (
-                <div className="">
-                  <div className="mb-2 flex items-center justify-between">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone">
-                      Grind
-                    </span>
-                  </div>
-
-                  <div className="flex flex-wrap gap-1.5">
-                    {product.grindOptions.map((grind) => (
-                      <button
-                        key={grind}
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedGrind(grind);
-                        }}
-                        className={`rounded-full px-2.5 py-1.5 text-[10px] font-semibold transition-colors ${
-                          selectedGrind === grind
-                            ? "bg-lightWhite text-ink"
-                            : " text-lightWhite border border-lightWhite/25 cursor-pointer"
-                        }`}
-                      >
-                        {grind}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* TEA FORM */}
-              {isTea && product.formOptions?.length > 0 && (
-                <div className="mt-4">
-                  <div className="mb-2">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone">
-                      Form
-                    </span>
-                  </div>
-
-                  <div className="flex flex-wrap gap-1.5">
-                    {product.formOptions.map((form) => (
-                      <button
-                        key={form}
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedForm(form);
-                        }}
-                        className={`rounded-full px-2.5 py-1.5 text-[10px] font-semibold transition-colors ${
-                          selectedForm === form
-                            ? "bg-lightWhite text-ink"
-                            : " text-lightWhite border border-lightWhite/25 cursor-pointer"
-                        }`}
-                      >
-                        {form}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* SIZE */}
-              {product.sizeOptions?.length > 0 && (
-                <div>
-                  <div className="my-2 flex items-center justify-between">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone">
-                      Size
-                    </span>
-                  </div>
-
-                  <div className="flex flex-wrap gap-1.5">
-                    {product.sizeOptions.map((size) => (
-                      <button
-                        key={size.grams}
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedSize(size);
-                        }}
-                        className={`rounded-full px-2.5 py-1.5 text-[10px] font-semibold transition-colors ${
-                          selectedSize?.grams === size.grams
-                            ? "bg-lightWhite text-ink"
-                            : " text-lightWhite  border border-lightWhite/35 cursor-pointer"
-                        }`}
-                      >
-                        {size.grams}g
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* ACTIONS */}
-              <div className="mt-4 flex items-center justify-center gap-2">
-                <Link
-                  to={`/shop/${product.category}/${product.slug}`}
-                  onClick={(e) => e.stopPropagation()}
-                  className="group/details flex h-8 items-center  gap-1 rounded-full px-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-lightWhite underline"
-                >
-                  Details
-                  <ArrowRight
-                    size={10}
-                    strokeWidth={1.5}
-                    className="transition-transform duration-300 "
-                  />
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+          </AnimatePresence>
+        </button>
+      </div>
+    </motion.article>
   );
 };
 

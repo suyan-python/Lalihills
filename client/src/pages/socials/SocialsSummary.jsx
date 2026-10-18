@@ -56,7 +56,7 @@ const SocialsSummary = () => {
         {/* Section header */}
         <div className="mb-10 gap-5 sm:mb-14  text-center">
           <div className="gap-3 text-center ">
-            <h1 className="subheader text-5xl md:text-7xl font-medium uppercase tracking-[0.05em] text-red dark:text-lightCream/60">
+            <h1 className="subheader text-5xl md:text-7xl font-medium uppercase  text-red dark:text-lightCream/60">
               Our Socials
             </h1>
           </div>

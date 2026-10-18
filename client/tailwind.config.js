@@ -14,7 +14,7 @@ export const colors = {
 
 
 
-red: "#A62A34",
+red: "#A4161A",
 ivory: "#F5F1E8",
 deepRed: "#7F1F27",
 
@@ -29,6 +29,9 @@ lightCream: "#F1EEE6",
 
 paper:"#F1EADB",
 raised:"#FBF7EE",
+
+purple:"#ECE6F4",
+darkPurple:"#191426",
 
 
   darkRed: "#C6535C",
