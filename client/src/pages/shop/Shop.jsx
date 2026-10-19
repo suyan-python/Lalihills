@@ -164,11 +164,11 @@ const CollectionHero = ({ collection, products = [], type }) => {
 
         {/* ACCENT COLOR OVERLAY */}
         <div
-          className="absolute inset-0"
-          style={{
-            backgroundColor: collection.accent,
-            opacity: 0.88,
-          }}
+          className="absolute inset-0 bg-darkPurple"
+          // style={{
+          //   backgroundColor: collection.accent,
+          //   opacity: 0.88,
+          // }}
         />
 
         {/* DARKENING */}
