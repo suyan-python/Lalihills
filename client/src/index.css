@@ -33,7 +33,9 @@ body {
 
 .header {
   /* font-family: "Bodoni Moda", serif; */
-  font-family: "Fraunces", serif;
+  /* font-family: "Fraunces", serif; */
+    font-family: "Comfortaa", sans-serif;
+
 
   font-optical-sizing: auto;
   font-style: normal;
