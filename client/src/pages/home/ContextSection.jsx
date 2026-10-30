@@ -102,7 +102,7 @@ const ContextSection = () => {
             Explore
           </Button>
           <span className="text-lightCream hover:text-lightCream transition-colors duration-300">
-            Learn More
+            Learn
           </span>
         </div>
       </motion.div>
