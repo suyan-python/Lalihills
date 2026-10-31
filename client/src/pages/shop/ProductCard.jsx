@@ -132,7 +132,7 @@ const ProductCard = ({ product }) => {
             className="group/buy flex h-10 w-full shrink-0 items-center justify-center gap-2 bg-transparent px-2 text-[8px] font-semibold uppercase tracking-[0.16em] text-red transition-all duration-300 hover:text-ink disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer sm:h-auto sm:w-auto sm:justify-start sm:px-1 sm:text-[9px] sm:tracking-[0.18em]"
             aria-label={`Quick buy ${name}`}
           >
-            <span>Quick Buy</span>
+            <span>Buy</span>
 
             <ShoppingBag
               size={14}
