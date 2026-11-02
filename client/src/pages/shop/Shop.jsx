@@ -166,11 +166,11 @@ const CollectionHero = ({ collection, products = [], type }) => {
 
         {/* ACCENT COLOR OVERLAY */}
         <div
-          className="absolute inset-0 bg-purpleTint"
-          // style={{
-          //   backgroundColor: collection.accent,
-          //   opacity: 0.88,
-          // }}
+          className={`absolute inset-0 ${
+            collection.name?.toLowerCase() === "gifts"
+              ? "bg-deepRed"
+              : "bg-purpleTint"
+          }`}
         />
 
         {/* DARKENING */}
@@ -263,7 +263,7 @@ const FeaturedProductCard = ({ product }) => {
   return (
     <motion.article
       layout
-      className="group min-w-0 p-3 bg-black/65 rounded-2xl"
+      className="group min-w-0 p-3 bg-slate-900/35 rounded-2xl"
       transition={{
         layout: {
           duration: 0.3,
@@ -338,7 +338,7 @@ const FeaturedProductCard = ({ product }) => {
                 className="flex items-center gap-2 "
               >
                 <Check size={14} />
-                Added to Cart
+                Added
               </motion.span>
             ) : (
               <motion.span
@@ -348,7 +348,7 @@ const FeaturedProductCard = ({ product }) => {
                 exit={{ opacity: 0, y: -4 }}
                 className="flex items-center gap-2"
               >
-                Add to Cart
+                Add
               </motion.span>
             )}
           </AnimatePresence>
