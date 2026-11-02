@@ -66,7 +66,7 @@ const Shop = () => {
     <main className="relative z-20 overflow-x-hidden bg-purple " id="shop">
       <div className="max-w-[350px] md:max-w-7xl mx-auto pb-24 ">
         {/* BACKGROUND WORD */}
-        <div className="pointer-events-none absolute right-[-6vw] top-[8vh] z-0 select-none">
+        {/* <div className="pointer-events-none absolute right-[-6vw] top-[8vh] z-0 select-none">
           <motion.p
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
@@ -78,17 +78,19 @@ const Shop = () => {
           >
             Laali Hills
           </motion.p>
-        </div>
+        </div> */}
 
         <div
-          className="header mt-18 md:mt-24
+          className=" mt-18 md:mt-24
         text-[clamp(1.5rem,8vw,3.5rem)]
         font-medium
         leading-[0.8]
-        tracking-[0.015em]
-        text-ink  "
+        text-ink text-center "
         >
-          Beans, Leaves & <span className="text-red italic">Gifts.</span>
+          <p className="header">What the hills gave us.</p>
+          <span className="text-ink/75 text-[clamp(1rem,3vw,1.5rem)]">
+            Beans, Leaves and a little something to give. Take your time.
+          </span>
         </div>
 
         {/* COLLECTIONS */}
@@ -176,7 +178,10 @@ const CollectionHero = ({ collection, products = [], type }) => {
 
         {/* COLLECTION HEADER */}
         <div className="relative z-10 flex h-full flex-col px-5 py-5 sm:px-6 sm:py-6 md:px-8 md:py-8">
-          <Link to={collection.path} className="flex flex-col items-center">
+          <Link
+            to={collection.path}
+            className="flex flex-col items-center space-y-2"
+          >
             <span className="text-[6px] font-medium uppercase tracking-[0.25em] text-lightCream/65 sm:text-[7px] md:text-[8px]">
               {collection.subtitle}
             </span>
@@ -306,13 +311,13 @@ const FeaturedProductCard = ({ product }) => {
 
             <Link
               to={`/shop/${product.category}/${product.slug}`}
-              className="header line-clamp-2 text-sm leading-snug tracking-wide text-ink transition-colors  dark:text-lightCream dark:hover:text-red sm:text-base "
+              className="header line-clamp-2 text-sm leading-snug tracking-wide text-ink transition-colors  dark:text-lightCream  sm:text-base "
             >
               {product.name}
             </Link>
           </div>
 
-          <p className="shrink-0 pt-0.5 text-xs font-medium tabular-nums text-ink dark:text-lightCream sm:text-sm">
+          <p className="shrink-0 pt-0.5 text-xs font-bold tabular-nums text-ink dark:text-lightCream sm:text-sm">
             NPR {price.toLocaleString()}
           </p>
         </div>
