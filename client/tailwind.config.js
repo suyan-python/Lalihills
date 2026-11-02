@@ -17,6 +17,7 @@ export const colors = {
   raised: "#FBF7EE",
 
   purple: "#ECE6F4",
+  purpleTint: "#3a2f4af0",
   darkPurple: "#191426",
 
   // Packaging colors
@@ -25,6 +26,7 @@ export const colors = {
   leafTint: "#DCE3D6",
   silver: "#B7BBBE",
   blush: "#F2DCD8",
+  
 
   // Dark mode
   darkRed: "#C6535C",

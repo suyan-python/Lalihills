@@ -166,7 +166,7 @@ const CollectionHero = ({ collection, products = [], type }) => {
 
         {/* ACCENT COLOR OVERLAY */}
         <div
-          className="absolute inset-0 bg-darkPurple"
+          className="absolute inset-0 bg-purpleTint"
           // style={{
           //   backgroundColor: collection.accent,
           //   opacity: 0.88,
@@ -182,11 +182,11 @@ const CollectionHero = ({ collection, products = [], type }) => {
             to={collection.path}
             className="flex flex-col items-center space-y-2"
           >
-            <span className="text-[6px] font-medium uppercase tracking-[0.25em] text-lightCream/65 sm:text-[7px] md:text-[8px]">
+            <span className="text-[6px] font-medium uppercase tracking-[0.25em] text-lightCream/85 sm:text-[7px] md:text-[8px]">
               {collection.subtitle}
             </span>
 
-            <h2 className="header text-[clamp(1.5rem,5vw,3.5rem)] leading-[0.82] tracking-[-0.055em] text-lightCream">
+            <h2 className="header text-[clamp(1.5rem,5vw,3.5rem)] leading-[0.82] tracking-[-0.055em] text-lightCream font-semibold">
               {collection.name}
             </h2>
           </Link>
