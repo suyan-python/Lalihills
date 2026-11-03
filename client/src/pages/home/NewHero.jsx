@@ -198,7 +198,7 @@ export default function NewHero() {
                 aria-pressed={isActive}
                 className={`group flex min-h-[50px] flex-col items-start justify-center rounded-full border px-2 py-2 text-center transition-all duration-300 sm:min-h-[75px] bg-gray-900/45 ${
                   isActive
-                    ? "border-white/80  backdrop-blur-md -translate-y-0.5 cursor-pointer"
+                    ? "border-amber-500/80  backdrop-blur-md -translate-y-0.5 cursor-pointer"
                     : "border-white/25 bg-black/10 hover:border-white/60 hover:bg-white/10"
                 }`}
               >
