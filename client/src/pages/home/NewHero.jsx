@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Coffee, Leaf, Sprout } from "lucide-react";
 
 import { coffeeProducts, teaProducts } from "../../data/products";
+import Button from "../../components/Button";
 
 const productThemes = [
   {
@@ -143,7 +144,7 @@ export default function NewHero() {
       <div className="absolute inset-0 bg-black/25" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-5 py-20 text-center text-white sm:px-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-start px-5 py-20 text-center text-white sm:px-8">
         {/* Product eyebrow */}
         <AnimatePresence mode="wait">
           <motion.p
@@ -159,9 +160,10 @@ export default function NewHero() {
         </AnimatePresence>
 
         {/* Constant heading */}
-        <h1 className="max-w-4xl font-serif text-4xl leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl">
-          Best brews from
-          <br className="sm:hidden" /> the higher belts.
+        <h1 className="header max-w-4xl text-4xl leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl text-start">
+          Best brews from the
+          <br />
+          <span className="text-amber-600">higher belts</span>.
         </h1>
 
         {/* Product description */}
@@ -198,7 +200,7 @@ export default function NewHero() {
                 aria-pressed={isActive}
                 className={`group flex min-h-[50px] flex-col items-start justify-center rounded-full border px-2 py-2 text-center transition-all duration-300 sm:min-h-[75px] bg-gray-900/45 ${
                   isActive
-                    ? "border-amber-500/80  backdrop-blur-md -translate-y-0.5 cursor-pointer"
+                    ? "border-amber-600/80  backdrop-blur-md -translate-y-0.5 cursor-pointer"
                     : "border-white/25 bg-black/10 hover:border-white/60 hover:bg-white/10"
                 }`}
               >
@@ -231,12 +233,13 @@ export default function NewHero() {
           <div key={activeProduct.name} className="mt-8">
             <Link
               to={productLink}
-              className="inline-flex items-center gap-3 rounded-full bg-lightWhite px-6 py-3 text-xs font-medium uppercase tracking-[0.15em] text-ink transition-all duration-300 hover:bg-white hover:gap-4"
+              className="inline-flex items-center gap-3 rounded-full bg-amber-600 px-6 py-3 text-xs font-medium uppercase tracking-[0.15em] text-ink transition-all duration-300 hover:bg-white hover:gap-4"
             >
               Discover
               <ArrowUpRight size={15} />
             </Link>
           </div>
+          <Button variant="transparent">Shop Hill</Button>
         </div>
 
         {/* Bottom label */}
