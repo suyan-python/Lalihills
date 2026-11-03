@@ -180,7 +180,7 @@ export default function NewHero() {
 
         {/* Product options */}
         <div
-          className="mt-12 grid w-full max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5"
+          className="mt-12 grid w-full max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 "
           onMouseEnter={() => setIsInteracting(true)}
           onFocus={() => setIsInteracting(true)}
         >
@@ -196,29 +196,31 @@ export default function NewHero() {
                 onFocus={() => selectProduct(index)}
                 onClick={() => selectProduct(index)}
                 aria-pressed={isActive}
-                className={`group flex min-h-[50px] flex-col items-center justify-center rounded-full border px-4 py-5 text-center transition-all duration-300 sm:min-h-[75px] ${
+                className={`group flex min-h-[50px] flex-col items-start justify-center rounded-full border px-2 py-2 text-center transition-all duration-300 sm:min-h-[75px] bg-gray-900/45 ${
                   isActive
-                    ? "border-white/80 bg-white/20 backdrop-blur-md"
+                    ? "border-white/80  backdrop-blur-md -translate-y-0.5 cursor-pointer"
                     : "border-white/25 bg-black/10 hover:border-white/60 hover:bg-white/10"
                 }`}
               >
-                <Icon
-                  size={22}
-                  strokeWidth={1.4}
-                  className={`mb-4 transition-transform duration-300 ${
-                    isActive
-                      ? "scale-110 text-white"
-                      : "text-white/65 group-hover:text-white"
-                  }`}
-                />
+                <div className="flex flex-row items-center gap-3 ">
+                  <Icon
+                    size={22}
+                    strokeWidth={1.4}
+                    className={`transition-transform rounded-4xl p-1 duration-300 bg-white text-ink ${
+                      isActive ? "scale-110 " : " group-hover:text-white"
+                    }`}
+                  />
 
-                <span className="text-sm font-medium tracking-wide sm:text-base">
-                  {product.name}
-                </span>
+                  <div className="flex flex-col items-start">
+                    <p className="text-sm font-medium tracking-wide sm:text-base">
+                      {product.name}
+                    </p>
 
-                <span className="mt-2 max-w-[180px] text-[10px] leading-relaxed text-white/65 sm:text-xs">
-                  {product.description}
-                </span>
+                    <p className="mt-2 max-w-[180px] text-[10px] leading-relaxed text-white/65 sm:text-xs">
+                      {product.description}
+                    </p>
+                  </div>
+                </div>
               </button>
             );
           })}
