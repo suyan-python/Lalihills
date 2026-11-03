@@ -114,12 +114,11 @@ const Hero = () => {
             aria-hidden="true"
             className="pointer-events-none absolute left-1/2 top-1/2 h-[65%] w-[65%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-lightCream/[0.2]"
           />
-
           <div
             aria-hidden="true"
             className="pointer-events-none absolute left-1/2 top-1/2 h-[48%] w-[48%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-lightCream/[0.1]"
           />
-
+          14
           <AnimatePresence mode="wait">
             <motion.div
               key={`${product.productType}-${product.slug}`}

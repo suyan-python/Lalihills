@@ -15,10 +15,12 @@ import End from "./End";
 import TobeUsed from "./TobeUsed";
 import Shop from "../shop/Shop";
 import SocialsSummary from "../socials/SocialsSummary";
+import NewHero from "./NewHero";
 
 const Landing = () => {
   return (
     <div className="relative z-10 overflow-hidden bg-lightCream text-ink">
+      <NewHero />
       <Hero />
 
       <Shop />
