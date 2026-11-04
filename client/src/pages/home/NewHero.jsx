@@ -141,10 +141,10 @@ export default function NewHero() {
       </AnimatePresence>
 
       {/* Contrast overlay */}
-      <div className="absolute inset-0 bg-black/25" />
+      <div className="absolute inset-0 bg-black/45" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-start px-5 py-20 text-center text-white sm:px-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-lg flex-col items-start px-5 py-20 text-center text-white sm:px-8">
         {/* Product eyebrow */}
         <AnimatePresence mode="wait">
           <motion.p
@@ -160,7 +160,7 @@ export default function NewHero() {
         </AnimatePresence>
 
         {/* Constant heading */}
-        <h1 className="header max-w-4xl text-4xl leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl text-start">
+        <h1 className="header  text-4xl leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl text-start">
           Best brews from the
           <br />
           <span className="text-amber-600">higher belts</span>.
@@ -182,7 +182,7 @@ export default function NewHero() {
 
         {/* Product options */}
         <div
-          className="mt-12 grid w-full max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 "
+          className="mt-12 grid w-full max-w-5xl gap-3 sm:grid-cols-2 md:grid-cols-3 "
           onMouseEnter={() => setIsInteracting(true)}
           onFocus={() => setIsInteracting(true)}
         >
@@ -198,7 +198,7 @@ export default function NewHero() {
                 onFocus={() => selectProduct(index)}
                 onClick={() => selectProduct(index)}
                 aria-pressed={isActive}
-                className={`group flex min-h-[50px] flex-col items-start justify-center rounded-full border px-2 py-2 text-center transition-all duration-300 sm:min-h-[75px] bg-gray-900/45 ${
+                className={`group flex min-h-[50px] flex-col items-start justify-center rounded-full border px-2 py-1 text-center transition-all duration-300 sm:min-h-[75px] bg-gray-900/45 ${
                   isActive
                     ? "border-amber-600/80  backdrop-blur-md -translate-y-0.5 cursor-pointer"
                     : "border-white/25 bg-black/10 hover:border-white/60 hover:bg-white/10"
@@ -213,12 +213,12 @@ export default function NewHero() {
                     }`}
                   />
 
-                  <div className="flex flex-col items-start">
+                  <div className="flex flex-col items-start text-start">
                     <p className="text-sm font-medium tracking-wide sm:text-base">
                       {product.name}
                     </p>
 
-                    <p className="mt-2 max-w-[180px] text-[10px] leading-relaxed text-white/65 sm:text-xs">
+                    <p className="text-[10px] leading-relaxed text-white/65 sm:text-xs ">
                       {product.description}
                     </p>
                   </div>
