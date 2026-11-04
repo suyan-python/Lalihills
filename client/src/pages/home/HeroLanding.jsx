@@ -21,7 +21,7 @@ const Landing = () => {
   return (
     <div className="relative z-10 overflow-hidden bg-lightCream text-ink">
       <NewHero />
-      <Hero />
+      {/* <Hero /> */}
 
       <Shop />
 
