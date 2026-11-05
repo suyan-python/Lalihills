@@ -6,6 +6,10 @@ import { ArrowUpRight, Coffee, Leaf, Sprout } from "lucide-react";
 import { coffeeProducts, teaProducts } from "../../data/products";
 import Button from "../../components/Button";
 
+import { useScroll, useTransform, useReducedMotion } from "framer-motion";
+
+import { useRef } from "react";
+
 const productThemes = [
   {
     name: "Muuiya",
@@ -18,6 +22,7 @@ const productThemes = [
     text: "text-[#40382D]",
     accent: "#A8A58B",
     image: "/images/hero/muuiya.jpg",
+    hillColors: ["#D1C7B1", "#B8A88D", "#97846B", "#75614C"],
   },
   {
     name: "Ani",
@@ -30,6 +35,7 @@ const productThemes = [
     text: "text-[#263C30]",
     accent: "#66836A",
     image: "/images/hero/ani.jpg",
+    hillColors: ["#B9CCB3", "#91AE8B", "#66896D", "#3E6049"],
   },
   {
     name: "Maruni",
@@ -42,6 +48,7 @@ const productThemes = [
     text: "text-[#493326]",
     accent: "#A77B54",
     image: "/images/hero/maruni.jpg",
+    hillColors: ["#D9BFA1", "#C39C76", "#A77B54", "#805B3D"],
   },
   {
     name: "Raani",
@@ -54,6 +61,7 @@ const productThemes = [
     text: "text-[#482A2D]",
     accent: "#874B50",
     image: "/images/hero/raani.jpg",
+    hillColors: ["#CDAEAA", "#B78685", "#965F65", "#713D46"],
   },
   {
     name: "Jhakri",
@@ -66,6 +74,7 @@ const productThemes = [
     text: "text-[#292622]",
     accent: "#6B5545",
     image: "/images/hero/jhakri.jpg",
+    hillColors: ["#B5ADA2", "#898075", "#62594F", "#39352F"],
   },
 ];
 
@@ -83,6 +92,20 @@ export default function NewHero() {
   const [isInteracting, setIsInteracting] = useState(false);
 
   const activeProduct = products[activeIndex];
+
+  const heroRef = useRef(null);
+  const reduceMotion = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const hillScale = useTransform(
+    scrollYProgress,
+    [0, 0.8],
+    reduceMotion ? [1, 1] : [1, 0.015],
+  );
 
   // Automatically rotate every 5 seconds.
   useEffect(() => {
@@ -105,6 +128,7 @@ export default function NewHero() {
 
   return (
     <section
+      ref={heroRef}
       className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-lightWhite dark:bg-darkInk"
       onMouseLeave={() => setIsInteracting(false)}
     >
@@ -142,6 +166,53 @@ export default function NewHero() {
 
       {/* Contrast overlay */}
       <div className="absolute inset-0 bg-black/45" />
+
+      {/* HIMALAYAN HILL LAYERS */}
+      {/* ANIMATED HILLS */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] overflow-hidden">
+        <motion.div
+          className="relative h-[260px] w-full origin-bottom sm:h-[340px] lg:h-[420px]"
+          style={{
+            scaleY: hillScale,
+            transformOrigin: "bottom",
+          }}
+        >
+          <svg
+            viewBox="0 0 1440 500"
+            preserveAspectRatio="none"
+            className="absolute inset-0 h-full w-full"
+            aria-hidden="true"
+          >
+            {/* BACK HILL */}
+            <motion.path
+              d="M0 260 C180 180 280 220 430 165 C600 95 720 205 880 155 C1050 90 1200 175 1440 100 L1440 500 L0 500 Z"
+              animate={{ fill: activeProduct.hillColors[0] }}
+              transition={{ duration: 1.2 }}
+            />
+
+            {/* MIDDLE HILL */}
+            <motion.path
+              d="M0 315 C160 230 300 300 470 240 C650 175 760 285 930 225 C1100 160 1280 265 1440 205 L1440 500 L0 500 Z"
+              animate={{ fill: activeProduct.hillColors[1] }}
+              transition={{ duration: 1.2 }}
+            />
+
+            {/* FRONT HILL */}
+            <motion.path
+              d="M0 365 C180 290 320 365 500 315 C680 255 800 355 980 300 C1160 245 1300 340 1440 290 L1440 500 L0 500 Z"
+              animate={{ fill: activeProduct.hillColors[2] }}
+              transition={{ duration: 1.2 }}
+            />
+
+            {/* FOREGROUND */}
+            <motion.path
+              d="M0 420 C180 365 340 420 520 375 C700 330 850 415 1030 365 C1200 325 1320 390 1440 355 L1440 500 L0 500 Z"
+              animate={{ fill: activeProduct.hillColors[3] }}
+              transition={{ duration: 1.2 }}
+            />
+          </svg>
+        </motion.div>
+      </div>
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex w-full max-w-lg flex-col items-start px-5 py-20 text-center text-white sm:px-8">
@@ -182,7 +253,7 @@ export default function NewHero() {
 
         {/* Product options */}
         <div
-          className="mt-12 grid w-full max-w-5xl gap-3 sm:grid-cols-2 md:grid-cols-3 "
+          className="mt-12 grid w-full max-w-5xl gap-3 grid-cols-2 md:grid-cols-3 "
           onMouseEnter={() => setIsInteracting(true)}
           onFocus={() => setIsInteracting(true)}
         >
@@ -229,17 +300,22 @@ export default function NewHero() {
         </div>
 
         {/* CTA */}
-        <div mode="wait">
-          <div key={activeProduct.name} className="mt-8">
+        <div
+          mode="wait "
+          className="header flex flex-col items-center gap-4 sm:flex-row sm:gap-2 justify-center mt-8"
+        >
+          <div key={activeProduct.name} className="">
             <Link
               to={productLink}
-              className="inline-flex items-center gap-3 rounded-full bg-amber-600 px-6 py-3 text-xs font-medium uppercase tracking-[0.15em] text-ink transition-all duration-300 hover:bg-white hover:gap-4"
+              className="inline-flex items-center gap-3 rounded-full bg-amber-600 px-6 py-3 text-xs font-medium  text-ink transition-all duration-300 hover:bg-white hover:gap-4"
             >
-              Discover
+              Shop the hills
               <ArrowUpRight size={15} />
             </Link>
           </div>
-          <Button variant="transparent">Shop Hill</Button>
+          <Button variant="transparent" className="lowercase">
+            Walk with us
+          </Button>
         </div>
 
         {/* Bottom label */}
