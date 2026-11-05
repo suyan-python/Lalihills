@@ -22,6 +22,20 @@ import { teaProducts } from "../../data/products";
 import Button from "../../components/Button";
 // import { giftProducts } from "../../data/products";
 
+// import coffeebeans from "../../assets/icon/beans1.svg";
+// import cherry from "../../assets/icon/cherries.svg";
+
+// import cafe from "../../assets/icon/cafe.svg";
+// import leaf from "../../assets/icon/leaf.svg";
+
+// import star from "../../assets/icon/star.svg";
+
+import CoffeeBeans from "../../assets/icon/beans1.svg?react";
+import Cherry from "../../assets/icon/cherries.svg?react";
+import Cafe from "../../assets/icon/cafe.svg?react";
+import Leaf from "../../assets/icon/leaf.svg?react";
+import Star from "../../assets/icon/star.svg?react";
+
 const collections = [
   {
     number: "01",
@@ -60,6 +74,114 @@ const collections = [
     featuredTitle: "Featured Gifts",
   },
 ];
+
+const collectionIcons = {
+  beans: [
+    {
+      Component: CoffeeBeans,
+      color: "#A65C32", // Warm caramel
+      positions: [
+        { x: -125, y: -115, rotate: -25, size: 65 },
+        { x: 125, y: -85, rotate: 20, size: 52 },
+        { x: -115, y: 100, rotate: 15, size: 55 },
+        { x: 115, y: 120, rotate: -20, size: 68 },
+        { x: 0, y: -165, rotate: 30, size: 45 },
+      ],
+    },
+    {
+      Component: Cherry,
+      color: "#D16B4B", // Terracotta
+      positions: [
+        { x: 0, y: 135, rotate: -15, size: 75 },
+        { x: -155, y: 0, rotate: 20, size: 60 },
+        { x: 155, y: 10, rotate: -25, size: 65 },
+      ],
+    },
+  ],
+
+  leaves: [
+    {
+      Component: Cafe,
+      color: "#28704D", // Vibrant forest green
+      positions: [
+        { x: -125, y: -115, rotate: -15, size: 65 },
+        { x: 125, y: -85, rotate: 15, size: 60 },
+        { x: -115, y: 100, rotate: 20, size: 55 },
+        { x: 115, y: 120, rotate: -20, size: 70 },
+      ],
+    },
+    {
+      Component: Leaf,
+      color: "#83A94B", // Fresh leaf green
+      positions: [
+        { x: 0, y: -160, rotate: 35, size: 60 },
+        { x: -155, y: 0, rotate: -25, size: 65 },
+        { x: 155, y: 10, rotate: 20, size: 60 },
+        { x: 0, y: 155, rotate: -15, size: 55 },
+      ],
+    },
+  ],
+
+  gifts: [
+    {
+      Component: Star,
+      color: "#F3C45C", // Golden yellow
+      positions: [
+        { x: 0, y: -150, rotate: 20, size: 75 },
+        { x: -125, y: -85, rotate: -15, size: 45 },
+        { x: 125, y: -85, rotate: 15, size: 45 },
+        { x: -125, y: 95, rotate: 25, size: 55 },
+        { x: 125, y: 95, rotate: -20, size: 55 },
+        { x: 0, y: 155, rotate: 35, size: 40 },
+      ],
+    },
+  ],
+};
+
+const iconVariants = {
+  rest: {
+    x: 0,
+    y: 0,
+    scale: 0,
+    opacity: 0,
+    rotate: 0,
+  },
+
+  hover: (item) => ({
+    x: item.x,
+    y: item.y,
+    scale: [0, 1.2, 0.9, 1],
+    opacity: [0, 0.9, 1, 0.9],
+    rotate: item.rotate,
+    transition: {
+      delay: item.delay,
+      x: {
+        type: "spring",
+        stiffness: 140,
+        damping: 11,
+      },
+      y: {
+        type: "spring",
+        stiffness: 140,
+        damping: 11,
+      },
+      scale: {
+        duration: 0.8,
+        times: [0, 0.55, 0.8, 1],
+        ease: "easeOut",
+      },
+      opacity: {
+        duration: 0.4,
+        delay: item.delay,
+      },
+      rotate: {
+        type: "spring",
+        stiffness: 120,
+        damping: 10,
+      },
+    },
+  }),
+};
 
 const Shop = () => {
   return (
@@ -132,6 +254,9 @@ const CollectionColumn = ({ collection, products = [], type }) => {
 };
 
 const CollectionHero = ({ collection, products = [], type }) => {
+  const collectionKey = collection.name?.toLowerCase();
+  const icons = collectionIcons[collectionKey] || [];
+
   return (
     <motion.div
       initial={{
@@ -154,7 +279,12 @@ const CollectionHero = ({ collection, products = [], type }) => {
       }}
       className="w-full"
     >
-      <div className="group relative block aspect-[2/3] w-full overflow-hidden rounded-4xl">
+      <motion.div
+        initial="rest"
+        whileHover="hover"
+        whileFocus="hover"
+        className="group relative block aspect-[2/3] w-full overflow-hidden rounded-4xl"
+      >
         {/* BACKGROUND IMAGE */}
         {/* <motion.img
           src={collection.image}
@@ -167,17 +297,49 @@ const CollectionHero = ({ collection, products = [], type }) => {
         {/* ACCENT COLOR OVERLAY */}
         <div
           className={`absolute inset-0 ${
-            collection.name?.toLowerCase() === "gifts"
-              ? "bg-deepRed"
-              : "bg-purpleTint"
+            collectionKey === "gifts" ? "bg-deepRed" : "bg-purpleTint"
           }`}
         />
 
         {/* DARKENING */}
         <div className="absolute inset-0 bg-gradient-to-b from-darkPurple/20 via-transparent to-darkPurple/30" />
 
+        {/* POP-OUT ICONS */}
+        <div className="absolute pointer-events-none  inset-0 z-30">
+          {icons.flatMap((icon, iconIndex) =>
+            icon.positions.map((position, positionIndex) => {
+              const item = {
+                ...position,
+                delay: positionIndex * 0.045 + iconIndex * 0.08,
+              };
+
+              const Icon = icon.Component;
+
+              return (
+                <motion.div
+                  key={`${iconIndex}-${positionIndex}`}
+                  custom={item}
+                  variants={iconVariants}
+                  className="absolute"
+                  style={{
+                    width: position.size,
+                    height: position.size,
+                    left: "50%",
+                    top: "50%",
+                    marginLeft: -position.size / 2,
+                    marginTop: -position.size / 2,
+                    color: icon.color,
+                  }}
+                >
+                  <Icon className="h-full w-full" aria-hidden="true" />
+                </motion.div>
+              );
+            }),
+          )}
+        </div>
+
         {/* COLLECTION HEADER */}
-        <div className="relative z-10 flex h-full flex-col px-5 py-5 sm:px-6 sm:py-6 md:px-8 md:py-8">
+        <div className="relative z-20 flex h-full flex-col px-5 py-5 sm:px-6 sm:py-6 md:px-8 md:py-8">
           <Link
             to={collection.path}
             className="flex flex-col items-center space-y-2"
@@ -200,7 +362,7 @@ const CollectionHero = ({ collection, products = [], type }) => {
             collection={collection}
           />
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
