@@ -79,22 +79,22 @@ const collectionIcons = {
   beans: [
     {
       Component: CoffeeBeans,
-      color: "#A65C32", // Warm caramel
+      color: "#C9823D",
       positions: [
-        { x: -125, y: -115, rotate: -25, size: 65 },
-        { x: 125, y: -85, rotate: 20, size: 52 },
-        { x: -115, y: 100, rotate: 15, size: 55 },
-        { x: 115, y: 120, rotate: -20, size: 68 },
-        { x: 0, y: -165, rotate: 30, size: 45 },
+        { x: -125, y: -230, rotate: -25, size: 48 },
+        { x: 125, y: -190, rotate: 20, size: 40 },
+        { x: -125, y: 180, rotate: 15, size: 42 },
+        { x: 125, y: 220, rotate: -20, size: 50 },
+        { x: -35, y: -260, rotate: 30, size: 36 },
       ],
     },
     {
       Component: Cherry,
-      color: "#D16B4B", // Terracotta
+      color: "#A4161A",
       positions: [
-        { x: 0, y: 135, rotate: -15, size: 75 },
-        { x: -155, y: 0, rotate: 20, size: 60 },
-        { x: 155, y: 10, rotate: -25, size: 65 },
+        { x: 35, y: 260, rotate: -15, size: 52 },
+        { x: -155, y: -35, rotate: 20, size: 42 },
+        { x: 155, y: 35, rotate: -25, size: 44 },
       ],
     },
   ],
@@ -102,22 +102,22 @@ const collectionIcons = {
   leaves: [
     {
       Component: Cafe,
-      color: "#28704D", // Vibrant forest green
+      color: "#28704D",
       positions: [
-        { x: -125, y: -115, rotate: -15, size: 65 },
-        { x: 125, y: -85, rotate: 15, size: 60 },
-        { x: -115, y: 100, rotate: 20, size: 55 },
-        { x: 115, y: 120, rotate: -20, size: 70 },
+        { x: -125, y: -230, rotate: -15, size: 46 },
+        { x: 125, y: -190, rotate: 15, size: 42 },
+        { x: -125, y: 180, rotate: 20, size: 40 },
+        { x: 125, y: 220, rotate: -20, size: 48 },
       ],
     },
     {
       Component: Leaf,
-      color: "#83A94B", // Fresh leaf green
+      color: "#83A94B",
       positions: [
-        { x: 0, y: -160, rotate: 35, size: 60 },
-        { x: -155, y: 0, rotate: -25, size: 65 },
-        { x: 155, y: 10, rotate: 20, size: 60 },
-        { x: 0, y: 155, rotate: -15, size: 55 },
+        { x: -35, y: -260, rotate: 35, size: 42 },
+        { x: -155, y: -35, rotate: -25, size: 46 },
+        { x: 155, y: 35, rotate: 20, size: 42 },
+        { x: 35, y: 260, rotate: -15, size: 40 },
       ],
     },
   ],
@@ -125,59 +125,59 @@ const collectionIcons = {
   gifts: [
     {
       Component: Star,
-      color: "#F3C45C", // Golden yellow
+      color: "#F3C45C",
       positions: [
-        { x: 0, y: -150, rotate: 20, size: 75 },
-        { x: -125, y: -85, rotate: -15, size: 45 },
-        { x: 125, y: -85, rotate: 15, size: 45 },
-        { x: -125, y: 95, rotate: 25, size: 55 },
-        { x: 125, y: 95, rotate: -20, size: 55 },
-        { x: 0, y: 155, rotate: 35, size: 40 },
+        { x: -125, y: -230, rotate: 20, size: 50 },
+        { x: -45, y: -260, rotate: -15, size: 34 },
+        { x: 125, y: -190, rotate: 15, size: 34 },
+        { x: -125, y: 180, rotate: 25, size: 40 },
+        { x: 125, y: 220, rotate: -20, size: 42 },
+        { x: 35, y: 260, rotate: 35, size: 32 },
       ],
     },
   ],
 };
 
 const iconVariants = {
-  rest: {
-    x: 0,
-    y: 0,
-    scale: 0,
+  rest: (item) => ({
+    x: item.x * 1.5,
+    y: item.y * 1.5,
+    scale: 0.5,
     opacity: 0,
-    rotate: 0,
-  },
+    rotate: item.rotate * 1.5,
+  }),
 
   hover: (item) => ({
     x: item.x,
     y: item.y,
-    scale: [0, 1.2, 0.9, 1],
-    opacity: [0, 0.9, 1, 0.9],
+    scale: [0.5, 1.08, 0.95, 1],
+    opacity: [0, 0.9, 1, 1],
     rotate: item.rotate,
     transition: {
       delay: item.delay,
       x: {
         type: "spring",
-        stiffness: 140,
-        damping: 11,
+        stiffness: 100,
+        damping: 14,
       },
       y: {
         type: "spring",
-        stiffness: 140,
-        damping: 11,
+        stiffness: 100,
+        damping: 14,
       },
       scale: {
-        duration: 0.8,
+        duration: 0.7,
         times: [0, 0.55, 0.8, 1],
         ease: "easeOut",
       },
       opacity: {
-        duration: 0.4,
+        duration: 0.45,
         delay: item.delay,
       },
       rotate: {
         type: "spring",
-        stiffness: 120,
-        damping: 10,
+        stiffness: 100,
+        damping: 12,
       },
     },
   }),
@@ -326,8 +326,8 @@ const CollectionHero = ({ collection, products = [], type }) => {
                     height: position.size,
                     left: "50%",
                     top: "50%",
-                    marginLeft: -position.size / 2,
-                    marginTop: -position.size / 2,
+                    marginLeft: -position.size / 1.7,
+                    marginTop: -position.size / 1.7,
                     color: icon.color,
                   }}
                 >
