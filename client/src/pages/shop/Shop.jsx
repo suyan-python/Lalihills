@@ -20,15 +20,6 @@ import ShopStatement from "./ShopStatement";
 import { coffeeProducts } from "../../data/products";
 import { teaProducts } from "../../data/products";
 import Button from "../../components/Button";
-// import { giftProducts } from "../../data/products";
-
-// import coffeebeans from "../../assets/icon/beans1.svg";
-// import cherry from "../../assets/icon/cherries.svg";
-
-// import cafe from "../../assets/icon/cafe.svg";
-// import leaf from "../../assets/icon/leaf.svg";
-
-// import star from "../../assets/icon/star.svg";
 
 import CoffeeBeans from "../../assets/icon/beans1.svg?react";
 import Cherry from "../../assets/icon/cherries.svg?react";
@@ -473,13 +464,13 @@ const FeaturedProductCard = ({ product }) => {
 
             <Link
               to={`/shop/${product.category}/${product.slug}`}
-              className="header line-clamp-2 text-sm leading-snug tracking-wide text-ink transition-colors  dark:text-lightCream  sm:text-base "
+              className="header line-clamp-2 text-sm leading-snug tracking-wide text-lightCream transition-colors  dark:text-lightCream  sm:text-base "
             >
               {product.name}
             </Link>
           </div>
 
-          <p className="shrink-0 pt-0.5 text-xs font-bold tabular-nums text-ink dark:text-lightCream sm:text-sm">
+          <p className="shrink-0 pt-0.5 text-xs font-bold tabular-nums text-lightCream dark:text-lightCream sm:text-sm">
             NPR {price.toLocaleString()}
           </p>
         </div>
@@ -488,7 +479,7 @@ const FeaturedProductCard = ({ product }) => {
         <button
           type="button"
           onClick={handleAddToCart}
-          className="mt-3 flex h-7 w-full items-center justify-center gap-2 rounded-full  text-[9px] font-semibold uppercase tracking-[0.02em] text-ink transition-all duration-300 bg-red hover:border-deepRed hover:bg-deepRed hover:text-lightCream active:scale-[0.98] dark:border-lightCream/20 dark:text-lightCream dark:hover:border-red dark:hover:bg-red sm:mt-4 sm:h-8 sm:text-[10px] cursor-pointer"
+          className="mt-3 flex h-7 w-full items-center justify-center gap-2 rounded-full  text-[9px] font-semibold uppercase tracking-[0.02em] text-lightCream transition-all duration-300 bg-red hover:border-deepRed hover:bg-deepRed hover:text-lightCream active:scale-[0.98] dark:border-lightCream/20 dark:text-lightCream dark:hover:border-red dark:hover:bg-red sm:mt-4 sm:h-8 sm:text-[10px] cursor-pointer"
         >
           <AnimatePresence mode="wait" initial={false}>
             {added ? (

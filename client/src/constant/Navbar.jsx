@@ -310,8 +310,8 @@ const Navbar = () => {
                   {/* Small label */}
 
                   <div className="my-10 flex items-center gap-3">
-                    <span className="text-[9px] uppercase tracking-[0.35em] text-ivory">
-                      Navigations Laali Hills
+                    <span className="header text-[9px] uppercase tracking-[0.15em] text-ivory">
+                      We Have:
                     </span>
                   </div>
 
@@ -360,7 +360,7 @@ const Navbar = () => {
                             />
 
                             <span
-                              className={`md:text-base tracking-[-0.025em] transition-colors duration-300 xl:text-2xl ${
+                              className={` header md:text-base tracking-[-0.025em] transition-colors duration-300 xl:text-2xl ${
                                 isActive
                                   ? "text-lightWhite"
                                   : "text-lightWhite/45 group-hover:text-lightWhite/75"
@@ -454,11 +454,11 @@ const Navbar = () => {
                             )}
                           </p>
 
-                          <h2 className="max-w-xl subheader text-5xl leading-[0.9] tracking-[-0.035em] text-lightWhite xl:text-6xl">
+                          <h2 className="max-w-xl header text-5xl leading-[0.9] tracking-[-0.035em] text-lightWhite xl:text-6xl">
                             {activeMenu.title}
                           </h2>
 
-                          <p className="mt-4 max-w-md  text-sm italic leading-relaxed text-ivory/70 font-light">
+                          <p className=" mt-4 max-w-md text-sm italic leading-relaxed text-ivory/70 ">
                             {activeMenu.preview}
                           </p>
                         </motion.div>
@@ -511,7 +511,7 @@ const Navbar = () => {
                                         }
                                         className="group flex items-center justify-between border-b border-lightWhite/20 pb-2"
                                       >
-                                        <span className="text-sm text-lightWhite/85 transition-colors duration-300 group-hover:text-lightWhite">
+                                        <span className="header text-sm text-lightWhite/85 transition-colors duration-300 group-hover:text-lightWhite">
                                           {typeof subItem === "string"
                                             ? subItem
                                             : subItem.title}
