@@ -167,7 +167,6 @@ export default function NewHero() {
       {/* Contrast overlay */}
       <div className="absolute inset-0 bg-black/45" />
 
-      {/* HIMALAYAN HILL LAYERS */}
       {/* ANIMATED HILLS */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] overflow-hidden">
         <motion.div

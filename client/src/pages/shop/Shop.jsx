@@ -239,7 +239,7 @@ const Shop = () => {
         </section>
       </div>
 
-      <ShopStatement />
+      {/* <ShopStatement /> */}
     </main>
   );
 };
