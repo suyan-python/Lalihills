@@ -72,20 +72,20 @@ const collectionIcons = {
       Component: CoffeeBeans,
       color: "#C9823D",
       positions: [
-        { x: -125, y: -230, rotate: -25, size: 48 },
-        { x: 125, y: -190, rotate: 20, size: 40 },
-        { x: -125, y: 180, rotate: 15, size: 42 },
-        { x: 125, y: 220, rotate: -20, size: 50 },
-        { x: -35, y: -260, rotate: 30, size: 36 },
+        { corner: "top-left", x: -18, y: -18, rotate: -25, size: 48 },
+        { corner: "top-right", x: 18, y: -14, rotate: 20, size: 40 },
+        { corner: "bottom-left", x: -16, y: 18, rotate: 15, size: 42 },
+        { corner: "bottom-right", x: 18, y: 18, rotate: -20, size: 50 },
+        { corner: "top-center", x: 0, y: -22, rotate: 30, size: 36 },
       ],
     },
     {
       Component: Cherry,
       color: "#A4161A",
       positions: [
-        { x: 35, y: 260, rotate: -15, size: 52 },
-        { x: -155, y: -35, rotate: 20, size: 42 },
-        { x: 155, y: 35, rotate: -25, size: 44 },
+        { corner: "bottom-center", x: 0, y: 22, rotate: -15, size: 52 },
+        { corner: "left-center", x: -20, y: 0, rotate: 20, size: 42 },
+        { corner: "right-center", x: 20, y: 0, rotate: -25, size: 44 },
       ],
     },
   ],
@@ -95,20 +95,20 @@ const collectionIcons = {
       Component: Cafe,
       color: "#28704D",
       positions: [
-        { x: -125, y: -230, rotate: -15, size: 46 },
-        { x: 125, y: -190, rotate: 15, size: 42 },
-        { x: -125, y: 180, rotate: 20, size: 40 },
-        { x: 125, y: 220, rotate: -20, size: 48 },
+        { corner: "top-left", x: -18, y: -18, rotate: -15, size: 46 },
+        { corner: "top-right", x: 18, y: -16, rotate: 15, size: 42 },
+        { corner: "bottom-left", x: -16, y: 18, rotate: 20, size: 40 },
+        { corner: "bottom-right", x: 18, y: 18, rotate: -20, size: 48 },
       ],
     },
     {
       Component: Leaf,
       color: "#83A94B",
       positions: [
-        { x: -35, y: -260, rotate: 35, size: 42 },
-        { x: -155, y: -35, rotate: -25, size: 46 },
-        { x: 155, y: 35, rotate: 20, size: 42 },
-        { x: 35, y: 260, rotate: -15, size: 40 },
+        { corner: "top-center", x: 0, y: -20, rotate: 35, size: 42 },
+        { corner: "left-center", x: -20, y: 0, rotate: -25, size: 46 },
+        { corner: "right-center", x: 20, y: 0, rotate: 20, size: 42 },
+        { corner: "bottom-center", x: 0, y: 20, rotate: -15, size: 40 },
       ],
     },
   ],
@@ -118,12 +118,12 @@ const collectionIcons = {
       Component: Star,
       color: "#F3C45C",
       positions: [
-        { x: -125, y: -230, rotate: 20, size: 50 },
-        { x: -45, y: -260, rotate: -15, size: 34 },
-        { x: 125, y: -190, rotate: 15, size: 34 },
-        { x: -125, y: 180, rotate: 25, size: 40 },
-        { x: 125, y: 220, rotate: -20, size: 42 },
-        { x: 35, y: 260, rotate: 35, size: 32 },
+        { corner: "top-left", x: -18, y: -18, rotate: 20, size: 50 },
+        { corner: "top-center", x: 0, y: -22, rotate: -15, size: 34 },
+        { corner: "top-right", x: 18, y: -16, rotate: 15, size: 34 },
+        { corner: "bottom-left", x: -16, y: 18, rotate: 25, size: 40 },
+        { corner: "bottom-right", x: 18, y: 18, rotate: -20, size: 42 },
+        { corner: "bottom-center", x: 0, y: 22, rotate: 35, size: 32 },
       ],
     },
   ],
@@ -131,45 +131,24 @@ const collectionIcons = {
 
 const iconVariants = {
   rest: (item) => ({
-    x: item.x * 1.5,
-    y: item.y * 1.5,
-    scale: 0.5,
+    x: item.x + (item.corner.includes("left") ? -100 : 100),
+    y: item.y + (item.corner.includes("top") ? -100 : 100),
     opacity: 0,
+    scale: 0.5,
     rotate: item.rotate * 1.5,
   }),
 
   hover: (item) => ({
     x: item.x,
     y: item.y,
-    scale: [0.5, 1.08, 0.95, 1],
-    opacity: [0, 0.9, 1, 1],
+    opacity: 1,
+    scale: 1,
     rotate: item.rotate,
     transition: {
       delay: item.delay,
-      x: {
-        type: "spring",
-        stiffness: 100,
-        damping: 14,
-      },
-      y: {
-        type: "spring",
-        stiffness: 100,
-        damping: 14,
-      },
-      scale: {
-        duration: 0.7,
-        times: [0, 0.55, 0.8, 1],
-        ease: "easeOut",
-      },
-      opacity: {
-        duration: 0.45,
-        delay: item.delay,
-      },
-      rotate: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12,
-      },
+      type: "spring",
+      stiffness: 120,
+      damping: 14,
     },
   }),
 };
@@ -296,7 +275,7 @@ const CollectionHero = ({ collection, products = [], type }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-darkPurple/20 via-transparent to-darkPurple/30" />
 
         {/* POP-OUT ICONS */}
-        <div className="absolute pointer-events-none  inset-0 z-30">
+        <div className="pointer-events-none absolute inset-0 z-30">
           {icons.flatMap((icon, iconIndex) =>
             icon.positions.map((position, positionIndex) => {
               const item = {
@@ -306,6 +285,17 @@ const CollectionHero = ({ collection, products = [], type }) => {
 
               const Icon = icon.Component;
 
+              const cornerStyles = {
+                "top-left": { left: 20, top: 20 },
+                "top-right": { right: 20, top: 20 },
+                "bottom-left": { left: 20, bottom: 20 },
+                "bottom-right": { right: 20, bottom: 20 },
+                "top-center": { left: "50%", top: 20 },
+                "bottom-center": { left: "50%", bottom: 20 },
+                "left-center": { left: 20, top: "50%" },
+                "right-center": { right: 20, top: "50%" },
+              };
+
               return (
                 <motion.div
                   key={`${iconIndex}-${positionIndex}`}
@@ -313,12 +303,11 @@ const CollectionHero = ({ collection, products = [], type }) => {
                   variants={iconVariants}
                   className="absolute"
                   style={{
+                    ...cornerStyles[position.corner],
                     width: position.size,
                     height: position.size,
-                    left: "50%",
-                    top: "50%",
-                    marginLeft: -position.size / 1.7,
-                    marginTop: -position.size / 1.7,
+                    x: position.x,
+                    y: position.y,
                     color: icon.color,
                   }}
                 >

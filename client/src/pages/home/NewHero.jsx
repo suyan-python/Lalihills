@@ -299,21 +299,36 @@ export default function NewHero() {
         </div>
 
         {/* CTA */}
-        <div
-          mode="wait "
-          className="header flex flex-col items-center gap-4 sm:flex-row sm:gap-2 justify-center mt-8"
-        >
-          <div key={activeProduct.name} className="">
-            <Link
-              to={productLink}
-              className="inline-flex items-center gap-3 rounded-full bg-amber-600 px-6 py-3 text-xs font-medium  text-ink transition-all duration-300 hover:bg-white hover:gap-4"
-            >
-              Shop the hills
-              <ArrowUpRight size={15} />
-            </Link>
-          </div>
-          <Button variant="transparent" className="lowercase">
+        <div className="header mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Link
+            to={productLink}
+            className="group inline-flex items-center justify-center gap-3 rounded-full
+      bg-[#A4161A] px-7 py-3.5
+      text-sm font-medium text-[#FCFBF8]
+      shadow-sm
+      transition-all duration-300
+      hover:bg-[#7F1F27] hover:shadow-md
+      focus-visible:outline-none focus-visible:ring-2
+      focus-visible:ring-[#A4161A] focus-visible:ring-offset-2"
+          >
+            Shop the hills
+            <ArrowUpRight
+              size={16}
+              strokeWidth={1.7}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </Link>
+
+          <Button
+            variant="transparent"
+            className="group rounded-full px-7 py-3.5 text-sm font-medium text-current
+      transition-colors duration-300 hover:bg-black/5"
+          >
             Walk with us
+            <ArrowUpRight
+              size={15}
+              className="ml-1 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
           </Button>
         </div>
 
