@@ -1,15 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { ArrowLeft, Minus, Plus, ShoppingBag } from "lucide-react";
-import { Link, useParams } from "react-router-dom";
-import ProductInfoGrid from "./ProductInfoGrid";
-import StickyPurchaseBar from "./StickyPurchaseBar";
+import { useParams } from "react-router-dom";
 import { useCart } from "../../layouts/CartContext";
-import { AnimatePresence } from "framer-motion";
-import { trackEvent } from "../../utils/analytics";
 
-import { GiCoffeeBeans, GiCoffeePot, GiPouringPot } from "react-icons/gi";
-import { FaMugHot } from "react-icons/fa";
 import ProductDetailsLeft from "./ProductDetailsLeft";
 import ProductDetailsRight from "./ProductDetailsRight";
 

@@ -204,7 +204,7 @@ const ProductDetailsRight = ({
                 Plan
               </span>
             </div>
-            <div className="mt-1 grid grid-cols-2 rounded-full bg-ivory  p-1 transition-colors duration-300 ">
+            <div className="mt-1 grid grid-cols-2 rounded-xl bg-ivory  p-1 transition-colors duration-300 ">
               <PurchaseOption
                 active={purchaseType === "one-time"}
                 onClick={() => setPurchaseType("one-time")}
@@ -239,7 +239,7 @@ const ProductDetailsRight = ({
                   }}
                   className="absolute left-40 md:left-52 top-0 z-50 w-52"
                 >
-                  <div className="rounded-2xl border border-ink/10 bg-ivory p-2 shadow-lg">
+                  <div className="rounded-xl border border-ink/10 bg-ivory p-2 shadow-lg">
                     {frequencyOptions.map((option) => (
                       <button
                         key={option}
@@ -466,7 +466,7 @@ const PurchaseOption = ({ active, onClick, children }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`rounded-full py-1 text-[10px] font-bold tracking-[0.05em] transition-all duration-300 ${
+    className={`rounded-lg py-1 text-[10px] font-bold tracking-[0.05em] transition-all duration-300 ${
       active
         ? "bg-lightWhite text-ink shadow-md shadow-black/10"
         : "text-ink/75  cursor-pointer"

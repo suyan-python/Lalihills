@@ -319,9 +319,18 @@ export default function NewHero() {
             Shop the hills
           </Link>
 
-          <div className="flex items-center gap-2">
-            <Link className="">Walk with us</Link>
-            <ArrowRight size={15} />
+          <div className="group inline-flex flex-col items-start">
+            <div className="flex items-center gap-2">
+              <Link to="/our-story" className="text-sm">
+                Walk with us
+              </Link>
+              <ArrowRight
+                size={15}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </div>
+
+            <span className="mt-1 h-[2px] w-full origin-left scale-x-100 rounded-full bg-orange transition-transform duration-300 group-hover:scale-x-0" />
           </div>
         </div>
       </div>

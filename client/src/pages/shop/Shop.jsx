@@ -187,7 +187,7 @@ const Shop = () => {
 
         {/* COLLECTIONS */}
         <section className="relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-12 py-8 md:py-10 sm:px-2 md:px-4 lg:px-6">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-12 py-8 md:py-10 sm:px-2 md:px-4 lg:px-6">
             <CollectionColumn
               collection={collections[0]}
               products={coffeeProducts}
