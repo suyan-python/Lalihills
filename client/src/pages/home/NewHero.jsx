@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Coffee, Leaf, Sprout } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Coffee, Leaf, Sprout } from "lucide-react";
 
 import { coffeeProducts, teaProducts } from "../../data/products";
 import Button from "../../components/Button";
@@ -15,7 +15,8 @@ const productThemes = [
     name: "Muuiya",
     eye: "Light Roasted Coffee",
     description: "Light Roasts",
-    shortDescription: "Delicate, bright, and beautifully nuanced.",
+    shortDescription:
+      "“Start where I start — a bright cup, before the day wakes up.” — Muuiya",
     category: "coffee",
     icon: Coffee,
     background: "bg-[#E9E1D3]",
@@ -28,7 +29,8 @@ const productThemes = [
     name: "Ani",
     eye: "Tea from the Hills",
     description: "White & Green Tea",
-    shortDescription: "Fresh, gentle, and close to nature.",
+    shortDescription:
+      "“Sit a moment. A clear cup, and the day goes quiet.” — Ani",
     category: "tea",
     icon: Leaf,
     background: "bg-[#DCE5D8]",
@@ -41,7 +43,8 @@ const productThemes = [
     name: "Maruni",
     eye: "The Everyday Favourite",
     description: "Medium Roast",
-    shortDescription: "A comforting balance of depth and warmth.",
+    shortDescription:
+      "“Come, this is the cup we share when everyone is home.” — Maruni",
     category: "coffee",
     icon: Coffee,
     background: "bg-[#E8D4BD]",
@@ -54,7 +57,8 @@ const productThemes = [
     name: "Raani",
     eye: "A Royal Cup",
     description: "Black Tea",
-    shortDescription: "Bold, rich, and made for slow moments.",
+    shortDescription:
+      "“Bold, and in no hurry — pour, and take your time.” — Raani",
     category: "tea",
     icon: Leaf,
     background: "bg-[#DCCBC7]",
@@ -67,7 +71,8 @@ const productThemes = [
     name: "Jhakri",
     eye: "For the Bold at Heart",
     description: "Dark Roast",
-    shortDescription: "Deep, intense, and unapologetically bold.",
+    shortDescription:
+      "“Stay up with me a while. The best things come slow, in the dark.” — Jhakri",
     category: "coffee",
     icon: Sprout,
     background: "bg-[#D6D0C8]",
@@ -230,10 +235,10 @@ export default function NewHero() {
         </AnimatePresence>
 
         {/* Constant heading */}
-        <h1 className="header  text-4xl leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl text-start">
+        <h1 className="header text-4xl leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl text-start font-semibold">
           Best brews from the
           <br />
-          <span className="text-amber-600">higher belts</span>.
+          <span className="text-orange">higher belts</span>.
         </h1>
 
         {/* Product description */}
@@ -312,30 +317,13 @@ export default function NewHero() {
       focus-visible:ring-[#A4161A] focus-visible:ring-offset-2"
           >
             Shop the hills
-            <ArrowUpRight
-              size={16}
-              strokeWidth={1.7}
-              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
           </Link>
 
-          <Button
-            variant="transparent"
-            className="group rounded-full px-7 py-3.5 text-sm font-medium text-current
-      transition-colors duration-300 hover:bg-black/5"
-          >
-            Walk with us
-            <ArrowUpRight
-              size={15}
-              className="ml-1 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </Button>
+          <div className="flex items-center gap-2">
+            <Link className="">Walk with us</Link>
+            <ArrowRight size={15} />
+          </div>
         </div>
-
-        {/* Bottom label */}
-        <p className="mt-12 text-[9px] uppercase tracking-[0.25em] text-white/50">
-          Grown in Nepal · Made for your ritual
-        </p>
       </div>
     </section>
   );

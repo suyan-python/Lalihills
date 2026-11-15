@@ -3,6 +3,8 @@ export const colors = {
   ivory: "#F5F1E8",
   deepRed: "#7F1F27",
 
+  orange:"#E06A62",
+
   ink: "#181918",
   hill: "#293A34",
   // soil: "#675044",
