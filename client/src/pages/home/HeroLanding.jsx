@@ -38,9 +38,9 @@ const Landing = () => {
 
       <CoffeeFamilySection />
 
-      <AuthenticSection />
+      {/* <AuthenticSection /> */}
 
-      <TobeUsed />
+      {/* <TobeUsed /> */}
 
       <SocialsSummary />
 

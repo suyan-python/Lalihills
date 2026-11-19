@@ -3,6 +3,10 @@ import product1 from "../assets/products/pro1.jpg";
 import product2 from "../assets/products/pro2.jpg";
 import product3 from "../assets/products/pro3.jpg";
 
+import muuiya from "../assets/characters/muuiya.png";
+import maruni from "../assets/characters/maruni.png";
+import jhakri from "../assets/characters/jhakri.png";
+
 import product4 from "../assets/products/pro4.svg";
 import product5 from "../assets/products/pro5.svg";
 import product6 from "../assets/products/pro6.svg";
@@ -10,6 +14,9 @@ import product6 from "../assets/products/pro6.svg";
 import tea1 from "../assets/products/tea1.jpg";
 import tea2 from "../assets/products/tea2.jpg";
 import tea3 from "../assets/products/tea3.jpg";
+
+import raani from "../assets/characters/raani.png";
+import ani from "../assets/characters/ani.png";
 
 import tea4 from "../assets/products/tea4.svg";
 import tea5 from "../assets/products/tea5.svg";
@@ -24,492 +31,514 @@ const createRotationImages = (slug, count = 30) => {
 };
 
 export const coffeeProducts = [
-{
-  _id: "cold-brew-250-DHANKUTA",
-  name: "Muuiya",
-  shortName: "Cold Brew – 250g [Beans / Ground]",
-  slug: "cold-brew-250g-DHANKUTA",
+  {
+    _id: "cold-brew-250-DHANKUTA",
+    name: "Muuiya",
+    shortName: "Cold Brew – 250g [Beans / Ground]",
+    slug: "cold-brew-250g-DHANKUTA",
 
-  frontImage: product4,
-  image: product1,
-  hoverImage: product1,
-  imageColor: "#D9A08F",
+    frontImage: product4,
+    image: product1,
+    hoverImage: product1,
+    imageColor: "#D9A08F",
+    characterImage: muuiya,
 
-  category: "coffee",
-  type: "beans",
+    eye: "Light Roasted Coffee",
+    description2: "Light Roasts",
+    shortDescription2:
+      "“Start where I start — a bright cup, before the day wakes up.” — Muuiya",
+    icon: muuiya,
+    background: "bg-[#F1E7FA]",
+    text: "text-[#49345E]",
+    accent: "#B58AD9",
+    hillColors: ["#E8D8F5", "#D8BEEB", "#C19DDE", "#A77CCB"],
 
-  roastLevel: 2,
-  caffeine: "full",
-  profile: 4,
+    category: "coffee",
+    type: "beans",
 
-  process: "Anaerobic",
-  altitude: "1,300-1,500",
-  origin: "Dhankuta",
+    roastLevel: 2,
+    caffeine: "full",
+    profile: 4,
 
- price:850,
-sizeOptions: [
-  { grams: 100, price: 850 },
-  { grams: 250, price: 1650 },
-  { grams: 500, price: 3000 },
-],
+    process: "Anaerobic",
+    altitude: "1,300-1,500",
+    origin: "Dhankuta",
 
+    price: 850,
+    sizeOptions: [
+      { grams: 100, price: 850 },
+      { grams: 250, price: 1650 },
+      { grams: 500, price: 3000 },
+    ],
 
-  grindOptions: ["Whole bean", "Filter", "Espresso", "Moka pot","French Press","Cold Brew"],
+    grindOptions: [
+      "Whole bean",
+      "Filter",
+      "Espresso",
+      "Moka pot",
+      "French Press",
+      "Cold Brew",
+    ],
 
-  description:
-    "Bold and complex Nepali coffee, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
+    description:
+      "Bold and complex Nepali coffee, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
 
-  shortDescription:
-    "Bold, fruity, and complex — a unique anaerobic expression.",
+    shortDescription:
+      "Bold, fruity, and complex — a unique anaerobic expression.",
 
-  aroma: [
-    "molasses",
-    "caramel",
-    "chocolatey",
-  ],
+    aroma: ["molasses", "caramel", "chocolatey"],
 
-  flavors: [
-    "Tropical Fruit",
-    "Wine",
-    "Syrupy Body",
-  ],
+    flavors: ["Tropical Fruit", "Wine", "Syrupy Body"],
 
-  /*
-   * PRODUCT INFORMATION
-   * Used by ProductInfoGrid
-   */
-  info: {
-    origin: {
-      value: "Dhankuta, Nepal",
-      blurb:
-        "Grown in the hills of Dhankuta in eastern Nepal, where elevation, climate, and mountain soil create distinctive growing conditions for specialty coffee.",
+    /*
+     * PRODUCT INFORMATION
+     * Used by ProductInfoGrid
+     */
+    info: {
+      origin: {
+        value: "Dhankuta, Nepal",
+        blurb:
+          "Grown in the hills of Dhankuta in eastern Nepal, where elevation, climate, and mountain soil create distinctive growing conditions for specialty coffee.",
+      },
+
+      altitude: {
+        value: "1,300–1,500 m",
+        blurb:
+          "The coffee is grown at 1,300–1,500 metres above sea level. Higher elevations can encourage slower cherry development and contribute to greater complexity in the cup.",
+      },
+
+      process: {
+        value: "Anaerobic",
+        blurb:
+          "The coffee cherries are fermented in a controlled, oxygen-free environment. This process encourages intense fruit character, sweetness, and wine-like complexity.",
+      },
+
+      variety: {
+        value: "Arabica",
+        blurb:
+          "A specialty Arabica coffee selected for its balance of sweetness, acidity, and expressive flavour characteristics.",
+      },
+
+      harvest: {
+        value: "Seasonal",
+        blurb:
+          "Coffee is harvested selectively when cherries reach the right stage of ripeness, helping preserve sweetness and consistency in the final cup.",
+      },
+
+      roast: {
+        value: "4/5",
+        blurb:
+          "A fuller roast profile developed to bring out the coffee's syrupy body, chocolate character, tropical fruit notes, and deeper sweetness.",
+      },
     },
 
-    altitude: {
-      value: "1,300–1,500 m",
-      blurb:
-        "The coffee is grown at 1,300–1,500 metres above sea level. Higher elevations can encourage slower cherry development and contribute to greater complexity in the cup.",
-    },
+    rating: 4.9,
+    reviews: 54,
 
-    process: {
-      value: "Anaerobic",
-      blurb:
-        "The coffee cherries are fermented in a controlled, oxygen-free environment. This process encourages intense fruit character, sweetness, and wine-like complexity.",
-    },
+    available: true,
+    instock: true,
+    discount: false,
 
-    variety: {
-      value: "Arabica",
-      blurb:
-        "A specialty Arabica coffee selected for its balance of sweetness, acidity, and expressive flavour characteristics.",
-    },
-
-    harvest: {
-      value: "Seasonal",
-      blurb:
-        "Coffee is harvested selectively when cherries reach the right stage of ripeness, helping preserve sweetness and consistency in the final cup.",
-    },
-
-    roast: {
-      value: "4/5",
-      blurb:
-        "A fuller roast profile developed to bring out the coffee's syrupy body, chocolate character, tropical fruit notes, and deeper sweetness.",
-    },
-  },
-
-  rating: 4.9,
-  reviews: 54,
-
-  available: true,
-  instock: true,
-  discount: false,
-
-  faqs: [
-    {
-      question: "What does anaerobic processing mean?",
-      answer:
-        "Coffee cherries are fermented in sealed, oxygen-free tanks. This intensifies the flavor and creates complex, wine-like notes not found in washed or natural coffees.",
-    },
-    {
-      question: "How many cups can I brew from 250g?",
-      answer:
-        "Around 15–18 cups using a standard filter ratio of 15g of coffee per cup.",
-    },
-    {
-      question: "Should I choose whole beans or ground?",
-      answer:
-        "Whole beans stay fresh longer. Choose ground only if you don't have a grinder — we grind it fresh specifically for filter brewing.",
-    },
-    {
-      question: "Is anaerobic coffee more expensive than washed?",
-      answer:
-        "Yes — anaerobic processing requires sealed tanks and longer controlled fermentation, which adds to production cost and complexity.",
-    },
-  ],
-
-  ritual: {
-  type: "pour-over",
-  method: "Pour-over ritual",
-  dose: "18g",
-  doseLabel: "Coffee",
-  water: "290g",
-  waterLabel: "Water",
-  temperature: "94°C",
-  ratio: "1:16",
-  totalTime: 180,
-
-  steps: [
-    {
-      time: 0,
-      label: "Bloom",
-      water: "50g",
-      duration: 45,
-    },
-    {
-      time: 45,
-      label: "Pour",
-      water: "120g",
-      duration: 45,
-    },
-    {
-      time: 90,
-      label: "Pour",
-      water: "120g",
-      duration: 90,
-    },
-  ],
-
-  description:
-    "The dial fills as you brew; follow the step in the centre.",
-}
-
-},
-
- {
-  _id: "monarch-250-DHANKUTA",
-  name: "Maruni",
-  shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
-  slug: "filter-roast-anaerobic-monarch-250g-DHANKUTA",
-
-  frontImage: product5,
-  image: product2,
-  hoverImage: product2,
-  rotationImages: createRotationImages(
-    "filter-roast-anaerobic-monarch-250g-DHANKUTA",
-    3,
-  ),
-  imageColor: "#C8D2B8",
-
-  category: "coffee",
-  type: "beans",
-
-  roastLevel: 3,
-  caffeine: "full",
-  profile: 4,
-
-  process: "Washed",
-  altitude: "1,200-1,500",
-  origin: "Gulmi",
-
-  price: 1650,
-  sizeOptions: [
-    { grams: 250, price: 1650 },
-  ],
-
-  grindOptions: ["Whole bean", "Filter", "Espresso", "Moka pot","French Press","Cold Brew"],
-
-  description:
-    "Bold and complex Nepali filter roast, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
-
-  shortDescription:
-    "Bold, fruity, and complex — a unique anaerobic expression.",
-
-  aroma: [
-    "molasses",
-    "caramel",
-    "chocolatey",
-  ],
-
- flavors: [
-    "Tropical Fruit",
-    "Wine",
-    "Syrupy Body",
-  ],
-
-  /*
-   * PRODUCT INFORMATION
-   * Used by ProductInfoGrid
-   */
-  info: {
-    origin: {
-      value: "Dhankuta, Nepal",
-      blurb:
-        "Grown in the hills of Dhankuta in eastern Nepal, where elevation, climate, and mountain soil create distinctive growing conditions for specialty coffee.",
-    },
-
-    altitude: {
-      value: "1,200–1,500 m",
-      blurb:
-        "The coffee is grown at 1,200–1,500 metres above sea level. Higher elevations can encourage slower cherry development and contribute to greater complexity in the cup.",
-    },
-
-    process: {
-      value: "Anaerobic",
-      blurb:
-        "The coffee cherries are fermented in a controlled, oxygen-free environment. This process encourages intense fruit character, sweetness, and wine-like complexity.",
-    },
-
-    variety: {
-      value: "Arabica",
-      blurb:
-        "A specialty Arabica coffee selected for its balance of sweetness, acidity, and expressive flavour characteristics.",
-    },
-
-    harvest: {
-      value: "Seasonal",
-      blurb:
-        "Coffee is harvested selectively when cherries reach the right stage of ripeness, helping preserve sweetness and consistency in the final cup.",
-    },
-
-    roast: {
-      value: "4/5",
-      blurb:
-        "A fuller roast profile developed to bring out the coffee's syrupy body, chocolate character, tropical fruit notes, and deeper sweetness.",
-    },
-  },
-
-  rating: 4.9,
-  reviews: 54,
-
-  available: true,
-  instock: true,
-  discount: false,
-
-  faqs: [
-    {
-      question: "What does anaerobic processing mean?",
-      answer:
-        "Coffee cherries are fermented in sealed, oxygen-free tanks. This intensifies the flavor and creates complex, wine-like notes not found in washed or natural coffees.",
-    },
-    {
-      question: "How many cups can I brew from 250g?",
-      answer:
-        "Around 15–18 cups using a standard filter ratio of 15g of coffee per cup.",
-    },
-    {
-      question: "Should I choose whole beans or ground?",
-      answer:
-        "Whole beans stay fresh longer. Choose ground only if you don't have a grinder — we grind it fresh specifically for filter brewing.",
-    },
-    {
-      question: "Is anaerobic coffee more expensive than washed?",
-      answer:
-        "Yes — anaerobic processing requires sealed tanks and longer controlled fermentation, which adds to production cost and complexity.",
-    },
-  ],
+    faqs: [
+      {
+        question: "What does anaerobic processing mean?",
+        answer:
+          "Coffee cherries are fermented in sealed, oxygen-free tanks. This intensifies the flavor and creates complex, wine-like notes not found in washed or natural coffees.",
+      },
+      {
+        question: "How many cups can I brew from 250g?",
+        answer:
+          "Around 15–18 cups using a standard filter ratio of 15g of coffee per cup.",
+      },
+      {
+        question: "Should I choose whole beans or ground?",
+        answer:
+          "Whole beans stay fresh longer. Choose ground only if you don't have a grinder — we grind it fresh specifically for filter brewing.",
+      },
+      {
+        question: "Is anaerobic coffee more expensive than washed?",
+        answer:
+          "Yes — anaerobic processing requires sealed tanks and longer controlled fermentation, which adds to production cost and complexity.",
+      },
+    ],
 
     ritual: {
-  type: "pour-over",
-  method: "Pour-over ritual",
-  dose: "18g",
-  doseLabel: "Coffee",
-  water: "290g",
-  waterLabel: "Water",
-  temperature: "94°C",
-  ratio: "1:16",
-  totalTime: 180,
+      type: "pour-over",
+      method: "Pour-over ritual",
+      dose: "18g",
+      doseLabel: "Coffee",
+      water: "290g",
+      waterLabel: "Water",
+      temperature: "94°C",
+      ratio: "1:16",
+      totalTime: 180,
 
-  steps: [
-    {
-      time: 0,
-      label: "Bloom",
-      water: "50g",
-      duration: 45,
-    },
-    {
-      time: 45,
-      label: "Pour",
-      water: "120g",
-      duration: 45,
-    },
-    {
-      time: 90,
-      label: "Pour",
-      water: "120g",
-      duration: 90,
-    },
-  ],
+      steps: [
+        {
+          time: 0,
+          label: "Bloom",
+          water: "50g",
+          duration: 45,
+        },
+        {
+          time: 45,
+          label: "Pour",
+          water: "120g",
+          duration: 45,
+        },
+        {
+          time: 90,
+          label: "Pour",
+          water: "120g",
+          duration: 90,
+        },
+      ],
 
-  description:
-    "The dial fills as you brew; follow the step in the centre.",
-},
-},
-
-{
-  _id: "special-edition-250-DHANKUTA",
-  name: "Jhakri",
-  shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
-  slug: "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
-
-  frontImage: product6,
-  image: product3,
-  hoverImage: product3,
-  rotationImages: createRotationImages(
-    "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
-    27,
-  ),
-  imageColor: "#D5B77A",
-
-  category: "coffee",
-  type: "beans",
-
-  roastLevel: 5,
-  caffeine: "full",
-  profile: 4,
-
-  process: "Anaerobic",
-  altitude: "1,200-1,500",
-  origin: "Sindhupalchok",
-
-  price: 1650,
-  sizeOptions: [
-    { grams: 200, price: 1650 },
-    { grams: 500, price: 2650 },
-  ],
-
-  grindOptions: ["Whole bean", "Filter", "Espresso", "Moka pot","French Press","Cold Brew"],
-
-  description:
-    "Bold and complex Nepali filter roast, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
-
-  shortDescription:
-    "Bold, fruity, and complex — a unique anaerobic expression.",
-
-  aroma: [
-    "molasses",
-    "caramel",
-    "chocolatey",
-  ],
-
- flavors: [
-    "Tropical Fruit",
-    "Wine",
-    "Syrupy Body",
-  ],
-
-  /*
-   * PRODUCT INFORMATION
-   * Used by ProductInfoGrid
-   */
-  info: {
-    origin: {
-      value: "Dhankuta, Nepal",
-      blurb:
-        "Grown in the hills of Dhankuta in eastern Nepal, where elevation, climate, and mountain soil create distinctive growing conditions for specialty coffee.",
-    },
-
-    altitude: {
-      value: "1,200–1,500 m",
-      blurb:
-        "The coffee is grown at 1,200–1,500 metres above sea level. Higher elevations can encourage slower cherry development and contribute to greater complexity in the cup.",
-    },
-
-    process: {
-      value: "Anaerobic",
-      blurb:
-        "The coffee cherries are fermented in a controlled, oxygen-free environment. This process encourages intense fruit character, sweetness, and wine-like complexity.",
-    },
-
-    variety: {
-      value: "Arabica",
-      blurb:
-        "A specialty Arabica coffee selected for its balance of sweetness, acidity, and expressive flavour characteristics.",
-    },
-
-    harvest: {
-      value: "Seasonal",
-      blurb:
-        "Coffee is harvested selectively when cherries reach the right stage of ripeness, helping preserve sweetness and consistency in the final cup.",
-    },
-
-    roast: {
-      value: "4/5",
-      blurb:
-        "A fuller roast profile developed to bring out the coffee's syrupy body, chocolate character, tropical fruit notes, and deeper sweetness.",
+      description: "The dial fills as you brew; follow the step in the centre.",
     },
   },
 
-  rating: 4.9,
-  reviews: 54,
+  {
+    _id: "monarch-250-DHANKUTA",
+    name: "Maruni",
+    shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
+    slug: "filter-roast-anaerobic-monarch-250g-DHANKUTA",
 
-  available: true,
-  instock: true,
-  discount: false,
+    frontImage: product5,
+    image: product2,
+    hoverImage: product2,
+    rotationImages: createRotationImages(
+      "filter-roast-anaerobic-monarch-250g-DHANKUTA",
+      3,
+    ),
+    imageColor: "#C8D2B8",
+    characterImage: maruni,
 
-  faqs: [
-    {
-      question: "What does anaerobic processing mean?",
-      answer:
-        "Coffee cherries are fermented in sealed, oxygen-free tanks. This intensifies the flavor and creates complex, wine-like notes not found in washed or natural coffees.",
+    eye: "The Everyday Favourite",
+    description2: "Medium Roast",
+    shortDescription2:
+      "“Come, this is the cup we share when everyone is home.” — Maruni",
+    category: "coffee",
+    icon: maruni,
+    background: "bg-[#30241F]",
+    text: "text-[#F0E3D3]",
+    accent: "#C08B61",
+    hillColors: ["#5A4035", "#453027", "#30221D", "#211815"],
+
+    type: "beans",
+
+    roastLevel: 3,
+    caffeine: "full",
+    profile: 4,
+
+    process: "Washed",
+    altitude: "1,200-1,500",
+    origin: "Gulmi",
+
+    price: 1650,
+    sizeOptions: [{ grams: 250, price: 1650 }],
+
+    grindOptions: [
+      "Whole bean",
+      "Filter",
+      "Espresso",
+      "Moka pot",
+      "French Press",
+      "Cold Brew",
+    ],
+
+    description:
+      "Bold and complex Nepali filter roast, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
+
+    shortDescription:
+      "Bold, fruity, and complex — a unique anaerobic expression.",
+
+    aroma: ["molasses", "caramel", "chocolatey"],
+
+    flavors: ["Tropical Fruit", "Wine", "Syrupy Body"],
+
+    /*
+     * PRODUCT INFORMATION
+     * Used by ProductInfoGrid
+     */
+    info: {
+      origin: {
+        value: "Dhankuta, Nepal",
+        blurb:
+          "Grown in the hills of Dhankuta in eastern Nepal, where elevation, climate, and mountain soil create distinctive growing conditions for specialty coffee.",
+      },
+
+      altitude: {
+        value: "1,200–1,500 m",
+        blurb:
+          "The coffee is grown at 1,200–1,500 metres above sea level. Higher elevations can encourage slower cherry development and contribute to greater complexity in the cup.",
+      },
+
+      process: {
+        value: "Anaerobic",
+        blurb:
+          "The coffee cherries are fermented in a controlled, oxygen-free environment. This process encourages intense fruit character, sweetness, and wine-like complexity.",
+      },
+
+      variety: {
+        value: "Arabica",
+        blurb:
+          "A specialty Arabica coffee selected for its balance of sweetness, acidity, and expressive flavour characteristics.",
+      },
+
+      harvest: {
+        value: "Seasonal",
+        blurb:
+          "Coffee is harvested selectively when cherries reach the right stage of ripeness, helping preserve sweetness and consistency in the final cup.",
+      },
+
+      roast: {
+        value: "4/5",
+        blurb:
+          "A fuller roast profile developed to bring out the coffee's syrupy body, chocolate character, tropical fruit notes, and deeper sweetness.",
+      },
     },
-    {
-      question: "How many cups can I brew from 250g?",
-      answer:
-        "Around 15–18 cups using a standard filter ratio of 15g of coffee per cup.",
-    },
-    {
-      question: "Should I choose whole beans or ground?",
-      answer:
-        "Whole beans stay fresh longer. Choose ground only if you don't have a grinder — we grind it fresh specifically for filter brewing.",
-    },
-    {
-      question: "Is anaerobic coffee more expensive than washed?",
-      answer:
-        "Yes — anaerobic processing requires sealed tanks and longer controlled fermentation, which adds to production cost and complexity.",
-    },
-  ],
+
+    rating: 4.9,
+    reviews: 54,
+
+    available: true,
+    instock: true,
+    discount: false,
+
+    faqs: [
+      {
+        question: "What does anaerobic processing mean?",
+        answer:
+          "Coffee cherries are fermented in sealed, oxygen-free tanks. This intensifies the flavor and creates complex, wine-like notes not found in washed or natural coffees.",
+      },
+      {
+        question: "How many cups can I brew from 250g?",
+        answer:
+          "Around 15–18 cups using a standard filter ratio of 15g of coffee per cup.",
+      },
+      {
+        question: "Should I choose whole beans or ground?",
+        answer:
+          "Whole beans stay fresh longer. Choose ground only if you don't have a grinder — we grind it fresh specifically for filter brewing.",
+      },
+      {
+        question: "Is anaerobic coffee more expensive than washed?",
+        answer:
+          "Yes — anaerobic processing requires sealed tanks and longer controlled fermentation, which adds to production cost and complexity.",
+      },
+    ],
+
     ritual: {
-  type: "pour-over",
-  method: "Pour-over ritual",
-  dose: "18g",
-  doseLabel: "Coffee",
-  water: "290g",
-  waterLabel: "Water",
-  temperature: "94°C",
-  ratio: "1:16",
-  totalTime: 180,
+      type: "pour-over",
+      method: "Pour-over ritual",
+      dose: "18g",
+      doseLabel: "Coffee",
+      water: "290g",
+      waterLabel: "Water",
+      temperature: "94°C",
+      ratio: "1:16",
+      totalTime: 180,
 
-  steps: [
-    {
-      time: 0,
-      label: "Bloom",
-      water: "50g",
-      duration: 45,
-    },
-    {
-      time: 45,
-      label: "Pour",
-      water: "120g",
-      duration: 45,
-    },
-    {
-      time: 90,
-      label: "Pour",
-      water: "120g",
-      duration: 90,
-    },
-  ],
+      steps: [
+        {
+          time: 0,
+          label: "Bloom",
+          water: "50g",
+          duration: 45,
+        },
+        {
+          time: 45,
+          label: "Pour",
+          water: "120g",
+          duration: 45,
+        },
+        {
+          time: 90,
+          label: "Pour",
+          water: "120g",
+          duration: 90,
+        },
+      ],
 
-  description:
-    "The dial fills as you brew; follow the step in the centre.",
-},
-},
+      description: "The dial fills as you brew; follow the step in the centre.",
+    },
+  },
 
+  {
+    _id: "special-edition-250-DHANKUTA",
+    name: "Jhakri",
+    shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
+    slug: "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
+
+    frontImage: product6,
+    image: product3,
+    hoverImage: product3,
+    rotationImages: createRotationImages(
+      "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
+      27,
+    ),
+    imageColor: "#D5B77A",
+    characterImage: jhakri,
+
+    category: "coffee",
+    type: "beans",
+
+    eye: "For the Bold at Heart",
+    description2: "Dark Roast",
+    shortDescription2:
+      "“Stay up with me a while. The best things come slow, in the dark.” — Jhakri",
+    icon: jhakri,
+    background: "bg-[#252522]",
+    text: "text-[#E8E4DB]",
+    accent: "#A18B70",
+    hillColors: ["#514B42", "#3C3832", "#2C2925", "#1B1A18"],
+
+    roastLevel: 5,
+    caffeine: "full",
+    profile: 4,
+
+    process: "Anaerobic",
+    altitude: "1,200-1,500",
+    origin: "Sindhupalchok",
+
+    price: 1650,
+    sizeOptions: [
+      { grams: 200, price: 1650 },
+      { grams: 500, price: 2650 },
+    ],
+
+    grindOptions: [
+      "Whole bean",
+      "Filter",
+      "Espresso",
+      "Moka pot",
+      "French Press",
+      "Cold Brew",
+    ],
+
+    description:
+      "Bold and complex Nepali filter roast, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
+
+    shortDescription:
+      "Bold, fruity, and complex — a unique anaerobic expression.",
+
+    aroma: ["molasses", "caramel", "chocolatey"],
+
+    flavors: ["Tropical Fruit", "Wine", "Syrupy Body"],
+
+    /*
+     * PRODUCT INFORMATION
+     * Used by ProductInfoGrid
+     */
+    info: {
+      origin: {
+        value: "Dhankuta, Nepal",
+        blurb:
+          "Grown in the hills of Dhankuta in eastern Nepal, where elevation, climate, and mountain soil create distinctive growing conditions for specialty coffee.",
+      },
+
+      altitude: {
+        value: "1,200–1,500 m",
+        blurb:
+          "The coffee is grown at 1,200–1,500 metres above sea level. Higher elevations can encourage slower cherry development and contribute to greater complexity in the cup.",
+      },
+
+      process: {
+        value: "Anaerobic",
+        blurb:
+          "The coffee cherries are fermented in a controlled, oxygen-free environment. This process encourages intense fruit character, sweetness, and wine-like complexity.",
+      },
+
+      variety: {
+        value: "Arabica",
+        blurb:
+          "A specialty Arabica coffee selected for its balance of sweetness, acidity, and expressive flavour characteristics.",
+      },
+
+      harvest: {
+        value: "Seasonal",
+        blurb:
+          "Coffee is harvested selectively when cherries reach the right stage of ripeness, helping preserve sweetness and consistency in the final cup.",
+      },
+
+      roast: {
+        value: "4/5",
+        blurb:
+          "A fuller roast profile developed to bring out the coffee's syrupy body, chocolate character, tropical fruit notes, and deeper sweetness.",
+      },
+    },
+
+    rating: 4.9,
+    reviews: 54,
+
+    available: true,
+    instock: true,
+    discount: false,
+
+    faqs: [
+      {
+        question: "What does anaerobic processing mean?",
+        answer:
+          "Coffee cherries are fermented in sealed, oxygen-free tanks. This intensifies the flavor and creates complex, wine-like notes not found in washed or natural coffees.",
+      },
+      {
+        question: "How many cups can I brew from 250g?",
+        answer:
+          "Around 15–18 cups using a standard filter ratio of 15g of coffee per cup.",
+      },
+      {
+        question: "Should I choose whole beans or ground?",
+        answer:
+          "Whole beans stay fresh longer. Choose ground only if you don't have a grinder — we grind it fresh specifically for filter brewing.",
+      },
+      {
+        question: "Is anaerobic coffee more expensive than washed?",
+        answer:
+          "Yes — anaerobic processing requires sealed tanks and longer controlled fermentation, which adds to production cost and complexity.",
+      },
+    ],
+    ritual: {
+      type: "pour-over",
+      method: "Pour-over ritual",
+      dose: "18g",
+      doseLabel: "Coffee",
+      water: "290g",
+      waterLabel: "Water",
+      temperature: "94°C",
+      ratio: "1:16",
+      totalTime: 180,
+
+      steps: [
+        {
+          time: 0,
+          label: "Bloom",
+          water: "50g",
+          duration: 45,
+        },
+        {
+          time: 45,
+          label: "Pour",
+          water: "120g",
+          duration: 45,
+        },
+        {
+          time: 90,
+          label: "Pour",
+          water: "120g",
+          duration: 90,
+        },
+      ],
+
+      description: "The dial fills as you brew; follow the step in the centre.",
+    },
+  },
 ];
 
 export const teaProducts = [
   {
     _id: "first-flush-100-ILAM",
-    name: "Ilam First Flush",
+    name: "Ani",
     shortName: "First Flush – 100g [Loose Leaf]",
     slug: "ilam-first-flush-100g",
 
@@ -517,9 +546,20 @@ export const teaProducts = [
     image: tea1,
     hoverImage: tea1,
     imageColor: "#D8DCC8",
+    characterImage: ani,
 
     category: "tea",
     type: "leaves",
+
+    eye: "Tea from the Hills",
+    description2: "White & Green Tea",
+    shortDescription2:
+      "“Sit a moment. A clear cup, and the day goes quiet.” — Ani",
+    icon: tea1,
+    background: "bg-[#E9EDFF]",
+    text: "text-[#35416A]",
+    accent: "#929FE0",
+    hillColors: ["#DCE3FF", "#C5D0FA", "#A7B6ED", "#8799D8"],
 
     teaType: "First Flush",
     caffeine: "medium",
@@ -544,17 +584,9 @@ export const teaProducts = [
     shortDescription:
       "Floral, bright, and delicate — a fresh expression of Ilam's first harvest.",
 
-    aroma: [
-      "white flowers",
-      "fresh grass",
-      "honey",
-    ],
+    aroma: ["white flowers", "fresh grass", "honey"],
 
-    flavors: [
-      "White Flowers",
-      "Honey",
-      "Citrus",
-    ],
+    flavors: ["White Flowers", "Honey", "Citrus"],
 
     info: {
       origin: {
@@ -657,7 +689,7 @@ export const teaProducts = [
 
   {
     _id: "ilam-green-100-ILAM",
-    name: "Ilam Green",
+    name: "Raani",
     shortName: "Ilam Green – 100g [Loose Leaf]",
     slug: "ilam-green-100g",
 
@@ -665,9 +697,20 @@ export const teaProducts = [
     image: tea2,
     hoverImage: tea2,
     imageColor: "#C9D8C2",
+    characterImage: raani,
 
     category: "tea",
     type: "leaves",
+
+    eye: "A Royal Cup",
+    description2: "Black Tea",
+    shortDescription2:
+      "“Bold, and in no hurry — pour, and take your time.” — Raani",
+    icon: raani,
+    background: "bg-[#30202B]",
+    text: "text-[#F0DDE7]",
+    accent: "#C18A9F",
+    hillColors: ["#654052", "#4D3042", "#382330", "#241720"],
 
     teaType: "Green Tea",
     caffeine: "medium",
@@ -692,17 +735,9 @@ export const teaProducts = [
     shortDescription:
       "Fresh, clean, and gently sweet — an everyday green tea from Ilam.",
 
-    aroma: [
-      "fresh grass",
-      "young leaves",
-      "sweet herbs",
-    ],
+    aroma: ["fresh grass", "young leaves", "sweet herbs"],
 
-    flavors: [
-      "Green Vegetal",
-      "Sweet Grass",
-      "Soft Citrus",
-    ],
+    flavors: ["Green Vegetal", "Sweet Grass", "Soft Citrus"],
 
     info: {
       origin: {
@@ -803,151 +838,143 @@ export const teaProducts = [
     },
   },
 
-  {
-    _id: "himalayan-silver-tips-100-ILAM",
-    name: "Himalayan Tips",
-    shortName: "Silver Tips – 100g [Loose Leaf]",
-    slug: "himalayan-silver-tips-100g",
+  // {
+  //   _id: "himalayan-silver-tips-100-ILAM",
+  //   name: "Himalayan Tips",
+  //   shortName: "Silver Tips – 100g [Loose Leaf]",
+  //   slug: "himalayan-silver-tips-100g",
 
-    frontImage: tea6,
-    image: tea3,
-    hoverImage: tea3,
-    imageColor: "#E0DED0",
+  //   frontImage: tea6,
+  //   image: tea3,
+  //   hoverImage: tea3,
+  //   imageColor: "#E0DED0",
 
-    category: "tea",
-    type: "leaves",
+  //   category: "tea",
+  //   type: "leaves",
 
-    teaType: "Silver Tip",
-    caffeine: "medium",
-    oxidation: 3,
-    profile: 5,
+  //   teaType: "Silver Tip",
+  //   caffeine: "medium",
+  //   oxidation: 3,
+  //   profile: 5,
 
-    altitude: "2,000–2,400 m",
-    origin: "Ilam, Nepal",
+  //   altitude: "2,000–2,400 m",
+  //   origin: "Ilam, Nepal",
 
-    price: 1450,
-    sizeOptions: [
-      { grams: 50, price: 800 },
-      { grams: 100, price: 1450 },
-      { grams: 250, price: 3200 },
-    ],
+  //   price: 1450,
+  //   sizeOptions: [
+  //     { grams: 50, price: 800 },
+  //     { grams: 100, price: 1450 },
+  //     { grams: 250, price: 3200 },
+  //   ],
 
-    formOptions: ["Whole-leaf tin", "Tea Bag"],
+  //   formOptions: ["Whole-leaf tin", "Tea Bag"],
 
-    description:
-      "A refined high-altitude tea made from carefully selected young buds and tender leaves. Silver Tips offers a soft floral aroma, delicate sweetness, and a silky, lingering finish.",
+  //   description:
+  //     "A refined high-altitude tea made from carefully selected young buds and tender leaves. Silver Tips offers a soft floral aroma, delicate sweetness, and a silky, lingering finish.",
 
-    shortDescription:
-      "Silky, floral, and refined — delicate high-altitude tea from Nepal.",
+  //   shortDescription:
+  //     "Silky, floral, and refined — delicate high-altitude tea from Nepal.",
 
-    aroma: [
-      "white flowers",
-      "honey",
-      "fresh herbs",
-    ],
+  //   aroma: ["white flowers", "honey", "fresh herbs"],
 
-    flavors: [
-      "Honey",
-      "White Flowers",
-      "Stone Fruit",
-    ],
+  //   flavors: ["Honey", "White Flowers", "Stone Fruit"],
 
-    info: {
-      origin: {
-        value: "Ilam, Nepal",
-        blurb:
-          "Grown in the higher reaches of Ilam, where cool mountain conditions encourage slow development of the finest young buds.",
-      },
+  //   info: {
+  //     origin: {
+  //       value: "Ilam, Nepal",
+  //       blurb:
+  //         "Grown in the higher reaches of Ilam, where cool mountain conditions encourage slow development of the finest young buds.",
+  //     },
 
-      altitude: {
-        value: "2,000–2,400 m",
-        blurb:
-          "The higher elevation and cooler climate contribute to slower leaf growth and a more delicate, aromatic cup.",
-      },
+  //     altitude: {
+  //       value: "2,000–2,400 m",
+  //       blurb:
+  //         "The higher elevation and cooler climate contribute to slower leaf growth and a more delicate, aromatic cup.",
+  //     },
 
-      process: {
-        value: "Delicately processed",
-        blurb:
-          "Young buds and leaves are handled gently to preserve their natural sweetness, floral aromas, and silky texture.",
-      },
+  //     process: {
+  //       value: "Delicately processed",
+  //       blurb:
+  //         "Young buds and leaves are handled gently to preserve their natural sweetness, floral aromas, and silky texture.",
+  //     },
 
-      variety: {
-        value: "Camellia sinensis",
-        blurb:
-          "Produced from carefully selected young leaves and buds of the Camellia sinensis tea plant.",
-      },
+  //     variety: {
+  //       value: "Camellia sinensis",
+  //       blurb:
+  //         "Produced from carefully selected young leaves and buds of the Camellia sinensis tea plant.",
+  //     },
 
-      harvest: {
-        value: "Young buds",
-        blurb:
-          "Collected from tender buds and young leaves prized for their delicate texture and concentrated character.",
-      },
+  //     harvest: {
+  //       value: "Young buds",
+  //       blurb:
+  //         "Collected from tender buds and young leaves prized for their delicate texture and concentrated character.",
+  //     },
 
-      oxidation: {
-        value: "Very low",
-        blurb:
-          "Minimal oxidation preserves the tea's delicate aroma, natural sweetness, and bright character.",
-      },
-    },
+  //     oxidation: {
+  //       value: "Very low",
+  //       blurb:
+  //         "Minimal oxidation preserves the tea's delicate aroma, natural sweetness, and bright character.",
+  //     },
+  //   },
 
-    rating: 4.9,
-    reviews: 18,
+  //   rating: 4.9,
+  //   reviews: 18,
 
-    available: true,
-    instock: true,
-    discount: false,
+  //   available: true,
+  //   instock: true,
+  //   discount: false,
 
-    faqs: [
-      {
-        question: "What makes Silver Tips different?",
-        answer:
-          "Silver Tips is made from young buds and tender leaves, giving it a softer body, delicate floral character, and naturally sweet finish.",
-      },
-      {
-        question: "How should I brew this tea?",
-        answer:
-          "Use around 3g of tea per 250ml of water at approximately 85°C. Steep for 2–3 minutes for the best balance.",
-      },
-      {
-        question: "Can I steep the leaves more than once?",
-        answer:
-          "Yes. Silver Tips is well suited to multiple infusions, with later steeps often becoming softer and more aromatic.",
-      },
-      {
-        question: "How should I store the tea?",
-        answer:
-          "Store it airtight and keep it away from direct sunlight, moisture, heat, and strong-smelling foods.",
-      },
-    ],
+  //   faqs: [
+  //     {
+  //       question: "What makes Silver Tips different?",
+  //       answer:
+  //         "Silver Tips is made from young buds and tender leaves, giving it a softer body, delicate floral character, and naturally sweet finish.",
+  //     },
+  //     {
+  //       question: "How should I brew this tea?",
+  //       answer:
+  //         "Use around 3g of tea per 250ml of water at approximately 85°C. Steep for 2–3 minutes for the best balance.",
+  //     },
+  //     {
+  //       question: "Can I steep the leaves more than once?",
+  //       answer:
+  //         "Yes. Silver Tips is well suited to multiple infusions, with later steeps often becoming softer and more aromatic.",
+  //     },
+  //     {
+  //       question: "How should I store the tea?",
+  //       answer:
+  //         "Store it airtight and keep it away from direct sunlight, moisture, heat, and strong-smelling foods.",
+  //     },
+  //   ],
 
-    ritual: {
-      type: "steeping",
-      method: "Steeping ritual",
-      dose: "3g",
-      doseLabel: "Leaf",
-      water: "250ml",
-      waterLabel: "Water",
-      temperature: "85°C",
+  //   ritual: {
+  //     type: "steeping",
+  //     method: "Steeping ritual",
+  //     dose: "3g",
+  //     doseLabel: "Leaf",
+  //     water: "250ml",
+  //     waterLabel: "Water",
+  //     temperature: "85°C",
 
-      methods: {
-        western: {
-          label: "Western",
-          steeps: [
-            { number: 1, duration: 180 },
-            { number: 2, duration: 240 },
-            { number: 3, duration: 300 },
-          ],
-        },
+  //     methods: {
+  //       western: {
+  //         label: "Western",
+  //         steeps: [
+  //           { number: 1, duration: 180 },
+  //           { number: 2, duration: 240 },
+  //           { number: 3, duration: 300 },
+  //         ],
+  //       },
 
-        gongfu: {
-          label: "Gongfu",
-          steeps: [
-            { number: 1, duration: 25 },
-            { number: 2, duration: 40 },
-            { number: 3, duration: 60 },
-          ],
-        },
-      },
-    },
-  },
+  //       gongfu: {
+  //         label: "Gongfu",
+  //         steeps: [
+  //           { number: 1, duration: 25 },
+  //           { number: 2, duration: 40 },
+  //           { number: 3, duration: 60 },
+  //         ],
+  //       },
+  //     },
+  //   },
+  // },
 ];

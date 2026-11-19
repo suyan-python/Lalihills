@@ -66,7 +66,7 @@ const SocialsSummary = () => {
 
             {/* Social actions */}
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Button to={"/socials"} icon={false}>
+              <Button to={"/socials"} icon={false} variant="purple" size="md">
                 Explore our Socials
               </Button>
 

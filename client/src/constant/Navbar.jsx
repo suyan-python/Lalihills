@@ -380,7 +380,7 @@ const Navbar = () => {
     RIGHT PREVIEW
 =========================================== */}
 
-                <div className="relative flex w-[80%] overflow-hidden bg-darkHill">
+                <div className="relative flex w-[80%] overflow-hidden bg-darkPurple">
                   <div className="pointer-events-none absolute inset-0 overflow-hidden">
                     {/* Large leaf */}
                     <Leaf

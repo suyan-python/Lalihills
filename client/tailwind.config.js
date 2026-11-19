@@ -19,6 +19,7 @@ export const colors = {
   raised: "#FBF7EE",
 
   purple: "#ECE6F4",
+  deepPurple: "#8C6BAA",
   purpleTint: "#3a2f4af0",
   darkPurple: "#191426",
 

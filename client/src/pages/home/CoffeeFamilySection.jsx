@@ -64,12 +64,6 @@ function CoffeeProductCard({ product, index }) {
   const productImage = product.frontImage || product.image;
   const productDescription = product.shortDescription || product.description;
 
-  const characterImages = {
-    "cold-brew-250g-DHANKUTA": muuiya,
-    "filter-roast-anaerobic-monarch-250g-DHANKUTA": maruni,
-    "filter-roast-anaerobic-special-edition-250g-DHANKUTA": jhakri,
-  };
-
   return (
     <motion.article
       variants={cardVariants}
@@ -89,7 +83,7 @@ function CoffeeProductCard({ product, index }) {
         style={{ backgroundColor: palette.imageBg }}
       >
         {/* Floating Character Badge */}
-        {characterImages[product.slug] && (
+        {product.characterImage && (
           <motion.div
             initial={{
               opacity: 0,
@@ -125,12 +119,12 @@ function CoffeeProductCard({ product, index }) {
                 delay: 0.2 + index * 0.12,
               },
             }}
-            className="absolute top-1/2 z-[2] h-16 w-16 -translate-y-1/2  sm:h-26 sm:w-26 md:h-32 md:w-32 lg:h-52 lg:w-52"
+            className="absolute top-1/2 z-[2] h-16 w-16 -translate-y-1/2 sm:h-26 sm:w-26 md:h-32 md:w-32 lg:h-52 lg:w-52"
           >
             <motion.img
-              src={characterImages[product.slug]}
+              src={product.characterImage}
               alt={`${product.name} character`}
-              className="h-full w-full object-contain drop-shadow-[0_5px_8px_rgba(55,39,68,0.18)] "
+              className="h-full w-full object-contain drop-shadow-[0_5px_8px_rgba(55,39,68,0.18)]"
               animate={{
                 y: [0, -5, 0, -3, 0],
                 rotate: [0, 2, 0, -2, 0],

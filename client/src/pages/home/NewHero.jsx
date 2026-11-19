@@ -93,13 +93,14 @@ const productThemes = [
 ];
 
 const allProducts = [...coffeeProducts, ...teaProducts];
+const products = [...coffeeProducts, ...teaProducts];
 
-const products = productThemes.map((theme) => ({
-  ...theme,
-  product: allProducts.find(
-    (product) => product.name.toLowerCase() === theme.name.toLowerCase(),
-  ),
-}));
+// const products = productThemes.map((theme) => ({
+//   ...theme,
+//   product: allProducts.find(
+//     (product) => product.name.toLowerCase() === theme.name.toLowerCase(),
+//   ),
+// }));
 
 export default function NewHero() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -123,7 +124,7 @@ export default function NewHero() {
 
   // Automatically rotate every 5 seconds.
   useEffect(() => {
-    if (isInteracting) return;
+    if (isInteracting || products.length <= 1) return;
 
     const interval = setInterval(() => {
       setActiveIndex((current) => (current + 1) % products.length);
@@ -136,9 +137,9 @@ export default function NewHero() {
     setActiveIndex(index);
   };
 
-  const productLink = activeProduct.product
-    ? `/shop/${activeProduct.product.category}/${activeProduct.product.slug}`
-    : `/shop/${activeProduct.category}`;
+  const productLink = activeProduct
+    ? `/shop/${activeProduct.category}/${activeProduct.slug}`
+    : "/shop/coffee";
 
   return (
     <section
@@ -159,7 +160,7 @@ export default function NewHero() {
       </AnimatePresence>
 
       {/* Background image */}
-      <AnimatePresence mode="sync">
+      {/* <AnimatePresence mode="sync">
         <motion.div
           key={activeProduct.image}
           className="absolute inset-0"
@@ -176,9 +177,53 @@ export default function NewHero() {
           />
           <div className="absolute inset-0 bg-black/20" />
         </motion.div>
-      </AnimatePresence>
+      </AnimatePresence> */}
 
-      {/* Contrast overlay */}
+      <AnimatePresence mode="wait">
+        {activeProduct?.characterImage && (
+          <motion.div
+            key={activeProduct._id}
+            className="pointer-events-none absolute right-0 top-1/2 z-[2] h-[280px] w-[220px] -translate-y-1/2 sm:h-[380px] sm:w-[300px] lg:h-[520px] lg:w-[420px]"
+            initial={{
+              opacity: 0,
+              y: 180,
+              scale: 0.65,
+              rotate: -12,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              rotate: 0,
+            }}
+            exit={{
+              opacity: 0,
+              y: 140,
+              scale: 0.75,
+              rotate: -10,
+            }}
+            transition={{
+              duration: 0.8,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <motion.img
+              src={activeProduct.characterImage}
+              alt={`${activeProduct.name} character`}
+              className="h-full w-full object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.25)]"
+              animate={{
+                y: [0, -12, 0, -7, 0],
+                rotate: [0, 2, 0, -2, 0],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ANIMATED HILLS */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] overflow-hidden">
@@ -227,7 +272,7 @@ export default function NewHero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-lg flex-col items-start px-5 py-20 text-center text-white sm:px-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-2xl flex-col items-start px-5 py-20 text-center text-white sm:px-8">
         {/* Product eyebrow */}
         <AnimatePresence mode="wait">
           <motion.p
@@ -257,56 +302,109 @@ export default function NewHero() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.4 }}
-            className="mt-5 text-sm tracking-wide text-white/80 sm:text-base"
+            className="mt-5 text-sm max-w-md text-start tracking-wide text-white/80 sm:text-lg"
           >
-            {activeProduct.shortDescription}
+            {activeProduct.shortDescription2}
           </motion.p>
         </AnimatePresence>
 
-        {/* Product options */}
+        {/* Character Selector */}
         <div
-          className="mt-12 grid w-full max-w-5xl gap-3 grid-cols-2 md:grid-cols-3 "
+          className="mt-12 grid w-full max-w-5xl grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 "
           onMouseEnter={() => setIsInteracting(true)}
           onFocus={() => setIsInteracting(true)}
         >
           {products.map((product, index) => {
-            const Icon = product.icon;
             const isActive = index === activeIndex;
 
             return (
-              <button
-                key={product.name}
+              <motion.button
+                key={product._id}
                 type="button"
                 onMouseEnter={() => selectProduct(index)}
                 onFocus={() => selectProduct(index)}
                 onClick={() => selectProduct(index)}
                 aria-pressed={isActive}
-                className={`group flex min-h-[50px] flex-col items-start justify-center rounded-full border px-2 py-1 text-center transition-all duration-300 sm:min-h-[75px] bg-gray-900/45 ${
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.3 }}
+                className={`group relative flex max-h-[70px] items-center gap-2 overflow-hidden rounded-full border p-2 text-left bg-purple/75 backdrop-blur-md sm:max-h-[80px] sm:gap-3 sm:p-3 ${
                   isActive
-                    ? "border-amber-600/80  backdrop-blur-md -translate-y-0.5 cursor-pointer"
-                    : "border-white/25 bg-black/10 hover:border-white/60 hover:bg-white/10"
+                    ? "shadow-[0_8px_30px_rgba(180,145,210,0.16)] border-red"
+                    : "border-deepPurple/40"
                 }`}
               >
-                <div className="flex flex-row items-center gap-3 ">
-                  <Icon
-                    size={22}
-                    strokeWidth={1.4}
-                    className={`transition-transform rounded-4xl p-1 duration-300 bg-white text-ink ${
-                      isActive ? "scale-110 " : " group-hover:text-white"
-                    }`}
+                {/* Active glow */}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeCharacterGlow"
+                    className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-[#C8B2DF]/15 via-transparent to-[#8C6BAA]/10"
+                    transition={{ duration: 0.4 }}
                   />
+                )}
 
-                  <div className="flex flex-col items-start text-start">
-                    <p className="text-sm font-medium tracking-wide sm:text-base">
-                      {product.name}
-                    </p>
-
-                    <p className="text-[10px] leading-relaxed text-white/65 sm:text-xs ">
-                      {product.description}
-                    </p>
-                  </div>
+                {/* Character Image */}
+                <div className="relative z-[1] flex h-14 w-10 shrink-0 items-center justify-center sm:h-16 sm:w-14 bg-deepPurple/25 rounded-full overflow-hidden">
+                  {product.characterImage && (
+                    <motion.img
+                      src={product.characterImage}
+                      alt={`${product.name} character`}
+                      className="h-full w-full object-contain drop-shadow-[0_4px_7px_rgba(0,0,0,0.25)]"
+                      animate={
+                        isActive
+                          ? {
+                              y: [0, -3, 0],
+                              rotate: [0, 2, 0, -2, 0],
+                              scale: 1.08,
+                            }
+                          : {
+                              y: 0,
+                              rotate: 0,
+                              scale: 0.92,
+                            }
+                      }
+                      transition={
+                        isActive
+                          ? {
+                              duration: 4,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                            }
+                          : { duration: 0.3 }
+                      }
+                    />
+                  )}
                 </div>
-              </button>
+
+                {/* Character Details */}
+                <div className="relative z-[1] min-w-0 flex-1">
+                  <p
+                    className={`truncate header text-xs font-semibold tracking-wide transition-colors sm:text-sm text-darkPurple `}
+                  >
+                    {product.name}
+                  </p>
+
+                  <p className="mt-1 line-clamp-2 text-[9px] leading-relaxed text-darkPurple/75 font-light sm:text-[11px] uppercase">
+                    {product.description2 || product.shortDescription}
+                  </p>
+
+                  {/* Active indicator */}
+                  {/* <div className="mt-2 flex items-center gap-1.5">
+                    <span
+                      className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                        isActive ? "bg-[#C8A8E5]" : "bg-white/25"
+                      }`}
+                    />
+                    <span
+                      className={`text-[8px] font-semibold uppercase tracking-[0.16em] sm:text-[9px] ${
+                        isActive ? "text-[#D9C3ED]" : "text-white/35"
+                      }`}
+                    >
+                      {isActive ? "Selected" : product.category}
+                    </span>
+                  </div> */}
+                </div>
+              </motion.button>
             );
           })}
         </div>

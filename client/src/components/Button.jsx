@@ -18,6 +18,7 @@ const Button = ({
 }) => {
   const variants = {
     primary: "bg-red text-lightCream hover:bg-deepRed",
+    purple: "bg-[#8C6BAA] text-lightCream hover:bg-[#6A4D8C]",
     dark: "bg-ink text-lightCream hover:bg-hill",
     light: "bg-ivory text-hill hover:bg-lightWhite",
     outline:
