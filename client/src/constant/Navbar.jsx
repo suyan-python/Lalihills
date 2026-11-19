@@ -307,16 +307,7 @@ const Navbar = () => {
                 =========================================== */}
 
                 <div className="relative flex w-[20%] flex-col border-r border-lightWhite/10 px-10 pb-12 pt-32 xl:px-16">
-                  {/* Small label */}
-
-                  <div className="my-10 flex items-center gap-3">
-                    <span className="header text-[9px] uppercase tracking-[0.15em] text-ivory">
-                      We Have:
-                    </span>
-                  </div>
-
                   {/* Main menu */}
-
                   <nav className="flex flex-1 flex-col justify-start ">
                     {menuItems.map((item, index) => {
                       const isActive = activeItem === item.title;

@@ -95,19 +95,19 @@ const AuthenticSection = () => {
           {/* LAYER 02 — RED */}
           <motion.div
             style={{ y: layerTwoY }}
-            className="absolute -bottom-[8%] -left-[20%] h-[48%] w-[135%] rounded-[58%_42%_50%_50%/45%_55%_45%_55%] bg-red"
+            className="absolute -bottom-[8%] -left-[20%] h-[48%] w-[135%] rounded-[58%_42%_50%_50%/45%_55%_45%_55%] bg-soil"
           />
 
           {/* LAYER 03 — SOIL */}
           <motion.div
             style={{ y: layerThreeY }}
-            className="absolute -bottom-[10%] -left-[18%] h-[46%] w-[130%] rounded-[42%_58%_52%_48%/52%_42%_58%_48%] bg-soil"
+            className="absolute -bottom-[10%] -left-[18%] h-[46%] w-[130%] rounded-[42%_58%_52%_48%/52%_42%_58%_48%] bg-hill"
           />
 
           {/* LAYER 04 — HILL */}
           <motion.div
             style={{ y: layerFourY }}
-            className="absolute -bottom-[12%] -left-[20%] h-[42%] w-[140%] rounded-[52%_48%_45%_55%/48%_58%_42%_52%] bg-hill"
+            className="absolute -bottom-[12%] -left-[20%] h-[42%] w-[140%] rounded-[52%_48%_45%_55%/48%_58%_42%_52%] bg-ink"
           />
 
           {/* LAYER 05 — IVORY */}

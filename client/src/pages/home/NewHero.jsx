@@ -11,6 +11,7 @@ import { useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 
 const productThemes = [
+  // MUUIYA — Bright Lavender
   {
     name: "Muuiya",
     eye: "Light Roasted Coffee",
@@ -19,12 +20,14 @@ const productThemes = [
       "“Start where I start — a bright cup, before the day wakes up.” — Muuiya",
     category: "coffee",
     icon: Coffee,
-    background: "bg-[#E9E1D3]",
-    text: "text-[#40382D]",
-    accent: "#A8A58B",
+    background: "bg-[#F1E7FA]",
+    text: "text-[#49345E]",
+    accent: "#B58AD9",
     image: "/images/hero/muuiya.jpg",
-    hillColors: ["#D1C7B1", "#B8A88D", "#97846B", "#75614C"],
+    hillColors: ["#E8D8F5", "#D8BEEB", "#C19DDE", "#A77CCB"],
   },
+
+  // ANI — Fresh Lilac
   {
     name: "Ani",
     eye: "Tea from the Hills",
@@ -33,12 +36,14 @@ const productThemes = [
       "“Sit a moment. A clear cup, and the day goes quiet.” — Ani",
     category: "tea",
     icon: Leaf,
-    background: "bg-[#DCE5D8]",
-    text: "text-[#263C30]",
-    accent: "#66836A",
+    background: "bg-[#E9EDFF]",
+    text: "text-[#35416A]",
+    accent: "#929FE0",
     image: "/images/hero/ani.jpg",
-    hillColors: ["#B9CCB3", "#91AE8B", "#66896D", "#3E6049"],
+    hillColors: ["#DCE3FF", "#C5D0FA", "#A7B6ED", "#8799D8"],
   },
+
+  // MARUNI — Dark Roasted Brown
   {
     name: "Maruni",
     eye: "The Everyday Favourite",
@@ -47,12 +52,14 @@ const productThemes = [
       "“Come, this is the cup we share when everyone is home.” — Maruni",
     category: "coffee",
     icon: Coffee,
-    background: "bg-[#E8D4BD]",
-    text: "text-[#493326]",
-    accent: "#A77B54",
+    background: "bg-[#30241F]",
+    text: "text-[#F0E3D3]",
+    accent: "#C08B61",
     image: "/images/hero/maruni.jpg",
-    hillColors: ["#D9BFA1", "#C39C76", "#A77B54", "#805B3D"],
+    hillColors: ["#5A4035", "#453027", "#30221D", "#211815"],
   },
+
+  // RAANI — Dark Royal Plum
   {
     name: "Raani",
     eye: "A Royal Cup",
@@ -61,12 +68,14 @@ const productThemes = [
       "“Bold, and in no hurry — pour, and take your time.” — Raani",
     category: "tea",
     icon: Leaf,
-    background: "bg-[#DCCBC7]",
-    text: "text-[#482A2D]",
-    accent: "#874B50",
+    background: "bg-[#30202B]",
+    text: "text-[#F0DDE7]",
+    accent: "#C18A9F",
     image: "/images/hero/raani.jpg",
-    hillColors: ["#CDAEAA", "#B78685", "#965F65", "#713D46"],
+    hillColors: ["#654052", "#4D3042", "#382330", "#241720"],
   },
+
+  // JHAKRI — Dark Charcoal
   {
     name: "Jhakri",
     eye: "For the Bold at Heart",
@@ -75,11 +84,11 @@ const productThemes = [
       "“Stay up with me a while. The best things come slow, in the dark.” — Jhakri",
     category: "coffee",
     icon: Sprout,
-    background: "bg-[#D6D0C8]",
-    text: "text-[#292622]",
-    accent: "#6B5545",
+    background: "bg-[#252522]",
+    text: "text-[#E8E4DB]",
+    accent: "#A18B70",
     image: "/images/hero/jhakri.jpg",
-    hillColors: ["#B5ADA2", "#898075", "#62594F", "#39352F"],
+    hillColors: ["#514B42", "#3C3832", "#2C2925", "#1B1A18"],
   },
 ];
 
@@ -157,7 +166,7 @@ export default function NewHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.2 }}
+          transition={{ duration: 1.1 }}
         >
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -170,7 +179,6 @@ export default function NewHero() {
       </AnimatePresence>
 
       {/* Contrast overlay */}
-      <div className="absolute inset-0 bg-black/45" />
 
       {/* ANIMATED HILLS */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] overflow-hidden">
@@ -238,7 +246,7 @@ export default function NewHero() {
         <h1 className="header text-4xl leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl text-start font-semibold">
           Best brews from the
           <br />
-          <span className="text-orange">higher belts</span>.
+          <span className="text-red dark:text-orange">higher belts</span>.
         </h1>
 
         {/* Product description */}

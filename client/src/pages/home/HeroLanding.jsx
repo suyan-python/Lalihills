@@ -16,6 +16,7 @@ import TobeUsed from "./TobeUsed";
 import Shop from "../shop/Shop";
 import SocialsSummary from "../socials/SocialsSummary";
 import NewHero from "./NewHero";
+import CoffeeFamilySection from "./CoffeeFamilySection";
 
 const Landing = () => {
   return (
@@ -27,13 +28,15 @@ const Landing = () => {
 
       {/* <LaliComingSoon /> */}
 
-      <FeaturedProduct />
+      {/* <FeaturedProduct /> */}
 
-      <Halfhalf />
+      {/* <Halfhalf /> */}
 
-      <ContextSection />
+      {/* <ContextSection /> */}
 
       {/* <Halfhalf2 /> */}
+
+      <CoffeeFamilySection />
 
       <AuthenticSection />
 
@@ -45,7 +48,7 @@ const Landing = () => {
 
       {/* <SummerOfferings /> */}
 
-      <ShopBanner />
+      {/* <ShopBanner /> */}
 
       {/* <FeatureStandard /> */}
 

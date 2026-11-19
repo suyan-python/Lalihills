@@ -41,35 +41,27 @@ const socialPosts = [
 
 const SocialsSummary = () => {
   return (
-    <section className="relative overflow-hidden bg-lightWhite px-5 py-20 text-ink transition-colors duration-300 dark:bg-ink dark:text-lightCream sm:px-10 sm:py-28 lg:px-16">
+    <section className="relative overflow-hidden bg-purple px-5 py-20 text-ink transition-colors duration-300 dark:bg-ink dark:text-lightCream sm:px-10 sm:py-28 lg:px-16">
       {/* Subtle background detail */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-32 top-10 h-80 w-80 rounded-full bg-red/15 blur-3xl"
+        className="pointer-events-none absolute -right-32 top-10 h-80 w-80 rounded-full bg-[#C8B2DF]/40 blur-3xl"
       />
+
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-32 bottom-10 h-90 w-90 rounded-full bg-red/20 blur-3xl"
+        className="pointer-events-none absolute -left-32 bottom-10 h-90 w-90 rounded-full bg-[#D5C3E5]/50 blur-3xl"
       />
 
       <div className="relative mx-auto max-w-7xl">
-        {/* Section header */}
-        <div className="mb-10 gap-5 sm:mb-14  text-center">
-          <div className="gap-3 text-center ">
-            <h1 className="header text-5xl md:text-7xl font-medium uppercase  text-red dark:text-lightCream/60">
-              Our Socials
-            </h1>
-          </div>
-        </div>
-
         {/* Main layout */}
         <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           {/* Text content */}
           <div className="max-w-xl">
-            <h2 className="max-w-lg text-4xl font-light leading-[1.12] tracking-tight sm:text-5xl lg:text-6xl">
+            <h2 className="header max-w-lg text-4xl font-light leading-[1.12] tracking-tight text-[#40344D] sm:text-5xl lg:text-6xl">
               More than a cup.
               <br />
-              <span className="font-normal text-red">A whole world.</span>
+              <span className="font-normal text-[#8C6BAA]">A whole world.</span>
             </h2>
 
             {/* Social actions */}
@@ -78,15 +70,15 @@ const SocialsSummary = () => {
                 Explore our Socials
               </Button>
 
-              <div className="flex items-center gap-2 text-xs text-ink/50 dark:text-lightCream/50">
-                <Coffee size={15} />
+              <div className="flex items-center gap-2 text-xs text-[#766A80]">
+                <Coffee size={15} className="text-[#8C6BAA]" />
                 <span>Stories worth slowing down</span>
               </div>
             </div>
 
             {/* Social platform links */}
-            <div className="mt-10 flex items-center gap-3 border-t border-ink/10 pt-6 dark:border-lightCream/10">
-              <span className="mr-1 text-[10px] uppercase tracking-[0.16em] text-ink/45 dark:text-lightCream/45">
+            <div className="mt-10 flex items-center gap-3 border-t border-[#D7C8E4] pt-6">
+              <span className="mr-1 text-[10px] uppercase tracking-[0.16em] text-[#8B7D96]">
                 Find us on
               </span>
 
@@ -95,7 +87,7 @@ const SocialsSummary = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Laali Hills on Flame"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 transition-all duration-300 hover:border-red hover:bg-red hover:text-lightCream dark:border-lightCream/15"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D7C8E4] text-[#59466B] transition-all duration-300 hover:border-[#8C6BAA] hover:bg-[#8C6BAA] hover:text-white"
               >
                 <Flame size={17} />
               </a>
@@ -105,7 +97,7 @@ const SocialsSummary = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Laali Hills on Facebook"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 text-sm font-semibold transition-all duration-300 hover:border-red hover:bg-red hover:text-lightCream dark:border-lightCream/15"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D7C8E4] text-[#59466B] transition-all duration-300 hover:border-[#8C6BAA] hover:bg-[#8C6BAA] hover:text-white"
               >
                 f
               </a>
@@ -115,7 +107,7 @@ const SocialsSummary = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Laali Hills on YouTube"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 transition-all duration-300 hover:border-red hover:bg-red hover:text-lightCream dark:border-lightCream/15"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D7C8E4] text-[#59466B] transition-all duration-300 hover:border-[#8C6BAA] hover:bg-[#8C6BAA] hover:text-white"
               >
                 <Play size={16} />
               </a>
@@ -187,15 +179,15 @@ const SocialsSummary = () => {
             {/* Floating Explore badge */}
             <a
               href="/explore"
-              className="absolute -bottom-5 right-4 z-20 flex items-center gap-3 rounded-full border border-ink/10 bg-lightWhite py-2 pl-2 pr-5 shadow-xl transition-transform duration-300 hover:-translate-y-1 dark:border-lightCream/10 dark:bg-hill sm:right-8"
+              className="absolute -bottom-5 right-4 z-20 flex items-center gap-3 rounded-full border border-[#D7C8E4] bg-[#F8F4FB] py-2 pl-2 pr-5 text-[#40344D] shadow-xl transition-transform duration-300 hover:-translate-y-1 sm:right-8"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-red text-lightCream">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#8C6BAA] text-white">
                 <ArrowUpRight size={18} />
               </span>
 
               <span>
                 <span className="block text-xs font-medium">Take a look</span>
-                <span className="mt-0.5 block text-[10px] text-ink/50 dark:text-lightCream/50">
+                <span className="mt-0.5 block text-[10px] text-[#766A80]">
                   Explore Laali Hills
                 </span>
               </span>

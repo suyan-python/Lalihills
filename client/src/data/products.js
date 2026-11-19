@@ -26,7 +26,7 @@ const createRotationImages = (slug, count = 30) => {
 export const coffeeProducts = [
 {
   _id: "cold-brew-250-DHANKUTA",
-  name: "Dhankuta Anaerobic",
+  name: "Muuiya",
   shortName: "Cold Brew – 250g [Beans / Ground]",
   slug: "cold-brew-250g-DHANKUTA",
 
@@ -38,7 +38,7 @@ export const coffeeProducts = [
   category: "coffee",
   type: "beans",
 
-  roastLevel: 4,
+  roastLevel: 2,
   caffeine: "full",
   profile: 4,
 
@@ -186,7 +186,7 @@ sizeOptions: [
 
  {
   _id: "monarch-250-DHANKUTA",
-  name: "Gulmi Natural Washed",
+  name: "Maruni",
   shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
   slug: "filter-roast-anaerobic-monarch-250g-DHANKUTA",
 
@@ -202,7 +202,7 @@ sizeOptions: [
   category: "coffee",
   type: "beans",
 
-  roastLevel: 2,
+  roastLevel: 3,
   caffeine: "full",
   profile: 4,
 
@@ -346,7 +346,7 @@ sizeOptions: [
 
 {
   _id: "special-edition-250-DHANKUTA",
-  name: "Sindhupalchok Honey",
+  name: "Jhakri",
   shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
   slug: "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
 
