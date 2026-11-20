@@ -2,8 +2,9 @@ export const colors = {
   red: "#A4161A",
   ivory: "#F5F1E8",
   deepRed: "#7F1F27",
+  newRed: "#8F2635",
 
-  orange:"#E06A62",
+  orange: "#E06A62",
 
   ink: "#181918",
   hill: "#293A34",
@@ -29,7 +30,6 @@ export const colors = {
   leafTint: "#DCE3D6",
   silver: "#B7BBBE",
   blush: "#F2DCD8",
-  
 
   // Dark mode
   darkRed: "#C6535C",
@@ -53,7 +53,7 @@ export const colors = {
   darkLeafTint: "#343F34",
   darkSilver: "#45494C",
   darkBlush: "#4B3937",
-}
+};
 
 export default {
   theme: {

@@ -116,9 +116,9 @@ const OurSocials = () => {
     <main
       className={`py-20 md:py-32 ${
         isDark ? "dark" : ""
-      } min-h-screen bg-lightWhite text-ink transition-colors duration-300 dark:bg-ink dark:text-lightCream`}
+      } min-h-screen bg-purple text-ink transition-colors duration-300 dark:bg-darkPurple dark:text-lightCream`}
     >
-      <div className="mb-8 bg-red text-center gap-3 px-5 sm:mb-10 sm:px-10  lg:px-16">
+      <div className="mb-8 bg-deepPurple text-center gap-3 px-5 sm:mb-10 sm:px-10  lg:px-16">
         <span className="header text-[14px] font-medium uppercase tracking-[0.25em] text-lightWhite dark:text-ink transition-colors duration-300">
           Our Socials
         </span>

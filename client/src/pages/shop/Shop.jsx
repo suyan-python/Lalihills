@@ -157,21 +157,6 @@ const Shop = () => {
   return (
     <main className="relative z-20 overflow-x-hidden bg-purple " id="shop">
       <div className="max-w-[350px] md:max-w-7xl mx-auto pb-24 ">
-        {/* BACKGROUND WORD */}
-        {/* <div className="pointer-events-none absolute right-[-6vw] top-[8vh] z-0 select-none">
-          <motion.p
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 1.5,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="header whitespace-nowrap text-[24vw] font-black leading-none tracking-[-0.09em] text-ink/[0.025] sm:text-[22vw] md:text-[20vw]"
-          >
-            Laali Hills
-          </motion.p>
-        </div> */}
-
         <div
           className=" mt-18 md:mt-24
         text-[clamp(1.5rem,8vw,3rem)]
@@ -265,9 +250,10 @@ const CollectionHero = ({ collection, products = [], type }) => {
         /> */}
 
         {/* ACCENT COLOR OVERLAY */}
+        {/* ACCENT COLOR OVERLAY */}
         <div
           className={`absolute inset-0 ${
-            collectionKey === "gifts" ? "bg-deepRed" : "bg-purpleTint"
+            collectionKey === "gifts" ? "bg-red" : "bg-[#604B76]"
           }`}
         />
 

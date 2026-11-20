@@ -17,6 +17,7 @@ import Shop from "../shop/Shop";
 import SocialsSummary from "../socials/SocialsSummary";
 import NewHero from "./NewHero";
 import CoffeeFamilySection from "./CoffeeFamilySection";
+import WhereItBegins from "./WhereItBegins";
 
 const Landing = () => {
   return (
@@ -41,6 +42,8 @@ const Landing = () => {
       {/* <AuthenticSection /> */}
 
       {/* <TobeUsed /> */}
+
+      <WhereItBegins />
 
       <SocialsSummary />
 

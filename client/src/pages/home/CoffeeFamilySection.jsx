@@ -78,9 +78,10 @@ function CoffeeProductCard({ product, index }) {
       />
 
       {/* Product image */}
+      {/* Product image */}
       <div
         className="relative flex aspect-[4/4.2] items-center justify-center overflow-hidden rounded-[1.2rem]"
-        style={{ backgroundColor: palette.imageBg }}
+        style={{ backgroundColor: product.imageColor || "#F8F4FB" }}
       >
         {/* Floating Character Badge */}
         {product.characterImage && (
@@ -181,16 +182,6 @@ function CoffeeProductCard({ product, index }) {
         )}
 
         <div className="mt-auto flex items-center justify-between gap-3 pt-4">
-          {/* {product.price != null ? (
-            <span className="text-sm font-semibold text-[#49345E]">
-              Rs. {product.price.toLocaleString("en-IN")}
-            </span>
-          ) : (
-            <span className="text-[10px] font-medium tracking-wide text-[#8B7D96]">
-              FROM THE HILLS OF NEPAL
-            </span>
-          )} */}
-
           <span className="inline-flex items-center gap-1 text-xs  text-red transition-all duration-300 group-hover:gap-2">
             Meet {product.name} <ArrowRight size={14} />
           </span>
@@ -208,17 +199,6 @@ export default function CoffeeFamilySection({
 }) {
   return (
     <section className="relative overflow-hidden bg-[#ECE6F4] px-4 py-10 text-[#40344D] sm:px-6 sm:py-14 lg:px-10 lg:py-16">
-      {/* Decorative background */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-32 top-20 h-80 w-80 rounded-full bg-[#DCCBEA]/45 blur-3xl"
-      />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#D8C7E8]/45 blur-3xl"
-      />
-
       <div className="relative mx-auto max-w-7xl">
         {/* Character Introduction */}
         <motion.div
@@ -266,7 +246,7 @@ export default function CoffeeFamilySection({
                   delay: 0.15,
                 },
               }}
-              className="relative z-10 h-28 w-28 shrink-0 sm:h-52 sm:w-52"
+              className="relative z-10 h-52 w-52 shrink-0 "
             >
               {/* Floating character */}
               <motion.img

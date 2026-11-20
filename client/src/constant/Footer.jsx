@@ -4,7 +4,7 @@ import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="sticky bottom-0 z-0 overflow-hidden bg-ink text-lightCream">
+    <footer className="sticky bottom-0 z-0 overflow-hidden bg-darkPurple text-lightCream">
       <section className="relative overflow-hidden border-t border-white/[0.08] ">
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden select-none "></div>
 

@@ -92,15 +92,7 @@ const productThemes = [
   },
 ];
 
-const allProducts = [...coffeeProducts, ...teaProducts];
 const products = [...coffeeProducts, ...teaProducts];
-
-// const products = productThemes.map((theme) => ({
-//   ...theme,
-//   product: allProducts.find(
-//     (product) => product.name.toLowerCase() === theme.name.toLowerCase(),
-//   ),
-// }));
 
 export default function NewHero() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -158,26 +150,6 @@ export default function NewHero() {
           transition={{ duration: 1 }}
         />
       </AnimatePresence>
-
-      {/* Background image */}
-      {/* <AnimatePresence mode="sync">
-        <motion.div
-          key={activeProduct.image}
-          className="absolute inset-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.1 }}
-        >
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${activeProduct.image})`,
-            }}
-          />
-          <div className="absolute inset-0 bg-black/20" />
-        </motion.div>
-      </AnimatePresence> */}
 
       <AnimatePresence mode="wait">
         {activeProduct?.characterImage && (
@@ -272,7 +244,7 @@ export default function NewHero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-2xl flex-col items-start px-5 py-20 text-center text-white sm:px-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-start px-5 py-20 text-center text-white sm:px-8">
         {/* Product eyebrow */}
         <AnimatePresence mode="wait">
           <motion.p
@@ -281,18 +253,31 @@ export default function NewHero() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.35 }}
-            className="mb-5 text-[10px] uppercase tracking-[0.3em] text-white/75 sm:text-xs"
+            className="mb-5 text-[10px] uppercase tracking-[0.3em] text-deepPurple sm:text-xs"
           >
             {activeProduct.eye}
           </motion.p>
         </AnimatePresence>
 
-        {/* Constant heading */}
-        <h1 className="header text-4xl leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl text-start font-semibold">
-          Best brews from the
-          <br />
-          <span className="text-red dark:text-orange">higher belts</span>.
-        </h1>
+        {/* Interactive Character Introduction */}
+        <div className="relative">
+          <motion.h1
+            key={activeProduct._id}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="header text-4xl font-semibold leading-[1.08] tracking-tight text-start text-deepPurple dark:text-lightCream sm:text-6xl lg:text-7xl"
+          >
+            Well, hello
+            <br />
+            there! I'm
+            <br />
+            <span className="text-red dark:text-orange">
+              {activeProduct.name}
+            </span>
+            <span className="text-deepPurple dark:text-lightCream">.</span>
+          </motion.h1>
+        </div>
 
         {/* Product description */}
         <AnimatePresence mode="wait">
@@ -302,7 +287,7 @@ export default function NewHero() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.4 }}
-            className="mt-5 text-sm max-w-md text-start tracking-wide text-white/80 sm:text-lg"
+            className="mt-2 text-sm max-w-md text-start tracking-wide text-deepPurple/80 sm:text-lg"
           >
             {activeProduct.shortDescription2}
           </motion.p>

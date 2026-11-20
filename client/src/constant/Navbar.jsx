@@ -647,7 +647,7 @@ const Navbar = () => {
                 duration: 0.55,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="fixed inset-0 z-[90] overflow-y-auto bg-ink lg:hidden"
+              className="fixed inset-0 z-[90] overflow-y-auto bg-darkPurple lg:hidden"
             >
               <div className="min-h-full px-6 pb-10 pt-32 sm:px-10">
                 {/* Mobile menu */}
