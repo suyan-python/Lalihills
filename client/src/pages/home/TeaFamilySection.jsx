@@ -224,7 +224,7 @@ function TeaProductCard({ product, index }) {
             onClick={() => setIsQuickViewOpen((previous) => !previous)}
             className="relative z-20 inline-flex items-center justify-center gap-1 text-xs  text-lightWhite transition-all duration-200 hover:gap-2 cursor-pointer"
           >
-            Meet {product.name}
+            Hover {product.name}
             <ArrowRight size={14} />
           </button>
 
@@ -251,7 +251,7 @@ function TeaProductCard({ product, index }) {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className="
-  fixed inset-x-3 top-1/2 z-[100]
+  fixed inset-x-3 top-1/2 z-100
   w-auto -translate-y-1/2
   sm:inset-x-4
   md:inset-x-6
@@ -465,8 +465,6 @@ function TeaProductCard({ product, index }) {
                     </div>
                   </div>
                 </div>
-
-                {/* Small popup pointer */}
               </motion.div>
             )}
           </AnimatePresence>
