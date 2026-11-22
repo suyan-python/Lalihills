@@ -19,6 +19,7 @@ import NewHero from "./NewHero";
 import CoffeeFamilySection from "./CoffeeFamilySection";
 import WhereItBegins from "./WhereItBegins";
 import TeaFamilySection from "./TeaFamilySection";
+import NewsLetter from "./NewsLetter";
 
 const Landing = () => {
   return (
@@ -59,6 +60,7 @@ const Landing = () => {
       {/* <FeatureStandard /> */}
 
       {/* <CertificationSection /> */}
+      <NewsLetter />
 
       <End />
     </div>
