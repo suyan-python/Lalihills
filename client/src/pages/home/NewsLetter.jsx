@@ -11,7 +11,7 @@ const newsletterCharacters = [...coffeeProducts, ...teaProducts]
         (item) => item.characterImage === product.characterImage,
       ) === index,
   )
-  .slice(0, 3);
+  .slice(2, 5);
 
 export default function NewsLetter() {
   const [email, setEmail] = useState("");
@@ -42,7 +42,7 @@ export default function NewsLetter() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-purple px-5 py-20 text-ink sm:px-10 sm:py-28 lg:px-16">
+    <section className="relative overflow-hidden bg-purple px-5 py-10 text-ink sm:px-10 sm:py-14 lg:px-16">
       {/* Ambient background details */}
       <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-[#C8B2DF]/20 blur-[100px]" />
       <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[#C8B2DF]/25 blur-[110px]" />
@@ -67,127 +67,131 @@ export default function NewsLetter() {
         </motion.div>
 
         {/* Character conversation */}
-        <div className="relative mx-auto max-w-4xl">
-          {/* Characters */}
-          <div className="relative z-10 flex items-end justify-center gap-2 sm:gap-12">
-            {newsletterCharacters.map((character, index) => (
-              <motion.div
-                key={character.characterImage}
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
+        <div className="relative mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[0.7fr_2fr_0.7fr] lg:gap-5">
+            {/* Left character */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative order-2 flex flex-col items-center lg:order-1"
+            >
+              <div className="relative mb-3 max-w-[170px] rounded-2xl border border-[#D7C8E4] bg-[#F8F4FB] px-4 py-3 text-center text-[10px] leading-relaxed text-[#604B76] shadow-sm sm:text-xs">
+                {speechLines[0]}
+                <span className="absolute -bottom-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-b border-r border-[#D7C8E4] bg-[#F8F4FB]" />
+              </div>
+
+              <motion.img
+                src={newsletterCharacters[0]?.characterImage}
+                alt={newsletterCharacters[0]?.name || "Laali Hills character"}
+                className="h-36 w-full max-w-[170px] object-contain drop-shadow-[0_8px_12px_rgba(64,52,77,0.12)] sm:h-48 lg:h-56"
+                animate={{ y: [0, -7, 0], rotate: [0, 2, 0] }}
                 transition={{
-                  duration: 0.6,
-                  delay: index * 0.15,
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
                 }}
-                className={`relative flex w-1/3 max-w-[150px] flex-col items-center ${
-                  index === 1 ? "z-10 -translate-y-3" : "z-0"
-                }`}
+              />
+
+              <span className="mt-2 rounded-full border border-[#D7C8E4] bg-[#F8F4FB]/80 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.12em] text-[#795A9C]">
+                {newsletterCharacters[0]?.name}
+              </span>
+            </motion.div>
+
+            {/* Signup panel */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="relative z-10 order-1 mx-auto w-full max-w-2xl rounded-[2rem] border border-[#D7C8E4] bg-[#F8F4FB] px-5 py-8 text-center shadow-[0_20px_70px_rgba(64,52,77,0.10)] sm:px-10 sm:py-10 lg:order-2"
+            >
+              <h3 className="header mt-3 text-2xl font-semibold text-[#40344D] sm:text-3xl">
+                We'll write when something is ready.
+              </h3>
+
+              <p className="mx-auto mt-3 max-w-md text-xs leading-6 text-[#766A80] sm:text-sm">
+                A short note when a new lot comes down, and the story of whoever
+                grew it. Nothing more, nothing less.
+              </p>
+
+              <form
+                onSubmit={handleSubscribe}
+                className="mx-auto mt-7 flex max-w-lg flex-col gap-3 sm:flex-row"
               >
-                {/* Speech bubbles */}
-                <div
-                  className={`absolute bottom-full mb-3 w-max max-w-[155px] rounded-2xl border border-[#D7C8E4] bg-[#F8F4FB] px-3 py-2 text-center text-[9px] leading-relaxed text-[#604B76] shadow-sm sm:max-w-[190px] sm:px-4 sm:text-[10px] ${
-                    index === 0
-                      ? "-left-2"
-                      : index === 1
-                      ? "left-1/2 -translate-x-1/2"
-                      : "-right-2"
-                  }`}
-                >
-                  {speechLines[index]}
-                  <span
-                    className={`absolute -bottom-1.5 h-3 w-3 rotate-45 border-b border-r border-[#D7C8E4] bg-[#F8F4FB] ${
-                      index === 0
-                        ? "left-6"
-                        : index === 1
-                        ? "left-1/2 -translate-x-1/2"
-                        : "right-6"
-                    }`}
+                <div className="relative flex-1">
+                  <Mail
+                    size={17}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-[#987BB2]"
+                  />
+
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(event) => {
+                      setEmail(event.target.value);
+                      setStatus("idle");
+                    }}
+                    placeholder="Your email address"
+                    className="w-full rounded-full border border-[#D7C8E4] bg-white px-11 py-4 text-sm text-[#40344D] outline-none transition placeholder:text-[#A99DB2] focus:border-[#8C6BAA] focus:ring-4 focus:ring-[#C8B2DF]/20"
                   />
                 </div>
 
-                <motion.img
-                  src={character.characterImage}
-                  alt={character.shortName || character.name}
-                  className="h-28 w-full object-contain drop-shadow-[0_8px_12px_rgba(64,52,77,0.12)] sm:h-40 lg:h-48"
-                  animate={{ y: [0, -5, 0] }}
-                  transition={{
-                    duration: 3.5 + index * 0.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: index * 0.3,
-                  }}
-                />
+                <button
+                  type="submit"
+                  disabled={status === "success"}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#49345E] px-7 py-4 text-xs font-bold uppercase tracking-[0.12em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-red hover:shadow-lg disabled:cursor-default disabled:opacity-70"
+                >
+                  {status === "success"
+                    ? "You're on the list!"
+                    : "Keep me posted"}
+                  <ArrowRight size={15} />
+                </button>
+              </form>
 
-                <span className="mt-2 rounded-full border border-[#D7C8E4] bg-[#F8F4FB]/80 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.12em] text-[#795A9C]">
-                  {character.name}
-                </span>
-              </motion.div>
-            ))}
-          </div>
+              {status === "success" ? (
+                <p className="mt-4 text-xs font-medium text-[#795A9C]">
+                  Lovely! We'll save you a little story from the hills.
+                </p>
+              ) : (
+                <p className="mt-4 text-[10px] text-[#9A8CA3]">
+                  No spam. Just good things from the hills. Unsubscribe anytime.
+                </p>
+              )}
+            </motion.div>
 
-          {/* Signup panel */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative z-20 mx-auto mt-2 max-w-2xl rounded-[2rem] border border-[#D7C8E4] bg-[#F8F4FB] px-5 py-8 text-center shadow-[0_20px_70px_rgba(64,52,77,0.10)] sm:px-12 sm:py-10"
-          >
-            <h3 className="header mt-3 text-2xl font-semibold text-[#40344D] sm:text-3xl">
-              We'll write when something is ready.
-            </h3>
-
-            <p className="mx-auto mt-3 max-w-md text-xs leading-6 text-[#766A80] sm:text-sm">
-              A short note when a new lot comes down, and the story of whoever
-              grew it. Nothing more, nothing less.
-            </p>
-
-            <form
-              onSubmit={handleSubscribe}
-              className="mx-auto mt-7 flex max-w-lg flex-col gap-3 sm:flex-row"
+            {/* Right character */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative order-3 flex flex-col items-center"
             >
-              <div className="relative flex-1">
-                <Mail
-                  size={17}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#987BB2]"
-                />
-
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(event) => {
-                    setEmail(event.target.value);
-                    setStatus("idle");
-                  }}
-                  placeholder="Your email address"
-                  className="w-full rounded-full border border-[#D7C8E4] bg-white px-11 py-4 text-sm text-[#40344D] outline-none transition placeholder:text-[#A99DB2] focus:border-[#8C6BAA] focus:ring-4 focus:ring-[#C8B2DF]/20"
-                />
+              <div className="relative mb-3 max-w-[170px] rounded-2xl border border-[#D7C8E4] bg-[#F8F4FB] px-4 py-3 text-center text-[10px] leading-relaxed text-[#604B76] shadow-sm sm:text-xs">
+                {speechLines[1]}
+                <span className="absolute -bottom-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-b border-r border-[#D7C8E4] bg-[#F8F4FB]" />
               </div>
 
-              <button
-                type="submit"
-                disabled={status === "success"}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#49345E] px-7 py-4 text-xs font-bold uppercase tracking-[0.12em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-red hover:shadow-lg disabled:cursor-default disabled:opacity-70"
-              >
-                {status === "success"
-                  ? "You're on the list!"
-                  : "Keep me posted"}
-                <ArrowRight size={15} />
-              </button>
-            </form>
+              <motion.img
+                src={newsletterCharacters[1]?.characterImage}
+                alt={newsletterCharacters[1]?.name || "Laali Hills character"}
+                className="h-36 w-full max-w-[170px] object-contain drop-shadow-[0_8px_12px_rgba(64,52,77,0.12)] sm:h-48 lg:h-56"
+                animate={{ y: [0, -6, 0], rotate: [0, -2, 0] }}
+                transition={{
+                  duration: 4.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
 
-            {status === "success" ? (
-              <p className="mt-4 text-xs font-medium text-[#795A9C]">
-                Lovely! We'll save you a little story from the hills.
-              </p>
-            ) : (
-              <p className="mt-4 text-[10px] text-[#9A8CA3]">
-                No spam. Just good things from the hills. Unsubscribe anytime.
-              </p>
-            )}
-          </motion.div>
+              <span className="mt-2 rounded-full border border-[#D7C8E4] bg-[#F8F4FB]/80 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.12em] text-[#795A9C]">
+                {newsletterCharacters[1]?.name}
+              </span>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

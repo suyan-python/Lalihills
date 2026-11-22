@@ -61,7 +61,7 @@ const SocialsSummary = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.65, delay: 0.1 }}
-              className="header max-w-2xl text-4xl font-light leading-[1.12] tracking-tight text-[#40344D] sm:text-5xl lg:text-6xl"
+              className="header max-w-2xl text-4xl  leading-[1.12] tracking-tight text-[#40344D] sm:text-5xl lg:text-6xl"
             >
               Hey, we've got
               <br />

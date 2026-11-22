@@ -101,7 +101,6 @@ function TeaProductCard({ product, index }) {
   return (
     <motion.article
       variants={cardVariants}
-      whileHover={{ y: -7 }}
       transition={{ duration: 0.3 }}
       className={`group relative flex h-full flex-col rounded-[1.6rem] border border-[#DED2E9] bg-[#F8F4FB] p-3 shadow-[0_8px_30px_rgba(64,52,77,0.045)] transition-shadow duration-300 hover:z-50 hover:border-red hover:shadow-[0_18px_45px_rgba(64,52,77,0.12)] sm:p-4`}
     >
