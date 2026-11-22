@@ -20,49 +20,54 @@ const CartDrawer = () => {
     <AnimatePresence>
       {isCartOpen && (
         <>
-          {/* Overlay */}
+          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{
-              duration: 0.35,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+            transition={{ duration: 0.35 }}
             onClick={() => setIsCartOpen(false)}
-            className="fixed inset-0 z-[90] bg-ink/25 backdrop-blur-[2px]"
+            className="fixed inset-0 z-[90] bg-[#241B2D]/45 backdrop-blur-[3px]"
           />
 
-          {/* Drawer */}
+          {/* Cart Drawer */}
           <motion.aside
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{
-              duration: 0.65,
+              duration: 0.55,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="fixed right-0 top-0 z-[100] flex h-dvh min-h-0 w-full flex-col overflow-hidden bg-lightWhite sm:w-[70vw] lg:w-1/3"
+            className="fixed right-0 top-0 z-[100] flex h-dvh min-h-0 w-full flex-col overflow-hidden border-l border-[#D7C8E4] bg-[#F8F4FB] text-[#40344D] shadow-[-20px_0_80px_rgba(36,27,45,0.12)] sm:w-[480px] lg:w-[520px]"
           >
             {/* Header */}
-            <div className="flex h-20 shrink-0 items-center justify-between border-b border-ink/10 px-6 sm:px-8">
-              <h2 className="header mt-1 text-xl uppercase tracking-[0.04em] text-ink">
-                My Cart
-                <span className="ml-2 text-xs text-red/75">({cartCount})</span>
-              </h2>
+            <div className="relative flex shrink-0 items-center justify-between border-b border-[#D7C8E4]/80 px-6 py-6 sm:px-8">
+              <div>
+                <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#8C6BAA]">
+                  A little something from the hills
+                </p>
+
+                <h2 className="header text-2xl text-[#40344D]">
+                  Your Bag
+                  <span className="ml-2 align-middle font-sans text-sm font-medium text-[#8C6BAA]">
+                    ({cartCount})
+                  </span>
+                </h2>
+              </div>
 
               <button
                 type="button"
                 onClick={() => setIsCartOpen(false)}
-                className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-ink/15 text-ink transition-all duration-300 hover:bg-ink hover:text-lightCream"
+                className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-[#D7C8E4] text-[#40344D] transition-all duration-300 hover:border-[#40344D] hover:bg-[#40344D] hover:text-white"
                 aria-label="Close cart"
               >
-                <X size={16} strokeWidth={1.2} />
+                <X size={17} strokeWidth={1.5} />
               </button>
             </div>
 
-            {/* Scrollable Cart Items */}
-            <div className="min-h-0 w-full flex-1 overflow-y-auto overscroll-contain px-6 py-6 sm:px-8">
+            {/* Cart Items */}
+            <div className="relative min-h-0 w-full flex-1 overflow-y-auto overscroll-contain px-6 py-6 sm:px-8">
               {cartItems.length === 0 ? (
                 <EmptyCart onClose={() => setIsCartOpen(false)} />
               ) : (
@@ -80,12 +85,15 @@ const CartDrawer = () => {
               )}
             </div>
 
-            {/* Fixed Bottom Summary */}
+            {/* Bottom Summary */}
             {cartItems.length > 0 && (
-              <div className="shrink-0">
+              <div className="shrink-0 border-t border-[#D7C8E4]/80 bg-[#F8F4FB] px-6 pb-6 pt-4 sm:px-8">
                 <CartSummary total={cartTotal} />
               </div>
             )}
+
+            {/* Subtle brand footer */}
+            <div className="pointer-events-none absolute bottom-0 left-0 -z-0 h-1 w-full bg-gradient-to-r from-[#795A9C] via-[#C8B2DF] to-[#795A9C]" />
           </motion.aside>
         </>
       )}
@@ -107,46 +115,42 @@ const CartItem = ({ item, index, onRemove, onUpdateQuantity }) => {
         delay: index * 0.05,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group border-b border-ink/10 py-6 first:pt-0"
+      className="group border-b border-[#D7C8E4]/80 py-6 first:pt-0 last:border-b-0"
     >
-      <div className="flex gap-5">
+      <div className="flex gap-4 sm:gap-5">
         {/* Product Image */}
-        <div className="relative h-32 w-24 shrink-0 overflow-hidden">
+        <div className="relative h-32 w-24 shrink-0 overflow-hidden rounded-2xl bg-[#ECE6F4] sm:h-36 sm:w-28">
           <motion.img
             src={product.image}
             alt={product.name}
-            className="h-full w-full object-cover rounded-2xl"
-            whileHover={{ scale: 1.04 }}
+            className="h-full w-full rounded-2xl object-cover"
+            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           />
 
-          <span className="absolute left-2 top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-lightCream/90 px-1.5 text-[7px] font-medium text-ink backdrop-blur-sm">
+          <span className="absolute left-2 top-2 flex h-6 min-w-6 items-center justify-center rounded-full border border-white/40 bg-[#F8F4FB]/90 px-1.5 text-[8px] font-semibold tracking-wider text-[#40344D] backdrop-blur-md">
             {String(index + 1).padStart(2, "0")}
           </span>
         </div>
 
-        {/* Content */}
-        <div className="min-w-0 flex-1">
+        {/* Product Content */}
+        <div className="flex min-w-0 flex-1 flex-col">
           {/* Header */}
-          <div className="flex items-start justify-between gap-3 sm:gap-4">
+          <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                <p className="text-[7px] font-semibold uppercase tracking-[0.2em] text-red sm:text-[8px]">
+                <p className="text-[8px] font-semibold uppercase tracking-[0.2em] text-[#8C6BAA]">
                   {product.category}
                 </p>
 
                 {purchaseType === "subscribe" && (
-                  <>
-                    <span className="h-1 w-1 shrink-0 rounded-full bg-emerald-700/70" />
-
-                    <p className="text-[6px] font-medium uppercase tracking-[0.18em] text-emerald-700 sm:text-[7px]">
-                      Subscription
-                    </p>
-                  </>
+                  <span className="rounded-full bg-[#E8E0EF] px-2 py-0.5 text-[7px] font-semibold uppercase tracking-[0.12em] text-[#795A9C]">
+                    Subscription
+                  </span>
                 )}
               </div>
 
-              <h3 className="header mt-1.5 text-[13px] font-medium uppercase leading-[0.95] tracking-[-0.01em] text-ink sm:text-[15px] md:text-[22px]">
+              <h3 className="header mt-2 text-[15px] font-medium uppercase leading-tight tracking-[-0.02em] text-[#40344D] sm:text-lg">
                 {product.name}
               </h3>
             </div>
@@ -155,82 +159,85 @@ const CartItem = ({ item, index, onRemove, onUpdateQuantity }) => {
             <button
               type="button"
               onClick={() => onRemove(item.cartKey)}
-              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-ink/30 transition-all duration-300 hover:bg-red/5 hover:text-red sm:h-8 sm:w-8"
+              className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full border border-transparent text-[#766A80]/60 transition-all duration-300 hover:border-[#D7C8E4] hover:bg-[#ECE6F4] hover:text-[#795A9C]"
               aria-label={`Remove ${product.name}`}
             >
-              <X size={13} strokeWidth={1.2} />
+              <X size={14} strokeWidth={1.5} />
             </button>
           </div>
 
-          {/* Product Meta */}
-          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 sm:mt-4 sm:gap-x-5">
-            {size && (
-              <div className="flex items-baseline gap-1.5">
-                <span className="text-[6px] uppercase tracking-[0.2em] text-ink/40 sm:text-[7px]">
-                  Size
-                </span>
+          {/* Product Details */}
+          {(size || grind || (purchaseType === "subscribe" && frequency)) && (
+            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+              {size && (
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[8px] uppercase tracking-[0.15em] text-[#766A80]/70">
+                    Size
+                  </span>
+                  <span className="text-[9px] font-semibold uppercase tracking-wider text-[#40344D]">
+                    {size}
+                  </span>
+                </div>
+              )}
 
-                <span className="text-[8px] font-semibold uppercase tracking-[0.08em] text-ink sm:text-[9px]">
-                  {size}
-                </span>
-              </div>
-            )}
+              {grind && (
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[8px] uppercase tracking-[0.15em] text-[#766A80]/70">
+                    Grind
+                  </span>
+                  <span className="text-[9px] font-semibold uppercase tracking-wider text-[#40344D]">
+                    {grind}
+                  </span>
+                </div>
+              )}
 
-            {grind && (
-              <div className="flex items-baseline gap-1.5">
-                <span className="text-[6px] uppercase tracking-[0.2em] text-ink/40 sm:text-[7px]">
-                  Grind
-                </span>
+              {purchaseType === "subscribe" && frequency && (
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[8px] uppercase tracking-[0.15em] text-[#766A80]/70">
+                    Every
+                  </span>
+                  <span className="text-[9px] font-semibold uppercase tracking-wider text-[#40344D]">
+                    {frequency}
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
 
-                <span className="text-[8px] font-semibold uppercase tracking-[0.08em] text-ink sm:text-[9px]">
-                  {grind}
-                </span>
-              </div>
-            )}
-
-            {purchaseType === "subscribe" && frequency && (
-              <div className="flex items-baseline gap-1.5">
-                <span className="text-[6px] uppercase tracking-[0.2em] text-ink/40 sm:text-[7px]">
-                  Every
-                </span>
-
-                <span className="text-[8px] font-semibold uppercase tracking-[0.08em] text-ink sm:text-[9px]">
-                  {frequency}
-                </span>
-              </div>
-            )}
-          </div>
-
-          {/* Bottom Row */}
-          <div className="mt-5 flex items-center justify-between gap-4 sm:mt-6">
-            {/* Quantity */}
-            <div className="flex h-8 items-center rounded-full border border-ink/10 bg-lightCream/60 px-0.5 transition-colors duration-300 group-hover:border-ink/20 sm:h-9 sm:px-1">
+          {/* Quantity & Price */}
+          <div className="mt-auto flex items-end justify-between gap-3 pt-5">
+            {/* Quantity Selector */}
+            <div className="flex h-9 items-center rounded-full border border-[#D7C8E4] bg-white/60 px-1 transition-colors duration-300 group-hover:border-[#BCA8D0]">
               <button
                 type="button"
                 onClick={() => onUpdateQuantity(item.cartKey, quantity - 1)}
-                className="flex h-7 w-7 items-center justify-center rounded-full text-ink/40 transition-all duration-300 hover:bg-ink hover:text-lightCream cursor-pointer sm:h-7 sm:w-7"
+                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full text-[#766A80] transition-all duration-200 hover:bg-[#40344D] hover:text-white"
                 aria-label="Decrease quantity"
               >
-                <Minus size={10} strokeWidth={1.3} />
+                <Minus size={11} strokeWidth={1.5} />
               </button>
 
-              <span className="w-6 text-center text-[8px] font-medium text-ink sm:w-7 sm:text-[9px]">
+              <span className="w-7 text-center text-[10px] font-semibold tabular-nums text-[#40344D]">
                 {quantity}
               </span>
 
               <button
                 type="button"
                 onClick={() => onUpdateQuantity(item.cartKey, quantity + 1)}
-                className="flex h-7 w-7 items-center justify-center rounded-full text-ink/40 transition-all duration-300 hover:bg-ink hover:text-lightCream cursor-pointer sm:h-7 sm:w-7"
+                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full text-[#766A80] transition-all duration-200 hover:bg-[#40344D] hover:text-white"
                 aria-label="Increase quantity"
               >
-                <Plus size={10} strokeWidth={1.3} />
+                <Plus size={11} strokeWidth={1.5} />
               </button>
             </div>
 
             {/* Price */}
             <div className="min-w-0 text-right">
-              <p className="header whitespace-nowrap text-[14px] font-medium leading-none tracking-[-0.02em] text-ink sm:text-[15px] md:text-[16px]">
+              <p className="mb-1 text-[8px] font-medium uppercase tracking-[0.15em] text-[#766A80]/70">
+                Item total
+              </p>
+
+              <p className="header whitespace-nowrap text-base font-semibold tracking-tight text-[#40344D] sm:text-lg">
                 NPR{" "}
                 {itemTotal.toLocaleString(undefined, {
                   maximumFractionDigits: 0,
@@ -259,63 +266,115 @@ const CartSummary = ({ total }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.5,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="shrink-0 border-t border-ink/75 bg-lightWhite px-5 pb-5 pt-5 sm:px-8 sm:pb-8 sm:pt-6"
+      className="shrink-0  bg-[#F8F4FB] px-6 pb-6 pt-5 sm:px-8 sm:pb-8 sm:pt-6"
     >
-      {/* SUMMARY */}
-      <div className="flex items-end justify-between gap-6 ">
+      {/* Order Summary */}
+      <div className="flex items-end justify-between gap-5">
         <div>
-          <p className="text-[8px] font-bold uppercase tracking-[0.22em] text-ink sm:text-[12px]">
-            Order total
+          <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#795A9C] sm:text-[10px]">
+            Your order
           </p>
 
-          <p className="mt-2 text-[9px] font-light leading-4 text-ink/85 sm:text-[10px]">
+          <p className="mt-2 text-[9px] font-normal leading-relaxed text-[#766A80] sm:text-[10px]">
             Shipping calculated at checkout
           </p>
         </div>
 
         <div className="text-right">
-          <p className="header text-2xl font-medium leading-none tracking-[-0.04em] text-ink sm:text-3xl">
+          <p className="header text-2xl font-semibold leading-none tracking-[-0.04em] text-[#40344D] sm:text-3xl">
             NPR {formattedTotal}
           </p>
         </div>
       </div>
 
-      {/* CHECKOUT */}
+      {/* Checkout Button */}
       <button
         type="button"
         onClick={handleCheckout}
-        className="group mt-2  h-12 w-full cursor-pointer rounded-md bg-red px-5 text-lightCream transition-all duration-300 hover:bg-deepRed active:scale-[0.985] sm:mt-4 sm:h-13 sm:px-6"
+        className="group mt-5 flex h-12 w-full cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-full bg-[#40344D] px-5 text-[#F8F4FB] transition-all duration-300 hover:bg-[#795A9C] active:scale-[0.985] sm:h-14 sm:px-6"
       >
-        <span className="text-[10px] font-bold uppercase tracking-[0.18em] sm:text-[14px] sm:tracking-[0.2em] ">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] sm:text-[11px]">
           Proceed to checkout
         </span>
+
+        <ArrowRight
+          size={15}
+          strokeWidth={1.5}
+          className="transition-transform duration-300 group-hover:translate-x-1"
+        />
       </button>
+
+      {/* Brand Note */}
+      <p className="mt-4 text-center text-[8px] font-medium uppercase tracking-[0.18em] text-[#8C6BAA]/80">
+        A little piece of the hills, on its way to you.
+      </p>
     </motion.div>
   );
 };
 
 const EmptyCart = ({ onClose }) => {
   return (
-    <div className="flex h-full flex-col items-center justify-center text-center">
-      <img src={empty} alt="" className="h-36 w-36 object-contain opacity-70" />
+    <div className="flex h-full min-h-[380px] flex-col items-center justify-center px-4 py-10 text-center">
+      {/* Illustration */}
+      <motion.div
+        initial={{ opacity: 0, y: 15, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{
+          duration: 0.7,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="relative mb-5 flex h-44 w-44 items-center justify-center rounded-full bg-[#ECE6F4]/70"
+      >
+        <div className="absolute inset-3 rounded-full border border-dashed border-[#C8B2DF]/70" />
 
-      <p className="mt-5 text-[9px] uppercase tracking-[0.35em] text-deepRed">
-        Nothing selected yet
+        <img
+          src={empty}
+          alt="An illustration representing an empty shopping bag"
+          className="relative z-10 h-36 w-36 object-contain opacity-85"
+        />
+      </motion.div>
+
+      {/* Copy */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.15 }}
+      >
+        <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-[#8C6BAA]">
+          Nothing picked out yet
+        </p>
+
+        <h3 className="header mt-3 text-xl font-medium tracking-[-0.02em] text-[#40344D] sm:text-2xl">
+          Your bag is taking a break.
+        </h3>
+
+        <p className="mx-auto mt-3 max-w-[260px] text-[11px] leading-6 text-[#766A80]">
+          There's something lovely waiting in the hills. Go find your next
+          favourite.
+        </p>
+      </motion.div>
+
+      {/* CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="mt-7"
+      >
+        <Button onClick={onClose} variant="dark" className="cursor-pointer">
+          Continue Exploring
+        </Button>
+      </motion.div>
+
+      <p className="mt-7 text-[8px] font-medium uppercase tracking-[0.2em] text-[#8C6BAA]/70">
+        When the hills are happy, they are Laali.
       </p>
-
-      <h3 className="mt-2 header text-[18px] uppercase tracking-[0.04em] text-ink">
-        Your cart is quiet.
-      </h3>
-
-      <Button onClick={onClose} className="cursor-pointer mt-5">
-        Continue Exploring
-      </Button>
     </div>
   );
 };

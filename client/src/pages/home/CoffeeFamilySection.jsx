@@ -194,14 +194,14 @@ function CoffeeProductCard({ product, index }) {
           )}
 
           <div
-            className="relative z-50 mt-3 px-5 py-2 text-center bg-red rounded-full cursor-pointer"
+            className="relative  mt-3 px-5 py-2 text-center bg-red rounded-full cursor-pointer"
             onMouseEnter={() => setIsQuickViewOpen(true)}
             onMouseLeave={() => setIsQuickViewOpen(false)}
           >
             <button
               type="button"
               onClick={() => setIsQuickViewOpen((previous) => !previous)}
-              className="relative z-20 inline-flex items-center justify-center gap-1 text-xs text-lightWhite transition-all duration-200 hover:gap-2 cursor-pointer"
+              className="relative inline-flex items-center justify-center gap-1 text-xs text-lightWhite transition-all duration-200 hover:gap-2 cursor-pointer"
             >
               Hover {product.name}
               <ArrowRight size={14} />
