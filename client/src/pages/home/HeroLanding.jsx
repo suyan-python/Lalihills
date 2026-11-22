@@ -18,6 +18,7 @@ import SocialsSummary from "../socials/SocialsSummary";
 import NewHero from "./NewHero";
 import CoffeeFamilySection from "./CoffeeFamilySection";
 import WhereItBegins from "./WhereItBegins";
+import TeaFamilySection from "./TeaFamilySection";
 
 const Landing = () => {
   return (
@@ -44,6 +45,8 @@ const Landing = () => {
       {/* <TobeUsed /> */}
 
       <WhereItBegins />
+
+      <TeaFamilySection />
 
       <SocialsSummary />
 

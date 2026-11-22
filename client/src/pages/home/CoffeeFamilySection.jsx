@@ -1,17 +1,9 @@
 import { motion } from "framer-motion";
-import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUpRight,
-  Coffee,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight, Coffee } from "lucide-react";
 import { Link } from "react-router-dom";
 import { coffeeProducts } from "../../data/products";
 
 import muuiya from "../../assets/characters/muuiya.png";
-import maruni from "../../assets/characters/maruni.png";
-import jhakri from "../../assets/characters/jhakri.png";
 
 const cardAccents = [
   {
@@ -61,9 +53,6 @@ function CoffeeProductCard({ product, index }) {
   const palette = cardAccents[index % cardAccents.length];
   const productLink = `/shop/coffee/${product.slug}`;
 
-  const productImage = product.frontImage || product.image;
-  const productDescription = product.shortDescription || product.description;
-
   return (
     <motion.article
       variants={cardVariants}
@@ -76,11 +65,9 @@ function CoffeeProductCard({ product, index }) {
         aria-label={`View ${product.name}`}
         className="absolute inset-0 z-10 rounded-[1.6rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6BAA]"
       />
-
-      {/* Product image */}
       {/* Product image */}
       <div
-        className="relative flex aspect-[4/4.2] items-center justify-center overflow-hidden rounded-[1.2rem]"
+        className="relative flex aspect-[3/3] items-center justify-center overflow-hidden rounded-[1.2rem]"
         style={{ backgroundColor: product.imageColor || "#F8F4FB" }}
       >
         {/* Floating Character Badge */}
@@ -163,10 +150,6 @@ function CoffeeProductCard({ product, index }) {
         <h3 className="header text-lg font-semibold leading-tight text-[#40344D] sm:text-xl">
           {product.name}
         </h3>
-
-        {/* <p className="mt-2 line-clamp-2 min-h-[2.8rem] text-xs leading-relaxed text-[#766A80] sm:text-sm">
-          {productDescription}
-        </p> */}
 
         {product.flavors?.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-1.5 items-center justify-center">

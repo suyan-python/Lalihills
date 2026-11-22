@@ -42,7 +42,7 @@ const Banner = () => {
   ];
 
   return (
-    <div className="absolute inset-x-0 top-0 z-[120]  h-7 overflow-hidden border-b border-[#FBEDEA]/10 bg-ink md:block">
+    <div className="absolute inset-x-0 top-0 z-[120]  h-7 overflow-hidden border-b border-[#FBEDEA]/10 bg-darkPurple md:block">
       {/* Left: Social Links */}
       <div className="absolute inset-y-0 left-4 z-40 flex items-center gap-3 sm:left-6 sm:gap-4">
         {socialLinks.map((social) => (
@@ -120,8 +120,8 @@ const Banner = () => {
       </div> */}
 
       <div className="pointer-events-none absolute inset-0 z-50 flex items-center justify-center">
-        <div className="relative flex h-full items-center bg-ink px-6">
-          <div className="absolute inset-0 bg-ink shadow-[0_0_24px_12px_var(--color-deepink)]" />
+        <div className="relative flex h-full items-center px-6">
+          <div className="absolute inset-0 bg-darkPurple shadow-[0_0_24px_12px_var(--color-deepink)]" />
           <div className="relative flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-[#FBEDEA]/80" />
 
@@ -137,7 +137,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <div className="pointer-events-none absolute inset-y-0 left-1/2 z-40 w-48 -translate-x-1/2 bg-gradient-to-r from-transparent via-ink/40 to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-1/2 z-40 w-48 -translate-x-1/2 bg-gradient-to-r from-transparent via-darkPurple/40 to-transparent" />
     </div>
   );
 };

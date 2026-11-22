@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
-import jhakri from "../../assets/characters/jhakri.png"; // adjust path
+import jhakri from "../../assets/characters/jhakri.png"; // adjust path\
+
+import story from "/videos/story.mp4";
 
 import { coffeeProducts, teaProducts } from "../../data/products";
 
@@ -46,8 +47,9 @@ const WhereItBegins = () => {
                 "Hey, you made it!
                 <br />
                 <span className="font-normal text-[#8C6BAA]">
-                  Let me show where it begins."
+                  Let me show where it begins.
                 </span>
+                "
               </h2>
 
               {/* Speech bubble tail */}
@@ -105,12 +107,12 @@ const WhereItBegins = () => {
             <div className="group relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-[#293A34] shadow-[0_25px_70px_rgba(64,52,77,0.16)]">
               <video
                 className="h-full w-full object-cover"
-                src="/videos/laali-story.mp4"
-                poster="/images/laali-story-poster.webp"
+                src={story}
                 muted
                 loop
                 playsInline
                 controls
+                autoPlay
               />
 
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
