@@ -194,14 +194,14 @@ function CoffeeProductCard({ product, index }) {
           )}
 
           <div
-            className="relative  mt-3 px-5 py-2 text-center bg-red rounded-full cursor-pointer"
+            className="relative  mt-3 px-4 py-1.5 text-center border border-red rounded-full cursor-pointer"
             onMouseEnter={() => setIsQuickViewOpen(true)}
             onMouseLeave={() => setIsQuickViewOpen(false)}
           >
             <button
               type="button"
               onClick={() => setIsQuickViewOpen((previous) => !previous)}
-              className="relative inline-flex items-center justify-center gap-1 text-xs text-lightWhite transition-all duration-200 hover:gap-2 cursor-pointer"
+              className="relative inline-flex items-center justify-center gap-1 text-xs text-red transition-all duration-200 hover:gap-2 cursor-pointer"
             >
               Hover {product.name}
               <ArrowRight size={14} />
@@ -268,6 +268,8 @@ function CoffeeProductCard({ product, index }) {
                         </Link>
                       </div>
 
+                      {/* RIGHT: Product details */}
+
                       <div className="flex min-w-0 flex-col p-4 sm:p-5 lg:p-7">
                         <div className="mb-5">
                           <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#987BB2]">
@@ -284,6 +286,8 @@ function CoffeeProductCard({ product, index }) {
                             </p>
                           )}
                         </div>
+
+                        {/* Product details */}
 
                         <div className="space-y-4">
                           {coffeeDetails.length > 0 && (
@@ -323,20 +327,19 @@ function CoffeeProductCard({ product, index }) {
                             </div>
                           )}
                         </div>
-
-                        <div className="mt-auto border-t border-[#E5DAEC] pt-5">
-                          <div className="flex flex-wrap items-center justify-between gap-4">
+                        {/* Purchase Bar */}
+                        <div className="mt-auto shrink-0 border-t border-[#D7C8E4]/80 bg-[#F8F4FB] px-5 pt-3">
+                          <div className="flex items-center justify-between gap-4">
+                            {/* Price */}
                             <div>
-                              <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#987BB2]">
-                                Price
-                              </p>
-                              <p className="header mt-1 text-2xl font-bold text-[#40344D]">
+                              <p className="header mt-1 text-xl font-bold leading-none tracking-tight text-[#40344D]">
                                 Rs.{" "}
                                 {Number(product.price).toLocaleString("en-IN")}
                               </p>
                             </div>
 
-                            <div className="flex items-center gap-3 rounded-full border border-[#D7C8E4] bg-white px-3 py-2">
+                            {/* Quantity Selector */}
+                            <div className="flex h-9 items-center gap-3 rounded-full border border-[#D7C8E4] bg-white/70 px-3">
                               <button
                                 type="button"
                                 onClick={() =>
@@ -345,13 +348,13 @@ function CoffeeProductCard({ product, index }) {
                                   )
                                 }
                                 disabled={quantity <= 1}
-                                className="text-[#795A9C] transition hover:text-[#40344D] disabled:opacity-30"
+                                className="cursor-pointer text-[#795A9C] transition hover:text-[#40344D] disabled:cursor-not-allowed disabled:opacity-30"
                                 aria-label="Decrease quantity"
                               >
-                                <Minus size={13} />
+                                <Minus size={12} strokeWidth={1.8} />
                               </button>
 
-                              <span className="min-w-4 text-center text-xs font-bold text-[#40344D]">
+                              <span className="min-w-4 text-center text-xs font-semibold tabular-nums text-[#40344D]">
                                 {quantity}
                               </span>
 
@@ -360,22 +363,26 @@ function CoffeeProductCard({ product, index }) {
                                 onClick={() =>
                                   setQuantity((current) => current + 1)
                                 }
-                                className="text-[#795A9C] transition hover:text-[#40344D]"
+                                className="cursor-pointer text-[#795A9C] transition hover:text-[#40344D]"
                                 aria-label="Increase quantity"
                               >
-                                <Plus size={13} />
+                                <Plus size={12} strokeWidth={1.8} />
                               </button>
                             </div>
                           </div>
 
+                          {/* Add to Cart */}
                           <button
                             type="button"
                             onClick={handleAddToCart}
-                            className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-red px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-[0_8px_20px_rgba(166,42,52,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#7F1F27] hover:shadow-[0_12px_25px_rgba(166,42,52,0.25)]"
+                            className="group mt-3 flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#40344D] px-5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#F8F4FB] transition-all duration-300 hover:bg-[#795A9C] active:scale-[0.985]"
                           >
-                            <ShoppingBag size={15} />
-                            Add to cart
-                            <ArrowRight size={14} />
+                            <ShoppingBag size={14} strokeWidth={1.7} />
+                            Add to bag
+                            <ArrowRight
+                              size={14}
+                              className="transition-transform duration-300 group-hover:translate-x-1"
+                            />
                           </button>
                         </div>
                       </div>
