@@ -40,17 +40,12 @@ const RoastLevel = ({ roastLevel, products = [], onProductChange }) => {
   return (
     <div className="w-full">
       <div className="mb-4 flex items-center justify-between">
-        <div>
+        <div className="flex items-center text-[10px] font-bold uppercase tracking-[0.18em] text-[#D7C8E4]">
           <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#D7C8E4]">
-            Roast Level
+            Roast Level:{" "}
           </p>
 
-          <motion.p
-            key={sliderValue}
-            initial={{ opacity: 0.5, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="header mt-1 text-lg font-bold "
-          >
+          <motion.p key={sliderValue} className="font-black text-lightWhite">
             {levels[activeIndex]}
           </motion.p>
         </div>
@@ -83,7 +78,7 @@ const RoastLevel = ({ roastLevel, products = [], onProductChange }) => {
               key={level}
               type="button"
               onClick={() => handleRoastChange(level)}
-              className={`text-[10px] font-semibold transition-colors ${
+              className={`text-[10px] font-semibold transition-colors px-2 ${
                 sliderValue >= level - 0.5 ? "text-[#795A9C]" : "text-[#A99BB3]"
               }`}
             >

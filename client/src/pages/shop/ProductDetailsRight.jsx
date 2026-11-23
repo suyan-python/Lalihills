@@ -55,17 +55,18 @@ const ProductDetailsRight = ({
   const infoOptions = ["Taste", "Origin", "Ritual"];
 
   return (
-    <div className="relative flex h-full min-h-0 flex-col bg-raised dark:bg-ink text-ink transition-colors duration-300">
+    <div className="relative flex h-fit max-h-[calc(100vh-100px)] max-w-2xl   flex-col self-start overflow-hidden rounded-[2rem] border border-[#D7C8E4] bg-[#F8F4FB] text-[#40344D] shadow-[0_20px_70px_rgba(64,52,77,0.10)] transition-colors duration-300 dark:border-[#51415F] dark:bg-[#241B2D] dark:text-[#F2EAF8] dark:shadow-[0_20px_70px_rgba(0,0,0,0.30)] my-20">
+      {" "}
       {/* TOP — INFORMATION */}
-      <div className=" z-10  min-h-0 flex-1 overflow-y-auto">
-        <div className="flex h-full flex-col">
+      <div className="z-10 min-h-0 max-h-[320px] shrink-0 overflow-y-auto sm:max-h-[350px]">
+        <div className="flex flex-col">
           {/* TOP NAV */}
           <div className="flex shrink-0 items-center justify-between border-b border-ink/10 px-6 py-5 sm:px-8 lg:px-10">
             {/* INFO NAV */}
             <div className="w-fit">
-              <div className="relative grid w-full max-w-xs grid-cols-3 rounded-full bg-stone/10 p-1 sm:max-w-sm">
+              <div className="relative grid w-full max-w-xs grid-cols-3 rounded-full border border-[#D7C8E4] bg-[#EEE6F4] p-1 sm:max-w-sm">
                 <motion.div
-                  className="absolute inset-y-1 rounded-full bg-lightWhite shadow-md shadow-black/10"
+                  className="absolute inset-y-1 rounded-full bg-white shadow-sm"
                   style={{
                     width: `calc((100% - 8px) / ${infoOptions.length})`,
                   }}
@@ -76,9 +77,8 @@ const ProductDetailsRight = ({
                   }}
                   transition={{
                     type: "spring",
-                    stiffness: 400,
-                    damping: 32,
-                    mass: 0.7,
+                    stiffness: 350,
+                    damping: 30,
                   }}
                 />
 
@@ -90,10 +90,10 @@ const ProductDetailsRight = ({
                       key={item}
                       type="button"
                       onClick={() => setActiveInfo(item)}
-                      className={`relative z-10 flex h-8 items-center justify-center rounded-full px-3 text-[8px] font-bold  tracking-[0.02em] transition-colors duration-300 sm:h-8 sm:px-4 md:text-[11px] ${
+                      className={`relative z-10 flex h-9 items-center justify-center rounded-full px-3 text-[9px] font-bold tracking-[0.04em] transition-colors duration-300 sm:px-4 sm:text-[10px] ${
                         active
-                          ? "text-ink"
-                          : "cursor-pointer text-ink/50 hover:text-ink/75  dark:text-lightWhite/50 dark:hover:text-lightWhite/75 "
+                          ? "text-[#40344D]"
+                          : "cursor-pointer text-[#766A80] hover:text-[#40344D]"
                       }`}
                     >
                       {item}
@@ -115,18 +115,19 @@ const ProductDetailsRight = ({
           </div>
 
           {/* INFORMATION CONTENT */}
-          <div className="min-h-0 flex-1 px-6 sm:px-8 py-4 md:py-8 lg:px-10 ">
+          <div className="px-6 py-6 sm:px-8 sm:py-7 lg:px-9">
             <AnimatePresence mode="wait">
               {activeInfo === "Taste" && (
                 <InfoPanel key="Taste" title="Taste">
-                  <h1 className="header max-w-lg text-3xl leading-7 text-ink dark:text-lightWhite">
+                  <h1 className="header max-w-lg text-3xl leading-8 text-[#40344D]">
                     {product.origin}{" "}
-                    <span className="italic text-red">{product.process}</span>
+                    <span className="italic text-[#795A9C]">
+                      {product.process}
+                    </span>
                   </h1>
-                  <p className="mt-4 max-w-lg text-sm leading-7 text-soil dark:text-lightWhite">
+                  <p className="mt-4 max-w-lg text-sm leading-7 text-[#766A80]">
                     {product.description}
                   </p>
-
                   {product.flavors?.length > 0 && (
                     <div className="mt-7">
                       <div className="flex flex-wrap gap-2">
@@ -192,24 +193,27 @@ const ProductDetailsRight = ({
           </div>
         </div>
       </div>
-
-      {/* BOTTOM — PURCHASE */}
-      <div className="shrink-0 bg-lightWhite dark:bg-darkSoil px-6 py-2 text-ink transition-colors duration-300  dark:text-lightWhite sm:px-8 lg:px-10 lg:py-4">
-        {/* PLAN */}
-
-        <div className="flex justify-between text-center gap-8 relative  ">
-          <div className="w-full ">
-            <div className=" text-start">
-              <span className="text-[10px] uppercase tracking-[0.15em] text-ink/75 dark:text-darkLightCream">
-                Plan
+      {/* BOTTOM — PURCHASE CONFIGURATOR */}
+      <div className="relative z-20 shrink-0 border-t border-[#D7C8E4] bg-[#EEE6F4] px-5 py-4 text-[#40344D] transition-colors duration-300 dark:border-[#51415F] dark:bg-[#30243A] dark:text-[#F2EAF8] sm:px-8 lg:px-9 lg:py-5">
+        {/* PLAN + SIZE */}
+        <div className="grid grid-cols-2 gap-5 sm:gap-8">
+          {/* PLAN */}
+          <div className="relative min-w-0">
+            <div className="mb-3 flex items-center justify-between">
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#766A80] dark:text-[#B9A9C7]">
+                Purchase plan
               </span>
             </div>
-            <div className="mt-1 grid grid-cols-2 rounded-xl bg-ivory  p-1 transition-colors duration-300 ">
+
+            <div className="grid grid-cols-2 gap-1 rounded-2xl border border-[#D7C8E4] bg-white/65 p-1 dark:border-[#51415F] dark:bg-[#241B2D]/70">
               <PurchaseOption
                 active={purchaseType === "one-time"}
-                onClick={() => setPurchaseType("one-time")}
+                onClick={() => {
+                  setPurchaseType("one-time");
+                  setFrequencyOpen(false);
+                }}
               >
-                One time
+                <span className="text-[10px] font-semibold">One time</span>
               </PurchaseOption>
 
               <PurchaseOption
@@ -219,107 +223,124 @@ const ProductDetailsRight = ({
                   setFrequencyOpen(true);
                 }}
               >
-                Subscribe
-                <br />
-                <span className="text-[8px] tracking-[0.1em] text-red">
-                  Save 10%
+                <span className="flex flex-col items-center gap-0.5">
+                  <span className="text-[10px] font-semibold">Subscribe</span>
+                  <span className="text-[8px] font-bold tracking-wide text-[#795A9C] dark:text-[#C9AFE2]">
+                    SAVE 10%
+                  </span>
                 </span>
               </PurchaseOption>
             </div>
-            {/* FREQUENCY SIDE PANEL */}
+
+            {/* FREQUENCY SELECTOR */}
             <AnimatePresence>
               {purchaseType === "subscribe" && frequencyOpen && (
                 <motion.div
-                  initial={{ opacity: 0, x: -8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -8 }}
-                  transition={{
-                    duration: 0.25,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="absolute left-40 md:left-52 top-0 z-50 w-52"
+                  initial={{ opacity: 0, y: 6, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 6, scale: 0.97 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute left-0 top-full z-50 mt-2 w-full min-w-[150px] rounded-2xl border border-[#D7C8E4] bg-[#F8F4FB] p-2 shadow-[0_12px_35px_rgba(64,52,77,0.16)] dark:border-[#51415F] dark:bg-[#382B43] dark:shadow-[0_12px_35px_rgba(0,0,0,0.35)]"
                 >
-                  <div className="rounded-xl border border-ink/10 bg-ivory p-2 shadow-lg">
-                    {frequencyOptions.map((option) => (
-                      <button
-                        key={option}
-                        type="button"
-                        onClick={() => {
-                          setFrequency(option);
-                          setFrequencyOpen(false);
-                        }}
-                        className={`flex  items-center justify-between rounded-xl px-3 py-2.5 text-left text-[8px] uppercase tracking-[0.1em] transition-colors duration-200 ${
-                          frequency === option
-                            ? "bg-ink text-lightCream"
-                            : "text-ink/60 hover:bg-ink/5 hover:text-ink"
-                        }`}
-                      >
-                        {option}
+                  <p className="px-3 pb-2 pt-1 text-[8px] font-bold uppercase tracking-[0.18em] text-[#987BB2] dark:text-[#B99AD8]">
+                    Delivery frequency
+                  </p>
 
-                        {frequency === option && (
-                          <span className="text-[7px]">✓</span>
-                        )}
-                      </button>
-                    ))}
+                  <div className="space-y-1">
+                    {frequencyOptions.map((option) => {
+                      const active = frequency === option;
+
+                      return (
+                        <button
+                          key={option}
+                          type="button"
+                          onClick={() => {
+                            setFrequency(option);
+                            setFrequencyOpen(false);
+                          }}
+                          className={`flex w-full cursor-pointer items-center justify-between rounded-xl px-3 py-2.5 text-left text-[9px] font-medium transition-all duration-200 ${
+                            active
+                              ? "bg-[#40344D] text-white dark:bg-[#B99AD8] dark:text-[#241B2D]"
+                              : "text-[#766A80] hover:bg-[#EEE6F4] hover:text-[#40344D] dark:text-[#B9A9C7] dark:hover:bg-[#493853] dark:hover:text-[#F2EAF8]"
+                          }`}
+                        >
+                          {option}
+
+                          {active && (
+                            <span className="text-[10px] font-bold">✓</span>
+                          )}
+                        </button>
+                      );
+                    })}
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
 
-            <div className="mt-1">
+            {/* ACTIVE SUBSCRIPTION INFO */}
+            <AnimatePresence mode="wait">
               {purchaseType === "subscribe" && (
-                <div className="flex items-center gap-2 text-[7px] md:text-[9px] uppercase tracking-[0.16em] font-bold  justify-center">
-                  <span className="text-deepRed dark:text-red">
-                    Subscription
-                  </span>
-                  <span className="text-ink/20 dark:text-lightWhite/55">/</span>
-                  <span className="text-ink/45 dark:text-lightWhite/75">
+                <motion.div
+                  key={frequency}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  className="mt-2 flex items-center gap-1.5"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#795A9C] dark:bg-[#B99AD8]" />
+                  <span className="text-[8px] font-semibold uppercase tracking-[0.12em] text-[#795A9C] dark:text-[#C9AFE2]">
                     {frequency}
                   </span>
-                </div>
+                </motion.div>
               )}
-            </div>
+            </AnimatePresence>
           </div>
 
           {/* SIZE */}
-          <div className="w-full flex flex-col items-start ">
-            <div className="text-left ">
-              <span className=" text-[10px] uppercase tracking-[0.15em] text-ink/75 text-left dark:text-darkLightCream ">
-                Size
+          <div className="min-w-0">
+            <div className="mb-3 flex items-center justify-between">
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#766A80] dark:text-[#B9A9C7]">
+                Select size
               </span>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {product.sizeOptions?.map((size) => {
-                  const active = selectedSize?.grams === size.grams;
+            </div>
 
-                  return (
-                    <button
-                      key={size.grams}
-                      type="button"
-                      onClick={() => setSelectedSize(size)}
-                      className={`rounded-full border px-3 py-2 text-[10px] tracking-[0.05em] transition-all duration-300 font-medium ${
-                        active
-                          ? " bg-red  text-lightCream dark:border-red"
-                          : "border-ink/10 text-ink   cursor-pointer dark:text-darkLightCream dark:border-lightWhite/25"
-                      }`}
-                    >
-                      {size.grams}g
-                    </button>
-                  );
-                })}
-              </div>
+            <div className="flex flex-wrap gap-2">
+              {product.sizeOptions?.map((size) => {
+                const active = selectedSize?.grams === size.grams;
+
+                return (
+                  <button
+                    key={size.grams}
+                    type="button"
+                    onClick={() => setSelectedSize(size)}
+                    className={`min-w-[48px] cursor-pointer rounded-full border px-3 py-2.5 text-[10px] font-semibold transition-all duration-200 ${
+                      active
+                        ? "border-[#40344D] bg-[#40344D] text-white shadow-md shadow-[#40344D]/15 dark:border-[#B99AD8] dark:bg-[#B99AD8] dark:text-[#241B2D]"
+                        : "border-[#D7C8E4] bg-white/60 text-[#766A80] hover:border-[#987BB2] hover:text-[#40344D] dark:border-[#51415F] dark:bg-[#382B43] dark:text-[#B9A9C7] dark:hover:border-[#987BB2] dark:hover:text-[#F2EAF8]"
+                    }`}
+                  >
+                    {size.grams}g
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
 
-        {/* FORM / GRIND + QUANTITY */}
-        <div className="mt-3 grid grid-cols-2 gap-8">
-          {/* GRIND */}
-          <div className="w-full">
-            <span className="text-[10px] uppercase tracking-[0.15em] text-ink/75 dark:text-darkLightCream">
-              {isCoffee ? "Grind" : "Form"}
-            </span>
+        {/* DIVIDER */}
+        <div className="my-4 h-px bg-[#D7C8E4]/80 dark:bg-[#51415F]" />
 
-            <div className="mt-3 flex flex-wrap gap-2">
+        {/* GRIND / FORM + QUANTITY */}
+        <div className="grid grid-cols-2 gap-5 sm:gap-8">
+          {/* GRIND / FORM */}
+          <div className="min-w-0">
+            <div className="mb-3">
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#766A80] dark:text-[#B9A9C7]">
+                {isCoffee ? "Choose your grind" : "Choose your form"}
+              </span>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
               {(isCoffee ? product.grindOptions : product.formOptions)?.map(
                 (option) => {
                   const active = selectedGrind === option;
@@ -329,10 +350,10 @@ const ProductDetailsRight = ({
                       key={option}
                       type="button"
                       onClick={() => setSelectedGrind(option)}
-                      className={`rounded-full border px-3 py-2 text-[10px] tracking-[0.05em] transition-all duration-300 font-medium ${
+                      className={`cursor-pointer rounded-full border px-3 py-2.5 text-[9px] font-semibold transition-all duration-200 ${
                         active
-                          ? " bg-red text-lightCream dark:border-red"
-                          : "border-ink/10 text-in dark:text-lightWhite dark:border-lightCream/25 cursor-pointer"
+                          ? "border-[#40344D] bg-[#40344D] text-white dark:border-[#B99AD8] dark:bg-[#B99AD8] dark:text-[#241B2D]"
+                          : "border-[#D7C8E4] bg-white/60 text-[#766A80] hover:border-[#987BB2] hover:text-[#40344D] dark:border-[#51415F] dark:bg-[#382B43] dark:text-[#B9A9C7] dark:hover:border-[#987BB2] dark:hover:text-[#F2EAF8]"
                       }`}
                     >
                       {option}
@@ -344,26 +365,33 @@ const ProductDetailsRight = ({
           </div>
 
           {/* QUANTITY */}
-          <div className="mt-3 flex flex-col  items-start gap-5  w-full">
-            <span className="text-[10px] uppercase tracking-[0.15em] text-ink/75 dark:text-darkLightCream">
-              Quantity
-            </span>
+          <div className="min-w-0">
+            <div className="mb-3">
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#766A80] dark:text-[#B9A9C7]">
+                Quantity
+              </span>
+            </div>
 
-            <div className="flex items-baseline  gap-2 border border-black/10 dark:border-white/20 rounded-full text-ink dark:text-lightWhite">
+            <div className="inline-flex h-10 items-center gap-4 rounded-full border border-[#D7C8E4] bg-white/65 px-3 dark:border-[#51415F] dark:bg-[#382B43]">
               <button
                 type="button"
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                className="flex h-7 w-7 items-center justify-center text-sm cursor-pointer "
+                disabled={quantity <= 1}
+                aria-label="Decrease quantity"
+                className="flex h-7 w-5 cursor-pointer items-center justify-center text-lg font-light text-[#766A80] transition-colors hover:text-[#40344D] disabled:cursor-not-allowed disabled:opacity-35 dark:text-[#B9A9C7] dark:hover:text-white"
               >
                 −
               </button>
 
-              <span className="min-w-4 text-center text-xs">{quantity}</span>
+              <span className="min-w-4 text-center text-xs font-bold tabular-nums text-[#40344D] dark:text-[#F2EAF8]">
+                {quantity}
+              </span>
 
               <button
                 type="button"
                 onClick={() => setQuantity((q) => q + 1)}
-                className="flex h-7 w-7 items-center justify-center text-sm cursor-pointer"
+                aria-label="Increase quantity"
+                className="flex h-7 w-5 cursor-pointer items-center justify-center text-lg font-light text-[#766A80] transition-colors hover:text-[#40344D] dark:text-[#B9A9C7] dark:hover:text-white"
               >
                 +
               </button>
@@ -371,15 +399,16 @@ const ProductDetailsRight = ({
           </div>
         </div>
       </div>
-
       {/* FIXED PURCHASE BAR */}
-      <div className="shrink-0 border-t border-ink/20 dark:border-lightWhite/30 bg-lightWhite dark:bg-darkSoil transition-colors duration-300  px-6 py-4 text-ink sm:px-8 lg:px-10 dark:text-lightWhite">
+      <div className="shrink-0 border-t border-[#D7C8E4] bg-[#F8F4FB] px-6 py-5 text-[#40344D] transition-colors duration-300 dark:border-[#51415F] dark:bg-[#241B2D] dark:text-[#F2EAF8] sm:px-8 lg:px-9">
+        {" "}
         <div className="flex items-center justify-between gap-5">
           {/* PRODUCT SUMMARY */}
           <div className="min-w-0">
-            <p className="header truncate text-[16px] ">{product.name}</p>
-
-            <p className=" truncate text-[10px] tracking-[0.05em] text-ink/80 dark:text-lightWhite/80">
+            <p className="header truncate text-base font-bold ">
+              {product.name}
+            </p>
+            <p className="truncate text-[10px] tracking-wide text-[#766A80]">
               {selectedGrind} · {selectedSize?.size} · Qty {quantity}
             </p>
           </div>
@@ -390,8 +419,8 @@ const ProductDetailsRight = ({
 
             {purchaseType === "subscribe" ? (
               <div className="flex items-baseline gap-2">
-                <span className="header text-lg text-deepRed dark:text-red">
-                  Rs. {(originalTotal * 0.9).toLocaleString()}
+                <span className="header text-lg font-bold text-[#40344D]">
+                  Rs. {discountedTotal.toLocaleString()}
                 </span>
 
                 <span className="text-sm text-ink/35 line-through dark:text-lightWhite/35">
@@ -407,14 +436,13 @@ const ProductDetailsRight = ({
             <button
               type="button"
               onClick={handleAddToCart}
-              className="rounded-full bg-red px-3 py-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-lightWhite hover:text-ink transition-all duration-300 hover:bg-lightWhite active:bg-lightWhite active:scale-[0.98] md:px-4 cursor-pointer"
+              className="rounded-full bg-[#40344D] px-5 py-3 text-[9px] font-semibold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-[#795A9C] active:scale-[0.97] cursor-pointer"
             >
-              Add to cart
+              Add to bag
             </button>
           </div>
         </div>
       </div>
-
       {/* SUCCESS NOTIFICATION */}
       <AnimatePresence>
         {added && (
@@ -466,10 +494,10 @@ const PurchaseOption = ({ active, onClick, children }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`rounded-lg py-1 text-[10px] font-bold tracking-[0.05em] transition-all duration-300 ${
+    className={`flex min-h-[42px] cursor-pointer items-center justify-center rounded-xl px-2 py-2 text-center transition-all duration-300 ${
       active
-        ? "bg-lightWhite text-ink shadow-md shadow-black/10"
-        : "text-ink/75  cursor-pointer"
+        ? "bg-[#40344D] text-white shadow-sm shadow-[#40344D]/15 dark:bg-[#B99AD8] dark:text-[#241B2D] dark:shadow-black/20"
+        : "text-[#766A80] hover:bg-[#EEE6F4] hover:text-[#40344D] dark:text-[#B9A9C7] dark:hover:bg-[#493853] dark:hover:text-[#F2EAF8]"
     }`}
   >
     {children}
