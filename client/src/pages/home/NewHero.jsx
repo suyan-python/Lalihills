@@ -261,11 +261,8 @@ export default function NewHero() {
 
         {/* Interactive Character Introduction */}
         <div className="relative">
-          <motion.h1
+          <h1
             key={activeProduct._id}
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             className="header text-4xl font-semibold leading-[1.08] tracking-tight text-start text-deepPurple dark:text-lightCream sm:text-6xl lg:text-7xl"
           >
             Well, hello
@@ -276,7 +273,7 @@ export default function NewHero() {
               {activeProduct.name}
             </span>
             <span className="text-deepPurple dark:text-lightCream">.</span>
-          </motion.h1>
+          </h1>
         </div>
 
         {/* Product description */}

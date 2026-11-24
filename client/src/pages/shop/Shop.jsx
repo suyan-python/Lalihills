@@ -39,6 +39,7 @@ const collections = [
     path: "/shop/coffee",
     accent: "rgb(74 49 28 / 94%)",
     featuredTitle: "Featured Coffee",
+    id: "#beans",
   },
   {
     number: "02",
@@ -51,6 +52,7 @@ const collections = [
     path: "/shop/tea",
     accent: "rgb(30 44 32 / 95%)",
     featuredTitle: "Featured Tea",
+    id: "#leaves",
   },
   {
     number: "03",
@@ -350,7 +352,7 @@ const FeaturedProducts = ({ products = [], type, collection }) => {
         <Button
           size="sm"
           className="border border-lightWhite/45 bg-transparent hover:bg-lightWhite/50"
-          to={collection.path}
+          to={collection.id}
           icon={false}
         >
           Explore all {collection.name}

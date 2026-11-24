@@ -479,6 +479,7 @@ export default function TeaFamilySection({
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="relative mx-auto mb-14 flex max-w-5xl flex-col items-center text-center md:mb-20"
+          id="leaves"
         >
           {/* Small section label */}
           <span className="mb-7 text-[9px] font-semibold uppercase tracking-[0.3em] text-[#987BB2] sm:text-[10px]">
