@@ -215,7 +215,7 @@ const ProductDetailsRight = ({
         </div>
       </div>
       {/* FIXED PURCHASE BAR */}
-      <div className="shrink-0 border-t border-[#D7C8E4] bg-[#F8F4FB] px-6 py-5 text-[#40344D] transition-colors duration-300 dark:border-[#51415F] dark:bg-[#241B2D] dark:text-[#F2EAF8] sm:px-8 lg:px-9">
+      <div className="shrink-0 border-t border-[#D7C8E4] bg-[#D7C8E4] px-6 py-5 text-[#40344D] transition-colors duration-300 dark:border-[#51415F] dark:bg-[#241B2D] dark:text-[#F2EAF8] sm:px-8 lg:px-9">
         {" "}
         <div className="flex items-center justify-between gap-5">
           {/* PRODUCT SUMMARY */}
@@ -223,8 +223,8 @@ const ProductDetailsRight = ({
             <p className="header truncate text-base font-bold ">
               {product.name}
             </p>
-            <p className="truncate text-[11px] tracking-wide text-[#766A80]">
-              {selectedGrind} · {selectedSize?.grams}gm · Qty {quantity}
+            <p className="truncate text-[12px]  text-[#766A80]">
+              {selectedGrind} · {selectedSize?.grams}g · Qty {quantity}
             </p>
           </div>
 
