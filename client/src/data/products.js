@@ -32,43 +32,46 @@ const createRotationImages = (slug, count = 30) => {
 
 export const coffeeProducts = [
   {
-    _id: "cold-brew-250-DHANKUTA",
-    name: "Muuiya",
-    shortName: "Cold Brew – 250g [Beans / Ground]",
-    slug: "cold-brew-250g-DHANKUTA",
+    _id: "special-edition-250-DHANKUTA",
+    name: "Jhakri",
+    shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
+    slug: "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
 
-    frontImage: product4,
-    image: product1,
-    hoverImage: product1,
-    imageColor: "#D9A08F",
-    characterImage: muuiya,
-
-    eye: "Light Roasted Coffee",
-    description2: "Light Roasts",
-    shortDescription2:
-      "“Start where I start — a bright cup, before the day wakes up.” — Muuiya",
-    icon: muuiya,
-    background: "bg-[#F1E7FA]",
-    text: "text-[#49345E]",
-    accent: "#B58AD9",
-    hillColors: ["#E8D8F5", "#D8BEEB", "#C19DDE", "#A77CCB"],
+    frontImage: product6,
+    image: product3,
+    hoverImage: product3,
+    rotationImages: createRotationImages(
+      "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
+      27,
+    ),
+    imageColor: "#D5B77A",
+    characterImage: jhakri,
 
     category: "coffee",
     type: "beans",
 
-    roastLevel: 2,
+    eye: "For the Bold at Heart",
+    description2: "Dark Roast",
+    shortDescription2:
+      "“Stay up with me a while. The best things come slow, in the dark.” — Jhakri",
+    icon: jhakri,
+    background: "bg-[#252522]",
+    text: "text-[#E8E4DB]",
+    accent: "#A18B70",
+    hillColors: ["#514B42", "#3C3832", "#2C2925", "#1B1A18"],
+
+    roastLevel: 5,
     caffeine: "full",
     profile: 4,
 
     process: "Anaerobic",
-    altitude: "1,300-1,500",
-    origin: "Dhankuta",
+    altitude: "1,200-1,500",
+    origin: "Sindhupalchok",
 
-    price: 850,
+    price: 1650,
     sizeOptions: [
-      { grams: 100, price: 850 },
-      { grams: 250, price: 1650 },
-      { grams: 500, price: 3000 },
+      { grams: 200, price: 1650 },
+      { grams: 500, price: 2650 },
     ],
 
     grindOptions: [
@@ -81,7 +84,7 @@ export const coffeeProducts = [
     ],
 
     description:
-      "Bold and complex Nepali coffee, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
+      "Bold and complex Nepali filter roast, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
 
     shortDescription:
       "Bold, fruity, and complex — a unique anaerobic expression.",
@@ -102,9 +105,9 @@ export const coffeeProducts = [
       },
 
       altitude: {
-        value: "1,300–1,500 m",
+        value: "1,200–1,500 m",
         blurb:
-          "The coffee is grown at 1,300–1,500 metres above sea level. Higher elevations can encourage slower cherry development and contribute to greater complexity in the cup.",
+          "The coffee is grown at 1,200–1,500 metres above sea level. Higher elevations can encourage slower cherry development and contribute to greater complexity in the cup.",
       },
 
       process: {
@@ -161,7 +164,6 @@ export const coffeeProducts = [
           "Yes — anaerobic processing requires sealed tanks and longer controlled fermentation, which adds to production cost and complexity.",
       },
     ],
-
     ritual: {
       type: "pour-over",
       method: "Pour-over ritual",
@@ -366,46 +368,43 @@ export const coffeeProducts = [
   },
 
   {
-    _id: "special-edition-250-DHANKUTA",
-    name: "Jhakri",
-    shortName: "Filter Roast Anaerobic – 250g [Beans / Ground]",
-    slug: "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
+    _id: "cold-brew-250-DHANKUTA",
+    name: "Muuiya",
+    shortName: "Cold Brew – 250g [Beans / Ground]",
+    slug: "cold-brew-250g-DHANKUTA",
 
-    frontImage: product6,
-    image: product3,
-    hoverImage: product3,
-    rotationImages: createRotationImages(
-      "filter-roast-anaerobic-special-edition-250g-DHANKUTA",
-      27,
-    ),
-    imageColor: "#D5B77A",
-    characterImage: jhakri,
+    frontImage: product4,
+    image: product1,
+    hoverImage: product1,
+    imageColor: "#D9A08F",
+    characterImage: muuiya,
+
+    eye: "Light Roasted Coffee",
+    description2: "Light Roasts",
+    shortDescription2:
+      "“Start where I start — a bright cup, before the day wakes up.” — Muuiya",
+    icon: muuiya,
+    background: "bg-[#F1E7FA]",
+    text: "text-[#49345E]",
+    accent: "#B58AD9",
+    hillColors: ["#E8D8F5", "#D8BEEB", "#C19DDE", "#A77CCB"],
 
     category: "coffee",
     type: "beans",
 
-    eye: "For the Bold at Heart",
-    description2: "Dark Roast",
-    shortDescription2:
-      "“Stay up with me a while. The best things come slow, in the dark.” — Jhakri",
-    icon: jhakri,
-    background: "bg-[#252522]",
-    text: "text-[#E8E4DB]",
-    accent: "#A18B70",
-    hillColors: ["#514B42", "#3C3832", "#2C2925", "#1B1A18"],
-
-    roastLevel: 5,
+    roastLevel: 2,
     caffeine: "full",
     profile: 4,
 
     process: "Anaerobic",
-    altitude: "1,200-1,500",
-    origin: "Sindhupalchok",
+    altitude: "1,300-1,500",
+    origin: "Dhankuta",
 
-    price: 1650,
+    price: 850,
     sizeOptions: [
-      { grams: 200, price: 1650 },
-      { grams: 500, price: 2650 },
+      { grams: 100, price: 850 },
+      { grams: 250, price: 1650 },
+      { grams: 500, price: 3000 },
     ],
 
     grindOptions: [
@@ -418,7 +417,7 @@ export const coffeeProducts = [
     ],
 
     description:
-      "Bold and complex Nepali filter roast, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
+      "Bold and complex Nepali coffee, fermented without oxygen for deep fruit-forward and wine-like characteristics. Intense tropical fruit notes with a syrupy body — one of the most expressive coffees from Nepal's highlands.",
 
     shortDescription:
       "Bold, fruity, and complex — a unique anaerobic expression.",
@@ -439,9 +438,9 @@ export const coffeeProducts = [
       },
 
       altitude: {
-        value: "1,200–1,500 m",
+        value: "1,300–1,500 m",
         blurb:
-          "The coffee is grown at 1,200–1,500 metres above sea level. Higher elevations can encourage slower cherry development and contribute to greater complexity in the cup.",
+          "The coffee is grown at 1,300–1,500 metres above sea level. Higher elevations can encourage slower cherry development and contribute to greater complexity in the cup.",
       },
 
       process: {
@@ -498,6 +497,7 @@ export const coffeeProducts = [
           "Yes — anaerobic processing requires sealed tanks and longer controlled fermentation, which adds to production cost and complexity.",
       },
     ],
+
     ritual: {
       type: "pour-over",
       method: "Pour-over ritual",
@@ -536,157 +536,6 @@ export const coffeeProducts = [
 ];
 
 export const teaProducts = [
-  {
-    _id: "first-flush-100-ILAM",
-    name: "Ani",
-    shortName: "First Flush – 100g [Loose Leaf]",
-    slug: "ilam-first-flush-100g",
-
-    frontImage: tea4,
-    image: tea1,
-    hoverImage: tea1,
-    imageColor: "#D8DCC8",
-    characterImage: ani,
-
-    category: "tea",
-    type: "leaves",
-
-    eye: "Tea from the Hills",
-    description2: "White & Green Tea",
-    shortDescription2:
-      "“Sit a moment. A clear cup, and the day goes quiet.” — Ani",
-    icon: tea1,
-    background: "bg-[#E9EDFF]",
-    text: "text-[#35416A]",
-    accent: "#929FE0",
-    hillColors: ["#DCE3FF", "#C5D0FA", "#A7B6ED", "#8799D8"],
-
-    teaType: "First Flush",
-    caffeine: "medium",
-    oxidation: 2,
-    profile: 4,
-
-    altitude: "1,800–2,200 m",
-    origin: "Ilam, Nepal",
-
-    price: 1100,
-    sizeOptions: [
-      { grams: 50, price: 650 },
-      { grams: 100, price: 1100 },
-      { grams: 250, price: 2400 },
-    ],
-
-    formOptions: ["Whole-leaf tin", "Tea Bag"],
-
-    description:
-      "A delicate early-season tea from the highlands of Ilam, with soft floral aromas, gentle sweetness, and a bright, clean finish. First Flush captures the freshness of Nepal's first harvest in a refined cup.",
-
-    shortDescription:
-      "Floral, bright, and delicate — a fresh expression of Ilam's first harvest.",
-
-    aroma: ["white flowers", "fresh grass", "honey"],
-
-    flavors: ["White Flowers", "Honey", "Citrus"],
-
-    info: {
-      origin: {
-        value: "Ilam, Nepal",
-        blurb:
-          "Grown in the highlands of eastern Nepal, where cool temperatures, mountain mist, and rich soil create ideal conditions for specialty tea.",
-      },
-
-      altitude: {
-        value: "1,800–2,200 m",
-        blurb:
-          "Higher elevations encourage slower leaf development, helping create the delicate aromas and bright character found in this tea.",
-      },
-
-      process: {
-        value: "Lightly oxidized",
-        blurb:
-          "The young leaves are carefully processed with light oxidation to preserve their freshness, floral character, and natural sweetness.",
-      },
-
-      variety: {
-        value: "Camellia sinensis",
-        blurb:
-          "Made from the leaves of Camellia sinensis, the tea plant behind traditional teas around the world.",
-      },
-
-      harvest: {
-        value: "First Flush",
-        blurb:
-          "Harvested during the first picking season, when young leaves and buds are at their freshest and most delicate.",
-      },
-
-      oxidation: {
-        value: "Low",
-        blurb:
-          "Light oxidation keeps the cup bright and fresh while allowing floral and citrus notes to shine.",
-      },
-    },
-
-    rating: 4.8,
-    reviews: 32,
-
-    available: true,
-    instock: true,
-    discount: false,
-
-    faqs: [
-      {
-        question: "What is First Flush tea?",
-        answer:
-          "First Flush refers to the first harvest of the tea season. The young leaves are known for their delicate character, freshness, and floral aromas.",
-      },
-      {
-        question: "How should I brew this tea?",
-        answer:
-          "Use around 3g of tea per 250ml of water at approximately 90°C. Steep for 2–3 minutes and adjust to taste.",
-      },
-      {
-        question: "Can I steep the leaves more than once?",
-        answer:
-          "Yes. The leaves can be steeped multiple times, with later infusions revealing softer and more subtle flavours.",
-      },
-      {
-        question: "How should I store the tea?",
-        answer:
-          "Store it in an airtight container away from sunlight, moisture, heat, and strong aromas.",
-      },
-    ],
-
-    ritual: {
-      type: "steeping",
-      method: "Steeping ritual",
-      dose: "3g",
-      doseLabel: "Leaf",
-      water: "250ml",
-      waterLabel: "Water",
-      temperature: "90°C",
-
-      methods: {
-        western: {
-          label: "Western",
-          steeps: [
-            { number: 1, duration: 180 },
-            { number: 2, duration: 240 },
-            { number: 3, duration: 300 },
-          ],
-        },
-
-        gongfu: {
-          label: "Gongfu",
-          steeps: [
-            { number: 1, duration: 30 },
-            { number: 2, duration: 45 },
-            { number: 3, duration: 60 },
-          ],
-        },
-      },
-    },
-  },
-
   {
     _id: "ilam-green-100-ILAM",
     name: "Raani",
@@ -832,6 +681,157 @@ export const teaProducts = [
             { number: 1, duration: 20 },
             { number: 2, duration: 30 },
             { number: 3, duration: 45 },
+          ],
+        },
+      },
+    },
+  },
+
+  {
+    _id: "first-flush-100-ILAM",
+    name: "Ani",
+    shortName: "First Flush – 100g [Loose Leaf]",
+    slug: "ilam-first-flush-100g",
+
+    frontImage: tea4,
+    image: tea1,
+    hoverImage: tea1,
+    imageColor: "#D8DCC8",
+    characterImage: ani,
+
+    category: "tea",
+    type: "leaves",
+
+    eye: "Tea from the Hills",
+    description2: "White & Green Tea",
+    shortDescription2:
+      "“Sit a moment. A clear cup, and the day goes quiet.” — Ani",
+    icon: tea1,
+    background: "bg-[#E9EDFF]",
+    text: "text-[#35416A]",
+    accent: "#929FE0",
+    hillColors: ["#DCE3FF", "#C5D0FA", "#A7B6ED", "#8799D8"],
+
+    teaType: "First Flush",
+    caffeine: "medium",
+    oxidation: 2,
+    profile: 4,
+
+    altitude: "1,800–2,200 m",
+    origin: "Ilam, Nepal",
+
+    price: 1100,
+    sizeOptions: [
+      { grams: 50, price: 650 },
+      { grams: 100, price: 1100 },
+      { grams: 250, price: 2400 },
+    ],
+
+    formOptions: ["Whole-leaf tin", "Tea Bag"],
+
+    description:
+      "A delicate early-season tea from the highlands of Ilam, with soft floral aromas, gentle sweetness, and a bright, clean finish. First Flush captures the freshness of Nepal's first harvest in a refined cup.",
+
+    shortDescription:
+      "Floral, bright, and delicate — a fresh expression of Ilam's first harvest.",
+
+    aroma: ["white flowers", "fresh grass", "honey"],
+
+    flavors: ["White Flowers", "Honey", "Citrus"],
+
+    info: {
+      origin: {
+        value: "Ilam, Nepal",
+        blurb:
+          "Grown in the highlands of eastern Nepal, where cool temperatures, mountain mist, and rich soil create ideal conditions for specialty tea.",
+      },
+
+      altitude: {
+        value: "1,800–2,200 m",
+        blurb:
+          "Higher elevations encourage slower leaf development, helping create the delicate aromas and bright character found in this tea.",
+      },
+
+      process: {
+        value: "Lightly oxidized",
+        blurb:
+          "The young leaves are carefully processed with light oxidation to preserve their freshness, floral character, and natural sweetness.",
+      },
+
+      variety: {
+        value: "Camellia sinensis",
+        blurb:
+          "Made from the leaves of Camellia sinensis, the tea plant behind traditional teas around the world.",
+      },
+
+      harvest: {
+        value: "First Flush",
+        blurb:
+          "Harvested during the first picking season, when young leaves and buds are at their freshest and most delicate.",
+      },
+
+      oxidation: {
+        value: "Low",
+        blurb:
+          "Light oxidation keeps the cup bright and fresh while allowing floral and citrus notes to shine.",
+      },
+    },
+
+    rating: 4.8,
+    reviews: 32,
+
+    available: true,
+    instock: true,
+    discount: false,
+
+    faqs: [
+      {
+        question: "What is First Flush tea?",
+        answer:
+          "First Flush refers to the first harvest of the tea season. The young leaves are known for their delicate character, freshness, and floral aromas.",
+      },
+      {
+        question: "How should I brew this tea?",
+        answer:
+          "Use around 3g of tea per 250ml of water at approximately 90°C. Steep for 2–3 minutes and adjust to taste.",
+      },
+      {
+        question: "Can I steep the leaves more than once?",
+        answer:
+          "Yes. The leaves can be steeped multiple times, with later infusions revealing softer and more subtle flavours.",
+      },
+      {
+        question: "How should I store the tea?",
+        answer:
+          "Store it in an airtight container away from sunlight, moisture, heat, and strong aromas.",
+      },
+    ],
+
+    ritual: {
+      type: "steeping",
+      method: "Steeping ritual",
+      dose: "3g",
+      doseLabel: "Leaf",
+      water: "250ml",
+      waterLabel: "Water",
+      temperature: "90°C",
+
+      methods: {
+        western: {
+          label: "Western",
+          steeps: [
+            { number: 1, duration: 180 },
+            { number: 2, duration: 240 },
+            { number: 3, duration: 300 },
+          ],
+        },
+
+        gongfu: {
+          label: "Gongfu",
+          steeps: [
+            { number: 1, duration: 30 },
+            { number: 2, duration: 45 },
+            { number: 3, duration: 60 },
           ],
         },
       },

@@ -1,102 +1,39 @@
-import { useEffect, useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Coffee, Leaf, Sprout } from "lucide-react";
+import { ArrowRight, Quote } from "lucide-react";
 
 import { coffeeProducts, teaProducts } from "../../data/products";
-import Button from "../../components/Button";
 
 import { useScroll, useTransform, useReducedMotion } from "framer-motion";
 
-import { useRef } from "react";
-
-const productThemes = [
-  // MUUIYA — Bright Lavender
+const products = [...coffeeProducts, ...teaProducts];
+const characterPositions = [
   {
-    name: "Muuiya",
-    eye: "Light Roasted Coffee",
-    description: "Light Roasts",
-    shortDescription:
-      "“Start where I start — a bright cup, before the day wakes up.” — Muuiya",
-    category: "coffee",
-    icon: Coffee,
-    background: "bg-[#F1E7FA]",
-    text: "text-[#49345E]",
-    accent: "#B58AD9",
-    image: "/images/hero/muuiya.jpg",
-    hillColors: ["#E8D8F5", "#D8BEEB", "#C19DDE", "#A77CCB"],
+    className: "left-0 top-[17%] sm:left-[12%] sm:top-[15%]",
+    bubbleSide: "right",
   },
-
-  // ANI — Fresh Lilac
   {
-    name: "Ani",
-    eye: "Tea from the Hills",
-    description: "White & Green Tea",
-    shortDescription:
-      "“Sit a moment. A clear cup, and the day goes quiet.” — Ani",
-    category: "tea",
-    icon: Leaf,
-    background: "bg-[#E9EDFF]",
-    text: "text-[#35416A]",
-    accent: "#929FE0",
-    image: "/images/hero/ani.jpg",
-    hillColors: ["#DCE3FF", "#C5D0FA", "#A7B6ED", "#8799D8"],
+    className: "left-0 bottom-[13%] sm:left-[8%] sm:bottom-[12%]",
+    bubbleSide: "right",
   },
-
-  // MARUNI — Dark Roasted Brown
   {
-    name: "Maruni",
-    eye: "The Everyday Favourite",
-    description: "Medium Roast",
-    shortDescription:
-      "“Come, this is the cup we share when everyone is home.” — Maruni",
-    category: "coffee",
-    icon: Coffee,
-    background: "bg-[#30241F]",
-    text: "text-[#F0E3D3]",
-    accent: "#C08B61",
-    image: "/images/hero/maruni.jpg",
-    hillColors: ["#5A4035", "#453027", "#30221D", "#211815"],
+    className: "right-0 top-[13%] sm:right-[2%] sm:top-[12%]",
+    bubbleSide: "left",
   },
-
-  // RAANI — Dark Royal Plum
   {
-    name: "Raani",
-    eye: "A Royal Cup",
-    description: "Black Tea",
-    shortDescription:
-      "“Bold, and in no hurry — pour, and take your time.” — Raani",
-    category: "tea",
-    icon: Leaf,
-    background: "bg-[#30202B]",
-    text: "text-[#F0DDE7]",
-    accent: "#C18A9F",
-    image: "/images/hero/raani.jpg",
-    hillColors: ["#654052", "#4D3042", "#382330", "#241720"],
+    className: "right-0 top-[41%] sm:right-[10%] sm:top-[39%]",
+    bubbleSide: "left",
   },
-
-  // JHAKRI — Dark Charcoal
   {
-    name: "Jhakri",
-    eye: "For the Bold at Heart",
-    description: "Dark Roast",
-    shortDescription:
-      "“Stay up with me a while. The best things come slow, in the dark.” — Jhakri",
-    category: "coffee",
-    icon: Sprout,
-    background: "bg-[#252522]",
-    text: "text-[#E8E4DB]",
-    accent: "#A18B70",
-    image: "/images/hero/jhakri.jpg",
-    hillColors: ["#514B42", "#3C3832", "#2C2925", "#1B1A18"],
+    className: "right-0 bottom-[11%] sm:right-[3%] sm:bottom-[10%]",
+    bubbleSide: "left",
   },
 ];
 
-const products = [...coffeeProducts, ...teaProducts];
-
 export default function NewHero() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isInteracting, setIsInteracting] = useState(false);
+  const [spotlightIndex, setSpotlightIndex] = useState(null);
 
   const activeProduct = products[activeIndex];
 
@@ -114,19 +51,9 @@ export default function NewHero() {
     reduceMotion ? [1, 1] : [1, 0.015],
   );
 
-  // Automatically rotate every 5 seconds.
-  useEffect(() => {
-    if (isInteracting || products.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % products.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [isInteracting]);
-
   const selectProduct = (index) => {
     setActiveIndex(index);
+    setSpotlightIndex(index);
   };
 
   const productLink = activeProduct
@@ -137,7 +64,6 @@ export default function NewHero() {
     <section
       ref={heroRef}
       className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-lightWhite dark:bg-darkInk"
-      onMouseLeave={() => setIsInteracting(false)}
     >
       {/* Background color */}
       <AnimatePresence mode="sync">
@@ -151,51 +77,99 @@ export default function NewHero() {
         />
       </AnimatePresence>
 
-      <AnimatePresence mode="wait">
-        {activeProduct?.characterImage && (
-          <motion.div
-            key={activeProduct._id}
-            className="pointer-events-none absolute right-0 top-1/2 z-[2] h-[280px] w-[220px] -translate-y-1/2 sm:h-[380px] sm:w-[300px] lg:h-[520px] lg:w-[420px]"
-            initial={{
-              opacity: 0,
-              y: 180,
-              scale: 0.65,
-              rotate: -12,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              rotate: 0,
-            }}
-            exit={{
-              opacity: 0,
-              y: 140,
-              scale: 0.75,
-              rotate: -10,
-            }}
-            transition={{
-              duration: 0.8,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
-            <motion.img
-              src={activeProduct.characterImage}
-              alt={`${activeProduct.name} character`}
-              className="h-full w-full object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.25)]"
+      {/* Character gallery */}
+      <div className="pointer-events-none absolute inset-0">
+        {products.map((product, index) => {
+          const isActive = index === activeIndex;
+          const isSpotlighted = spotlightIndex === index;
+          const isDimmed = spotlightIndex !== null && !isSpotlighted;
+          const position = characterPositions[index];
+          const bubbleOnRight = position.bubbleSide === "right";
+
+          return (
+            <motion.button
+              key={product._id}
+              type="button"
+              aria-label={`Select ${product.name}`}
+              aria-pressed={isActive}
+              onMouseEnter={() => selectProduct(index)}
+              onFocus={() => selectProduct(index)}
+              onClick={() => selectProduct(index)}
+              onMouseLeave={() => setSpotlightIndex(null)}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) {
+                  setSpotlightIndex(null);
+                }
+              }}
+              className={`pointer-events-auto absolute h-36 w-24 appearance-none border-0 bg-transparent p-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red focus-visible:ring-offset-2 sm:h-56 sm:w-40 lg:h-72 lg:w-52 ${position.className}`}
+              style={{ zIndex: isActive ? 20 : 3 }}
               animate={{
-                y: [0, -12, 0, -7, 0],
-                rotate: [0, 2, 0, -2, 0],
+                opacity: isDimmed ? 0.24 : 0.78,
+                scale: isSpotlighted ? 1.12 : isDimmed ? 0.88 : 1,
               }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+              transition={{ duration: 0.45, ease: "easeOut" }}
+            >
+              <motion.img
+                src={product.characterImage}
+                alt=""
+                className="h-full w-full object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.2)]"
+                animate={
+                  reduceMotion
+                    ? {}
+                    : { y: [0, -6, 0], rotate: [0, 1, 0, -1, 0] }
+                }
+                transition={{
+                  duration: 4.5 + index * 0.35,
+                  repeat: reduceMotion ? 0 : Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.2,
+                }}
+              />
+
+              <AnimatePresence mode="wait">
+                {isActive && (
+                  <motion.div
+                    key={product._id}
+                    initial={{ opacity: 0, scale: 0.9, y: 6 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.94, y: 4 }}
+                    transition={{ duration: 0.25 }}
+                    className={`absolute top-[18%] w-[min(42vw,10rem)] rounded-2xl border bg-white/95 p-3 text-left shadow-xl shadow-deepPurple/15 backdrop-blur-md sm:top-[24%] sm:w-56 sm:p-4 ${
+                      bubbleOnRight
+                        ? "left-full ml-2 rounded-tl-none"
+                        : "right-full mr-2 rounded-tr-none"
+                    }`}
+                    style={{ borderColor: `${product.accent}99` }}
+                    role="status"
+                    aria-live="polite"
+                  >
+                    <span
+                      className={`absolute top-3 h-3 w-3 rotate-45 bg-white ${
+                        bubbleOnRight
+                          ? "-left-1.5 border-b border-l"
+                          : "-right-1.5 border-r border-t"
+                      }`}
+                      style={{
+                        borderColor: `${product.accent}99`,
+                      }}
+                    />
+                    <span
+                      className="mb-1 flex items-center gap-1 text-[8px] font-semibold uppercase tracking-[0.16em] sm:text-[9px]"
+                      style={{ color: product.accent }}
+                    >
+                      <Quote size={11} aria-hidden="true" />
+                      {product.name}
+                    </span>
+                    <p className="text-[9px] leading-relaxed text-deepPurple sm:text-xs">
+                      {product.shortDescription2}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          );
+        })}
+      </div>
 
       {/* ANIMATED HILLS */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] overflow-hidden">
@@ -244,7 +218,7 @@ export default function NewHero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-start px-5 py-20 text-center text-white sm:px-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-xl flex-col items-start px-5 py-20 text-center text-white sm:px-8">
         {/* Product eyebrow */}
         <AnimatePresence mode="wait">
           <motion.p
@@ -265,36 +239,24 @@ export default function NewHero() {
             key={activeProduct._id}
             className="header text-4xl font-semibold leading-[1.08] tracking-tight text-start text-deepPurple dark:text-lightCream sm:text-6xl lg:text-7xl"
           >
-            Well, hello
+            Best brews
             <br />
-            there! I'm
+            from the
             <br />
-            <span className="text-red dark:text-orange">
-              {activeProduct.name}
-            </span>
+            <span className="text-red dark:text-orange">higher belts</span>
             <span className="text-deepPurple dark:text-lightCream">.</span>
           </h1>
         </div>
 
-        {/* Product description */}
-        <AnimatePresence mode="wait">
-          <motion.p
-            key={activeProduct.description}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.4 }}
-            className="mt-2 text-sm max-w-md text-start tracking-wide text-deepPurple/80 sm:text-lg"
-          >
-            {activeProduct.shortDescription2}
-          </motion.p>
-        </AnimatePresence>
-
         {/* Character Selector */}
         <div
           className="mt-12 grid w-full max-w-5xl grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 "
-          onMouseEnter={() => setIsInteracting(true)}
-          onFocus={() => setIsInteracting(true)}
+          onMouseLeave={() => setSpotlightIndex(null)}
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) {
+              setSpotlightIndex(null);
+            }
+          }}
         >
           {products.map((product, index) => {
             const isActive = index === activeIndex;
@@ -369,22 +331,6 @@ export default function NewHero() {
                   <p className="mt-1 line-clamp-2 text-[9px] leading-relaxed text-darkPurple/75 font-light sm:text-[11px] uppercase">
                     {product.description2 || product.shortDescription}
                   </p>
-
-                  {/* Active indicator */}
-                  {/* <div className="mt-2 flex items-center gap-1.5">
-                    <span
-                      className={`h-1.5 w-1.5 rounded-full transition-colors ${
-                        isActive ? "bg-[#C8A8E5]" : "bg-white/25"
-                      }`}
-                    />
-                    <span
-                      className={`text-[8px] font-semibold uppercase tracking-[0.16em] sm:text-[9px] ${
-                        isActive ? "text-[#D9C3ED]" : "text-white/35"
-                      }`}
-                    >
-                      {isActive ? "Selected" : product.category}
-                    </span>
-                  </div> */}
                 </div>
               </motion.button>
             );
