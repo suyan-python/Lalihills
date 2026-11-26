@@ -55,7 +55,7 @@ const ProductDetailsRight = ({
   const infoOptions = ["Taste", "Origin", "Ritual", "Order"];
 
   return (
-    <div className="relative flex  max-h-[calc(100vh-100px)] max-w-2xl flex-col justify-between self-start overflow-hidden rounded-[2rem] border border-deepPurple/45 text-[#40344D] shadow-[0_20px_70px_rgba(64,52,77,0.10)] transition-colors duration-300 dark:border-[#51415F] bg-[#F6F2FB] dark:bg-[#241B2D] dark:text-[#F2EAF8] dark:shadow-[0_20px_70px_rgba(0,0,0,0.30)] my-28 ">
+    <div className="relative flex h-fit w-[calc(100vw-2rem)] max-w-xl flex-col justify-between self-start overflow-hidden rounded-[2rem] border border-deepPurple/45 bg-[#F6F2FB] text-[#40344D] shadow-[0_20px_70px_rgba(64,52,77,0.10)] transition-colors duration-300 dark:border-[#51415F] dark:bg-[#241B2D] dark:text-[#F2EAF8] dark:shadow-[0_20px_70px_rgba(0,0,0,0.30)] my-8 sm:my-12 lg:my-28">
       {/* TOP — INFORMATION */}
       <div className="z-10 min-h-0 min-h-[420px] shrink-0 overflow-y-auto sm:min-h-[500px] ">
         <div className="flex flex-col">
@@ -114,7 +114,7 @@ const ProductDetailsRight = ({
           </div>
 
           {/* INFORMATION CONTENT */}
-          <div className="px-6 py-3 sm:px-8 sm:py-4 lg:px-9">
+          <div className="px-6 py-3 sm:px-8 sm:pt-5 lg:px-9">
             <AnimatePresence mode="wait">
               {activeInfo === "Taste" && (
                 <InfoPanel key="Taste" title="Taste">
@@ -332,7 +332,7 @@ const RitualPanel = ({ ritual }) => {
       </div>
 
       {/* BREW VARIABLES */}
-      <div className="mx-auto mt-2 md:mt-5 flex gap-10 justify-center max-w-sm gap-y-4 sm:grid-cols-4   ">
+      <div className="mx-auto mt-2  flex gap-10 justify-center max-w-sm gap-y-4 sm:grid-cols-4   ">
         <RitualStat value={ritual.dose} label={ritual.doseLabel} />
         <RitualStat value={ritual.water} label={ritual.waterLabel} />
         <RitualStat value={ritual.temperature} label="Temp" />
@@ -355,7 +355,7 @@ const RitualPanel = ({ ritual }) => {
 };
 
 const RitualStat = ({ value, label }) => (
-  <div className="flex flex-col items-center text-center ">
+  <div className="flex flex-col items-center text-center  ">
     <p className="text-lg tracking-[-0.03em] text-ink dark:text-lightWhite">
       {value}
     </p>
@@ -427,7 +427,7 @@ const CoffeeTimer = ({ ritual }) => {
   return (
     <div className="flex w-full flex-col items-center text-center">
       {/* TIMER */}
-      <div className="relative h-52 w-52 sm:h-56 sm:w-56">
+      <div className="relative h-40 w-40 sm:h-44 sm:w-44">
         <svg viewBox="0 0 200 200" className="h-full w-full -rotate-90">
           {/* TRACK */}
           <circle
@@ -586,7 +586,7 @@ const TeaTimer = ({ ritual }) => {
     <div className="mx-auto w-full max-w-md ">
       {/* METHOD */}
       <div className="flex flex-col items-center">
-        <div className="mt-2 md:mt-3 justify-center items-center  rounded-full bg-ink/5 dark:bg-cream/15 p-1 w-fit ">
+        <div className="mt-2  justify-center items-center  rounded-full bg-ink/5 dark:bg-cream/15 p-1 w-fit ">
           {[
             { id: "western", label: "Western" },
             { id: "gongfu", label: "Gongfu" },
@@ -612,8 +612,8 @@ const TeaTimer = ({ ritual }) => {
       </div>
 
       {/* STEEP OPTIONS */}
-      <div className="mt-3 md:mt-6">
-        <div className="mt-3 flex justify-center gap-5 ">
+      <div className="mt-3 ">
+        <div className="flex justify-center gap-5 ">
           {steepTimes.map((steep, index) => {
             const active = steepIndex === index;
 
@@ -649,7 +649,7 @@ const TeaTimer = ({ ritual }) => {
 
       {/* TIMER */}
       <div className="mt-1 text-center">
-        <div className="relative mx-auto h-28 md:h-48 w-28 md:w-48">
+        <div className="relative mx-auto h-28 md:h-36 w-28 md:w-36">
           <svg viewBox="0 0 200 200" className="h-full w-full -rotate-90">
             <circle
               cx="100"
@@ -688,7 +688,7 @@ const TeaTimer = ({ ritual }) => {
                   } steep`}
             </span>
 
-            <span className="header mt-1 text-2xl md:text-4xl leading-none tracking-[-0.04em] text-ink dark:text-lightWhite">
+            <span className="header mt-1 text-2xl md:text-3xl leading-none tracking-[-0.04em] text-ink dark:text-lightWhite">
               {formatTime(elapsed)}
             </span>
 
@@ -702,7 +702,7 @@ const TeaTimer = ({ ritual }) => {
       </div>
 
       {/* CONTROLS */}
-      <div className="mt-2 md:mt-4 flex justify-center gap-2">
+      <div className=" flex justify-center gap-2">
         <button
           type="button"
           onClick={() => {
