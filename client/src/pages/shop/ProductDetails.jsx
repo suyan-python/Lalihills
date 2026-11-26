@@ -125,7 +125,7 @@ const ProductDetails = ({ products = [] }) => {
   return (
     <section className="relative z-[100] w-full bg-[#ECE6F4] text-[#40344D] transition-colors duration-300 dark:bg-[#1D1625] dark:text-[#F2EAF8] lg:h-dvh lg:min-h-[680px]">
       {" "}
-      <div className="grid min-h-screen grid-cols-1 lg:h-full lg:grid-cols-2 gap-12">
+      <div className="grid min-h-screen grid-cols-1 lg:h-full lg:grid-cols-2 gap-12 ">
         <ProductDetailsLeft
           product={currentProduct}
           productType={productType}

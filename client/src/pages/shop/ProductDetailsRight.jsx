@@ -55,17 +55,17 @@ const ProductDetailsRight = ({
   const infoOptions = ["Taste", "Origin", "Ritual", "Order"];
 
   return (
-    <div className="relative flex  max-h-[calc(100vh-100px)] max-w-2xl flex-col justify-between self-start overflow-hidden rounded-[2rem] border border-deepPurple/45 text-[#40344D] shadow-[0_20px_70px_rgba(64,52,77,0.10)] transition-colors duration-300 dark:border-[#51415F] bg-[#F6F2FB] dark:bg-[#241B2D] dark:text-[#F2EAF8] dark:shadow-[0_20px_70px_rgba(0,0,0,0.30)] my-20">
+    <div className="relative flex  max-h-[calc(100vh-100px)] max-w-2xl flex-col justify-between self-start overflow-hidden rounded-[2rem] border border-deepPurple/45 text-[#40344D] shadow-[0_20px_70px_rgba(64,52,77,0.10)] transition-colors duration-300 dark:border-[#51415F] bg-[#F6F2FB] dark:bg-[#241B2D] dark:text-[#F2EAF8] dark:shadow-[0_20px_70px_rgba(0,0,0,0.30)] my-28 ">
       {/* TOP — INFORMATION */}
-      <div className="z-10 min-h-0 min-h-[420px] shrink-0 overflow-y-auto sm:min-h-[500px]">
+      <div className="z-10 min-h-0 min-h-[420px] shrink-0 overflow-y-auto sm:min-h-[500px] ">
         <div className="flex flex-col">
           {/* TOP NAV */}
-          <div className="flex shrink-0 items-center justify-between border-b border-ink/10 px-6 py-5 sm:px-8 lg:px-10 ">
+          <div className="flex shrink-0 items-center justify-between gap-4 border-b border-[#D7C8E4] px-6 py-5 transition-colors duration-300 dark:border-[#51415F] sm:px-8 lg:px-10">
             {/* INFO NAV */}
-            <div className="w-full ">
-              <div className="relative grid w-full max-w-lg grid-cols-4 rounded-full border border-[#D7C8E4] bg-[#D7C8E4] p-1 sm:max-w-3xl">
+            <div className="min-w-0 flex-1">
+              <div className="relative grid w-full max-w-lg grid-cols-4 rounded-full border border-[#D7C8E4] bg-[#D7C8E4] p-1 transition-colors duration-300 dark:border-[#51415F] dark:bg-[#30243A] sm:max-w-3xl">
                 <motion.div
-                  className="absolute inset-y-1 rounded-full bg-white shadow-sm"
+                  className="absolute inset-y-1 rounded-full bg-[#F8F4FB] shadow-[0_2px_8px_rgba(64,52,77,0.12)] transition-colors duration-300 dark:bg-[#493853]"
                   style={{
                     width: `calc((100% - 8px) / ${infoOptions.length})`,
                   }}
@@ -89,10 +89,10 @@ const ProductDetailsRight = ({
                       key={item}
                       type="button"
                       onClick={() => setActiveInfo(item)}
-                      className={`relative z-10 flex h-9 items-center justify-center rounded-full px-3 text-[9px]  tracking-[0.04em] transition-colors duration-300 sm:px-4 sm:text-[12px] ${
+                      className={`relative z-10 flex h-9 min-w-0 items-center justify-center rounded-full px-2 text-[9px] tracking-[0.04em] transition-colors duration-300 sm:px-4 sm:text-[12px] ${
                         active
-                          ? "text-[#40344D]"
-                          : "cursor-pointer text-[#766A80] hover:text-[#40344D]"
+                          ? "font-semibold text-[#40344D] dark:text-[#F2EAF8]"
+                          : "cursor-pointer text-[#766A80] hover:text-[#40344D] dark:text-[#B9A9C7] dark:hover:text-[#F2EAF8]"
                       }`}
                     >
                       {item}
@@ -107,7 +107,7 @@ const ProductDetailsRight = ({
               type="button"
               onClick={onThemeToggle}
               aria-label="Toggle dark mode"
-              className="flex h-8 cursor-pointer items-center rounded-full border border-black/20 px-2.5 text-[7px] font-medium uppercase tracking-[0.16em] text-ink transition-colors hover:border-black/40 dark:border-lightCream/20 dark:text-lightCream dark:hover:border-lightCream/40 sm:h-9 sm:px-3 sm:text-[8px] sm:tracking-[0.2em]"
+              className="flex h-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-[#D7C8E4] bg-[#F8F4FB] px-3 text-[8px] font-bold uppercase tracking-[0.16em] text-[#40344D] transition-all duration-300 hover:border-[#987BB2] hover:bg-[#EEE6F4] dark:border-[#51415F] dark:bg-[#30243A] dark:text-[#F2EAF8] dark:hover:border-[#B99AD8] dark:hover:bg-[#493853] sm:px-4 sm:text-[9px]"
             >
               {darkMode ? "Light" : "Dark"}
             </button>

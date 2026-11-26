@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Coffee, Leaf, MapPin, Mountain, Sparkles } from "lucide-react";
+import { Coffee, Gift, Leaf, MapPin, Mountain, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import RoastLevel from "./RoastLevel";
 import OxidationLevel from "./OxidationLevel";
 
@@ -62,7 +63,7 @@ const ProductDetailsLeft = ({
   ].filter((detail) => detail.value);
 
   return (
-    <section className="relative h-dvh min-h-[700px] w-full overflow-hidden bg-[#ECE6F4] text-[#40344D] transition-colors duration-300 dark:bg-[#1D1625] dark:text-[#F2EAF8]">
+    <section className="relative w-full overflow-visible bg-[#ECE6F4] text-[#40344D] transition-colors duration-300 dark:bg-[#1D1625] dark:text-[#F2EAF8]">
       {" "}
       <AnimatePresence mode="wait">
         <motion.div
@@ -120,94 +121,135 @@ const ProductDetailsLeft = ({
       {/* Background Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#241B2D]/95 via-[#241B2D]/65 to-[#241B2D]/30" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#241B2D]/95 via-transparent to-[#241B2D]/40" />
-      {/* Main Content */}
-      <div className="relative z-10 flex h-full flex-col px-5 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-9">
-        {/* Beans / Leaves Toggle */}
-        <div className="flex justify-end">
-          <div className="relative isolate flex rounded-full border border-white/20 bg-[#241B2D]/75 p-1.5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl">
-            {/* Sliding background */}
-            <motion.div
-              className="absolute bottom-1.5 top-1.5 left-1.5 z-0 w-[calc(50%-6px)] rounded-full bg-[#E8DDF1]"
-              animate={{
-                x: productType === "leaves" ? "100%" : "0%",
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 260,
-                damping: 26,
-                mass: 0.8,
-              }}
-            />
+      {/* Beans / Leaves Toggle */}
+      <div className="absolute left-1/2 top-5 z-20 flex -translate-x-1/2 items-center gap-2 lg:left-[calc(100%_+_1.5rem)] lg:top-10 lg:-translate-y-1/2">
+        <div className="relative isolate flex rounded-full border border-white/20 bg-[#241B2D]/75 p-1.5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl">
+          {/* Sliding background */}
+          <motion.div
+            className="absolute bottom-1.5 top-1.5 left-1.5 z-0 w-[calc(50%-6px)] rounded-full bg-[#E8DDF1]"
+            animate={{
+              x: productType === "leaves" ? "100%" : "0%",
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 26,
+              mass: 0.8,
+            }}
+          />
 
-            {[
-              { id: "beans", label: "Coffee Beans", icon: Coffee },
-              { id: "leaves", label: "Tea Leaves", icon: Leaf },
-            ].map((option) => {
-              const active = productType === option.id;
-              const Icon = option.icon;
+          {[
+            { id: "beans", label: "Beans", icon: Coffee },
+            { id: "leaves", label: "Leaves", icon: Leaf },
+          ].map((option) => {
+            const active = productType === option.id;
+            const Icon = option.icon;
 
-              return (
-                <motion.button
-                  key={option.id}
-                  type="button"
-                  onClick={() => setProductType(option.id)}
-                  whileTap={{ scale: 0.96 }}
-                  className={`relative z-10 flex min-w-[125px] cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-3 text-[9px] font-bold uppercase tracking-[0.14em] transition-colors duration-300 sm:min-w-[145px] sm:px-5 sm:text-[10px] ${
-                    active ? "text-[#40344D]" : "text-white/60 hover:text-white"
-                  }`}
+            return (
+              <motion.button
+                key={option.id}
+                type="button"
+                onClick={() => setProductType(option.id)}
+                whileTap={{ scale: 0.96 }}
+                className={`relative z-10 flex min-w-[125px] cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-3 text-[9px] font-bold uppercase tracking-[0.14em] transition-colors duration-300 sm:min-w-[145px] sm:px-5 sm:text-[10px] ${
+                  active ? "text-[#40344D]" : "text-white/60 hover:text-white"
+                }`}
+              >
+                <motion.span
+                  animate={{
+                    scale: active ? 1.08 : 1,
+                    rotate: active ? 0 : -8,
+                  }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <motion.span
-                    animate={{
-                      scale: active ? 1.08 : 1,
-                      rotate: active ? 0 : -8,
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Icon
-                      size={15}
-                      className={active ? "text-[#795A9C]" : ""}
-                    />
-                  </motion.span>
+                  <Icon size={15} className={active ? "text-[#795A9C]" : ""} />
+                </motion.span>
 
-                  <span>{option.label}</span>
-                </motion.button>
-              );
-            })}
-          </div>
+                <span>{option.label}</span>
+              </motion.button>
+            );
+          })}
         </div>
+        <Link
+          to="/gift"
+          className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full border border-[#D9A9B9] bg-gradient-to-br from-[#F6DCE7] via-[#EED5E8] to-[#E4D9F2] px-5 py-3 text-[9px] font-bold uppercase tracking-[0.14em] text-[#68445F] shadow-[0_8px_28px_rgba(126,76,111,0.18)] transition-all duration-300 hover:-translate-y-1 hover:border-[#C98DA8] hover:shadow-[0_12px_32px_rgba(126,76,111,0.25)] sm:px-6 sm:text-[10px] dark:border-[#8E647F] dark:from-[#503247] dark:via-[#49334F] dark:to-[#39304F] dark:text-[#F6DCE7] dark:hover:border-[#C18EAE]"
+        >
+          {/* Decorative glow */}
+          <span className="absolute -right-3 -top-4 h-12 w-12 rounded-full bg-white/40 blur-xl transition-all duration-500 group-hover:scale-150 dark:bg-[#D9A9B9]/20" />
 
+          {/* Gift icon */}
+          <motion.span
+            whileHover={{ rotate: [-8, 8, -6, 0], scale: 1.12 }}
+            transition={{ duration: 0.4 }}
+            className="relative"
+          >
+            <Gift size={15} strokeWidth={1.8} />
+          </motion.span>
+
+          <span className="relative">Gifts</span>
+
+          {/* Ribbon accent */}
+          <span className="relative h-1.5 w-1.5 rounded-full bg-[#B87999] dark:bg-[#D9A9B9] animate-bounce" />
+        </Link>
+      </div>
+      {/* Main Content */}
+      <div className="relative z-10 flex h-full flex-col px-5 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-9 ">
         {/* Product Content */}
-        <div className="ml-auto flex w-full max-w-[540px] flex-1 flex-col justify-center pt-8">
+        <div className="ml-auto flex w-full max-w-[540px] flex-1 flex-col justify-center  ">
           {/* Origin Selection */}
           <div>
-            <div className="mb-3 flex items-center justify-between">
+            <div className="mb-3 flex items-center justify-between ">
               <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#D7C8E4]">
                 Discover the {isBeans ? "origins" : "tea collection"}
               </p>
             </div>
+            <div className="w-full">
+              <div className="relative grid w-full grid-cols-2 gap-1 rounded-full border border-[#D7C8E4] bg-[#D7C8E4]/70 p-1 sm:flex sm:w-fit sm:flex-wrap sm:rounded-full">
+                <motion.div
+                  className="absolute inset-y-1 rounded-full bg-[#F8F4FB] shadow-[0_3px_14px_rgba(121,90,156,0.22)]"
+                  style={{
+                    width: `calc((100% - 8px) / ${filteredOptions.length})`,
+                  }}
+                  animate={{
+                    left: `calc(4px + ${filteredOptions.findIndex(
+                      (option) => option._id === product._id,
+                    )} * ((100% - 8px) / ${filteredOptions.length}))`,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 350,
+                    damping: 30,
+                  }}
+                />
 
-            <div className="flex flex-wrap gap-2">
-              {filteredOptions.map((option) => {
-                const active = product._id === option._id;
-                const label = isBeans
-                  ? option.origin
-                  : option.teaType || option.origin;
+                {filteredOptions.map((option) => {
+                  const active = product._id === option._id;
+                  const label = isBeans
+                    ? option.origin
+                    : option.teaType || option.origin;
 
-                return (
-                  <button
-                    key={option._id}
-                    type="button"
-                    onClick={() => setCurrentProduct(option)}
-                    className={`cursor-pointer rounded-full border px-4 py-2 text-[10px] font-semibold transition-all duration-300 ${
-                      active
-                        ? "border-[#D7C8E4] bg-[#E8DDF1] text-[#40344D] shadow-[0_4px_18px_rgba(0,0,0,0.15)]"
-                        : "border-white/25 bg-[#241B2D]/45 text-white/75 backdrop-blur-md hover:border-white/60 hover:bg-white/10 hover:text-white"
-                    }`}
-                  >
-                    {label}
-                  </button>
-                );
-              })}
+                  return (
+                    <button
+                      key={option._id}
+                      type="button"
+                      onClick={() => setCurrentProduct(option)}
+                      className={`relative z-10 flex min-h-10 items-center justify-center rounded-full px-4 py-2 text-[10px] font-bold tracking-[0.06em] transition-all duration-300 sm:min-w-[120px] sm:px-6 sm:text-[11px] text-[#40344D] ${
+                        active ? "" : "cursor-pointer  hover:text-[#40344D]/75"
+                      }`}
+                    >
+                      <span className="relative">
+                        {label}
+                        {active && (
+                          <motion.span
+                            layoutId="origin-indicator"
+                            className="absolute -bottom-1 left-1/2 h-[2px] w-4 -translate-x-1/2 rounded-full bg-[#987BB2]"
+                          />
+                        )}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
 

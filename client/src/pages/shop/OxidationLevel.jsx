@@ -44,16 +44,16 @@ const OxidationLevel = ({ oxidation, products = [], onProductChange }) => {
     <div className="w-full">
       {/* Labels */}
       <div className="mb-4 flex items-center justify-between">
-        <div>
-          <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#987BB2]">
-            Oxidation Level
+        <div className="flex items-center text-[10px] font-bold uppercase tracking-[0.18em] text-[#D7C8E4]">
+          <p className="text-[10px] font-bold uppercase tracking-[0.18em] ">
+            Oxidation Level:{" "}
           </p>
 
           <motion.p
             key={activeIndex}
             initial={{ opacity: 0.5, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
-            className="header mt-1 text-lg font-bold text-[#40344D]"
+            className="font-black text-lightWhite"
           >
             {levels[activeIndex]}
           </motion.p>

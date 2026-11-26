@@ -41,7 +41,7 @@ const RoastLevel = ({ roastLevel, products = [], onProductChange }) => {
     <div className="w-full">
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center text-[10px] font-bold uppercase tracking-[0.18em] text-[#D7C8E4]">
-          <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#D7C8E4]">
+          <p className="text-[10px] font-bold uppercase tracking-[0.18em] ">
             Roast Level:{" "}
           </p>
 
