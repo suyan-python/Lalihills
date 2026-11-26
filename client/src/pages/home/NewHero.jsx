@@ -32,10 +32,9 @@ const characterPositions = [
 ];
 
 export default function NewHero() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [spotlightIndex, setSpotlightIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
 
-  const activeProduct = products[activeIndex];
+  const activeProduct = products[activeIndex ?? 0];
 
   const heroRef = useRef(null);
   const reduceMotion = useReducedMotion();
@@ -53,8 +52,9 @@ export default function NewHero() {
 
   const selectProduct = (index) => {
     setActiveIndex(index);
-    setSpotlightIndex(index);
   };
+
+  const clearProductSelection = () => setActiveIndex(null);
 
   const productLink = activeProduct
     ? `/shop/${activeProduct.category}/${activeProduct.slug}`
@@ -81,8 +81,7 @@ export default function NewHero() {
       <div className="pointer-events-none absolute inset-0">
         {products.map((product, index) => {
           const isActive = index === activeIndex;
-          const isSpotlighted = spotlightIndex === index;
-          const isDimmed = spotlightIndex !== null && !isSpotlighted;
+          const isDimmed = activeIndex !== null && !isActive;
           const position = characterPositions[index];
           const bubbleOnRight = position.bubbleSide === "right";
 
@@ -95,17 +94,17 @@ export default function NewHero() {
               onMouseEnter={() => selectProduct(index)}
               onFocus={() => selectProduct(index)}
               onClick={() => selectProduct(index)}
-              onMouseLeave={() => setSpotlightIndex(null)}
+              onMouseLeave={clearProductSelection}
               onBlur={(event) => {
                 if (!event.currentTarget.contains(event.relatedTarget)) {
-                  setSpotlightIndex(null);
+                  clearProductSelection();
                 }
               }}
               className={`pointer-events-auto absolute h-36 w-24 appearance-none border-0 bg-transparent p-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red focus-visible:ring-offset-2 sm:h-56 sm:w-40 lg:h-72 lg:w-52 ${position.className}`}
               style={{ zIndex: isActive ? 20 : 3 }}
               animate={{
                 opacity: isDimmed ? 0.24 : 0.78,
-                scale: isSpotlighted ? 1.12 : isDimmed ? 0.88 : 1,
+                scale: isActive ? 1.12 : isDimmed ? 0.88 : 1,
               }}
               transition={{ duration: 0.45, ease: "easeOut" }}
             >
@@ -251,10 +250,10 @@ export default function NewHero() {
         {/* Character Selector */}
         <div
           className="mt-12 grid w-full max-w-5xl grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 "
-          onMouseLeave={() => setSpotlightIndex(null)}
+          onMouseLeave={clearProductSelection}
           onBlur={(event) => {
             if (!event.currentTarget.contains(event.relatedTarget)) {
-              setSpotlightIndex(null);
+              clearProductSelection();
             }
           }}
         >

@@ -106,7 +106,7 @@ const ProductDetailsLeft = ({
                 src={product.characterImage}
                 alt={product.name}
                 initial={{ opacity: 0, x: -45, y: 20, scale: 0.94 }}
-                animate={{ opacity: 0.75, x: 0, y: 0, scale: 1 }}
+                animate={{ opacity: 0.45, x: 0, y: 0, scale: 1 }}
                 exit={{ opacity: 0, x: -30, scale: 0.96 }}
                 transition={{
                   duration: 0.5,
