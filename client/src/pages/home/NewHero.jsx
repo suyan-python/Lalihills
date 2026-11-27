@@ -275,9 +275,9 @@ export default function NewHero() {
                 whileHover={{ y: -4 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.3 }}
-                className={`group relative flex max-h-[70px] items-center gap-2 overflow-hidden rounded-full border p-2 text-left bg-purple/75 backdrop-blur-md sm:max-h-[80px] sm:gap-3 sm:p-3 ${
+                className={`group relative flex max-h-[70px] items-center gap-2 overflow-hidden rounded-full border p-2 text-left bg-darkPurple/25 backdrop-blur-xs sm:max-h-[80px] sm:gap-3 sm:p-3 ${
                   isActive
-                    ? "shadow-[0_8px_30px_rgba(180,145,210,0.16)] border-red"
+                    ? "shadow-[0_8px_30px_rgba(180,145,210,0.16)] border-purple"
                     : "border-deepPurple/40"
                 }`}
               >
@@ -291,7 +291,7 @@ export default function NewHero() {
                 )}
 
                 {/* Character Image */}
-                <div className="relative z-[1] flex h-14 w-10 shrink-0 items-center justify-center sm:h-16 sm:w-14 bg-deepPurple/25 rounded-full overflow-hidden">
+                <div className="relative z-[1] flex h-14 w-10 shrink-0 items-center justify-center sm:h-16 sm:w-14 bg-deepPurple/15 rounded-full overflow-hidden">
                   {product.characterImage && (
                     <motion.img
                       src={product.characterImage}
@@ -326,12 +326,12 @@ export default function NewHero() {
                 {/* Character Details */}
                 <div className="relative z-[1] min-w-0 flex-1">
                   <p
-                    className={`truncate header text-xs font-semibold tracking-wide transition-colors sm:text-sm text-darkPurple `}
+                    className={`truncate header text-xs font-semibold tracking-wide transition-colors sm:text-sm text-purple `}
                   >
                     {product.name}
                   </p>
 
-                  <p className="mt-1 line-clamp-2 text-[9px] leading-relaxed text-darkPurple/75 font-light sm:text-[11px] uppercase">
+                  <p className="mt-1 line-clamp-2 text-[9px] leading-relaxed text-purple/55 font-light sm:text-[11px] uppercase">
                     {product.description2 || product.shortDescription}
                   </p>
                 </div>
