@@ -11,6 +11,7 @@ import { useCart } from "../../layouts/CartContext";
 
 import { teaProducts, coffeeProducts } from "../../data/products";
 import raani from "../../assets/characters/characters/raani.png";
+import pattern from "../../assets/pattern/pattern2.png";
 
 const raaniCharacter = [...teaProducts, ...coffeeProducts].find(
   (product) => product.characterImage === raani,
@@ -104,12 +105,6 @@ function TeaProductCard({ product, index }) {
       transition={{ duration: 0.3 }}
       className={`group relative flex h-full flex-col rounded-[1.6rem] border border-[#DED2E9] bg-[#F8F4FB] p-3 shadow-[0_8px_30px_rgba(64,52,77,0.045)] transition-shadow duration-300 hover:z-50 hover:border-red hover:shadow-[0_18px_45px_rgba(64,52,77,0.12)] sm:p-4`}
     >
-      {/* <Link
-        to={productLink}
-        aria-label={`View ${product.name}`}
-        className="absolute inset-0 z-10 rounded-[1.6rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C6BAA]"
-      /> */}
-
       {/* Product image */}
       <div
         className="relative flex aspect-[4/4.2] items-center justify-center overflow-hidden rounded-[1.2rem]"
@@ -117,6 +112,15 @@ function TeaProductCard({ product, index }) {
           backgroundColor: product.imageColor || "#F8F4FB",
         }}
       >
+        {/* Pattern background */}
+        <div
+          className="pointer-events-none absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-25"
+          style={{ backgroundImage: `url("${pattern}")` }}
+        />
+
+        {/* Optional subtle overlay */}
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-white/10" />
+
         {/* Floating Character */}
         {product.characterImage && (
           <motion.div
@@ -154,7 +158,7 @@ function TeaProductCard({ product, index }) {
                 delay: 0.2 + index * 0.12,
               },
             }}
-            className="absolute top-1/2 z-[2] h-16 w-16 -translate-y-1/2 sm:h-26 sm:w-26 md:h-32 md:w-32 lg:h-52 lg:w-52"
+            className="absolute top-1/2 z-[2] h-28 w-20 -translate-y-1/2 sm:h-32 sm:w-26 md:h-40 md:w-32 lg:h-72 lg:w-52"
           >
             <motion.img
               src={product.characterImage}
@@ -174,10 +178,11 @@ function TeaProductCard({ product, index }) {
         )}
 
         {/* Decorative rings */}
-        <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full border border-white/35" />
-        <div className="pointer-events-none absolute -bottom-12 -left-8 h-40 w-40 rounded-full border border-white/35" />
+        <div className="pointer-events-none absolute -right-8 -top-8 z-[2] h-32 w-32 rounded-full border border-white/35" />
+        <div className="pointer-events-none absolute -bottom-12 -left-8 z-[2] h-40 w-40 rounded-full border border-white/35" />
 
-        <span className="absolute bottom-3 right-3 grid h-9 w-9 place-items-center rounded-full bg-white/75 text-[#49345E] opacity-0 shadow-sm backdrop-blur-sm transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100">
+        {/* Hover arrow */}
+        <span className="absolute bottom-3 right-3 z-[3] grid h-9 w-9 place-items-center rounded-full bg-white/75 text-[#49345E] opacity-0 shadow-sm backdrop-blur-sm transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100">
           <ArrowUpRight size={17} />
         </span>
       </div>

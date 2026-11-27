@@ -14,7 +14,8 @@ import {
 
 import beans from "../../assets/shop/beans.webp";
 import leaves from "../../assets/shop/leaves.webp";
-import gift from "../../assets/shop/gift.jpg";
+// import gift from "../../assets/shop/gift.jpg";
+import gift from "../../assets/pattern/pattern1.png";
 import ShopStatement from "./ShopStatement";
 
 import { coffeeProducts } from "../../data/products";
@@ -243,19 +244,18 @@ const CollectionHero = ({ collection, products = [], type }) => {
         className="group relative block aspect-[2/3] w-full overflow-hidden rounded-4xl"
       >
         {/* BACKGROUND IMAGE */}
-        {/* <motion.img
+        <motion.img
           src={collection.image}
           alt={collection.plainName}
           loading="lazy"
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
-        /> */}
+        />
 
-        {/* ACCENT COLOR OVERLAY */}
         {/* ACCENT COLOR OVERLAY */}
         <div
           className={`absolute inset-0 ${
-            collectionKey === "gifts" ? "bg-red" : "bg-[#604B76]"
+            collectionKey === "gifts" ? "bg-red/45" : "bg-[#604B76]"
           }`}
         />
 

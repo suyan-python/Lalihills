@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { coffeeProducts } from "../../data/products";
 
 import muuiya from "../../assets/characters/characters/muuiya.png";
+import pattern from "../../assets/pattern/pattern2.png";
 
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
@@ -99,6 +100,12 @@ function CoffeeProductCard({ product, index }) {
             backgroundColor: product.imageColor || "#F8F4FB",
           }}
         >
+          {/* Pattern background */}
+          <div
+            className="pointer-events-none absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-25"
+            style={{ backgroundImage: `url("${pattern}")` }}
+          />
+
           {/* Character */}
           {product.characterImage && (
             <motion.div
@@ -136,7 +143,7 @@ function CoffeeProductCard({ product, index }) {
                   delay: 0.2 + index * 0.12,
                 },
               }}
-              className="absolute top-1/2 z-[2] h-16 w-16 -translate-y-1/2 sm:h-26 sm:w-26 md:h-32 md:w-32 lg:h-52 lg:w-52"
+              className="absolute top-1/2 z-[2] h-28 w-20 -translate-y-1/2 sm:h-32 sm:w-26 md:h-40 md:w-32 lg:h-72 lg:w-52"
             >
               <motion.img
                 src={product.characterImage}
@@ -155,10 +162,10 @@ function CoffeeProductCard({ product, index }) {
             </motion.div>
           )}
 
-          <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full border border-white/35" />
-          <div className="pointer-events-none absolute -bottom-12 -left-8 h-40 w-40 rounded-full border border-white/35" />
+          <div className="pointer-events-none absolute -right-8 -top-8 z-[1] h-32 w-32 rounded-full border border-white/35" />
+          <div className="pointer-events-none absolute -bottom-12 -left-8 z-[1] h-40 w-40 rounded-full border border-white/35" />
 
-          <span className="absolute bottom-3 right-3 grid h-9 w-9 place-items-center rounded-full bg-white/75 text-[#49345E] opacity-0 shadow-sm backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100">
+          <span className="absolute bottom-3 right-3 z-[3] grid h-9 w-9 place-items-center rounded-full bg-white/75 text-[#49345E] opacity-0 shadow-sm backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100">
             <ArrowUpRight size={17} />
           </span>
         </div>
@@ -491,7 +498,7 @@ export default function CoffeeFamilySection({
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.65, delay: 0.3 }}
-              className="relative max-w-2xl rounded-[2rem] border border-[#DCCFE8] bg-[#F8F4FB] px-6 py-7 shadow-[0_12px_35px_rgba(64,52,77,0.05)] sm:px-10 sm:py-9"
+              className="relative isolate max-w-2xl overflow-hidden rounded-[2rem] border border-[#DCCFE8] bg-[#F8F4FB] px-6 py-7 shadow-[0_12px_35px_rgba(64,52,77,0.05)] sm:px-10 sm:py-9"
             >
               {/* Speech bubble pointer */}
               <div className="absolute -top-2 left-1/2 h-4 w-4 -translate-x-1/2 rotate-45 border-l border-t border-[#DCCFE8] bg-[#F8F4FB] sm:-left-2 sm:top-1/2 sm:-translate-y-1/2 sm:rotate-[-45deg]" />
