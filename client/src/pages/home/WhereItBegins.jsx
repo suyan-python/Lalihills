@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import jhakri from "../../assets/characters/jhakri.png"; // adjust path\
+import jhakri from "../../assets/characters/characters/jhakri.png"; // adjust path\
 
 import story from "/videos/story.mp4";
 

@@ -10,7 +10,7 @@ import { Minus, Plus, ShoppingBag, X, MapPin } from "lucide-react";
 import { useCart } from "../../layouts/CartContext";
 
 import { teaProducts, coffeeProducts } from "../../data/products";
-import raani from "../../assets/characters/raani.png";
+import raani from "../../assets/characters/characters/raani.png";
 
 const raaniCharacter = [...teaProducts, ...coffeeProducts].find(
   (product) => product.characterImage === raani,

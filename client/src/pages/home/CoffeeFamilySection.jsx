@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight, Coffee } from "lucide-react";
 import { Link } from "react-router-dom";
 import { coffeeProducts } from "../../data/products";
 
-import muuiya from "../../assets/characters/muuiya.png";
+import muuiya from "../../assets/characters/characters/muuiya.png";
 
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";

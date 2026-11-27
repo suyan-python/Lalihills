@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, ChevronRight, Leaf, Sprout } from "lucide-react";
 
 // import logo from "/gold.png"
-import logo from "../assets/logo/gold.svg";
+import logo from "../assets/logo/logo4.svg";
 
 import trending from "../assets/images/trending.jpg";
 import shop from "../assets/images/shop.jpg";

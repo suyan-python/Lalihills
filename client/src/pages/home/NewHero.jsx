@@ -7,26 +7,28 @@ import { coffeeProducts, teaProducts } from "../../data/products";
 
 import { useScroll, useTransform, useReducedMotion } from "framer-motion";
 
+import background from "../../assets/landscape/img2.png";
+
 const products = [...coffeeProducts, ...teaProducts];
 const characterPositions = [
   {
-    className: "left-0 top-[17%] sm:left-[12%] sm:top-[15%]",
+    className: "left-0 top-[17%] sm:left-[12%] sm:top-[30%]",
     bubbleSide: "right",
   },
   {
-    className: "left-0 bottom-[13%] sm:left-[8%] sm:bottom-[12%]",
+    className: "left-0 bottom-[13%] sm:left-[8%] sm:bottom-[8%]",
     bubbleSide: "right",
   },
   {
-    className: "right-0 top-[13%] sm:right-[2%] sm:top-[12%]",
+    className: "right-0 top-[13%] sm:right-[2%] sm:top-[22%]",
     bubbleSide: "left",
   },
   {
-    className: "right-0 top-[41%] sm:right-[10%] sm:top-[39%]",
+    className: "right-0 top-[41%] sm:right-[15%] sm:top-[39%]",
     bubbleSide: "left",
   },
   {
-    className: "right-0 bottom-[11%] sm:right-[3%] sm:bottom-[10%]",
+    className: "right-0 bottom-[11%] sm:right-[8%] sm:bottom-[8%]",
     bubbleSide: "left",
   },
 ];
@@ -65,13 +67,21 @@ export default function NewHero() {
       ref={heroRef}
       className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-lightWhite dark:bg-darkInk"
     >
+      {/* Constant Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${background})`,
+        }}
+      />
+
       {/* Background color */}
       <AnimatePresence mode="sync">
         <motion.div
           key={activeProduct.name}
-          className={`absolute inset-0 ${activeProduct.background}`}
+          className={`absolute  inset-0 ${activeProduct.background}`}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={{ opacity: 0.5 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
         />
@@ -103,7 +113,7 @@ export default function NewHero() {
               className={`pointer-events-auto absolute h-36 w-24 appearance-none border-0 bg-transparent p-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red focus-visible:ring-offset-2 sm:h-56 sm:w-40 lg:h-72 lg:w-52 ${position.className}`}
               style={{ zIndex: isActive ? 20 : 3 }}
               animate={{
-                opacity: isDimmed ? 0.24 : 0.78,
+                opacity: isDimmed ? 0.24 : 1,
                 scale: isActive ? 1.12 : isDimmed ? 0.88 : 1,
               }}
               transition={{ duration: 0.45, ease: "easeOut" }}
@@ -133,7 +143,7 @@ export default function NewHero() {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.94, y: 4 }}
                     transition={{ duration: 0.25 }}
-                    className={`absolute top-[18%] w-[min(42vw,10rem)] rounded-2xl border bg-white/95 p-3 text-left shadow-xl shadow-deepPurple/15 backdrop-blur-md sm:top-[24%] sm:w-56 sm:p-4 ${
+                    className={`absolute top-[18%] w-[min(42vw,10rem)] rounded-2xl border bg-white p-3 text-left shadow-xl shadow-deepPurple/15 backdrop-blur-md sm:top-[24%] sm:w-56 sm:p-4 ${
                       bubbleOnRight
                         ? "left-full ml-2 rounded-tl-none"
                         : "right-full mr-2 rounded-tr-none"
@@ -171,9 +181,9 @@ export default function NewHero() {
       </div>
 
       {/* ANIMATED HILLS */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] overflow-hidden">
+      {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] overflow-hidden">
         <motion.div
-          className="relative h-[260px] w-full origin-bottom sm:h-[340px] lg:h-[420px]"
+          className="relative h-[260px] w-full origin-bottom sm:h-[340px] lg:h-[420px] "
           style={{
             scaleY: hillScale,
             transformOrigin: "bottom",
@@ -185,28 +195,22 @@ export default function NewHero() {
             className="absolute inset-0 h-full w-full"
             aria-hidden="true"
           >
-            {/* BACK HILL */}
             <motion.path
               d="M0 260 C180 180 280 220 430 165 C600 95 720 205 880 155 C1050 90 1200 175 1440 100 L1440 500 L0 500 Z"
               animate={{ fill: activeProduct.hillColors[0] }}
               transition={{ duration: 1.2 }}
             />
 
-            {/* MIDDLE HILL */}
             <motion.path
               d="M0 315 C160 230 300 300 470 240 C650 175 760 285 930 225 C1100 160 1280 265 1440 205 L1440 500 L0 500 Z"
               animate={{ fill: activeProduct.hillColors[1] }}
               transition={{ duration: 1.2 }}
             />
-
-            {/* FRONT HILL */}
             <motion.path
               d="M0 365 C180 290 320 365 500 315 C680 255 800 355 980 300 C1160 245 1300 340 1440 290 L1440 500 L0 500 Z"
               animate={{ fill: activeProduct.hillColors[2] }}
               transition={{ duration: 1.2 }}
             />
-
-            {/* FOREGROUND */}
             <motion.path
               d="M0 420 C180 365 340 420 520 375 C700 330 850 415 1030 365 C1200 325 1320 390 1440 355 L1440 500 L0 500 Z"
               animate={{ fill: activeProduct.hillColors[3] }}
@@ -214,7 +218,7 @@ export default function NewHero() {
             />
           </svg>
         </motion.div>
-      </div>
+      </div> */}
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex w-full max-w-xl flex-col items-start px-5 py-20 text-center text-white sm:px-8">

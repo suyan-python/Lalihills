@@ -3,9 +3,9 @@ import product1 from "../assets/products/pro1.jpg";
 import product2 from "../assets/products/pro2.jpg";
 import product3 from "../assets/products/pro3.jpg";
 
-import muuiya from "../assets/characters/muuiya.png";
-import maruni from "../assets/characters/maruni.png";
-import jhakri from "../assets/characters/jhakri.png";
+import muuiya from "../assets/characters/characters/muuiya.png";
+import maruni from "../assets/characters/characters/maruni.png";
+import jhakri from "../assets/characters/characters/jhakri.png";
 
 import product4 from "../assets/products/pro4.svg";
 import product5 from "../assets/products/pro5.svg";
@@ -15,8 +15,8 @@ import tea1 from "../assets/products/tea1.jpg";
 import tea2 from "../assets/products/tea2.jpg";
 import tea3 from "../assets/products/tea3.jpg";
 
-import raani from "../assets/characters/raani.png";
-import ani from "../assets/characters/ani.png";
+import raani from "../assets/characters/characters/raani.png";
+import ani from "../assets/characters/characters/ani.png";
 
 import tea4 from "../assets/products/tea4.svg";
 import tea5 from "../assets/products/tea5.svg";

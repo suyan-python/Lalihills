@@ -18,7 +18,8 @@ const MainLayout = () => {
         <Outlet />
       </main>
 
-      {!isProductPage && <Footer />}
+      {/* {!isProductPage && <Footer />} */}
+      <Footer />
     </div>
   );
 };
