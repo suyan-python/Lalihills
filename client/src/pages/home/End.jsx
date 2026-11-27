@@ -2,8 +2,11 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, CircleDot, Sparkles, Star } from "lucide-react";
 
 import { coffeeProducts, teaProducts } from "../../data/products";
-import gift from "../../assets/characters/gift.png";
+import gift from "../../assets/characters/characters/vaidya.png";
+import gift2 from "../../assets/characters/characters/muuiya.png";
 import Button from "../../components/Button";
+
+import pattern from "../../assets/pattern/pattern1.png";
 
 const getCharacters = (products) =>
   products.filter(
@@ -164,14 +167,26 @@ const End = () => {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="group relative mt-5 min-h-[340px] overflow-hidden rounded-[2rem] bg-[#8F2635] text-white sm:min-h-[380px]"
         >
-          {/* Ambient red glow */}
-          <div className="pointer-events-none absolute -right-20 -top-32 h-96 w-96 rounded-full bg-[#D85A69]/25 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-32 left-[25%] h-80 w-80 rounded-full bg-[#E7A0A5]/15 blur-3xl" />
-          <div className="pointer-events-none absolute -left-24 top-1/3 h-64 w-64 rounded-full bg-[#641B2A]/35 blur-3xl" />
+          {/* BASE BACKGROUND */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#9D3040] via-[#8F2635] to-[#641B2A]" />
 
-          {/* Decorative ribbon curves */}
-          <svg
-            className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.12]"
+          {/* CUSTOM PATTERN */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.22] mix-blend-screen"
+            style={{ backgroundImage: `url(${pattern})` }}
+          />
+
+          {/* PATTERN COLOR WASH */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#641B2A]/65 via-transparent to-[#8F2635]/20" />
+
+          {/* AMBIENT GLOWS */}
+          <div className="pointer-events-none absolute -right-20 -top-32 h-96 w-96 rounded-full bg-[#D85A69]/30 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-32 left-[25%] h-80 w-80 rounded-full bg-[#E7A0A5]/20 blur-3xl" />
+          <div className="pointer-events-none absolute -left-24 top-1/3 h-64 w-64 rounded-full bg-[#641B2A]/40 blur-3xl" />
+
+          {/* DECORATIVE RIBBON CURVES */}
+          {/* <svg
+            className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.16]"
             viewBox="0 0 1200 500"
             preserveAspectRatio="xMidYMid slice"
             fill="none"
@@ -191,21 +206,20 @@ const End = () => {
               stroke="#FFE5DF"
               strokeWidth="2"
             />
-          </svg>
+          </svg> */}
 
-          {/* Ribbon cross decoration */}
-          <div className="pointer-events-none absolute -right-12 top-0 h-full w-24 rotate-[18deg] bg-[#E9A0A3]/[0.08]" />
-          <div className="pointer-events-none absolute right-[9%] top-0 h-full w-8 bg-[#FFE5DF]/[0.06]" />
+          {/* RIBBON ACCENTS */}
+          <div className="pointer-events-none absolute -right-12 top-0 h-full w-24 rotate-[18deg] bg-[#E9A0A3]/[0.10]" />
+          <div className="pointer-events-none absolute right-[9%] top-0 h-full w-8 bg-[#FFE5DF]/[0.08]" />
 
-          {/* Decorative circles */}
-          <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full border border-[#FFE5DF]/15" />
-          <div className="pointer-events-none absolute -right-8 -top-8 h-56 w-56 rounded-full border border-[#FFE5DF]/10" />
-          <div className="pointer-events-none absolute bottom-7 left-[48%] h-3 w-3 rounded-full bg-[#F6C9BC]/50 blur-[1px]" />
+          {/* DECORATIVE RINGS */}
+          <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full border border-[#FFE5DF]/20" />
+          <div className="pointer-events-none absolute -right-8 -top-8 h-56 w-56 rounded-full border border-[#FFE5DF]/15" />
+          <div className="pointer-events-none absolute bottom-7 left-[48%] h-3 w-3 rounded-full bg-[#F6C9BC]/60 blur-[1px]" />
 
-          {/* Floating gift details */}
-          {/* Decorative floating icons */}
+          {/* FLOATING DETAILS */}
           <motion.div
-            className="pointer-events-none absolute left-[45%] top-[15%] text-[#F6C9BC]/70"
+            className="pointer-events-none absolute left-[45%] top-[15%] text-[#F6C9BC]/80"
             animate={{ y: [0, -10, 0], rotate: [0, 12, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -213,7 +227,7 @@ const End = () => {
           </motion.div>
 
           <motion.div
-            className="pointer-events-none absolute bottom-[15%] left-[8%] text-[#F6C9BC]/60"
+            className="pointer-events-none absolute bottom-[15%] left-[8%] text-[#F6C9BC]/70"
             animate={{ y: [0, 9, 0], rotate: [0, -15, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -221,22 +235,23 @@ const End = () => {
           </motion.div>
 
           <motion.div
-            className="pointer-events-none absolute right-[38%] top-[70%] text-[#FFE5DF]/70"
+            className="pointer-events-none absolute right-[38%] top-[70%] text-[#FFE5DF]/80"
             animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
             <CircleDot size={20} strokeWidth={1.5} />
           </motion.div>
 
-          {/* Decorative label */}
-          <div className="absolute right-6 top-6 z-20 rounded-full border border-[#FFE5DF]/25 bg-[#641B2A]/20 px-4 py-2 backdrop-blur-md sm:right-10 sm:top-9">
+          {/* COLLECTION LABEL */}
+          <div className="absolute right-6 top-6 z-20 rounded-full border border-[#FFE5DF]/30 bg-[#641B2A]/40 px-4 py-2 backdrop-blur-md sm:right-10 sm:top-9">
             <span className="text-[9px] font-semibold uppercase tracking-[0.25em] text-[#FFE5DF]">
               The Laali Gift Collection
             </span>
           </div>
 
-          {/* Main content */}
+          {/* MAIN CONTENT */}
           <div className="relative z-10 flex min-h-[340px] flex-col items-center justify-between gap-2 px-7 pb-8 pt-20 sm:min-h-[380px] sm:flex-row sm:px-12 sm:py-12 md:px-16">
+            {/* TEXT */}
             <div className="relative z-10 max-w-lg text-center sm:text-left">
               <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#F6C9BC]">
                 Made to be shared
@@ -257,29 +272,31 @@ const End = () => {
               </Button>
             </div>
 
-            {/* Gift visual */}
+            {/* GIFT VISUAL */}
             <motion.div
               className="relative flex h-[190px] w-full items-center justify-center sm:h-[280px] sm:w-[42%] md:h-[320px]"
               whileHover="hover"
             >
-              {/* Gift spotlight */}
-              <div className="absolute h-48 w-48 rounded-full bg-[#F6C9BC]/20 blur-3xl sm:h-64 sm:w-64" />
+              {/* GIFT SPOTLIGHT */}
+              <div className="absolute h-48 w-48 rounded-full bg-[#F6C9BC]/25 blur-3xl sm:h-64 sm:w-64" />
 
-              {/* Decorative rings */}
+              {/* OUTER RING */}
               <motion.div
-                className="absolute h-52 w-52 rounded-full border border-dashed border-[#FFE5DF]/30 sm:h-72 sm:w-72"
+                className="absolute h-52 w-52 rounded-full border border-dashed border-[#FFE5DF]/35 sm:h-72 sm:w-72"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
               />
 
+              {/* INNER RING */}
               <motion.div
-                className="absolute h-40 w-40 rounded-full border border-[#FFE5DF]/15 sm:h-56 sm:w-56"
+                className="absolute h-40 w-40 rounded-full border border-[#FFE5DF]/20 sm:h-56 sm:w-56"
                 variants={{
                   hover: { scale: 1.12, rotate: -15 },
                 }}
                 transition={{ duration: 0.7 }}
               />
 
+              {/* GIFT IMAGE */}
               <motion.img
                 src={gift}
                 alt="Laali Hills gift collection"
@@ -294,8 +311,22 @@ const End = () => {
                   rotate: { duration: 5, repeat: Infinity, ease: "easeInOut" },
                 }}
               />
+              <motion.img
+                src={gift2}
+                alt="Laali Hills gift collection"
+                className="relative z-10 h-full w-full object-contain drop-shadow-[0_20px_30px_rgba(55,0,10,0.35)]"
+                animate={{
+                  y: [0, -9, 0],
+                  rotate: [0, 1.5, 0, -1.5, 0],
+                }}
+                whileHover={{ scale: 1.06 }}
+                transition={{
+                  y: { duration: 4.5, repeat: Infinity, ease: "easeInOut" },
+                  rotate: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+                }}
+              />
 
-              {/* Sparkle */}
+              {/* SPARKLE */}
               <motion.span
                 className="absolute right-[8%] top-[12%] z-20 text-3xl text-[#FFE5DF]"
                 animate={{ rotate: 180, scale: [1, 1.3, 1] }}

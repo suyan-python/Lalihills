@@ -164,10 +164,10 @@ const Shop = () => {
         text-[clamp(1.5rem,8vw,3rem)]
         font-medium
         leading-[0.8]
-        text-ink text-center "
+        text-darkPurple text-center "
         >
           <p className="header tracking-tight">What the hills gave us.</p>
-          <span className="text-ink/75 text-[clamp(0.5rem,3vw,1rem)]">
+          <span className="text-ink/85 text-[clamp(0.5rem,3vw,1rem)]">
             Beans, Leaves and a little something to give. Take your time.
           </span>
         </div>

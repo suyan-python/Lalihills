@@ -27,6 +27,7 @@ import Explore from "./pages/explore/Explore";
 import NewProductDetails from "./pages/shop/ProductDetailsLeft";
 import ProductDetailsLeft from "./pages/shop/ProductDetailsLeft";
 import SocialsLanding from "./pages/socials/SocialsLanding";
+import LaaliCollectionsShowcase from "./pages/home/Example";
 
 function App() {
   const allProducts = [...coffeeProducts, ...teaProducts];
@@ -64,6 +65,7 @@ function App() {
             <Route element={<MainLayout />}>
               {/* Home */}
               <Route path="/" element={<Landing />} />
+              {/* <Route path="/" element={<LaaliCollectionsShowcase />} /> */}
 
               {/* Shop */}
               <Route path="/shop" element={<Shop />} />

@@ -237,7 +237,7 @@ const Navbar = () => {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className={`absolute left-0 h-px w-7 ${
-                  menuOpen ? "bg-stone" : "bg-soil"
+                  menuOpen ? "bg-stone" : "bg-red"
                 }`}
               />
 
@@ -258,7 +258,7 @@ const Navbar = () => {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className={`absolute left-0 h-px w-7 ${
-                  menuOpen ? "bg-stone" : "bg-soil"
+                  menuOpen ? "bg-stone" : "bg-red"
                 }`}
               />
             </span>
@@ -270,14 +270,13 @@ const Navbar = () => {
         {menuOpen && (
           <>
             {/* BACKDROP */}
-
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
               onClick={() => setMenuOpen(false)}
-              className="fixed inset-0 z-[90] bg-black/80 backdrop-blur-[3px]"
+              className="fixed inset-0 z-[90] bg-black/80 backdrop-blur-[5px]"
             />
             {/* =================================================
                 DESKTOP MENU
@@ -299,7 +298,7 @@ const Navbar = () => {
                 duration: 0.65,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="fixed right-0 top-0 z-[95] hidden h-fit w-full overflow-hidden bg-ink lg:block"
+              className="fixed right-0 top-0 z-[95] hidden h-fit w-full overflow-hidden bg-purple lg:block"
             >
               <div className="flex h-full w-full">
                 {/* ==========================================
@@ -347,14 +346,14 @@ const Navbar = () => {
                               transition={{
                                 duration: 0.3,
                               }}
-                              className="h-px bg-lightWhite"
+                              className="h-px bg-red"
                             />
 
                             <span
                               className={` header md:text-base tracking-[-0.025em] transition-colors duration-300 xl:text-2xl ${
                                 isActive
-                                  ? "text-lightWhite"
-                                  : "text-lightWhite/45 group-hover:text-lightWhite/75"
+                                  ? "text-darkPurple"
+                                  : "text-darkPurple/45 group-hover:text-darkPurple/75"
                               }`}
                             >
                               {item.title}
